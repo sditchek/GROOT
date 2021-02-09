@@ -18185,9 +18185,9 @@ for identremoveinvest=1
                                     set(gcf, 'InvertHardcopy', 'off')
                                     text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
                                     if strat==1
-                                        text(1,1.03,['\textbf{N=',num2str(size(tmp_bt,1)),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
+                                        text(1,1.03,['\textbf{N=',num2str(sum(~isnan(tmp_bt))),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
                                     else
-                                        text(1,1.065,['\textbf{N=',num2str(size(tmp_bt,1)),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                        text(1,1.065,['\textbf{N=',num2str(sum(~isnan(tmp_bt))),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                     end                
                                     tmpuv = unique(tmpyr);
