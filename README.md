@@ -28,4 +28,7 @@ Use this component if you are running the FV3GFS. It has only one feature at the
 
   ## How to Cite GROOT
   
-  If you are using this package to generate results for your research and include the graphics in presentations or papers, please cite this package.
+  You are free to use this package to generate results for your research. If doing so, and if you include the graphics in presentations or papers, please cite this package as:
+  - Ditchek, S.D., 2021: GRaphics for OSEs and OSSEs on TCs (GROOT; Version v1.0.0). Zenodo. http://doi.org/10.5281/zenodo.4527233
+
+  [![DOI](https://zenodo.org/badge/336020440.svg)](https://zenodo.org/badge/latestdoi/336020440)
