@@ -1,0 +1,5 @@
+ &iosetup
+  infilename='./infile_anl',
+  outfilename='./outfile.txt',
+ /     
+

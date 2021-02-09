@@ -1,0 +1,41 @@
+FILES IN THIS FOLDER
+  README              | this file which explains how to edit and compile the the gsi scripts and how to run the retrieval script
+  iscyclecomplete.ksh | this file produces text files telling you and the retrieval script which cycles are completed
+  gsi_diag_conv.f90   | this is the file you'd edit if you wanted to retrieve gsidiag files
+  rtrv_conv_tmplt.sh  | this script retrieves the needed files for the package to run when conducting experiments with non-radiance data and puts them in the proper directory structure
+	                (as if scrubbing was turned off).
+  gsi_diag_rad.x      | this executable reads radiances from gsidiag files
+  rtrv_rad_tmplt.sh   | this script retrieves the needed files for the package to run when conducting experiments with radiance data and puts them in the proper directory structure 
+                        (as if scrubbing was turned off).
+  RAD/ 		      | folder with files needed to run gsi_diag_rad.x (namelist.rad) and files needed to grab qc flags for satellite obs (.pro scripts)
+  HWRFDA.ksh          | this script (and crontab line within script) will retrieve pre-GSI and post-GSI grids while running the model before being scrubbed and put them in a separate folder
+
+RUN TO SEE WHEN CYCLES COMPLETE AND TO IDENTIFY WHAT CYCLES SHOULD BE GRABBED BY RETRIEVAL SCRIPT: iscyclecomplete.ksh 
+1) Edit iscyclecomplete.ksh 
+2) Add a line to your crontab to run once a day (I usually have this set to 5am I can see what finished when I wake up)
+3) You can also run this any time during the day by doing ./iscyclescomplete.ksh twice on the command line. Running it twice ensures that the files needed for the retrieval scripts are updated.
+
+PROCESS CONVENTIONAL OBSERVATIONS: gsi_diag_conv.f90
+1) Edit gsi_diag_conv.f90 - note that you need to make sure that the columns match how the diag file was created (setupxxx.f90 in ProdGSI source code)
+2) Compile the file: gfortran -c gsi_diag_conv.f90
+3) Create the executable: gfortran -o gsi_diag_conv.x gsi_diag_conv.o
+4) Nothing else! The gsi_diag_conv.x file will be used by the rtrv_conv_tmplt.sh script!
+
+HOW TO GET FILES FROM HPSS: rtrv_conv_tmplt.sh or rtrv_rad_tmplt.sh   
+1) For experiments on conventional observations: cp rtrv_conv_tmplt.sh <year>_<stormname><stormid>.ksh
+   For experiments on radiance observations: cp rtrv_rad_tmplt.sh <year>_<stormname><stormid>.ksh
+2) Edit <year>_<stormname><stormid>.ksh and change the top section [ACCOUNT (-A), EMAIL (--mail-user), OUTPUT (-o), and ERROR (-e)] as well as the USER SETTINGS section, only
+3) Submit the script: sbatch ./<year>_<stormname><stormid>.ksh $1 | $1 is the subexp name without quotes (e.g., HB20_B1_ALL)
+
+HOW TO GET PRE-GSI AND POST-GSI GRIDS: HWRFDA.ksh - you need to have this running before starting your experiments
+1) Open the HWRFDA.ksh script and change the top section [ACCOUNT (-A), EMAIL (--mail-user), OUTPUT (-o), and ERROR (-e)] as well as the USER SETTINGS section, only
+2) There is a suggested, commented out crontab line in the script. By adding that line (uncommented) to your crontab, it will pull the pre- and post- files while you are running your model
+
+HOW TO SUBMIT AND CANCEL A BATCH SCRIPT
+1) Submitting SBATCH: sbatch <script>
+2) Canceling SBATCH: scancel <jobID> - type sqm to get jobID
+
+ACKNOWLEDGEMENTS
+*.pro scripts in RAD/ from Sean Casey, modified for this package by Sarah Ditchek
+gsi_diag_rad.x script from Karina Apodaca
+gsi_diag_conv.f90 script from Andrew Kren, modified for this package by Sarah Ditchek

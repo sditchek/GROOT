@@ -1,0 +1,98 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                 GROOT-G                  %%
+%%    GRaphics for OSEs and OSSEs on TCs    %%
+%%             Global Component             %%
+%%    CREATED BY: DR. SARAH D. DITCHEK      %%
+%%  If using this graphics package, please  %%
+%%   acknowledge that graphics were made    %%
+%%    using GROOT by citing the GitHub      %%
+%%   repository. An additional shoutout     %%
+%% to Dr. Sarah D. Ditchek from CIMAS/AOML  %%
+%%         is always appreciated :)         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%
+%% SUMMARY %%
+%%%%%%%%%%%%%
+
+THIS DIRECTORY CONTAINS A VISUALIZATION PACKAGE FOR OBSERVING SYSTEM EXPERIMENTS (OSES) AND OBSERVING SYSTEM SIMULATION EXPERIMENTS (OSSES) THAT USE HWRF OR THE BASIN-SCALE HWRF.
+THE MAIN CAPABILITY OF THIS GRAPHICS PACKAGE IS TO GENERATE:
+  1) ERROR STATISTICS (E.G., ERRORS/IMPROVEMENT/BIAS/FSP OF TRACK, INTENSITY, PRESSURE, TC SIZE)
+MOST IMPORTANTLY, THIS PACKAGE CAN BE USED FOR OSES/OSSES WITH ANY NUMBER OF EXPERIMENTS, WITH USER INPUT BEING CONFINED TO A BRIEF NAMELIST - EVERYTHING ELSE IS AUTOMATED.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FILES AND DIRECTORIES %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+INITIALLY INCLUDED IN PACKAGE:
+
+README            | this file that explains what this visualization package is along with a description of the files and directories included and how to run the package
+editverif.m       | this script is the "namelist" - it is the only script that needs to be edited to run verification capability
+runverif.ksh      | this is the script that you will submit via batch which runs the verification capability
+bdeck/            | folder that contains the bdecks for TCs from 2016-2019
+nctoolbox-1.1.3/  | folder that allows for matlab to read the grb files
+retrievalscripts/ | folder that contains all scripts to retrieve files for package to run
+  gsi_diag_conv.f90   | this is the file you'd edit if you wanted to retrieve gsidiag files
+  gsi_diag_rad.x      | this executable reads radiances from gsidiag files
+  RAD/                | folder with file needed to run gsi_diag_rad.x (namelist.rad) and files needed to grab qc flags for satellite obs (.pro scripts)
+scripts/          | folder that contains all scripts needed to run the package
+  arrow3.m            | script that allows for vertical wind shear direction to be plotted
+  atcf.m              | function that reads the atcf files and formats them to be on one line per forecast hour
+  borders.shp         | shapefile to make country borders
+  borders.shx         | shapefile to make country borders
+  confplot.m          | function that calculates the 95% confidence interval
+  customcolorbars.m   | script that creates the colorbars used
+  custommap.m         | function that creates a balanced colormap with a specific number of colors given one color
+  customvariables.m   | script that identifies properties related to variables outputted by HWRF and the basin-scale HWRF (e.g., name, units, min/max bounds)
+  matlabverif*        | scripts related to running the verification capability
+  runverif.m          | verification capability script
+  ttestsc.m           | function that incorporates serial correlation time of 12 h in the ttest calculation (as per Sim Aberson)
+  windbarbm.m         | function to generate wind barbs (note that flags are currently not filled)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HOW TO RUN THE PACKAGE %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+VERIFICATION CAPABILITY - THIS GIVES FULL-STORM GRAPHICS AND GRAPHICS THAT ARE CONSISTENT WITH NHC VERIFICATION - VARIOUS STRATIFICATIONS OF YOUR SAMPLE ARE ALSO TAKEN.
+1) For each experiment, place your atcf files for all cycles desired in 1 folder, named according to the experiment run. So if you had 2 experiments each covering 10 storms and 100 total cycles, you'd have all your atcf files for experiment #1 in one folder and all atcf files for experiment #2 in a second folder, named EXP1 and EXP2, repectively (where EXP1 and EXP2 are whatever you desire).
+2) Edit the user settings section of editverif.m for the cases you want to include
+3) Edit the user settings section of runverif.ksh - follow the instructions carefully or it won't run
+4) Load the matlab module (module load matlab) - this isn't included in the batch scripts in case there is an issue/conflict with your other loaded modules
+5) Submit runverif.ksh to batch: sbatch ./runverif.ksh
+
+THAT'S IT!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LOCATION AND DESCRIPTION OF VARIOUS RESULTS %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+RESULTS ARE LOCATED IN THE PACKAGE'S RESULTS DIRECTORY IN A FOLDER NAMED AFTER YOUR EXPERIMENTS [EXP1_EXPN]. THE BELOW DIRECTORY STRUCTURE DETAILS THE FOLDERS AND CONTENTS OF [EXP1_EXPN] BASED ON WHETHER YOU RAN THE VERIFICATION OR GRB CAPABILITY.
+
+VERIFICATION CAPABILITY:
+[VERIFICATION]/                          | all of the runverif.ksh results are in this folder
+[VERIFICATION]/InvestN/                  | results consistent with NHC verification (t=0 and t=x are TD,TS,HU,SD,SS); for storms included in stratifications, see created text files
+[VERIFICATION]/InvestN/[BASIN]/          | results for a single basin are in here - there will be .png files for composite graphics and folder for each storm (NAMEYY)
+[VERIFICATION]/InvestN/[BASIN]/[NAMEYY]  | results for a single storm are in here - this included errors statistics for a single storm and .mat files
+[VERIFICATION]/OBS/                      | .mat files and graphics of conventional or satellite observations assimilated are in here
+
+%%%%%%%%%%%%%%%%%%
+%%  KEY POINTS  %%
+%%%%%%%%%%%%%%%%%%
+
+VERIFICATION CAPABILITY:
+1) Significance is displayed on error-statistic graphics as squares (95%) and circles (90%) wrt the identexpsigimp - this detail is not included on the graphics in order to save space.
+2) Every time you run this capability, if you ran the capability for the same set of experiments previously, those results are deleted. This is to ensure that your results include the most up-to-date data.
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%  NEW ADDITIONS!  %%
+%%   LAST UPDATED   %%
+%%     02/09/21     %%
+%%%%%%%%%%%%%%%%%%%%%%
+ 
+02/09/21 | Package v1.0.0 ready for distribution to OSA!
+
+%%%%%%%%%%%%%
+%% ISSUES? %%
+%%%%%%%%%%%%%
+
+Contact sarah.d.ditchek@noaa.gov if you encounter any issues :)
