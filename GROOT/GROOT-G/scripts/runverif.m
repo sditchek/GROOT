@@ -18247,7 +18247,7 @@ for stmdn=1:size(stormsdone,2)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
                                     end    
-                                    text(0,1.03,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                    text(0,1.03,['\textbf{STORMS: ',tmpphrase,'  $\mid$ FHR: 0}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
                                     set(ax, 'Layer', 'bottom')
