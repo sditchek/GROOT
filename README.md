@@ -26,6 +26,10 @@ Use this component if you are running the FV3GFS. It has only one feature at the
   2) **Project Flexibility:** user input is confined to a brief namelist, any number of experiments can be compared (recommended maximum: 6), customization of colors and of baseline model available in the namelist, it works with model output from HWRF, the basin-scale HWRF, and FV3GFS, and users can switch between GROOT-H and GROOT-G with ease – the same process is used to run both components
   3) **Uniformity:** uniform, publication-ready graphics are generated, and graphics generated are those that are often needed in OS(S)E studies that evaluate TC performance
 
+  ## How To Use GROOT
+  
+  Checkout the code and read the README within either the GROOT-H or GROOT-G directories, depending on which component you'll be using.
+  
   ## How to Cite GROOT
   
   You are free to use this package to generate results for your research. If doing so, and if you include the graphics in presentations or papers, please cite this package as:
