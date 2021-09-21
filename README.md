@@ -17,9 +17,10 @@ Use this component if you are running HWRF or the basin-scale HWRF. It has four 
 
 ### GROOT-G
 
-Use this component if you are running the FV3GFS. It has only one feature at the moment - the Error Statistics Capability. The Assimilated Observations Capability, GRB Capability, and Retrieval Scripts will be added in the future as a new release:
+Use this component if you are running the FV3GFS. It has only one feature at the moment - the Error Statistics Capability. The GRB Capability and Retrieval Scripts will be added in the future as a new release:
 
-  - **Error Statistics Capability:** graphics for individual storms, composites, and various subsets are generated   
+  1) **Error Statistics Capability:** graphics for individual storms, composites, and various subsets are generated
+  2) **Assimilated Observations Capability:** graphics for individual storms and storm-relative composites are generated
   
  ## Why Use GROOT?
   1) **It's Comprehensive:** results for both individual storms and composite studies are generated, retrieval scripts to grab GROOT-required files from HPSS are provided, and capabilities are continuously being added
@@ -32,7 +33,8 @@ Use this component if you are running the FV3GFS. It has only one feature at the
   
   ## How to Cite GROOT
   
-  You are free to use this package to generate results for your research. If doing so, and if you include the graphics in presentations or papers, please cite this package as:
-  - Ditchek, S.D., 2021: GRaphics for OSEs and OSSEs on TCs (GROOT; Version v1.0.1). Zenodo. http://doi.org/10.5281/zenodo.4527625
-
-  [![DOI](https://zenodo.org/badge/336020440.svg)](https://zenodo.org/badge/latestdoi/336020440)
+  You are free to use this package to generate results for your research.
+  
+  If using this graphics package in PUBLICATIONS, please include the following in the acknowledgements section: "The GRaphics for OSEs and OSSEs on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
+  
+  If using this graphics package in PRESENTATIONS, please indicate the following verbally or include the information somewhere on your slides: "Graphics were made using GROOT - a verification package developed by Dr. Sarah Ditchek and funded by QOSAP and the FY18 Hurricane Supplemental."
