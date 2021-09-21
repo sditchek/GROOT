@@ -2,8 +2,8 @@
 #SBATCH -t 00:30:00         # XXXX: Time Limit | generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
-#SBATCH -p bigmem	    # XXXX: Partition | keep it bigmem
-#SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
+#SBATCH -p hera	    # XXXX: Partition | keep it hera
+#SBATCH --ntasks=1	    # XXXX: tasks
 #SBATCH --mail-type=end     # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
 #SBATCH -J GROOT-H-SYN-DONE # XXXX: Job Name | change to whatever you'd like

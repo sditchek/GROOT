@@ -4,9 +4,9 @@
 #SBATCH -q batch	    # XXXX: quality of service
 #SBATCH -p hera	    # XXXX: Partition | keep it hera
 #SBATCH --ntasks=1	    # XXXX: tasks 
-#SBATCH --mail-type=end     # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
+#SBATCH --mail-type=fail    # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
-#SBATCH -J GROOT-H-STM-DONE # XXXX: Job Name | change to whatever you'd like
+#SBATCH -J VERIFCOMPCONVSAT # XXXX: Job Name | change to whatever you'd like
 
 ###########################################################################
 # This script runs all required files for cycles specified in editgrb.m #
@@ -24,12 +24,26 @@
 
 # Paths
 scriptspath=$1
+outputpath=$2
+homepath=$3
 
 # Import the values in the output file
-source ./common.txt
+cp commonverif.txt ${scriptspath}/
+source ./commonverif.txt
 
-echo "Thank you for using GROOT! Check out your STORM GRID results in the ${homepath}/GROOT/GROOT-H/RESULTS/ directory. If you have any questions, please contact Sarah Ditchek (CIMAS-AOML)." > ${homepath}/GROOT/GROOT-H/SUBMISSION_STORMGRID_FINISHED.txt
+# FINISH COMPOSITE STORMS
+matlab -nosplash -nodesktop -r "identindivstorm=0;identcomposite=1;identcompositeprep=0;identcompositerun=0;identcompositefin=1;" < ${scriptspath}/runverif.m > ${outputpath}/OUTPUT_VERIF_COMPOSITE.txt &
+wait
 
 # Clean up old files
-rm -f ${scriptspath}/matlabstormbatch_*.ksh
+rm -f ${scriptspath}/matlabverifbatch_*.ksh
+rm -f ${scriptspath}/matlabverifcompbatch_*.ksh
+rm -f ${scriptspath}/commonverif.txt
+rm -f ${scriptspath}/common.txt
+rm -f ${scriptspath}/compverif.txt
+rm -f ${homepath}/GROOT/GROOT-H/com*.txt
+rm -f ${homepath}/GROOT/GROOT-H/*.mat
+
+sbatch ${scriptspath}/matlabveriffinished.ksh ${homepath}
+
 exit 0

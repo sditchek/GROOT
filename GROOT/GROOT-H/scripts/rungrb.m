@@ -73,7 +73,7 @@ end
 %% %%%%%%%%% %%
 for bdecks=1
     filename = [identbdecks,'b',lower(ident),'.dat'];
-    [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
+    [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,1);
     save([identout,'RESULTS/',identfold,identn,'/',identn,'_data.mat'])
 end
 
@@ -2631,7 +2631,7 @@ for errorstats=1
                     % Loop
                     for tmp=1:size(identexp,1)                
                         filename = [identnoscrub,'atcf/',identexp{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'.trak.hwrf.atcfunix'];
-                        [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,0);
+                        [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,0);
                         initsizeexp=size(FHRall,2);
                         exp_fhr(1:initsizeexp,tmp)=FHRall';
                         exp_lon(1:initsizeexp,tmp)=LONall;

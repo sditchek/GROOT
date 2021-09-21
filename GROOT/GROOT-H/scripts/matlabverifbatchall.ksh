@@ -1,9 +1,9 @@
 #!/bin/ksh
-#SBATCH -t 00:10:00         # XXXX: Time Limit | generally sufficient; may need to increase it
+#SBATCH -t 02:00:00         # XXXX: Time Limit | generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
 #SBATCH -p hera	    # XXXX: Partition | keep it hera
-#SBATCH --ntasks=1 	    # XXXX: tasks
+#SBATCH --ntasks=1 	    # XXXX: tasks 
 #SBATCH --mail-type=fail    # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
 #SBATCH -J VERIFSTM	    # XXXX: Job Name | change to whatever you'd like

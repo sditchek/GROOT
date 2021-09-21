@@ -1,4 +1,4 @@
-function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall]=atcf(filename,intrp)
+function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,SHRall,LOWbasin,HIGHbasin]=atcf_new(filename,intrp,identbdecks)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FUNCTION
@@ -9,7 +9,7 @@ function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,
 % OUTPUT
 % All data from atcf file in vector format (all radii in km)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Last Edited 06.22.20 by Sarah Ditchek
+% Last Edited 04.20.21 by Sarah Ditchek
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Read in data file
@@ -35,9 +35,9 @@ R4=dataArray{17};
 PO1=dataArray{18};
 RO1=dataArray{19};
 RMW1=dataArray{20};
-Basin=dataArray{23};
+Basin=dataArray{1};
 Name1=dataArray{28};
-
+   
 % Transform to proper units and classes
 for i=1:size(Dates1,1)
     Dates(i,:)=Dates1{i};
@@ -60,7 +60,6 @@ for i=1:size(Dates1,1)
     RO(i,:)=str2num(RO1{i}).*1.852;
     RMW(i,:)=str2num(RMW1{i}).*1.852;    
 end
-
 for i=1:size(Dates1,1)
     if strcmp(identhemi(i)','W')
         Longitude(i)=-1*Longitude(i);
@@ -71,11 +70,75 @@ identhemi=identhemi';
 % Get the Basin
 Basin(strcmp(Basin, '')) = [];
 Basin=unique(Basin);
+Basin0=filename(end-11:end-10);
+
+if strcmp(Basin0,'al')==1
+	basintmp='a';
+elseif strcmp(Basin0,'ep')==1
+	basintmp='e';
+elseif strcmp(Basin0,'cp')==1
+	basintmp='c';
+elseif strcmp(Basin0,'io')==1
+	basintmp='i';
+elseif strcmp(Basin0,'sh')==1
+	basintmp='s';	
+elseif strcmp(Basin0,'wp')==1
+	basintmp='w';	
+end
+filename1=[identbdecks,'SHIPS_',basintmp,'.dat'];
+formatSpec = '%*6s%5s%4s%*5*s%*5*s%*5*s%*5*s%*5s%10s%*5*s%*5*s%*5*s%*5*s%*5*s%*5*s%*5*s%*5*s%*5*s%*5*s%*5*s%*5*s%*5C%5C%[^\n\r]';
+fileID = fopen(filename1,'r');
+dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string', 'EmptyValue', NaN,  'ReturnOnError', false);
+dataArray{3} = strtrim(dataArray{3});
+fclose(fileID);
+lsdiaga19822019satts = table(dataArray{1:end-1}, 'VariableNames', {'VarName2','VarName3','AL011982','HEAD'});
+clearvars filename1 formatSpec fileID dataArray ans;
+% Grab the variable names, for parsing
+name=table2array(lsdiaga19822019satts(:,4));
+% Grab the storm IDs
+tmp=find(name=='HEAD');
+HEAD=table2array(lsdiaga19822019satts(:,3));
+HEAD=HEAD(tmp);
+% Grab the date
+DATE1=table2array(lsdiaga19822019satts(:,1));
+DATE2=table2array(lsdiaga19822019satts(:,2));
+DATE1=DATE1(tmp);
+DATE2=DATE2(tmp);
+for i=1:size(DATE1,1)
+    tmpdate=[DATE1{i} DATE2{i}];
+    tmphead=HEAD{i};    
+    DATE(i,:)=[tmphead(end-3:end) tmpdate(3:6) tmpdate(8:9)];
+end
+% Grab the Shear Values: 850-200 hPa shear magnitude (kt *10) vs time (200-800 km)
+tmp=find(name=='SHRD');
+SHRD=table2array(lsdiaga19822019satts(:,2));
+SHRD=SHRD(tmp);
+for i=1:size(SHRD,1)
+    tmpshear=strtrim(SHRD{i});
+    SHEAR(i)=str2num(tmpshear)./10; % converted to kts
+end
+SHEAR=SHEAR';
+LOWbasin=quantile(SHEAR,.25);
+HIGHbasin=quantile(SHEAR,.75);
+clear DATE1 DATE2 i name SHRD tmp tmpdate tmpshear lsdiaga19822019satts tmphead
+Shear1=-999*ones(size(Dates1,1),1);
+tmph=upper(filename(end-11:end-4));
+tmpindex=find(HEAD==tmph);
+for i=1:size(Dates1,1)
+    tmpdate=Dates1{i};
+    for j=1:size(tmpindex,1)
+        tmpdt=DATE(tmpindex(j),:);
+        if strcmp(tmpdate,tmpdt)==1
+            Shear1(i)=SHEAR(tmpindex(j));
+        end
+    end    
+end
+Shear=Shear1;
 
 % Reassign R34/R50/R64 to one line instead of duplicate lines
 tmpfill=zeros(1,size(Dates1,1))';
 tmpnum=1:size(Dates1,1);
-tmp=cat(2,str2num(Dates),Latitude',Longitude',Speed,Pressure,RAD',NEQ,SEQ,SWQ,NWQ,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,PO,RO,RMW,tmpnum',FHR');
+tmp=cat(2,str2num(Dates),Latitude',Longitude',Speed,Pressure,RAD',NEQ,SEQ,SWQ,NWQ,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,PO,RO,RMW,tmpnum',FHR',Shear);
 for i=2:size(tmp,1)
     if strcmp(num2str(tmp(i,1)),num2str(tmp(i-1,1))) || strcmp(num2str(tmp(i-1,1)),'NaN')
         if tmp(i,6)==50
@@ -108,36 +171,47 @@ Speed=tmp(:,4);
 Pressure=tmp(:,5);
 RAD34=tmp(:,6);
 NE34=tmp(:,7);
+NE34(NE34==0)=NaN;
 SE34=tmp(:,8);
+SE34(SE34==0)=NaN;
 SW34=tmp(:,9);
+SW34(SW34==0)=NaN;
 NW34=tmp(:,10);
+NW34(NW34==0)=NaN;
 RAD50=tmp(:,11);
 NE50=tmp(:,12);
+NE50(NE50==0)=NaN;
 SE50=tmp(:,13);
+SE50(SE50==0)=NaN;
 SW50=tmp(:,14);
+SW50(SW50==0)=NaN;
 NW50=tmp(:,15);
+NW50(NW50==0)=NaN;
 RAD64=tmp(:,16);
 NE64=tmp(:,17);
+NE64(NE64==0)=NaN;
 SE64=tmp(:,18);
+SE64(SE64==0)=NaN;
 SW64=tmp(:,19);
+SW64(SW64==0)=NaN;
 NW64=tmp(:,20);
+NW64(NW64==0)=NaN;
 PO=tmp(:,21);
 RO=tmp(:,22);
 RMW=tmp(:,23);
 Category=Cat(tmp(:,24),:);
 Name=Name(tmp(:,24),:);
 FHR=tmp(:,25);
+SHR=tmp(:,26);
+SHR(SHR==-999)=NaN;
+
 
 % BONUS: Intensity Change %
-if size(Speed,1)<3
-	INTCH=nan(size(Speed,1),1);
-else
-	for tmpint=2:size(Speed,1)-1
-		INTCH(tmpint)=Speed(tmpint+1)-Speed(tmpint-1);
-	end
-	INTCH(1)=NaN;
-	INTCH(end+1)=NaN;
+for tmpint=2:size(Speed,1)-1
+    INTCH(tmpint)=Speed(tmpint+1)-Speed(tmpint-1);
 end
+INTCH(1)=NaN;
+INTCH(end+1)=NaN;
 
 % BONUS: Storm Relative Motion %
 EQDLON=111.11;
@@ -239,6 +313,7 @@ if sum(size(Longitude))==2
     FHRall=FHR;
     BASINall=Basin;
     INTCHall=INTCH;
+    SHRall=SHR;
 else
     LATall=interp1(t6h,Latitude,t3h);
     LONall=interp1(t6h,Longitude,t3h);
@@ -266,7 +341,7 @@ else
     VMOTall=interp1(t6h,VMOT,t3h);
     FHRall=interp1(t6h,FHR,t3h);
     INTCHall=interp1(t6h,INTCH,t3h);
+    SHRall=interp1(t6h,SHR,t3h);
     BASINall=Basin;
 end
 end
-
