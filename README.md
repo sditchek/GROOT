@@ -33,8 +33,10 @@ Use this component if you are running the FV3GFS. It has only one feature at the
   
   ## How to Cite GROOT
   
-  You are free to use this package to generate results for your research.
+  You are free to use this package to generate results for your research!
   
-  If using this graphics package in PUBLICATIONS, please include the following in the acknowledgements section: "The GRaphics for OSEs and OSSEs on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
+  If using this graphics package in **PUBLICATIONS**, please include the following in the acknowledgements section: 
+  > The GRaphics for OSEs and OSSEs on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
   
-  If using this graphics package in PRESENTATIONS, please indicate the following verbally or include the information somewhere on your slides: "Graphics were made using GROOT - a verification package developed by Dr. Sarah Ditchek and funded by QOSAP and the FY18 Hurricane Supplemental."
+  If using this graphics package in **PRESENTATIONS**, please indicate the following verbally or include the information somewhere on your slides:
+  > Graphics were made using GROOT - a verification package developed by Dr. Sarah Ditchek and funded by QOSAP and the FY18 Hurricane Supplemental."
