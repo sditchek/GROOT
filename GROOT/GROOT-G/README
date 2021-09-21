@@ -3,13 +3,19 @@
 %%    GRaphics for OSEs and OSSEs on TCs    %%
 %%             Global Component             %%
 %%    CREATED BY: DR. SARAH D. DITCHEK      %%
-%%  If using this graphics package, please  %%
-%%   acknowledge that graphics were made    %%
-%%    using GROOT by citing the GitHub      %%
-%%   repository. An additional shoutout     %%
-%% to Dr. Sarah D. Ditchek from CIMAS/AOML  %%
-%%         is always appreciated :)         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% USAGE ACKNOWLEDGEMENTS %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If using this graphics package in PUBLICATIONS, please include the following in the acknowledgements section:
+
+"The GRaphics for OSEs and OSSEs on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
+
+If using this graphics package in PRESENTATIONS, please indicate the following verbally or include the information somewhere on your slides:
+
+"Graphics were made using GROOT - a verification package developed by Dr. Sarah Ditchek and funded by QOSAP and the FY18 Hurricane Supplemental."
 
 %%%%%%%%%%%%%
 %% SUMMARY %%
@@ -18,6 +24,7 @@
 THIS DIRECTORY CONTAINS A VISUALIZATION PACKAGE FOR OBSERVING SYSTEM EXPERIMENTS (OSES) AND OBSERVING SYSTEM SIMULATION EXPERIMENTS (OSSES) THAT USE HWRF OR THE BASIN-SCALE HWRF.
 THE MAIN CAPABILITY OF THIS GRAPHICS PACKAGE IS TO GENERATE:
   1) ERROR STATISTICS (E.G., ERRORS/IMPROVEMENT/BIAS/FSP OF TRACK, INTENSITY, PRESSURE, TC SIZE)
+  2) ASSIMILATED OBSERVATION GRAPHICS (I.E., THE EARTH-RELATIVE AND STORM-RELATIVE LOCATION OF THE OBSERVATION TYPE YOU ARE TESTING)
 MOST IMPORTANTLY, THIS PACKAGE CAN BE USED FOR OSES/OSSES WITH ANY NUMBER OF EXPERIMENTS, WITH USER INPUT BEING CONFINED TO A BRIEF NAMELIST - EVERYTHING ELSE IS AUTOMATED.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,16 +52,22 @@ scripts/          | folder that contains all scripts needed to run the package
   custommap.m         | function that creates a balanced colormap with a specific number of colors given one color
   customvariables.m   | script that identifies properties related to variables outputted by HWRF and the basin-scale HWRF (e.g., name, units, min/max bounds)
   matlabverif*        | scripts related to running the verification capability
-  runverif.m          | verification capability script
+  runverif*.m         | verification capability scripts
   ttestsc.m           | function that incorporates serial correlation time of 12 h in the ttest calculation (as per Sim Aberson)
   windbarbm.m         | function to generate wind barbs (note that flags are currently not filled)
+
+CREATED FOLDERS:
+
+cases/                | folder with saved edit*.m files for future reference
+output/               | folder with output text files to monitor progress of GROOT
+RESULTS/              | folder with all of your results
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% HOW TO RUN THE PACKAGE %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 VERIFICATION CAPABILITY - THIS GIVES FULL-STORM GRAPHICS AND GRAPHICS THAT ARE CONSISTENT WITH NHC VERIFICATION - VARIOUS STRATIFICATIONS OF YOUR SAMPLE ARE ALSO TAKEN.
-1) For each experiment, place your atcf files for all cycles desired in 1 folder, named according to the experiment run. So if you had 2 experiments each covering 10 storms and 100 total cycles, you'd have all your atcf files for experiment #1 in one folder and all atcf files for experiment #2 in a second folder, named EXP1 and EXP2, repectively (where EXP1 and EXP2 are whatever you desire).
+1) For each experiment, place your atcf files for all cycles desired in 1 folder, named according to the experiment run. So if you had 2 experiments each covering 10 storms and 100 total cycles, you'd have all your atcf files for experiment #1 in one folder and all atcf files for experiment #2 in a second folder, named EXP1 and EXP2, repectively (where EXP1 and EXP2 are whatever you desire). Do the same treatment for all assimilated observations files for the variable you're testing.
 2) Edit the user settings section of editverif.m for the cases you want to include
 3) Edit the user settings section of runverif.ksh - follow the instructions carefully or it won't run
 4) Load the matlab module (module load matlab) - this isn't included in the batch scripts in case there is an issue/conflict with your other loaded modules
@@ -82,14 +95,54 @@ VERIFICATION CAPABILITY:
 VERIFICATION CAPABILITY:
 1) Significance is displayed on error-statistic graphics as squares (95%) and circles (90%) wrt the identexpsigimp - this detail is not included on the graphics in order to save space.
 2) Every time you run this capability, if you ran the capability for the same set of experiments previously, those results are deleted. This is to ensure that your results include the most up-to-date data.
+3) In order for observation-related subsets to work, observations are tabulated within 2000 km of each storm's center. In this way for the global model, the near-storm observational impact is quantified. On the conv_* graphics, it will be indicated whether the count value of assimilated observations is for R<2000 km.
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%  NEW ADDITIONS!  %%
-%%   LAST UPDATED   %%
-%%     02/09/21     %%
+%%     08/26/21     %%
 %%%%%%%%%%%%%%%%%%%%%%
- 
+
+9/20/21  | Optimized code to use less resources, fixed bug that didn't allow storms with 1 cycle completed to plot, added a switch to turn off lagged correlation graphics to save time,
+           changed the errorskill graphic's aspect ratio to match those of other graphics, modified track graphics to be same resolution as other graphics and included additional guidance
+9/18/21  | Added in a new subset to the assimilated observations capability (OBS-G) - see Users Guide for more details!
+8/26/21  | Added in the assimilated observations capability!
+7/30/21  | Added a new graphic that shows a "scorecard" of the error, improvement, bias, fsp, # fcsts, and stat. sig. for 7 variables (track, wind speed, mslp, R34, R50, R64, & RMW.
+           A huge thank you and shoutout to Dr. Peter Marinescu for originating the idea and generating the base code for the scorecard that I then modified for integration into GROOT!
+6/22/21  | Added a new graphic that shows the percentage point contribution (PPC) of each cycle to the full storm AND for each storm to the composite improvement
+         | Modified the batch scripts to break up the composite script where only 20 subsets run per batch job so that the wall clock time doesn't run out
+         | Modified the blank graphics capability when not enough data is available so that an equal number of graphics are generated for each storm and for each basin
+6/09/21  | Added a new graphic that shows the percent contribution of each cycle to each storm's error - this helps the user understand which cycle might be driving the storm errors
+         | Added new graphics to identify the lagged correlation in the model for each storm and overall for every variable and subset
+         | Added the ability to have track w/ assimilated obs graphics for each experiment, not just overall
+         | Modified the error & improvement combined graphic so that the aspect ratio of each are identical
+         | Modified the individual storm xlim range to match the max forecast length for easier comparision between storms
+         | Various bug fixes and minor changes (e.g., subsets with -B > -P for basin-scale models to indicate parent domain, for clarity)
+4/23/21  | Imported SHIPS data to generate shear stratifications for SHDC: 850-200 hPa shear magnitude (kt) with vortex removed and averaged from 0-500 km relative to 850 hPa vortex center
+           Stratifications include LOW (lower quartile), MOD (interquartile range), and HIGH (upper quartile), where values are determined by the t=0 climatology for each basin separately
+         | Significantly sped up script execution
+4/14/21  | Added some new subsets for basin models
+         | Added the ability to plot an empty graphic if a subset has no data
+         | Made a nomenclature change: MN > H12 & MJ > H345
+         | Added a new graphic that shows the number of cycles from each storm that contributes to a graphic each forecast hour
+         | Fixed a bug that occured for some "by cycle" subset graphics - this did not impact composite graphics
+3/26/21  | A new graphic type which depicts both error & improvement - this is useful if you have a lot of examples you want to show in a small space (either presentation or paper)
+3/10/21  | RI, IN, SS, WK, and RW intensity change stratifications are now available.
+           NOTE: For the BT of a given storm, a running -6 h to +6 h intensity change is calculated to capture what type of intensity change the storm is currently undergoing.
+                 Then, for cycles where at t=0 that value is...
+                 x>=15 kt: categorize as RI
+                 5<=x<15 kt: categorize as IN
+                 -5<x<5 kt: categorize as SS
+                 -15<x<=5 kt: categorize as WK
+                 x<=-15 kt: categorize as RW
+         | A bug fix which impacted basin-scale models when generating composite graphics of assmilated observations - it now takes into account storms in the entire basin
+         | The y-axes for a given variable will be identical for all stratifications not just within one basin, but across all basins in your sample for easier comparision
 02/09/21 | Package v1.0.0 ready for distribution to OSA!
+
+%%%%%%%%%%%%%
+%% FUNDING %%
+%%%%%%%%%%%%%
+
+This verification package was developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188).
 
 %%%%%%%%%%%%%
 %% ISSUES? %%

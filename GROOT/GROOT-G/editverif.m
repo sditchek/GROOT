@@ -9,16 +9,24 @@ identmaxfhr=(126)/3+1;                                                        	 
 identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'ALL'};{'NIC'};{'NTG'};{'TG'};{'IC'};{'NO'}];                         % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'ALL'};{'NTG'};{'TG'};{'NO'}];                                      % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                  	% NOTE: the first experiment listed MUST be the one with all the observations assimilated
-identexpsigimp='noAEOLUS';                                                             % full folder name of improvement and significance wrt THIS experiment
-identexpcolors=[0 152/255 0;208/255 0/255 0/255];   % colors associated with each experiment
-                                                                                 	% EX1: For 2 experiments, recommended colors: green(included data)=[0,.7,0] red(denied data)=[.9,0,0]
+identexpsigimp='CONTROL';                                                            % full folder name of improvement and significance wrt THIS experiment
+identexpcolors=[0 152 0;208 0 0]/255; % colors associated with each experiment - GROOT-G Change
+                                                                                 	% EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										     	% EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroovpr,'/noAEOLUS/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroovpr,'/CONTROL/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
+
+% Case Study 
+% Recommendation: make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
+identcase=0';								        % run graphics for just 1 storm | yes (1) no (0)
+identcasename={'florence06l'};						        % lowercase name of storm, ID, and basin identifier: dorian05l
+identcaseyear='2018';							        % year of storm: YYYY
 
 % Error Graphics Options
-identgraphicsbycycle=1;                                         % error graphics for EACH CYCLE | yes (1) no (0 - this saves time)
+identgraphicsbycycle=0;                                         % error graphics for EACH CYCLE - must be 0 if identcompositeonly=1 | yes (1) no (0 - this saves time)
+identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
+identlagcorr=0;							% do you want to create lagged correlation graphics? | yes (1) no (0 - this saves time)			
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='test';                                             % name for new subset - will be capitalized in the script
 identnewsubset=[{'2017081800-2017083100'};{'2017090200'}];      % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
@@ -30,11 +38,11 @@ identnewsubset=[{'2017081800-2017083100'};{'2017090200'}];      % new subset cyc
 identconv=1;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='DW';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
-identconvtype=[0];                                              % subtypes desired 
+identconvtype=[11 20];                                              % subtypes desired 
                                                                     % NO SUBTYPE: identconvtype=0
                                                                     % YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
 identconvcolors=[.8 .2 .8;.9 .4 .2];                            % colors for each of your subtypes
-identconvlegend=[{'Assimilated Mie (Clear) Observations'};{'Assimilated Rayleigh (Clear) Observations'}]; % names of each of your subtypes for the plot legends
+identconvlegend=[{'Assimilated Mie (Cloudy) Observations'};{'Assimilated Rayleigh (Clear) Observations'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options
 identsatobs=0;                                                  % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
@@ -52,7 +60,7 @@ identchannel=[200];                                             % used to genera
 %% END OF USER SETTINGS %%
 %% %%%%%%%%%%%%%%%%%%%% %%
 
-identcycles=['all'];  
+identcycles=['all']; if identcompositeonly==1 identgraphicsbycycle=0; end  
 if identns==1
     identnewsub=[];
     for i=1:size(identnewsubset,1)
@@ -99,6 +107,10 @@ end
 empties = find(cellfun(@isempty,stormsdone));
 stormsdone(empties)=[];
 yearsdone(empties,:)=[];
+if identcase==1
+   stormsdone=identcasename;
+   yearsdone=identcaseyear;
+end
 
 %% Folder
 identfold='';
@@ -111,18 +123,52 @@ for i=1:size(identexp,1)
     end
 end
 
-%% Clean Up Old Files
+%% Make Experiment Directory
 if ~exist([identout,'RESULTS/',identfold], 'dir')
     disp('CREATING EXPERIMENT FOLDER')
     mkdir([identout,'RESULTS/',identfold,'VERIFICATION/'])
 end
-rmdir([identout,'RESULTS/',identfold,'VERIFICATION/'],'s')
+
+%% Clean Up Old Files
+if ~exist([identout,'RESULTS/',identfold,'VERIFICATION/'], 'dir')
+    disp('CREATING VERIFICATION FOLDER...')
+    mkdir([identout,'RESULTS/',identfold,'VERIFICATION/'])
+elseif identcase==0
+    disp('CLEANING UP PREVIOUS VERIFICATION RESULTS...')    
+    rmdir([identout,'RESULTS/',identfold,'VERIFICATION/'],'s')
+elseif identcase==1
+    disp('CLEANING UP PREVIOUS VERIFICATION RESULTS FOR THIS STORM...')
+    tmpcasefold=upper(stormsdone{:});
+    tmpcasefold=[tmpcasefold(1:end-3) identcaseyear(3:4)]
+    rmdir([identout,'RESULTS/',identfold,tmpcasefold,'/'],'s')
+end
 
 %% Save the output
 save([identout,'startverif.mat'])                        % this file will be saved in the [identout] directory so it can be used when needed
 
 %% Create output file for shell script
 fid = fopen('commonverif.txt','wt');
-fprintf(fid,'%s\n',['initstormsdone="',num2str(1:size(stormsdone,2)),'"']);
-fclose(fid);  
+if identcase==1 
+    fprintf(fid,'%s\n',['initstormsdone="',num2str(1),'"']);
+else
+    fprintf(fid,'%s\n',['initstormsdone="',num2str(1:size(stormsdone,2)),'"']);
+end
+fclose(fid); 
 
+%% Change wall clock times
+if identcase==1 || identgraphicsbycycle==1 || (identconv==1 && identgraphicsconv==1)
+    copyfile('scripts/matlabverifbatchcase.ksh',['scripts/matlabverifbatch.ksh'])  % copy file for case study with larger wall clock time!
+elseif identcompositeonly==1
+    copyfile('scripts/matlabverifbatchshort.ksh',['scripts/matlabverifbatch.ksh'])  % copy file for case study with larger wall clock time!
+else
+    copyfile('scripts/matlabverifbatchall.ksh',['scripts/matlabverifbatch.ksh'])  % copy file for case study with larger wall clock time!
+end
+
+%% Create output file for shell script
+tmpidentcasename=identcasename{:};
+fid = fopen('caseverif.txt','wt');
+fprintf(fid,'%s\n',['initcasestudy="',num2str(identcase),'"']);
+fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename(1:end-3)),'*'],'"']);
+fprintf(fid,'%s\n',['initend="',[identout,'RESULTS/',identfold],'"']);
+fclose(fid);
+ 
