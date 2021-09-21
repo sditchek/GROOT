@@ -2,8 +2,8 @@
 #SBATCH -t 01:00:00         # XXXX: Time Limit | generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account |  Use your project accounti
 #SBATCH -q batch	    # XXXX: quality of service
-#SBATCH -p bigmem	    # XXXX: Partition | keep it bigmem
-#SBATCH --ntasks=10	    # XXXX: maximum of 1 task / node
+#SBATCH -p hera	    # XXXX: Partition | keep it hera
+#SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
 #SBATCH --mail-type=fail    # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
 #SBATCH -J SING  	    # XXXX: Job Name | change to whatever you'd like
@@ -41,8 +41,10 @@ then
 fi
 
 # Clean up old files
-rm -f ${outputpath}/OUTPUT_editgrb.txt
+rm -f ${outputpath}/OUTPUT_S*.txt
+rm -f ${outputpath}/OUTPUT_DA*.txt
 rm -f ${homepath}/slurm*
+rm -f ${homepath}/SUBMISSION_S*FINISHED.txt
 
 # Change Accounts and Emails
 cd ${homepath}

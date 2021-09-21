@@ -7,15 +7,15 @@
 %% %%%%%%%%%%%%%%%%%%%%%%%%%% %%
 
 % Choose storm, experiment, cycle, and properties
-ident=['AL092017'];                                             % basin, ID, and year (e.g., AL092016)
-identn=['HARVEY17'];                                            % NAMEYY (e.g., HERMINE16)
-identhwrf=['harvey09l'];                                        % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
-identcycles=['2017081718';'2017081800']; 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
+ident=['AL052019'];                                             % basin, ID, and year (e.g., AL092016)
+identn=['DORIAN19'];                                            % NAMEYY (e.g., HERMINE16)
+identhwrf=['dorian05l'];                                        % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
+identcycles=['all'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
 identmaxfhr=(126)/3+1;                                          % max forecast hours set in model (e.g., 126) - keep the /3+1
 identlevels=46;                                                 % number of pressure levels
-identexp=[{'HB20_B1_ALL'};{'HB20_B1_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
+identexp=[{'HB20new'};{'HB20_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
 identexpshort=[{'ALL'};{'NO'}];                                 % short name of experiments (no more than 8 letters per experiment)
-identexpsigimp='HB20_B1_NO';                                    % full folder name of experiment you want improvement and significance compared to
+identexpsigimp='HB20_NO';                                    % full folder name of experiment you want improvement and significance compared to
 identexpsigimpshort='NO';                                       % short name of experiment you want improvement and significance compared to (no more than 8 letters)
 identpresplan=[200,500,850];                                    % pressure levels of plan-view graphics
 identexpcolors=[0 .6 0;.9 0 0];                                 % colors associated with each experiment
@@ -38,7 +38,7 @@ initsynoptic=1;                                                 % create SYNOPTI
 initgraphicssynoptic=1;                                         % create SYNOPTIC grid graphics | yes (1) or no (0)
 initstorm=1;                                                    % create STORM grid .mat files | yes (1) or no (0)
 initgraphicsstorm=1;                                            % create STORM grid graphics | yes (1) or no (0)
-identplan=0;                                                    % create plan-view graphics (turn off to save time) | yes (1) no (0)
+identplan=1;                                                    % create plan-view graphics (turn off to save time) | yes (1) no (0)
 identsave=0;                                                    % do you want to save .mat files of the computed fields that make the graphics? This takes up more space! | yes (1) no (0)	
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
@@ -55,7 +55,7 @@ identsave=0;                                                    % do you want to
 v01=1;         %        10-5 s-1       Absolute vorticity | isobaric
 %v02=2;         %        kg m-2         Cloud Ice | isobaric
 %v03=3;         %        kg kg-1        Cloud mixing ratio | isobaric
-%v04=4;         %        dB             Maximum/Composite radar reflectivity | 2D
+v04=4;         %        dB             Maximum/Composite radar reflectivity | 2D
 %v05=5;         %        J kg**-1       Convective available potential energy | surface
 %v06=6;         %        J kg**-1       Convective inhibition | surface
 %v07=7;         %        kg m**-2       Convective accumulated precipitation (water) | surface
@@ -76,7 +76,7 @@ v16=16;        %        gpm            Geopotential Height | isobaric
 %v24=24;        %        N m**-2        Momentum flux, v component | surface
 %v25=25;        %        m              Planetary boundary layer height | 2D
 %v26=26;        %        K              Potential temperature | tropopause
-%v27=27;        %        kg m**-2       Precipitable water | 2D
+v27=27;        %        kg m**-2       Precipitable water | 2D
 %v28=28;        %        kg m**-2 s**-1 Precipitation rate | surface
 %v29=29;        %        mb             Pressure reduced to MSL | surface
 %v30=30;        %        hPa            Surface pressure | surface
@@ -84,7 +84,7 @@ v16=16;        %        gpm            Geopotential Height | isobaric
 %v32=32;        %        kg kg-1        Rain mixing ratio | isobaric
 %v33=33;        %        dB             Radar reflectivity | isobaric
 %v34=34;        %        %              Relative humidity | 2D
-%v35=35;        %        %              Relative humidity | isobaric
+v35=35;        %        %              Relative humidity | isobaric
 %v36=36;        %        numeric        Rime factor | isobaric
 %v37=37;        %        W m**-2        Sensible heat net flux | surface
 %v38=38;        %        kg kg-1        Snow mixing ratio | isobaric
@@ -101,7 +101,7 @@ v16=16;        %        gpm            Geopotential Height | isobaric
 %v49=49;        %        kg m**-2       Total column-integrated cloud ice | 2D
 %v50=50;        %        kg m**-2       Total column-integrated cloud water | 2D
 %v51=51;        %        kg m**-2       Total column-integrated condensate | 2D
-%v52=52;        %        kg kg-1        Total condensate | isobaric
+v52=52;        %        kg kg-1        Total condensate | isobaric
 %v53=53;        %        kg m**-2       Total accumulated precipitation | surface
 %v54=54;        %        W m**-2        Upward long-wave radiation flux | surface
 %v55=55;        %        W m**-2        Upward long-wave radiation flux hour average | surface
@@ -109,7 +109,7 @@ v16=16;        %        gpm            Geopotential Height | isobaric
 %v57=57;        %        W m**-2        Upward short-wave radiation flux hour average | surface
 %v58=58;        %        numeric        Heat Exchange Coefficient | 2D
 %v59=59;        %        s**-1          Vertical speed shear | tropopause
-%v60=60;        %        Pa s-1         Vertical velocity | isobaric
+v60=60;        %        Pa s-1         Vertical velocity | isobaric
 %v61=61;        %        K              Sea surface temperature | surface
 %v73=[73,76];   %        m s**-1        10 metre U/V wind component | 2D
 v74=[74,77];   %        m s**-1        U/V component of wind | isobaric

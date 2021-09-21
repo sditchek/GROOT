@@ -3,13 +3,19 @@
 %%    GRaphics for OSEs and OSSEs on TCs    %%
 %%           Hurricane Component            %%
 %%    CREATED BY: DR. SARAH D. DITCHEK      %%
-%%  If using this graphics package, please  %%
-%%   acknowledge that graphics were made    %%
-%%    using GROOT by citing the GitHub      %%
-%%   repository. An additional shoutout     %%
-%% to Dr. Sarah D. Ditchek from CIMAS/AOML  %%
-%%         is always appreciated :)         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% USAGE ACKNOWLEDGEMENTS %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If using this graphics package in PUBLICATIONS, please include the following in the acknowledgements section:
+
+"The GRaphics for OSEs and OSSEs on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
+
+If using this graphics package in PRESENTATIONS, please indicate the following verbally or include the information somewhere on your slides:
+
+"Graphics were made using GROOT - a verification package developed by Dr. Sarah Ditchek and funded by QOSAP and the FY18 Hurricane Supplemental."
 
 %%%%%%%%%%%%%
 %% SUMMARY %%
@@ -58,9 +64,15 @@ scripts/ 	  | folder that contains all scripts needed to run the package
   matlab*clean.ksh    | this script removes the duplicate matlab*batch_ files
   matlabverif* 	      | scripts related to running the verification capability
   rungrb.m	      | grb capability script
-  runverif.m	      | verification capability script
+  runverif*.m	      | verification capability scripts
   ttestsc.m           | function that incorporates serial correlation time of 12 h in the ttest calculation (as per Sim Aberson)
   windbarbm.m         | function to generate wind barbs (note that flags are currently not filled)
+
+CREATED FOLDERS:
+
+cases/		      | folder with saved edit*.m files for future reference
+output/               | folder with output text files to monitor progress of GROOT
+RESULTS/              | folder with all of your results
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% HOW TO RUN THE PACKAGE %%
@@ -122,10 +134,48 @@ GRB CAPABILITY:
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%  NEW ADDITIONS!  %%
-%%     02/09/21     %%
+%%     07/30/21     %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+9/20/21  | Optimized code to use less resources, fixed bug that didn't allow storms with 1 cycle completed to plot, added a switch to turn off lagged correlation graphics to save time, 
+           changed the errorskill graphic's aspect ratio to match those of other graphics, modified track graphics to be same resolution as other graphics and included additional guidance
+7/30/21  | Added a new graphic that shows a "scorecard" of the error, improvement, bias, fsp, # fcsts, and stat. sig. for 7 variables (track, wind speed, mslp, R34, R50, R64, & RMW. 
+           A huge thank you and shoutout to Dr. Peter Marinescu for originating the idea and generating the base code for the scorecard that I then modified for integration into GROOT! 
+6/22/21  | Added a new graphic that shows the percentage point contribution (PPC) of each cycle to the full storm AND for each storm to the composite improvement
+	 | Modified the batch scripts to break up the composite script where only 20 subsets run per batch job so that the wall clock time doesn't run out
+	 | Modified the blank graphics capability when not enough data is available so that an equal number of graphics are generated for each storm and for each basin
+6/09/21  | Added a new graphic that shows the percent contribution of each cycle to each storm's error - this helps the user understand which cycle might be driving the storm errors
+         | Added new graphics to identify the lagged correlation in the model for each storm and overall for every variable and subset
+	 | Added the ability to have track w/ assimilated obs graphics for each experiment, not just overall
+	 | Modified the error & improvement combined graphic so that the aspect ratio of each are identical
+	 | Modified the individual storm xlim range to match the max forecast length for easier comparision between storms
+	 | Various bug fixes and minor changes (e.g., subsets with -B > -P for basin-scale models to indicate parent domain, for clarity) 
+4/23/21  | Imported SHIPS data to generate shear stratifications for SHDC: 850-200 hPa shear magnitude (kt) with vortex removed and averaged from 0-500 km relative to 850 hPa vortex center
+	   Stratifications include LOW (lower quartile), MOD (interquartile range), and HIGH (upper quartile), where values are determined by the t=0 climatology for each basin separately
+	 | Significantly sped up script execution
+4/14/21  | Added some new subsets for basin models 
+	 | Added the ability to plot an empty graphic if a subset has no data
+	 | Made a nomenclature change: MN > H12 & MJ > H345
+	 | Added a new graphic that shows the number of cycles from each storm that contributes to a graphic each forecast hour
+	 | Fixed a bug that occured for some "by cycle" subset graphics - this did not impact composite graphics
+3/26/21  | A new graphic type which depicts both error & improvement - this is useful if you have a lot of examples you want to show in a small space (either presentation or paper)
+3/10/21  | RI, IN, SS, WK, and RW intensity change stratifications are now available. 
+           NOTE: For the BT of a given storm, a running -6 h to +6 h intensity change is calculated to capture what type of intensity change the storm is currently undergoing. 
+		 Then, for cycles where at t=0 that value is...
+		 x>=15 kt: categorize as RI
+		 5<=x<15 kt: categorize as IN
+		 -5<x<5 kt: categorize as SS
+		 -15<x<=5 kt: categorize as WK
+		 x<=-15 kt: categorize as RW
+         | A bug fix which impacted basin-scale models when generating composite graphics of assmilated observations - it now takes into account storms in the entire basin
+	 | The y-axes for a given variable will be identical for all stratifications not just within one basin, but across all basins in your sample for easier comparision
 02/09/21 | Package v1.0.0 ready for distribution to OSA!
+
+%%%%%%%%%%%%%
+%% FUNDING %%
+%%%%%%%%%%%%%
+
+This verification package was developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188).
 
 %%%%%%%%%%%%%
 %% ISSUES? %%

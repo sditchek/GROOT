@@ -1,9 +1,9 @@
 #!/bin/ksh
-#SBATCH -t 00:30:00         # XXXX: Time Limit | generally sufficient; may need to increase it
+#SBATCH -t 00:05:00         # XXXX: Time Limit | generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
-#SBATCH -p bigmem	    # XXXX: Partition | keep it bigmem
-#SBATCH --ntasks=10	    # XXXX: maximum of 1 task / node
+#SBATCH -p hera	    # XXXX: Partition | keep it hera
+#SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
 #SBATCH --mail-type=fail    # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
 #SBATCH -J VERIF	    # XXXX: Job Name | change to whatever you'd like
@@ -21,12 +21,12 @@
 homepath=/scratch1/BMC/qosap/${USER}/                   # directory path above the GROOT package
 noscrubpath=${homepath}/noscrub/atcf                    # path to your atcf files
 scrubpath=${homepath}/scrub				# path to your scrub directory
-dirpth=/scratch1/BMC/qosap/${USER}/GROOT                # directory path above GROOT-H location
+dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
 
 # Set Experiments
-set -A expfold HB20_B1_ALL HB20new HB20_B1_NC HB20_NC HB20_B1_IC HB20_IC HB20_B1_TG HB20_TG HB20_B1_OV HB20_OV HB20_B1_NO HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew ALL ALL NIC NIC IC IC TG TG NTG NTG NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
-numfold=12        
+set -A expfold HB20_B1_ALL HB20new HB20_B1_NC HB20_NC HB20_B1_OV HB20_OV HB20_B1_NO HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew ALL ALL NIC NIC NTG NTG NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+numfold=8
 
 # Account Information
 acntold=aoml-osse                       		# account currently listed in SBATCH above
@@ -46,7 +46,7 @@ verifpath=${homepath}/GROOT/GROOT-H/GROOT-PR
 scriptspath=${homepath}/GROOT/GROOT-H/scripts
 
 # Clean up old files
-rm -f ${outputpath}/OUTPUT_verif.txt
+rm -f ${outputpath}/OUTPUT*VERIF*.txt
 rm -f ${homepath}/GROOT/GROOT-H/slurm* 
 rm -f ${homepath}/GROOT/GROOT-H/SUBMISSION_FINISHED.txt
 
@@ -54,12 +54,18 @@ rm -f ${homepath}/GROOT/GROOT-H/SUBMISSION_FINISHED.txt
 cd ${homepath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
 cd ${scriptspath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
 cd ${retrievalpath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
 cd ${homepath}
 
 for ((i=0;i<${numfold};++i))
@@ -79,9 +85,12 @@ for ((i=0;i<${numfold};++i))
 do	
 	# Copy Over Files
 	cp ${scrubpath}/${expfold[$i]}/**/**/**/*conv.latlon* ${verifpath}/obsall/${expnew[$i]}/
-        cp ${scrubpath}/${expfold[$i]}/**/**/**/*.txt ${verifpath}/obsall/${expnew[$i]}/
+        cp ${scrubpath}/${expfold[$i]}/**/**/**/*details.txt ${verifpath}/obsall/${expnew[$i]}/
+        cp ${scrubpath}/${expfold[$i]}/**/**/**/*profiles.txt ${verifpath}/obsall/${expnew[$i]}/
+        cp ${scrubpath}/${expfold[$i]}/**/**/**/*channels.txt ${verifpath}/obsall/${expnew[$i]}/
+        cp ${scrubpath}/${expfold[$i]}/**/**/**/qcflags*.txt ${verifpath}/obsall/${expnew[$i]}/
 	cp ${scrubpath}/${expfold[$i]}/**/**/**/*vit ${verifpath}/tcvitals/
-	cp ${noscrubpath}/${expfold[$i]}/* ${verifpath}/${expnew[$i]}/
+	cp ${noscrubpath}/${expfold[$i]}/*.trak.hwrf.atcfunix* ${verifpath}/${expnew[$i]}/
 done
 
 # Run the namelist
