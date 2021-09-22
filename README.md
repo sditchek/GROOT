@@ -29,7 +29,9 @@ Use this component if you are running the FV3GFS. It has only one feature at the
 
   ## How To Use GROOT
   
-  First read the Users Guide to see if GROOT is for you! If it is, checkout the code and read the README within either the GROOT-H or GROOT-G directories, depending on which component you'll be using.
+  First read the Users Guide to see if GROOT is for you! If it is, checkout the code and read the README within either the GROOT-H or GROOT-G directories, depending on which component you'll be using. After submitting GROOT, kick back and relax – a watched script never finishes! Thousands (tens of thousands if many storms) of graphics are being generated. 
+  
+  If something is not working, do a cat slurm* in your GROOT-H/ or GROOT-G/ directory. Failures typically occur due to user errors in the namelist or since the required files were not retrieved, so double check that your namelist is error free and that all of your files you expected to be included are in the GROOT-PR/ directory.
   
   ## How to Cite GROOT
   
