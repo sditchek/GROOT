@@ -991,17 +991,17 @@ for satobs=1
                             for i=1:length(LONall)
                                 if SPEEDall(i) > 0 && SPEEDall(i) < 34 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(2,:),'markersize',12);            
-                                elseif SPEEDall(i) > 33 && SPEEDall(i) < 65 
+                                elseif SPEEDall(i) >= 34 && SPEEDall(i) < 64 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(3,:),'markersize',12);            
-                                elseif SPEEDall(i) > 64 && SPEEDall(i) < 84 
+                                elseif SPEEDall(i) >= 64 && SPEEDall(i) < 83 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(4,:),'markersize',12);            
-                                elseif SPEEDall(i) > 83 && SPEEDall(i) < 96 
+                                elseif SPEEDall(i) >= 83 && SPEEDall(i) < 96 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(5,:),'markersize',12);            
-                                elseif SPEEDall(i) > 95 && SPEEDall(i) < 114 
+                                elseif SPEEDall(i) >= 96 && SPEEDall(i) < 113 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(6,:),'markersize',12);            
-                                elseif SPEEDall(i) >113 && SPEEDall(i) < 135 
+                                elseif SPEEDall(i) >= 113 && SPEEDall(i) < 137
                                     plot(LONall(i),LATall(i),'.','color',azavcm(7,:),'markersize',12);           
-                                elseif SPEEDall(i) > 134
+                                elseif SPEEDall(i) >= 137
                                     plot(LONall(i),LATall(i),'.','color','m','markersize',12); 
                                 elseif strcmp(CATall(i,:),'LO')==1 || strcmp(CATall(i,:),'DB')==1 || strcmp(CATall(i,:),'WV')==1
                                     plot(LONall(i),LATall(i),'.','color',[.5 .5 .5],'markersize',12);             
