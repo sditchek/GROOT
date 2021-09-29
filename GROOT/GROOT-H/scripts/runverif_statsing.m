@@ -419,7 +419,7 @@
                                         tmp_bt=bt_maxspd(1:skip:end);
                                         tmp_exp=exp_maxspd(1:skip:end,:);
                                         % Y=[17,33-17,43-33,50-43,58-49,69-58,140-70];m/s
-                                        Y=[33,63-33,82-63,95-82,112-95,136-112,200-136]; %kts
+                                        Y=[34,64-34,83-64,96-83,113-96,137-113,200-137]; %kts
                                         Y=repmat(Y,identmaxfhr,1);    
                                         h=area(1:identmaxfhr,Y);
                                         h(1).FaceColor=[0 0.4470 0.7410];
@@ -849,7 +849,7 @@
 									hfig=figure;
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);                        
-									Y=[33,63-33,82-63,95-82,112-95,136-112,200-136]; %kts
+									Y=[34,64-34,83-64,96-83,113-96,137-113,200-137]; %kts
 									Y=repmat(Y,240,1);    
 									h=area(1:240,Y);
 									h(1).FaceColor=[0 0.4470 0.7410];
@@ -6341,8 +6341,8 @@
                                             end
                                         elseif strat==5
                                             clear breakstrat
-                                            stname='TS'; % >34 kts & < 63 kts
-                                            if sum(BT_cat1>=34 & BT_cat1<63)==0
+                                            stname='TS'; % >=34 kts & < 64 kts
+                                            if sum(BT_cat1>=34 & BT_cat1<64)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_TS.txt'],'wt');
                                                 fprintf(fid,'%s\n','STRATIFICATION: TS');
@@ -6351,8 +6351,8 @@
                                             end
                                         elseif strat==6
                                             clear breakstrat
-                                            stname='H12'; % > 64 kts & < 95 kts
-                                            if sum(BT_cat1>=63 & BT_cat1<95)==0
+                                            stname='H12'; % >= 64 kts & < 96 kts
+                                            if sum(BT_cat1>=64 & BT_cat1<96)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_MN.txt'],'wt');
                                                 fprintf(fid,'%s\n','STRATIFICATION: MN');
@@ -6361,7 +6361,7 @@
                                             end
                                         elseif strat==7
                                             clear breakstrat
-                                            stname='H345'; % > 96 kts
+                                            stname='H345'; % >= 96 kts
                                             if sum(BT_cat1>=96)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_MJ.txt'],'wt');
@@ -6451,8 +6451,8 @@
                                             end
                                         elseif strat==16 %% TS strat obs only
                                             clear breakstrat
-                                            stname='TS-OBS'; % >34 kts & < 63 kts
-                                            if sum(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1)==0
+                                            stname='TS-OBS'; % >=34 kts & < 64 kts
+                                            if sum(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_TS-OBS.txt'],'wt');
                                                 fprintf(fid,'%s\n','STRATIFICATION: TS-OBS');
@@ -6461,8 +6461,8 @@
                                             end
                                         elseif strat==17 %% MN strat obs only
                                             clear breakstrat
-                                            stname='H12-OBS'; % > 64 kts & < 95 kts
-                                            if sum(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1)==0
+                                            stname='H12-OBS'; % >= 64 kts & < 96 kts
+                                            if sum(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_MN-OBS.txt'],'wt');
                                                 fprintf(fid,'%s\n','STRATIFICATION: MN-OBS');
@@ -6471,7 +6471,7 @@
                                             end
                                         elseif strat==18 %% MJ strat obs only
                                             clear breakstrat
-                                            stname='H345-OBS'; % > 96 kts
+                                            stname='H345-OBS'; % >= 96 kts
                                             if sum(BT_cat1>=96 & BT_drops'==1)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_MJ-OBS.txt'],'wt');
@@ -6531,8 +6531,8 @@
                                             end
                                         elseif strat==24 %% TS strat NOOBS only
                                             clear breakstrat
-                                            stname='TS-NOOBS'; % >34 kts & < 63 kts
-                                            if sum(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0)==0
+                                            stname='TS-NOOBS'; % >=34 kts & < 64 kts
+                                            if sum(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_TS-NOOBS.txt'],'wt');
                                                 fprintf(fid,'%s\n','STRATIFICATION: TS-NOOBS');
@@ -6541,8 +6541,8 @@
                                             end
                                         elseif strat==25 %% MN strat NOOBS only
                                             clear breakstrat
-                                            stname='H12-NOOBS'; % > 64 kts & < 95 kts
-                                            if sum(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0)==0
+                                            stname='H12-NOOBS'; % >= 64 kts & < 96 kts
+                                            if sum(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_MN-NOOBS.txt'],'wt');
                                                 fprintf(fid,'%s\n','STRATIFICATION: MN-NOOBS');
@@ -6551,7 +6551,7 @@
                                             end
                                         elseif strat==26 %% MJ strat NOOBS only
                                             clear breakstrat
-                                            stname='H345-NOOBS'; % > 96 kts
+                                            stname='H345-NOOBS'; % >= 96 kts
                                             if sum(BT_cat1>=96 & BT_drops'==0)==0
                                                 breakstrat='yes';
                                                 fid = fopen([identtrackint,'/STRAT_MJ-NOOBS.txt'],'wt');
@@ -10564,11 +10564,11 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64,:,:);
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                         if plt==1
                                                             fid = fopen([identtrackint,'/STRAT_TS.txt'],'wt');
                                                             fprintf(fid,'%s\n','STRATIFICATION: TS');
@@ -10580,11 +10580,11 @@
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96,:,:);
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                         if plt==1
                                                             fid = fopen([identtrackint,'/STRAT_MN.txt'],'wt');
                                                             fprintf(fid,'%s\n','STRATIFICATION: MN');
@@ -10740,11 +10740,11 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                         if plt==1
                                                             fid = fopen([identtrackint,'/STRAT_TS-OBS.txt'],'wt');
                                                             fprintf(fid,'%s\n','STRATIFICATION: TS-OBS');
@@ -10756,11 +10756,11 @@
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                         if plt==1
                                                             fid = fopen([identtrackint,'/STRAT_MN-OBS.txt'],'wt');
                                                             fprintf(fid,'%s\n','STRATIFICATION: MN-OBS');
@@ -10868,11 +10868,11 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                         if plt==1
                                                             fid = fopen([identtrackint,'/STRAT_TS-NOOBS.txt'],'wt');
                                                             fprintf(fid,'%s\n','STRATIFICATION: TS-NOOBS');
@@ -10884,11 +10884,11 @@
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                         if plt==1
                                                             fid = fopen([identtrackint,'/STRAT_MN-NOOBS.txt'],'wt');
                                                             fprintf(fid,'%s\n','STRATIFICATION: MN-NOOBS');
@@ -11512,19 +11512,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64,:,:);
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96,:,:);
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -11600,19 +11600,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -11664,19 +11664,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -12205,19 +12205,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64,:,:);
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96,:,:);
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -12293,19 +12293,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -12357,19 +12357,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -12838,19 +12838,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64,:,:);
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96,:,:);
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -12926,19 +12926,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -12990,19 +12990,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -13525,19 +13525,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64,:,:);
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96,:,:);
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -13613,19 +13613,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -13677,19 +13677,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -14120,19 +14120,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64,:,:);
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96,:,:);
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -14208,19 +14208,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -14272,19 +14272,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:,:);
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                                            tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                                         else
-                                                            tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:,:);
+                                                            tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:,:);
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -14804,19 +14804,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64,:,:)=NaN;
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96,:,:)=NaN;
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -14892,19 +14892,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==0,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==0,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -14956,19 +14956,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==1,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==1,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -15470,19 +15470,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64,:,:)=NaN;
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96,:,:)=NaN;
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -15558,19 +15558,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==0,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==0,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -15622,19 +15622,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==1,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==1,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -16159,19 +16159,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64,:,:)=NaN;
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96,:,:)=NaN;
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -16247,19 +16247,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==0,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==0,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -16311,19 +16311,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==1,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==1,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -16788,19 +16788,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64,:,:)=NaN;
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96,:,:)=NaN;
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -16876,19 +16876,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==0,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==0,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -16940,19 +16940,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==1,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==1,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -17450,19 +17450,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt<0
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64,:,:)=NaN;
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt<0
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96,:,:)=NaN;
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt<0
@@ -17538,19 +17538,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt<0
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==0,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt<0
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==0,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt<0
@@ -17602,19 +17602,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt<0
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==1,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt<0
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==1,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt<0
@@ -18019,19 +18019,19 @@
 													elseif strat==5 % TS
 														clear tmpyrb
 														if plt<0
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63,:,:)=NaN;
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64,:,:)=NaN;
 														else
-															tmp_exp(BT_cat1<34 | BT_cat1>=63,:,:)=NaN;
+															tmp_exp(BT_cat1<34 | BT_cat1>=64,:,:)=NaN;
 														end 
-														tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+														tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
 													elseif strat==6 % MN
 														clear tmpyrb
 														if plt<0
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95,:,:)=NaN;
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96,:,:)=NaN;
 														else
-															tmp_exp(BT_cat1<63 | BT_cat1>=95,:,:)=NaN;
+															tmp_exp(BT_cat1<64 | BT_cat1>=96,:,:)=NaN;
 														end                  
-														tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+														tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
 													elseif strat==7 % MJ
 														clear tmpyrb
 														if plt<0
@@ -18107,19 +18107,19 @@
 													elseif strat==16 % TS
 														clear tmpyrb
 														if plt<0
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
 														else
-															tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==0,:,:)=NaN;
+															tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==0,:,:)=NaN;
 														end            
-														tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+														tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
 													elseif strat==17 % MN
 														clear tmpyrb
 														if plt<0
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
 														else
-															tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==0,:,:)=NaN;
+															tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==0,:,:)=NaN;
 														 end
-														tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+														tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
 													elseif strat==18 % MJ
 														clear tmpyrb
 													   if plt<0
@@ -18171,19 +18171,19 @@
 													elseif strat==24 % TS
 														clear tmpyrb
 														if plt<0
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
 														else
-															tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==1,:,:)=NaN;
+															tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==1,:,:)=NaN;
 														end            
-														tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+														tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
 													elseif strat==25 % MN
 														clear tmpyrb
 														if plt<0
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
 														else
-															tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==1,:,:)=NaN;
+															tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==1,:,:)=NaN;
 														 end
-														tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+														tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
 													elseif strat==26 % MJ
 														clear tmpyrb
 													   if plt<0
@@ -18732,19 +18732,19 @@
                                                     elseif strat==5 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64,:,:)=NaN;
                                                         end 
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
                                                     elseif strat==6 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96,:,:)=NaN;
                                                         end                  
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
                                                     elseif strat==7 % MJ
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
@@ -18820,19 +18820,19 @@
                                                     elseif strat==16 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==0,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
                                                     elseif strat==17 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==0,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==0,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
                                                     elseif strat==18 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -18884,19 +18884,19 @@
                                                     elseif strat==24 % TS
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<34 | BT_cat1>=63 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<34 | BT_cat1>=64 | BT_drops'==1,:,:)=NaN;
                                                         end            
-                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
                                                     elseif strat==25 % MN
                                                         clear tmpyrb
                                                         if plt>=21 && plt<=23
-                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=95 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+                                                            tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
                                                         else
-                                                            tmp_exp(BT_cat1<63 | BT_cat1>=95 | BT_drops'==1,:,:)=NaN;
+                                                            tmp_exp(BT_cat1<64 | BT_cat1>=96 | BT_drops'==1,:,:)=NaN;
                                                          end
-                                                        tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+                                                        tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
                                                     elseif strat==26 % MJ
                                                         clear tmpyrb
                                                        if plt>=21 && plt<=23
@@ -19466,19 +19466,19 @@
 															elseif strat==5 % TS
 																clear tmpyrb
 																if plt>=4 && plt<=6
-																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63,:,:);
+																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64,:,:);
 																else
-																	tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63,:,:);
+																	tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64,:,:);
 																end 
-																tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63,:);
+																tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64,:);
 															elseif strat==6 % MN
 																clear tmpyrb
 																if plt>=4 && plt<=6
-																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95,:,:);
+																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96,:,:);
 																else
-																	tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95,:,:);
+																	tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96,:,:);
 																end                  
-																tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95,:);
+																tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96,:);
 															elseif strat==7 % MJ
 																clear tmpyrb
 																if plt>=4 && plt<=6
@@ -19554,19 +19554,19 @@
 															elseif strat==16 % TS
 																clear tmpyrb
 																if plt>=4 && plt<=6
-																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 																else
-																	tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:,:);
+																	tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:,:);
 																end            
-																tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==1,:);
+																tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==1,:);
 															elseif strat==17 % MN
 																clear tmpyrb
 																if plt>=4 && plt<=6
-																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 																else
-																	tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:,:);
+																	tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:,:);
 																 end
-																tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==1,:);
+																tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==1,:);
 															elseif strat==18 % MJ
 																clear tmpyrb
 															   if plt>=4 && plt<=6
@@ -19618,19 +19618,19 @@
 															elseif strat==24 % TS
 																clear tmpyrb
 																if plt>=4 && plt<=6
-																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<63 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 																else
-																	tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:,:);
+																	tmp_exp=tmp_exp(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:,:);
 																end            
-																tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<63 & BT_drops'==0,:);
+																tmpnm=identinittimesunique(BT_cat1>=34 & BT_cat1<64 & BT_drops'==0,:);
 															elseif strat==25 % MN
 																clear tmpyrb
 																if plt>=4 && plt<=6
-																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=63 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<95 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+																	tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 & [BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 																else
-																	tmp_exp=tmp_exp(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:,:);
+																	tmp_exp=tmp_exp(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:,:);
 																 end
-																tmpnm=identinittimesunique(BT_cat1>=63 & BT_cat1<95 & BT_drops'==0,:);
+																tmpnm=identinittimesunique(BT_cat1>=64 & BT_cat1<96 & BT_drops'==0,:);
 															elseif strat==26 % MJ
 																clear tmpyrb
 															   if plt>=4 && plt<=6
