@@ -1,1 +1,0 @@
-IO, 94, 2020111806,   , BEST,   0, 074N, 0645E,  20, 1007, XX,  34, NEQ,    0,    0,    0,    0, 1009,  175,  50,   0,   0,   A,   0,   X, 285,  11,     INVEST, S,   ,    ,     ,     ,     ,     ,      TCGP EXTRA DATA, IO942020, JTWC, NCEP_TCVITALS, 
