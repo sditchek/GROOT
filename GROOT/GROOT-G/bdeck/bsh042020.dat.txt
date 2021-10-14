@@ -1,0 +1,2 @@
+SH, 04, 2019123118,   , BEST,   0, 205S, 1713W,  30, 1001, XX,  34, NEQ,    0,    0,    0,    0, 1004,  255,  70,   0,   0,   P,   0,   X,  90,  12,      SARAI, S,   ,    ,     ,     ,     ,     ,      TCGP EXTRA DATA, SH042020, JTWC, NCEP_TCVITALS, 
+SH, 04, 2020010100,   , BEST,   0, 207S, 1686W,  30,  999, XX,  34, NEQ,    0,    0,    0,    0, 1002,  220,  70,   0,   0,   P,   0,   X,  95,  17,      SARAI, S,   ,    ,     ,     ,     ,     ,      TCGP EXTRA DATA, SH042020, JTWC, NCEP_TCVITALS, 
