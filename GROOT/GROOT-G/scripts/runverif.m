@@ -84,7 +84,7 @@ for identremoveinvest=1
                     [n, bin] = histc(A, unique(A));
                     multiple = find(n > size(identexpshort,1)-1);
                     index    = find(ismember(bin, multiple));
-                    identinittimesunique=unique(identdr1(index,:),'rows');
+                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
                 end
 		% Identify which cycle numbers will be running
                 if strcmp(identcycles,'all')==1
@@ -151,7 +151,7 @@ for identremoveinvest=1
                     [n, bin] = histc(A, unique(A));
                     multiple = find(n > size(identexpshort,1)-1);
                     index    = find(ismember(bin, multiple));
-                    identinittimesunique=unique(identdr1(index,:),'rows');
+                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
                     % Add package to read grb2 files to path
                     run([identout,'nctoolbox-1.1.3/setup_nctoolbox'])
                 end

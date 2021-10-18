@@ -6275,7 +6275,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 
                                 if sum(~isnan(BT_lat(:)))==0
                                     % delete the folder of the storm if no data 
-                                    rmdir([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/'],'s')
+                                    %rmdir([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/'],'s')
                                 else
                                     spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
                                     % Subsets

@@ -99,9 +99,12 @@ VERIFICATION CAPABILITY:
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%  NEW ADDITIONS!  %%
-%%     08/26/21     %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+10/18/21 | Fixed a bug that included SS and SD in the TD and TS stratifications
+         | Flipped the y-axis for the individual cycle graphics to match the PPC graphics
+         | Added capability to keep folders of invests or storms that do not satisfy NHC verfication
+         | Confirmed that the OBS/ folder graphics included all storms not just those that satisfied NHC verification
 9/20/21  | Optimized code to use less resources, fixed bug that didn't allow storms with 1 cycle completed to plot, added a switch to turn off lagged correlation graphics to save time,
            changed the errorskill graphic's aspect ratio to match those of other graphics, modified track graphics to be same resolution as other graphics and included additional guidance
 9/18/21  | Added in a new subset to the assimilated observations capability (OBS-G) - see Users Guide for more details!

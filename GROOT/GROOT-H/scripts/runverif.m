@@ -24,7 +24,7 @@ for identremoveinvest=1
                 % Set Name
                 ident=[identtmp3,identtmp1(end-2:end-1),identtmp2];      % basin, ID, and year (e.g., AL092016)
                 identn=[upper(identtmp1(1:end-3)),identtmp2(3:4)];       % NAMEYY (e.g., HERMINE16)
-                identhwrf=identtmp1;                                     % name, ID, and short basin - check grb2 file output names if confused (e.g., hermine09l)
+                identhwrf=identtmp1; if strcmp(identtmp1(1:6),'invest')==1; identn= [upper(identtmp1),identtmp2(3:4)]; end                                  % name, ID, and short basin - check grb2 file output names if confused (e.g., hermine09l)
                 % Model outputs at 3 h, but to compare errors to BT make 6 h!
                 skip=2;                                                  % 6 h res | skip=1 is 3 h
                 skiphr=6;                                                % 6 h res | skiphr=3 is 3 h res
@@ -68,7 +68,7 @@ for identremoveinvest=1
                     [n, bin] = histc(A, unique(A));
                     multiple = find(n > size(identexpshort,1)-1);
                     index    = find(ismember(bin, multiple));
-                    identinittimesunique=unique(identdr1(index,:),'rows');
+                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
                 end
                 if identconv==1 && isempty(identinittimesunique)==0
 		% Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
@@ -87,7 +87,7 @@ for identremoveinvest=1
 			[n, bin] = histc(A, unique(A));
 			multiple = find(n > size(identexpshort,1)-1);
 			index    = find(ismember(bin, multiple));
-			identinittimesunique=unique(identdr1(index,:),'rows');				
+			identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;				
 		end	
 		% Identify which cycle numbers will be running
                 if strcmp(identcycles,'all')==1
@@ -154,7 +154,7 @@ for identremoveinvest=1
                     [n, bin] = histc(A, unique(A));
                     multiple = find(n > size(identexpshort,1)-1);
                     index    = find(ismember(bin, multiple));
-                    identinittimesunique=unique(identdr1(index,:),'rows');
+                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
 		    if identconv==1 && isempty(identinittimesunique)==0
                     % Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
                         cnt=1; clear identdr1
@@ -172,7 +172,7 @@ for identremoveinvest=1
                         [n, bin] = histc(A, unique(A));
                         multiple = find(n > size(identexpshort,1)-1);
                         index    = find(ismember(bin, multiple));
-                        identinittimesunique=unique(identdr1(index,:),'rows');
+                        identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
                 end
                     % Add package to read grb2 files to path
                     run([identout,'nctoolbox-1.1.3/setup_nctoolbox'])

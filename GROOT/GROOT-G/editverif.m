@@ -9,7 +9,7 @@ identmaxfhr=(126)/3+1;                                                        	 
 identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'ALL'};{'NTG'};{'TG'};{'NO'}];                                      % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'AEOLUS+VarQC'};{'CONTROL'}];                                      % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                  	% NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='CONTROL';                                                            % full folder name of improvement and significance wrt THIS experiment
 identexpcolors=[0 152 0;208 0 0]/255; % colors associated with each experiment - GROOT-G Change
@@ -92,21 +92,21 @@ for i=1:size(stormsdone,2)
             yearsdone1{cnt}=tmp2;
             cnt=cnt+1;
 end 
-[stormsdone,val]=unique(stormsdone1);
-for i=1:size(val,1)
-    yearsdone(i,:)=yearsdone1{val(i)};
-end
-
+[stormsdone,val]=unique(stormsdone1);stormsdone0=unique(table(stormsdone1', yearsdone1'),'rows');stormsdone=table2cell(stormsdone0(:,1))'; yearsdone0=table2cell(stormsdone0(:,2)); for yrdn=1:size(yearsdone0,1); yearsdone(yrdn,:)=yearsdone0{yrdn,:}; end;
+%for i=1:size(val,1)
+%    yearsdone(i,:)=yearsdone1{val(i)};
+%end
+%
 %% Remove storms named invest if they aren't named by end of forecast
-for i=1:size(stormsdone,2)
-   tmp=stormsdone{i};
-   if strcmp(tmp(1),'9')==1
-      stormsdone{i}=[]; 
-   end
-end
-empties = find(cellfun(@isempty,stormsdone));
-stormsdone(empties)=[];
-yearsdone(empties,:)=[];
+%for i=1:size(stormsdone,2)
+%   tmp=stormsdone{i};
+%   if strcmp(tmp(1),'9')==1
+%      stormsdone{i}=[]; 
+%   end
+%end
+%empties = find(cellfun(@isempty,stormsdone));
+%stormsdone(empties)=[];
+%yearsdone(empties,:)=[];
 if identcase==1
    stormsdone=identcasename;
    yearsdone=identcaseyear;
