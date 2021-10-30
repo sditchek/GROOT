@@ -21,14 +21,14 @@
 dirpth=/scratch1/BMC/qosap/${USER}      # directory path above GROOT location
 cycling="6"               		# frequency of cycling in your model (often 6 for 6 h)
 year="2019"               		# year of file range (currently, cannot overlap years - email Sarah Ditchek if you need this capability)
-atcfoutput=/scratch2/AOML/aoml-osse/Karina.Apodaca/projects/aeolus/noscrub/archive/ 		# location of your atcf output
-diagoutput=/scratch2/AOML/aoml-osse/Karina.Apodaca/projects/aeolus/postprocessing/cnvstats/	# location of your diag output
+atcfoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/V16_HDOB/atcf/ 		# location of your atcf output
+diagoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/V16_HDOB/anl/	# location of your diag output
 
 # Identify Experiments
-set -A expfold v16_CTL vqc_relax_gross 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew CONTROL AEOLUS+VarQC           # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expfold V16R V6HO	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew V16R V6HO                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
-obstype=dw				# the observation type you're testing and want graphics for (currently not a capability of the package, but you can grab the files anyway)
+obstype=uv				# the observation type you're testing and want graphics for
 
 # Account Information
 acntold=aoml-osse                       # account currently listed in SBATCH above
@@ -37,8 +37,8 @@ emlold=sarah.d.ditchek@noaa.gov         # email address currently listed in SBAT
 emlnew=sarah.d.ditchek@noaa.gov         # email address you want listed in SBATCH above
 
 # Date range of files desired | format must be yyyy-mm-dd hh
-startdate1="2019-08-24 06"
-enddate1="2019-09-24 00"
+startdate1="2019-08-23 06"
+enddate1="2019-09-09 00"
 
 ########################
 # END OF USER SETTINGS #

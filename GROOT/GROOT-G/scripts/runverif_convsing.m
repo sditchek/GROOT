@@ -101,14 +101,14 @@
 										filename=[identgroovpr,identexpshort{j},'/anl/diag_conv_',lower(identconvid),'_anl.',identinittimesunique(identloop,:),'.nc4'];
 										if isfile(filename)==1
 											ncid = netcdf.open(filename,'NC_NOWRITE');
-											Observation_Class=strtrim(netcdf.getVar(ncid,1)');
 											droptype0 = single(netcdf.getVar(ncid,2)); 
-											droptype = single(netcdf.getVar(ncid,3)); 
-											droplat = netcdf.getVar(ncid,4); 
-											droplon = netcdf.getVar(ncid,5); 
-											droppres = netcdf.getVar(ncid,7); 
-											dropdhr = netcdf.getVar(ncid,9); 
-											dropinc = (netcdf.getVar(ncid,11)+netcdf.getVar(ncid,14)); 
+											Observation_Class=strtrim(netcdf.getVar(ncid,1)');Observation_Class=Observation_Class(droptype0==identconvobs);
+											droptype = single(netcdf.getVar(ncid,3)); droptype=droptype(droptype0==identconvobs);
+											droplat = netcdf.getVar(ncid,4); droplat=droplat(droptype0==identconvobs);
+											droplon = netcdf.getVar(ncid,5); droplon=droplon(droptype0==identconvobs);
+											droppres = netcdf.getVar(ncid,7); droppres=droppres(droptype0==identconvobs);
+											dropdhr = netcdf.getVar(ncid,9); dropdhr=dropdhr(droptype0==identconvobs);
+											dropinc = (netcdf.getVar(ncid,netcdf.inqVarID(ncid,'Prep_Use_Flag'))+netcdf.getVar(ncid,netcdf.inqVarID(ncid,'Analysis_Use_Flag'))); dropinc=dropinc(droptype0==identconvobs);
 											droplon(droplon>=180)=droplon(droplon>=180)-360; % puts it into -180-180 coord without the sign
 										else
 											filename=[identgroovpr,identexpshort{j},'/anl/diag_conv_anl.',identinittimesunique(identloop,:),'.',lower(identconvid),'.latlon.txt'];
@@ -146,10 +146,10 @@
 												RLON(i)=-1*RLON(i);
 											end
 										end
-										tmpdrops(tmpdrops(:,4)~=1)=NaN;
+										if ~isempty(tmpdrops); tmpdrops(tmpdrops(:,4)~=identincludeobs)=NaN; end;
 										tmpdrops(any(isnan(tmpdrops), 2), :) = [];                
 										alldrops01{i}=tmpdrops;
-										tmpdrops_stm(tmpdrops_stm(:,4)~=1)=NaN;
+										if ~isempty(tmpdrops_stm); tmpdrops_stm(tmpdrops_stm(:,4)~=identincludeobs)=NaN; end;
 										tmpdrops_stm(any(isnan(tmpdrops_stm), 2), :) = [];                
 										alldrops01_stm{i}=tmpdrops_stm;
 										clear dropaz tmp tmpdrops tmpdrops_stm dropan xtob ytob
@@ -1158,7 +1158,7 @@ alldrops0=alldrops_stm{loop1};
                             f = getframe(hfig);
                             imwrite(f.cdata,[identtrackint,'/',identn,'_track_withobs_',identexpshort{track},'.png'],'png');    
                         end
-                        clearvars -except identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
+                        clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
                     end
                 end
                 

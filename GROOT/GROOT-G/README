@@ -101,6 +101,9 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+10/28/21 | Added capability for the combo error/improvement graphics to produce both a mean and a median version as another way aside from FSP and PPC graphics to identify sample outliers
+         | Added capability to choose what serial correlation value to use in the namelist
+	 | Added capability to choose what obstype and inclusion parameter to use in the namelist
 10/18/21 | Fixed a bug that included SS and SD in the TD and TS stratifications
          | Flipped the y-axis for the individual cycle graphics to match the PPC graphics
          | Added capability to keep folders of invests or storms that do not satisfy NHC verfication
