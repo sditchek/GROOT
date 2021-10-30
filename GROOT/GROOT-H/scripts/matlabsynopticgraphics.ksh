@@ -4,9 +4,10 @@
 #SBATCH -q batch	    # XXXX: quality of service
 #SBATCH -p hera	    # XXXX: Partition | keep it hera
 #SBATCH --ntasks=1	    # XXXX: tasks 
+#SBATCH --exclusive         # XXXX: memory
 #SBATCH --mail-type=fail     # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
-#SBATCH -J SYNPREP	    # XXXX: Job Name | change to whatever you'd like
+#SBATCH -J SYNGRAPH	    # XXXX: Job Name | change to whatever you'd like
 
 ###########################################################################
 # This script runs all required files for cycles specified in editgrb.m #

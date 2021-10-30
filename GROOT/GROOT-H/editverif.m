@@ -9,19 +9,18 @@ identmaxfhr=(126)/3+1;                                                        	 
 identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'ALL'};{'NO'}];                                      % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'ALL'};{'NO'}];                         				% folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                  	% NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='NO';                                                            % full folder name of improvement and significance wrt THIS experiment
-identexpcolors=[0 152 0;208 0 0]/255;                    % colors associated with each experiment
-                                                                                 	% EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
+identexpcolors=[0 152 0;208 0 0]/255;     					% colors associated with each experiment
+        	                                                                      	% EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										     	% EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
 stormsdone=dir([identgroovpr,'/NO']);                                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
-% Case Study 
-% Recommendation: make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
+% Case Study: recommendation - make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
 identcase=0';								        % run graphics for just 1 storm | yes (1) no (0)
-identcasename={'florence06l'};						        % lowercase name of storm, ID, and basin identifier: dorian05l
-identcaseyear='2018';							        % year of storm: YYYY
+identcasename={'dorian05l'};						        % lowercase name of storm, ID, and basin identifier: dorian05l
+identcaseyear='2019';							        % year of storm: YYYY
 
 % Error Graphics Options
 identgraphicsbycycle=0;                                         % error graphics for EACH CYCLE - must be 0 if identcompositeonly=1 | yes (1) no (0 - this saves time)
@@ -33,11 +32,13 @@ identnewsubset=[{'2017081800-2017083100'};{'2017090200'}];      % new subset cyc
                                                                      % range of cycles: [{'2017081800-2017083100'}]
                                                                      % disjointed cycles: [{'2017081800'};{'2017090200'}]
                                                                      % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+identserialcorr=1;						% value for taking serial correlation (SC) into account | 1 (sample size not reduced) 2 (12-h SC) 3 (18-h SC) 4 (24-h SC)
 
 % Conventional Graphics Options
 identconv=1;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
+identconvobs=137;						% conventional observation obstype
 identconvtype=[0];                                              % subtypes desired 
                                                                     % NO SUBTYPE: identconvtype=0
                                                                     % YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
@@ -135,12 +136,12 @@ if ~exist([identout,'RESULTS/',identfold,'VERIFICATION/'], 'dir')
     mkdir([identout,'RESULTS/',identfold,'VERIFICATION/'])
 elseif identcase==0
     disp('CLEANING UP PREVIOUS VERIFICATION RESULTS...')    
-    rmdir([identout,'RESULTS/',identfold,'VERIFICATION/'],'s')
+    if exist([identout,'RESULTS/',identfold,'VERIFICATION/'], 'dir'); rmdir([identout,'RESULTS/',identfold,'VERIFICATION/'],'s');end;
 elseif identcase==1
     disp('CLEANING UP PREVIOUS VERIFICATION RESULTS FOR THIS STORM...')
     tmpcasefold=upper(stormsdone{:});
     tmpcasefold=[tmpcasefold(1:end-3) identcaseyear(3:4)]
-    rmdir([identout,'RESULTS/',identfold,tmpcasefold,'/'],'s')
+    if exist([identout,'RESULTS/',identfold,tmpcasefold,'/'], 'dir' ); rmdir([identout,'RESULTS/',identfold,tmpcasefold,'/'],'s');end;
 end
 
 %% Save the output

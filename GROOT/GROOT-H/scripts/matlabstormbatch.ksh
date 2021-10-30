@@ -1,12 +1,13 @@
 #!/bin/ksh
-#SBATCH -t 04:00:00         # XXXX: Time Limit | generally sufficient; may need to increase it
+#SBATCH -t 08:00:00         # XXXX: Time Limit | generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
 #SBATCH -p hera	    # XXXX: Partition | keep it hera
-#SBATCH --ntasks=40 	    # XXXX: tasks 
-#SBATCH --mail-type=fail     # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
+#SBATCH --ntasks=1 	    # XXXX: tasks 
+#SBATCH --exclusive         # XXXX: memory
+#SBATCH --mail-type=fail    # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
-#SBATCH -J STMMAT	    # XXXX: Job Name | change to whatever you'd like
+#SBATCH -J STMBATCH	    # XXXX: Job Name | change to whatever you'd like
 
 ###########################################################################
 # This script runs all required files for cycles specified in editgrb.m #
@@ -32,7 +33,7 @@ cp common.txt ${scriptspath}/
 source ./common.txt
 
 # Remove slurm
-rm -f ${homepath}/slurm*
+#rm -f ${homepath}/slurm*
 
 # Find how many cycles were selected
 typeset -a arr
@@ -44,7 +45,6 @@ done
 wait
 numcyc=$1
 lencyc=${#arr[@]}
-
 
 if [ $numcyc -lt $lencyc ] 
 then
@@ -70,10 +70,19 @@ then
 	for i in $stormvariables; do
 	cp ${scriptspath}/matlabstormvar.ksh ${scriptspath}/matlabstormvar_${cnt}.ksh
 	arr[${cnt}]=${i}
+        echo arr
+                typeset -a arrexp
+                cntexp=0
+                echo cntexp
+                for j in $exp; do
+                cp ${scriptspath}/matlabstormvar_${cnt}.ksh ${scriptspath}/matlabstormvar_${cnt}_${cntexp}.ksh
+                arrexp[${cntexp}]=${j}
+                cntexp=`expr ${cntexp} + 1`
+                done
 	cnt=`expr ${cnt} + 1`
 	done
 	wait
-	sbatch ${scriptspath}/matlabstormvar_0.ksh 0 $scriptspath $outputpath $homepath $numcyc $numarr $lencyc
+	sbatch ${scriptspath}/matlabstormvar_0_0.ksh 0 0 $scriptspath $outputpath $homepath $numcyc $numarr $lencyc
 
 fi
 

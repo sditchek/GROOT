@@ -24,7 +24,7 @@ for setup=1
     end
 
     % Create Directory Structure
-    if ~exist([identout,'RESULTS/',identfold,identn], 'dir')
+    %if ~exist([identout,'RESULTS/',identfold,identn], 'dir')
         disp('CREATING DIRECTORY STRUCTURE')
         mkdir([identout,'RESULTS/',identfold,identn])
         mkdir([identout,'RESULTS/',identfold,identn,'/HWRFDA'])
@@ -39,9 +39,9 @@ for setup=1
             mkdir([identout,'RESULTS/',identfold,identn,'/FIELDS/',identexp{tmp},'/MATFILES'])    
         end
         mkdir([identout,'RESULTS/',identfold,identn,'/TRACKINT/'])
-    else
-        disp('DIRECTORY STRUCTURE ALREADY EXISTS')
-    end
+    %else
+    %    disp('DIRECTORY STRUCTURE ALREADY EXISTS')
+    %end
     identfields=[identout,'RESULTS/',identfold,identn,'/FIELDS'];
     identtrackint=[identout,'RESULTS/',identfold,identn,'/TRACKINT'];
     identhwrfda=[identout,'RESULTS/',identfold,identn,'/HWRFDA'];
@@ -2959,6 +2959,13 @@ for hwrfvariables=1:size(identexp,1)
                         tmp3=tmp1.*tmp2;
                         minimum=min(min(tmp3));
                         [gx,gy]=find(tmp3==minimum);
+						for weirdgrid=1:100
+							if isnan(tmp3(gx-1,gy-1))==1 | isnan(tmp3(gx+1,gy+1))==1 | isnan(tmp3(gx-1,gy+1))==1 | isnan(tmp3(gx+1,gy-1))==1
+								tmp3(gx,gy)=NaN;
+								minimum=min(min(tmp3));							
+								[gx,gy]=find(tmp3==minimum);
+							end
+						end
                         A=[LONall LATall];
                         for i=1:size(gx,1)
                             B(i,:)=[elon(gx(i),gy(i)) nlat(gx(i),gy(i))];
@@ -3029,6 +3036,13 @@ for hwrfvariables=1:size(identexp,1)
                         tmp3=tmp1.*tmp2;
                         minimum=min(min(tmp3));
                         [gx,gy]=find(tmp3==minimum);
+						for weirdgrid=1:100
+							if isnan(tmp3(gx-1,gy-1))==1 | isnan(tmp3(gx+1,gy+1))==1 | isnan(tmp3(gx-1,gy+1))==1 | isnan(tmp3(gx+1,gy-1))==1
+								tmp3(gx,gy)=NaN;
+								minimum=min(min(tmp3));							
+								[gx,gy]=find(tmp3==minimum);
+							end
+						end
                         A=[LONall LATall];
                         for i=1:size(gx,1)
                             B(i,:)=[grlon(gx(i),gy(i)) grlat(gx(i),gy(i))];
@@ -3194,6 +3208,13 @@ for hwrfvariables=1:size(identexp,1)
                         tmp3=tmp1.*tmp2;
                         minimum=min(min(tmp3));
                         [gx,gy]=find(tmp3==minimum);
+						for weirdgrid=1:100
+							if isnan(tmp3(gx-1,gy-1))==1 | isnan(tmp3(gx+1,gy+1))==1 | isnan(tmp3(gx-1,gy+1))==1 | isnan(tmp3(gx+1,gy-1))==1
+								tmp3(gx,gy)=NaN;
+								minimum=min(min(tmp3));							
+								[gx,gy]=find(tmp3==minimum);
+							end
+						end
                         A=[LONall LATall];
                         for i=1:size(gx,1)
                             B(i,:)=[grlon(gx(i),gy(i)) grlat(gx(i),gy(i))];
@@ -3606,7 +3627,7 @@ for hwrfplots=1
                     disp('BT is all NaNs...skipping date!')
                 else
                     %% Get data for each experiment
-                    for identexploop=1:size(identexp,1)
+                    for identexploop=identvarexp0%1:size(identexp,1)
                         % This will loop over EXP experiments - same code for each!
                         identexp0=identexp{identexploop};
                         disp(['EXPERIMENT: ',identexp0])                    
@@ -4117,395 +4138,397 @@ for hwrfplots=1
                         ['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
                     end
                     
-                    %% Save Data
-                    if identsave==1
-                        if levs==1
-                            save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
-                        elseif levs==0
-                            save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
-                        end
-                    else
-                    end
-                    
-                    if strcmp(identdiff,'all')==1
-                        identdiff=nchoosek(1:size(identexp,1),2);
-                    end
-                    
-                    %% Differences 
-                    for df=1:size(identdiff,1)
-                        % Set Experiments
-                        exp1=identdiff(df,1);
-                        exp2=identdiff(df,2);
-                        % Difference: PLAN
-                        if levs==1   
-                            if identplan==1
-                                for loop=1:size(var_f,4) 
-                                    if isnan(BT_lat(identloop,loop))==1
-                                    else
-                                        for loop1=identpresplan % 850,700,500,200 %1:size(var_f,3) 
-                                            set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                            hfig=figure;
-                                            rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
-                                            rds2=sort(rds1*-1);
-                                            rds=[rds2 rds1(2:end)]';
-                                            set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                            ax1=subplot(3,4,[1:8]);
-                                            hold on                     
-                                            diffplt=fliplr(EXPplan(:,:,loop1,loop,exp1)-EXPplan(:,:,loop1,loop,exp2))';
-                                            diffplt(diffplt<min(dcntr))=min(dcntr);
-                                            [c,h]=contourf(rds,rds,diffplt,dcntr);
-                                            hold on
-                                            [c1,h1]=contour(rds,rds,diffplt,dcntr);
-                                            caxis([dmin dmax])
-                                            axis([-pltkm pltkm -pltkm pltkm])
-                                            colormap(custommap(20,WC2))              
-                                            xlabel('Distance (km)','fontsize',20)
-                                            ylabel('Distance (km)','fontsize',20)
-                                            viscircles([0 0],0,'Color','k','linewidth',1);
-                                            viscircles([0 0],250,'Color','k','linewidth',1);
-                                            viscircles([0 0],500,'Color','k','linewidth',1);
-                                            viscircles([0 0],750,'Color','k','linewidth',1);
-                                            viscircles([0 0],1000,'Color','k','linewidth',1);
-                                            viscircles([0 0],1250,'Color','k','linewidth',1);                                
-                                            viscircles([0 0],1500,'Color','k','linewidth',1);                                
-                                            viscircles([0 0],1750,'Color','k','linewidth',1);                                
-                                            viscircles([0 0],2000,'Color','k','linewidth',1);                                
-                                            set(gca,'fontsize',20)
-                                            set(gca,'plotboxaspectratio',[1 1 1])
-                                            cl=colorbar;
-                                            set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                            adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                            if sum(adaa)>0
-                                            else
-                                                adaa((size(adaa,2)+1)/2)=0;
-                                            end
-                                            set(gca,'xtick',-2000:500:2000)
-                                            set(gca,'ytick',-2000:500:2000)  
-                                            set(cl,'YTicklabel',adaa) 
-                                            set(gcf, 'InvertHardcopy', 'off')
-                                            set(gcf,'Units','inches');
-                                            screenposition = get(gcf,'Position');
-                                            set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                            set(gcf, 'InvertHardcopy', 'off')
-                                            text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                            text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                            text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                            text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                            text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                            ax=gca;
-                                            box on
-                                            set(ax, 'Layer', 'top')
-                                            ax.LineWidth=1; 
-                                            set(gca,'position',spPos)
-                                            set(cl,'position',clPos)                
-                                            set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                            f = getframe(hfig);
-                                            imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                            %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
-                                            close all
-                                        end
-                                    end
-                                end
-                            end
-                        elseif levs==0
-                            if identplan==1
-                                for loop=1:size(var_f,3) % by fhr
-                                    if isnan(BT_lat(identloop,loop))==1
-                                    else
-                                        set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                        hfig=figure;
-                                        rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
-                                        rds2=sort(rds1*-1);
-                                        rds=[rds2 rds1(2:end)]';
-                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                        ax1=subplot(3,4,[1:8]);
-                                        hold on                     
-                                        diffplt=fliplr(EXPplan(:,:,loop,exp1)-EXPplan(:,:,loop,exp2))';
-                                        diffplt(diffplt<min(dcntr))=min(dcntr);
-                                        [c,h]=contourf(rds,rds,diffplt,dcntr);
-                                        hold on
-                                        [c1,h1]=contour(rds,rds,diffplt,dcntr);
-                                        caxis([dmin dmax])
-                                        axis([-pltkm pltkm -pltkm pltkm])
-                                        colormap(custommap(20,WC2))              
-                                        xlabel('Distance (km)','fontsize',20)
-                                        ylabel('Distance (km)','fontsize',20)
-                                        viscircles([0 0],0,'Color','k','linewidth',1);
-                                        viscircles([0 0],250,'Color','k','linewidth',1);
-                                        viscircles([0 0],500,'Color','k','linewidth',1);
-                                        viscircles([0 0],750,'Color','k','linewidth',1);
-                                        viscircles([0 0],1000,'Color','k','linewidth',1);
-                                        viscircles([0 0],1250,'Color','k','linewidth',1);                                
-                                        viscircles([0 0],1500,'Color','k','linewidth',1);                                
-                                        viscircles([0 0],1750,'Color','k','linewidth',1);                                
-                                        viscircles([0 0],2000,'Color','k','linewidth',1);                                
-                                        set(gca,'fontsize',20)
-                                        set(gca,'plotboxaspectratio',[1 1 1])
-                                        cl=colorbar;
-                                        set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                        adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                        if sum(adaa)>0
-                                        else
-                                            adaa((size(adaa,2)+1)/2)=0;
-                                        end
-                                        set(gca,'xtick',-2000:500:2000)
-                                        set(gca,'ytick',-2000:500:2000)  
-                                        set(cl,'YTicklabel',adaa) 
-                                        set(gcf, 'InvertHardcopy', 'off')
-                                        set(gcf,'Units','inches');
-                                        screenposition = get(gcf,'Position');
-                                        set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                        set(gcf, 'InvertHardcopy', 'off')                                    
-                                        text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                        text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                        text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                        text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                        text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                        ax=gca;
-                                        box on
-                                        set(ax, 'Layer', 'top')
-                                        ax.LineWidth=1; 
-                                        set(gca,'position',spPos)
-                                        set(cl,'position',clPos)                
-                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                        f = getframe(hfig);
-                                        imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                        %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
-                                        close all  
-                                    end
-                                end
-                            end
-                        end
-                        % Difference: AZAV
-                        if levs==1
-                            % (fhr)x(radius) for a single (plev) for each (cycle)
-                            for loop=identpresplan % 850,700,500,200 %1:size(var_f,3)
-                                set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                hfig=figure;
-                                rds=0:0.125*111.11:pltcen*0.125*111.11;   
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                ax1=subplot(3,4,[1:8]);
-                                hold on
-                                diffplt=squeeze((EXPvectnav(loop,:,:,exp1)-EXPvectnav(loop,:,:,exp2)));
-                                diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                [c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr);
-                                hold on
-                                [c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr,'k');
-                                caxis([dmin dmax])
-                                ylim([0 pltkm])
-                                xlim([0 identmaxfhr*3-3])
-                                colormap(custommap(20,WC2))
-                                cl=colorbar;
-                                xlabel('Forecast Hour','fontsize',22)
-                                ylabel('Radius (km)','fontsize',22)
-                                set(gca,'yTick',[0:100:pltkm],'fontsize',22)
-                                set(gca,'xtick',0:12:size(EXPvectnav,3)*3-1,'fontsize',22)
-                                set(gca,'fontsize',20)
-                                set(gca,'plotboxaspectratio',[1 1 1])
-                                set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                if sum(adaa)>0
-                                else
-                                    adaa((size(adaa,2)+1)/2)=0;
-                                end
-                                set(cl,'YTicklabel',adaa) 
-                                set(gcf, 'InvertHardcopy', 'off')
-                                set(gcf,'Units','inches');
-                                screenposition = get(gcf,'Position');
-                                set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                set(gcf, 'InvertHardcopy', 'off')
-                                text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ PLEV: ',num2str(plev(loop)),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                ax=gca;
-                                box on
-                                set(ax, 'Layer', 'top')
-                                ax.LineWidth=1;
-                                set(gca,'position',spPos)
-                                set(cl,'position',clPos)                
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                f = getframe(hfig);
-                                imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
-                                close all
-                            end
-                            % (radius)x(plev) for a single (fhr) for each (cycle)
-                            for loop=1:size(EXPvectnav,3) %1:fhr
-                                if isnan(BT_lat(identloop,loop))==1
-                                else
-                                    set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                    hfig=figure;
-                                    rds=0:0.125*111.11:pltcen*0.125*111.11;   
-                                    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                    ax1=subplot(3,4,[1:8]);
-                                    hold on
-                                    diffplt=squeeze((EXPvectnav(:,:,loop,exp1)-EXPvectnav(:,:,loop,exp2)));
-                                    diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                    [c,h]=contourf(rdsplt,plev,diffplt,dcntr);
-                                    hold on
-                                    [c1,h1]=contour(rdsplt,plev,diffplt,dcntr,'k');
-                                    caxis([dmin dmax])
-                                    axis ij
-                                    ylim([0 1000])
-                                    xlim([0 pltkm])
-                                    colormap(custommap(20,WC2))
-                                    xlabel('Radius (km)','fontsize',22)
-                                    ylabel('Pressure (hPa)','fontsize',22)
-                                    set(gca,'yTick',[0:100:1000],'fontsize',22)
-                                    set(gca,'xtick',0:250:pltkm,'fontsize',22)
-                                    cl=colorbar;
-                                    set(gca,'fontsize',20)
-                                    set(gca,'plotboxaspectratio',[1 1 1])
-                                    set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                    adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                    if sum(adaa)>0
-                                    else
-                                        adaa((size(adaa,2)+1)/2)=0;
-                                    end
-                                    set(cl,'YTicklabel',adaa) 
-                                    set(gcf, 'InvertHardcopy', 'off')
-                                    set(gcf,'Units','inches');
-                                    screenposition = get(gcf,'Position');
-                                    set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                    set(gcf, 'InvertHardcopy', 'off')                                
-                                    text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                    text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                    text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                    text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                    text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                    ax=gca;
-                                    box on
-                                    set(ax, 'Layer', 'top')
-                                    ax.LineWidth=1;
-                                    set(gca,'position',spPos)
-                                    set(cl,'position',clPos)                
-                                    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    f = getframe(hfig);
-                                    imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                    %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
-                                    close all
-                                end
-                            end
-                            % (plev)x(fhr) one plot
-                            for loop=1:size(EXPvectnavi,3)
-                                set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                hfig=figure;
-                                rds=rdsplt;
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                ax1=subplot(3,4,[1:8]);
-                                hold on
-                                diffplt=squeeze(EXPvectnavi(:,:,loop,exp1)-EXPvectnavi(:,:,loop,exp2));
-                                innerrad=innerradu(loop);
-                                outerrad=outerradu(loop);
-                                filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];    
-                                diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                [c,h]=contourf(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr);
-                                hold on
-                                [c1,h1]=contour(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr,'k');
-                                caxis([dmin dmax])
-                                axis ij
-                                ylim([0 1000])
-                                xlim([0 identmaxfhr*3-3])
-                                colormap(custommap(20,WC2))
-                                xlabel('Forecast Hour','fontsize',22)
-                                ylabel('Pressure (hPa)','fontsize',22)
-                                set(gca,'yTick',[0:100:1000],'fontsize',22)
-                                set(gca,'xtick',0:12:size(EXPvectnavi,2)*3-1,'fontsize',22)
-                                cl=colorbar;
-                                set(gca,'fontsize',20)
-                                set(gca,'plotboxaspectratio',[1 1 1])
-                                set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                if sum(adaa)>0
-                                else
-                                    adaa((size(adaa,2)+1)/2)=0;
-                                end
-                                set(cl,'YTicklabel',adaa) 
-                                set(gcf, 'InvertHardcopy', 'off')
-                                set(gcf,'Units','inches');
-                                screenposition = get(gcf,'Position');
-                                set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                set(gcf, 'InvertHardcopy', 'off')                                
-                                text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(loop)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(loop)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                ax=gca;
-                                box on
-                                set(ax, 'Layer', 'top')
-                                ax.LineWidth=1;
-                                set(gca,'position',spPos)
-                                set(cl,'position',clPos)                
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                f = getframe(hfig);
-                                imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename,'.png'],'png');
-                                %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
-                                close all
-                            end                        
-                        elseif levs==0
-                            for loop=1
-                                set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                hfig=figure;
-                                rds=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                ax1=subplot(3,4,[1:8]);
-                                hold on
-                                diffplt=(EXPvectnav(:,:,exp1)-EXPvectnav(:,:,exp2));
-                                diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                [c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr);
-                                hold on
-                                [c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr,'k');
-                                caxis([dmin dmax])
-                                ylim([0 pltkm])
-                                xlim([0 identmaxfhr*3-3])
-                                colormap(custommap(20,WC2))
-                                cl=colorbar;
-                                xlabel('Forecast Hour','fontsize',22)
-                                ylabel('Radius (km)','fontsize',22)
-                                set(gca,'yTick',[0:100:pltkm],'fontsize',22)
-                                set(gca,'xtick',0:12:size(EXPvectnav,2)*3-1,'fontsize',22)
-                                set(gca,'fontsize',20)
-                                set(gca,'plotboxaspectratio',[1 1 1])
-                                set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                if sum(adaa)>0
-                                else
-                                    adaa((size(adaa,2)+1)/2)=0;
-                                end
-                                set(cl,'YTicklabel',adaa) 
-                                set(gcf, 'InvertHardcopy', 'off')
-                                set(gcf,'Units','inches');
-                                screenposition = get(gcf,'Position');
-                                set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                set(gcf, 'InvertHardcopy', 'off')                                
-                                text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                ax=gca;
-                                box on
-                                set(ax, 'Layer', 'top')
-                                ax.LineWidth=1;  
-                                set(gca,'position',spPos)
-                                set(cl,'position',clPos)                
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                f = getframe(hfig);
-                                imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
-                                close all
-                            end
-                        end
-                    ['COMPLETED DIFFERENCES - EXP: ', identexpshort{exp1},'-',identexpshort{exp2},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
-                    end
-                    
-                    %% Scrubs .mat files for each experiment
-                    for i=1:size(identexp,1)
-                        %delete([identfields,'/',identexp{i},'/MATFILES/',identhwrf,'_synoptic_',identexp{i},'_',identinittimesunique(identloop,:),'_',identvariables{identvar},'.mat'])
-                    end  
+                    if identvarexp0==size(identexp,1) % if it's the last experiment, that means all needed data has been saved and generated from above!
+					 	%% Save Data
+						if identsave==1
+							if levs==1
+								save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
+							elseif levs==0
+								save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
+							end
+						else
+						end
+						
+						if strcmp(identdiff,'all')==1
+							identdiff=nchoosek(1:size(identexp,1),2);
+						end
+						
+						%% Differences 
+						for df=1:size(identdiff,1)
+							% Set Experiments
+							exp1=identdiff(df,1);
+							exp2=identdiff(df,2);
+							% Difference: PLAN
+							if levs==1   
+								if identplan==1
+									for loop=1:size(var_f,4) 
+										if isnan(BT_lat(identloop,loop))==1
+										else
+											for loop1=identpresplan % 850,700,500,200 %1:size(var_f,3) 
+												set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+												hfig=figure;
+												rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
+												rds2=sort(rds1*-1);
+												rds=[rds2 rds1(2:end)]';
+												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+												ax1=subplot(3,4,[1:8]);
+												hold on                     
+												diffplt=fliplr(EXPplan(:,:,loop1,loop,exp1)-EXPplan(:,:,loop1,loop,exp2))';
+												diffplt(diffplt<min(dcntr))=min(dcntr);
+												[c,h]=contourf(rds,rds,diffplt,dcntr);
+												hold on
+												[c1,h1]=contour(rds,rds,diffplt,dcntr);
+												caxis([dmin dmax])
+												axis([-pltkm pltkm -pltkm pltkm])
+												colormap(custommap(20,WC2))              
+												xlabel('Distance (km)','fontsize',20)
+												ylabel('Distance (km)','fontsize',20)
+												viscircles([0 0],0,'Color','k','linewidth',1);
+												viscircles([0 0],250,'Color','k','linewidth',1);
+												viscircles([0 0],500,'Color','k','linewidth',1);
+												viscircles([0 0],750,'Color','k','linewidth',1);
+												viscircles([0 0],1000,'Color','k','linewidth',1);
+												viscircles([0 0],1250,'Color','k','linewidth',1);                                
+												viscircles([0 0],1500,'Color','k','linewidth',1);                                
+												viscircles([0 0],1750,'Color','k','linewidth',1);                                
+												viscircles([0 0],2000,'Color','k','linewidth',1);                                
+												set(gca,'fontsize',20)
+												set(gca,'plotboxaspectratio',[1 1 1])
+												cl=colorbar;
+												set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+												adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+												if sum(adaa)>0
+												else
+													adaa((size(adaa,2)+1)/2)=0;
+												end
+												set(gca,'xtick',-2000:500:2000)
+												set(gca,'ytick',-2000:500:2000)  
+												set(cl,'YTicklabel',adaa) 
+												set(gcf, 'InvertHardcopy', 'off')
+												set(gcf,'Units','inches');
+												screenposition = get(gcf,'Position');
+												set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+												set(gcf, 'InvertHardcopy', 'off')
+												text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+												text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+												text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+												text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+												text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+												ax=gca;
+												box on
+												set(ax, 'Layer', 'top')
+												ax.LineWidth=1; 
+												set(gca,'position',spPos)
+												set(cl,'position',clPos)                
+												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+												f = getframe(hfig);
+												imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+												%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
+												close all
+											end
+										end
+									end
+								end
+							elseif levs==0
+								if identplan==1
+									for loop=1:size(var_f,3) % by fhr
+										if isnan(BT_lat(identloop,loop))==1
+										else
+											set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+											hfig=figure;
+											rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
+											rds2=sort(rds1*-1);
+											rds=[rds2 rds1(2:end)]';
+											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+											ax1=subplot(3,4,[1:8]);
+											hold on                     
+											diffplt=fliplr(EXPplan(:,:,loop,exp1)-EXPplan(:,:,loop,exp2))';
+											diffplt(diffplt<min(dcntr))=min(dcntr);
+											[c,h]=contourf(rds,rds,diffplt,dcntr);
+											hold on
+											[c1,h1]=contour(rds,rds,diffplt,dcntr);
+											caxis([dmin dmax])
+											axis([-pltkm pltkm -pltkm pltkm])
+											colormap(custommap(20,WC2))              
+											xlabel('Distance (km)','fontsize',20)
+											ylabel('Distance (km)','fontsize',20)
+											viscircles([0 0],0,'Color','k','linewidth',1);
+											viscircles([0 0],250,'Color','k','linewidth',1);
+											viscircles([0 0],500,'Color','k','linewidth',1);
+											viscircles([0 0],750,'Color','k','linewidth',1);
+											viscircles([0 0],1000,'Color','k','linewidth',1);
+											viscircles([0 0],1250,'Color','k','linewidth',1);                                
+											viscircles([0 0],1500,'Color','k','linewidth',1);                                
+											viscircles([0 0],1750,'Color','k','linewidth',1);                                
+											viscircles([0 0],2000,'Color','k','linewidth',1);                                
+											set(gca,'fontsize',20)
+											set(gca,'plotboxaspectratio',[1 1 1])
+											cl=colorbar;
+											set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+											adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+											if sum(adaa)>0
+											else
+												adaa((size(adaa,2)+1)/2)=0;
+											end
+											set(gca,'xtick',-2000:500:2000)
+											set(gca,'ytick',-2000:500:2000)  
+											set(cl,'YTicklabel',adaa) 
+											set(gcf, 'InvertHardcopy', 'off')
+											set(gcf,'Units','inches');
+											screenposition = get(gcf,'Position');
+											set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+											set(gcf, 'InvertHardcopy', 'off')                                    
+											text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+											text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+											text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+											text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+											text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+											ax=gca;
+											box on
+											set(ax, 'Layer', 'top')
+											ax.LineWidth=1; 
+											set(gca,'position',spPos)
+											set(cl,'position',clPos)                
+											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+											f = getframe(hfig);
+											imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+											%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
+											close all  
+										end
+									end
+								end
+							end
+							% Difference: AZAV
+							if levs==1
+								% (fhr)x(radius) for a single (plev) for each (cycle)
+								for loop=identpresplan % 850,700,500,200 %1:size(var_f,3)
+									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+									hfig=figure;
+									rds=0:0.125*111.11:pltcen*0.125*111.11;   
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+									ax1=subplot(3,4,[1:8]);
+									hold on
+									diffplt=squeeze((EXPvectnav(loop,:,:,exp1)-EXPvectnav(loop,:,:,exp2)));
+									diffplt(diffplt<min(dcntr))=min(dcntr);                
+									[c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr);
+									hold on
+									[c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr,'k');
+									caxis([dmin dmax])
+									ylim([0 pltkm])
+									xlim([0 identmaxfhr*3-3])
+									colormap(custommap(20,WC2))
+									cl=colorbar;
+									xlabel('Forecast Hour','fontsize',22)
+									ylabel('Radius (km)','fontsize',22)
+									set(gca,'yTick',[0:100:pltkm],'fontsize',22)
+									set(gca,'xtick',0:12:size(EXPvectnav,3)*3-1,'fontsize',22)
+									set(gca,'fontsize',20)
+									set(gca,'plotboxaspectratio',[1 1 1])
+									set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+									adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+									if sum(adaa)>0
+									else
+										adaa((size(adaa,2)+1)/2)=0;
+									end
+									set(cl,'YTicklabel',adaa) 
+									set(gcf, 'InvertHardcopy', 'off')
+									set(gcf,'Units','inches');
+									screenposition = get(gcf,'Position');
+									set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+									set(gcf, 'InvertHardcopy', 'off')
+									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ PLEV: ',num2str(plev(loop)),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+									ax=gca;
+									box on
+									set(ax, 'Layer', 'top')
+									ax.LineWidth=1;
+									set(gca,'position',spPos)
+									set(cl,'position',clPos)                
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+									f = getframe(hfig);
+									imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
+									close all
+								end
+								% (radius)x(plev) for a single (fhr) for each (cycle)
+								for loop=1:size(EXPvectnav,3) %1:fhr
+									if isnan(BT_lat(identloop,loop))==1
+									else
+										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+										hfig=figure;
+										rds=0:0.125*111.11:pltcen*0.125*111.11;   
+										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+										ax1=subplot(3,4,[1:8]);
+										hold on
+										diffplt=squeeze((EXPvectnav(:,:,loop,exp1)-EXPvectnav(:,:,loop,exp2)));
+										diffplt(diffplt<min(dcntr))=min(dcntr);                
+										[c,h]=contourf(rdsplt,plev,diffplt,dcntr);
+										hold on
+										[c1,h1]=contour(rdsplt,plev,diffplt,dcntr,'k');
+										caxis([dmin dmax])
+										axis ij
+										ylim([0 1000])
+										xlim([0 pltkm])
+										colormap(custommap(20,WC2))
+										xlabel('Radius (km)','fontsize',22)
+										ylabel('Pressure (hPa)','fontsize',22)
+										set(gca,'yTick',[0:100:1000],'fontsize',22)
+										set(gca,'xtick',0:250:pltkm,'fontsize',22)
+										cl=colorbar;
+										set(gca,'fontsize',20)
+										set(gca,'plotboxaspectratio',[1 1 1])
+										set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+										adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+										if sum(adaa)>0
+										else
+											adaa((size(adaa,2)+1)/2)=0;
+										end
+										set(cl,'YTicklabel',adaa) 
+										set(gcf, 'InvertHardcopy', 'off')
+										set(gcf,'Units','inches');
+										screenposition = get(gcf,'Position');
+										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+										set(gcf, 'InvertHardcopy', 'off')                                
+										text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+										text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+										text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+										text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+										text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+										ax=gca;
+										box on
+										set(ax, 'Layer', 'top')
+										ax.LineWidth=1;
+										set(gca,'position',spPos)
+										set(cl,'position',clPos)                
+										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+										f = getframe(hfig);
+										imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+										%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
+										close all
+									end
+								end
+								% (plev)x(fhr) one plot
+								for loop=1:size(EXPvectnavi,3)
+									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+									hfig=figure;
+									rds=rdsplt;
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+									ax1=subplot(3,4,[1:8]);
+									hold on
+									diffplt=squeeze(EXPvectnavi(:,:,loop,exp1)-EXPvectnavi(:,:,loop,exp2));
+									innerrad=innerradu(loop);
+									outerrad=outerradu(loop);
+									filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];    
+									diffplt(diffplt<min(dcntr))=min(dcntr);                
+									[c,h]=contourf(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr);
+									hold on
+									[c1,h1]=contour(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr,'k');
+									caxis([dmin dmax])
+									axis ij
+									ylim([0 1000])
+									xlim([0 identmaxfhr*3-3])
+									colormap(custommap(20,WC2))
+									xlabel('Forecast Hour','fontsize',22)
+									ylabel('Pressure (hPa)','fontsize',22)
+									set(gca,'yTick',[0:100:1000],'fontsize',22)
+									set(gca,'xtick',0:12:size(EXPvectnavi,2)*3-1,'fontsize',22)
+									cl=colorbar;
+									set(gca,'fontsize',20)
+									set(gca,'plotboxaspectratio',[1 1 1])
+									set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+									adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+									if sum(adaa)>0
+									else
+										adaa((size(adaa,2)+1)/2)=0;
+									end
+									set(cl,'YTicklabel',adaa) 
+									set(gcf, 'InvertHardcopy', 'off')
+									set(gcf,'Units','inches');
+									screenposition = get(gcf,'Position');
+									set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+									set(gcf, 'InvertHardcopy', 'off')                                
+									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(loop)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(loop)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+									ax=gca;
+									box on
+									set(ax, 'Layer', 'top')
+									ax.LineWidth=1;
+									set(gca,'position',spPos)
+									set(cl,'position',clPos)                
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+									f = getframe(hfig);
+									imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename,'.png'],'png');
+									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
+									close all
+								end                        
+							elseif levs==0
+								for loop=1
+									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+									hfig=figure;
+									rds=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+									ax1=subplot(3,4,[1:8]);
+									hold on
+									diffplt=(EXPvectnav(:,:,exp1)-EXPvectnav(:,:,exp2));
+									diffplt(diffplt<min(dcntr))=min(dcntr);                
+									[c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr);
+									hold on
+									[c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr,'k');
+									caxis([dmin dmax])
+									ylim([0 pltkm])
+									xlim([0 identmaxfhr*3-3])
+									colormap(custommap(20,WC2))
+									cl=colorbar;
+									xlabel('Forecast Hour','fontsize',22)
+									ylabel('Radius (km)','fontsize',22)
+									set(gca,'yTick',[0:100:pltkm],'fontsize',22)
+									set(gca,'xtick',0:12:size(EXPvectnav,2)*3-1,'fontsize',22)
+									set(gca,'fontsize',20)
+									set(gca,'plotboxaspectratio',[1 1 1])
+									set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+									adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+									if sum(adaa)>0
+									else
+										adaa((size(adaa,2)+1)/2)=0;
+									end
+									set(cl,'YTicklabel',adaa) 
+									set(gcf, 'InvertHardcopy', 'off')
+									set(gcf,'Units','inches');
+									screenposition = get(gcf,'Position');
+									set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+									set(gcf, 'InvertHardcopy', 'off')                                
+									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+									ax=gca;
+									box on
+									set(ax, 'Layer', 'top')
+									ax.LineWidth=1;  
+									set(gca,'position',spPos)
+									set(cl,'position',clPos)                
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+									f = getframe(hfig);
+									imwrite(f.cdata,[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
+									close all
+								end
+							end
+						['COMPLETED DIFFERENCES - EXP: ', identexpshort{exp1},'-',identexpshort{exp2},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
+						end
+						
+						%% Scrubs .mat files for each experiment
+						for i=1:size(identexp,1)
+							%delete([identfields,'/',identexp{i},'/MATFILES/',identhwrf,'_synoptic_',identexp{i},'_',identinittimesunique(identloop,:),'_',identvariables{identvar},'.mat'])
+						end 
+					end					
                end
             end
             clearvars -except ident* skip* pltkm innerradu* outerradu* pltcen radbin pltpt nav spPos clPos
@@ -4541,7 +4564,7 @@ for hwrfplots=1
                     disp('BT is all NaNs...skipping date!')
                 else
                     %% Get data for each experiment
-                    for identexploop=1:size(identexp,1)
+                    for identexploop=identvarexp0%1:size(identexp,1)
                         % This will loop over EXP experiments - same code for each!
                         identexp0=identexp{identexploop};
                         disp(['EXPERIMENT: ',identexp0])                        
@@ -5078,389 +5101,392 @@ for hwrfplots=1
                         ['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
                     end                   
                     
-                    %% Save Data
-                    if identsave==1
-                        if levs==1
-                            save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
-                        elseif levs==0
-                            save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
-                        end
-                    else
-                    end
-                    
-                    if strcmp(identdiff,'all')==1
-                        identdiff=nchoosek(1:size(identexp,1),2);
-                    end
-                    
-                    %% Differences 
-                    for df=1:size(identdiff,1)
-                        % Set Experiments
-                        exp1=identdiff(df,1);
-                        exp2=identdiff(df,2);
-                        % Difference: PLAN
-                        if levs==1
-                            if identplan==1
-                                for loop=1:size(var_f,4) 
-                                    if isnan(BT_lat(identloop,loop))==1
-                                    else
-                                        for loop1=identpresplan 
-                                            set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                            hfig=figure;
-                                            rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
-                                            rds2=sort(rds1*-1);
-                                            rds=[rds2 rds1(2:end)]';
-                                            set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                            ax1=subplot(3,4,[1:8]);
-                                            hold on                     
-                                            diffplt=fliplr(EXPplan(:,:,loop1,loop,exp1)-EXPplan(:,:,loop1,loop,exp2))';
-                                            diffplt(diffplt<min(dcntr))=min(dcntr);
-                                            [c,h]=contourf(rds,rds,diffplt,dcntr);
-                                            hold on
-                                            [c1,h1]=contour(rds,rds,diffplt,dcntr);
-                                            caxis([dmin dmax])
-                                            axis([-pltkm pltkm -pltkm pltkm])
-                                            colormap(custommap(20,WC2))              
-                                            xlabel('Distance (km)','fontsize',20)
-                                            ylabel('Distance (km)','fontsize',20)
-                                            viscircles([0 0],0,'Color','k','linewidth',1);
-                                            viscircles([0 0],100,'Color','k','linewidth',1);
-                                            viscircles([0 0],200,'Color','k','linewidth',1);
-                                            viscircles([0 0],300,'Color','k','linewidth',1);
-                                            viscircles([0 0],400,'Color','k','linewidth',1);
-                                            viscircles([0 0],500,'Color','k','linewidth',1);                                
-                                            set(gca,'fontsize',20)
-                                            set(gca,'plotboxaspectratio',[1 1 1])
-                                            cl=colorbar;
-                                            set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                            adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                            if sum(adaa)>0
-                                            else
-                                                adaa((size(adaa,2)+1)/2)=0;
-                                            end
-                                            set(gca,'xtick',-500:250:500)
-                                            set(gca,'ytick',-500:250:500)  
-                                            set(cl,'YTicklabel',adaa) 
-                                            set(gcf, 'InvertHardcopy', 'off')
-                                            set(gcf,'Units','inches');
-                                            screenposition = get(gcf,'Position');
-                                            set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                            set(gcf, 'InvertHardcopy', 'off')
-                                            text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                            text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                            text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                            text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                            text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                            ax=gca;
-                                            box on
-                                            set(ax, 'Layer', 'top')
-                                            ax.LineWidth=1; 
-                                            set(gca,'position',spPos)
-                                            set(cl,'position',clPos)                
-                                            set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                            f = getframe(hfig);
-                                            imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                            %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
-                                            close all
-                                        end
-                                    end
-                                end
-                            end    
-                        elseif levs==0
-                            if identplan==1
-                                for loop=1:size(var_f,3) % by fhr
-                                    if isnan(BT_lat(identloop,loop))==1
-                                    else
-                                        set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                        hfig=figure;
-                                        rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
-                                        rds2=sort(rds1*-1);
-                                        rds=[rds2 rds1(2:end)]';
-                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                        ax1=subplot(3,4,[1:8]);
-                                        hold on                     
-                                        diffplt=fliplr(EXPplan(:,:,loop,exp1)-EXPplan(:,:,loop,exp2))';
-                                        diffplt(diffplt<min(dcntr))=min(dcntr);
-                                        [c,h]=contourf(rds,rds,diffplt,dcntr);
-                                        hold on
-                                        [c1,h1]=contour(rds,rds,diffplt,dcntr);
-                                        caxis([dmin dmax])
-                                        axis([-pltkm pltkm -pltkm pltkm])
-                                        colormap(custommap(20,WC2))              
-                                        xlabel('Distance (km)','fontsize',20)
-                                        ylabel('Distance (km)','fontsize',20)
-                                        viscircles([0 0],0,'Color','k','linewidth',1);
-                                        viscircles([0 0],100,'Color','k','linewidth',1);
-                                        viscircles([0 0],200,'Color','k','linewidth',1);
-                                        viscircles([0 0],300,'Color','k','linewidth',1);
-                                        viscircles([0 0],400,'Color','k','linewidth',1);
-                                        viscircles([0 0],500,'Color','k','linewidth',1);                                
-                                        set(gca,'fontsize',20)
-                                        set(gca,'plotboxaspectratio',[1 1 1])
-                                        cl=colorbar;
-                                        set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                        adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                        if sum(adaa)>0
-                                        else
-                                            adaa((size(adaa,2)+1)/2)=0;
-                                        end
-                                        set(gca,'xtick',-500:250:500)
-                                        set(gca,'ytick',-500:250:500)  
-                                        set(cl,'YTicklabel',adaa) 
-                                        set(gcf, 'InvertHardcopy', 'off')
-                                        set(gcf,'Units','inches');
-                                        screenposition = get(gcf,'Position');
-                                        set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                        set(gcf, 'InvertHardcopy', 'off')                                    
-                                        text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                        text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                        text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                        text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                        text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                        ax=gca;
-                                        box on
-                                        set(ax, 'Layer', 'top')
-                                        ax.LineWidth=1; 
-                                        set(gca,'position',spPos)
-                                        set(cl,'position',clPos)                
-                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                        f = getframe(hfig);
-                                        imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                        %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
-                                        close all  
-                                    end
-                                end
-                            end
-                        end
-                        % Difference: AZAV
-                        if levs==1
-                            % (fhr)x(radius) for a single (plev) for each (cycle)
-                            for loop=identpresplan
-                                set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                hfig=figure;
-                                rds=0:0.015*111.11:pltcen*0.015*111.11;   
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                ax1=subplot(3,4,[1:8]);
-                                hold on
-                                diffplt=squeeze((EXPvectnav(loop,:,:,exp1)-EXPvectnav(loop,:,:,exp2)));
-                                diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                [c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr);
-                                hold on
-                                [c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr,'k');
-                                caxis([dmin dmax])
-                                ylim([0 pltkm])
-                                xlim([0 identmaxfhr*3-3])
-                                colormap(custommap(20,WC2))
-                                cl=colorbar;
-                                xlabel('Forecast Hour','fontsize',22)
-                                ylabel('Radius (km)','fontsize',22)
-                                set(gca,'yTick',[0:100:pltkm],'fontsize',22)
-                                set(gca,'xtick',0:12:size(EXPvectnav,3)*3-1,'fontsize',22)
-                                set(gca,'fontsize',20)
-                                set(gca,'plotboxaspectratio',[1 1 1])
-                                set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                if sum(adaa)>0
-                                else
-                                    adaa((size(adaa,2)+1)/2)=0;
-                                end
-                                set(cl,'YTicklabel',adaa) 
-                                set(gcf, 'InvertHardcopy', 'off')
-                                set(gcf,'Units','inches');
-                                screenposition = get(gcf,'Position');
-                                set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                set(gcf, 'InvertHardcopy', 'off')
-                                text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ PLEV: ',num2str(plev(loop)),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                ax=gca;
-                                box on
-                                set(ax, 'Layer', 'top')
-                                ax.LineWidth=1;
-                                set(gca,'position',spPos)
-                                set(cl,'position',clPos)                
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                f = getframe(hfig);
-                                imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
-                                close all
-                            end
-                            % (radius)x(plev) for a single (fhr) for each (cycle)
-                            for loop=1:size(EXPvectnav,3) %1:fhr
-                                if isnan(BT_lat(identloop,loop))==1
-                                else
-                                    set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                    hfig=figure;
-                                    rds=0:0.015*111.11:pltcen*0.015*111.11;   
-                                    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                    ax1=subplot(3,4,[1:8]);
-                                    hold on
-                                    diffplt=squeeze((EXPvectnav(:,:,loop,exp1)-EXPvectnav(:,:,loop,exp2)));
-                                    diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                    [c,h]=contourf(rdsplt,plev,diffplt,dcntr);
-                                    hold on
-                                    [c1,h1]=contour(rdsplt,plev,diffplt,dcntr,'k');
-                                    caxis([dmin dmax])
-                                    axis ij
-                                    ylim([0 1000])
-                                    xlim([0 pltkm])
-                                    colormap(custommap(20,WC2))
-                                    xlabel('Radius (km)','fontsize',22)
-                                    ylabel('Pressure (hPa)','fontsize',22)
-                                    set(gca,'yTick',[0:100:1000],'fontsize',22)
-                                    set(gca,'xtick',0:100:pltkm,'fontsize',22)
-                                    cl=colorbar;
-                                    set(gca,'fontsize',20)
-                                    set(gca,'plotboxaspectratio',[1 1 1])
-                                    set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                    adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                    if sum(adaa)>0
-                                    else
-                                        adaa((size(adaa,2)+1)/2)=0;
-                                    end
-                                    set(cl,'YTicklabel',adaa) 
-                                    set(gcf, 'InvertHardcopy', 'off')
-                                    set(gcf,'Units','inches');
-                                    screenposition = get(gcf,'Position');
-                                    set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                    set(gcf, 'InvertHardcopy', 'off')                                
-                                    text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                    text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                    text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                    text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                    text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                    ax=gca;
-                                    box on
-                                    set(ax, 'Layer', 'top')
-                                    ax.LineWidth=1;
-                                    set(gca,'position',spPos)
-                                    set(cl,'position',clPos)                
-                                    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    f = getframe(hfig);
-                                    imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                    %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
-                                    close all
-                                end
-                            end
-                            % (plev)x(fhr) one plot
-                            for loop=1:size(EXPvectnavi,3)
-                                set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                hfig=figure;
-                                rds=rdsplt;
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                ax1=subplot(3,4,[1:8]);
-                                hold on
-                                diffplt=squeeze(EXPvectnavi(:,:,loop,exp1)-EXPvectnavi(:,:,loop,exp2));
-                                innerrad=innerradu(loop);
-                                outerrad=outerradu(loop);
-                                filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];    
-                                diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                [c,h]=contourf(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr);
-                                hold on
-                                [c1,h1]=contour(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr,'k');
-                                caxis([dmin dmax])
-                                axis ij
-                                ylim([0 1000])
-                                xlim([0 identmaxfhr*3-3])
-                                colormap(custommap(20,WC2))
-                                xlabel('Forecast Hour','fontsize',22)
-                                ylabel('Pressure (hPa)','fontsize',22)
-                                set(gca,'yTick',[0:100:1000],'fontsize',22)
-                                set(gca,'xtick',0:12:size(EXPvectnavi,2)*3-1,'fontsize',22)
-                                cl=colorbar;
-                                set(gca,'fontsize',20)
-                                set(gca,'plotboxaspectratio',[1 1 1])
-                                set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                if sum(adaa)>0
-                                else
-                                    adaa((size(adaa,2)+1)/2)=0;
-                                end
-                                set(cl,'YTicklabel',adaa) 
-                                set(gcf, 'InvertHardcopy', 'off')
-                                set(gcf,'Units','inches');
-                                screenposition = get(gcf,'Position');
-                                set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                set(gcf, 'InvertHardcopy', 'off')                                
-                                text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(loop)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(loop)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                ax=gca;
-                                box on
-                                set(ax, 'Layer', 'top')
-                                ax.LineWidth=1;
-                                set(gca,'position',spPos)
-                                set(cl,'position',clPos)                
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                f = getframe(hfig);
-                                imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename,'.png'],'png');
-                                %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
-                                close all
-                            end                        
-                        elseif levs==0
-                            for loop=1
-                                set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-                                hfig=figure;
-                                rds=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-                                ax1=subplot(3,4,[1:8]);
-                                hold on
-                                diffplt=(EXPvectnav(:,:,exp1)-EXPvectnav(:,:,exp2));
-                                diffplt(diffplt<min(dcntr))=min(dcntr);                
-                                [c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr);
-                                hold on
-                                [c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr,'k');
-                                caxis([dmin dmax])
-                                ylim([0 pltkm])
-                                xlim([0 identmaxfhr*3-3])
-                                colormap(custommap(20,WC2))
-                                cl=colorbar;
-                                xlabel('Forecast Hour','fontsize',22)
-                                ylabel('Radius (km)','fontsize',22)
-                                set(gca,'yTick',[0:100:pltkm],'fontsize',22)
-                                set(gca,'xtick',0:12:size(EXPvectnav,2)*3-1,'fontsize',22)
-                                set(gca,'fontsize',20)
-                                set(gca,'plotboxaspectratio',[1 1 1])
-                                set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
-                                adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
-                                if sum(adaa)>0
-                                else
-                                    adaa((size(adaa,2)+1)/2)=0;
-                                end
-                                set(cl,'YTicklabel',adaa) 
-                                set(gcf, 'InvertHardcopy', 'off')
-                                set(gcf,'Units','inches');
-                                screenposition = get(gcf,'Position');
-                                set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                set(gcf, 'InvertHardcopy', 'off')                                
-                                text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
-                                text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-                                text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
-                                ax=gca;
-                                box on
-                                set(ax, 'Layer', 'top')
-                                ax.LineWidth=1;  
-                                set(gca,'position',spPos)
-                                set(cl,'position',clPos)                
-                                set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                f = getframe(hfig);
-                                imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
-                                %print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
-                                close all
-                            end
-                        end
-                    ['COMPLETED DIFFERENCES - EXP: ', identexpshort{exp1},'-',identexpshort{exp2},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
-                    end
-                    
-                    %% Scrubs .mat files for each experiment
-                    for i=1:size(identexp,1)
-                        %delete([identfields,'/',identexp{i},'/MATFILES/',identhwrf,'_storm_',identexp{i},'_',identinittimesunique(identloop,:),'_',identvariables{identvar},'.mat'])
-                    end     
+                    if identvarexp0==size(identexp,1) % if it's the last experiment, that means all needed data has been saved and generated from above!					
+						%% Save Data
+						if identsave==1
+							if levs==1
+								save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
+							elseif levs==0
+								save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
+							end
+						else
+						end
+						
+						if strcmp(identdiff,'all')==1
+							identdiff=nchoosek(1:size(identexp,1),2);
+						end
+						
+						%% Differences 
+						for df=1:size(identdiff,1)
+							% Set Experiments
+							exp1=identdiff(df,1);
+							exp2=identdiff(df,2);
+							% Difference: PLAN
+							if levs==1
+								if identplan==1
+									for loop=1:size(var_f,4) 
+										if isnan(BT_lat(identloop,loop))==1
+										else
+											for loop1=identpresplan 
+												set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+												hfig=figure;
+												rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
+												rds2=sort(rds1*-1);
+												rds=[rds2 rds1(2:end)]';
+												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+												ax1=subplot(3,4,[1:8]);
+												hold on                     
+												diffplt=fliplr(EXPplan(:,:,loop1,loop,exp1)-EXPplan(:,:,loop1,loop,exp2))';
+												diffplt(diffplt<min(dcntr))=min(dcntr);
+												[c,h]=contourf(rds,rds,diffplt,dcntr);
+												hold on
+												[c1,h1]=contour(rds,rds,diffplt,dcntr);
+												caxis([dmin dmax])
+												axis([-pltkm pltkm -pltkm pltkm])
+												colormap(custommap(20,WC2))              
+												xlabel('Distance (km)','fontsize',20)
+												ylabel('Distance (km)','fontsize',20)
+												viscircles([0 0],0,'Color','k','linewidth',1);
+												viscircles([0 0],100,'Color','k','linewidth',1);
+												viscircles([0 0],200,'Color','k','linewidth',1);
+												viscircles([0 0],300,'Color','k','linewidth',1);
+												viscircles([0 0],400,'Color','k','linewidth',1);
+												viscircles([0 0],500,'Color','k','linewidth',1);                                
+												set(gca,'fontsize',20)
+												set(gca,'plotboxaspectratio',[1 1 1])
+												cl=colorbar;
+												set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+												adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+												if sum(adaa)>0
+												else
+													adaa((size(adaa,2)+1)/2)=0;
+												end
+												set(gca,'xtick',-500:250:500)
+												set(gca,'ytick',-500:250:500)  
+												set(cl,'YTicklabel',adaa) 
+												set(gcf, 'InvertHardcopy', 'off')
+												set(gcf,'Units','inches');
+												screenposition = get(gcf,'Position');
+												set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+												set(gcf, 'InvertHardcopy', 'off')
+												text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+												text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+												text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+												text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+												text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+												ax=gca;
+												box on
+												set(ax, 'Layer', 'top')
+												ax.LineWidth=1; 
+												set(gca,'position',spPos)
+												set(cl,'position',clPos)                
+												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+												f = getframe(hfig);
+												imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+												%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
+												close all
+											end
+										end
+									end
+								end    
+							elseif levs==0
+								if identplan==1
+									for loop=1:size(var_f,3) % by fhr
+										if isnan(BT_lat(identloop,loop))==1
+										else
+											set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+											hfig=figure;
+											rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
+											rds2=sort(rds1*-1);
+											rds=[rds2 rds1(2:end)]';
+											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+											ax1=subplot(3,4,[1:8]);
+											hold on                     
+											diffplt=fliplr(EXPplan(:,:,loop,exp1)-EXPplan(:,:,loop,exp2))';
+											diffplt(diffplt<min(dcntr))=min(dcntr);
+											[c,h]=contourf(rds,rds,diffplt,dcntr);
+											hold on
+											[c1,h1]=contour(rds,rds,diffplt,dcntr);
+											caxis([dmin dmax])
+											axis([-pltkm pltkm -pltkm pltkm])
+											colormap(custommap(20,WC2))              
+											xlabel('Distance (km)','fontsize',20)
+											ylabel('Distance (km)','fontsize',20)
+											viscircles([0 0],0,'Color','k','linewidth',1);
+											viscircles([0 0],100,'Color','k','linewidth',1);
+											viscircles([0 0],200,'Color','k','linewidth',1);
+											viscircles([0 0],300,'Color','k','linewidth',1);
+											viscircles([0 0],400,'Color','k','linewidth',1);
+											viscircles([0 0],500,'Color','k','linewidth',1);                                
+											set(gca,'fontsize',20)
+											set(gca,'plotboxaspectratio',[1 1 1])
+											cl=colorbar;
+											set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+											adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+											if sum(adaa)>0
+											else
+												adaa((size(adaa,2)+1)/2)=0;
+											end
+											set(gca,'xtick',-500:250:500)
+											set(gca,'ytick',-500:250:500)  
+											set(cl,'YTicklabel',adaa) 
+											set(gcf, 'InvertHardcopy', 'off')
+											set(gcf,'Units','inches');
+											screenposition = get(gcf,'Position');
+											set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+											set(gcf, 'InvertHardcopy', 'off')                                    
+											text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+											text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+											text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+											text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+											text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+											ax=gca;
+											box on
+											set(ax, 'Layer', 'top')
+											ax.LineWidth=1; 
+											set(gca,'position',spPos)
+											set(cl,'position',clPos)                
+											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+											f = getframe(hfig);
+											imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+											%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
+											close all  
+										end
+									end
+								end
+							end
+							% Difference: AZAV
+							if levs==1
+								% (fhr)x(radius) for a single (plev) for each (cycle)
+								for loop=identpresplan
+									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+									hfig=figure;
+									rds=0:0.015*111.11:pltcen*0.015*111.11;   
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+									ax1=subplot(3,4,[1:8]);
+									hold on
+									diffplt=squeeze((EXPvectnav(loop,:,:,exp1)-EXPvectnav(loop,:,:,exp2)));
+									diffplt(diffplt<min(dcntr))=min(dcntr);                
+									[c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr);
+									hold on
+									[c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr,'k');
+									caxis([dmin dmax])
+									ylim([0 pltkm])
+									xlim([0 identmaxfhr*3-3])
+									colormap(custommap(20,WC2))
+									cl=colorbar;
+									xlabel('Forecast Hour','fontsize',22)
+									ylabel('Radius (km)','fontsize',22)
+									set(gca,'yTick',[0:100:pltkm],'fontsize',22)
+									set(gca,'xtick',0:12:size(EXPvectnav,3)*3-1,'fontsize',22)
+									set(gca,'fontsize',20)
+									set(gca,'plotboxaspectratio',[1 1 1])
+									set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+									adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+									if sum(adaa)>0
+									else
+										adaa((size(adaa,2)+1)/2)=0;
+									end
+									set(cl,'YTicklabel',adaa) 
+									set(gcf, 'InvertHardcopy', 'off')
+									set(gcf,'Units','inches');
+									screenposition = get(gcf,'Position');
+									set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+									set(gcf, 'InvertHardcopy', 'off')
+									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ PLEV: ',num2str(plev(loop)),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+									ax=gca;
+									box on
+									set(ax, 'Layer', 'top')
+									ax.LineWidth=1;
+									set(gca,'position',spPos)
+									set(cl,'position',clPos)                
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+									f = getframe(hfig);
+									imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
+									close all
+								end
+								% (radius)x(plev) for a single (fhr) for each (cycle)
+								for loop=1:size(EXPvectnav,3) %1:fhr
+									if isnan(BT_lat(identloop,loop))==1
+									else
+										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+										hfig=figure;
+										rds=0:0.015*111.11:pltcen*0.015*111.11;   
+										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+										ax1=subplot(3,4,[1:8]);
+										hold on
+										diffplt=squeeze((EXPvectnav(:,:,loop,exp1)-EXPvectnav(:,:,loop,exp2)));
+										diffplt(diffplt<min(dcntr))=min(dcntr);                
+										[c,h]=contourf(rdsplt,plev,diffplt,dcntr);
+										hold on
+										[c1,h1]=contour(rdsplt,plev,diffplt,dcntr,'k');
+										caxis([dmin dmax])
+										axis ij
+										ylim([0 1000])
+										xlim([0 pltkm])
+										colormap(custommap(20,WC2))
+										xlabel('Radius (km)','fontsize',22)
+										ylabel('Pressure (hPa)','fontsize',22)
+										set(gca,'yTick',[0:100:1000],'fontsize',22)
+										set(gca,'xtick',0:100:pltkm,'fontsize',22)
+										cl=colorbar;
+										set(gca,'fontsize',20)
+										set(gca,'plotboxaspectratio',[1 1 1])
+										set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+										adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+										if sum(adaa)>0
+										else
+											adaa((size(adaa,2)+1)/2)=0;
+										end
+										set(cl,'YTicklabel',adaa) 
+										set(gcf, 'InvertHardcopy', 'off')
+										set(gcf,'Units','inches');
+										screenposition = get(gcf,'Position');
+										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+										set(gcf, 'InvertHardcopy', 'off')                                
+										text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+										text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+										text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+										text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+										text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+										ax=gca;
+										box on
+										set(ax, 'Layer', 'top')
+										ax.LineWidth=1;
+										set(gca,'position',spPos)
+										set(cl,'position',clPos)                
+										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+										f = getframe(hfig);
+										imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+										%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
+										close all
+									end
+								end
+								% (plev)x(fhr) one plot
+								for loop=1:size(EXPvectnavi,3)
+									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+									hfig=figure;
+									rds=rdsplt;
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+									ax1=subplot(3,4,[1:8]);
+									hold on
+									diffplt=squeeze(EXPvectnavi(:,:,loop,exp1)-EXPvectnavi(:,:,loop,exp2));
+									innerrad=innerradu(loop);
+									outerrad=outerradu(loop);
+									filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];    
+									diffplt(diffplt<min(dcntr))=min(dcntr);                
+									[c,h]=contourf(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr);
+									hold on
+									[c1,h1]=contour(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr,'k');
+									caxis([dmin dmax])
+									axis ij
+									ylim([0 1000])
+									xlim([0 identmaxfhr*3-3])
+									colormap(custommap(20,WC2))
+									xlabel('Forecast Hour','fontsize',22)
+									ylabel('Pressure (hPa)','fontsize',22)
+									set(gca,'yTick',[0:100:1000],'fontsize',22)
+									set(gca,'xtick',0:12:size(EXPvectnavi,2)*3-1,'fontsize',22)
+									cl=colorbar;
+									set(gca,'fontsize',20)
+									set(gca,'plotboxaspectratio',[1 1 1])
+									set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+									adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+									if sum(adaa)>0
+									else
+										adaa((size(adaa,2)+1)/2)=0;
+									end
+									set(cl,'YTicklabel',adaa) 
+									set(gcf, 'InvertHardcopy', 'off')
+									set(gcf,'Units','inches');
+									screenposition = get(gcf,'Position');
+									set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+									set(gcf, 'InvertHardcopy', 'off')                                
+									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(loop)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(loop)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+									ax=gca;
+									box on
+									set(ax, 'Layer', 'top')
+									ax.LineWidth=1;
+									set(gca,'position',spPos)
+									set(cl,'position',clPos)                
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+									f = getframe(hfig);
+									imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename,'.png'],'png');
+									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
+									close all
+								end                        
+							elseif levs==0
+								for loop=1
+									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+									hfig=figure;
+									rds=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+									ax1=subplot(3,4,[1:8]);
+									hold on
+									diffplt=(EXPvectnav(:,:,exp1)-EXPvectnav(:,:,exp2));
+									diffplt(diffplt<min(dcntr))=min(dcntr);                
+									[c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr);
+									hold on
+									[c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr,'k');
+									caxis([dmin dmax])
+									ylim([0 pltkm])
+									xlim([0 identmaxfhr*3-3])
+									colormap(custommap(20,WC2))
+									cl=colorbar;
+									xlabel('Forecast Hour','fontsize',22)
+									ylabel('Radius (km)','fontsize',22)
+									set(gca,'yTick',[0:100:pltkm],'fontsize',22)
+									set(gca,'xtick',0:12:size(EXPvectnav,2)*3-1,'fontsize',22)
+									set(gca,'fontsize',20)
+									set(gca,'plotboxaspectratio',[1 1 1])
+									set(cl,'YTick',dmin:dcntr1(2)-dcntr1(1):dmax,'fontsize',20)
+									adaa=dmin:dcntr1(2)-dcntr1(1):dmax;
+									if sum(adaa)>0
+									else
+										adaa((size(adaa,2)+1)/2)=0;
+									end
+									set(cl,'YTicklabel',adaa) 
+									set(gcf, 'InvertHardcopy', 'off')
+									set(gcf,'Units','inches');
+									screenposition = get(gcf,'Position');
+									set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+									set(gcf, 'InvertHardcopy', 'off')                                
+									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
+									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+									ax=gca;
+									box on
+									set(ax, 'Layer', 'top')
+									ax.LineWidth=1;  
+									set(gca,'position',spPos)
+									set(cl,'position',clPos)                
+									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+									f = getframe(hfig);
+									imwrite(f.cdata,[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2},'.png'],'png');
+									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
+									close all
+								end
+							end
+						['COMPLETED DIFFERENCES - EXP: ', identexpshort{exp1},'-',identexpshort{exp2},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
+						end
+						
+						%% Scrubs .mat files for each experiment
+						for i=1:size(identexp,1)
+						
+							%delete([identfields,'/',identexp{i},'/MATFILES/',identhwrf,'_storm_',identexp{i},'_',identinittimesunique(identloop,:),'_',identvariables{identvar},'.mat'])
+						end 
+					end					
                 end
             end
             clearvars -except ident* skip* pltkm innerradu* outerradu* pltcen radbin pltpt nav spPos clPos
@@ -5642,4 +5668,3 @@ for cleanup=1
         end 
     end
 end
-

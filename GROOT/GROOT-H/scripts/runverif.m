@@ -68,7 +68,7 @@ for identremoveinvest=1
                     [n, bin] = histc(A, unique(A));
                     multiple = find(n > size(identexpshort,1)-1);
                     index    = find(ismember(bin, multiple));
-                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
+                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
                 end
                 if identconv==1 && isempty(identinittimesunique)==0
 		% Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
@@ -87,7 +87,7 @@ for identremoveinvest=1
 			[n, bin] = histc(A, unique(A));
 			multiple = find(n > size(identexpshort,1)-1);
 			index    = find(ismember(bin, multiple));
-			identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;				
+            identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
 		end	
 		% Identify which cycle numbers will be running
                 if strcmp(identcycles,'all')==1
@@ -104,7 +104,7 @@ for identremoveinvest=1
             end
             if exist('breakscript','var')==1
                 disp([identn,' does not exist across all experiments yet...moving to next storm'])
-                clearvars -except identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv  
+                clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv  
             else
                 %% %%%%%%%%%%%% %%
                 %% Setup script %%
@@ -154,7 +154,7 @@ for identremoveinvest=1
                     [n, bin] = histc(A, unique(A));
                     multiple = find(n > size(identexpshort,1)-1);
                     index    = find(ismember(bin, multiple));
-                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
+                    identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
 		    if identconv==1 && isempty(identinittimesunique)==0
                     % Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
                         cnt=1; clear identdr1
@@ -172,7 +172,7 @@ for identremoveinvest=1
                         [n, bin] = histc(A, unique(A));
                         multiple = find(n > size(identexpshort,1)-1);
                         index    = find(ismember(bin, multiple));
-                        identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);if strcmp(identhwrf(end-2:end-2),'9')==1; identinittimesunique=identinittimesunique(investhelp==4,:); end;
+						identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
                 end
                     % Add package to read grb2 files to path
                     run([identout,'nctoolbox-1.1.3/setup_nctoolbox'])
@@ -330,7 +330,7 @@ for identremoveinvest=1
                 %% By Cycle (Individual & All) and By Forecast Hour (Errors, EDiffs, Imprv) %%
                 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
                 run runverif_statsing
-				clearvars -except identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
+				clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
             end
         end
     end      
@@ -1673,7 +1673,7 @@ for identremoveinvest=1
 				ABT_targetT=BT_targetT;
 				ABT_target=BT_target;
 				ABT_targetB=BT_targetB;
-				clearvars -except LOWbasin HIGHbasin ABT_drops ABT_dropsB ABT_dropsI ABT_dropsT ABT_targetI ABT_targetT ABT_target ABT_targetB *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone            
+				clearvars -except identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT_drops ABT_dropsB ABT_dropsI ABT_dropsT ABT_targetI ABT_targetT ABT_target ABT_targetB *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone            
 				save([identout,'compsave2.mat'])						
 				run([identout,'scripts/runverif_statcomp'])
 			end

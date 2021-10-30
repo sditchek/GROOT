@@ -1475,13 +1475,13 @@
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -1581,8 +1581,8 @@
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
 								end  
-								set(gca,'fontsize',12)
-								text(-.065,0,'# fcsts','HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'units','normalized','rotation',90);
+								set(gca,'fontsize',10)
+                                xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
@@ -1761,11 +1761,11 @@
 									imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
 									imprv2(:,tmp)=imprv;
 									l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=imprv(sigtest_loc);
 									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=imprv(sigtest_loc);
@@ -1940,8 +1940,8 @@
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
 								end  
-								set(gca,'fontsize',12)            
-								text(-.065,0,'# fcsts','HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'units','normalized','rotation',90);
+								set(gca,'fontsize',10)            
+                                xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
@@ -2132,11 +2132,11 @@
 									%plot(1:size(fspb,2),fspb,'--s','Color',identexpcolors(tmp,:),'linewidth',.5,'markersize',2); 
 									l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
 									cntl=cntl+1;
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=fspa(sigtest_loc);
 									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=fspa(sigtest_loc);
@@ -2246,8 +2246,8 @@
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
 								end  
-								set(gca,'fontsize',12)            
-								text(-.065,0,'# fcsts','HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'units','normalized','rotation',90);
+								set(gca,'fontsize',10)            
+                                xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
@@ -2422,13 +2422,13 @@
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -2593,8 +2593,8 @@
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
 								end  
-								set(gca,'fontsize',12)
-								text(-.065,0,'# fcsts','HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'units','normalized','rotation',90);
+								set(gca,'fontsize',10)
+                                xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
@@ -2635,7 +2635,7 @@
 								close all
 							end  
 							% Create Graphics: trk, int, spd errors and improvement - bt-gh vs. bt-deny
-							for plt=1:23
+							for med=1:2; for plt=1:23
 								spPosA=[0.1886    0.6118    0.6328    0.7000/2.2];
 								spPosB=[0.1886    0.2300    0.6328    0.7000/2.2];
 								clear l cntexp
@@ -2821,7 +2821,7 @@
 								end
 
 								for tmp=1:size(identexp,1)
-									l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
+									if med==1; l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); elseif med==2; l(tmp)=plot(1:size(tmp_exp,2),nanmedian(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); end;
 								end           
 								% Find which experiment to compare to
 								for tmp=1:size(identexp,1)
@@ -2831,16 +2831,16 @@
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
-									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+									if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
 									end
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
-									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+									if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'o','Color','k','markersize',6,'markerfacecolor',identexpcolors(tmp,:))
 									end
@@ -2892,16 +2892,16 @@
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
 								end
 								if sum([cntexp(:)])==0
-									tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',10,'units','normalized');
+									tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 									set(tx, 'Layer', 'front')
 								end          
 								if plt==19
-									 tx=text(0.01,0.1,'Slower than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',10,'units','normalized');
-									 tx=text(0.01,0.965,'Faster than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',10,'units','normalized');
+									 tx=text(0.01,0.1,'Slower than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+									 tx=text(0.01,0.965,'Faster than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 									 set(tx, 'Layer', 'front')            
 								elseif plt==20
-									 tx=text(0.01,0.1,'Left of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',10,'units','normalized');
-									 tx=text(0.01,0.965,'Right of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',10,'units','normalized');
+									 tx=text(0.01,0.1,'Left of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+									 tx=text(0.01,0.965,'Right of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 									 set(tx, 'Layer', 'front')            
 								end
 
@@ -3035,14 +3035,14 @@
 								tmpu(tmpu==tmpimp)=[];
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=[tmpimp,tmpu]
-									imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
-									imprv2(:,tmp)=imprv;
+									if med==1; imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1)); elseif med==2; imprv=100.*(1-nanmedian(tmp_exp(:,:,tmp),1)./nanmedian(tmp_exp(:,:,tmpimp),1)); end;                 
+									imprv2(:,tmp)=imprv; imprvmedian(:,tmp)=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));
 									l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=imprv(sigtest_loc);
 									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=imprv(sigtest_loc);
@@ -3093,16 +3093,16 @@
 								else
 									addfacq=20;
 								end
-								if numel(num2str(round(max(imprv2(:)))))==3
+								if numel(num2str(round(max(imprvmedian(:)))))==3
 									addfac=100;
-								elseif numel(num2str(round(max(imprv2(:)))))==2
+								elseif numel(num2str(round(max(imprvmedian(:)))))==2
 									addfac=20;
 								else
 									addfac=20;
 								end
 								if plt<=3 || (plt>=16 && plt<=18) % 0-end
-									tmpmin=min(imprv2(:));
-									tmpmax=max(imprv2(:));
+									tmpmin=min(imprvmedian(:));
+									tmpmax=max(imprvmedian(:));
 									tmpval=max(abs(tmpmin),abs(tmpmax));
 									if isnan(tmpval)==1
 										tmpval=0;
@@ -3113,8 +3113,8 @@
 										yrange=[-round((tmpval+addfac)/10)*10 round((tmpval+addfac)/10)*10];
 									end
 								elseif plt==19 || plt==20 % -end end 
-									tmpmin=min(imprv2(:));
-									tmpmax=max(imprv2(:));
+									tmpmin=min(imprvmedian(:));
+									tmpmax=max(imprvmedian(:));
 									tmpval=max(abs(tmpmin),abs(tmpmax));
 									if isnan(tmpval)==1
 										tmpval=0;
@@ -3214,8 +3214,8 @@
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
 								end  
-								set(gca,'fontsize',12)            
-								text(-.065,0,'# fcsts','HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'units','normalized','rotation',90);
+								set(gca,'fontsize',10)            
+                                xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPosB(1) spPosB(2)-.1 spPosB(3) spPosB(4)])
 								screenposition = get(gcf,'Position');
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
@@ -3252,9 +3252,9 @@
 									end
 								end
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'.png'],'png');
+								if med==1; imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_mean.png'],'png'); elseif med==2; imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_median.png'],'png'); end;
 								close all
-							end              
+							end;end              
 							spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
 							clPos=[0.88 0.13+.05 0.04 0.75-.05]; % arrange plots the same
 							% Create Graphics: contribution!!!
@@ -4738,13 +4738,13 @@
 								end       
 								plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
 									for tmpi=tmp
 										plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end                
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -5090,11 +5090,11 @@
 									imprv(imprv<-99999999)=NaN;
 									imprv(imprv>99999999)=NaN;
 									l(tmp)=plot(imprv,1:size(imprv,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=imprv(sigtest_loc);
 									plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=imprv(sigtest_loc);
@@ -5472,11 +5472,11 @@
 									%plot(fspb,1:size(fspb,1),'--s','Color',identexpcolors(tmp,:),'linewidth',.5,'markersize',2); 
 									l(cntl)=plot(fspa,1:size(fspa,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
 									cntl=cntl+1;								
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=fspa(sigtest_loc);
 									plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=fspa(sigtest_loc);
@@ -5765,13 +5765,13 @@
 								end       
 								plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.05);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.05,identserialcorr);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
 									for tmpi=tmp
 										plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end                
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.1);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.1,identserialcorr);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -7719,7 +7719,7 @@
                                                     close all
                                                 end
 												% Create Graphics: trk, int, spd errors and improvement - bt-gh vs. bt-deny
-												for plt=1:23
+												for med=1:2; for plt=1:23
 													spPosA=[0.1886    0.6118    0.6328    0.7000/2.2];
 													spPosB=[0.1886    0.2300    0.6328    0.7000/2.2];
 													clear l cntexp
@@ -8248,9 +8248,9 @@
 													tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 													set(tx, 'Layer', 'front')																								
 													f = getframe(hfig);
-													imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+													if med==1; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png'); elseif med==2; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png'); end;
 													close all
-												end																				
+												end; end;																				 
                                                 
 												spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
                                                 % Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
@@ -11128,13 +11128,13 @@
                                                     end
                                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                                         for tmpi=tmp
                                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -11804,11 +11804,11 @@
                                                         imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
                                                         imprv2(:,tmp)=imprv;
                                                         l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=imprv(sigtest_loc);
                                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=imprv(sigtest_loc);
@@ -12508,11 +12508,11 @@
                                                         fsp2(:,tmp)=fspa;
                                                         l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
                                                         cntl=cntl+1;
-														sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05);
+														sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=fspa(sigtest_loc);
                                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=fspa(sigtest_loc);
@@ -13128,13 +13128,13 @@
                                                     end
                                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                                         for tmpi=tmp
                                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -13347,7 +13347,7 @@
                                                     close all
                                                 end
 												% Create Graphics: trk, int, spd errors and improvement - bt-gh vs. bt-deny
-												for plt=1:23
+												for med=1:2; for plt=1:23
 													spPosA=[0.1886    0.6118    0.6328    0.7000/2.2];
 													spPosB=[0.1886    0.2300    0.6328    0.7000/2.2];
 													clear l cntexp
@@ -13805,7 +13805,7 @@
                                                         tmpnm=identinittimesunique(numlist,:); 
                                                     end                                                       
 													for tmp=1:size(identexp,1)
-														l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
+														if med==1; l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); elseif med==2; l(tmp)=plot(1:size(tmp_exp,2),nanmedian(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); end;
 													end           
 													% Find which experiment to compare to
 													for tmp=1:size(identexp,1)
@@ -13816,16 +13816,16 @@
 
 													plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 													for tmp=1:size(identexp,1)
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
 														sigtest_loc=find(sigtest==1);
-														sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+														if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
 														for tmpi=tmp
 															plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
 														end
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
 														sigtest_loc1=find(sigtest==1);
 														sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
-														sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+														if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
 														for tmpi=tmp
 															plot(sigtest_loc,sigtest_exp(:,:,tmpi),'o','Color','k','markersize',6,'markerfacecolor',identexpcolors(tmp,:))
 														end
@@ -14087,7 +14087,7 @@
 													if plt <19 || plt >20
 														tmp_exp=abs(tmp_exp); % added for MAE
 													end
-													tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp(:,:,:),1)./nanmean(tmp_exp(:,:,tmpimp),1)));                  													
+													tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp(:,:,:),1)./nanmean(tmp_exp(:,:,tmpimp),1)));               													
 													
 													% Strat
 													if strat==1
@@ -14411,14 +14411,14 @@
 													tmpu(tmpu==tmpimp)=[];
 													plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 													for tmp=[tmpimp,tmpu]
-														imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
+														if med==1; imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));   elseif med==2; imprv=100.*(1-nanmedian(tmp_exp(:,:,tmp),1)./nanmedian(tmp_exp(:,:,tmpimp),1)); end;                
 														imprv2(:,tmp)=imprv;
 														l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
 														sigtest_loc=find(sigtest==1);
 														sigtest_exp=imprv(sigtest_loc);
 														plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
 														sigtest_loc1=find(sigtest==1);
 														sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 														sigtest_exp=imprv(sigtest_loc);
@@ -14623,9 +14623,9 @@
 														end
 													end
 													f = getframe(hfig);
-													imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+													if med==1; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_mean.png'],'png'); elseif med==2; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_median.png'],'png'); end;
 													close all
-												end																				
+												end; end;																	
                                                 
 												spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
                                                 % Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
@@ -15100,13 +15100,13 @@
                                                     end
                                                     plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
                                                         for tmpi=tmp
                                                             plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end                
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -15769,11 +15769,11 @@
                                                                 imprv(imprv<-99999999)=NaN;
                                                                 imprv(imprv>99999999)=NaN;
                                                                 l(tmp)=plot(imprv,1:size(imprv,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05);
+                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
                                                                 sigtest_loc=find(sigtest==1);
                                                                 sigtest_exp=imprv(sigtest_loc);
                                                                 plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1);
+                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
                                                                 sigtest_loc1=find(sigtest==1);
                                                                 sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                                 sigtest_exp=imprv(sigtest_loc);
@@ -16468,11 +16468,11 @@
                                                                 %plot(fspb,1:size(fspb,1),'--s','Color',identexpcolors(tmp,:),'linewidth',.5,'markersize',2); 
                                                                 l(cntl)=plot(fspa,1:size(fspa,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
                                                                 cntl=cntl+1;
-																sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05);
+																sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
                                                                 sigtest_loc=find(sigtest==1);
                                                                 sigtest_exp=fspa(sigtest_loc);
                                                                 plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1);
+                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
                                                                 sigtest_loc1=find(sigtest==1);
                                                                 sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                                 sigtest_exp=fspa(sigtest_loc);
@@ -17083,13 +17083,13 @@
                                                     end       
                                                     plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.05);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.05,identserialcorr);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
                                                         for tmpi=tmp
                                                             plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end                
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.1);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.1,identserialcorr);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -20065,6 +20065,6 @@
                                 end
                             end
                         end
-                        clearvars -except identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-                        clearvars -except identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
-                end             
+                        clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+                        clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
+                end   

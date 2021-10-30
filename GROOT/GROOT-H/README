@@ -136,6 +136,11 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+10/28/21 | Added capability for the combo error/improvement graphics to produce both a mean and a median version as another way aside from FSP and PPC graphics to identify sample outliers
+	 | Added capability to choose what serial correlation value to use in the namelist
+	 | Added capability to choose what obstype to use in the namelist
+	 | Due to changes to Hera, GRB scripts now include an --exclusive flag so that memory issues do not occur
+	 | GRB scripts have been modified so that each experiment is run in a separate batch script so timeouts don't occur
 10/18/21 | Fixed a bug that included SS and SD in the TD and TS stratifications
 	 | Flipped the y-axis for the individual cycle graphics to match the PPC graphics
 	 | Added capability to keep folders of invests or storms that do not satisfy NHC verfication

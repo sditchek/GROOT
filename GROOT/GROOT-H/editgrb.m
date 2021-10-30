@@ -10,18 +10,18 @@
 ident=['AL052019'];                                             % basin, ID, and year (e.g., AL092016)
 identn=['DORIAN19'];                                            % NAMEYY (e.g., HERMINE16)
 identhwrf=['dorian05l'];                                        % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
-identcycles=['all'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
+identcycles=['2019082606';'2019082612';'2019082618';'2019082700';'2019082706';'2019082712';'2019082718';'2019082800';'2019082806';'2019082812';'2019082818';'2019082900';'2019082906'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
 identmaxfhr=(126)/3+1;                                          % max forecast hours set in model (e.g., 126) - keep the /3+1
 identlevels=46;                                                 % number of pressure levels
-identexp=[{'HB20new'};{'HB20_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
-identexpshort=[{'ALL'};{'NO'}];                                 % short name of experiments (no more than 8 letters per experiment)
+identexp=[{'HB20new'};{'HB20_NC'};{'HB20_OV'};{'HB20_TG'};{'HB20_IC'};{'HB20_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
+identexpshort=[{'ALL'};{'NIC'};{'NTG'};{'TG'};{'IC'};{'NO'}];   % short name of experiments (no more than 8 letters per experiment)
 identexpsigimp='HB20_NO';                                    % full folder name of experiment you want improvement and significance compared to
 identexpsigimpshort='NO';                                       % short name of experiment you want improvement and significance compared to (no more than 8 letters)
 identpresplan=[200,500,850];                                    % pressure levels of plan-view graphics
-identexpcolors=[0 .6 0;.9 0 0];                                 % colors associated with each experiment
+identexpcolors=[0 152 0;89 130 219;146 108 172;213 157 1;237 119 0;208 0 0]/255;            % colors associated with each experiment
                                                                       % EX1: For 2 experiments, recommended colors: green(included data)=[0,.7,0] red(denied data)=[.9,0,0]
                                                                       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-identdiff=[1 2;];                                               % for which experiments should difference fields be taken
+identdiff=[1 6;];                                               % for which experiments should difference fields be taken
                                                                       % EX1: if there are 3 experiments and you want to take the difference between experiment 1 and the other two experimentes, you'd write: identdiff=[1 2; 1 3];
                                                                       % EX2: if you want to take all differences, you'd write: identdiff='all';
           
@@ -42,7 +42,7 @@ identplan=1;                                                    % create plan-vi
 identsave=0;                                                    % do you want to save .mat files of the computed fields that make the graphics? This takes up more space! | yes (1) no (0)	
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
-%% IF YOU CHOOSE v01, v16, or v73-v75, OUTPUT WILL INCLUDE  %%
+%% IF YOU CHOOSE v01, v16, or v73-v78, OUTPUT WILL INCLUDE  %%
 %% MULTIPLE VARIABLES SO IT WILL TAKE LONGER THAN EXPECTED! %%
 %%							    %%					
 %%   How To: to include (exclude) a variable, remove (add)  %%
@@ -101,7 +101,7 @@ v35=35;        %        %              Relative humidity | isobaric
 %v49=49;        %        kg m**-2       Total column-integrated cloud ice | 2D
 %v50=50;        %        kg m**-2       Total column-integrated cloud water | 2D
 %v51=51;        %        kg m**-2       Total column-integrated condensate | 2D
-v52=52;        %        kg kg-1        Total condensate | isobaric
+%v52=52;        %        kg kg-1        Total condensate | isobaric
 %v53=53;        %        kg m**-2       Total accumulated precipitation | surface
 %v54=54;        %        W m**-2        Upward long-wave radiation flux | surface
 %v55=55;        %        W m**-2        Upward long-wave radiation flux hour average | surface
@@ -110,7 +110,7 @@ v52=52;        %        kg kg-1        Total condensate | isobaric
 %v58=58;        %        numeric        Heat Exchange Coefficient | 2D
 %v59=59;        %        s**-1          Vertical speed shear | tropopause
 v60=60;        %        Pa s-1         Vertical velocity | isobaric
-%v61=61;        %        K              Sea surface temperature | surface
+v61=61;        %        K              Sea surface temperature | surface
 %v73=[73,76];   %        m s**-1        10 metre U/V wind component | 2D
 v74=[74,77];   %        m s**-1        U/V component of wind | isobaric
 %v75=[75,78];   %        m s**-1        U/V component of wind | tropopause
@@ -243,6 +243,7 @@ fprintf(fid,'%s\n',['initgraphicssynoptic=',num2str(initgraphicssynoptic)]);
 %fprintf(fid,'%s\n',['initconventional=',num2str(initconventional)]);
 fprintf(fid,'%s\n',['initda=',num2str(initda)]);
 fprintf(fid,'%s\n',['cycles="',num2str(identcyclenum),'"']);
+fprintf(fid,'%s\n',['exp="',num2str(1:size(identexp,1)),'"']);
 fprintf(fid,'%s\n',['stm=',identn]);
 fprintf(fid,'%s\n',['stormvariables="',num2str(identvstorm),'"']);
 fprintf(fid,'%s\n',['synopticvariables="',num2str(identvsynoptic),'"']);
