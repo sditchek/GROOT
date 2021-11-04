@@ -5,7 +5,7 @@
 % Set Directories and Model Properties
 identgroovpr=['/scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/'];    % location of your GROOT-PR dirctory
 identout=['/scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT/GROOT-H/'];                 % location of where all graphics will go
-identmaxfhr=(126)/3+1;                                                        	 % max forecast hours steps set in model (e.g., 126)
+identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                               	 % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
 identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors

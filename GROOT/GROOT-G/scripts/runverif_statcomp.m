@@ -90,26 +90,26 @@
                     trkerr_exp_all	=	[];
                     ateerr_exp_all	=	[];
                     xteerr_exp_all	=	[];
-                    interr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    ne34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    ne50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    ne64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    nw34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    nw50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    nw64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    poerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    rmwerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    roerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    se34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    se50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    se64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    spderr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    sw34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    sw50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    sw64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    trkerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    ateerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-                    xteerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
+                    interr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ne34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ne50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ne64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    nw34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    nw50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    nw64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    poerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    rmwerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    roerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    se34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    se50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    se64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    spderr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    sw34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    sw50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    sw64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    trkerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ateerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    xteerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
                     % Concatenate all storms together
                     cntcan=1;
                     cntst=1;
@@ -1087,7 +1087,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -1130,7 +1130,7 @@
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     set(gca,'Color',[.9 .9 .9])
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                     tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                     set(tx, 'Layer', 'front')
@@ -1310,7 +1310,7 @@
                                     end 
                                     ylim(impylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -1524,7 +1524,7 @@
                                         end  
                                         ylim([25 75])
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         grid on
                                         set(gca,'gridcolor','k','gridalpha',.15)
                                         set(gca,'fontsize',20)      
@@ -1747,7 +1747,7 @@
                                     end                                    
                                     ylim(biasylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -1790,7 +1790,7 @@
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     set(gca,'Color',[.9 .9 .9])
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                         tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                         set(tx, 'Layer', 'front')
@@ -2267,19 +2267,19 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2475,19 +2475,19 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2680,19 +2680,19 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2757,20 +2757,20 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',[])
 										ylim([0 1])
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2971,7 +2971,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     set(gca,'xticklabel',[]) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
@@ -3012,7 +3012,7 @@
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     set(ax1,'Color',[.9 .9 .9])
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                         tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                         set(tx, 'Layer', 'front')
@@ -3191,7 +3191,7 @@
                                         set(gca,'ytick',impylim(plt,1):10:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -3372,19 +3372,19 @@
 										box on
 										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 											if mod(identmaxfhr*3,12)==0
-												xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 											end
 										else
 											if mod(identmaxfhr*3-3,12)==0
-												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 											end
 										end         
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 										set(gca,'gridcolor','k','gridalpha',.15)
 										set(gca,'fontsize',20)      
 										hold off
@@ -3547,7 +3547,7 @@
 											};
 
 										% Generate Matrix
-										sc=nan(43,22);        
+										sc=nan(43,size(tmp_imp,1));        
 
 										% Start Figure
 										clear l cntexp
@@ -3567,19 +3567,19 @@
 										box on
 										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 											if mod(identmaxfhr*3,12)==0
-												xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 											end
 										else
 											if mod(identmaxfhr*3-3,12)==0
-												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 											end
 										end    
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 										set(gca,'fontsize',10)
 										ylim([0.5 43.5])
 										set(gca,'ytick',1:1:43.5)
@@ -4978,13 +4978,13 @@
                                     end
                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                     for tmp=1:size(identexp,1)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                         for tmpi=tmp
                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                         end
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -5012,7 +5012,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -5051,7 +5051,7 @@
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     set(gca,'Color',[.9 .9 .9])
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                     if sum([cntexp(:)])==0
                                         tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -5095,7 +5095,7 @@
                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end 
                                     set(gca,'fontsize',10)
                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -5104,7 +5104,7 @@
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
                                     % Create a text box at every Tick label position
-                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                     xTicks0 = get(gca, 'xticklabel');
                                     xTicks = get(gca, 'xtick');
                                     if size(maxmin,1)<size(xTicks0,1)
@@ -5988,11 +5988,11 @@
                                         imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
                                         imprv2(:,tmp)=imprv;
                                         l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=imprv(sigtest_loc);
                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=imprv(sigtest_loc);
@@ -6018,7 +6018,7 @@
                                     end 
                                     ylim(impylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -6107,7 +6107,7 @@
                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                     set(gca,'fontsize',10)
                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -6116,7 +6116,7 @@
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
                                     % Create a text box at every Tick label position
-                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                     xTicks0 = get(gca, 'xticklabel');
                                     xTicks = get(gca, 'xtick');
                                     if size(maxmin,1)<size(xTicks0,1)
@@ -7016,11 +7016,11 @@
                                             fsp2(:,tmp)=fspa;
                                             l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
                                             cntl=cntl+1;
-											sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
+											sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
                                             sigtest_loc=find(sigtest==1);
                                             sigtest_exp=fspa(sigtest_loc);
                                             plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                            sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
+                                            sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
                                             sigtest_loc1=find(sigtest==1);
                                             sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                             sigtest_exp=fspa(sigtest_loc);
@@ -7046,7 +7046,7 @@
                                         end  
                                         ylim([25 75])
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         grid on
                                         set(gca,'gridcolor','k','gridalpha',.15)
                                         set(gca,'fontsize',20)      
@@ -7141,7 +7141,7 @@
                                         trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                         trkerr_exp_fcnt2=zeros(1,tmpxend);
                                         for tmp=1:size(identexp,1)
-                                            cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                            cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                         end
                                         set(gca,'fontsize',10)
                                         xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -7150,7 +7150,7 @@
                                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                         set(gcf, 'InvertHardcopy', 'off')
                                         % Create a text box at every Tick label position
-                                        maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                        maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                         xTicks0 = get(gca, 'xticklabel');
                                         xTicks = get(gca, 'xtick');
                                         if size(maxmin,1)<size(xTicks0,1)
@@ -8034,13 +8034,13 @@
                                     end
                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                     for tmp=1:size(identexp,1)
-                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
+                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                         for tmpi=tmp
                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                         end
-                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
+                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -8068,7 +8068,7 @@
                                     end                                    
                                     ylim(biasylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -8107,7 +8107,7 @@
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     set(gca,'Color',[.9 .9 .9])
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                     if sum([cntexp(:)])==0
                                         tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -8163,7 +8163,7 @@
                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                     set(gca,'fontsize',10)
                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -8172,7 +8172,7 @@
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
                                     % Create a text box at every Tick label position
-                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                     xTicks0 = get(gca, 'xticklabel');
                                     xTicks = get(gca, 'xtick');
                                     if size(maxmin,1)<size(xTicks0,1)
@@ -10262,7 +10262,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(200,round(identmaxfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(200,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -10295,19 +10295,19 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -11407,7 +11407,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(round(identmaxfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -11437,19 +11437,19 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -12544,7 +12544,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(200,round(identmaxfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(200,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -12596,19 +12596,19 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -12693,19 +12693,19 @@
                                         box on
                                         if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
                                             if mod(identmaxfhr*3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
                                             end
                                         else
                                             if mod(identmaxfhr*3-3,12)==0
-                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+                                                xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
                                             else
                                                 xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
                                             end
                                         end    
                                         set(gca,'xtick',[])
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -13607,13 +13607,13 @@
                                     end
                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                     for tmp=1:size(identexp,1)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
                                         for tmpi=tmp
                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
                                         end
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
@@ -13640,7 +13640,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     set(gca,'xticklabel',[]) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
@@ -13677,7 +13677,7 @@
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     set(ax1,'Color',[.9 .9 .9])
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                     if sum([cntexp(:)])==0
                                         tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -14535,11 +14535,11 @@
                                         if med==1; imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1)); elseif med==2; imprv=100.*(1-nanmedian(tmp_exp(:,:,tmp),1)./nanmedian(tmp_exp(:,:,tmpimp),1));  end;                 
                                         imprv2(:,tmp)=imprv;
                                         l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=imprv(sigtest_loc);
                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=imprv(sigtest_loc);
@@ -14575,7 +14575,7 @@
                                         set(gca,'ytick',impylim(plt,1):10:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -14639,7 +14639,7 @@
                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                     for tmp=1:size(identexp,1)
-                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                     end
                                     set(gca,'fontsize',10)
                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -14648,7 +14648,7 @@
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
                                     % Create a text box at every Tick label position
-                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                     xTicks0 = get(gca, 'xticklabel');
                                     xTicks = get(gca, 'xtick');
                                     if size(maxmin,1)<size(xTicks0,1)
@@ -16253,19 +16253,19 @@
 										box on
 										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 											if mod(identmaxfhr*3,12)==0
-												xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 											end
 										else
 											if mod(identmaxfhr*3-3,12)==0
-												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 											end
 										end         
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 										set(gca,'gridcolor','k','gridalpha',.15)
 										set(gca,'fontsize',20)      
 										hold off
@@ -16367,7 +16367,7 @@
 										set(b,'ytick',[]);
 										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 											if mod(identmaxfhr*3,12)==0
-												xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+												xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 												tmpxend=((identmaxfhr*3))/skiphr+1;
 											else
 												xlim(b,[0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
@@ -16375,7 +16375,7 @@
 											end
 										else
 											if mod(identmaxfhr*3-3,12)==0
-												xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+												xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 												tmpxend=((identmaxfhr*3)-3)/skiphr+1;
 											else
 												xlim(b,[0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
@@ -17198,8 +17198,8 @@
 												sigtest_95(:,plt)=repmat(0,size(tmp_exp,2),1);
 												sigtest_90(:,plt)=repmat(0,size(tmp_exp,2),1);
 											else
-												sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05)';                                                                  
-												sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1)';                                                                                                                
+												sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05)';                                                                  
+												sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1)';                                                                                                                
 											end	
 											tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';
 											tmp1=abs(tmp_exp(:,:,identexploop));
@@ -17264,7 +17264,7 @@
 											};
 
 										% Generate Matrix
-										sc=nan(43,22);
+										sc=nan(43,size(tmp_imp,1));
 										% TRACK
 										sc(1,:)=NaN; % error
 										sc(2,:)=tmp_imp(:,1); % imprv
@@ -17334,19 +17334,19 @@
 										box on
 										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 											if mod(identmaxfhr*3,12)==0
-												xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 											end
 										else
 											if mod(identmaxfhr*3-3,12)==0
-												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 											else
 												xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 											end
 										end    
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 										set(gca,'fontsize',10)
 										ylim([0.5 43.5])
 										set(gca,'ytick',1:1:43.5)
@@ -17508,5 +17508,5 @@
                         end
                     end
                 end
-                clearvars -except identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
+                clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
             end 

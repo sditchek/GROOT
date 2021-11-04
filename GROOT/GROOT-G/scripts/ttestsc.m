@@ -1,4 +1,4 @@
-function [h,p,ci,stats] = ttest(x,m,varargin,identserialcorr)
+function [h,p,ci,stats] = ttest(x,m,identserialcorr,varargin)
 %TTEST  One-sample and paired-sample t-test.
 %   H = TTEST(X) performs a t-test of the hypothesis that the data in the
 %   vector X come from a distribution with mean zero, and returns the

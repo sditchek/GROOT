@@ -5,21 +5,21 @@
 % Set Directories and Model Properties
 identgroovpr=['/scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/'];    % location of your GROOT-PR dirctory
 identout=['/scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT/GROOT-G/'];                 % location of where all graphics will go
-identmaxfhr=(126)/3+1;                                                        	 % max forecast hours steps set in model (e.g., 126)
+identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                               	 % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
 identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'V6HO'};{'V16R'}];                         				% folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'V16H'};{'V16R'}];                         				% folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                  	% NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='V16R';                                                            % full folder name of improvement and significance wrt THIS experiment
 identexpcolors=[255 0 0;0 0 0]/255; % colors associated with each experiment - GROOT-G Change
         	                                                                      	% EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										     	% EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroovpr,'/V16R/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroovpr,'/V16H/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
 % Case Study: recommendation - make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
 identcase=0';								        % run graphics for just 1 storm | yes (1) no (0)
-identcasename={'05AL'};tmpcasefold={'DORIAN19'};                                      % identcasename=ID and basin identifier (05AL) | tmpcasefold=uppercase name and 2-digit year (DORIAN19)
+identcasename={'05AL'};tmpcasefold='DORIAN19';                                      % identcasename=ID and basin identifier (05AL) | tmpcasefold=uppercase name and 2-digit year (DORIAN19)
 identcaseyear='2019';							        % year of storm: YYYY
 
 % Error Graphics Options
@@ -37,7 +37,7 @@ identserialcorr=1;						% value for taking serial correlation (SC) into account 
 % Conventional Graphics Options
 identconv=1;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
-identconvid='UV';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
+identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
 identconvobs=137;						% conventional observation obstype
 identincludeobs=1					% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
 identconvtype=[0];                                              % subtypes desired 

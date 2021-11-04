@@ -5,71 +5,71 @@
                         spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
                         clPos=[0.88 0.13+.05 0.04 0.75-.05]; % arrange plots the same
                         % Initialize BT
-                        BT_lon=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_lat=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_maxspd=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_minpres=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_ne34=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_ne50=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_ne64=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_se34=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_se50=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_se64=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_sw34=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_sw50=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_sw64=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_nw34=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_nw50=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_nw64=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_po=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_ro=nan(size(identinittimesunique,1),identmaxfhr);
-                        BT_rmw=nan(size(identinittimesunique,1),identmaxfhr);         
-                        BT_intch=nan(size(identinittimesunique,1),identmaxfhr);         
-                        BT_shr=nan(size(identinittimesunique,1),identmaxfhr);         
+                        BT_lon=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_lat=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_maxspd=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_minpres=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_ne34=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_ne50=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_ne64=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_se34=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_se50=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_se64=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_sw34=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_sw50=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_sw64=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_nw34=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_nw50=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_nw64=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_po=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_ro=nan(size(identinittimesunique,1),identmodelfhr);
+                        BT_rmw=nan(size(identinittimesunique,1),identmodelfhr);         
+                        BT_intch=nan(size(identinittimesunique,1),identmodelfhr);         
+                        BT_shr=nan(size(identinittimesunique,1),identmodelfhr);         
                         % Initialize EXP
-                        EXP_lon=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_lat=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_maxspd=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_minpres=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_ne34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_ne50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_ne64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_se34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_se50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_se64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_sw34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_sw50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_sw64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_nw34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_nw50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_nw64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_po=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_ro=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        EXP_rmw=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));         
-                        EXP_intch=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));         
-                        EXP_shr=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));         
+                        EXP_lon=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_lat=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_maxspd=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_minpres=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_ne34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_ne50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_ne64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_se34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_se50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_se64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_sw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_sw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_sw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_nw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_nw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_nw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_po=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_ro=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        EXP_rmw=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));         
+                        EXP_intch=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));         
+                        EXP_shr=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));         
                         % Initialize Errors
-                        ateerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        xteerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        trkerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        interr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        spderr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        ne34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        se34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        sw34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        nw34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        ne50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        se50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        sw50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        nw50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        ne64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        se64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        sw64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        nw64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        poerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        roerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        rmwerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-                        intcherr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
+                        ateerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        xteerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        trkerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        interr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        spderr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        ne34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        se34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        sw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        nw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        ne50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        se50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        sw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        nw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        ne64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        se64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        sw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        nw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        poerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        roerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        rmwerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+                        intcherr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
                         % Individual Cycles
                         for identloop=1:size(identinittimesunique,1)
                             load([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/',identn,'_data.mat'])
@@ -131,8 +131,8 @@
                                 exp_shr=nan(100,size(identexp,1)); 
                                 % Loop
                                 for tmp=1:size(identexp,1)                
-filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'.trak.hwrf.atcfunix']; %GROOT-G Change
-                                    [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,0);
+filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'.trak.hwrf.atcfunix']; fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); C=C{6}; if strcmp(C{2},'003')==1; identoutputres=0; else identoutputres=1; end %GROOT-G Change
+                                    [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,identoutputres);
                                     initsizeexp=size(FHRall,2);
                                     exp_fhr(1:initsizeexp,tmp)=FHRall';
                                     exp_lon(1:initsizeexp,tmp)=LONall;
@@ -450,7 +450,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                         end    
                                         ylim([0 180])
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                         set(gca,'fontsize',20)
                                         l(1)=plot(tmp_bt,'-sk','markerfacecolor','k','markersize',2,'linewidth',2);
                                         for tmp=1:size(identexp,1)
@@ -653,7 +653,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                 end
                                             end    
                                             set(gca,'xtick',1:skiptick:50)
-                                            set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                            set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                             set(gca,'fontsize',20)
                                             hold on
                                             if pltcomp>16
@@ -1475,13 +1475,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -1509,7 +1509,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end
 								ylim(yrange)
 								set(gca,'xtick',1:skiptick:50)
-								set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+								set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 								grid on
 								set(gca,'gridcolor','k','gridalpha',.15)
 								set(gca,'fontsize',20)      
@@ -1535,7 +1535,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 								set(gca,'Color',[.9 .9 .9])
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end
 								if sum([cntexp(:)])==0
 									tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -1579,7 +1579,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								trkerr_exp_fcnt1=zeros(1,tmpxend);            
 								trkerr_exp_fcnt2=zeros(1,tmpxend);
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end  
 								set(gca,'fontsize',10)
                                 xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -1588,7 +1588,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 								set(gcf, 'InvertHardcopy', 'off')
 								% Create a text box at every Tick label position
-								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
 								xTicks0 = get(gca, 'xticklabel');
 								xTicks = get(gca, 'xtick');
 								if size(maxmin,1)<size(xTicks0,1)
@@ -1761,11 +1761,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
 									imprv2(:,tmp)=imprv;
 									l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=imprv(sigtest_loc);
 									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=imprv(sigtest_loc);
@@ -1856,7 +1856,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end
 								ylim(yrange)
 								set(gca,'xtick',1:skiptick:50)
-								set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+								set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 								grid on
 								set(gca,'gridcolor','k','gridalpha',.15)
 								set(gca,'fontsize',20)      
@@ -1938,7 +1938,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								trkerr_exp_fcnt1=zeros(1,tmpxend);            
 								trkerr_exp_fcnt2=zeros(1,tmpxend);
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end  
 								set(gca,'fontsize',10)            
                                 xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -1947,7 +1947,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 								set(gcf, 'InvertHardcopy', 'off')
 								% Create a text box at every Tick label position
-								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
 								xTicks0 = get(gca, 'xticklabel');
 								xTicks = get(gca, 'xtick');
 								if size(maxmin,1)<size(xTicks0,1)
@@ -2132,11 +2132,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									%plot(1:size(fspb,2),fspb,'--s','Color',identexpcolors(tmp,:),'linewidth',.5,'markersize',2); 
 									l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
 									cntl=cntl+1;
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=fspa(sigtest_loc);
 									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=fspa(sigtest_loc);
@@ -2162,7 +2162,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end                                
 								ylim([0 100])
 								set(gca,'xtick',1:skiptick:50)
-								set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+								set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 								grid on
 								set(gca,'gridcolor','k','gridalpha',.15)
 								set(gca,'fontsize',20)      
@@ -2244,7 +2244,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								trkerr_exp_fcnt1=zeros(1,tmpxend);            
 								trkerr_exp_fcnt2=zeros(1,tmpxend);
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end  
 								set(gca,'fontsize',10)            
                                 xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -2253,7 +2253,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 								set(gcf, 'InvertHardcopy', 'off')
 								% Create a text box at every Tick label position
-								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
 								xTicks0 = get(gca, 'xticklabel');
 								xTicks = get(gca, 'xtick');
 								if size(maxmin,1)<size(xTicks0,1)
@@ -2422,13 +2422,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -2509,7 +2509,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end              
 								ylim(yrange)
 								set(gca,'xtick',1:skiptick:50)
-								set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+								set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 								grid on
 								set(gca,'gridcolor','k','gridalpha',.15)
 								set(gca,'fontsize',20)      
@@ -2535,7 +2535,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 								set(gca,'Color',[.9 .9 .9])
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end
 								if sum([cntexp(:)])==0
 									tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -2591,7 +2591,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								trkerr_exp_fcnt1=zeros(1,tmpxend);            
 								trkerr_exp_fcnt2=zeros(1,tmpxend);
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end  
 								set(gca,'fontsize',10)
                                 xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -2600,7 +2600,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 								set(gcf, 'InvertHardcopy', 'off')
 								% Create a text box at every Tick label position
-								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
 								xTicks0 = get(gca, 'xticklabel');
 								xTicks = get(gca, 'xtick');
 								if size(maxmin,1)<size(xTicks0,1)
@@ -2831,13 +2831,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
 									end
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
@@ -2864,7 +2864,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end
 								ylim(yrange)
 								set(gca,'xtick',1:skiptick:50)
-								set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+								set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 								set(gca,'xticklabel',[]) 
 								grid on
 								set(gca,'gridcolor','k','gridalpha',.15)
@@ -2889,7 +2889,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 								set(ax1,'Color',[.9 .9 .9])
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end
 								if sum([cntexp(:)])==0
 									tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -3038,11 +3038,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									if med==1; imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1)); elseif med==2; imprv=100.*(1-nanmedian(tmp_exp(:,:,tmp),1)./nanmedian(tmp_exp(:,:,tmpimp),1)); end;                 
 									imprv2(:,tmp)=imprv; imprvmedian(:,tmp)=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));
 									l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=imprv(sigtest_loc);
 									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=imprv(sigtest_loc);
@@ -3142,7 +3142,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gca,'ytick',yrange(1):10:yrange(end))
 								end
 								set(gca,'xtick',1:skiptick:50)
-								set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+								set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 								grid on
 								set(gca,'gridcolor','k','gridalpha',.15)
 								set(gca,'fontsize',20)      
@@ -3212,7 +3212,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								trkerr_exp_fcnt1=zeros(1,tmpxend);            
 								trkerr_exp_fcnt2=zeros(1,tmpxend);
 								for tmp=1:size(identexp,1)
-									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end  
 								set(gca,'fontsize',10)            
                                 xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -3221,7 +3221,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 								set(gcf, 'InvertHardcopy', 'off')
 								% Create a text box at every Tick label position
-								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+								maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
 								xTicks0 = get(gca, 'xticklabel');
 								xTicks = get(gca, 'xtick');
 								if size(maxmin,1)<size(xTicks0,1)
@@ -3412,19 +3412,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									box on
 									if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 										if mod(identmaxfhr*3,12)==0
-											xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 										end
 									else
 										if mod(identmaxfhr*3-3,12)==0
-											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 										end
 									end    
 									set(gca,'xtick',1:skiptick:50)
-									set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+									set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 									set(gca,'fontsize',14)
 									hold on                        
 									ylabel('Cycle Initialization Time','fontsize',14)
@@ -3681,19 +3681,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									box on
 									if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 										if mod(identmaxfhr*3,12)==0
-											xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 										end
 									else
 										if mod(identmaxfhr*3-3,12)==0
-											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 										end
 									end    
 									set(gca,'xtick',1:skiptick:50)
-									set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+									set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 									set(gca,'fontsize',14)
 									hold on                        
 									ylabel('Cycle Initialization Time','fontsize',14)
@@ -3762,19 +3762,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									box on
 									if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 										if mod(identmaxfhr*3,12)==0
-											xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 										end
 									else
 										if mod(identmaxfhr*3-3,12)==0
-											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 										end
 									end    
 									set(gca,'xtick',[])
-									set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+									set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 									set(gca,'fontsize',14)
 									hold on                        
 									ylabel('','fontsize',14)                                   
@@ -4079,19 +4079,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									box on
 									if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 										if mod(identmaxfhr*3,12)==0
-											xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 										end
 									else
 										if mod(identmaxfhr*3-3,12)==0
-											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 										end
 									end         
 									set(gca,'xtick',1:skiptick:50)
-									set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+									set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 									set(gca,'gridcolor','k','gridalpha',.15)
 									set(gca,'fontsize',20)      
 									hold off
@@ -4153,7 +4153,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 									set(gca,'Color',[.9 .9 .9])
 									for tmp=1:size(identexp,1)
-										cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+										cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 									end
 									if sum([cntexp(:)])==0
 										tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -4178,7 +4178,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(b,'ytick',[]);
 									if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 										if mod(identmaxfhr*3,12)==0
-											xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+											xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 											tmpxend=((identmaxfhr*3))/skiphr+1;
 										else
 											xlim(b,[0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
@@ -4186,7 +4186,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										end
 									else
 										if mod(identmaxfhr*3-3,12)==0
-											xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+											xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 											tmpxend=((identmaxfhr*3)-3)/skiphr+1;
 										else
 											xlim(b,[0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
@@ -4198,7 +4198,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									trkerr_exp_fcnt1=zeros(1,tmpxend);            
 									trkerr_exp_fcnt2=zeros(1,tmpxend);
 									for tmp=1:size(identexp,1)
-										cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+										cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 									end 
 									set(gca,'fontsize',10)
 									xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -4207,7 +4207,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 									set(gcf, 'InvertHardcopy', 'off')
 									% Create a text box at every Tick label position
-									maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+									maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
 									xTicks0 = get(gca, 'xticklabel');
 									xTicks = get(gca, 'xtick');
 									if size(maxmin,1)<size(xTicks0,1)
@@ -4308,8 +4308,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										else
 											tmp_err(:,:,plt)=squeeze(nanmean((tmp_exp),1));                                                                         
 										end
-										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05)'; end
-										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1)';   end
+										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05)'; end
+										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1)';   end
 										tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';
 										tmp1=abs(tmp_exp(:,:,identexploop));
 										tmp2=abs(tmp_exp(:,:,tmpimp));
@@ -4373,7 +4373,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										};
 
 									% Generate Matrix
-									sc=nan(43,22);
+									sc=nan(43,size(tmp_imp,1));
 									% TRACK
 									sc(1,:)=NaN; % error
 									sc(2,:)=tmp_imp(:,1); % imprv
@@ -4443,19 +4443,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									box on
 									if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 										if mod(identmaxfhr*3,12)==0
-											xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 										end
 									else
 										if mod(identmaxfhr*3-3,12)==0
-											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+											xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 										else
 											xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 										end
 									end    
 									set(gca,'xtick',1:skiptick:50)
-									set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+									set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 									set(gca,'fontsize',10)
 									ylim([0.5 43.5])
 									set(gca,'ytick',1:1:43.5)
@@ -4738,13 +4738,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end       
 								plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
 									for tmpi=tmp
 										plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end                
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -5090,11 +5090,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									imprv(imprv<-99999999)=NaN;
 									imprv(imprv>99999999)=NaN;
 									l(tmp)=plot(imprv,1:size(imprv,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=imprv(sigtest_loc);
 									plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=imprv(sigtest_loc);
@@ -5472,11 +5472,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									%plot(fspb,1:size(fspb,1),'--s','Color',identexpcolors(tmp,:),'linewidth',.5,'markersize',2); 
 									l(cntl)=plot(fspa,1:size(fspa,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
 									cntl=cntl+1;								
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=fspa(sigtest_loc);
 									plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
+									sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=fspa(sigtest_loc);
@@ -5765,13 +5765,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end       
 								plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.05,identserialcorr);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))',identserialcorr,'alpha',.05);
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
 									for tmpi=tmp
 										plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end                
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.1,identserialcorr);
+									sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))',identserialcorr,'alpha',.1);
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -6921,7 +6921,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim(yrange)
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -6951,7 +6951,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                     set(gca,'Color',[.9 .9 .9])
                                                     for tmp=1:size(identexp,1)
-                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                                     end
                                                         tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                                         set(tx, 'Layer', 'front')
@@ -7206,7 +7206,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim(yrange)
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -7414,7 +7414,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim([0 100])
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -7671,7 +7671,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim(yrange)
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -7956,7 +7956,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 													end
 												    ylim(yrange)
 													set(gca,'xtick',1:skiptick:50)
-													set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+													set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 													set(gca,'xticklabel',[]) 
 													grid on
 													set(gca,'gridcolor','k','gridalpha',.15)
@@ -8236,7 +8236,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														set(gca,'ytick',yrange(1):10:yrange(end))
 													end
 													set(gca,'xtick',1:skiptick:50)
-													set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+													set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 													grid on
 													set(gca,'gridcolor','k','gridalpha',.15)
 													set(gca,'fontsize',20)      
@@ -9414,19 +9414,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',14)
 														hold on         
 														ylabel('','fontsize',14) 
@@ -9624,19 +9624,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',14)
 														hold on                        
 														ylabel('','fontsize',14)
@@ -9685,19 +9685,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',[])
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',14)
 														hold on                        
 														ylabel('','fontsize',14)                                   
@@ -10091,19 +10091,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end         
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'gridcolor','k','gridalpha',.15)
 														set(gca,'fontsize',20)      
 														hold off
@@ -10250,7 +10250,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 															};
 
 														% Generate Matrix
-														sc=nan(43,22);       
+														sc=nan(43,size(tmp_imp,1));       
 
 														% Start Figure
 														clear l cntexp
@@ -10270,19 +10270,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',10)
 														ylim([0.5 43.5])
 														set(gca,'ytick',1:1:43.5)
@@ -11154,13 +11154,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                                         for tmpi=tmp
                                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -11241,7 +11241,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim(yrange)
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -11273,7 +11273,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                     set(gca,'Color',[.9 .9 .9])
                                                     for tmp=1:size(identexp,1)
-                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                                     end
                                                     if sum([cntexp(:)])==0
                                                         tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -11317,7 +11317,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                                     for tmp=1:size(identexp,1)
-                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                                     end 
                                                     set(gca,'fontsize',10)
                                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -11326,7 +11326,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                                     set(gcf, 'InvertHardcopy', 'off')
                                                     % Create a text box at every Tick label position
-                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                                     xTicks0 = get(gca, 'xticklabel');
                                                     xTicks = get(gca, 'xtick');
                                                     if size(maxmin,1)<size(xTicks0,1)
@@ -11838,11 +11838,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                         imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
                                                         imprv2(:,tmp)=imprv;
                                                         l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=imprv(sigtest_loc);
                                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=imprv(sigtest_loc);
@@ -11934,7 +11934,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim(yrange)
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -12018,7 +12018,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                                     for tmp=1:size(identexp,1)
-                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                                     end  
                                                     set(gca,'fontsize',10)
                                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -12027,7 +12027,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                                     set(gcf, 'InvertHardcopy', 'off')
                                                     % Create a text box at every Tick label position
-                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                                     xTicks0 = get(gca, 'xticklabel');
                                                     xTicks = get(gca, 'xtick');
                                                     if size(maxmin,1)<size(xTicks0,1)
@@ -12550,11 +12550,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                         fsp2(:,tmp)=fspa;
                                                         l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
                                                         cntl=cntl+1;
-														sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
+														sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=fspa(sigtest_loc);
                                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=fspa(sigtest_loc);
@@ -12580,7 +12580,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim([0 100])
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -12664,7 +12664,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                                     for tmp=1:size(identexp,1)
-                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                                     end
                                                     set(gca,'fontsize',10)
                                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -12673,7 +12673,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                                     set(gcf, 'InvertHardcopy', 'off')
                                                     % Create a text box at every Tick label position
-                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                                     xTicks0 = get(gca, 'xticklabel');
                                                     xTicks = get(gca, 'xtick');
                                                     if size(maxmin,1)<size(xTicks0,1)
@@ -13178,13 +13178,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05,identserialcorr);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                                         for tmpi=tmp
                                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1,identserialcorr);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -13265,7 +13265,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     ylim(yrange)
                                                     set(gca,'xtick',1:skiptick:50)
-                                                    set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+                                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
                                                     grid on
                                                     set(gca,'gridcolor','k','gridalpha',.15)
                                                     set(gca,'fontsize',20)      
@@ -13297,7 +13297,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                     set(gca,'Color',[.9 .9 .9])
                                                     for tmp=1:size(identexp,1)
-                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                                     end
                                                     if sum([cntexp(:)])==0
                                                         tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -13353,7 +13353,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     trkerr_exp_fcnt1=zeros(1,tmpxend);            
                                                     trkerr_exp_fcnt2=zeros(1,tmpxend);
                                                     for tmp=1:size(identexp,1)
-                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+                                                        cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
                                                     end
                                                     set(gca,'fontsize',10)
                                                     xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -13362,7 +13362,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                                     set(gcf, 'InvertHardcopy', 'off')
                                                     % Create a text box at every Tick label position
-                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+                                                    maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
                                                     xTicks0 = get(gca, 'xticklabel');
                                                     xTicks = get(gca, 'xtick');
                                                     if size(maxmin,1)<size(xTicks0,1)
@@ -13874,13 +13874,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 
 													plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 													for tmp=1:size(identexp,1)
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
 														sigtest_loc=find(sigtest==1);
 														if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
 														for tmpi=tmp
 															plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
 														end
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
 														sigtest_loc1=find(sigtest==1);
 														sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 														if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
@@ -13960,7 +13960,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 													end
 													ylim(yrange)
 													set(gca,'xtick',1:skiptick:50)
-													set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+													set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 													set(gca,'xticklabel',[]) 
 													grid on
 													set(gca,'gridcolor','k','gridalpha',.15)
@@ -13991,7 +13991,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 													set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 													set(ax1,'Color',[.9 .9 .9])
 													for tmp=1:size(identexp,1)
-														cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+														cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 													end
 													if sum([cntexp(:)])==0
 														tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -14480,11 +14480,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														if med==1; imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));   elseif med==2; imprv=100.*(1-nanmedian(tmp_exp(:,:,tmp),1)./nanmedian(tmp_exp(:,:,tmpimp),1)); end;                
 														imprv2(:,tmp)=imprv;
 														l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.05,identserialcorr);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
 														sigtest_loc=find(sigtest==1);
 														sigtest_exp=imprv(sigtest_loc);
 														plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),'alpha',.1,identserialcorr);
+														sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
 														sigtest_loc1=find(sigtest==1);
 														sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 														sigtest_exp=imprv(sigtest_loc);
@@ -14584,7 +14584,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														set(gca,'ytick',yrange(1):10:yrange(end))
 													end
 													set(gca,'xtick',1:skiptick:50)
-													set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+													set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 													grid on
 													set(gca,'gridcolor','k','gridalpha',.15)
 													set(gca,'fontsize',20)      
@@ -14649,7 +14649,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 													trkerr_exp_fcnt1=zeros(1,tmpxend);            
 													trkerr_exp_fcnt2=zeros(1,tmpxend);
 													for tmp=1:size(identexp,1)
-														cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+														cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 													end
 													set(gca,'fontsize',10)
 													xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
@@ -14658,7 +14658,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 													set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 													set(gcf, 'InvertHardcopy', 'off')
 													% Create a text box at every Tick label position
-													maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skip:end,:)),1)); 
+													maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1)); 
 													xTicks0 = get(gca, 'xticklabel');
 													xTicks = get(gca, 'xtick');
 													if size(maxmin,1)<size(xTicks0,1)
@@ -15174,13 +15174,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end
                                                     plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.05);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
                                                         for tmpi=tmp
                                                             plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end                
-                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
+                                                        sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.1);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -15851,11 +15851,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                                 imprv(imprv<-99999999)=NaN;
                                                                 imprv(imprv>99999999)=NaN;
                                                                 l(tmp)=plot(imprv,1:size(imprv,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
+                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.05);
                                                                 sigtest_loc=find(sigtest==1);
                                                                 sigtest_exp=imprv(sigtest_loc);
                                                                 plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
+                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.1);
                                                                 sigtest_loc1=find(sigtest==1);
                                                                 sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                                 sigtest_exp=imprv(sigtest_loc);
@@ -16558,11 +16558,11 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                                 %plot(fspb,1:size(fspb,1),'--s','Color',identexpcolors(tmp,:),'linewidth',.5,'markersize',2); 
                                                                 l(cntl)=plot(fspa,1:size(fspa,1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
                                                                 cntl=cntl+1;
-																sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.05,identserialcorr);
+																sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.05);
                                                                 sigtest_loc=find(sigtest==1);
                                                                 sigtest_exp=fspa(sigtest_loc);
                                                                 plot(sigtest_exp,sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)','alpha',.1,identserialcorr);
+                                                                sigtest=ttestsc(tmp_exp(:,:,tmp)',tmp_exp(:,:,tmpimp)',identserialcorr,'alpha',.1);
                                                                 sigtest_loc1=find(sigtest==1);
                                                                 sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                                 sigtest_exp=fspa(sigtest_loc);
@@ -17181,13 +17181,13 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     end       
                                                     plot(zeros(1,100),-10:89,'Color',[.5 .5 .5],'linewidth',2);
                                                     for tmp=1:size(identexp,1)
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.05,identserialcorr);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))',identserialcorr,'alpha',.05);
                                                         sigtest_loc=find(sigtest==1);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
                                                         for tmpi=tmp
                                                             plot(sigtest_exp(:,:,tmpi),sigtest_loc,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                                         end                
-                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))','alpha',.1,identserialcorr);
+                                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp))',abs(tmp_exp(:,:,tmpimp))',identserialcorr,'alpha',.1);
                                                         sigtest_loc1=find(sigtest==1);
                                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                                         sigtest_exp=nanmean(tmp_exp(sigtest_loc,:,:),2);
@@ -17864,19 +17864,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',14)
 														hold on                        
 														ylabel('Cycle Initialization Time','fontsize',14)
@@ -18461,19 +18461,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',14)
 														hold on                        
 														ylabel('Cycle Initialization Time','fontsize',14)
@@ -18548,19 +18548,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',[])
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',14)
 														hold on                        
 														ylabel('','fontsize',14)                                   
@@ -19325,19 +19325,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end         
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'gridcolor','k','gridalpha',.15)
 														set(gca,'fontsize',20)      
 														hold off
@@ -19406,7 +19406,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 														set(gca,'Color',[.9 .9 .9])
 														for tmp=1:size(identexp,1)
-															cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skip:end,tmp)),1);
+															cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 														end
 														if sum([cntexp(:)])==0
 															tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
@@ -19431,7 +19431,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														set(b,'ytick',[]);
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 																tmpxend=((identmaxfhr*3))/skiphr+1;
 															else
 																xlim(b,[0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
@@ -19439,7 +19439,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 																tmpxend=((identmaxfhr*3)-3)/skiphr+1;
 															else
 																xlim(b,[0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
@@ -19883,8 +19883,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 															else
 																tmp_err(:,:,plt)=squeeze(nanmean((tmp_exp),1));                                                                         
 															end
-															if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.05)'; end
-															if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),'alpha',.1)';   end                                                                                                       
+															if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05)'; end
+															if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1)';   end                                                                                                       
 															tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';
 															tmp1=abs(tmp_exp(:,:,identexploop));
 															tmp2=abs(tmp_exp(:,:,tmpimp));
@@ -19948,7 +19948,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 															};
 
 														% Generate Matrix
-														sc=nan(43,22);
+														sc=nan(43,size(tmp_imp,1));
 														% TRACK
 														sc(1,:)=NaN; % error
 														sc(2,:)=tmp_imp(:,1); % imprv
@@ -20018,19 +20018,19 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 														box on
 														if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
 															if mod(identmaxfhr*3,12)==0
-																xlim([0.5 (((identmaxfhr*3))/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
 															end
 														else
 															if mod(identmaxfhr*3-3,12)==0
-																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)-.5])
+																xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
 															else
 																xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
 															end
 														end    
 														set(gca,'xtick',1:skiptick:50)
-														set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'}) 
+														set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
 														set(gca,'fontsize',10)
 														ylim([0.5 43.5])
 														set(gca,'ytick',1:1:43.5)
@@ -20186,15 +20186,15 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                         end
                                     end
                                     if identconv==1 || identsatobs==1
-                                        BT_drops=identdropcyc;
+                                        BT_drops=identdropcyc;BT_obsg=identobscyc;
                                     else
-                                        BT_drops=[];
+                                        BT_drops=[];BT_obsg=[];
                                     end
                                     save([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/',identn,'_latlon.mat'],'BT*','EXP*','identinittimesunique');
                                     save([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/',identn,'_errors.mat'],'*err_exp')       
                                 end
                             end
                         end
-                        clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-                        clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
+                        clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+                        clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
                 end   

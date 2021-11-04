@@ -28,7 +28,7 @@ for identremoveinvest=1
                 % Model outputs at 3 h, but to compare errors to BT make 6 h!
                 skip=2;                                                  % 6 h res | skip=1 is 3 h
                 skiphr=6;                                                % 6 h res | skiphr=3 is 3 h res
-                skiptick=2;                                              % 6 h res | skiptick=4 is 3 h res
+                skiptick=2; if identmaxfhr*3>129; skiptick=4; end;         % 6 h res | skiptick=4 is 3 h res
                 skipfct=4;                                               % 6 h res | skipfct=4 is still 3 h res
                 % Save the config file for future reference
                 disp(['Creating Start Parameters for ',identn])           
@@ -104,7 +104,7 @@ for identremoveinvest=1
             end
             if exist('breakscript','var')==1
                 disp([identn,' does not exist across all experiments yet...moving to next storm'])
-                clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv  
+                clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv  
             else
                 %% %%%%%%%%%%%% %%
                 %% Setup script %%
@@ -330,7 +330,7 @@ for identremoveinvest=1
                 %% By Cycle (Individual & All) and By Forecast Hour (Errors, EDiffs, Imprv) %%
                 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
                 run runverif_statsing
-				clearvars -except identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
+				clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
             end
         end
     end      
@@ -352,7 +352,7 @@ for identremoveinvest=1
 			%% Model outputs at 3 h, but to compare errors to BT make 6 h!
 			skip=2;                                                    % 6 h res | skip=1 is 3 h
 			skiphr=6;                                                  % 6 h res | skiphr=3 is 3 h res
-			skiptick=2;                                                % 6 h res | skiptick=4 is 3 h res
+			skiptick=2; if identmaxfhr*3>129; skiptick=4; end;         % 6 h res | skiptick=4 is 3 h res
 			skipfct=4;                                                 % 6 h res | skipfct=4 is still 3 h res
 
 			%% Add paths to scripts
@@ -554,26 +554,26 @@ for identremoveinvest=1
 							trkerr_exp_all	=	[];
 							ateerr_exp_all	=	[];
 							xteerr_exp_all	=	[];
-							interr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							ne34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							ne50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							ne64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							nw34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							nw50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							nw64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							poerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							rmwerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							roerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							se34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							se50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							se64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							spderr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							sw34err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							sw50err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							sw64err_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							trkerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							ateerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
-							xteerr_exp_stm = nan(200,identmaxfhr,size(identexp,1),size(identdr,2));
+							interr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							ne34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							ne50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							ne64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							nw34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							nw50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							nw64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							poerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							rmwerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							roerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							se34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							se50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							se64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							spderr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							sw34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							sw50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							sw64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							trkerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							ateerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+							xteerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
 							cntcan=1;
 							cntst=1;
 						end
@@ -957,22 +957,22 @@ for identremoveinvest=1
 					if plt <19 || plt >20
 						tmp_exp=abs(tmp_exp); % added for MAE
 					end
-					tmp_exp0=tmp_exp;
+					tmp_exp0=tmp_exp(:,1:(identmaxfhr+1)/2,:);
 
 					% YRANGE
 					clear allquad
-					allquad(1)=(max(max(nanmean(abs(ne34err_exp(:,1:skip:end,:)),1))));
-					allquad(2)=(max(max(nanmean(abs(se34err_exp(:,1:skip:end,:)),1))));
-					allquad(3)=(max(max(nanmean(abs(nw34err_exp(:,1:skip:end,:)),1))));
-					allquad(4)=(max(max(nanmean(abs(sw34err_exp(:,1:skip:end,:)),1))));
-					allquad(5)=(max(max(nanmean(abs(ne50err_exp(:,1:skip:end,:)),1))));
-					allquad(6)=(max(max(nanmean(abs(se50err_exp(:,1:skip:end,:)),1))));
-					allquad(7)=(max(max(nanmean(abs(nw50err_exp(:,1:skip:end,:)),1))));
-					allquad(8)=(max(max(nanmean(abs(sw50err_exp(:,1:skip:end,:)),1))));
-					allquad(9)=(max(max(nanmean(abs(ne64err_exp(:,1:skip:end,:)),1))));
-					allquad(10)=(max(max(nanmean(abs(se64err_exp(:,1:skip:end,:)),1))));
-					allquad(11)=(max(max(nanmean(abs(nw64err_exp(:,1:skip:end,:)),1))));
-					allquad(12)=(max(max(nanmean(abs(sw64err_exp(:,1:skip:end,:)),1))));
+					allquad(1)=(max(max(nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(2)=(max(max(nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(3)=(max(max(nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(4)=(max(max(nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(5)=(max(max(nanmean(abs(ne50err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(6)=(max(max(nanmean(abs(se50err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(7)=(max(max(nanmean(abs(nw50err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(8)=(max(max(nanmean(abs(sw50err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(9)=(max(max(nanmean(abs(ne64err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(10)=(max(max(nanmean(abs(se64err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(11)=(max(max(nanmean(abs(nw64err_exp(:,1:skip:identmaxfhr,:)),1))));
+					allquad(12)=(max(max(nanmean(abs(sw64err_exp(:,1:skip:identmaxfhr,:)),1))));
 					allquadmax=max(max(max(allquad)));
 					allquadmin=min(min(min(allquad)));
 					tmpvalq=max(abs(allquadmin),abs(allquadmax));
@@ -1153,7 +1153,7 @@ for identremoveinvest=1
 					if plt <19 || plt >20
 						tmp_exp=abs(tmp_exp); % added for MAE
 					end
-						tmp_exp0=tmp_exp;                                    
+						tmp_exp0=tmp_exp(:,1:(identmaxfhr+1)/2,:);                                    
 
 					% Find which experiment to compare to
 					for tmp=1:size(identexp,1)
@@ -1165,18 +1165,18 @@ for identremoveinvest=1
 					tmpu(tmpu==tmpimp)=[];                                    
 					% YRANGE
 						clear allquad imprv3
-						imprv3(:,:,1)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)))./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,2)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)))./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,3)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)))./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,4)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)))./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,5)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)))./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,6)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)))./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,7)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)))./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,8)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)))./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,9)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)))./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,10)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)))./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,11)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)))./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp))));
-						imprv3(:,:,12)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)))./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp))));
+						imprv3(:,:,1)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,2)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,3)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,4)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,5)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,6)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,7)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,8)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,9)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,10)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,11)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,tmpimp))));
+						imprv3(:,:,12)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,:)))./nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,tmpimp))));
 						allquadmax=max(max(max(imprv3)));
 						allquadmin=min(min(min(imprv3)));
 						tmpvalq=max(abs(allquadmin),abs(allquadmax));
@@ -1366,21 +1366,21 @@ for identremoveinvest=1
 						tmp_ytitle='Bias (km)';
 						yrange=[-100 100];
 					end
-					tmp_exp0=tmp_exp;                                                                       
+					tmp_exp0=tmp_exp(:,1:(identmaxfhr+1)/2,:);                                                                       
 					% YRANGE
 					clear allquad
-					allquad(1)=(max(max(nanmean((ne34err_exp(:,1:skip:end,:)),1))));
-					allquad(2)=(max(max(nanmean((se34err_exp(:,1:skip:end,:)),1))));
-					allquad(3)=(max(max(nanmean((nw34err_exp(:,1:skip:end,:)),1))));
-					allquad(4)=(max(max(nanmean((sw34err_exp(:,1:skip:end,:)),1))));
-					allquad(5)=(max(max(nanmean((ne50err_exp(:,1:skip:end,:)),1))));
-					allquad(6)=(max(max(nanmean((se50err_exp(:,1:skip:end,:)),1))));
-					allquad(7)=(max(max(nanmean((nw50err_exp(:,1:skip:end,:)),1))));
-					allquad(8)=(max(max(nanmean((sw50err_exp(:,1:skip:end,:)),1))));
-					allquad(9)=(max(max(nanmean((ne64err_exp(:,1:skip:end,:)),1))));
-					allquad(10)=(max(max(nanmean((se64err_exp(:,1:skip:end,:)),1))));
-					allquad(11)=(max(max(nanmean((nw64err_exp(:,1:skip:end,:)),1))));
-					allquad(12)=(max(max(nanmean((sw64err_exp(:,1:skip:end,:)),1))));
+					allquad(1)=(max(max(nanmean(abs(ne34err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(2)=(max(max(nanmean(abs(se34err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(3)=(max(max(nanmean(abs(nw34err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(4)=(max(max(nanmean(abs(sw34err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(5)=(max(max(nanmean(abs(ne50err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(6)=(max(max(nanmean(abs(se50err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(7)=(max(max(nanmean(abs(nw50err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(8)=(max(max(nanmean(abs(sw50err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(9)=(max(max(nanmean(abs(ne64err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(10)=(max(max(nanmean(abs(se64err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(11)=(max(max(nanmean(abs(nw64err_exp(:,1:skip:identmaxfhr,:)),1))));
+                                        allquad(12)=(max(max(nanmean(abs(sw64err_exp(:,1:skip:identmaxfhr,:)),1))));
 					allquadmax=max(max(max(allquad)));
 					allquadmin=min(min(min(allquad)));
 					tmpvalq=max(abs(allquadmin),abs(allquadmax));
@@ -1673,7 +1673,7 @@ for identremoveinvest=1
 				ABT_targetT=BT_targetT;
 				ABT_target=BT_target;
 				ABT_targetB=BT_targetB;
-				clearvars -except identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT_drops ABT_dropsB ABT_dropsI ABT_dropsT ABT_targetI ABT_targetT ABT_target ABT_targetB *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone            
+				clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT_drops ABT_dropsB ABT_dropsI ABT_dropsT ABT_targetI ABT_targetT ABT_target ABT_targetB *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone            
 				save([identout,'compsave2.mat'])						
 				run([identout,'scripts/runverif_statcomp'])
 			end

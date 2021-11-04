@@ -2509,68 +2509,68 @@ for errorstats=1
             spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
             clPos=[0.88 0.13+.05 0.04 0.75-.05]; % arrange plots the same
             % Initialize BT
-            BT_lon=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_lat=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_maxspd=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_minpres=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_ne34=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_ne50=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_ne64=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_se34=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_se50=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_se64=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_sw34=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_sw50=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_sw64=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_nw34=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_nw50=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_nw64=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_po=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_ro=nan(size(identinittimesunique,1),identmaxfhr);
-            BT_rmw=nan(size(identinittimesunique,1),identmaxfhr);         
+            BT_lon=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_lat=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_maxspd=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_minpres=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_ne34=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_ne50=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_ne64=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_se34=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_se50=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_se64=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_sw34=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_sw50=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_sw64=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_nw34=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_nw50=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_nw64=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_po=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_ro=nan(size(identinittimesunique,1),identmodelfhr);
+            BT_rmw=nan(size(identinittimesunique,1),identmodelfhr);         
 
             % Initialize EXP
-            EXP_lon=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_lat=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_maxspd=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_minpres=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_ne34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_ne50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_ne64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_se34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_se50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_se64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_sw34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_sw50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_sw64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_nw34=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_nw50=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_nw64=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_po=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_ro=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            EXP_rmw=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));         
+            EXP_lon=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_lat=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_maxspd=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_minpres=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_ne34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_ne50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_ne64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_se34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_se50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_se64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_sw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_sw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_sw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_nw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_nw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_nw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_po=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_ro=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            EXP_rmw=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));         
 
             % Initialize Errors
-            ateerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            xteerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            trkerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            interr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            spderr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            ne34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            se34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            sw34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            nw34err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            ne50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            se50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            sw50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            nw50err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            ne64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            se64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            sw64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            nw64err_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            poerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            roerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
-            rmwerr_exp=nan(size(identinittimesunique,1),identmaxfhr,size(identexp,1));
+            ateerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            xteerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            trkerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            interr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            spderr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            ne34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            se34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            sw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            nw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            ne50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            se50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            sw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            nw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            ne64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            se64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            sw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            nw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            poerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            roerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+            rmwerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
 
             % Individual Cycles
             for identloop=1:size(identinittimesunique,1)
@@ -2892,9 +2892,9 @@ for hwrfvariables=1:size(identexp,1)
             for identloop=identbatch % value set in batch script to run parallel for all cycles
                 % initialize variables (should be same for each!)
                 disp(['CYCLE INIT DATE: ',identinittimesunique(identloop,:)])
-                var_f=nan(pltcen*2+1,pltcen*2+1,identlevels,identmaxfhr,'single'); %lonxlatxlevelsxFHR (1 for each init)
-                varlt_f=nan(pltcen*2+1,pltcen*2+1,identmaxfhr,'single');
-                varln_f=nan(pltcen*2+1,pltcen*2+1,identmaxfhr,'single');
+                var_f=nan(pltcen*2+1,pltcen*2+1,identlevels,identmodelfhr,'single'); %lonxlatxlevelsxFHR (1 for each init)
+                varlt_f=nan(pltcen*2+1,pltcen*2+1,identmodelfhr,'single');
+                varln_f=nan(pltcen*2+1,pltcen*2+1,identmodelfhr,'single');
                 for identfhr=1:identmaxfhr % loop over number of forecast hours for that cycle
                     if isnan(BT_lat(identloop,identfhr))==1
                         disp('BT has a NaN...skipping date!')
@@ -3091,9 +3091,9 @@ for hwrfvariables=1:size(identexp,1)
             for identloop=identbatch % value set in batch script to run parallel for all cycles
                 % initialize variables (should be same for each!)
                 disp(['CYCLE INIT DATE: ',identinittimesunique(identloop,:)])
-                var_f=nan(pltcen2*2+1,pltcen2*2+1,identlevels,identmaxfhr,'single'); %lonxlatxlevelsxFHR (1 for each init)
-                varlt_f=nan(pltcen2*2+1,pltcen2*2+1,identmaxfhr,'single');
-                varln_f=nan(pltcen2*2+1,pltcen2*2+1,identmaxfhr,'single');
+                var_f=nan(pltcen2*2+1,pltcen2*2+1,identlevels,identmodelfhr,'single'); %lonxlatxlevelsxFHR (1 for each init)
+                varlt_f=nan(pltcen2*2+1,pltcen2*2+1,identmodelfhr,'single');
+                varln_f=nan(pltcen2*2+1,pltcen2*2+1,identmodelfhr,'single');
                 for identfhr=1:identmaxfhr % loop over number of forecast hours for that cycle
                     if isnan(BT_lat(identloop,identfhr))==1
                         disp('BT has a NaN...skipping date!')
@@ -3614,7 +3614,7 @@ for hwrfplots=1
         pltcen=150;% how many gridpoints from center .mat files
         radbin=0.125; % resolution of synoptic grid
         pltpt=ceil(pltkm/(radbin*111.11))+1; % to get to pltkm km
-        nav=nan(size(identinittimesunique,1),identmaxfhr);
+        nav=nan(size(identinittimesunique,1),identmodelfhr);
         spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
         clPos=[0.88 0.13 0.04 0.75]; % arrange plots the same
         % Don't plot u- or v- wind from SYNOPTIC grid        
@@ -4552,7 +4552,7 @@ for hwrfplots=1
         pltcen=306;% how many gridpoints from center .mat files
         radbin=0.015; % resolution of storm grid
         pltpt=ceil(pltkm/(radbin*111.11))+1; % to get to 500 km
-        nav=nan(size(identinittimesunique,1),identmaxfhr);
+        nav=nan(size(identinittimesunique,1),identmodelfhr);
         spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
         clPos=[0.88 0.13 0.04 0.75]; % arrange plots the same
         % All Graphics
@@ -5595,7 +5595,7 @@ for shear=1
                             box on            
                             set(gca,'xtick',1:4:50)
                             set(gca,'ytick',0:10:100)
-                            set(gca,'xticklabel',{'0','12','24','36','48','60','72','84','96','108','120','132'})
+                            set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3)
                             grid on
                             set(gca,'gridcolor','k','gridalpha',.4,'ygrid','off')
                             set(gca,'fontsize',20)      

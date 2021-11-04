@@ -2,7 +2,7 @@
 #SBATCH -t 00:05:00         # XXXX: Time Limit | generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
-#SBATCH -p hera	    # XXXX: Partition | keep it bigmem
+#SBATCH -p hera	    # XXXX: Partition | keep it hera
 #SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
 #SBATCH --mail-type=fail    # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
@@ -24,9 +24,12 @@ scrubpath=${homepath}/scrub				# path to your scrub directory
 dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
 
 # Set Experiments
-set -A expfold HB20_B1_ALL HB20new HB20_B2_ALL HB20_B3_ALL HB20_B6_ALL HB20_B7_ALL HB20_B1_NO HB20_NO HB20_B2_NO HB20_B3_NO HB20_B6_NO HB20_B7_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew ALL ALL ALL ALL ALL ALL NO NO NO NO NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
-numfold=12
+#set -A expfold HB20_B1_ALL HB20new HB20_B1_NC HB20_NC HB20_B1_OV HB20_OV HB20_B1_NO HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+#set -A expnew ALL ALL NIC NIC NTG NTG NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+#numfold=8
+set -A expfold HB20new HB20_NC HB20_IC HB20_TG HB20_OV HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew ALL NIC IC TG NTG NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+numfold=6
 
 # Account Information
 acntold=aoml-osse                       		# account currently listed in SBATCH above

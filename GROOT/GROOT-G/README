@@ -101,6 +101,8 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+11/4/21  | Added capability for an entire multi-year sample to be read in at once in runverif.ksh
+11/1/21  | Added capability for customization of the end limit of the forecast lead time x-axes.
 10/28/21 | Added capability for the combo error/improvement graphics to produce both a mean and a median version as another way aside from FSP and PPC graphics to identify sample outliers
          | Added capability to choose what serial correlation value to use in the namelist
 	 | Added capability to choose what obstype and inclusion parameter to use in the namelist

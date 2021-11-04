@@ -11,7 +11,7 @@ ident=['AL052019'];                                             % basin, ID, and
 identn=['DORIAN19'];                                            % NAMEYY (e.g., HERMINE16)
 identhwrf=['dorian05l'];                                        % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
 identcycles=['2019082606';'2019082612';'2019082618';'2019082700';'2019082706';'2019082712';'2019082718';'2019082800';'2019082806';'2019082812';'2019082818';'2019082900';'2019082906'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
-identmaxfhr=(126)/3+1;                                          % max forecast hours set in model (e.g., 126) - keep the /3+1
+identmaxfhr=(126)/3+1;identmodelfhr=(126)/3+1;                  % max forecast hours set in model (e.g., 126) - keep the /3+1
 identlevels=46;                                                 % number of pressure levels
 identexp=[{'HB20new'};{'HB20_NC'};{'HB20_OV'};{'HB20_TG'};{'HB20_IC'};{'HB20_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
 identexpshort=[{'ALL'};{'NIC'};{'NTG'};{'TG'};{'IC'};{'NO'}];   % short name of experiments (no more than 8 letters per experiment)
