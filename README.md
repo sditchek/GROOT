@@ -17,7 +17,7 @@ Use this component if you are running HWRF or the basin-scale HWRF. It has four 
 
 ### GROOT-G
 
-Use this component if you are running the FV3GFS. It has only one feature at the moment - the Error Statistics Capability. The GRB Capability and Retrieval Scripts will be added in the future as a new release:
+Use this component if you are running the FV3GFS. It has only two features at the moment - the Error Statistics Capability and the Assimilated Observations Capability. The GRB Capability and Retrieval Scripts will be added in the future as a new release:
 
   1) **Error Statistics Capability:** graphics for individual storms, composites, and various subsets are generated
   2) **Assimilated Observations Capability:** graphics for individual storms and storm-relative composites are generated
