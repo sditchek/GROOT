@@ -1889,14 +1889,14 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								tmpstr=['Mean: '];
 								imprv2(imprv2==-Inf)=0;
 								imprv2(imprv2==Inf)=0;
-								tmpstrmean=nanmean(imprv2,1);
+								tmpstrmean=nanmean(imprv2(1:(identmaxfhr+1)/2,:),1);
 								tmpstrmean=(find(tmpstrmean~=0));
 								if size(tmpstrmean,2)>0
 									for tmp=tmpstrmean
 									if tmp==tmpstrmean(end)
-										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'%'];
+										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
 									else
-										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
 									end
 									end
 								else
@@ -2195,14 +2195,14 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								tmpstr=['Mean: '];
 								fsp2(fsp2==-Inf)=0;
 								fsp2(fsp2==Inf)=0;
-								tmpstrmean=nanmean(fsp2,1);
+								tmpstrmean=nanmean(fsp2(1:(identmaxfhr+1)/2,:),1);
 								tmpstrmean=(find(tmpstrmean~=0));
 								if size(tmpstrmean,2)>0
 									for tmp=tmpstrmean
 									if tmp==tmpstrmean(end)
-										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'%'];
+										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
 									else
-										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
 									end
 									end
 								else
@@ -3164,14 +3164,14 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								tmpstr=['Mean: '];
 								imprv2(imprv2==-Inf)=0;
 								imprv2(imprv2==Inf)=0;
-								tmpstrmean=nanmean(imprv2,1);
+								tmpstrmean=nanmean(imprv2(1:(identmaxfhr+1)/2,:),1);
 								tmpstrmean=(find(tmpstrmean~=0));
 								if size(tmpstrmean,2)>0
 									for tmp=tmpstrmean
 									if tmp==tmpstrmean(end)
-										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'%'];
+										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
 									else
-										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+										tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
 									end
 									end
 								else
@@ -5212,7 +5212,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end        
 								% Mean Value            
 								tmpstr=['Mean: '];
-								tmpstrmean=nanmean(imprv1,1);
+								tmpstrmean=nanmean(imprv1(1:(identmaxfhr+1)/2,:),1);
 								tmpstrmean=(find(tmpstrmean~=0));
 								if size(tmpstrmean,2)>0
 									for tmp=tmpstrmean
@@ -5528,14 +5528,14 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end        
 								% Mean Value            
 								tmpstr=['Mean: '];
-								tmpstrmean=nanmean(fsp2,1);
+								tmpstrmean=nanmean(fsp2(1:(identmaxfhr+1)/2,:),1);
 								tmpstrmean=(find(tmpstrmean~=0));
 								if size(tmpstrmean,2)>0
 									for tmp=tmpstrmean
 										if tmp==tmpstrmean(end)
-											tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'%'];
+											tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
 										else
-											tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+											tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
 										end
 									end
 								else
@@ -11971,15 +11971,15 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     %end
                                                     % Mean Value            
                                                     tmpstr=['Mean: '];
-                                                    %tmpstrmean=nanmean(imprv2,1);
+                                                    %tmpstrmean=nanmean(imprv2(1:(identmaxfhr+1)/2,:),1);
                                                     %tmpstrmean=(find(tmpstrmean~=0));
                                                     tmpstrmean=1:size(imprv2,2);
 													tmpstrmean(tmpstrmean==tmpimp)=[];
 													for tmp=tmpstrmean
                                                         if tmp==tmpstrmean(end)
-                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'%'];
+                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
                                                         else
-                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
                                                         end
                                                     end
                                                     if sum(sum(~isnan(imprv2)))==0
@@ -12617,15 +12617,15 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                     %end
                                                     % Mean Value            
                                                     tmpstr=['Mean: '];
-                                                    %tmpstrmean=nanmean(fsp2,1);
+                                                    %tmpstrmean=nanmean(fsp2(1:(identmaxfhr+1)/2,:),1);
                                                     %tmpstrmean=(find(tmpstrmean~=0));
                                                     tmpstrmean=1:size(imprv2,2);
 													tmpstrmean(tmpstrmean==tmpimp)=[];
 													for tmp=tmpstrmean
                                                         if tmp==tmpstrmean(end)
-                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'%'];
+                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
                                                         else
-                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+                                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
                                                         end
                                                     end
                                                     if sum(sum(~isnan(fsp2)))==0
@@ -14609,9 +14609,9 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 													tmpstrmean(tmpstrmean==tmpimp)=[];
 													for tmp=tmpstrmean
 														if tmp==tmpstrmean(end)
-															tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'%'];
+															tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
 														else
-															tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+															tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
 														end
 													end
 													if sum(sum(~isnan(imprv2)))==0
@@ -15979,7 +15979,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                             end        
                                                             % Mean Value            
                                                             tmpstr=['Mean: '];
-                                                            tmpstrmean=nanmean(imprv1,1);
+                                                            tmpstrmean=nanmean(imprv1(1:(identmaxfhr+1)/2,:),1);
                                                             tmpstrmean=(find(tmpstrmean~=0));
                                                             if size(tmpstrmean,2)>0
                                                                 for tmp=tmpstrmean
@@ -16619,14 +16619,14 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                             end        
                                                             % Mean Value            
                                                             tmpstr=['Mean: '];
-                                                            tmpstrmean=nanmean(fsp2,1);
+                                                            tmpstrmean=nanmean(fsp2(1:(identmaxfhr+1)/2,:),1);
                                                             tmpstrmean=(find(tmpstrmean>=0));
                                                             if size(tmpstrmean,2)>0
                                                                 for tmp=tmpstrmean
                                                                     if tmp==tmpstrmean(end)
-                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'%'];
+                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
                                                                     else
-                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
                                                                     end
                                                                 end
                                                             else

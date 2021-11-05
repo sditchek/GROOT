@@ -6018,13 +6018,13 @@
                                     end
                                     % Mean Value            
                                     tmpstr=['Mean: '];
-                                    tmpstrmean=nanmean(imprv2,1);
+                                    tmpstrmean=nanmean(imprv2(1:(identmaxfhr+1)/2,:),1);
                                     tmpstrmean=(find(tmpstrmean~=0));
                                     for tmp=tmpstrmean
                                         if tmp==tmpstrmean(end)
-                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'%'];
+                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
                                         else
-                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
                                         end
                                     end
                                     if sum(sum(~isnan(imprv2)))==0
@@ -7039,13 +7039,13 @@
                                         end
                                         % Mean Value            
                                         tmpstr=['Mean: '];
-                                        tmpstrmean=nanmean(fsp2,1);
+                                        tmpstrmean=nanmean(fsp2(1:(identmaxfhr+1)/2,:),1);
                                         tmpstrmean=(find(tmpstrmean~=0));
                                         for tmp=tmpstrmean
                                             if tmp==tmpstrmean(end)
-                                                tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'%'];
+                                                tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
                                             else
-                                                tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+                                                tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
                                             end
                                         end
                                         if sum(sum(~isnan(fsp2)))==0
@@ -14433,13 +14433,13 @@
                                     set(ax2,'Color',[.9 .9 .9]) 
                                     % Mean Value            
                                     tmpstr=['Mean: '];
-                                    tmpstrmean=nanmean(imprv2,1);
+                                    tmpstrmean=nanmean(imprv2(1:(identmaxfhr+1)/2,:),1);
                                     tmpstrmean=(find(tmpstrmean~=0));
                                     for tmp=tmpstrmean
                                         if tmp==tmpstrmean(end)
-                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'%'];
+                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
                                         else
-                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+                                            tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(imprv2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
                                         end
                                     end
                                     if sum(sum(~isnan(imprv2)))==0
