@@ -5212,7 +5212,7 @@
 								end        
 								% Mean Value            
 								tmpstr=['Mean: '];
-								tmpstrmean=nanmean(imprv1(1:(identmaxfhr+1)/2,:),1);
+								tmpstrmean=nanmean(imprv1,1);
 								tmpstrmean=(find(tmpstrmean~=0));
 								if size(tmpstrmean,2)>0
 									for tmp=tmpstrmean
@@ -15897,7 +15897,7 @@
                                                             end        
                                                             % Mean Value            
                                                             tmpstr=['Mean: '];
-                                                            tmpstrmean=nanmean(imprv1(1:(identmaxfhr+1)/2,:),1);
+                                                            tmpstrmean=nanmean(imprv1,1);
                                                             tmpstrmean=(find(tmpstrmean~=0));
                                                             if size(tmpstrmean,2)>0
                                                                 for tmp=tmpstrmean
