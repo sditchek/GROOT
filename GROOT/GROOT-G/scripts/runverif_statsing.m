@@ -16619,14 +16619,14 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
                                                             end        
                                                             % Mean Value            
                                                             tmpstr=['Mean: '];
-                                                            tmpstrmean=nanmean(fsp2(1:(identmaxfhr+1)/2,:),1);
+                                                            tmpstrmean=nanmean(fsp2,1);
                                                             tmpstrmean=(find(tmpstrmean>=0));
                                                             if size(tmpstrmean,2)>0
                                                                 for tmp=tmpstrmean
                                                                     if tmp==tmpstrmean(end)
-                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'%'];
+                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'%'];
                                                                     else
-                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(1:(identmaxfhr+1)/2,tmp)),2)),'% \color[rgb]{0,0,0}| '];
+                                                                        tmpstr=[tmpstr, '\color[rgb]{',num2str(identexpcolors(tmp,:)),'}',num2str(round(nanmean(fsp2(:,tmp)),2)),'% \color[rgb]{0,0,0}| '];
                                                                     end
                                                                 end
                                                             else
