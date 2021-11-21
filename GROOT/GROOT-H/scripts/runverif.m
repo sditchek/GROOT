@@ -16,11 +16,11 @@ for identremoveinvest=1
             for editsingle=1
                 identtmp1=stormsdone{stmdn};
                 identtmp2=yearsdone(stmdn,:);
-                if strcmp(identtmp1(end),'l')==1
-                    identtmp3='AL';
-                elseif strcmp(identtmp1(end),'e')==1
-                    identtmp3='EP';
-                end
+                if strcmp(identtmp1(end),'l')==1;identtmp3='AL';
+                elseif strcmp(identtmp1(end),'e')==1;identtmp3='EP';
+                elseif strcmp(identtmp1(end),'w')==1;identtmp3='WP';
+                elseif strcmp(identtmp1(end),'c')==1;identtmp3='CP';
+		end
                 % Set Name
                 ident=[identtmp3,identtmp1(end-2:end-1),identtmp2];      % basin, ID, and year (e.g., AL092016)
                 identn=[upper(identtmp1(1:end-3)),identtmp2(3:4)];       % NAMEYY (e.g., HERMINE16)
@@ -461,7 +461,7 @@ for identremoveinvest=1
 		end
 		if identcompositerun==1
 			load([identout,'compsave1.mat'])
-			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1
+			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1 || strcmp(identdr5{1},'WP')==1
 				%% To deal with multiple basins, if present
 				identbasincut(1)=1;
 				for basinloop=1:size(identdr5,2) 
