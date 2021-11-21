@@ -7,7 +7,7 @@ for graphics=1
 	% Initialize BT
 	BT_lon=nan(size(identinittimesunique,1),identmodelfhr);
 	BT_lat=nan(size(identinittimesunique,1),identmodelfhr);
-	BT_maxspd=nan(size(identinittimesunique,1),identmodelfhr);BT_cat=cell(size(identinittimesunique,1),identmodelfhr);BT_cat(:) = {NaN};
+	BT_maxspd=nan(size(identinittimesunique,1),identmodelfhr);BT_cat=cell(size(identinittimesunique,1),identmodelfhr);BT_cat(:) = {'  '};
 	BT_minpres=nan(size(identinittimesunique,1),identmodelfhr);
 	BT_ne34=nan(size(identinittimesunique,1),identmodelfhr);
 	BT_ne50=nan(size(identinittimesunique,1),identmodelfhr);
