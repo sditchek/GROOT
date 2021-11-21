@@ -25,22 +25,21 @@ identcaseyear='2019';							        % year of storm: YYYY
 % Error Graphics Options
 identgraphicsbycycle=0;                                         % error graphics for EACH CYCLE - must be 0 if identcompositeonly=1 | yes (1) no (0 - this saves time)
 identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
-identlagcorr=0;							% do you want to create lagged correlation graphics? | yes (1) no (0 - this saves time)			
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='test';                                             % name for new subset - will be capitalized in the script
 identnewsubset=[{'2017081800-2017083100'};{'2017090200'}];      % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
                                                                      % range of cycles: [{'2017081800-2017083100'}]
                                                                      % disjointed cycles: [{'2017081800'};{'2017090200'}]
                                                                      % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
-identserialcorr=1;						% value for taking serial correlation (SC) into account | 1 (sample size not reduced) 2 (12-h SC) 3 (18-h SC) 4 (24-h SC)
+identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
 
 % Conventional Graphics Options
 identconv=1;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
 identconvobs=137;						% conventional observation obstype
-identincludeobs=1					% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
 identconvtype=[0];                                              % subtypes desired 
+identincludeobs=1					% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
                                                                     % NO SUBTYPE: identconvtype=0
                                                                     % YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
 identconvcolors=[.8 .2 .8;.9 .4 .2];                            % colors for each of your subtypes

@@ -1,4 +1,4 @@
- %% Stats Composite
+			%% Stats Composite
             for basinloop=identbasins
                 %delete([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP*']);
                 %delete([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/*.txt']);
@@ -296,7 +296,7 @@
                     ateerr_exp=ateerr_exp_all;
                     xteerr_exp=xteerr_exp_all;
                     clear *all
-			if identconv==1
+					if identconv==1
 						BT_dropsB=ABT_dropsB(identbasincut(basinloop):identbasincut(basinloop+1)-1);
 						BT_dropsI=ABT_dropsI(identbasincut(basinloop):identbasincut(basinloop+1)-1);
 						BT_dropsT=ABT_dropsT(identbasincut(basinloop):identbasincut(basinloop+1)-1);
@@ -1087,7 +1087,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -1310,7 +1310,7 @@
                                     end 
                                     ylim(impylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -1524,7 +1524,7 @@
                                         end  
                                         ylim([25 75])
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         grid on
                                         set(gca,'gridcolor','k','gridalpha',.15)
                                         set(gca,'fontsize',20)      
@@ -1747,7 +1747,7 @@
                                     end                                    
                                     ylim(biasylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -2279,7 +2279,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2487,7 +2487,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2692,7 +2692,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2770,7 +2770,7 @@
                                         end    
                                         set(gca,'xtick',[])
 										ylim([0 1])
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2971,7 +2971,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     set(gca,'xticklabel',[]) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
@@ -3191,7 +3191,7 @@
                                         set(gca,'ytick',impylim(plt,1):10:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -3217,7 +3217,6 @@
                                 end; end                                                                                                                    					
 								spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same								
 								% Create Graphics: Lagged Correlation
-								if identlagcorr==1
 								for plt=1:23
 									% Load saved matrices
 									load([identout,'tempsave.mat'])
@@ -3384,7 +3383,7 @@
 											end
 										end         
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
 										set(gca,'gridcolor','k','gridalpha',.15)
 										set(gca,'fontsize',20)      
 										hold off
@@ -3484,7 +3483,7 @@
 										close all													
 									end									
 								end
-								end
+								fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', 'No Data!');fclose(fid);
 								load([identout,'tempsave.mat'])
 								% Scorecard
 								for scorecard=1
@@ -3579,7 +3578,7 @@
 											end
 										end    
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
 										set(gca,'fontsize',10)
 										ylim([0.5 43.5])
 										set(gca,'ytick',1:1:43.5)
@@ -3674,7 +3673,1758 @@
                             if sum(isnan(keepstm))-size(keepstm,2)==0 && (strat==2 || strat==3) % no storms have obs...skip strat 2 & 3
                                 disp('None of the storms in the composite have obs...skipping the OBS and TARGET stratifications...')
                             else
-                                % Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
+                                % Create Graphics: Lagged Correlation
+								%clear scfactor scfactor0
+								for plt=1:23
+									% Load saved matrices
+									load([identout,'tempsave.mat'])
+									% Grab initial sizes
+									if plt==1
+										 tmp_exp0=trkerr_exp(:,1:skip:end,:);
+										 tmp_name='trkerr';
+										 tmp_title='Track Error (km)';
+										 tmp_ytitle='Error (km)';
+									elseif plt==2
+										tmp_exp0=interr_exp(:,1:skip:end,:);
+										tmp_name='preserr';
+										tmp_title='Pressure Error (hPa)';
+										tmp_ytitle='Error (hPa)';
+									elseif plt==3
+										tmp_exp0=spderr_exp(:,1:skip:end,:);
+										tmp_name='spderr';
+										tmp_title='Wind Speed Error (kts)';
+										tmp_ytitle='Error (kts)';
+									 elseif plt==4
+										tmp_exp0=ne34err_exp(:,1:skip:end,:);
+										tmp_name='ne34err';
+										tmp_title='R34 NEQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==5
+										tmp_exp0=se34err_exp(:,1:skip:end,:);
+										tmp_name='se34err';
+										tmp_title='R34 SEQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==6
+										tmp_exp0=sw34err_exp(:,1:skip:end,:);
+										tmp_name='sw34err';
+										tmp_title='R34 SWQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==7
+										tmp_exp0=nw34err_exp(:,1:skip:end,:);
+										tmp_name='nw34err';
+										tmp_title='R34 NWQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==8
+										tmp_exp0=ne50err_exp(:,1:skip:end,:);
+										tmp_name='ne50err';
+										tmp_title='R50 NEQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==9
+										tmp_exp0=se50err_exp(:,1:skip:end,:);
+										tmp_name='se50err';
+										tmp_title='R50 SEQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==10
+										tmp_exp0=sw50err_exp(:,1:skip:end,:);
+										tmp_name='sw50err';
+										tmp_title='R50 SWQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==11
+										tmp_exp0=nw50err_exp(:,1:skip:end,:);
+										tmp_name='nw50err';
+										tmp_title='R50 NWQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==12
+										tmp_exp0=ne64err_exp(:,1:skip:end,:);
+										tmp_name='ne64err';
+										tmp_title='R64 NEQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==13
+										tmp_exp0=se64err_exp(:,1:skip:end,:);
+										tmp_name='se64err';
+										tmp_title='R64 SEQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==14
+										tmp_exp0=sw64err_exp(:,1:skip:end,:);
+										tmp_name='sw64err';
+										tmp_title='R64 SWQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==15
+										tmp_exp0=nw64err_exp(:,1:skip:end,:);
+										tmp_name='nw64err';
+										tmp_title='R64 NWQ Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 200];
+									elseif plt==16
+										tmp_exp0=poerr_exp(:,1:skip:end,:);
+										tmp_name='poerr';
+										tmp_title='Outer Clsd Isbr Prs Error (hPa)';
+										tmp_ytitle='Error (hPa)';
+									elseif plt==17
+										tmp_exp0=roerr_exp(:,1:skip:end,:);
+										tmp_name='roerr';
+										tmp_title='Outer Clsd Isbr Rad Error (km)';
+										tmp_ytitle='Error (km)';
+									elseif plt==18
+										tmp_exp0=rmwerr_exp(:,1:skip:end,:);
+										tmp_name='rmwerr';
+										tmp_title='RMW Error (km)';
+										tmp_ytitle='Error (km)';
+									elseif plt==19
+										tmp_exp0=ateerr_exp(:,1:skip:end,:);
+										tmp_name='ateerr';
+										tmp_title='Along-Track Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[-500 500];                
+									elseif plt==20
+										tmp_exp0=xteerr_exp(:,1:skip:end,:);
+										tmp_name='xteerr';
+										tmp_title='Across-Track Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[-500 500]; 
+									elseif plt==21
+										tmp_exp0=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
+										tmp_name='34err';
+										tmp_title='R34 Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 100];
+									elseif plt==22
+										tmp_exp0=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
+										tmp_name='50err';
+										tmp_title='R50 Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 100];
+									elseif plt==23
+										tmp_exp0=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
+										tmp_name='64err';
+										tmp_title='R64 Error (km)';
+										tmp_ytitle='Error (km)';
+										yrange=[0 100];
+									end				   					
+									% Strat
+									if strat==1
+										clear tmpyrb
+										tmpyr=identdr;
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==2
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_drops==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_drops==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==3
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_target';BT_target';BT_target';BT_target']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_target==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_target==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==4 % TD
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]<34 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat<34 & strcmp(BT_cat0,'TD')==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_cat<34 & strcmp(BT_cat0,'TD')==1) BT_storm(BT_cat<34 & strcmp(BT_cat0,'TD')==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat<34 & strcmp(BT_cat0,'TD')==1));
+									elseif strat==5 % TS
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=34 & [BT_cat;BT_cat;BT_cat;BT_cat]<64 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1,:,:);
+										end                    
+										tmpyr=unique([BT_year(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1) BT_storm(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;                
+										tmpnm=unique(BT_name(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1));
+									elseif strat==6 % MN
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=64 & [BT_cat;BT_cat;BT_cat;BT_cat]<96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1,:,:);
+										end                    
+										tmpyr=unique([BT_year(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1));
+									elseif strat==7 % MJ
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=96 & strcmp(BT_cat0,'HU')==1,:,:);
+										end                    
+										tmpyr=unique([BT_year(BT_cat>=96 & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=96 & strcmp(BT_cat0,'HU')==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat>=96 & strcmp(BT_cat0,'HU')==1));
+									elseif strat==8 % N30
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_lat>=30,:,:);
+										end                    
+										tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_lat>=30));
+									elseif strat==9 % S30
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_lat<30,:,:);
+										end
+										tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_lat<30));
+									elseif strat==10 % RI
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]>=15,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_intch>=15,:,:);
+										end     															
+										tmpyr=unique([BT_year(BT_intch>=15) BT_storm(BT_intch>=15)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_intch>=15));		
+									elseif strat==11 % IN
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]>=5 & [BT_intch;BT_intch;BT_intch;BT_intch]<15,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_intch>=5 & BT_intch<15,:,:);
+										end     
+										tmpyr=unique([BT_year(BT_intch>=5 & BT_intch<15) BT_storm(BT_intch>=5 & BT_intch<15)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_intch>=5 & BT_intch<15));
+									elseif strat==12 % SS
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]>-5 & [BT_intch;BT_intch;BT_intch;BT_intch]<5,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_intch>-5 & BT_intch<5,:,:);
+										end     
+										tmpyr=unique([BT_year(BT_intch>-5 & BT_intch<5) BT_storm(BT_intch>-5 & BT_intch<5)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_intch>-5 & BT_intch<5));
+									elseif strat==13 % W
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]<=-5 & [BT_intch;BT_intch;BT_intch;BT_intch]>-15,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_intch<=-5 & BT_intch>-15,:,:);
+										end     
+										tmpyr=unique([BT_year(BT_intch<=-5 & BT_intch>-15) BT_storm(BT_intch<=-5 & BT_intch>-15)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_intch<=-5 & BT_intch>-15));
+									elseif strat==14 % RW
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]<=-15,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_intch<=-15,:,:);
+										end     
+										tmpyr=unique([BT_year(BT_intch<=-15) BT_storm(BT_intch<=-15)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_intch<=-15));
+									elseif strat>14 && strat<=14+size(unique(BT_year),1) % by year
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-14);
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]==tmps,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year==tmps,:,:);
+										end                    
+										tmpnm=unique(BT_name(BT_year==tmps));
+										tmpyr=repmat(tmps+2000,size(tmpnm,2),1);
+									elseif strat==14+size(unique(BT_year),1)+1 %% TD strat obs only
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]<34 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1,:,:);
+										end                    
+										tmpyr=unique([BT_year(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1) BT_storm(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1));
+									elseif strat==14+size(unique(BT_year),1)+2 % TS
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=34 & [BT_cat;BT_cat;BT_cat;BT_cat]<64 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1) BT_storm(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;                
+										tmpnm=unique(BT_name(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1));
+									elseif strat==14+size(unique(BT_year),1)+3 % MN
+										clear tmpyrb
+										 if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=64 & [BT_cat;BT_cat;BT_cat;BT_cat]<96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
+										 end
+										tmpyr=unique([BT_year(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
+									elseif strat==14+size(unique(BT_year),1)+4 % MJ
+										clear tmpyrb
+										 if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
+										 end
+										tmpyr=unique([BT_year(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
+									elseif strat==14+size(unique(BT_year),1)+5 % N30
+										clear tmpyrb
+										 if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_lat>=30 & BT_drops'==1,:,:);
+										 end                     
+										tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+									elseif strat==14+size(unique(BT_year),1)+6 % S30
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_lat<30 & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+									elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-(14+size(unique(BT_year),1)+6));
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year==tmps & BT_drops'==1,:,:);
+										 end                                                
+										tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==1));
+										tmpyr=repmat(tmps+2000,size(tmpnm,2),1);   
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+1
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_drops==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_drops==0));                           
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+2
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_target';BT_target';BT_target';BT_target']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_target==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_target==0));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;  
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+3
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_dropsB==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_dropsB==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+4
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_targetB==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_targetB==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;   
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+5
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_dropsB==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_dropsB==0));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+6
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_targetB==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_targetB==0));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+7
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_dropsB==1 & BT_drops==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_dropsB==1 & BT_drops==0));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+8
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1 & [BT_target';BT_target';BT_target';BT_target']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_targetB==1 & BT_target==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_targetB==1 & BT_target==0));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+9
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_dropsI==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_dropsI==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;  
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+10
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_dropsT==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_dropsT==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+11
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_targetI';BT_targetI';BT_targetI';BT_targetI']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_targetI==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_targetI==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;  
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+12
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_targetT';BT_targetT';BT_targetT';BT_targetT']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_targetT==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_targetT==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+13 %% TD no obs only
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]<34 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0,:,:);
+										end                    
+										tmpyr=unique([BT_year(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0) BT_storm(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0));
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+14 % TS no obs only
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=34 & [BT_cat;BT_cat;BT_cat;BT_cat]<64 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0) BT_storm(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;                
+										tmpnm=unique(BT_name(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0));
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+15 % MN no obs only
+										clear tmpyrb
+										 if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=64 & [BT_cat;BT_cat;BT_cat;BT_cat]<96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
+										 end
+										tmpyr=unique([BT_year(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0));
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+16 % MJ no obs only
+										clear tmpyrb
+										 if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
+										 end
+										tmpyr=unique([BT_year(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)); 
+									 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
+										clear tmpyrb
+										 if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_lat>=30 & BT_drops'==0,:,:);
+										 end                     
+										tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_lat<30 & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+									elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18));
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year==tmps & BT_drops'==0,:,:);
+										 end                                                
+										tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==0));
+										tmpyr=repmat(tmps+2000,size(tmpnm,2),1);    
+									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only[
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)));
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']'==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsI==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
+										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;                                     
+									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)));
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']'==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsT==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
+										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;                                    
+									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1 & [BT_drops';BT_drops';BT_drops';BT_drops']'==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsB==1 & BT_drops==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
+										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;                                                                                                                                      
+									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsB==1,:,:);
+										end
+										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1));                                        
+										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;                                     
+									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+										clear tmpyrb
+										tmps=sort(unique(BT_year));
+										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsB==0,:,:);
+										end
+										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
+										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
+										for tmpyri=1:size(tmpyr,2)
+											tmpyra=tmpyr{tmpyri};
+											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+										end
+										tmpyr=tmpyrb+2000;
+									elseif strat==100 % Low Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1<LOWbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin));
+									elseif strat==101 % Moderate Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin ,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin));												
+									elseif strat==102 % High Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1>HIGHbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin));
+									elseif strat==103 % Low Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1<LOWbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==1));
+									elseif strat==104 % Moderate Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1));
+									elseif strat==105 % High Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1>HIGHbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==1));
+									elseif strat==106 % Low Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1<LOWbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==0));
+									elseif strat==107 % Moderate Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0));
+									elseif strat==108 % High Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp0=tmp_exp0(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
+				elseif strat==200 % OBS-G
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_obsg';BT_obsg';BT_obsg';BT_obsg']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_obsg==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_obsg==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+									elseif strat==888
+										clear tmpyrb
+										numlist=[];
+										for ins=1:size(identnewsub,1)
+											tmp=identnewsub(ins,:);
+											for ins2=1:size(BT_date)
+												if strcmp(BT_date(ins2,:),tmp)==1
+													numlist=[numlist ins2];
+												end
+											end
+										end
+										if plt>=21 && plt<=23
+											tmp_exp0=tmp_exp0([numlist;numlist;numlist;numlist],:,:);
+										else
+											tmp_exp0=tmp_exp0(numlist,:,:);
+										end
+										tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(numlist));    
+									end
+									if strat==1; for identexploop=1:size(tmp_exp0,3)							
+										cc=[];
+										pp=[];
+										for fhr=1:size(tmp_exp0,2)
+											ac2=[];
+											for i=1:size(identdr,2)  
+												load([identout,'tempsave.mat'],'BT_dropsB','BT_dropsI','BT_dropsT','BT_targetB','BT_targetI','BT_targetT')												
+												if isfile([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])==1   
+													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])	
+													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_latlon.mat'])
+													if identconv==1
+													BT_targetB=BT_targetB(BT_storm==i);
+													BT_targetI=BT_targetI(BT_storm==i);
+													BT_targetT=BT_targetT(BT_storm==i);
+													BT_dropsB=BT_dropsB(BT_storm==i);
+													BT_dropsI=BT_dropsI(BT_storm==i);
+													BT_dropsT=BT_dropsT(BT_storm==i);
+													end
+													if plt==1
+														 tmp_exp=trkerr_exp(:,1:skip:end,:);
+														 tmp_name='trkerr';
+														 tmp_title='Track Error (km)';
+														 tmp_ytitle='Error (km)';
+													elseif plt==2
+														tmp_exp=interr_exp(:,1:skip:end,:);
+														tmp_name='preserr';
+														tmp_title='Pressure Error (hPa)';
+														tmp_ytitle='Error (hPa)';
+													elseif plt==3
+														tmp_exp=spderr_exp(:,1:skip:end,:);
+														tmp_name='spderr';
+														tmp_title='Wind Speed Error (kts)';
+														tmp_ytitle='Error (kts)';
+													 elseif plt==4
+														tmp_exp=ne34err_exp(:,1:skip:end,:);
+														tmp_name='ne34err';
+														tmp_title='R34 NEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==5
+														tmp_exp=se34err_exp(:,1:skip:end,:);
+														tmp_name='se34err';
+														tmp_title='R34 SEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==6
+														tmp_exp=sw34err_exp(:,1:skip:end,:);
+														tmp_name='sw34err';
+														tmp_title='R34 SWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==7
+														tmp_exp=nw34err_exp(:,1:skip:end,:);
+														tmp_name='nw34err';
+														tmp_title='R34 NWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==8
+														tmp_exp=ne50err_exp(:,1:skip:end,:);
+														tmp_name='ne50err';
+														tmp_title='R50 NEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==9
+														tmp_exp=se50err_exp(:,1:skip:end,:);
+														tmp_name='se50err';
+														tmp_title='R50 SEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==10
+														tmp_exp=sw50err_exp(:,1:skip:end,:);
+														tmp_name='sw50err';
+														tmp_title='R50 SWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==11
+														tmp_exp=nw50err_exp(:,1:skip:end,:);
+														tmp_name='nw50err';
+														tmp_title='R50 NWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==12
+														tmp_exp=ne64err_exp(:,1:skip:end,:);
+														tmp_name='ne64err';
+														tmp_title='R64 NEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==13
+														tmp_exp=se64err_exp(:,1:skip:end,:);
+														tmp_name='se64err';
+														tmp_title='R64 SEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==14
+														tmp_exp=sw64err_exp(:,1:skip:end,:);
+														tmp_name='sw64err';
+														tmp_title='R64 SWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==15
+														tmp_exp=nw64err_exp(:,1:skip:end,:);
+														tmp_name='nw64err';
+														tmp_title='R64 NWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==16
+														tmp_exp=poerr_exp(:,1:skip:end,:);
+														tmp_name='poerr';
+														tmp_title='Outer Clsd Isbr Prs Error (hPa)';
+														tmp_ytitle='Error (hPa)';
+													elseif plt==17
+														tmp_exp=roerr_exp(:,1:skip:end,:);
+														tmp_name='roerr';
+														tmp_title='Outer Clsd Isbr Rad Error (km)';
+														tmp_ytitle='Error (km)';
+													elseif plt==18
+														tmp_exp=rmwerr_exp(:,1:skip:end,:);
+														tmp_name='rmwerr';
+														tmp_title='RMW Error (km)';
+														tmp_ytitle='Error (km)';
+													elseif plt==19
+														tmp_exp=ateerr_exp(:,1:skip:end,:);
+														tmp_name='ateerr';
+														tmp_title='Along-Track Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[-500 500];                
+													elseif plt==20
+														tmp_exp=xteerr_exp(:,1:skip:end,:);
+														tmp_name='xteerr';
+														tmp_title='Across-Track Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[-500 500]; 
+													elseif plt==21
+														tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
+														tmp_name='34err';
+														tmp_title='R34 Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 100];
+													elseif plt==22
+														tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
+														tmp_name='50err';
+														tmp_title='R50 Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 100];
+													elseif plt==23
+														tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
+														tmp_name='64err';
+														tmp_title='R64 Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 100];
+													end				   					
+													% Strat
+													if strat==1
+													elseif strat==2
+														if plt>=21 && plt<=23
+															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_drops==0,:,:)=NaN;
+														end									
+													elseif strat==3
+														if plt>=21 && plt<=23
+															tmp_exp([BT_target';BT_target';BT_target';BT_target']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_target==0,:,:)=NaN;
+														end
+													elseif strat==4 % TD
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1>=34 | strcmp(BT_cat0,'TD')==0,:,:)=NaN;
+														end
+													elseif strat==5 % TS
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<34 | BT_cat1>=64 | strcmp(BT_cat0,'TS')==0,:,:)=NaN;
+														end                    
+													elseif strat==6 % MN
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<64 | BT_cat1>=96 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;
+														end                    
+													elseif strat==7 % MJ
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<96 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;
+														end                    
+													elseif strat==8 % N30
+														if plt>=21 && plt<=23
+															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]<30,:,:)=NaN;
+														else
+															tmp_exp(BT_lat1<30,:,:)=NaN;
+														end                    
+													elseif strat==9 % S30
+														if plt>=21 && plt<=23
+															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]>=30,:,:)=NaN;
+														else
+															tmp_exp(BT_lat1>=30,:,:)=NaN;
+														end
+													elseif strat==10 % RI
+														if plt>=21 && plt<=23
+															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<15,:,:)=NaN;
+														else
+															tmp_exp(BT_intch1<15,:,:)=NaN;
+														end     															
+													elseif strat==11 % IN
+														if plt>=21 && plt<=23
+															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<5 | [BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=15,:,:)=NaN;
+														else
+															tmp_exp(BT_intch1<5 | BT_intch1>=15,:,:)=NaN;
+														end     
+													elseif strat==12 % SS
+														if plt>=21 && plt<=23
+															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=-5 | [BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=5,:,:)=NaN;
+														else
+															tmp_exp(BT_intch1<=-5 | BT_intch1>=5,:,:)=NaN;
+														end     
+													elseif strat==13 % W
+														if plt>=21 && plt<=23
+															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>-5 & [BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=-15,:,:)=NaN;
+														else
+															tmp_exp(BT_intch1>-5 & BT_intch1<=-15,:,:)=NaN;
+														end     
+													elseif strat==14 % RW
+														if plt>=21 && plt<=23
+															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>-15,:,:)=NaN;
+														else
+															tmp_exp(BT_intch1>-15,:,:)=NaN;
+														end     
+													elseif strat>14 && strat<=14+size(unique(BT_year),1) % by year
+														tmps=sort(unique(BT_year));
+														tmps=tmps(strat-14);
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end																				
+													elseif strat==14+size(unique(BT_year),1)+1 %% TD strat obs only
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1>=34 | strcmp(BT_cat0,'TD')==0 & BT_drops'==0,:,:)=NaN;
+														end                    
+													elseif strat==14+size(unique(BT_year),1)+2 % TS
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<34 | BT_cat1>=64 | strcmp(BT_cat0,'TS')==0 & BT_drops'==0,:,:)=NaN;
+														end
+													elseif strat==14+size(unique(BT_year),1)+3 % MN
+														 if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<64 | BT_cat1>=96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==0,:,:)=NaN;
+														 end
+													elseif strat==14+size(unique(BT_year),1)+4 % MJ
+														 if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==0,:,:)=NaN;
+														 end
+													elseif strat==14+size(unique(BT_year),1)+5 % N30
+														 if plt>=21 && plt<=23
+															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_lat1<30 & BT_drops'==0,:,:)=NaN;
+														 end                     
+													elseif strat==14+size(unique(BT_year),1)+6 % S30
+														if plt>=21 && plt<=23
+															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_lat1>=30 & BT_drops'==0,:,:)=NaN;
+														end
+													elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
+														tmps=sort(unique(BT_year));
+														tmps=tmps(strat-(14+size(unique(BT_year),1)+6));
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end													
+														if plt>=21 && plt<=23
+															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_drops'==0,:,:)=NaN;
+														 end                                                
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+1
+														if plt>=21 && plt<=23
+															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_drops==1,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+2
+														if plt>=21 && plt<=23
+															tmp_exp([BT_target';BT_target';BT_target';BT_target']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_target==1,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+3
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsB==0,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+4
+														if plt>=21 && plt<=23
+															tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_targetB==0,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+5
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsB==1,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+6
+														if plt>=21 && plt<=23
+															tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_targetB==1,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+7
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsB==0 & BT_drops==1,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+8
+														if plt>=21 && plt<=23
+															tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0 & [BT_target';BT_target';BT_target';BT_target']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_targetB==0 & BT_target==1,:,:)=NaN;
+														end
+													 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+9
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsI==0,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+10
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsT==0,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+11
+														if plt>=21 && plt<=23
+															tmp_exp([BT_targetI';BT_targetI';BT_targetI';BT_targetI']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_targetI==0,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+12
+														if plt>=21 && plt<=23
+															tmp_exp([BT_targetT';BT_targetT';BT_targetT';BT_targetT']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_targetT==0,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+13 %% TD no obs only
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1>=34 | strcmp(BT_cat0,'TD')==0 & BT_drops'==1,:,:)=NaN;
+														end                    
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+14 % TS no obs only
+														if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<34 | BT_cat1>=64 | strcmp(BT_cat0,'TS')==0 & BT_drops'==1,:,:)=NaN;
+														end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+15 % MN no obs only
+														 if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<64 | BT_cat1>=96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==1,:,:)=NaN;
+														 end
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+16 % MJ no obs only
+														 if plt>=21 && plt<=23
+															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_cat1<96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==1,:,:)=NaN;
+														 end
+													 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
+														 if plt>=21 && plt<=23
+															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_lat1<30 & BT_drops'==1,:,:)=NaN;
+														 end                     
+													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
+														if plt>=21 && plt<=23
+															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_lat1>=30 & BT_drops'==1,:,:)=NaN;
+														end
+													elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
+														tmps=sort(unique(BT_year));
+														tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18));
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end																				
+														if plt>=21 && plt<=23
+															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_drops'==1,:,:)=NaN;
+														 end                                                
+													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only[
+														tmps=sort(unique(BT_year));
+														tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)));
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end	
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']'==0,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsI==0,:,:)=NaN;
+														end
+													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+														tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)));
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end	
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']'==0,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsT==0,:,:);
+														end
+													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+														tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end	
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0 & [BT_drops';BT_drops';BT_drops';BT_drops']'==1,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsB==0 & BT_drops==1,:,:)=NaN;
+														end
+													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+														tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end	
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsB==0,:,:)=NaN;
+														end
+													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+														tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+														cyr=identdr{i};
+														cyr=str2num(cyr(end-1:end));
+														if strcmp(num2str(tmps),num2str(cyr))==0
+															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
+														end	
+														if plt>=21 && plt<=23
+															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1,:,:)=NaN;
+														else
+															tmp_exp(BT_dropsB==1,:,:)=NaN;
+														end
+													elseif strat==100 % Low Shear
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1>=LOWbasin,:,:)=NaN;
+														end
+													elseif strat==101 % Moderate Shear
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin | [BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin ,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1<LOWbasin | BT_shr1>HIGHbasin,:,:)=NaN;
+														end
+													elseif strat==102 % High Shear
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1<=HIGHbasin,:,:)=NaN;
+														end
+													elseif strat==103 % Low Shear Drops
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1>=LOWbasin | BT_drops'==0,:,:)=NaN;
+														end
+													elseif strat==104 % Moderate Shear Drops
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin | [BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1<LOWbasin | BT_shr1>HIGHbasin & BT_drops'==0,:,:)=NaN;
+														end
+													elseif strat==105 % High Shear Drops
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1<=HIGHbasin & BT_drops'==0,:,:)=NaN;
+														end
+													elseif strat==106 % Low Shear No Drops
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1>=LOWbasin & BT_drops'==1,:,:)=NaN;
+														end
+													elseif strat==107 % Moderate Shear No Drops
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin | [BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1<LOWbasin | BT_shr1>HIGHbasin & BT_drops'==1,:,:)=NaN;
+														end
+													elseif strat==108 % High Shear No Drops
+														if plt>=21 && plt<=23
+															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
+														else
+															tmp_exp(BT_shr1<=HIGHbasin & BT_drops'==1,:,:)=NaN;
+														end
+													elseif strat==200 % OBS-G
+														if plt>=21 && plt<=23
+															tmp_exp([BT_obsg';BT_obsg';BT_obsg';BT_obsg']==0,:,:)=NaN;
+														else
+															tmp_exp(BT_obsg==0,:,:)=NaN;
+														end	
+													elseif strat==888
+														numlist=[];
+														for ins=1:size(identnewsub,1)
+															tmp=identnewsub(ins,:);
+															for ins2=1:size(BT_date)
+																if strcmp(BT_date(ins2,:),tmp)==1
+																	numlist=[numlist ins2];
+																end
+															end
+														end
+														if plt>=21 && plt<=23
+															tmp_exp([numlist;numlist;numlist;numlist],:,:);
+														else
+															tmp_exp(numlist,:,:);
+														end
+													end
+													onefhr0=tmp_exp(:,fhr,identexploop);
+													
+													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])	
+													if plt==1
+														 tmp_exp=trkerr_exp(:,1:skip:end,:);
+														 tmp_name='trkerr';
+														 tmp_title='Track Error (km)';
+														 tmp_ytitle='Error (km)';
+													elseif plt==2
+														tmp_exp=interr_exp(:,1:skip:end,:);
+														tmp_name='preserr';
+														tmp_title='Pressure Error (hPa)';
+														tmp_ytitle='Error (hPa)';
+													elseif plt==3
+														tmp_exp=spderr_exp(:,1:skip:end,:);
+														tmp_name='spderr';
+														tmp_title='Wind Speed Error (kts)';
+														tmp_ytitle='Error (kts)';
+													 elseif plt==4
+														tmp_exp=ne34err_exp(:,1:skip:end,:);
+														tmp_name='ne34err';
+														tmp_title='R34 NEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==5
+														tmp_exp=se34err_exp(:,1:skip:end,:);
+														tmp_name='se34err';
+														tmp_title='R34 SEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==6
+														tmp_exp=sw34err_exp(:,1:skip:end,:);
+														tmp_name='sw34err';
+														tmp_title='R34 SWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==7
+														tmp_exp=nw34err_exp(:,1:skip:end,:);
+														tmp_name='nw34err';
+														tmp_title='R34 NWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==8
+														tmp_exp=ne50err_exp(:,1:skip:end,:);
+														tmp_name='ne50err';
+														tmp_title='R50 NEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==9
+														tmp_exp=se50err_exp(:,1:skip:end,:);
+														tmp_name='se50err';
+														tmp_title='R50 SEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==10
+														tmp_exp=sw50err_exp(:,1:skip:end,:);
+														tmp_name='sw50err';
+														tmp_title='R50 SWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==11
+														tmp_exp=nw50err_exp(:,1:skip:end,:);
+														tmp_name='nw50err';
+														tmp_title='R50 NWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==12
+														tmp_exp=ne64err_exp(:,1:skip:end,:);
+														tmp_name='ne64err';
+														tmp_title='R64 NEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==13
+														tmp_exp=se64err_exp(:,1:skip:end,:);
+														tmp_name='se64err';
+														tmp_title='R64 SEQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==14
+														tmp_exp=sw64err_exp(:,1:skip:end,:);
+														tmp_name='sw64err';
+														tmp_title='R64 SWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==15
+														tmp_exp=nw64err_exp(:,1:skip:end,:);
+														tmp_name='nw64err';
+														tmp_title='R64 NWQ Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 200];
+													elseif plt==16
+														tmp_exp=poerr_exp(:,1:skip:end,:);
+														tmp_name='poerr';
+														tmp_title='Outer Clsd Isbr Prs Error (hPa)';
+														tmp_ytitle='Error (hPa)';
+													elseif plt==17
+														tmp_exp=roerr_exp(:,1:skip:end,:);
+														tmp_name='roerr';
+														tmp_title='Outer Clsd Isbr Rad Error (km)';
+														tmp_ytitle='Error (km)';
+													elseif plt==18
+														tmp_exp=rmwerr_exp(:,1:skip:end,:);
+														tmp_name='rmwerr';
+														tmp_title='RMW Error (km)';
+														tmp_ytitle='Error (km)';
+													elseif plt==19
+														tmp_exp=ateerr_exp(:,1:skip:end,:);
+														tmp_name='ateerr';
+														tmp_title='Along-Track Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[-500 500];                
+													elseif plt==20
+														tmp_exp=xteerr_exp(:,1:skip:end,:);
+														tmp_name='xteerr';
+														tmp_title='Across-Track Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[-500 500]; 
+													elseif plt==21
+														tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
+														tmp_name='34err';
+														tmp_title='R34 Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 100];
+													elseif plt==22
+														tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
+														tmp_name='50err';
+														tmp_title='R50 Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 100];
+													elseif plt==23
+														tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
+														tmp_name='64err';
+														tmp_title='R64 Error (km)';
+														tmp_ytitle='Error (km)';
+														yrange=[0 100];
+													end				   					
+													% No Strat
+													onefhr=tmp_exp(:,fhr,identexploop);
+													
+													st=1;
+													ed=11;
+													for j=1:11
+														if j==1
+															ac1(j,:)=onefhr0(st:end-ed);
+															st=st+1;
+															ed=ed-1;
+														else
+															ac1(j,:)=onefhr(st:end-ed);
+															st=st+1;
+															ed=ed-1;
+														end
+													end
+													ac2=[ac2 ac1];
+												end
+												clear ac1
+											end			
+											for k=1:11
+												if size(corrcoef(ac2(1,:),ac2(k,:),'rows','complete'),1)==1
+													r(k)=NaN;
+													p(k)=NaN;
+												else
+													[R,P]=corrcoef(ac2(1,:),ac2(k,:),'rows','complete');
+													r(k)=R(2);
+													p(k)=P(2);
+												end
+											end
+											cc(fhr,:)=r;
+											pp(fhr,:)=p;
+											clear ac1 ac2 r p													
+										end			
+										% Plot														
+										clear cola; for cca=1:size(cc,1); ccatmp=cc(cca,1:identlagcorr);	[row,col]=find(abs(ccatmp)>=sqrt(identserialcorr));	rowa(cca)=cca;	if isempty(col)==1;cola(cca)=1; else; cola(cca)=col(end);end; end; scfactor(plt,identexploop,:)=cola; scfactor0(plt,identexploop)={['Sample size for ', tmp_title,' in ',identexp{identexploop},' divided by ', num2str(cola(1:skiptick:end)),' which is a ', num2str((cola(1:skiptick:end)-1)*6),' serial correlation and a ',num2str((cola(1:skiptick:end))*6),' separation time!']}; 
+										cc=flipud(cc');
+										pp=flipud(pp');
+										pp(pp>=0.05)=NaN;
+										pp=~isnan(pp)==1;	
+										clear l cntexp
+										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+										hfig=figure;
+										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+										ax1=subplot(3,4,[1:8]);
+										hold on					
+										imagesc(cc,'AlphaData',~isnan(cc))
+										set(gca,'plotboxaspectratio',[1 1 1])
+										ylabel('Lag (6-h Cycles)','fontsize',20)
+										set(gca,'ytick',1:11)
+										set(gca,'yticklabel',10:-1:0)
+										xlabel('Forecast Lead Time (h)','fontsize',20)
+										set(gca,'fontsize',20)
+										box on
+										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
+											if mod(identmaxfhr*3,12)==0
+												xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
+											else
+												xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
+											end
+										else
+											if mod(identmaxfhr*3-3,12)==0
+												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
+											else
+												xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
+											end
+										end         
+										set(gca,'xtick',1:skiptick:50)
+										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+										set(gca,'gridcolor','k','gridalpha',.15)
+										set(gca,'fontsize',20)      
+										hold off
+										box on														
+										hold on
+										for i=1:size(cc,2)
+											plot(repmat(0.5+i,1,size(cc,1)+3),-1:size(cc,1)+1,'k')
+										end
+										for i=1:size(cc,1)
+											plot(-1:size(cc,2)+1,repmat(i-.5,1,size(cc,2)+3),'k')
+										end
+										ylim([0.5 11.5])
+										run customcolorbars
+										cl=colorbar;
+										caxis([-1 1])														
+										colormap(gca,custommap(20,negposc))														
+										set(cl,'ticks',[-1:.2:1],'fontsize',14)														
+										[row,col]=find(abs(cc)>=sqrt(.25) & abs(cc)<sqrt(.50)); % 25-50% variance
+										hold on
+										if isempty(row)
+										else
+											plot(col,row,'.k','markerfacecolor','k');
+										end
+										[row,col]=find(abs(cc)>=sqrt(.50) & abs(cc)<sqrt(.75)); % 50-75% variance
+										hold on
+										if isempty(row)
+										else
+											plot(col,row,'+k','markerfacecolor','k');
+										end
+										[row,col]=find(abs(cc)>=sqrt(.75)); % 50-75% variance
+										hold on
+										if isempty(row)
+										else
+											plot(col,row,'sk','markerfacecolor','k');														
+										end
+										l(1)=plot(-100,-100,'.k','markerfacecolor','k');
+										l(2)=plot(-100,-100,'+k','markerfacecolor','k');
+										l(3)=plot(-100,-100,'sk','markerfacecolor','k');
+										lh=legend(l,'r^2=25-50%','r^2=50-75%','r^2=75-100%','location','southeastoutside','orientation','vertical');	
+										lh.FontSize=10;
+										lh.ItemTokenSize(1) = 10;
+										lhp=lh.Position;
+										set(lh,'position',[lhp(1)+.2 lhp(2)-.28 lhp(3) lhp(4)])
+										set(gcf,'Units','inches');
+										a1Pos = get(gca,'Position');
+										set(gcf, 'InvertHardcopy', 'off')
+										set(gcf,'Units','inches');
+										screenposition = get(gcf,'Position');
+										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+										set(gcf, 'InvertHardcopy', 'off')		
+										text(0,1.065,['\textbf{',tmp_title,' Lagged Correlation}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
+										if strat==1
+											text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+										else
+											text(1,1.065,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+											text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+										end                
+										tmpuv = unique(tmpyr);
+										tmpn  = histc(tmpyr,tmpuv); 
+										tmpphrase='';
+										for tmpdr=1:length(tmpn)
+											if tmpdr==length(tmpn)
+												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
+											else
+												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
+											end
+										end    
+										text(0,1.027,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+										ax=gca;
+										box on
+										set(ax, 'Layer', 'bottom')
+										ax.LineWidth=2; 
+										set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
+										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+										set(gca,'Color',[.9 .9 .9])
+										for tmp=1:size(identexp,1)
+											cntexp(:,tmp)=sum(~isnan(tmp_exp0(:,1:skip:end,tmp)),1);
+										end
+										if sum([cntexp(:)])==0
+											tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+											set(tx, 'Layer', 'front')
+										end          
+										if plt==19
+											 tx=text(0.02,0.05,'Slower than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+											 tx=text(0.02,0.98,'Faster than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+											 set(tx, 'Layer', 'front')            
+										elseif plt==20
+											 tx=text(0.02,0.05,'Left of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+											 tx=text(0.02,0.98,'Right of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+											 set(tx, 'Layer', 'front')            
+										end
+										axis ij
+										b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);
+										set(b,'plotboxaspectratio',[1 1 1])
+										set(b,'Color','none');
+										set(b,'YColor','none');
+										set(b,'tickdir','both')
+										set(b,'XColor',[0 0 0]);
+										set(b,'ytick',[]);
+										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
+											if mod(identmaxfhr*3,12)==0
+												xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)+.5])
+												tmpxend=((identmaxfhr*3))/skiphr+1;
+											else
+												xlim(b,[0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
+												tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;
+											end
+										else
+											if mod(identmaxfhr*3-3,12)==0
+												xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
+												tmpxend=((identmaxfhr*3)-3)/skiphr+1;
+											else
+												xlim(b,[0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
+												tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;
+											end
+										end
+										set(b,'xtick',[1:skiptick:50]);
+										trkerr_exp_fcnt=zeros(1,tmpxend);            
+										trkerr_exp_fcnt1=zeros(1,tmpxend);            
+										trkerr_exp_fcnt2=zeros(1,tmpxend);
+										for tmp=1:size(identexp,1)
+											cntexp(:,tmp)=sum(~isnan(tmp_exp0(:,1:skip:end,tmp)),1);
+										end 
+										set(gca,'fontsize',10)
+										xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
+										set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
+										screenposition = get(gcf,'Position');
+										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+										set(gcf, 'InvertHardcopy', 'off')
+										% Create a text box at every Tick label position
+										maxmin=squeeze(sum(~isnan(tmp_exp0(:,1:skip:end,:)),1)); 
+										xTicks0 = get(gca, 'xticklabel');
+										xTicks = get(gca, 'xtick');
+										if size(maxmin,1)<size(xTicks0,1)
+											for n=1:size(xTicks0,1)-size(maxmin,1)
+												maxmin(end+n,:)=0;
+											end
+										end
+										set(b,'xticklabels',[]);
+										minY =0;
+										VerticalOffset1=0.03;
+										HorizontalOffset = 0.2;
+										for xx = 1:size(xTicks0,1)
+											tmptxt0=maxmin(xx,:);
+											tmplines=size(tmptxt0,2);
+											if size(unique(tmptxt0),2)==1
+												tmptxt1=num2str(tmptxt0(1)); 
+												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+											else
+												for n=1:tmplines
+													tmptxt1=[];                            
+													tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
+													if n==1
+														text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+													else
+														text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+													end
+												end    
+											end
+										end
+										f = getframe(hfig);save([identout,'scfactor.mat'],'scfactor','scfactor0')
+										imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop},'.png'],'png');
+										close all													
+									end;end								
+								end
+								load([identout,'scfactor.mat']);fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', scfactor0{:});fclose(fid);
+								load([identout,'tempsave.mat'])
+								% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
                                 for plt=1:23
                                     clear l cntexp
                                     set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -4978,13 +6728,13 @@
                                     end
                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                     for tmp=1:size(identexp,1)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                         for tmpi=tmp
                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                         end
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -5012,7 +6762,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -5988,11 +7738,11 @@
                                         imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));                  
                                         imprv2(:,tmp)=imprv;
                                         l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=imprv(sigtest_loc);
                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=imprv(sigtest_loc);
@@ -6018,7 +7768,7 @@
                                     end 
                                     ylim(impylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -7016,11 +8766,11 @@
                                             fsp2(:,tmp)=fspa;
                                             l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
                                             cntl=cntl+1;
-											sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
+											sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                             sigtest_loc=find(sigtest==1);
                                             sigtest_exp=fspa(sigtest_loc);
                                             plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-                                            sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
+                                            sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1);
                                             sigtest_loc1=find(sigtest==1);
                                             sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                             sigtest_exp=fspa(sigtest_loc);
@@ -7046,7 +8796,7 @@
                                         end  
                                         ylim([25 75])
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         grid on
                                         set(gca,'gridcolor','k','gridalpha',.15)
                                         set(gca,'fontsize',20)      
@@ -8034,13 +9784,13 @@
                                     end
                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                     for tmp=1:size(identexp,1)
-                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05);
+                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
                                         for tmpi=tmp
                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
                                         end
-                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1);
+                                        sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -8068,7 +9818,7 @@
                                     end                                    
                                     ylim(biasylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -10307,7 +12057,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -10318,8 +12068,8 @@
                                         for findsim=1:size(tmpnm,2)
                                             tmpsim=tmpnm{findsim};
                                             for findsim2=1:size(stormsdone,2)
-                                                tmpsd=stormsdone{findsim2};      
-                                                if strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1
+                                                tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; end;     
+                                                if strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1 & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & strcmp(tmpbas,tmpsd(end))==1
                                                     plotsim{cnt}=[upper(tmpsd(end-2:end)),' (',upper(tmpsd(1)),tmpsd(2:end-3),')'];
                                                     cnt=cnt+1;
                                                 end
@@ -10344,7 +12094,7 @@
                                         tmppctstr=isnan(tmppct);
                                         clear diffpct
                                         for j=1:size(tmppct,2)
-                                            for i=1:size(tmppct,1)
+                                            for i=1:size(1:skip:identmaxfhr,2)
                                                 if tmppctstr(i,j)==0
                                                     if sum(round(tmppct(i,:)))>100
                                                         for k=1:size(tmppct,2)
@@ -10367,12 +12117,12 @@
                                         end        
                                         set(gca,'TickLength',[0 0])
                                         if strat==1
-                                            text(1,1.04,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+                                            text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                         else
-                                            text(1,1.08,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
-                                            text(1,1.04,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                            text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+                                            text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        text(0,1.08,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
+                                        text(0,1.06,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
                                         tmpphrase='';
@@ -10383,13 +12133,13 @@
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
                                         end    
-                                        text(0,1.035,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                                        text(0,1.025,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         ax=gca;
                                         box on
                                         set(ax, 'Layer', 'top')
                                         ax.LineWidth=1; 
-                                        pos=get(gca,'Position');
-                                        set(gca,'position',[pos(1)+.01 pos(2) pos(3) pos(4)])
+                                        pos=get(ax1,'Position');set(ax1,'position',[pos(1)+.01 pos(2)-.25 pos(3) pos(4)+.25]);pos=get(gca,'Position');
+                                        %set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
                                         imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'.png'],'png');
@@ -11449,7 +13199,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -11460,8 +13210,8 @@
                                         for findsim=1:size(tmpnm,2)
                                             tmpsim=tmpnm{findsim};
                                             for findsim2=1:size(stormsdone,2)
-                                                tmpsd=stormsdone{findsim2};      
-                                                if strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1
+                                                tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; end;     
+                                                if strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1 & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & strcmp(tmpbas,tmpsd(end))==1
                                                     plotsim{cnt}=[upper(tmpsd(end-2:end)),' (',upper(tmpsd(1)),tmpsd(2:end-3),')'];
                                                     cnt=cnt+1;
                                                 end
@@ -11486,7 +13236,7 @@
                                         tmppctstr=isnan(tmppct);
                                         clear diffpct
                                         for j=1:size(tmppct,2)
-                                            for i=1:size(tmppct,1)
+                                            for i=1:size(1:skip:identmaxfhr,2)
                                                 if tmppctstr(i,j)==0
                                                     if sum(round(tmppct(i,:)))>100
                                                         for k=1:size(tmppct,2)
@@ -11509,12 +13259,12 @@
                                         end        
                                         set(gca,'TickLength',[0 0])
                                         if strat==1
-                                            text(1,1.04,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+                                            text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                         else
-                                            text(1,1.08,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
-                                            text(1,1.04,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                            text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+                                            text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        text(0,1.08,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
+                                        text(0,1.06,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
                                         tmpphrase='';
@@ -11525,13 +13275,13 @@
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
                                         end    
-                                        text(0,1.035,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                                        text(0,1.025,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         ax=gca;
                                         box on
                                         set(ax, 'Layer', 'top')
                                         ax.LineWidth=1; 
-                                        pos=get(gca,'Position');
-                                        set(gca,'position',[pos(1)+.01 pos(2) pos(3) pos(4)])
+					pos=get(ax1,'Position');set(ax1,'position',[pos(1)+.01 pos(2)-.25 pos(3) pos(4)+.25]);pos=get(ax1,'Position');
+					%set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
                                         imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_fcst_',stname,'_',identexpshort{identexploop},'.png'],'png');
@@ -12608,7 +14358,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -12619,8 +14369,8 @@
                                         for findsim=1:size(tmpnm,2)
                                             tmpsim=tmpnm{findsim};
                                             for findsim2=1:size(stormsdone,2)
-                                                tmpsd=stormsdone{findsim2};      
-                                                if strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1
+												tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; end;     
+                                                if strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1 & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & strcmp(tmpbas,tmpsd(end))==1 
                                                     plotsim{cnt}=[upper(tmpsd(end-2:end)),' (',upper(tmpsd(1)),tmpsd(2:end-3),')'];
                                                     cnt=cnt+1;
                                                 end
@@ -12647,7 +14397,7 @@
                                         tmppctstr=isnan(tmppct);
                                         clear diffpct
                                         for j=1:size(tmppct,2)
-                                            for i=1:size(tmppct,1)
+                                            for i=1:size(1:skip:identmaxfhr,2)
                                                 if tmppctstr(i,j)==0                                                   
                                                         if tmppct(i,j)>5/2 || tmppct(i,j)<-5/2
                                                             text(i,j, [num2str(round(tmppct(i,j),1)),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',10)
@@ -12659,12 +14409,12 @@
                                         end        
                                         set(gca,'TickLength',[0 0])
                                         if strat==1
-                                            text(1,1.04,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+                                            text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                         else
-                                            text(1,1.08,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
-                                            text(1,1.04,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                            text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+                                            text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        text(0,1.08,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
+                                        text(0,1.06,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
                                         tmpphrase='';
@@ -12675,7 +14425,7 @@
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
                                         end    
-                                        text(0,1.035,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                                        text(0,1.025,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
 										ax=gca;
                                         box on
                                         set(ax, 'Layer', 'top')
@@ -12705,7 +14455,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',[])
-                                        set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -12734,7 +14484,7 @@
                                         tmppctstr=isnan(tmppct2);
                                         clear diffpct
                                         for j=1:size(tmppct2,2)
-                                            for i=1:size(tmppct2,1)
+                                            for i=1:size(1:skip:identmaxfhr,2)
                                                 if tmppctstr(i,j)==0                                                   
                                                         if tmppct2(i,j)>impylim(plt,2)/2 || tmppct2(i,j)<impylim(plt,1)/2
                                                             text(i,j, [num2str(round(tmppct2(i,j),1)),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',10)
@@ -12749,8 +14499,8 @@
                                         box on
                                         set(ax, 'Layer', 'top')
                                         ax.LineWidth=1;                                         
-                                        pos=get(ax1,'Position');
-										set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.48])
+					pos=get(ax1,'Position');set(ax1,'position',[pos(1)+.01 pos(2)-.25 pos(3) pos(4)+.25]);pos=get(ax1,'Position');
+					set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
                                         imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop},'.png'],'png');
@@ -13607,13 +15357,13 @@
                                     end
                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
                                     for tmp=1:size(identexp,1)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
                                         for tmpi=tmp
                                             plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
                                         end
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
@@ -13640,7 +15390,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     set(gca,'xticklabel',[]) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
@@ -14535,11 +16285,11 @@
                                         if med==1; imprv=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1)); elseif med==2; imprv=100.*(1-nanmedian(tmp_exp(:,:,tmp),1)./nanmedian(tmp_exp(:,:,tmpimp),1));  end;                 
                                         imprv2(:,tmp)=imprv;
                                         l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.05);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                         sigtest_loc=find(sigtest==1);
                                         sigtest_exp=imprv(sigtest_loc);
                                         plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),identserialcorr,'alpha',.1);
+                                        sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
                                         sigtest_loc1=find(sigtest==1);
                                         sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
                                         sigtest_exp=imprv(sigtest_loc);
@@ -14575,7 +16325,7 @@
                                         set(gca,'ytick',impylim(plt,1):10:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -14683,1756 +16433,6 @@
                                     close all
                                 end; end                                                                                         
 								spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same								
-								% Create Graphics: Lagged Correlation
-								if identlagcorr==1
-								for plt=1:23
-									% Load saved matrices
-									load([identout,'tempsave.mat'])
-									% Grab initial sizes
-									if plt==1
-										 tmp_exp0=trkerr_exp(:,1:skip:end,:);
-										 tmp_name='trkerr';
-										 tmp_title='Track Error (km)';
-										 tmp_ytitle='Error (km)';
-									elseif plt==2
-										tmp_exp0=interr_exp(:,1:skip:end,:);
-										tmp_name='preserr';
-										tmp_title='Pressure Error (hPa)';
-										tmp_ytitle='Error (hPa)';
-									elseif plt==3
-										tmp_exp0=spderr_exp(:,1:skip:end,:);
-										tmp_name='spderr';
-										tmp_title='Wind Speed Error (kts)';
-										tmp_ytitle='Error (kts)';
-									 elseif plt==4
-										tmp_exp0=ne34err_exp(:,1:skip:end,:);
-										tmp_name='ne34err';
-										tmp_title='R34 NEQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==5
-										tmp_exp0=se34err_exp(:,1:skip:end,:);
-										tmp_name='se34err';
-										tmp_title='R34 SEQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==6
-										tmp_exp0=sw34err_exp(:,1:skip:end,:);
-										tmp_name='sw34err';
-										tmp_title='R34 SWQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==7
-										tmp_exp0=nw34err_exp(:,1:skip:end,:);
-										tmp_name='nw34err';
-										tmp_title='R34 NWQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==8
-										tmp_exp0=ne50err_exp(:,1:skip:end,:);
-										tmp_name='ne50err';
-										tmp_title='R50 NEQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==9
-										tmp_exp0=se50err_exp(:,1:skip:end,:);
-										tmp_name='se50err';
-										tmp_title='R50 SEQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==10
-										tmp_exp0=sw50err_exp(:,1:skip:end,:);
-										tmp_name='sw50err';
-										tmp_title='R50 SWQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==11
-										tmp_exp0=nw50err_exp(:,1:skip:end,:);
-										tmp_name='nw50err';
-										tmp_title='R50 NWQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==12
-										tmp_exp0=ne64err_exp(:,1:skip:end,:);
-										tmp_name='ne64err';
-										tmp_title='R64 NEQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==13
-										tmp_exp0=se64err_exp(:,1:skip:end,:);
-										tmp_name='se64err';
-										tmp_title='R64 SEQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==14
-										tmp_exp0=sw64err_exp(:,1:skip:end,:);
-										tmp_name='sw64err';
-										tmp_title='R64 SWQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==15
-										tmp_exp0=nw64err_exp(:,1:skip:end,:);
-										tmp_name='nw64err';
-										tmp_title='R64 NWQ Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 200];
-									elseif plt==16
-										tmp_exp0=poerr_exp(:,1:skip:end,:);
-										tmp_name='poerr';
-										tmp_title='Outer Clsd Isbr Prs Error (hPa)';
-										tmp_ytitle='Error (hPa)';
-									elseif plt==17
-										tmp_exp0=roerr_exp(:,1:skip:end,:);
-										tmp_name='roerr';
-										tmp_title='Outer Clsd Isbr Rad Error (km)';
-										tmp_ytitle='Error (km)';
-									elseif plt==18
-										tmp_exp0=rmwerr_exp(:,1:skip:end,:);
-										tmp_name='rmwerr';
-										tmp_title='RMW Error (km)';
-										tmp_ytitle='Error (km)';
-									elseif plt==19
-										tmp_exp0=ateerr_exp(:,1:skip:end,:);
-										tmp_name='ateerr';
-										tmp_title='Along-Track Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[-500 500];                
-									elseif plt==20
-										tmp_exp0=xteerr_exp(:,1:skip:end,:);
-										tmp_name='xteerr';
-										tmp_title='Across-Track Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[-500 500]; 
-									elseif plt==21
-										tmp_exp0=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
-										tmp_name='34err';
-										tmp_title='R34 Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 100];
-									elseif plt==22
-										tmp_exp0=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
-										tmp_name='50err';
-										tmp_title='R50 Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 100];
-									elseif plt==23
-										tmp_exp0=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
-										tmp_name='64err';
-										tmp_title='R64 Error (km)';
-										tmp_ytitle='Error (km)';
-										yrange=[0 100];
-									end				   					
-									% Strat
-									if strat==1
-										clear tmpyrb
-										tmpyr=identdr;
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==2
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_drops==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_drops==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==3
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_target';BT_target';BT_target';BT_target']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_target==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_target==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==4 % TD
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]<34 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat<34 & strcmp(BT_cat0,'TD')==1,:,:);
-										end
-										tmpyr=unique([BT_year(BT_cat<34 & strcmp(BT_cat0,'TD')==1) BT_storm(BT_cat<34 & strcmp(BT_cat0,'TD')==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat<34 & strcmp(BT_cat0,'TD')==1));
-									elseif strat==5 % TS
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=34 & [BT_cat;BT_cat;BT_cat;BT_cat]<64 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1,:,:);
-										end                    
-										tmpyr=unique([BT_year(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1) BT_storm(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;                
-										tmpnm=unique(BT_name(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1));
-									elseif strat==6 % MN
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=64 & [BT_cat;BT_cat;BT_cat;BT_cat]<96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1,:,:);
-										end                    
-										tmpyr=unique([BT_year(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1));
-									elseif strat==7 % MJ
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=96 & strcmp(BT_cat0,'HU')==1,:,:);
-										end                    
-										tmpyr=unique([BT_year(BT_cat>=96 & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=96 & strcmp(BT_cat0,'HU')==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat>=96 & strcmp(BT_cat0,'HU')==1));
-									elseif strat==8 % N30
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_lat>=30,:,:);
-										end                    
-										tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat>=30));
-									elseif strat==9 % S30
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_lat<30,:,:);
-										end
-										tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat<30));
-									elseif strat==10 % RI
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]>=15,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_intch>=15,:,:);
-										end     															
-										tmpyr=unique([BT_year(BT_intch>=15) BT_storm(BT_intch>=15)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_intch>=15));		
-									elseif strat==11 % IN
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]>=5 & [BT_intch;BT_intch;BT_intch;BT_intch]<15,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_intch>=5 & BT_intch<15,:,:);
-										end     
-										tmpyr=unique([BT_year(BT_intch>=5 & BT_intch<15) BT_storm(BT_intch>=5 & BT_intch<15)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_intch>=5 & BT_intch<15));
-									elseif strat==12 % SS
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]>-5 & [BT_intch;BT_intch;BT_intch;BT_intch]<5,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_intch>-5 & BT_intch<5,:,:);
-										end     
-										tmpyr=unique([BT_year(BT_intch>-5 & BT_intch<5) BT_storm(BT_intch>-5 & BT_intch<5)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_intch>-5 & BT_intch<5));
-									elseif strat==13 % W
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]<=-5 & [BT_intch;BT_intch;BT_intch;BT_intch]>-15,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_intch<=-5 & BT_intch>-15,:,:);
-										end     
-										tmpyr=unique([BT_year(BT_intch<=-5 & BT_intch>-15) BT_storm(BT_intch<=-5 & BT_intch>-15)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_intch<=-5 & BT_intch>-15));
-									elseif strat==14 % RW
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_intch;BT_intch;BT_intch;BT_intch]<=-15,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_intch<=-15,:,:);
-										end     
-										tmpyr=unique([BT_year(BT_intch<=-15) BT_storm(BT_intch<=-15)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_intch<=-15));
-									elseif strat>14 && strat<=14+size(unique(BT_year),1) % by year
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-14);
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]==tmps,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year==tmps,:,:);
-										end                    
-										tmpnm=unique(BT_name(BT_year==tmps));
-										tmpyr=repmat(tmps+2000,size(tmpnm,2),1);
-									elseif strat==14+size(unique(BT_year),1)+1 %% TD strat obs only
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]<34 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1,:,:);
-										end                    
-										tmpyr=unique([BT_year(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1) BT_storm(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1));
-									elseif strat==14+size(unique(BT_year),1)+2 % TS
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=34 & [BT_cat;BT_cat;BT_cat;BT_cat]<64 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1,:,:);
-										end
-										tmpyr=unique([BT_year(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1) BT_storm(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;                
-										tmpnm=unique(BT_name(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1));
-									elseif strat==14+size(unique(BT_year),1)+3 % MN
-										clear tmpyrb
-										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=64 & [BT_cat;BT_cat;BT_cat;BT_cat]<96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
-										 end
-										tmpyr=unique([BT_year(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
-									elseif strat==14+size(unique(BT_year),1)+4 % MJ
-										clear tmpyrb
-										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
-										 end
-										tmpyr=unique([BT_year(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
-									elseif strat==14+size(unique(BT_year),1)+5 % N30
-										clear tmpyrb
-										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_lat>=30 & BT_drops'==1,:,:);
-										 end                     
-										tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
-									elseif strat==14+size(unique(BT_year),1)+6 % S30
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_lat<30 & BT_drops'==1,:,:);
-										end
-										tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
-									elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-(14+size(unique(BT_year),1)+6));
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year==tmps & BT_drops'==1,:,:);
-										 end                                                
-										tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==1));
-										tmpyr=repmat(tmps+2000,size(tmpnm,2),1);   
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+1
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_drops==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_drops==0));                           
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+2
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_target';BT_target';BT_target';BT_target']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_target==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_target==0));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;  
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+3
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_dropsB==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_dropsB==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+4
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_targetB==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_targetB==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;   
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+5
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_dropsB==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_dropsB==0));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+6
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_targetB==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_targetB==0));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+7
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_dropsB==1 & BT_drops==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_dropsB==1 & BT_drops==0));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+8
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1 & [BT_target';BT_target';BT_target';BT_target']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_targetB==1 & BT_target==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_targetB==1 & BT_target==0));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+9
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_dropsI==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_dropsI==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;  
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+10
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_dropsT==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_dropsT==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+11
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_targetI';BT_targetI';BT_targetI';BT_targetI']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_targetI==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_targetI==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;  
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+12
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_targetT';BT_targetT';BT_targetT';BT_targetT']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_targetT==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_targetT==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+13 %% TD no obs only
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]<34 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0,:,:);
-										end                    
-										tmpyr=unique([BT_year(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0) BT_storm(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0));
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+14 % TS no obs only
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=34 & [BT_cat;BT_cat;BT_cat;BT_cat]<64 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0,:,:);
-										end
-										tmpyr=unique([BT_year(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0) BT_storm(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;                
-										tmpnm=unique(BT_name(BT_cat>=34 & BT_cat<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0));
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+15 % MN no obs only
-										clear tmpyrb
-										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=64 & [BT_cat;BT_cat;BT_cat;BT_cat]<96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
-										 end
-										tmpyr=unique([BT_year(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat>=64 & BT_cat<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0));
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+16 % MJ no obs only
-										clear tmpyrb
-										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_cat;BT_cat;BT_cat;BT_cat]>=96 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
-										 end
-										tmpyr=unique([BT_year(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_cat>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)); 
-									 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
-										clear tmpyrb
-										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_lat>=30 & BT_drops'==0,:,:);
-										 end                     
-										tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
-									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_lat<30 & BT_drops'==0,:,:);
-										end
-										tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
-									elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18));
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year==tmps & BT_drops'==0,:,:);
-										 end                                                
-										tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==0));
-										tmpyr=repmat(tmps+2000,size(tmpnm,2),1);    
-									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only[
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)));
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']'==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsI==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
-										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;                                     
-									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)));
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']'==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsT==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
-										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;                                    
-									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1 & [BT_drops';BT_drops';BT_drops';BT_drops']'==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsB==1 & BT_drops==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
-										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;                                                                                                                                      
-									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsB==1,:,:);
-										end
-										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1));                                        
-										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;                                     
-									elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-										clear tmpyrb
-										tmps=sort(unique(BT_year));
-										tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_year'==tmps & BT_dropsB==0,:,:);
-										end
-										tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
-										tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
-										for tmpyri=1:size(tmpyr,2)
-											tmpyra=tmpyr{tmpyri};
-											tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-										end
-										tmpyr=tmpyrb+2000;
-									elseif strat==100 % Low Shear
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1<LOWbasin,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1<LOWbasin));
-									elseif strat==101 % Moderate Shear
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin ,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin));												
-									elseif strat==102 % High Shear
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1>HIGHbasin,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin));
-									elseif strat==103 % Low Shear Drops
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1<LOWbasin & BT_drops'==1,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==1));
-									elseif strat==104 % Moderate Shear Drops
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1));
-									elseif strat==105 % High Shear Drops
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1>HIGHbasin & BT_drops'==1,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==1));
-									elseif strat==106 % Low Shear No Drops
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1<LOWbasin & BT_drops'==0,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==0));
-									elseif strat==107 % Moderate Shear No Drops
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0));
-									elseif strat==108 % High Shear No Drops
-										clear tmpyrb
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else
-											tmp_exp0=tmp_exp0(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
-										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
-				elseif strat==200 % OBS-G
-                                        clear tmpyrb
-                                        if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_obsg';BT_obsg';BT_obsg';BT_obsg']==1,:,:);
-                                        else
-                                            tmp_exp=tmp_exp(BT_obsg==1,:,:);
-                                        end
-                                        tmpyr=unique(BT_name(BT_obsg==1));
-                                        for tmpyri=1:size(tmpyr,2)
-                                            tmpyra=tmpyr{tmpyri};
-                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
-                                        end
-                                        tmpyr=tmpyrb+2000;
-									elseif strat==888
-										clear tmpyrb
-										numlist=[];
-										for ins=1:size(identnewsub,1)
-											tmp=identnewsub(ins,:);
-											for ins2=1:size(BT_date)
-												if strcmp(BT_date(ins2,:),tmp)==1
-													numlist=[numlist ins2];
-												end
-											end
-										end
-										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([numlist;numlist;numlist;numlist],:,:);
-										else
-											tmp_exp0=tmp_exp0(numlist,:,:);
-										end
-										tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows');
-										tmpyr=tmpyr(:,1);
-										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(numlist));    
-									end
-									for identexploop=1:size(tmp_exp0,3)							
-										cc=[];
-										pp=[];
-										for fhr=1:size(tmp_exp0,2)
-											ac2=[];
-											for i=1:size(identdr,2)  
-												load([identout,'tempsave.mat'],'BT_dropsB','BT_dropsI','BT_dropsT','BT_targetB','BT_targetI','BT_targetT')												
-												if isfile([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])==1   
-													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])	
-													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_latlon.mat'])
-													if identconv==1
-													BT_targetB=BT_targetB(BT_storm==i);
-													BT_targetI=BT_targetI(BT_storm==i);
-													BT_targetT=BT_targetT(BT_storm==i);
-													BT_dropsB=BT_dropsB(BT_storm==i);
-													BT_dropsI=BT_dropsI(BT_storm==i);
-													BT_dropsT=BT_dropsT(BT_storm==i);
-													end
-													if plt==1
-														 tmp_exp=trkerr_exp(:,1:skip:end,:);
-														 tmp_name='trkerr';
-														 tmp_title='Track Error (km)';
-														 tmp_ytitle='Error (km)';
-													elseif plt==2
-														tmp_exp=interr_exp(:,1:skip:end,:);
-														tmp_name='preserr';
-														tmp_title='Pressure Error (hPa)';
-														tmp_ytitle='Error (hPa)';
-													elseif plt==3
-														tmp_exp=spderr_exp(:,1:skip:end,:);
-														tmp_name='spderr';
-														tmp_title='Wind Speed Error (kts)';
-														tmp_ytitle='Error (kts)';
-													 elseif plt==4
-														tmp_exp=ne34err_exp(:,1:skip:end,:);
-														tmp_name='ne34err';
-														tmp_title='R34 NEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==5
-														tmp_exp=se34err_exp(:,1:skip:end,:);
-														tmp_name='se34err';
-														tmp_title='R34 SEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==6
-														tmp_exp=sw34err_exp(:,1:skip:end,:);
-														tmp_name='sw34err';
-														tmp_title='R34 SWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==7
-														tmp_exp=nw34err_exp(:,1:skip:end,:);
-														tmp_name='nw34err';
-														tmp_title='R34 NWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==8
-														tmp_exp=ne50err_exp(:,1:skip:end,:);
-														tmp_name='ne50err';
-														tmp_title='R50 NEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==9
-														tmp_exp=se50err_exp(:,1:skip:end,:);
-														tmp_name='se50err';
-														tmp_title='R50 SEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==10
-														tmp_exp=sw50err_exp(:,1:skip:end,:);
-														tmp_name='sw50err';
-														tmp_title='R50 SWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==11
-														tmp_exp=nw50err_exp(:,1:skip:end,:);
-														tmp_name='nw50err';
-														tmp_title='R50 NWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==12
-														tmp_exp=ne64err_exp(:,1:skip:end,:);
-														tmp_name='ne64err';
-														tmp_title='R64 NEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==13
-														tmp_exp=se64err_exp(:,1:skip:end,:);
-														tmp_name='se64err';
-														tmp_title='R64 SEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==14
-														tmp_exp=sw64err_exp(:,1:skip:end,:);
-														tmp_name='sw64err';
-														tmp_title='R64 SWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==15
-														tmp_exp=nw64err_exp(:,1:skip:end,:);
-														tmp_name='nw64err';
-														tmp_title='R64 NWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==16
-														tmp_exp=poerr_exp(:,1:skip:end,:);
-														tmp_name='poerr';
-														tmp_title='Outer Clsd Isbr Prs Error (hPa)';
-														tmp_ytitle='Error (hPa)';
-													elseif plt==17
-														tmp_exp=roerr_exp(:,1:skip:end,:);
-														tmp_name='roerr';
-														tmp_title='Outer Clsd Isbr Rad Error (km)';
-														tmp_ytitle='Error (km)';
-													elseif plt==18
-														tmp_exp=rmwerr_exp(:,1:skip:end,:);
-														tmp_name='rmwerr';
-														tmp_title='RMW Error (km)';
-														tmp_ytitle='Error (km)';
-													elseif plt==19
-														tmp_exp=ateerr_exp(:,1:skip:end,:);
-														tmp_name='ateerr';
-														tmp_title='Along-Track Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[-500 500];                
-													elseif plt==20
-														tmp_exp=xteerr_exp(:,1:skip:end,:);
-														tmp_name='xteerr';
-														tmp_title='Across-Track Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[-500 500]; 
-													elseif plt==21
-														tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
-														tmp_name='34err';
-														tmp_title='R34 Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 100];
-													elseif plt==22
-														tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
-														tmp_name='50err';
-														tmp_title='R50 Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 100];
-													elseif plt==23
-														tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
-														tmp_name='64err';
-														tmp_title='R64 Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 100];
-													end				   					
-													% Strat
-													if strat==1
-													elseif strat==2
-														if plt>=21 && plt<=23
-															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_drops==0,:,:)=NaN;
-														end									
-													elseif strat==3
-														if plt>=21 && plt<=23
-															tmp_exp([BT_target';BT_target';BT_target';BT_target']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_target==0,:,:)=NaN;
-														end
-													elseif strat==4 % TD
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1>=34 | strcmp(BT_cat0,'TD')==0,:,:)=NaN;
-														end
-													elseif strat==5 % TS
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<34 | BT_cat1>=64 | strcmp(BT_cat0,'TS')==0,:,:)=NaN;
-														end                    
-													elseif strat==6 % MN
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<64 | BT_cat1>=96 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;
-														end                    
-													elseif strat==7 % MJ
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<96 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;
-														end                    
-													elseif strat==8 % N30
-														if plt>=21 && plt<=23
-															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]<30,:,:)=NaN;
-														else
-															tmp_exp(BT_lat1<30,:,:)=NaN;
-														end                    
-													elseif strat==9 % S30
-														if plt>=21 && plt<=23
-															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]>=30,:,:)=NaN;
-														else
-															tmp_exp(BT_lat1>=30,:,:)=NaN;
-														end
-													elseif strat==10 % RI
-														if plt>=21 && plt<=23
-															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<15,:,:)=NaN;
-														else
-															tmp_exp(BT_intch1<15,:,:)=NaN;
-														end     															
-													elseif strat==11 % IN
-														if plt>=21 && plt<=23
-															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<5 | [BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=15,:,:)=NaN;
-														else
-															tmp_exp(BT_intch1<5 | BT_intch1>=15,:,:)=NaN;
-														end     
-													elseif strat==12 % SS
-														if plt>=21 && plt<=23
-															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=-5 | [BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=5,:,:)=NaN;
-														else
-															tmp_exp(BT_intch1<=-5 | BT_intch1>=5,:,:)=NaN;
-														end     
-													elseif strat==13 % W
-														if plt>=21 && plt<=23
-															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>-5 & [BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=-15,:,:)=NaN;
-														else
-															tmp_exp(BT_intch1>-5 & BT_intch1<=-15,:,:)=NaN;
-														end     
-													elseif strat==14 % RW
-														if plt>=21 && plt<=23
-															tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>-15,:,:)=NaN;
-														else
-															tmp_exp(BT_intch1>-15,:,:)=NaN;
-														end     
-													elseif strat>14 && strat<=14+size(unique(BT_year),1) % by year
-														tmps=sort(unique(BT_year));
-														tmps=tmps(strat-14);
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end																				
-													elseif strat==14+size(unique(BT_year),1)+1 %% TD strat obs only
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1>=34 | strcmp(BT_cat0,'TD')==0 & BT_drops'==0,:,:)=NaN;
-														end                    
-													elseif strat==14+size(unique(BT_year),1)+2 % TS
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<34 | BT_cat1>=64 | strcmp(BT_cat0,'TS')==0 & BT_drops'==0,:,:)=NaN;
-														end
-													elseif strat==14+size(unique(BT_year),1)+3 % MN
-														 if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<64 | BT_cat1>=96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==0,:,:)=NaN;
-														 end
-													elseif strat==14+size(unique(BT_year),1)+4 % MJ
-														 if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==0,:,:)=NaN;
-														 end
-													elseif strat==14+size(unique(BT_year),1)+5 % N30
-														 if plt>=21 && plt<=23
-															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_lat1<30 & BT_drops'==0,:,:)=NaN;
-														 end                     
-													elseif strat==14+size(unique(BT_year),1)+6 % S30
-														if plt>=21 && plt<=23
-															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_lat1>=30 & BT_drops'==0,:,:)=NaN;
-														end
-													elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
-														tmps=sort(unique(BT_year));
-														tmps=tmps(strat-(14+size(unique(BT_year),1)+6));
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end													
-														if plt>=21 && plt<=23
-															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_drops'==0,:,:)=NaN;
-														 end                                                
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+1
-														if plt>=21 && plt<=23
-															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_drops==1,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+2
-														if plt>=21 && plt<=23
-															tmp_exp([BT_target';BT_target';BT_target';BT_target']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_target==1,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+3
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsB==0,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+4
-														if plt>=21 && plt<=23
-															tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_targetB==0,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+5
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsB==1,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+6
-														if plt>=21 && plt<=23
-															tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_targetB==1,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+7
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsB==0 & BT_drops==1,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+8
-														if plt>=21 && plt<=23
-															tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0 & [BT_target';BT_target';BT_target';BT_target']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_targetB==0 & BT_target==1,:,:)=NaN;
-														end
-													 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+9
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsI==0,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+10
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsT==0,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+11
-														if plt>=21 && plt<=23
-															tmp_exp([BT_targetI';BT_targetI';BT_targetI';BT_targetI']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_targetI==0,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+12
-														if plt>=21 && plt<=23
-															tmp_exp([BT_targetT';BT_targetT';BT_targetT';BT_targetT']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_targetT==0,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+13 %% TD no obs only
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=34 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1>=34 | strcmp(BT_cat0,'TD')==0 & BT_drops'==1,:,:)=NaN;
-														end                    
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+14 % TS no obs only
-														if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<34 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<34 | BT_cat1>=64 | strcmp(BT_cat0,'TS')==0 & BT_drops'==1,:,:)=NaN;
-														end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+15 % MN no obs only
-														 if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64 | [BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<64 | BT_cat1>=96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==1,:,:)=NaN;
-														 end
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+16 % MJ no obs only
-														 if plt>=21 && plt<=23
-															tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<96 | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_cat1<96 | strcmp(BT_cat0,'HU')==0 & BT_drops'==1,:,:)=NaN;
-														 end
-													 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
-														 if plt>=21 && plt<=23
-															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_lat1<30 & BT_drops'==1,:,:)=NaN;
-														 end                     
-													elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
-														if plt>=21 && plt<=23
-															tmp_exp([BT_lat1;BT_lat1;BT_lat1;BT_lat1]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_lat1>=30 & BT_drops'==1,:,:)=NaN;
-														end
-													elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
-														tmps=sort(unique(BT_year));
-														tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18));
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end																				
-														if plt>=21 && plt<=23
-															tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_drops'==1,:,:)=NaN;
-														 end                                                
-													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only[
-														tmps=sort(unique(BT_year));
-														tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)));
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end	
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']'==0,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsI==0,:,:)=NaN;
-														end
-													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-														tmps=sort(unique(BT_year));
-                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)));
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end	
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']'==0,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsT==0,:,:);
-														end
-													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-														tmps=sort(unique(BT_year));
-                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end	
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0 & [BT_drops';BT_drops';BT_drops';BT_drops']'==1,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsB==0 & BT_drops==1,:,:)=NaN;
-														end
-													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-														tmps=sort(unique(BT_year));
-                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end	
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsB==0,:,:)=NaN;
-														end
-													elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
-														tmps=sort(unique(BT_year));
-                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
-														cyr=identdr{i};
-														cyr=str2num(cyr(end-1:end));
-														if strcmp(num2str(tmps),num2str(cyr))==0
-															tmp_exp=nan(size(tmp_exp,1),size(tmp_exp,2),size(tmp_exp,3));
-														end	
-														if plt>=21 && plt<=23
-															tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1,:,:)=NaN;
-														else
-															tmp_exp(BT_dropsB==1,:,:)=NaN;
-														end
-													elseif strat==100 % Low Shear
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1>=LOWbasin,:,:)=NaN;
-														end
-													elseif strat==101 % Moderate Shear
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin | [BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin ,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1<LOWbasin | BT_shr1>HIGHbasin,:,:)=NaN;
-														end
-													elseif strat==102 % High Shear
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1<=HIGHbasin,:,:)=NaN;
-														end
-													elseif strat==103 % Low Shear Drops
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1>=LOWbasin | BT_drops'==0,:,:)=NaN;
-														end
-													elseif strat==104 % Moderate Shear Drops
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin | [BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1<LOWbasin | BT_shr1>HIGHbasin & BT_drops'==0,:,:)=NaN;
-														end
-													elseif strat==105 % High Shear Drops
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1<=HIGHbasin & BT_drops'==0,:,:)=NaN;
-														end
-													elseif strat==106 % Low Shear No Drops
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1>=LOWbasin & BT_drops'==1,:,:)=NaN;
-														end
-													elseif strat==107 % Moderate Shear No Drops
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin | [BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1<LOWbasin | BT_shr1>HIGHbasin & BT_drops'==1,:,:)=NaN;
-														end
-													elseif strat==108 % High Shear No Drops
-														if plt>=21 && plt<=23
-															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-														else
-															tmp_exp(BT_shr1<=HIGHbasin & BT_drops'==1,:,:)=NaN;
-														end
-													elseif strat==200 % OBS-G
-														if plt>=21 && plt<=23
-															tmp_exp([BT_obsg';BT_obsg';BT_obsg';BT_obsg']==0,:,:)=NaN;
-														else
-															tmp_exp(BT_obsg==0,:,:)=NaN;
-														end	
-													elseif strat==888
-														numlist=[];
-														for ins=1:size(identnewsub,1)
-															tmp=identnewsub(ins,:);
-															for ins2=1:size(BT_date)
-																if strcmp(BT_date(ins2,:),tmp)==1
-																	numlist=[numlist ins2];
-																end
-															end
-														end
-														if plt>=21 && plt<=23
-															tmp_exp([numlist;numlist;numlist;numlist],:,:);
-														else
-															tmp_exp(numlist,:,:);
-														end
-													end
-													onefhr0=tmp_exp(:,fhr,identexploop);
-													
-													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])	
-													if plt==1
-														 tmp_exp=trkerr_exp(:,1:skip:end,:);
-														 tmp_name='trkerr';
-														 tmp_title='Track Error (km)';
-														 tmp_ytitle='Error (km)';
-													elseif plt==2
-														tmp_exp=interr_exp(:,1:skip:end,:);
-														tmp_name='preserr';
-														tmp_title='Pressure Error (hPa)';
-														tmp_ytitle='Error (hPa)';
-													elseif plt==3
-														tmp_exp=spderr_exp(:,1:skip:end,:);
-														tmp_name='spderr';
-														tmp_title='Wind Speed Error (kts)';
-														tmp_ytitle='Error (kts)';
-													 elseif plt==4
-														tmp_exp=ne34err_exp(:,1:skip:end,:);
-														tmp_name='ne34err';
-														tmp_title='R34 NEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==5
-														tmp_exp=se34err_exp(:,1:skip:end,:);
-														tmp_name='se34err';
-														tmp_title='R34 SEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==6
-														tmp_exp=sw34err_exp(:,1:skip:end,:);
-														tmp_name='sw34err';
-														tmp_title='R34 SWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==7
-														tmp_exp=nw34err_exp(:,1:skip:end,:);
-														tmp_name='nw34err';
-														tmp_title='R34 NWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==8
-														tmp_exp=ne50err_exp(:,1:skip:end,:);
-														tmp_name='ne50err';
-														tmp_title='R50 NEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==9
-														tmp_exp=se50err_exp(:,1:skip:end,:);
-														tmp_name='se50err';
-														tmp_title='R50 SEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==10
-														tmp_exp=sw50err_exp(:,1:skip:end,:);
-														tmp_name='sw50err';
-														tmp_title='R50 SWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==11
-														tmp_exp=nw50err_exp(:,1:skip:end,:);
-														tmp_name='nw50err';
-														tmp_title='R50 NWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==12
-														tmp_exp=ne64err_exp(:,1:skip:end,:);
-														tmp_name='ne64err';
-														tmp_title='R64 NEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==13
-														tmp_exp=se64err_exp(:,1:skip:end,:);
-														tmp_name='se64err';
-														tmp_title='R64 SEQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==14
-														tmp_exp=sw64err_exp(:,1:skip:end,:);
-														tmp_name='sw64err';
-														tmp_title='R64 SWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==15
-														tmp_exp=nw64err_exp(:,1:skip:end,:);
-														tmp_name='nw64err';
-														tmp_title='R64 NWQ Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 200];
-													elseif plt==16
-														tmp_exp=poerr_exp(:,1:skip:end,:);
-														tmp_name='poerr';
-														tmp_title='Outer Clsd Isbr Prs Error (hPa)';
-														tmp_ytitle='Error (hPa)';
-													elseif plt==17
-														tmp_exp=roerr_exp(:,1:skip:end,:);
-														tmp_name='roerr';
-														tmp_title='Outer Clsd Isbr Rad Error (km)';
-														tmp_ytitle='Error (km)';
-													elseif plt==18
-														tmp_exp=rmwerr_exp(:,1:skip:end,:);
-														tmp_name='rmwerr';
-														tmp_title='RMW Error (km)';
-														tmp_ytitle='Error (km)';
-													elseif plt==19
-														tmp_exp=ateerr_exp(:,1:skip:end,:);
-														tmp_name='ateerr';
-														tmp_title='Along-Track Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[-500 500];                
-													elseif plt==20
-														tmp_exp=xteerr_exp(:,1:skip:end,:);
-														tmp_name='xteerr';
-														tmp_title='Across-Track Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[-500 500]; 
-													elseif plt==21
-														tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
-														tmp_name='34err';
-														tmp_title='R34 Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 100];
-													elseif plt==22
-														tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
-														tmp_name='50err';
-														tmp_title='R50 Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 100];
-													elseif plt==23
-														tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
-														tmp_name='64err';
-														tmp_title='R64 Error (km)';
-														tmp_ytitle='Error (km)';
-														yrange=[0 100];
-													end				   					
-													% No Strat
-													onefhr=tmp_exp(:,fhr,identexploop);
-													
-													st=1;
-													ed=11;
-													for j=1:11
-														if j==1
-															ac1(j,:)=onefhr0(st:end-ed);
-															st=st+1;
-															ed=ed-1;
-														else
-															ac1(j,:)=onefhr(st:end-ed);
-															st=st+1;
-															ed=ed-1;
-														end
-													end
-													ac2=[ac2 ac1];
-												end
-												clear ac1
-											end			
-											for k=1:11
-												if size(corrcoef(ac2(1,:),ac2(k,:),'rows','complete'),1)==1
-													r(k)=NaN;
-													p(k)=NaN;
-												else
-													[R,P]=corrcoef(ac2(1,:),ac2(k,:),'rows','complete');
-													r(k)=R(2);
-													p(k)=P(2);
-												end
-											end
-											cc(fhr,:)=r;
-											pp(fhr,:)=p;
-											clear ac1 ac2 r p													
-										end			
-										% Plot														
-										cc=flipud(cc');
-										pp=flipud(pp');
-										pp(pp>=0.05)=NaN;
-										pp=~isnan(pp)==1;	
-										clear l cntexp
-										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
-										hfig=figure;
-										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
-										ax1=subplot(3,4,[1:8]);
-										hold on					
-										imagesc(cc,'AlphaData',~isnan(cc))
-										set(gca,'plotboxaspectratio',[1 1 1])
-										ylabel('Lag (6-h Cycles)','fontsize',20)
-										set(gca,'ytick',1:11)
-										set(gca,'yticklabel',10:-1:0)
-										xlabel('Forecast Lead Time (h)','fontsize',20)
-										set(gca,'fontsize',20)
-										box on
-										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
-											if mod(identmaxfhr*3,12)==0
-												xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5])
-											else
-												xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
-											end
-										else
-											if mod(identmaxfhr*3-3,12)==0
-												xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
-											else
-												xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
-											end
-										end         
-										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
-										set(gca,'gridcolor','k','gridalpha',.15)
-										set(gca,'fontsize',20)      
-										hold off
-										box on														
-										hold on
-										for i=1:size(cc,2)
-											plot(repmat(0.5+i,1,size(cc,1)+3),-1:size(cc,1)+1,'k')
-										end
-										for i=1:size(cc,1)
-											plot(-1:size(cc,2)+1,repmat(i-.5,1,size(cc,2)+3),'k')
-										end
-										ylim([0.5 11.5])
-										run customcolorbars
-										cl=colorbar;
-										caxis([-1 1])														
-										colormap(gca,custommap(20,negposc))														
-										set(cl,'ticks',[-1:.2:1],'fontsize',14)														
-										[row,col]=find(abs(cc)>=sqrt(.25) & abs(cc)<sqrt(.50)); % 25-50% variance
-										hold on
-										if isempty(row)
-										else
-											plot(col,row,'.k','markerfacecolor','k');
-										end
-										[row,col]=find(abs(cc)>=sqrt(.50) & abs(cc)<sqrt(.75)); % 50-75% variance
-										hold on
-										if isempty(row)
-										else
-											plot(col,row,'+k','markerfacecolor','k');
-										end
-										[row,col]=find(abs(cc)>=sqrt(.75)); % 50-75% variance
-										hold on
-										if isempty(row)
-										else
-											plot(col,row,'sk','markerfacecolor','k');														
-										end
-										l(1)=plot(-100,-100,'.k','markerfacecolor','k');
-										l(2)=plot(-100,-100,'+k','markerfacecolor','k');
-										l(3)=plot(-100,-100,'sk','markerfacecolor','k');
-										lh=legend(l,'r^2=25-50%','r^2=50-75%','r^2=75-100%','location','southeastoutside','orientation','vertical');	
-										lh.FontSize=10;
-										lh.ItemTokenSize(1) = 10;
-										lhp=lh.Position;
-										set(lh,'position',[lhp(1)+.2 lhp(2)-.28 lhp(3) lhp(4)])
-										set(gcf,'Units','inches');
-										a1Pos = get(gca,'Position');
-										set(gcf, 'InvertHardcopy', 'off')
-										set(gcf,'Units','inches');
-										screenposition = get(gcf,'Position');
-										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-										set(gcf, 'InvertHardcopy', 'off')		
-										text(0,1.065,['\textbf{',tmp_title,' Lagged Correlation}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
-										if strat==1
-											text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
-										else
-											text(1,1.065,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
-											text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-										end                
-										tmpuv = unique(tmpyr);
-										tmpn  = histc(tmpyr,tmpuv); 
-										tmpphrase='';
-										for tmpdr=1:length(tmpn)
-											if tmpdr==length(tmpn)
-												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
-											else
-												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
-											end
-										end    
-										text(0,1.027,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
-										ax=gca;
-										box on
-										set(ax, 'Layer', 'bottom')
-										ax.LineWidth=2; 
-										set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
-										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-										set(gca,'Color',[.9 .9 .9])
-										for tmp=1:size(identexp,1)
-											cntexp(:,tmp)=sum(~isnan(tmp_exp0(:,1:skip:end,tmp)),1);
-										end
-										if sum([cntexp(:)])==0
-											tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
-											set(tx, 'Layer', 'front')
-										end          
-										if plt==19
-											 tx=text(0.02,0.05,'Slower than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
-											 tx=text(0.02,0.98,'Faster than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
-											 set(tx, 'Layer', 'front')            
-										elseif plt==20
-											 tx=text(0.02,0.05,'Left of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
-											 tx=text(0.02,0.98,'Right of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
-											 set(tx, 'Layer', 'front')            
-										end
-										axis ij
-										b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);
-										set(b,'plotboxaspectratio',[1 1 1])
-										set(b,'Color','none');
-										set(b,'YColor','none');
-										set(b,'tickdir','both')
-										set(b,'XColor',[0 0 0]);
-										set(b,'ytick',[]);
-										if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
-											if mod(identmaxfhr*3,12)==0
-												xlim(b,[0.5 (((identmaxfhr*3))/skiphr+1)+.5])
-												tmpxend=((identmaxfhr*3))/skiphr+1;
-											else
-												xlim(b,[0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]) 
-												tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;
-											end
-										else
-											if mod(identmaxfhr*3-3,12)==0
-												xlim(b,[0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5])
-												tmpxend=((identmaxfhr*3)-3)/skiphr+1;
-											else
-												xlim(b,[0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]) 
-												tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;
-											end
-										end
-										set(b,'xtick',[1:skiptick:50]);
-										trkerr_exp_fcnt=zeros(1,tmpxend);            
-										trkerr_exp_fcnt1=zeros(1,tmpxend);            
-										trkerr_exp_fcnt2=zeros(1,tmpxend);
-										for tmp=1:size(identexp,1)
-											cntexp(:,tmp)=sum(~isnan(tmp_exp0(:,1:skip:end,tmp)),1);
-										end 
-										set(gca,'fontsize',10)
-										xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
-										set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
-										screenposition = get(gcf,'Position');
-										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-										set(gcf, 'InvertHardcopy', 'off')
-										% Create a text box at every Tick label position
-										maxmin=squeeze(sum(~isnan(tmp_exp0(:,1:skip:end,:)),1)); 
-										xTicks0 = get(gca, 'xticklabel');
-										xTicks = get(gca, 'xtick');
-										if size(maxmin,1)<size(xTicks0,1)
-											for n=1:size(xTicks0,1)-size(maxmin,1)
-												maxmin(end+n,:)=0;
-											end
-										end
-										set(b,'xticklabels',[]);
-										minY =0;
-										VerticalOffset1=0.03;
-										HorizontalOffset = 0.2;
-										for xx = 1:size(xTicks0,1)
-											tmptxt0=maxmin(xx,:);
-											tmplines=size(tmptxt0,2);
-											if size(unique(tmptxt0),2)==1
-												tmptxt1=num2str(tmptxt0(1)); 
-												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
-											else
-												for n=1:tmplines
-													tmptxt1=[];                            
-													tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
-													if n==1
-														text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
-													else
-														text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
-													end
-												end    
-											end
-										end
-										f = getframe(hfig);
-										imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop},'.png'],'png');
-										close all													
-									end									
-								end
-								end
-								load([identout,'tempsave.mat'])
 								% Scorecard
 								for scorecard=1
 									% Which Experiment to Compare To
@@ -17198,8 +17198,8 @@
 												sigtest_95(:,plt)=repmat(0,size(tmp_exp,2),1);
 												sigtest_90(:,plt)=repmat(0,size(tmp_exp,2),1);
 											else
-												sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.05)';                                                                  
-												sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),identserialcorr,'alpha',.1)';                                                                                                                
+												sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05)';                                                                  
+												sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1)';                                                                                                                
 											end	
 											tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';
 											tmp1=abs(tmp_exp(:,:,identexploop));
@@ -17346,7 +17346,7 @@
 											end
 										end    
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:identmaxfhr*3) 
+										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
 										set(gca,'fontsize',10)
 										ylim([0.5 43.5])
 										set(gca,'ytick',1:1:43.5)

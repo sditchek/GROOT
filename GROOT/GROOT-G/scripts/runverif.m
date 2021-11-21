@@ -29,10 +29,10 @@ for identremoveinvest=1
 		addpath([identout,'scripts'])
 		identbdecks=[identout,'bdeck/'];
 		
-		for bdecks=1
+		%for bdecks=1
 		    filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];
-		    [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
-		end
+		    if isfile(filename)==1; [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
+		%end
 		identn=unique(NAMEall,'rows','stable');
 		identn=identn(end,:);
 		identn=identn(isletter(identn));
@@ -40,7 +40,7 @@ for identremoveinvest=1
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
 		identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)]; 
-		stormsdone{stmdn}=identhwrf; %GROOT-G Change End
+		stormsdone{stmdn}=identhwrf;end; %GROOT-G Change End
                 % Model outputs at 3 h, but to compare errors to BT make 6 h!
                 skip=2;                                                  % 6 h res | skip=1 is 3 h
                 skiphr=6;                                                % 6 h res | skiphr=3 is 3 h res
@@ -471,7 +471,7 @@ for identremoveinvest=1
 		end
 		if identcompositerun==1
 			load([identout,'compsave1.mat'])
-			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1
+			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1 || strcmp(identdr5{1},'WP')==1
 				%% To deal with multiple basins, if present
 				identbasincut(1)=1;
 				for basinloop=1:size(identdr5,2) 

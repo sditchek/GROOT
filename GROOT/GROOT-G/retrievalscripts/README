@@ -1,5 +1,4 @@
 FILES IN THIS FOLDER
-  README              | this file which explains how to edit and compile the the gsi scripts and how to run the retrieval script
   gsi_diag_conv.f90   | this is the file you'd edit if you wanted to retrieve gsidiag files
   gsi_diag_rad.x      | this executable reads radiances from gsidiag files
   RAD/ 		      | folder with files needed to run gsi_diag_rad.x (namelist.rad) and files needed to grab qc flags for satellite obs (.pro scripts)

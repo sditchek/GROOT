@@ -1,6 +1,6 @@
 #!/bin/ksh 
 #SBATCH -t 01:00:00         # XXXX: Time Limit: generally sufficient; may need to increase it
-#SBATCH -A aoml-osse        # XXXX: Account:   Use your project accounti
+#SBATCH -A aoml-osse        # XXXX: Account:   Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
 #SBATCH --partition=hera  # XXXX: request specific partition for resource allocation
 #SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
@@ -22,12 +22,13 @@ dirpth=/scratch1/BMC/qosap/${USER}      # directory path above GROOT location
 cycling="6"               		# frequency of cycling in your model (often 6 for 6 h)
 set -A expyears 2018 2019 2020 		# years included
 numyears=3				# number of years in expyears - the number must match!	
-atcfoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/V16_HDOB/atcf/	# location of your atcf output
+#atcfoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/V16_HDOB/atcf/	# location of your atcf output
+atcfoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/js_E_FINAL/atcf/  # location of your atcf output
 diagoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/V16_HDOB/anl/	# location of your diag output
 
 # Identify Experiments
 set -A expfold V16H V16R	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew V16H V16R                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expnew V16H-E V16R-E                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing and want graphics for
 
@@ -188,8 +189,19 @@ do
 		rm ${progresspath}/nameofstorms.txt
 		rm ${progresspath}/listofstorms.txt
 	done
-done
 
+        rm ${indir2}/*AA* # not a valid bdeck identifier (A)
+        rm ${indir2}/*SI* # not a valid bdeck identifier (S)
+        rm ${indir2}/*BB* # not a valid bdeck identifier (B)
+        rm ${indir2}/*SC* # not a valid bdeck identifier (O)
+        rm ${indir2}/*EC* # not a valid bdeck identifier (T)
+        rm ${indir2}/*AU* # not a valid bdeck identifier (U)
+        rm ${indir2}/*SP* # not a valid bdeck identifier (P)
+        rm ${indir2}/*SL* # not a valid bdeck identifier (Q)
+        rm ${indir2}/*HC* # not a valid bdeck identifier (default)
+        rm ${indir2}/6* # not a valid bdeck identifer
+
+done
 
 # Run the namelist
 cd ${homepath}/GROOT/GROOT-G/

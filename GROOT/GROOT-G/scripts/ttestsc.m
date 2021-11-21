@@ -1,4 +1,4 @@
-function [h,p,ci,stats] = ttest(x,m,identserialcorr,varargin)
+function [h,p,ci,stats] = ttest(x,m,identsc,varargin)
 %TTEST  One-sample and paired-sample t-test.
 %   H = TTEST(X) performs a t-test of the hypothesis that the data in the
 %   vector X come from a distribution with mean zero, and returns the
@@ -131,7 +131,7 @@ if any(nans(:))
 else
     samplesize = size(x,dim); % a scalar, => a scalar call to tinv
 end
-samplesize=samplesize/identserialcorr;
+samplesize=samplesize./identsc;
 df = max(samplesize - ones('like',x), 0); % make sure df is the same type as X
 xmean = nanmean(x,dim);
 sdpop = nanstd(x,[],dim);
