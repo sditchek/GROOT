@@ -136,6 +136,8 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+11/24/21 | Added capability to plot the storm-by-storm improvement
+	 | Fixed a bug with the PPC graphics so that forecast hours without data plot as blanks instead of 0%
 11/18/21 | Added capability to calculate the separation time between serially-correlated forecasts at each forecsat hour based on a user-designated explained variance threshold in the namel           ist in order to calculate an effective sample size for use in statistical significance calculations
 	 | Updated the bdecks to the latest output, fixed missing data for storm names, and grabbed JTWC bdecks for IO, SH, and WP which has TC category designation
 11/1/21  | Added capability for customization of the end limit of the forecast lead time x-axes.

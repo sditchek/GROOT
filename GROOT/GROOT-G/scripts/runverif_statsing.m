@@ -3607,131 +3607,131 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 		end;end              
 		spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
 		clPos=[0.88 0.13+.05 0.04 0.75-.05]; % arrange plots the same
-		% Create Graphics: contribution!!!
+		% Create Graphics: Cycle-By-Cycle Improvement Graphics!!!
 		for plt=[1:18,21:23] % no across or along for bias
 			clear l cntexp
 			if plt==1
 				 tmp_exp=trkerr_exp(:,1:skip:end,:);
 				 tmp_name='trkerr';
-				 tmp_title='Percent Contribution to Track Error (\%)';
-				 tmp_ytitle='Error Contribution (\%)';
+				 tmp_title='Cycle-By-Cycle Track Improvement (\%)';
+				 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='preserr';
-				tmp_title='Percent Contribution to Pressure Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle Pressure Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderr';
-				tmp_title='Percent Contribution to Wind Speed Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle Wind Speed Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
 				tmp_name='ne34err';
-				tmp_title='Percent Contribution to R34 NEQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R34 NEQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==5
 				tmp_exp=se34err_exp(:,1:skip:end,:);
 				tmp_name='se34err';
-				tmp_title='Percent Contribution to R34 SEQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R34 SEQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==6
 				tmp_exp=sw34err_exp(:,1:skip:end,:);
 				tmp_name='sw34err';
-				tmp_title='Percent Contribution to R34 SWQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R34 SWQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==7
 				tmp_exp=nw34err_exp(:,1:skip:end,:);
 				tmp_name='nw34err';
-				tmp_title='Percent Contribution to R34 NWQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R34 NWQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==8
 				tmp_exp=ne50err_exp(:,1:skip:end,:);
 				tmp_name='ne50err';
-				tmp_title='Percent Contribution to R50 NEQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R50 NEQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==9
 				tmp_exp=se50err_exp(:,1:skip:end,:);
 				tmp_name='se50err';
-				tmp_title='Percent Contribution to R50 SEQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R50 SEQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==10
 				tmp_exp=sw50err_exp(:,1:skip:end,:);
 				tmp_name='sw50err';
-				tmp_title='Percent Contribution to R50 SWQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R50 SWQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==11
 				tmp_exp=nw50err_exp(:,1:skip:end,:);
 				tmp_name='nw50err';
-				tmp_title='Percent Contribution to R50 NWQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R50 NWQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==12
 				tmp_exp=ne64err_exp(:,1:skip:end,:);
 				tmp_name='ne64err';
-				tmp_title='Percent Contribution to R64 NEQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R64 NEQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==13
 				tmp_exp=se64err_exp(:,1:skip:end,:);
 				tmp_name='se64err';
-				tmp_title='Percent Contribution to R64 SEQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R64 SEQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==14
 				tmp_exp=sw64err_exp(:,1:skip:end,:);
 				tmp_name='sw64err';
-				tmp_title='Percent Contribution to R64 SWQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R64 SWQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 				yrange=[-100 100];                 
 			elseif plt==15
 				tmp_exp=nw64err_exp(:,1:skip:end,:);
 				tmp_name='nw64err';
-				tmp_title='Percent Contribution to R64 NWQ Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R64 NWQ Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==16
 				tmp_exp=poerr_exp(:,1:skip:end,:);
 				tmp_name='poerr';
-				tmp_title='Percent Contribution to Outer Clsd Isbr Prs Improvement (hPa)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle Outer Clsd Isbr Prs Improvement (hPa)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==17
 				tmp_exp=roerr_exp(:,1:skip:end,:);
 				tmp_name='roerr';
-				tmp_title='Percent Contribution to Outer Clsd Isbr Rad Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle Outer Clsd Isbr Rad Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==18
 				tmp_exp=rmwerr_exp(:,1:skip:end,:);
 				tmp_name='rmwerr';
-				tmp_title='Percent Contribution to RMW Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle RMW Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==19
 				tmp_exp=ateerr_exp(:,1:skip:end,:);
 				tmp_name='ateerr';
-				tmp_title='Percent Contribution to Along-Track Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle Along-Track Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==20
 				tmp_exp=xteerr_exp(:,1:skip:end,:);
 				tmp_name='xteerr';
-				tmp_title='Percent Contribution to Across-Track Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle Across-Track Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==21
 				tmp_exp1=cat(4,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
 				tmp_exp=nansum(tmp_exp1,4);
 				tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 				tmp_name='34err';
-				tmp_title='Percent Contribution to R34 Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R34 Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==22
 				tmp_exp1=cat(4,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
 				tmp_exp=nansum(tmp_exp1,4);
 				tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 				tmp_name='50err';
-				tmp_title='Percent Contribution to R50 Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R50 Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==23
 				tmp_exp1=cat(4,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
 				tmp_exp=nansum(tmp_exp1,4);
 				tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 				tmp_name='64err';
-				tmp_title='Percent Contribution to R64 Error (\%)';
-				tmp_ytitle='Error Contribution (\%)';
+				tmp_title='Cycle-By-Cycle R64 Improvement (\%)';
+				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			end
 			if plt <19 || plt >20
 				tmp_exp=abs(tmp_exp); % added for MAE
@@ -3739,15 +3739,15 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 			tmp_exp0=tmp_exp;
 			
 
-			% calculate the sum of all errors
-			nm_sum=squeeze(nansum(tmp_exp,1));
-			%calculate the percentage of each storm to the sum of all errors
-			tmp_exp=permute(tmp_exp,[2 3 1]);
-			nm_pct=(100.*tmp_exp./nm_sum);                    
-			tmp_exp=permute(tmp_exp,[3 1 2]);
+			% calculate improvement by cycle
+			for tmp=1:size(identexp,1);if strcmp(identexp(tmp),identexpsigimp);tmpimp=tmp;end;end;tmpu=1:size(identexp,1);tmpu(tmpu==tmpimp)=[];
+			for tmp=[tmpimp,tmpu]
+				imprv=squeeze(100.*(1-(tmp_exp(:,:,tmp))./(tmp_exp(:,:,tmpimp))));nm_pct(:,tmp,:)=imprv;
+			end
+			nm_pct=permute(nm_pct,[3 2 1]);
 
 
-			for identexploop=1:size(nm_pct,2)
+			for identexploop=tmpu
 				tmppct=squeeze(nm_pct(:,identexploop,:));
 				tmpstd=nanstd(tmppct');
 				tmpmn=nanmean(tmppct,2);
@@ -3756,7 +3756,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				hfig=figure;
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 				ax1=subplot(3,4,[1:8]);
-				imagesc((tmppct)')
+				imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
 				xlabel('Forecast Lead Time (h)','fontsize',14)        
 				set(gca,'fontsize',14)
 				box on
@@ -3791,8 +3791,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				set(gca,'fontsize',14)
 				cnt=1;                                       
 				colorbar
-				caxis([0 10])
-				colormap(flipud(gray(20)))
+				caxis([-50 50])
+                colormap(gca,custommap(20,negposc))
 				hold on
 				for i=1:size(tmppct,1)
 					plot(repmat(0.5+i,1,size(identdr,2)+3),-1:size(identdr,2)+1,'k')
@@ -3810,18 +3810,18 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				for j=1:size(tmppct,2)
 					for i=1:size(1:skip:identmaxfhr,2)
 						if tmppctstr(i,j)==0
-							if sum(round(tmppct(i,:)))>100
-								for k=1:size(tmppct,2)
-									diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
-								end
-								tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))-diffpct(k);
-							elseif sum(round(tmppct(i,:)))<100
-								for k=1:size(tmppct,2)
-									diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
-								end
-								tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))+diffpct(k);
-							end
-								if tmppct(i,j)>5
+							%if sum(round(tmppct(i,:)))>100
+							%	for k=1:size(tmppct,2)
+							%		diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
+							%	end
+							%	tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))-diffpct(k);
+							%elseif sum(round(tmppct(i,:)))<100
+							%	for k=1:size(tmppct,2)
+							%		diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
+							%	end
+							%	tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))+diffpct(k);
+							%end
+								if tmppct(i,j)>25 || tmppct(i,j)<-25
 									text(i,j, [num2str(round(tmppct(i,j))),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',6)
 								else
 									text(i,j, [num2str(round(tmppct(i,j))),'%'], 'HorizontalAlignment', 'Center','fontsize',6)
@@ -3991,9 +3991,9 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				for tmp=[tmpimp,tmpu]
 					for istm=1:size(tmp_exp,2)
 						smpsz=sum(sum(~isnan(squeeze(tmp_exp(:,istm,:,:))),1),3);
-						stmerr=nansum(squeeze((tmp_exp(:,istm,tmp,:))),2)./smpsz(tmp);
+						stmerr=nansum(squeeze((tmp_exp(:,istm,tmp,:))),2)./smpsz(tmp);stmerrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmp,:))),1));stmerr(stmerrnan==200)=NaN;
 						%stmerr(all(isnan(squeeze((tmp_exp(:,istm,tmp,:)))),2))=NaN;
-						imperr=nansum(squeeze((tmp_exp(:,istm,tmpimp,:))),2)./smpsz(tmpimp);
+						imperr=nansum(squeeze((tmp_exp(:,istm,tmpimp,:))),2)./smpsz(tmpimp);imperrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmpimp,:))),1));imperr(imperrnan==200)=NaN;
 						%imperr(all(isnan(squeeze((tmp_exp(:,istm,tmpimp,:)))),2))=NaN;
 						imperrsum=nansum(nansum(squeeze((tmp_exp(:,istm,tmpimp,:))),1))./smpsz(tmpimp);;
 						imprv0=-100.*(((stmerr-imperr)+imperrsum)./imperrsum-1);
@@ -4007,8 +4007,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				for tmp=[tmpimp,tmpu]
 					for istm=1:size(tmp_exp,2)
 						smpsz=sum(~isnan(squeeze(tmp_exp(:,istm,:))),1); if size(tmp_exp,1)==1 smpsz=sum(~isnan(squeeze(tmp_exp(:,istm,:))'),1); end
-						stmerr=squeeze((tmp_exp(:,istm,tmp)))./smpsz(tmp);
-						imperr=squeeze((tmp_exp(:,istm,tmpimp)))./smpsz(tmpimp);
+						stmerr=squeeze((tmp_exp(:,istm,tmp)))./smpsz(tmp);stmerrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmp,:))),1));stmerr(stmerrnan==200)=NaN;
+						imperr=squeeze((tmp_exp(:,istm,tmpimp)))./smpsz(tmpimp); imperrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmpimp,:))),1));imperr(imperrnan==200)=NaN;
 						imperrsum=nansum(squeeze((tmp_exp(:,istm,tmpimp))),1)./smpsz(tmpimp);;
 						imprv(istm,:)=-100.*(((stmerr-imperr)+imperrsum)./imperrsum-1);
 						sm(istm)=nansum(imprv(istm,:));
@@ -9275,137 +9275,137 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
 								close all
 							end                                      
-							% Create Graphics: contribution!!!
+							% Create Graphics: Cycle-By-Cycle Improvement!!!
 							for plt=[1:18,21:23] % no across or along for bias
 								clear l cntexp
 								if plt==1
 									 tmp_exp=trkerr_exp(:,1:skip:end,:);
 									 tmp_name='trkerr';
-									 tmp_title='Percent Contribution to Track Error (\%)';
-									 tmp_ytitle='Error Contribution (\%)';
+									 tmp_title='Cycle-By-Cycle Track Improvement (\%)';
+									 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='preserr';
-									tmp_title='Percent Contribution to Pressure Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Pressure Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Percent Contribution to Wind Speed Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Wind Speed Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
 									tmp_name='ne34err';
-									tmp_title='Percent Contribution to R34 NEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 NEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==5
 									tmp_exp=se34err_exp(:,1:skip:end,:);
 									tmp_name='se34err';
-									tmp_title='Percent Contribution to R34 SEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 SEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==6
 									tmp_exp=sw34err_exp(:,1:skip:end,:);
 									tmp_name='sw34err';
-									tmp_title='Percent Contribution to R34 SWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 SWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==7
 									tmp_exp=nw34err_exp(:,1:skip:end,:);
 									tmp_name='nw34err';
-									tmp_title='Percent Contribution to R34 NWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 NWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==8
 									tmp_exp=ne50err_exp(:,1:skip:end,:);
 									tmp_name='ne50err';
-									tmp_title='Percent Contribution to R50 NEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 NEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==9
 									tmp_exp=se50err_exp(:,1:skip:end,:);
 									tmp_name='se50err';
-									tmp_title='Percent Contribution to R50 SEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 SEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==10
 									tmp_exp=sw50err_exp(:,1:skip:end,:);
 									tmp_name='sw50err';
-									tmp_title='Percent Contribution to R50 SWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 SWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==11
 									tmp_exp=nw50err_exp(:,1:skip:end,:);
 									tmp_name='nw50err';
-									tmp_title='Percent Contribution to R50 NWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 NWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==12
 									tmp_exp=ne64err_exp(:,1:skip:end,:);
 									tmp_name='ne64err';
-									tmp_title='Percent Contribution to R64 NEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 NEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==13
 									tmp_exp=se64err_exp(:,1:skip:end,:);
 									tmp_name='se64err';
-									tmp_title='Percent Contribution to R64 SEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 SEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==14
 									tmp_exp=sw64err_exp(:,1:skip:end,:);
 									tmp_name='sw64err';
-									tmp_title='Percent Contribution to R64 SWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 SWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 									yrange=[-100 100];                 
 								elseif plt==15
 									tmp_exp=nw64err_exp(:,1:skip:end,:);
 									tmp_name='nw64err';
-									tmp_title='Percent Contribution to R64 NWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 NWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==16
 									tmp_exp=poerr_exp(:,1:skip:end,:);
 									tmp_name='poerr';
-									tmp_title='Percent Contribution to Outer Clsd Isbr Prs Improvement (hPa)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Outer Clsd Isbr Prs Improvement (hPa)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==17
 									tmp_exp=roerr_exp(:,1:skip:end,:);
 									tmp_name='roerr';
-									tmp_title='Percent Contribution to Outer Clsd Isbr Rad Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Outer Clsd Isbr Rad Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==18
 									tmp_exp=rmwerr_exp(:,1:skip:end,:);
 									tmp_name='rmwerr';
-									tmp_title='Percent Contribution to RMW Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle RMW Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==19
 									tmp_exp=ateerr_exp(:,1:skip:end,:);
 									tmp_name='ateerr';
-									tmp_title='Percent Contribution to Along-Track Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Along-Track Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==20
 									tmp_exp=xteerr_exp(:,1:skip:end,:);
 									tmp_name='xteerr';
-									tmp_title='Percent Contribution to Across-Track Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Across-Track Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==21
 									tmp_exp1=cat(4,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
 									tmp_exp=nansum(tmp_exp1,4);
 									tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 									tmp_name='34err';
-									tmp_title='Percent Contribution to R34 Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==22
 									tmp_exp1=cat(4,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
 									tmp_exp=nansum(tmp_exp1,4);
 									tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 									tmp_name='50err';
-									tmp_title='Percent Contribution to R50 Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==23
 									tmp_exp1=cat(4,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
 									tmp_exp=nansum(tmp_exp1,4);
 									tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 									tmp_name='64err';
-									tmp_title='Percent Contribution to R64 Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								end
 								if plt <19 || plt >20
 									tmp_exp=abs(tmp_exp); % added for MAE
 								end
-								tmp_exp0=tmp_exp;                                              
-								for identexploop=1:size(identexp,1)
+								tmp_exp0=tmp_exp;for tmp=1:size(identexp,1); if strcmp(identexp(tmp),identexpsigimp); tmpimp=tmp; end; end;   tmpu=1:size(identexp,1);tmpu(tmpu==tmpimp)=[];                                              
+								for identexploop=tmpu
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 									hfig=figure;
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -9436,8 +9436,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gca,'fontsize',14)
 									cnt=1;                                       
 									colorbar
-									caxis([0 10])
-									colormap(flipud(gray(20)))
+									caxis([-50 50])
+									colormap(gca,custommap(20,negposc))
 									hold on
 									for i=1:identmaxfhr
 										plot(repmat(i-.5,1,identmaxfhr+3),-1:identmaxfhr+1,'k')
@@ -18206,131 +18206,131 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
 										close all
 							end                                                
-							% Create Graphics: contribution!!!
+							% Create Graphics: Cycle-By-Cycle Improvement!!!
 							for plt=[1:18,21:23] % no across or along for bias
 								clear l cntexp
 								if plt==1
 									 tmp_exp=trkerr_exp(:,1:skip:end,:);
 									 tmp_name='trkerr';
-									 tmp_title='Percent Contribution to Track Error (\%)';
-									 tmp_ytitle='Error Contribution (\%)';
+									 tmp_title='Cycle-By-Cycle Track Improvement (\%)';
+									 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='preserr';
-									tmp_title='Percent Contribution to Pressure Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Pressure Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Percent Contribution to Wind Speed Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Wind Speed Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
 									tmp_name='ne34err';
-									tmp_title='Percent Contribution to R34 NEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 NEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==5
 									tmp_exp=se34err_exp(:,1:skip:end,:);
 									tmp_name='se34err';
-									tmp_title='Percent Contribution to R34 SEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 SEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==6
 									tmp_exp=sw34err_exp(:,1:skip:end,:);
 									tmp_name='sw34err';
-									tmp_title='Percent Contribution to R34 SWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 SWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==7
 									tmp_exp=nw34err_exp(:,1:skip:end,:);
 									tmp_name='nw34err';
-									tmp_title='Percent Contribution to R34 NWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 NWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==8
 									tmp_exp=ne50err_exp(:,1:skip:end,:);
 									tmp_name='ne50err';
-									tmp_title='Percent Contribution to R50 NEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 NEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==9
 									tmp_exp=se50err_exp(:,1:skip:end,:);
 									tmp_name='se50err';
-									tmp_title='Percent Contribution to R50 SEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 SEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==10
 									tmp_exp=sw50err_exp(:,1:skip:end,:);
 									tmp_name='sw50err';
-									tmp_title='Percent Contribution to R50 SWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 SWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==11
 									tmp_exp=nw50err_exp(:,1:skip:end,:);
 									tmp_name='nw50err';
-									tmp_title='Percent Contribution to R50 NWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 NWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==12
 									tmp_exp=ne64err_exp(:,1:skip:end,:);
 									tmp_name='ne64err';
-									tmp_title='Percent Contribution to R64 NEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 NEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==13
 									tmp_exp=se64err_exp(:,1:skip:end,:);
 									tmp_name='se64err';
-									tmp_title='Percent Contribution to R64 SEQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 SEQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==14
 									tmp_exp=sw64err_exp(:,1:skip:end,:);
 									tmp_name='sw64err';
-									tmp_title='Percent Contribution to R64 SWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 SWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 									yrange=[-100 100];                 
 								elseif plt==15
 									tmp_exp=nw64err_exp(:,1:skip:end,:);
 									tmp_name='nw64err';
-									tmp_title='Percent Contribution to R64 NWQ Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 NWQ Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==16
 									tmp_exp=poerr_exp(:,1:skip:end,:);
 									tmp_name='poerr';
-									tmp_title='Percent Contribution to Outer Clsd Isbr Prs Improvement (hPa)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Outer Clsd Isbr Prs Improvement (hPa)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==17
 									tmp_exp=roerr_exp(:,1:skip:end,:);
 									tmp_name='roerr';
-									tmp_title='Percent Contribution to Outer Clsd Isbr Rad Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Outer Clsd Isbr Rad Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==18
 									tmp_exp=rmwerr_exp(:,1:skip:end,:);
 									tmp_name='rmwerr';
-									tmp_title='Percent Contribution to RMW Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle RMW Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==19
 									tmp_exp=ateerr_exp(:,1:skip:end,:);
 									tmp_name='ateerr';
-									tmp_title='Percent Contribution to Along-Track Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Along-Track Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==20
 									tmp_exp=xteerr_exp(:,1:skip:end,:);
 									tmp_name='xteerr';
-									tmp_title='Percent Contribution to Across-Track Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle Across-Track Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==21
 									tmp_exp1=cat(4,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
 									tmp_exp=nansum(tmp_exp1,4);
 									tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 									tmp_name='34err';
-									tmp_title='Percent Contribution to R34 Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R34 Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==22
 									tmp_exp1=cat(4,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
 									tmp_exp=nansum(tmp_exp1,4);
 									tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 									tmp_name='50err';
-									tmp_title='Percent Contribution to R50 Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R50 Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==23
 									tmp_exp1=cat(4,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
 									tmp_exp=nansum(tmp_exp1,4);
 									tmp_exp(all(isnan(tmp_exp1),4))=NaN;
 									tmp_name='64err';
-									tmp_title='Percent Contribution to R64 Error (\%)';
-									tmp_ytitle='Error Contribution (\%)';
+									tmp_title='Cycle-By-Cycle R64 Improvement (\%)';
+									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								end
 								if plt <19 || plt >20
 									tmp_exp=abs(tmp_exp); % added for MAE
@@ -18661,14 +18661,14 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 
 
 								% calculate the sum of all errors
-								nm_sum=squeeze(nansum(tmp_exp,1));
-								%calculate the percentage of each storm to the sum of all errors
-								tmp_exp=permute(tmp_exp,[2 3 1]);
-								nm_pct=(100.*tmp_exp./nm_sum);                    
-								tmp_exp=permute(tmp_exp,[3 1 2]);
+								for tmp=1:size(identexp,1);if strcmp(identexp(tmp),identexpsigimp);tmpimp=tmp;end;end;tmpu=1:size(identexp,1);tmpu(tmpu==tmpimp)=[];
+								for tmp=[tmpimp,tmpu]
+									imprv=squeeze(100.*(1-(tmp_exp(:,:,tmp))./(tmp_exp(:,:,tmpimp))));nm_pct(:,tmp,:)=imprv;
+								end
+								nm_pct=permute(nm_pct,[3 2 1]);
 
 
-								for identexploop=1:size(nm_pct,2)
+								for identexploop=tmpu
 									tmppct=squeeze(nm_pct(:,identexploop,:));
 									tmpstd=nanstd(tmppct');
 									tmpmn=nanmean(tmppct,2);
@@ -18712,8 +18712,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gca,'fontsize',14)
 									cnt=1;                                       
 									colorbar
-									caxis([0 10])
-									colormap(flipud(gray(20)))
+									caxis([-50 50])
+									colormap(gca,custommap(20,negposc))
 									hold on
 									for i=1:size(tmppct,1)
 										plot(repmat(0.5+i,1,size(identdr,2)+3),-1:size(identdr,2)+1,'k')
@@ -18731,18 +18731,18 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									for j=1:size(tmppct,2)
 										for i=1:size(1:skip:identmaxfhr,2)
 											if tmppctstr(i,j)==0
-												if sum(round(tmppct(i,:)))>100
-													for k=1:size(tmppct,2)
-														diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
-													end
-													tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))-diffpct(k);
-												elseif sum(round(tmppct(i,:)))<100
-													for k=1:size(tmppct,2)
-														diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
-													end
-													tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))+diffpct(k);
-												end
-													if tmppct(i,j)>5
+												%if sum(round(tmppct(i,:)))>100
+												%	for k=1:size(tmppct,2)
+												%		diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
+												%	end
+												%	tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))-diffpct(k);
+												%elseif sum(round(tmppct(i,:)))<100
+												%	for k=1:size(tmppct,2)
+												%		diffpct(k)=round(tmppct(i,k))-tmppct(i,k);
+												%	end
+												%	tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))+diffpct(k);
+												%end
+													if tmppct(i,j)>25 || tmppct(i,j)<-25
 														text(i,j, [num2str(round(tmppct(i,j))),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',6)
 													else
 														text(i,j, [num2str(round(tmppct(i,j))),'%'], 'HorizontalAlignment', 'Center','fontsize',6)
@@ -19240,9 +19240,9 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									for tmp=[tmpimp,tmpu]
 										for istm=1:size(tmp_exp,2)
 											smpsz=sum(sum(~isnan(squeeze(tmp_exp(:,istm,:,:))),1),3);
-											stmerr=nansum(squeeze((tmp_exp(:,istm,tmp,:))),2)./smpsz(tmp);
+											stmerr=nansum(squeeze((tmp_exp(:,istm,tmp,:))),2)./smpsz(tmp);stmerrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmp,:))),1));stmerr(stmerrnan==200)=NaN;
 											%stmerr(all(isnan(squeeze((tmp_exp(:,istm,tmp,:)))),2))=NaN;
-											imperr=nansum(squeeze((tmp_exp(:,istm,tmpimp,:))),2)./smpsz(tmpimp);
+											imperr=nansum(squeeze((tmp_exp(:,istm,tmpimp,:))),2)./smpsz(tmpimp);imperrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmpimp,:))),1));imperr(imperrnan==200)=NaN;
 											%imperr(all(isnan(squeeze((tmp_exp(:,istm,tmpimp,:)))),2))=NaN;
 											imperrsum=nansum(nansum(squeeze((tmp_exp(:,istm,tmpimp,:))),1))./smpsz(tmpimp);;
 											imprv0=-100.*(((stmerr-imperr)+imperrsum)./imperrsum-1);
@@ -19256,8 +19256,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									for tmp=[tmpimp,tmpu]
 										for istm=1:size(tmp_exp,2)
 											smpsz=sum(~isnan(squeeze(tmp_exp(:,istm,:))),1); if size(tmp_exp,1)==1 smpsz=sum(~isnan(squeeze(tmp_exp(:,istm,:))'),1); end
-											stmerr=squeeze((tmp_exp(:,istm,tmp)))./smpsz(tmp);
-											imperr=squeeze((tmp_exp(:,istm,tmpimp)))./smpsz(tmpimp);
+											stmerr=squeeze((tmp_exp(:,istm,tmp)))./smpsz(tmp);stmerrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmp,:))),1));stmerr(stmerrnan==200)=NaN;
+											imperr=squeeze((tmp_exp(:,istm,tmpimp)))./smpsz(tmpimp); imperrnan=squeeze(sum((isnan(tmp_exp(:,istm,tmpimp,:))),1));imperr(imperrnan==200)=NaN;
 											imperrsum=nansum(squeeze((tmp_exp(:,istm,tmpimp))),1)./smpsz(tmpimp);;
 											imprv(istm,:)=-100.*(((stmerr-imperr)+imperrsum)./imperrsum-1);
 											sm(istm)=nansum(imprv(istm,:));

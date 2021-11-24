@@ -335,10 +335,10 @@ for identremoveinvest=1
             addpath([identout,'scripts'])
             identbdecks=[identout,'bdeck/'];
 
-            for bdecks=1
-                filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];
-                [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
-            end
+            %for bdecks=1
+                   filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];
+                   if isfile(filename)==1; [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
+               %end
             identn=unique(NAMEall,'rows','stable');
             identn=identn(end,:);
             identn=identn(isletter(identn));
@@ -346,7 +346,7 @@ for identremoveinvest=1
             ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
             identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
             identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)]; 
-            stormsdone{stmdn}=identhwrf;
+            stormsdone{stmdn}=identhwrf;end;
         end %GROOT-G Change End
         if identcompositeprep==1
 			identfold='';
