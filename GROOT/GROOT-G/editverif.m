@@ -136,7 +136,7 @@ if ~exist([identout,'RESULTS/',identfold,'VERIFICATION/'], 'dir')
     mkdir([identout,'RESULTS/',identfold,'VERIFICATION/'])
 elseif identcase==0
     disp('CLEANING UP PREVIOUS VERIFICATION RESULTS...')    
-%    if exist([identout,'RESULTS/',identfold,'VERIFICATION/'], 'dir'); rmdir([identout,'RESULTS/',identfold,'VERIFICATION/'],'s');end;
+    if exist([identout,'RESULTS/',identfold,'VERIFICATION/'], 'dir'); rmdir([identout,'RESULTS/',identfold,'VERIFICATION/'],'s');end;
 elseif identcase==1
     disp('CLEANING UP PREVIOUS VERIFICATION RESULTS FOR THIS STORM...')
     if exist([identout,'RESULTS/',identfold,tmpcasefold,'/'], 'dir' ); rmdir([identout,'RESULTS/',identfold,tmpcasefold,'/'],'s');end;

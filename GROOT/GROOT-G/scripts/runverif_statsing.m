@@ -232,21 +232,21 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				exp_intch=exp_intch(1:initsize,:);   
 				exp_shr=exp_shr(1:initsize,:);   
 			end         
-			%% Turn missing spots into NaNs
-			exp_ne34(exp_ne34==0)=NaN;
-			exp_ne50(exp_ne50==0)=NaN;
-			exp_ne64(exp_ne64==0)=NaN;
-			exp_se34(exp_se34==0)=NaN;
-			exp_se50(exp_se50==0)=NaN;
-			exp_se64(exp_se64==0)=NaN;
-			exp_sw34(exp_sw34==0)=NaN;
-			exp_sw50(exp_sw50==0)=NaN;
-			exp_sw64(exp_sw64==0)=NaN;
-			exp_nw34(exp_nw34==0)=NaN;
-			exp_nw50(exp_nw50==0)=NaN;
-			exp_nw64(exp_nw64==0)=NaN;
-			exp_po(exp_po<0)=NaN;
-			exp_ro(exp_ro<0)=NaN;
+			%% Turn missing spots and non-homogeneous spots into NaNs
+			exp_ne34(exp_ne34==0)=NaN;exp_ne34(any(isnan(exp_ne34), 2), :) = NaN;
+			exp_ne50(exp_ne50==0)=NaN;exp_ne50(any(isnan(exp_ne50), 2), :) = NaN;
+			exp_ne64(exp_ne64==0)=NaN;exp_ne64(any(isnan(exp_ne64), 2), :) = NaN;
+			exp_se34(exp_se34==0)=NaN;exp_se34(any(isnan(exp_se34), 2), :) = NaN;
+			exp_se50(exp_se50==0)=NaN;exp_se50(any(isnan(exp_se50), 2), :) = NaN;
+			exp_se64(exp_se64==0)=NaN;exp_se64(any(isnan(exp_se64), 2), :) = NaN;
+			exp_sw34(exp_sw34==0)=NaN;exp_sw34(any(isnan(exp_sw34), 2), :) = NaN;
+			exp_sw50(exp_sw50==0)=NaN;exp_sw50(any(isnan(exp_sw50), 2), :) = NaN;
+			exp_sw64(exp_sw64==0)=NaN;exp_sw64(any(isnan(exp_sw64), 2), :) = NaN;
+			exp_nw34(exp_nw34==0)=NaN;exp_nw34(any(isnan(exp_nw34), 2), :) = NaN;
+			exp_nw50(exp_nw50==0)=NaN;exp_nw50(any(isnan(exp_nw50), 2), :) = NaN;
+			exp_nw64(exp_nw64==0)=NaN;exp_nw64(any(isnan(exp_nw64), 2), :) = NaN;
+			exp_po(exp_po<0)=NaN;exp_po(any(isnan(exp_po), 2), :) = NaN;
+			exp_ro(exp_ro<0)=NaN;exp_ro(any(isnan(exp_ro), 2), :) = NaN;
 			bt_ne34(bt_ne34==0)=NaN;
 			bt_ne50(bt_ne50==0)=NaN;
 			bt_ne64(bt_ne64==0)=NaN;
@@ -3230,7 +3230,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 			screenposition = get(gcf,'Position');
 			set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 			set(gcf, 'InvertHardcopy', 'off')
-			text(0,1.145,['\textbf{',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+			if med==1;text(0,1.145,['\textbf{Mean ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{Median ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;
 			text(0,1.07,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
 			text(1,1.07,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
 			box on
@@ -7971,7 +7971,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								screenposition = get(gcf,'Position');
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 								set(gcf, 'InvertHardcopy', 'off')
-								text(0,1.145,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
+								if med==1;text(0,1.145,['\textbf{Mean ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{Median ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
 								text(1,1.07,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');                                                                  
 								tmpuv = 0;                               
 								tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];
@@ -14795,7 +14795,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								screenposition = get(gcf,'Position');
 								set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 								set(gcf, 'InvertHardcopy', 'off')
-								text(0,1.145,['\textbf{',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
+								if med==1;text(0,1.145,['\textbf{Mean ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{Median ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
 								text(1,1.07,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');                                                                  
 								tmpuv = size(tmpnm,1);                               
 								tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];
