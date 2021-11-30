@@ -90,26 +90,26 @@
                     trkerr_exp_all	=	[];
                     ateerr_exp_all	=	[];
                     xteerr_exp_all	=	[];
-                    interr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    ne34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    ne50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    ne64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    nw34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    nw50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    nw64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    poerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    rmwerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    roerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    se34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    se50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    se64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    spderr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    sw34err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    sw50err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    sw64err_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    trkerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    ateerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
-                    xteerr_exp_stm = nan(200,identmodelfhr,size(identexp,1),size(identdr,2));
+                    interr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ne34err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ne50err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ne64err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    nw34err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    nw50err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    nw64err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    poerr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    rmwerr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    roerr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    se34err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    se50err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    se64err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    spderr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    sw34err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    sw50err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    sw64err_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    trkerr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    ateerr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
+                    xteerr_exp_stm = nan(1000,identmodelfhr,size(identexp,1),size(identdr,2));
                     % Concatenate all storms together
                     cntcan=1;
                     cntst=1;
@@ -2123,7 +2123,7 @@
                                     close all
                                 end                                   
 								% Create Storm-By-Storm Improvement Graphics
-                                for plt=[1:18,21:23] % no across or along for bias
+                                for med=1:2;for plt=[1:18,21:23] % no across or along for bias
                                     clear l cntexp                                   
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
@@ -2280,7 +2280,7 @@
                                         set(gca,'yticklabel',[]);
                                         colorbar
                                         caxis(impylim(plt,:))
-                                        colormap(gca,custommap(20,negposc))
+                                        run customcolorbars; colormap(gca,custommap(20,negposc))
                                         hold on                                        
                                         for i=1:identmaxfhr
                                             plot(repmat(i-.5,1,identmaxfhr+3),-1:identmaxfhr+1,'k')
@@ -2298,7 +2298,7 @@
                                             text(1,1.08,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.04,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        text(0,1.08,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
+                                        if med==1;text(0,1.08,['\textbf{Mean ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.08,['\textbf{Median ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
 										tmpyr=identdr;
 										for tmpyri=1:size(tmpyr,2)
 											tmpyra=tmpyr{tmpyri};
@@ -2325,11 +2325,11 @@
                                         set(gca,'position',[pos(1)+.01 pos(2) pos(3) pos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-                                        imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'.png'],'png');
+                                        if med==1;imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean.png'],'png');elseif med==2;imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median.png'],'png');end;
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
-                                end
+                                end;end;
                                 % Create Number of Forecasts
                                 for plt=[1:18,21:23] % no across or along for bias
                                     clear l cntexp                                    
@@ -2975,7 +2975,7 @@
                                     screenposition = get(gcf,'Position');
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
-                                    text(0,1.145,['\textbf{',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
+                                    if med==1;text(0,1.145,['\textbf{Mean ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{Median ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
                                     if strat==1
                                     else
                                         text(1,1.07,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
@@ -3665,7 +3665,7 @@
                             else
                                 % Create Graphics: Lagged Correlation
 								%clear scfactor scfactor0
-								for plt=1:23
+								if strat==1;for plt=1:23
 									% Load saved matrices
 									load([identout,'tempsave.mat'])
 									% Grab initial sizes
@@ -4479,7 +4479,7 @@
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(numlist));    
 									end
-									if strat==1; for identexploop=1:size(tmp_exp0,3)							
+									for identexploop=1:size(tmp_exp0,3)							
 										cc=[];
 										pp=[];
 										for fhr=1:size(tmp_exp0,2)
@@ -5391,9 +5391,9 @@
 										f = getframe(hfig);save([identout,'scfactor.mat'],'scfactor','scfactor0')
 										imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop},'.png'],'png');
 										close all													
-									end;end								
+									end								
 								end
-								load([identout,'scfactor.mat']);fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', scfactor0{:});fclose(fid);
+								end;load([identout,'scfactor.mat']);fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', scfactor0{:});fclose(fid);
 								load([identout,'tempsave.mat'])
 								% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
                                 for plt=1:23
@@ -7985,7 +7985,7 @@
                                         end
 
                                         if fspsub==2
-                                            tmp_exp(tmp_exp<5)=NaN;
+                                            tmp_exp(tmp_exp<5)=NaN;for i=1:size(tmp_exp,1);tmp_exp_fsp=squeeze(tmp_exp(i,:,:));tmp_exp_fsp(any(isnan(tmp_exp_fsp), 2),:,:) = NaN;tmp_exp_fsp0(i,:,:)=tmp_exp_fsp;end;tmp_exp=tmp_exp_fsp0;clear tmp_exp_fsp0;
                                         end
 
                                         % Strat
@@ -10899,7 +10899,7 @@
                                     close all
                                 end                                   
 								% Create Storm-By-Storm Improvement Graphics
-                                for plt=[1:18,21:23] % no across or along for bias
+                                for med=1:2;for plt=[1:18,21:23] % no across or along for bias
                                     clear l cntexp
                                     set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                     hfig=figure;
@@ -11891,7 +11891,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(200,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(1000,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -11901,11 +11901,11 @@
 
                                     for tmp=1:size(identexp,1);if strcmp(identexp(tmp),identexpsigimp);tmpimp=tmp;end;end;tmpu=1:size(identexp,1);tmpu(tmpu==tmpimp)=[];
 									for tmp=[tmpimp,tmpu]
-										imprv=squeeze(100.*(1-nanmean(nm_stm(:,:,tmp,:),1)./nanmean(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;
+										if med==1;imprv=squeeze(100.*(1-nanmean(nm_stm(:,:,tmp,:),1)./nanmean(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;elseif med==2;imprv=squeeze(100.*(1-nanmedian(nm_stm(:,:,tmp,:),1)./nanmedian(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;end;
 									end                    
 
                                     % sort by year and then by name                               
-                                    [a_sorted, a_order] = sort(tmpyr);
+                                    [a_sorted, a_order] = sort(tmpyr);if size(nm_pct,1)==1;nm_pct=permute(nm_pct,[3 2 1]);end;
                                     nm_pct = nm_pct(:,:,a_order);
                                     tmpnm = tmpnm(a_order);
 
@@ -11957,7 +11957,7 @@
                                         set(gca,'yticklabel',plotsim(:));
                                         colorbar
                                         caxis(impylim(plt,:))
-                                        colormap(gca,custommap(20,negposc))
+                                        run customcolorbars; colormap(gca,custommap(20,negposc))
                                         hold on
                                         for i=1:size(tmppct,1)
                                             plot(repmat(0.5+i,1,size(identdr,2)+3),-1:size(identdr,2)+1,'k')
@@ -12001,7 +12001,7 @@
                                             text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        text(0,1.06,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
+                                        if med==1;text(0,1.06,['\textbf{Mean ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{Median ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
                                         tmpphrase='';
@@ -12021,11 +12021,11 @@
                                         %set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-                                        imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'.png'],'png');
+                                        if med==1; imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean.png'],'png');elseif med==2; imwrite(f.cdata,[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median.png'],'png'); end;
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
-                                end
+                                end;end;
                                 % Create Number of Forecasts
                                 for plt=[1:18,21:23] % no across or along for bias
                                     clear l cntexp
@@ -14139,7 +14139,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(200,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(1000,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -14164,8 +14164,8 @@
 											else
 												smpsz=sum(~isnan(squeeze(tmp_exp(:,istm,:))),1);
 											end
-											stmerr=squeeze(nansum(nm_stm(:,istm,tmp,:),1))./smpsz(tmp);stmerrnan=squeeze(sum((isnan(nm_stm(:,istm,tmp,:))),1));stmerr(stmerrnan==200)=NaN;;
-											imperr=squeeze(nansum(nm_stm(:,istm,tmpimp,:),1))./smpsz(tmpimp);imperrnan=squeeze(sum((isnan(nm_stm(:,istm,tmpimp,:))),1));imperr(imperrnan==200)=NaN;
+											stmerr=squeeze(nansum(nm_stm(:,istm,tmp,:),1))./smpsz(tmp);stmerrnan=squeeze(sum((isnan(nm_stm(:,istm,tmp,:))),1));stmerr(stmerrnan==1000)=NaN;;
+											imperr=squeeze(nansum(nm_stm(:,istm,tmpimp,:),1))./smpsz(tmpimp);imperrnan=squeeze(sum((isnan(nm_stm(:,istm,tmpimp,:))),1));imperr(imperrnan==1000)=NaN;
 											imperrsum=nansum(squeeze(nansum(nm_stm(:,istm,tmpimp,:),1)),1)./smpsz(tmpimp);
 											imprv(istm,:)=-100.*(((stmerr-imperr)+imperrsum)./imperrsum-1);
 											sm(istm)=sum(imprv(istm,:));
@@ -15238,7 +15238,7 @@
                                     screenposition = get(gcf,'Position');
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
-                                    text(0,1.145,['\textbf{',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
+                                    if med==1;text(0,1.145,['\textbf{Mean ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{Median ',tmp_title,' \& Improvement (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
                                     if strat==1
                                     else
                                         text(1,1.07,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')

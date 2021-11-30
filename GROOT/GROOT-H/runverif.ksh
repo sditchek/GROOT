@@ -24,12 +24,9 @@ scrubpath=${homepath}/scrub				# path to your scrub directory
 dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
 
 # Set Experiments
-#set -A expfold HB20_B1_ALL HB20new HB20_B1_NC HB20_NC HB20_B1_OV HB20_OV HB20_B1_NO HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-#set -A expnew ALL ALL NIC NIC NTG NTG NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
-#numfold=8
-set -A expfold HB20new HB20_NC HB20_IC HB20_TG HB20_OV HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew ALL NIC IC TG NTG NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
-numfold=6
+set -A expfold HB20_B1_ALL HB20new HB20_B1_NO HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew ALL ALL NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+numfold=4
 
 # Account Information
 acntold=aoml-osse                       		# account currently listed in SBATCH above
