@@ -943,7 +943,7 @@ for satobs=1
                                     SPEEDall(i)=-1;
                                 end
                             end         
-                            h=fill([180,-180,-180,180],[-90,-90,90,90],[.5 .8 1]);
+                            h=fill([200,-200,-200,200],[-90,-90,90,90],[.5 .8 1]);
                             hold on
                             geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
                             hold on

@@ -5194,7 +5194,7 @@
 											clear ac1 ac2 r p													
 										end			
 										% Plot														
-										clear cola; for cca=1:size(cc,1); ccatmp=cc(cca,1:identlagcorr);	[row,col]=find(abs(ccatmp)>=sqrt(identserialcorr));	rowa(cca)=cca;	if isempty(col)==1;cola(cca)=1; else; cola(cca)=col(end);end; end; scfactor(plt,identexploop,:)=cola; scfactor0(plt,identexploop)={['Sample size for ', tmp_title,' in ',identexp{identexploop},' divided by ', num2str(cola(1:skiptick:end)),' which is a ', num2str((cola(1:skiptick:end)-1)*6),' serial correlation and a ',num2str((cola(1:skiptick:end))*6),' separation time!']}; 
+										clear cola; for cca=1:size(cc,1); ccatmp=cc(cca,1:identlagcorr);	[row,col]=find(abs(ccatmp)>=sqrt(identserialcorr));	rowa(cca)=cca;	if isempty(col)==1;cola(cca)=1; else; cola(cca)=col(end);end; end; scfactor(plt,identexploop,:)=cola; scfactor0(plt,identexploop)={['Sample size for ', tmp_title,' in ',identexp{identexploop},' divided by ', num2str(cola(1:size(1:skip:identmaxfhr,2))),' which is a ', num2str((cola(1:size(1:skip:identmaxfhr,2))-1)*6),' serial correlation and a ',num2str((cola(1:size(1:skip:identmaxfhr,2)))*6),' separation time!']}; 
 										cc=flipud(cc');
 										pp=flipud(pp');
 										pp(pp>=0.05)=NaN;
