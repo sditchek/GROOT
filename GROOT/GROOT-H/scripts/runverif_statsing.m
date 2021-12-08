@@ -6313,7 +6313,7 @@ for graphics=1
 					elseif strat==2 % by those that had obs
 						clear breakstrat
 						stname='OBS';
-						if sum(BT_drops==1)==0
+						if sum(BT_drops==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: OBS');
@@ -6323,7 +6323,7 @@ for graphics=1
 					elseif strat==3 % by those storms from first point of obs till end
 						clear breakstrat
 						stname='RECON';
-						 if sum(BT_target==1)==0
+						 if sum(BT_target==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_RECON.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: RECON');
@@ -6333,7 +6333,7 @@ for graphics=1
 					elseif strat==4 % by intensity
 						clear breakstrat
 						stname='TD'; % <34 kts
-						if sum(BT_cat1<34 & strcmp(BT_cat0,'TD')==1)==0
+						if sum(BT_cat1<34 & strcmp(BT_cat0,'TD')==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_TD.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: TD');
@@ -6343,7 +6343,7 @@ for graphics=1
 					elseif strat==5
 						clear breakstrat
 						stname='TS'; % >=34 kts & < 64 kts
-						if sum(BT_cat1>=34 & BT_cat1<64 & strcmp(BT_cat0,'TS')==1)==0
+						if sum(BT_cat1>=34 & BT_cat1<64 & strcmp(BT_cat0,'TS')==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_TS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: TS');
@@ -6353,7 +6353,7 @@ for graphics=1
 					elseif strat==6
 						clear breakstrat
 						stname='H12'; % >= 64 kts & < 96 kts
-						if sum(BT_cat1>=64 & BT_cat1<96 & strcmp(BT_cat0,'HU')==1)==0
+						if sum(BT_cat1>=64 & BT_cat1<96 & strcmp(BT_cat0,'HU')==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MN.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MN');
@@ -6363,7 +6363,7 @@ for graphics=1
 					elseif strat==7
 						clear breakstrat
 						stname='H345'; % >= 96 kts
-						if sum(BT_cat1>=96 & strcmp(BT_cat0,'HU')==1)==0
+						if sum(BT_cat1>=96 & strcmp(BT_cat0,'HU')==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MJ.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MJ');
@@ -6373,7 +6373,7 @@ for graphics=1
 					elseif strat==8 
 						clear breakstrat
 						stname='N30'; % north of 30N
-						if sum(BT_lat1>=30)==0
+						if sum(BT_lat1>=30)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_N30.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: N30');
@@ -6383,7 +6383,7 @@ for graphics=1
 					elseif strat==9
 						clear breakstrat
 						stname='S30'; % south of 30N
-						if sum(BT_lat1<30)==0
+						if sum(BT_lat1<30)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_S30.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: S30');
@@ -6393,7 +6393,7 @@ for graphics=1
 					elseif strat==10
 						clear breakstrat
 						stname='RI'; % rapidly intensifying storms
-						if sum(BT_intch1>=15)==0
+						if sum(BT_intch1>=15)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_RI.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: RI');
@@ -6403,7 +6403,7 @@ for graphics=1
 					elseif strat==11
 						clear breakstrat
 						stname='IN'; % intensifying storms
-						if sum(BT_intch1>=5 & BT_intch1<15)==0
+						if sum(BT_intch1>=5 & BT_intch1<15)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_IN.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: IN');
@@ -6413,7 +6413,7 @@ for graphics=1
 					elseif strat==12
 						clear breakstrat
 						stname='SS'; % steady-state storms
-						if sum(BT_intch1>-5 & BT_intch1<5)==0
+						if sum(BT_intch1>-5 & BT_intch1<5)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_SS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: SS');
@@ -6423,7 +6423,7 @@ for graphics=1
 					elseif strat==13
 						clear breakstrat
 						stname='WK'; % weakening storms 
-						if sum(BT_intch1<=-5 & BT_intch1>-15)==0
+						if sum(BT_intch1<=-5 & BT_intch1>-15)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_WK.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: WK');
@@ -6433,7 +6433,7 @@ for graphics=1
 					elseif strat==14
 						clear breakstrat
 						stname='RW'; % rapidly weakening storms 
-						if sum(BT_intch1<=-15)==0
+						if sum(BT_intch1<=-15)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_RW.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: RW');
@@ -6443,7 +6443,7 @@ for graphics=1
 					elseif strat==15 %% TD strat obs only
 						clear breakstrat
 						stname='TD-OBS'; % <34 kts
-						if sum(BT_cat1<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1)==0
+						if sum(BT_cat1<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_TD-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: TD-OBS');
@@ -6453,7 +6453,7 @@ for graphics=1
 					elseif strat==16 %% TS strat obs only
 						clear breakstrat
 						stname='TS-OBS'; % >=34 kts & < 64 kts
-						if sum(BT_cat1>=34 & BT_cat1<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1)==0
+						if sum(BT_cat1>=34 & BT_cat1<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_TS-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: TS-OBS');
@@ -6463,7 +6463,7 @@ for graphics=1
 					elseif strat==17 %% MN strat obs only
 						clear breakstrat
 						stname='H12-OBS'; % >= 64 kts & < 96 kts
-						if sum(BT_cat1>=64 & BT_cat1<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)==0
+						if sum(BT_cat1>=64 & BT_cat1<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MN-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MN-OBS');
@@ -6473,7 +6473,7 @@ for graphics=1
 					elseif strat==18 %% MJ strat obs only
 						clear breakstrat
 						stname='H345-OBS'; % >= 96 kts
-						if sum(BT_cat1>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)==0
+						if sum(BT_cat1>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MJ-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MJ-OBS');
@@ -6483,7 +6483,7 @@ for graphics=1
 					elseif strat==19 %% N30 strat obs only
 						clear breakstrat
 						stname='N30-OBS'; % north of 30N
-						if sum(BT_lat1>=30 & BT_drops'==1)==0
+						if sum(BT_lat1>=30 & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_N30-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: N30-OBS');
@@ -6493,7 +6493,7 @@ for graphics=1
 					elseif strat==20 %% S30 strat obs only
 						clear breakstrat
 						stname='S30-OBS'; % south of 30N
-						if sum(BT_lat1<30 & BT_drops'==1)==0
+						if sum(BT_lat1<30 & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_S30-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: S30-OBS');
@@ -6503,7 +6503,7 @@ for graphics=1
 					elseif strat==21 % by those that had no obs
 						clear breakstrat
 						stname='NOOBS';
-						if sum(BT_drops'==0)==0
+						if sum(BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: NOOBS');
@@ -6513,7 +6513,7 @@ for graphics=1
 					elseif strat==22 % by those storms before the first point of ob
 						clear breakstrat
 						stname='PRERECON';
-						if sum(BT_target'==0)==0
+						if sum(BT_target'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_PRERECON.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: PRERECON');
@@ -6523,7 +6523,7 @@ for graphics=1
 					 elseif strat==23 %% TD strat NOOBS only
 						clear breakstrat
 						stname='TD-NOOBS'; % <34 kts
-						if sum(BT_cat1<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0)==0
+						if sum(BT_cat1<34 & strcmp(BT_cat0,'TD')==1 & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_TD-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: TD-NOOBS');
@@ -6533,7 +6533,7 @@ for graphics=1
 					elseif strat==24 %% TS strat NOOBS only
 						clear breakstrat
 						stname='TS-NOOBS'; % >=34 kts & < 64 kts
-						if sum(BT_cat1>=34 & BT_cat1<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0)==0
+						if sum(BT_cat1>=34 & BT_cat1<64 & strcmp(BT_cat0,'TS')==1 & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_TS-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: TS-NOOBS');
@@ -6543,7 +6543,7 @@ for graphics=1
 					elseif strat==25 %% MN strat NOOBS only
 						clear breakstrat
 						stname='H12-NOOBS'; % >= 64 kts & < 96 kts
-						if sum(BT_cat1>=64 & BT_cat1<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)==0
+						if sum(BT_cat1>=64 & BT_cat1<96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MN-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MN-NOOBS');
@@ -6553,7 +6553,7 @@ for graphics=1
 					elseif strat==26 %% MJ strat NOOBS only
 						clear breakstrat
 						stname='H345-NOOBS'; % >= 96 kts
-						if sum(BT_cat1>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)==0
+						if sum(BT_cat1>=96 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MJ-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MJ-NOOBS');
@@ -6563,7 +6563,7 @@ for graphics=1
 					elseif strat==27 %% N30 strat NOOBS only
 						clear breakstrat
 						stname='N30-NOOBS'; % north of 30N
-						if sum(BT_lat1>=30 & BT_drops'==0)==0
+						if sum(BT_lat1>=30 & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_N30-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: N30-NOOBS');
@@ -6573,7 +6573,7 @@ for graphics=1
 					elseif strat==28 %% S30 strat NOOBS only
 						clear breakstrat
 						stname='S30-NOOBS'; % south of 30N
-						if sum(BT_lat1<30 & BT_drops'==0)==0
+						if sum(BT_lat1<30 & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_S30-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: S30-NOOBS');
@@ -6583,7 +6583,7 @@ for graphics=1
 					elseif strat==29 %% Low Shear
 						clear breakstrat
 						stname='LOW'; 
-						if sum(BT_shr1<LOWbasin)==0
+						if sum(BT_shr1<LOWbasin)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_LOW.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: LOW');
@@ -6593,7 +6593,7 @@ for graphics=1
 					elseif strat==30 %% Moderate Shear
 						clear breakstrat
 						stname='MOD';
-						if sum(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)==0
+						if sum(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MOD.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MOD');
@@ -6603,7 +6603,7 @@ for graphics=1
 					elseif strat==31 %% High Shear
 						clear breakstrat
 						stname='HIGH'; 
-						if sum(BT_shr1>HIGHbasin)==0
+						if sum(BT_shr1>HIGHbasin)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_HIGH.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: HIGH');
@@ -6613,7 +6613,7 @@ for graphics=1
 					elseif strat==32 %% Low Shear OBS
 						clear breakstrat
 						stname='LOW-OBS'; 
-						if sum(BT_shr1<LOWbasin & BT_drops'==1)==0
+						if sum(BT_shr1<LOWbasin & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_LOW-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: LOW-OBS');
@@ -6623,7 +6623,7 @@ for graphics=1
 					elseif strat==33 %% Moderate Shear OBS
 						clear breakstrat
 						stname='MOD-OBS';
-						if sum(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)==0
+						if sum(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MOD-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MOD-OBS');
@@ -6633,7 +6633,7 @@ for graphics=1
 					elseif strat==34 %% High Shear OBS
 						clear breakstrat
 						stname='HIGH-OBS'; 
-						if sum(BT_shr1>HIGHbasin & BT_drops'==1)==0
+						if sum(BT_shr1>HIGHbasin & BT_drops'==1)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_HIGH-OBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: HIGH-OBS');
@@ -6643,7 +6643,7 @@ for graphics=1
 					elseif strat==35 %% Low Shear NOOBS
 						clear breakstrat
 						stname='LOW-NOOBS'; 
-						if sum(BT_shr1<LOWbasin & BT_drops'==0)==0
+						if sum(BT_shr1<LOWbasin & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_LOW-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: LOW-NOOBS');
@@ -6653,7 +6653,7 @@ for graphics=1
 					elseif strat==36 %% Moderate Shear NOOBS
 						clear breakstrat
 						stname='MOD-NOOBS';
-						if sum(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)==0
+						if sum(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_MOD-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: MOD-NOOBS');
@@ -6663,7 +6663,7 @@ for graphics=1
 					elseif strat==37 %% High Shear NOOBS
 						clear breakstrat
 						stname='HIGH-NOOBS'; 
-						if sum(BT_shr1>HIGHbasin & BT_drops'==0)==0
+						if sum(BT_shr1>HIGHbasin & BT_drops'==0)==0 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_HIGH-NOOBS.txt'],'wt');
 							fprintf(fid,'%s\n','STRATIFICATION: HIGH-NOOBS');
@@ -6683,7 +6683,7 @@ for graphics=1
 								end
 							end
 						end
-						if isempty(numlist)==1
+						if isempty(numlist)==1 && identcompositeonly==0
 							breakstrat='yes';
 							fid = fopen([identtrackint,'/STRAT_',identnsname,'.txt'],'wt');
 							fprintf(fid,'%s\n',['STRATIFICATION: ',identnsname]);

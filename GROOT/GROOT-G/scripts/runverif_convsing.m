@@ -198,7 +198,7 @@
                                             else                       
                                                 if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
                                                     for sot=1:size(identconvtype,2)
-                                                         l(sot)=plot(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),alldrops0((alldrops0(:,9)==identconvtype(sot)),2),'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);
+                                                         if size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1)==0; l(sot)=plot(-360,-360,'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2); else;l(sot)=plot(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),alldrops0((alldrops0(:,9)==identconvtype(sot)),2),'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);end;
                                                          lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1);
                                                     end
                                                 else % there are no subtypes to this conventional bservation!
@@ -284,7 +284,7 @@ alldrops0=alldrops_stm{loop1};
                                                  else                        
                                                         if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
                                                             for sot=1:size(identconvtype,2)
-                                                                 l(sot)=plot(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),alldrops0((alldrops0(:,9)==identconvtype(sot)),2),'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);
+                                                                 if size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1)==0; l(sot)=plot(-360,-360,'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2); else; l(sot)=plot(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),alldrops0((alldrops0(:,9)==identconvtype(sot)),2),'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);end;
                                                                  lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1);
                                                             end
                                                         else % there are no subtypes to this conventional bservation!
@@ -1161,4 +1161,4 @@ alldrops0=alldrops_stm{loop1};
                         clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
                     end
                 end
-                
+               
