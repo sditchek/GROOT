@@ -3609,7 +3609,7 @@ for graphics=1
 		clPos=[0.88 0.13+.05 0.04 0.75-.05]; % arrange plots the same
 		% Create Graphics: Cycle-By-Cycle Improvement Graphics!!!
 		for plt=[1:18,21:23] % no across or along for bias
-			clear l cntexp
+			clear l cntexp nm_pct
 			if plt==1
 				 tmp_exp=trkerr_exp(:,1:skip:end,:);
 				 tmp_name='trkerr';
@@ -18102,7 +18102,7 @@ for graphics=1
 							end                                                
 							% Create Graphics: Cycle-By-Cycle Improvement!!!
 							for plt=[1:18,21:23] % no across or along for bias
-								clear l cntexp
+								clear l cntexp nm_pct
 								if plt==1
 									 tmp_exp=trkerr_exp(:,1:skip:end,:);
 									 tmp_name='trkerr';
