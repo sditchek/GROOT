@@ -979,10 +979,10 @@ alldrops0=alldrops_stm{loop1};
                         end
                         if size(identconvtype,2)>1
                             identdroplist={identn identinnerdrops identgalesdrops identouterdrops identinnerdrops_t identgalesdrops_t identouterdrops_t};
-                            save([identout,'RESULTS/',identfold,'VERIFICATION/OBS/',identn,'_conv.mat'],'identdroplist','identdropcyc','valuescomp','denmapcomp','denmapcomp_t','listcomp','-v7.3')
+                            save([identout,'RESULTS/',identfold,'VERIFICATION/OBS/',upper(identhwrf),identn(end-1:end),'_conv.mat'],'identdroplist','identdropcyc','valuescomp','denmapcomp','denmapcomp_t','listcomp','-v7.3')
                         else
                             identdroplist={identn identinnerdrops identgalesdrops identouterdrops};
-                            save([identout,'RESULTS/',identfold,'VERIFICATION/OBS/',identn,'_conv.mat'],'identdroplist','identdropcyc','identobscyc','valuescomp','denmapcomp','listcomp','-v7.3')
+                            save([identout,'RESULTS/',identfold,'VERIFICATION/OBS/',upper(identhwrf),identn(end-1:end),'_conv.mat'],'identdroplist','identdropcyc','identobscyc','valuescomp','denmapcomp','listcomp','-v7.3')
                         end            
                         close all
                         %% Track with Obs

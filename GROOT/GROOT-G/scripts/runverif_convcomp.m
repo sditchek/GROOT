@@ -17,7 +17,7 @@
                         if yrlp==1
                             identdr=dir([identout,'RESULTS/',identfold,'VERIFICATION/OBS/*.mat']);
                         else
-                            identdr=dir([identout,'RESULTS/',identfold,'VERIFICATION/OBS/*',curyearcut,'*.mat']);
+                            identdr=dir([identout,'RESULTS/',identfold,'VERIFICATION/OBS/*',curyearcut,'_*.mat']);
                         end
                         identdr={identdr.name};
                         compvalues=[];
