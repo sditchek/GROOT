@@ -18677,7 +18677,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									hfig=figure;
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
-									imagesc((tmppct)')
+									imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
 									xlabel('Forecast Lead Time (h)','fontsize',14)        
 									set(gca,'fontsize',14)
 									box on
