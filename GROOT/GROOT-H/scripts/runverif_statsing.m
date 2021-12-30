@@ -489,7 +489,7 @@ for graphics=1
 						set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 						ax1=subplot(3,4,[1:8]);                        
 						if pltcomp==1
-							tmp_name='press';
+							tmp_name='prs';
 							tmp_title='Pressure Comparision (hPa)';
 							tmp_bt=bt_minpres(1:skip:end);
 							tmp_exp=exp_minpres(1:skip:end,:);
@@ -987,7 +987,7 @@ for graphics=1
 				   if plt==1
 						tmp_exp=EXP_minpres(:,1:skip:end,fhr);
 						tmp_bt=BT_minpres(:,1:skip:end);
-						tmp_name='prescomp';
+						tmp_name='prscomp';
 						tmp_title='Pressure Comparision (hPa)';
 						tmp_ylab='Pressure (hPa)';
 						ylim([880 1050])            
@@ -1292,7 +1292,7 @@ for graphics=1
 				 tmp_ytitle='Error (km)';
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='preserr';
+				tmp_name='prserr';
 				tmp_title='Pressure Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
@@ -1589,7 +1589,7 @@ for graphics=1
 				for tmp=1:size(identexp,1)
 					cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 				end 
-				set(gca,'fontsize',10)
+				set(gca,'fontsize',14)
 				xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 				set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 				screenposition = get(gcf,'Position');
@@ -1613,15 +1613,15 @@ for graphics=1
 					tmplines=size(tmptxt0,2);
 					if size(unique(tmptxt0),2)==1
 						tmptxt1=num2str(tmptxt0(1)); 
-						text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+						text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 					else
 						for n=1:tmplines
 							tmptxt1=[];                            
 							tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 							if n==1
-								text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+								text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 							else
-								text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+								text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 							end
 						end    
 					end
@@ -1647,7 +1647,7 @@ for graphics=1
 				 tmp_ytitle='Error (km)';
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='preserr';
+				tmp_name='prserr';
 				tmp_title='Pressure Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
@@ -1931,7 +1931,7 @@ for graphics=1
 			for tmp=1:size(identexp,1)
 				cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 			end  
-			set(gca,'fontsize',10)
+			set(gca,'fontsize',14)
 			xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 			set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 			screenposition = get(gcf,'Position');
@@ -1955,15 +1955,15 @@ for graphics=1
 				tmplines=size(tmptxt0,2);
 				if size(unique(tmptxt0),2)==1
 					tmptxt1=num2str(tmptxt0(1)); 
-					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 				else
 					for n=1:tmplines
 						tmptxt1=[];                            
 						tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 						if n==1
-							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 						else
-							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 						end
 					end    
 				end
@@ -1987,7 +1987,7 @@ for graphics=1
 				 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='presskill';
+				tmp_name='prskill';
 				tmp_title='Pressure Improvement (\%)';
 				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
@@ -2290,7 +2290,7 @@ for graphics=1
 			for tmp=1:size(identexp,1)
 				cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 			end  
-			set(gca,'fontsize',10)            
+			set(gca,'fontsize',14)            
 			xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 			set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 			screenposition = get(gcf,'Position');
@@ -2314,15 +2314,15 @@ for graphics=1
 				tmplines=size(tmptxt0,2);
 				if size(unique(tmptxt0),2)==1
 					tmptxt1=num2str(tmptxt0(1)); 
-					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 				else
 					for n=1:tmplines
 						tmptxt1=[];                            
 						tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 						if n==1
-							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 						else
-							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 						end
 					end    
 				end
@@ -2346,7 +2346,7 @@ for graphics=1
 				 tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='presfsp';
+				tmp_name='prsfsp';
 				tmp_title='Pressure FSP (\%)';
 				tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
@@ -2596,7 +2596,7 @@ for graphics=1
 			for tmp=1:size(identexp,1)
 				cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 			end  
-			set(gca,'fontsize',10)            
+			set(gca,'fontsize',14)            
 			xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 			set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 			screenposition = get(gcf,'Position');
@@ -2620,15 +2620,15 @@ for graphics=1
 				tmplines=size(tmptxt0,2);
 				if size(unique(tmptxt0),2)==1
 					tmptxt1=num2str(tmptxt0(1)); 
-					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 				else
 					for n=1:tmplines
 						tmptxt1=[];                            
 						tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 						if n==1
-							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 						else
-							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 						end
 					end    
 				end
@@ -2652,7 +2652,7 @@ for graphics=1
 				 tmp_ytitle='Bias (km)';
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='presbias';
+				tmp_name='prsbias';
 				tmp_title='Pressure Bias (hPa)';
 				tmp_ytitle='Bias (hPa)';
 			elseif plt==3
@@ -2943,7 +2943,7 @@ for graphics=1
 			for tmp=1:size(identexp,1)
 				cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 			end  
-			set(gca,'fontsize',10)
+			set(gca,'fontsize',14)
 			xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 			set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 			screenposition = get(gcf,'Position');
@@ -2967,15 +2967,15 @@ for graphics=1
 				tmplines=size(tmptxt0,2);
 				if size(unique(tmptxt0),2)==1
 					tmptxt1=num2str(tmptxt0(1)); 
-					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 				else
 					for n=1:tmplines
 						tmptxt1=[];                            
 						tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 						if n==1
-							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 						else
-							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+							text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 						end
 					end    
 				end
@@ -3002,7 +3002,7 @@ for graphics=1
 				 tmp_ytitle='Error (km)';
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='preserr';
+				tmp_name='prserr';
 				tmp_title='Pressure Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
@@ -3264,7 +3264,7 @@ for graphics=1
 				 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='preserrskill';
+				tmp_name='prserrskill';
 				tmp_title='Pressure Improvement (\%)';
 				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
@@ -3564,7 +3564,7 @@ for graphics=1
 			for tmp=1:size(identexp,1)
 				cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 			end  
-			set(gca,'fontsize',10)            
+			set(gca,'fontsize',14)            
 			xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 			set(gca,'position',[spPosB(1) spPosB(2)-.1 spPosB(3) spPosB(4)])
 			screenposition = get(gcf,'Position');
@@ -3588,15 +3588,15 @@ for graphics=1
 				tmplines=size(tmptxt0,2);
 				if size(unique(tmptxt0),2)==1
 					tmptxt1=num2str(tmptxt0(1)); 
-					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+					text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 				else
 					for n=1:tmplines
 						tmptxt1=[];                            
 						tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 						if n==1
-							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+							text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 						else
-							text(xTicks(xx), minY - (VerticalOffset1+(.05*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+							text(xTicks(xx), minY - (VerticalOffset1+(.05*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 						end
 					end    
 				end
@@ -3617,7 +3617,7 @@ for graphics=1
 				 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='preserr';
+				tmp_name='prserr';
 				tmp_title='Cycle-By-Cycle Pressure Improvement (\%)';
 				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
@@ -3856,7 +3856,7 @@ for graphics=1
 				 tmp_ytitle='Error Contribution (\%)';
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='preserr';
+				tmp_name='prserr';
 				tmp_title='Percentage Point Contribution to Pressure Improvement (\%)';
 				tmp_ytitle='Error Contribution (\%)';
 			elseif plt==3
@@ -4265,7 +4265,7 @@ for graphics=1
 						 tmp_ytitle='Error (km)';                                    
 					elseif plt==3
 						tmp_exp=interr_exp(:,1:skip:end,:);
-						tmp_name='preserr';
+						tmp_name='prserr';
 						tmp_title='Pressure Error (hPa)';
 						tmp_ytitle='Error (hPa)';
 					elseif plt==2
@@ -4616,7 +4616,7 @@ for graphics=1
 				 tmp_ytitle='Error (km)';
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='preserr';
+				tmp_name='prserr';
 				tmp_title='Pressure Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
@@ -4810,7 +4810,7 @@ for graphics=1
 				if isnan(tmpval)==1
 					tmpval=0;
 				end
-				yrange=[0 round((tmpval+addfac)/10)*10];                
+				yrange=[-round((tmpval+addfac)/10)*10 round((tmpval+addfac)/10)*10];                
 			elseif (plt>=4 && plt<=15) || plt>=21%quad
 				yrange=[0 round((tmpvalq+addfacq)/10)*10];
 			end
@@ -4942,7 +4942,7 @@ for graphics=1
 				yrange=[-300 300]; 
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='presskill';
+				tmp_name='prskill';
 				tmp_title='Pressure Improvement (\%)';
 				tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 				yrange=[-300 300]; 
@@ -5314,7 +5314,7 @@ for graphics=1
 				yrange=[-300 300]; 
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='presfsp';
+				tmp_name='prsfsp';
 				tmp_title='Pressure FSP (\%)';
 				tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 				yrange=[-300 300]; 
@@ -5629,7 +5629,7 @@ for graphics=1
 				 tmp_ytitle='Bias (km)';
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
-				tmp_name='presbias';
+				tmp_name='prsbias';
 				tmp_title='Pressure Bias (hPa)';
 				tmp_ytitle='Bias (hPa)';
 			elseif plt==3
@@ -6676,9 +6676,9 @@ for graphics=1
 						clear tmpyrb
 						numlist=[];
 						for ins=1:size(identnewsub,1)
-							tmp=identnewsub(ins,:);
+							tmpns=identnewsub(ins,:);
 							for ins2=1:size(identinittimesunique,1)
-								if strcmp(identinittimesunique(ins2,:),tmp)==1
+								if strcmp(identinittimesunique(ins2,:),tmpns)==1
 									numlist=[numlist ins2];
 								end
 							end
@@ -6708,7 +6708,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -6975,7 +6975,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presskill';
+									tmp_name='prskill';
 									tmp_title='Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -7248,7 +7248,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presfsp';
+									tmp_name='prsfsp';
 									tmp_title='Pressure FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -7455,7 +7455,7 @@ for graphics=1
 									 tmp_ytitle='Bias (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presbias';
+									tmp_name='prsbias';
 									tmp_title='Pressure Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
@@ -7737,7 +7737,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -7996,7 +7996,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserrskill';
+									tmp_name='prserrskill';
 									tmp_title='Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -8269,7 +8269,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -8462,7 +8462,7 @@ for graphics=1
 									if isnan(tmpval)==1
 										tmpval=0;
 									end
-									yrange=[0 round((tmpval+addfac)/10)*10];                
+									yrange=[-round((tmpval+addfac)/10)*10 round((tmpval+addfac)/10)*10];                
 								elseif (plt>=4 && plt<=15) || plt>=21%quad
 									yrange=[0 round((tmpvalq+addfacq)/10)*10];
 								end
@@ -8533,7 +8533,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presskill';
+									tmp_name='prskill';
 									tmp_title='Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -8802,7 +8802,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presfsp';
+									tmp_name='prsfsp';
 									tmp_title='Pressure FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -9007,7 +9007,7 @@ for graphics=1
 									 tmp_ytitle='Bias (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presbias';
+									tmp_name='prsbias';
 									tmp_title='Pressure Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
@@ -9275,7 +9275,7 @@ for graphics=1
 									 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Cycle-By-Cycle Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -9471,7 +9471,7 @@ for graphics=1
 									 tmp_ytitle='Error Contribution (\%)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Percentage Point Contribution to Pressure Improvement (\%)';
 									tmp_ytitle='Error Contribution (\%)';
 								elseif plt==3
@@ -9803,7 +9803,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -9937,7 +9937,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -10367,7 +10367,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -10788,9 +10788,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											else
 											end
@@ -10800,7 +10800,7 @@ for graphics=1
 									numlist=a_ns';
 									numlist(numlist>0)=1;
 									if plt>=21 && plt<=23
-										tmp_exp([numlist;numlist;numlist;numlist]==0,:,:)=NaN;
+										tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;
 									else
 										tmp_exp(numlist==0,:,:)=NaN;
 									end                  
@@ -10814,7 +10814,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -11123,7 +11123,7 @@ for graphics=1
 									for tmp=1:size(identexp,1)
 										cntexp(:,tmp)=sum(~isnan(onefhr0(:,1:skip:end,tmp)),1);
 									end 
-									set(gca,'fontsize',10)
+									set(gca,'fontsize',14)
 									xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 									set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 									screenposition = get(gcf,'Position');
@@ -11147,15 +11147,15 @@ for graphics=1
 										tmplines=size(tmptxt0,2);
 										if size(unique(tmptxt0),2)==1
 											tmptxt1=num2str(tmptxt0(1)); 
-											text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+											text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 										else
 											for n=1:tmplines
 												tmptxt1=[];                            
 												tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 												if n==1
-													text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+													text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 												else
-													text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+													text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 												end
 											end    
 										end
@@ -11181,7 +11181,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -11904,19 +11904,19 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											end
 										end
 									end
 									if plt>=21 && plt<=23
-										tmp_exp=tmp_exp([numlist;numlist;numlist;numlist],:,:);
+										tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);
 									else
 										tmp_exp=tmp_exp(numlist,:,:);
 									end                  
-									tmpnm=identinittimesunique(numlist,:);
+									tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 									if plt==1
 										fid = fopen([identtrackint,'/STRAT_',stname,'.txt'],'wt');
 										fprintf(fid,'%s\n',['STRATIFICATION ',stname]);
@@ -12104,7 +12104,7 @@ for graphics=1
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end 
-								set(gca,'fontsize',10)
+								set(gca,'fontsize',14)
 								xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
@@ -12128,15 +12128,15 @@ for graphics=1
 									tmplines=size(tmptxt0,2);
 									if size(unique(tmptxt0),2)==1
 										tmptxt1=num2str(tmptxt0(1)); 
-										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 									else
 										for n=1:tmplines
 											tmptxt1=[];                            
 											tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 											if n==1
-												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 											else
-												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 											end
 										end    
 									end
@@ -12161,7 +12161,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presskill';
+									tmp_name='prskill';
 									tmp_title='Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -12588,19 +12588,19 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											end
 										end
 									end
 									if plt>=21 && plt<=23
-										tmp_exp=tmp_exp([numlist;numlist;numlist;numlist],:,:);
+										tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);
 									else
 										tmp_exp=tmp_exp(numlist,:,:);
 									end                  
-									tmpnm=identinittimesunique(numlist,:); 
+									tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 								end    
 								% Find which experiment to compare to
 								for tmp=1:size(identexp,1)
@@ -12797,7 +12797,7 @@ for graphics=1
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end  
-								set(gca,'fontsize',10)
+								set(gca,'fontsize',14)
 								xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
@@ -12821,15 +12821,15 @@ for graphics=1
 									tmplines=size(tmptxt0,2);
 									if size(unique(tmptxt0),2)==1
 										tmptxt1=num2str(tmptxt0(1)); 
-										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 									else
 										for n=1:tmplines
 											tmptxt1=[];                            
 											tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 											if n==1
-												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 											else
-												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 											end
 										end    
 									end
@@ -12854,7 +12854,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presfsp';
+									tmp_name='prsfsp';
 									tmp_title='Pressure FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -13281,19 +13281,19 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											end
 										end
 									end
 									if plt>=21 && plt<=23
-										tmp_exp=tmp_exp([numlist;numlist;numlist;numlist],:,:);
+										tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);
 									else
 										tmp_exp=tmp_exp(numlist,:,:);
 									end                  
-									tmpnm=identinittimesunique(numlist,:); 
+									tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 								end
 								% Find which experiment to compare to
 								for tmp=1:size(identexp,1)
@@ -13435,7 +13435,7 @@ for graphics=1
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end
-								set(gca,'fontsize',10)
+								set(gca,'fontsize',14)
 								xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
@@ -13459,15 +13459,15 @@ for graphics=1
 									tmplines=size(tmptxt0,2);
 									if size(unique(tmptxt0),2)==1
 										tmptxt1=num2str(tmptxt0(1)); 
-										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 									else
 										for n=1:tmplines
 											tmptxt1=[];                            
 											tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 											if n==1
-												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 											else
-												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 											end
 										end    
 									end
@@ -13491,7 +13491,7 @@ for graphics=1
 									 tmp_ytitle='Bias (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presbias';
+									tmp_name='prsbias';
 									tmp_title='Pressure Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
@@ -13914,19 +13914,19 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											end
 										end
 									end
 									if plt>=21 && plt<=23
-										tmp_exp=tmp_exp([numlist;numlist;numlist;numlist],:,:);
+										tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);
 									else
 										tmp_exp=tmp_exp(numlist,:,:);
 									end                  
-									tmpnm=identinittimesunique(numlist,:); 
+									tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 								end
 								for tmp=1:size(identexp,1)
 									l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
@@ -14116,7 +14116,7 @@ for graphics=1
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end
-								set(gca,'fontsize',10)
+								set(gca,'fontsize',14)
 								xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
 								screenposition = get(gcf,'Position');
@@ -14140,15 +14140,15 @@ for graphics=1
 									tmplines=size(tmptxt0,2);
 									if size(unique(tmptxt0),2)==1
 										tmptxt1=num2str(tmptxt0(1)); 
-										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 									else
 										for n=1:tmplines
 											tmptxt1=[];                            
 											tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 											if n==1
-												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 											else
-												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+												text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 											end
 										end    
 									end
@@ -14175,7 +14175,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -14601,19 +14601,19 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											end
 										end
 									end
 									if plt>=21 && plt<=23
-										tmp_exp=tmp_exp([numlist;numlist;numlist;numlist],:,:);
+										tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);
 									else
 										tmp_exp=tmp_exp(numlist,:,:);
 									end                  
-									tmpnm=identinittimesunique(numlist,:); 
+									tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 								end                                                       
 								for tmp=1:size(identexp,1)
 									if med==1; l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); elseif med==2; l(tmp)=plot(1:size(tmp_exp,2),nanmedian(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); end;
@@ -14769,7 +14769,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserrskill';
+									tmp_name='prserrskill';
 									tmp_title='Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -15196,19 +15196,19 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											end
 										end
 									end
 									if plt>=21 && plt<=23
-										tmp_exp=tmp_exp([numlist;numlist;numlist;numlist],:,:);
+										tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);
 									else
 										tmp_exp=tmp_exp(numlist,:,:);
 									end                  
-									tmpnm=identinittimesunique(numlist,:); 
+									tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 								end                                                       
 								
 								
@@ -15396,7 +15396,7 @@ for graphics=1
 								for tmp=1:size(identexp,1)
 									cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);
 								end
-								set(gca,'fontsize',10)
+								set(gca,'fontsize',14)
 								xlabel('# fcsts','Position',[-.5 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
 								set(gca,'position',[spPosB(1) spPosB(2)-.1 spPosB(3) spPosB(4)])
 								screenposition = get(gcf,'Position');
@@ -15420,15 +15420,15 @@ for graphics=1
 									tmplines=size(tmptxt0,2);
 									if size(unique(tmptxt0),2)==1
 										tmptxt1=num2str(tmptxt0(1)); 
-										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)                    
+										text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
 									else
 										for n=1:tmplines
 											tmptxt1=[];                            
 											tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
 											if n==1
-												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',10)
+												text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
 											else
-												text(xTicks(xx), minY - (VerticalOffset1+(.05*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',10)                                
+												text(xTicks(xx), minY - (VerticalOffset1+(.05*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
 											end
 										end    
 									end
@@ -15454,7 +15454,7 @@ for graphics=1
 									 tmp_ytitle='Error (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Pressure Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
@@ -15880,9 +15880,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											else
 											end
@@ -15892,11 +15892,11 @@ for graphics=1
 									numlist=a_ns';
 									numlist(numlist>0)=1;
 									if plt>=21 && plt<=23
-										tmp_exp([numlist;numlist;numlist;numlist]==0,:,:)=NaN;
+										tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;
 									else
 										tmp_exp(numlist==0,:,:)=NaN;
 									end                  
-									tmpnm=identinittimesunique(numlist==1,:);     
+									tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);     
 								end
 
 
@@ -15981,7 +15981,7 @@ for graphics=1
 									if isnan(tmpval)==1
 										tmpval=0;
 									end
-									yrange=[0 round((tmpval+addfac)/10)*10];                
+									yrange=[-round((tmpval+addfac)/10)*10 round((tmpval+addfac)/10)*10];                
 								elseif (plt>=4 && plt<=15) || plt>=21%quad
 									yrange=[0 round((tmpvalq+addfacq)/10)*10];
 								end
@@ -16119,7 +16119,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presskill';
+									tmp_name='prskill';
 									tmp_title='Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -16546,9 +16546,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											else
 											end
@@ -16558,11 +16558,11 @@ for graphics=1
 									numlist=a_ns';
 									numlist(numlist>0)=1;
 									if plt>=21 && plt<=23
-										tmp_exp([numlist;numlist;numlist;numlist]==0,:,:)=NaN;
+										tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;
 									else
 										tmp_exp(numlist==0,:,:)=NaN;
 									end                  
-									tmpnm=identinittimesunique(numlist==1,:);     
+									tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);       
 								end
 
 								% Find which experiment to compare to
@@ -16809,7 +16809,7 @@ for graphics=1
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presfsp';
+									tmp_name='prsfsp';
 									tmp_title='Pressure FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -17235,9 +17235,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											else
 											end
@@ -17247,11 +17247,11 @@ for graphics=1
 									numlist=a_ns';
 									numlist(numlist>0)=1;
 									if plt>=21 && plt<=23
-										tmp_exp([numlist;numlist;numlist;numlist]==0,:,:)=NaN;
+										tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;
 									else
 										tmp_exp(numlist==0,:,:)=NaN;
 									end                  
-									tmpnm=identinittimesunique(numlist==1,:);     
+									tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);      
 								end
 
 								% Find which experiment to compare to
@@ -17440,7 +17440,7 @@ for graphics=1
 									 tmp_ytitle='Bias (km)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='presbias';
+									tmp_name='prsbias';
 									tmp_title='Pressure Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
@@ -17864,9 +17864,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											else
 											end
@@ -17876,11 +17876,11 @@ for graphics=1
 									numlist=a_ns';
 									numlist(numlist>0)=1;
 									if plt>=21 && plt<=23
-										tmp_exp([numlist;numlist;numlist;numlist]==0,:,:)=NaN;
+										tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;
 									else
 										tmp_exp(numlist==0,:,:)=NaN;
 									end                  
-									tmpnm=identinittimesunique(numlist==1,:);     
+									tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);     
 								end
 
 								for tmp=1:size(identexp,1)
@@ -18110,7 +18110,7 @@ for graphics=1
 									 tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Cycle-By-Cycle Pressure Improvement (\%)';
 									tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -18526,9 +18526,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											else
 											end
@@ -18538,11 +18538,11 @@ for graphics=1
 									numlist=a_ns';
 									numlist(numlist>0)=1;
 									if plt<0
-										tmp_exp([numlist;numlist;numlist;numlist]==0,:,:)=NaN;
+										tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;
 									else
 										tmp_exp(numlist==0,:,:)=NaN;
 									end                  
-									tmpnm=identinittimesunique(numlist==1,:);     
+									tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);      
 								end
 
 
@@ -18669,7 +18669,7 @@ for graphics=1
 									 tmp_ytitle='Error Contribution (\%)';
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='preserr';
+									tmp_name='prserr';
 									tmp_title='Percentage Point Contribution to Pressure Improvement (\%)';
 									tmp_ytitle='Error Contribution (\%)';
 								elseif plt==3
@@ -19095,9 +19095,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmp=identnewsub(ins,:);
+										tmpns=identnewsub(ins,:);
 										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmp)==1
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1
 												numlist=[numlist ins2];
 											else
 											end
@@ -19107,11 +19107,11 @@ for graphics=1
 									numlist=a_ns';
 									numlist(numlist>0)=1;
 									if plt<0
-										tmp_exp([numlist;numlist;numlist;numlist]==0,:,:)=NaN;
+										tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;
 									else
 										tmp_exp(numlist==0,:,:)=NaN;
 									end                  
-									tmpnm=identinittimesunique(numlist==1,:);     
+									tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);      
 								end
 								clear imprv imprv2 sm
 								if plt>=21
@@ -19398,7 +19398,7 @@ for graphics=1
 											 tmp_ytitle='Error (km)';                                    
 										elseif plt==3
 											tmp_exp=interr_exp(:,1:skip:end,:);
-											tmp_name='preserr';
+											tmp_name='prserr';
 											tmp_title='Pressure Error (hPa)';
 											tmp_ytitle='Error (hPa)';
 										elseif plt==2
@@ -19734,19 +19734,19 @@ for graphics=1
 											clear tmpyrb
 											numlist=[];
 											for ins=1:size(identnewsub,1)
-												tmp=identnewsub(ins,:);
+												tmpns=identnewsub(ins,:);
 												for ins2=1:size(identinittimesunique,1)
-													if strcmp(identinittimesunique(ins2,:),tmp)==1
+													if strcmp(identinittimesunique(ins2,:),tmpns)==1
 														numlist=[numlist ins2];
 													end
 												end
 											end
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([numlist;numlist;numlist;numlist],:,:);
+												tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);
 											else
 												tmp_exp=tmp_exp(numlist,:,:);
 											end                  
-											tmpnm=identinittimesunique(numlist,:); 
+											tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 										end    
 																			   
 										

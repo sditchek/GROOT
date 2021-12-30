@@ -136,6 +136,10 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+12/30/21 | Enlarged the sample size text from 10 to 14
+	 | Fixed a bug with the cycle-by-cycle error graphics for across-error and along-track error
+	 | Made the graphic naming convention for pressure consistent (prior: press or pres | current: prs)
+	 | Fixed a bug with the "generate your own subset" code
 11/30/21 | Added capability to plot the mean and median storm-by-storm improvement (multiple storms) and cycle-by-cycle improvement (individual storm)
 	 | Fixed a bug with the PPC graphics so that forecast hours without data plot as blanks instead of 0%
 	 | Added "Mean" and "Median" title identifiers to the 1) Error and Improvement and 2) Storm-By-Storm graphics

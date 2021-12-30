@@ -838,7 +838,7 @@ for identremoveinvest=1
 						 tmp_ytitle='Error (km)';
 					elseif plt==2
 						tmp_exp=interr_exp(:,1:skip:end,:);
-						tmp_name='preserr';
+						tmp_name='prserr';
 						tmp_title='Pressure Error (hPa)';
 						tmp_ytitle='Error (hPa)';
 					elseif plt==3
@@ -1034,7 +1034,7 @@ for identremoveinvest=1
 						 yrange=[-20 20];
 					elseif plt==2
 						tmp_exp=interr_exp(:,1:skip:end,:);
-						tmp_name='presskill';
+						tmp_name='prskill';
 						tmp_title='Pressure Improvement (\%)';
 						tmp_ytitle=['Improvement wrt ', identexpsigimpshort,' (%)'];
 					elseif plt==3
@@ -1250,7 +1250,7 @@ for identremoveinvest=1
 						 tmp_ytitle='Bias (km)';
 					elseif plt==2
 						tmp_exp=interr_exp(:,1:skip:end,:);
-						tmp_name='presbias';
+						tmp_name='prsbias';
 						tmp_title='Pressure Bias (hPa)';
 						tmp_ytitle='Bias (hPa)';
 					elseif plt==3
@@ -1452,7 +1452,7 @@ for identremoveinvest=1
 						elseif plt==2
 							tmp_exp=squeeze(EXP_pres(:,1,:));
 							tmp_bt=squeeze(BT_pres(:,1,:));
-							tmp_name='presval';
+							tmp_name='prsval';
 							tmp_title='Pressure (hPa)';
 							tmp_ytitle=[ylabv,' (hPa)'];
 							tmp_u='(hPa)';
