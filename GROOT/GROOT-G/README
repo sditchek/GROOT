@@ -101,6 +101,8 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+1/31/22  | Added median error and improvement to "scorecard" graphics
+         | Added a "consistency scorecard" which identifies at each forecast lead time how consistent the results are based on 3 metrics - see User's Guide for more details
 12/30/21 | Enlarged the sample size text from 10 to 14
          | Fixed a bug with the cycle-by-cycle error graphics for across-error and along-track error
          | Made the graphic naming convention for pressure consistent (prior: press or pres | current: prs)

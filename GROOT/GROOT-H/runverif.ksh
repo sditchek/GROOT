@@ -18,15 +18,15 @@
 # 3) OTHERWISE THERE IS NOTHING ELSE TO EDIT HERE :)
 
 # Set Folders
-homepath=/scratch1/BMC/qosap/${USER}/                   # directory path above the GROOT package
+homepath=/scratch1/AOML/aoml-osse/${USER}/                   # directory path above the GROOT package
 noscrubpath=${homepath}/noscrub/atcf                    # path to your atcf files
 scrubpath=${homepath}/scrub				# path to your scrub directory
 dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
 
 # Set Experiments
-set -A expfold HB20_B1_ALL HB20new HB20_B1_NO HB20_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew ALL ALL NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
-numfold=4
+set -A expfold HB20_B1_ALL HB20new HB20_B2_ALL HB20_B3_ALL HB20_B6_ALL HB20_B7_ALL HB20_B8_ALL HB20_B1_NO HB20_NO HB20_B2_NO HB20_B3_NO HB20_B6_NO HB20_B7_NO HB20_B8_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew ALL ALL ALL ALL ALL ALL ALL NO NO NO NO NO NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+numfold=14
 
 # Account Information
 acntold=aoml-osse                       		# account currently listed in SBATCH above

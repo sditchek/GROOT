@@ -10,7 +10,7 @@
 ident=['AL052019'];                                             % basin, ID, and year (e.g., AL092016)
 identn=['DORIAN19'];                                            % NAMEYY (e.g., HERMINE16)
 identhwrf=['dorian05l'];                                        % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
-identcycles=['2019082606';'2019082612';'2019082618';'2019082700';'2019082706';'2019082712';'2019082718';'2019082800';'2019082806';'2019082812';'2019082818';'2019082900';'2019082906'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
+identcycles=['2019082618';'2019082700';'2019082706';'2019082712';'2019082718'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
 identmaxfhr=(126)/3+1;identmodelfhr=(126)/3+1;                  % max forecast hours set in model (e.g., 126) - keep the /3+1
 identlevels=46;                                                 % number of pressure levels
 identexp=[{'HB20new'};{'HB20_NC'};{'HB20_OV'};{'HB20_TG'};{'HB20_IC'};{'HB20_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
@@ -27,9 +27,9 @@ identdiff=[1 6;];                                               % for which expe
           
 
 % Set Directories
-identscrub=['/scratch1/BMC/qosap/Sarah.D.Ditchek/scrub/'];      % location of your scrub dirctory that has the grb and observation files (either conventional or satellite)
-identnoscrub=['/scratch1/BMC/qosap/Sarah.D.Ditchek/noscrub/'];  % location of your noscrub dirctory that has the atcf track files
-identout=['/scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT/GROOT-H/'];% location of your GROOT-H directory 
+identscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/scrub/'];      % location of your scrub dirctory that has the grb and observation files (either conventional or satellite)
+identnoscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/noscrub/'];  % location of your noscrub dirctory that has the atcf track files
+identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];% location of your GROOT-H directory 
 
 % Graphics
 initgraphics=1;                                                 % create TRACK/INT error data - for graphics edit editverif.m | yes - first time running (1) or no - ran this before (0)
@@ -82,7 +82,7 @@ v27=27;        %        kg m**-2       Precipitable water | 2D
 %v30=30;        %        hPa            Surface pressure | surface
 %v31=31;        %        hPa            Pressure | tropopause
 %v32=32;        %        kg kg-1        Rain mixing ratio | isobaric
-%v33=33;        %        dB             Radar reflectivity | isobaric
+v33=33;        %        dB             Radar reflectivity | isobaric
 %v34=34;        %        %              Relative humidity | 2D
 v35=35;        %        %              Relative humidity | isobaric
 %v36=36;        %        numeric        Rime factor | isobaric
@@ -109,7 +109,7 @@ v35=35;        %        %              Relative humidity | isobaric
 %v57=57;        %        W m**-2        Upward short-wave radiation flux hour average | surface
 %v58=58;        %        numeric        Heat Exchange Coefficient | 2D
 %v59=59;        %        s**-1          Vertical speed shear | tropopause
-v60=60;        %        Pa s-1         Vertical velocity | isobaric
+%v60=60;        %        Pa s-1         Vertical velocity | isobaric
 v61=61;        %        K              Sea surface temperature | surface
 %v73=[73,76];   %        m s**-1        10 metre U/V wind component | 2D
 v74=[74,77];   %        m s**-1        U/V component of wind | isobaric

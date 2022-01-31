@@ -18,17 +18,17 @@
 # 3) OTHERWISE THERE IS NOTHING ELSE TO EDIT HERE :)
 
 # Set Folders
-dirpth=/scratch1/BMC/qosap/${USER}      # directory path above GROOT location
+dirpth=/scratch1/AOML/aoml-osse/${USER}      # directory path above GROOT location
 cycling="6"               		# frequency of cycling in your model (often 6 for 6 h)
 set -A expyears 2018 2019 2020 		# years included
 numyears=3				# number of years in expyears - the number must match!	
-#atcfoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/V16_HDOB/atcf/	# location of your atcf output
-atcfoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/js_E_FINAL/atcf/  # location of your atcf output
-diagoutput=/scratch1/BMC/qosap/Sarah.D.Ditchek/V16_HDOB/anl/	# location of your diag output
+#atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/V16_HDOB/atcf/	# location of your atcf output
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/atcf/  # location of your atcf output
+diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/anl/	# location of your diag output
 
 # Identify Experiments
 set -A expfold V16H V16R	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew V16H-E V16R-E                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expnew V16H-L V16R-L             # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing and want graphics for
 
@@ -39,8 +39,8 @@ emlold=sarah.d.ditchek@noaa.gov         # email address currently listed in SBAT
 emlnew=sarah.d.ditchek@noaa.gov         # email address you want listed in SBATCH above
 
 # Date range of files desired from first cycle of first year to last cycle of last year | format must be yyyy-mm-dd hh
-startdate1="2018-09-01 00"
-enddate1="2020-09-23 12"
+startdate1="2018-08-01 00"
+enddate1="2020-11-01 00"
 
 ########################
 # END OF USER SETTINGS #

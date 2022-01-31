@@ -3,8 +3,8 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identgroovpr=['/scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/'];    % location of your GROOT-PR dirctory
-identout=['/scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT/GROOT-H/'];                 % location of where all graphics will go
+identgroovpr=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/'];    % location of your GROOT-PR dirctory
+identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];                 % location of where all graphics will go
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                               	 % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
 identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
@@ -26,8 +26,8 @@ identcaseyear='2019';							        % year of storm: YYYY
 identgraphicsbycycle=0;                                         % error graphics for EACH CYCLE - must be 0 if identcompositeonly=1 | yes (1) no (0 - this saves time)
 identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
-identnsname='test';                                             % name for new subset - will be capitalized in the script
-identnewsubset=[{'2017081800-2017083100'};{'2017090200'}];      % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
+identnsname='RMDR';                                             % name for new subset - will be capitalized in the script
+identnewsubset=[{'2019082306-2019082612'};{'2019082800-2019090900'}];      % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
                                                                      % range of cycles: [{'2017081800-2017083100'}]
                                                                      % disjointed cycles: [{'2017081800'};{'2017090200'}]
                                                                      % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]

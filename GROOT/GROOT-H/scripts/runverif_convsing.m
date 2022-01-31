@@ -595,7 +595,7 @@
                                     alldenmapcomp_t{identloop}=alldenmap_t;                             
                                 end
                             end
-                            clear identdrops identdropsdat identbasin identbasinname alldrops alldenmap alldenmap_t l lsz
+                            clear identdrops identdropsdat identbasin identbasinname alldrops alldenmap alldenmap_t l lsz a b c
                         end
                         identbasinnameall=unique(identbasinnameall);
                         %% Composite Basin-Scale                  
