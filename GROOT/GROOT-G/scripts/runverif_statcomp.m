@@ -4467,6 +4467,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -4480,7 +4481,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 									elseif strat==888
 										clear tmpyrb
 										numlist=[];
@@ -5029,13 +5029,13 @@
 															tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
 														else
 															tmp_exp(BT_shr1<=HIGHbasin & BT_drops'==1,:,:)=NaN;
+														end
 													elseif strat==200 % OBS-G
 														if plt>=21 && plt<=23
 															tmp_exp([BT_obsg';BT_obsg';BT_obsg';BT_obsg']==0,:,:)=NaN;
 														else
 															tmp_exp(BT_obsg==0,:,:)=NaN;
 														end	
-														end
 													elseif strat==888
 														numlist=[];
 														for ins=1:size(identnewsub,1)
@@ -6664,6 +6664,7 @@
 												fprintf(fid,'%s\n',tmpnm{prn});
 											end
 											fclose(fid); 
+										end 	
 				elseif strat==200 % OBS-G
 										clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -6685,7 +6686,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000; 
-										end 	
                                     elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -7689,6 +7689,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -7702,7 +7703,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
                                         clear tmpyrb
                                         numlist=[];
@@ -8706,6 +8706,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -8719,7 +8720,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -9737,6 +9737,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -9750,7 +9751,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                      elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -10838,6 +10838,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -10853,7 +10854,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -11968,6 +11968,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                    elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -11985,7 +11986,6 @@
                                         end
                                         tmpyr=tmpyrb'+2000;
                                         tmpnm=unique(BT_name(BT_obsg==1)); 
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                    elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -13113,6 +13113,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                    elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -13130,7 +13131,6 @@
                                         end
                                         tmpyr=tmpyrb'+2000;
                                         tmpnm=unique(BT_name(BT_obsg==1)); 
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                    elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -14250,6 +14250,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                    elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -14267,7 +14268,6 @@
                                         end
                                         tmpyr=tmpyrb'+2000;
                                         tmpnm=unique(BT_name(BT_obsg==1)); 
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                    elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -15311,6 +15311,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -15324,7 +15325,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
                                             clear tmpyrb
                                             numlist=[];
@@ -16237,6 +16237,7 @@
 										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -16250,7 +16251,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
                                         clear tmpyrb
                                         numlist=[];
@@ -17149,6 +17149,7 @@
 												tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
+												tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 				elseif strat==200 % OBS-G
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -17162,7 +17163,6 @@
                                             tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
                                         end
                                         tmpyr=tmpyrb+2000;
-												tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
 											elseif strat==888
 												clear tmpyrb
 												numlist=[];
