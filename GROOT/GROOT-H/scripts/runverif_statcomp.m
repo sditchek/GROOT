@@ -3492,7 +3492,7 @@
 										% Specify y labels
 										tmp_ytitle={'TRACK','WIND SPEED','PRESSURE','R34','R50','R64'}';
 
-										sconsistent=nan(6,size(tmp_imp,1));
+										sconsistent=nan(6,(identmaxfhr+1)/2);
 
 										% Start Figure
 										clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);hold on;
