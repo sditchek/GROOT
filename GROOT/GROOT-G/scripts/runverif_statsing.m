@@ -4259,47 +4259,47 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				% Compute Error, Improvement, Bias, and FSP (wrt 50%) for all Variables
 				for plt=1:9
 					if plt==1
-						 tmp_exp=(trkerr_exp(:,1:skip:end,:));
+						 tmp_exp=(trkerr_exp(:,1:skip:end,:));plt0=1;
 						 tmp_name='trkerr';
 						 tmp_title='Track Error (km)';
 						 tmp_ytitle='Error (km)';                                    
 					elseif plt==3
-						tmp_exp=interr_exp(:,1:skip:end,:);
+						tmp_exp=interr_exp(:,1:skip:end,:);plt0=2;
 						tmp_name='prserr';
 						tmp_title='Pressure Error (hPa)';
 						tmp_ytitle='Error (hPa)';
 					elseif plt==2
-						tmp_exp=spderr_exp(:,1:skip:end,:);
+						tmp_exp=spderr_exp(:,1:skip:end,:);plt0=3;
 						tmp_name='spderr';
 						tmp_title='Wind Speed Error (kts)';
 						tmp_ytitle='Error (kts)';                                 
 					elseif plt==7
-						tmp_exp=rmwerr_exp(:,1:skip:end,:);
+						tmp_exp=rmwerr_exp(:,1:skip:end,:);plt0=18;
 						tmp_name='rmwerr';
 						tmp_title='RMW Error (km)';
 						tmp_ytitle='Error (km)';                                
 					elseif plt==4
-						tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
+						tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));plt0=21;
 						tmp_name='34err';
 						tmp_title='R34 Error (km)';
 						tmp_ytitle='Error (km)';
 					elseif plt==5
-						tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
+						tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));plt0=22;
 						tmp_name='50err';
 						tmp_title='R50 Error (km)';
 						tmp_ytitle='Error (km)';
 					elseif plt==6
-						tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
+						tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));plt0=23;
 						tmp_name='64err';
 						tmp_title='R64 Error (km)';
 						tmp_ytitle='Error (km)';                                    
 					elseif plt==8
-						tmp_exp=ateerr_exp(:,1:skip:end,:);
+						tmp_exp=ateerr_exp(:,1:skip:end,:);plt0=19;
 						tmp_name='ateerr';
 						tmp_title='Along-Track Error (km)';
 						tmp_ytitle='Error (km)';
 					elseif plt==9
-						tmp_exp=xteerr_exp(:,1:skip:end,:);
+						tmp_exp=xteerr_exp(:,1:skip:end,:);plt0=20;
 						tmp_name='xteerr';
 						tmp_title='Across-Track Error (km)';
 						tmp_ytitle='Error (km)';
@@ -4309,8 +4309,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 					else
 						tmp_err(:,:,plt)=squeeze(nanmean((tmp_exp),1));  tmp_errmed(:,:,plt)=squeeze(nanmedian((tmp_exp),1));                                                                        
 					end
-					if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05)'; end
-					if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1)';   end
+					if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'; end
+					if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)';   end
 					tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed(:,plt)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';
 					tmp1=abs(tmp_exp(:,:,identexploop));
 					tmp2=abs(tmp_exp(:,:,tmpimp));
@@ -19514,47 +19514,47 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									% Compute Error, Improvement, Bias, and FSP (wrt 50%) for all Variables
 									for plt=1:9
 										if plt==1
-											 tmp_exp=(trkerr_exp(:,1:skip:end,:));
+											 tmp_exp=(trkerr_exp(:,1:skip:end,:));plt0=1;
 											 tmp_name='trkerr';
 											 tmp_title='Track Error (km)';
 											 tmp_ytitle='Error (km)';                                    
 										elseif plt==3
-											tmp_exp=interr_exp(:,1:skip:end,:);
+											tmp_exp=interr_exp(:,1:skip:end,:);plt0=2;
 											tmp_name='prserr';
 											tmp_title='Pressure Error (hPa)';
 											tmp_ytitle='Error (hPa)';
 										elseif plt==2
-											tmp_exp=spderr_exp(:,1:skip:end,:);
+											tmp_exp=spderr_exp(:,1:skip:end,:);plt0=3;
 											tmp_name='spderr';
 											tmp_title='Wind Speed Error (kts)';
 											tmp_ytitle='Error (kts)';                                 
 										elseif plt==7
-											tmp_exp=rmwerr_exp(:,1:skip:end,:);
+											tmp_exp=rmwerr_exp(:,1:skip:end,:);plt0=18;
 											tmp_name='rmwerr';
 											tmp_title='RMW Error (km)';
 											tmp_ytitle='Error (km)';                                
 										elseif plt==4
-											tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
+											tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));plt0=21;
 											tmp_name='34err';
 											tmp_title='R34 Error (km)';
 											tmp_ytitle='Error (km)';
 										elseif plt==5
-											tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
+											tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));plt0=22;
 											tmp_name='50err';
 											tmp_title='R50 Error (km)';
 											tmp_ytitle='Error (km)';
 										elseif plt==6
-											tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
+											tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));plt0=23;
 											tmp_name='64err';
 											tmp_title='R64 Error (km)';
 											tmp_ytitle='Error (km)';                                    
 										elseif plt==8
-											tmp_exp=ateerr_exp(:,1:skip:end,:);
+											tmp_exp=ateerr_exp(:,1:skip:end,:);plt0=19;
 											tmp_name='ateerr';
 											tmp_title='Along-Track Error (km)';
 											tmp_ytitle='Error (km)';
 										elseif plt==9
-											tmp_exp=xteerr_exp(:,1:skip:end,:);
+											tmp_exp=xteerr_exp(:,1:skip:end,:);plt0=20;
 											tmp_name='xteerr';
 											tmp_title='Across-Track Error (km)';
 											tmp_ytitle='Error (km)';
@@ -19886,8 +19886,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										else
 											tmp_err(:,:,plt)=squeeze(nanmean((tmp_exp),1)); tmp_errmed(:,:,plt)=squeeze(nanmedian((tmp_exp),1));                                                                          
 										end
-										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05)'; end
-										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1)';   end                                                                                                       
+										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'))==0 sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'; end
+										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2));; else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)';   end                                                                                                       
 										tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed(:,plt)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';
 										tmp1=abs(tmp_exp(:,:,identexploop));
 										tmp2=abs(tmp_exp(:,:,tmpimp));
