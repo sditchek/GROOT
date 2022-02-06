@@ -9,13 +9,13 @@ identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                               	 % m
 identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'V16H'};{'V16R'}];                         				% folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'HFAI'};{'HWIN'}];                         				% folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                  	% NOTE: the first experiment listed MUST be the one with all the observations assimilated
-identexpsigimp='V16R';                                                            % full folder name of improvement and significance wrt THIS experiment
+identexpsigimp='HWIN';                                                            % full folder name of improvement and significance wrt THIS experiment
 identexpcolors=[255 0 0;0 0 0]/255; % colors associated with each experiment - GROOT-G Change
         	                                                                      	% EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										     	% EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroovpr,'/V16H/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroovpr,'/HWIN/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
 % Case Study: recommendation - make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
 identcase=0';								        % run graphics for just 1 storm | yes (1) no (0)
@@ -34,7 +34,7 @@ identnewsubset=[{'2019082306-2019082612'};{'2019082800-2019090900'}];      % new
 identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
 
 % Conventional Graphics Options
-identconv=1;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
+identconv=0;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
 identconvobs=137;						% conventional observation obstype

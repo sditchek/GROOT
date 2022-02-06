@@ -39,7 +39,7 @@ for identremoveinvest=1
 		%% Set Name
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-		identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)]; 
+		identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end 
 		stormsdone{stmdn}=identhwrf;end; %GROOT-G Change End
                 % Model outputs at 3 h, but to compare errors to BT make 6 h!
                 skip=2;                                                  % 6 h res | skip=1 is 3 h
@@ -345,7 +345,7 @@ for identremoveinvest=1
             %% Set Name
             ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
             identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-            identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)]; 
+            identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end 
             stormsdone{stmdn}=identhwrf;end;
         end %GROOT-G Change End
         if identcompositeprep==1
