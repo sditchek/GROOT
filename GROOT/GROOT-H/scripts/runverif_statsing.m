@@ -12146,7 +12146,7 @@ for graphics=1
 								close all
 							end   
 							% Create Graphics: trk, int, spd improvement vs. deny
-							for plt==[1:18,21:23]
+							for plt=[1:18,21:23]
 								clear l cntexp
 								set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 								hfig=figure;
@@ -16104,7 +16104,7 @@ for graphics=1
 								close all
 							end   
 							% Create Graphics: trk, int, spd improvement vs. deny
-							for plt==[1:18,21:23]
+							for plt=[1:18,21:23]
 								clear l cntexp
 								set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 								hfig=figure;
