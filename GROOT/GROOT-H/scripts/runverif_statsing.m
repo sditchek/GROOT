@@ -1823,15 +1823,15 @@ for graphics=1
 					tmpimp=tmp;
 				end
 			end
-			plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
+			plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if plt==1;tmp_expbias=tmp_exp;end;
 			for tmp=1:size(identexp,1)
-				if plt==19 || plt==20; sigtest=ttestsc(trkerr_exp(:,1:skip:end,tmp),trkerr_exp(:,1:skip:end,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
+				if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
 				sigtest_loc=find(sigtest==1);
 				sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
 				for tmpi=tmp
 					plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 				end
-				if plt==19 || plt==20; sigtest=ttestsc(trkerr_exp(:,1:skip:end,tmp),trkerr_exp(:,1:skip:end,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);end;
+				if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.1);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);end;
 				sigtest_loc1=find(sigtest==1);
 				sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 				sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
@@ -11927,7 +11927,7 @@ for graphics=1
 									end  
 								end
 
-
+								if plt==1;tmp_expbias=tmp_exp;end;
 								for tmp=1:size(identexp,1)
 									l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
 								end           
@@ -11939,13 +11939,13 @@ for graphics=1
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									if plt==19 || plt==20; sigtest=ttestsc(trkerr_exp(:,1:skip:end,tmp),trkerr_exp(:,1:skip:end,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
+									if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
 									sigtest_loc=find(sigtest==1);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
 									for tmpi=tmp
 										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									end
-									if plt==19 || plt==20; sigtest=ttestsc(trkerr_exp(:,1:skip:end,tmp),trkerr_exp(:,1:skip:end,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);end;
+									if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.1);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);end;
 									sigtest_loc1=find(sigtest==1);
 									sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
 									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
