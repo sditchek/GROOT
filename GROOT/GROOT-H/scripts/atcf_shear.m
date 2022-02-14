@@ -1,4 +1,4 @@
-function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,SHRall,LOWbasin,HIGHbasin]=atcf_new(filename,intrp,identbdecks)
+function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,SHRall,LOWbasin,HIGHbasin,LANDall]=atcf_new(filename,intrp,identbdecks)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FUNCTION
@@ -47,7 +47,7 @@ for i=1:size(Dates1,1)
     tmp=Longitude1{i};
     Longitude(i)=str2num(tmp(1:end-1))./10;
     identhemi(i)=tmp(end);
-    Speed(i,:)=str2num(Speed1{i});
+    Speed(i,:)=str2num(Speed1{i})./1.94384;
     Pressure(i,:)=str2num(Pressure1{i});
     Cat(i,:)=(Category1{i});
     Name(i,1:size(Name1{i},2))=(Name1{i});
@@ -115,7 +115,7 @@ SHRD=table2array(lsdiaga19822019satts(:,2));
 SHRD=SHRD(tmp);
 for i=1:size(SHRD,1)
     tmpshear=strtrim(SHRD{i});
-    SHEAR(i)=str2num(tmpshear)./10; % converted to kts
+    SHEAR(i)=str2num(tmpshear)./(10*1.94384); % converted to m/s
 end
 SHEAR=SHEAR';
 LOWbasin=quantile(SHEAR,.25);
@@ -135,7 +135,7 @@ for i=1:size(Dates1,1)
 end
 Shear=Shear1;
 
-% Reassign R34/R50/R64 to one line instead of duplicate lines
+% Reassign RTSF/RSF/RHF to one line instead of duplicate lines
 tmpfill=zeros(1,size(Dates1,1))';
 tmpnum=1:size(Dates1,1);
 tmp=cat(2,str2num(Dates),Latitude',Longitude',Speed,Pressure,RAD',NEQ,SEQ,SWQ,NWQ,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,PO,RO,RMW,tmpnum',FHR',Shear);
@@ -344,4 +344,25 @@ else
     SHRall=interp1(t6h,SHR,t3h);
     BASINall=Basin;
 end
+
+% Low Res. Landmask
+load coastlines
+vals=[coastlat coastlon];
+for i=1:length(coastlat)
+	if coastlat(i)<-60.5
+		vals(i,:)=NaN;
+	end
+end
+lat_mask=vals(:,1);
+lon_mask=vals(:,2);                         
+lndfl = inpolygon(LONall, LATall, lon_mask, lat_mask);    
+% Make Great Lakes into Land
+for i=1:size(lndfl,2)
+	if LATall(i)>40 && LATall(i)<50 && LONall(i)<-75 && LONall(i)>-95
+		lndfl(i)=1;
+	end
+end                                          
+LANDall=lndfl;
+
+			
 end

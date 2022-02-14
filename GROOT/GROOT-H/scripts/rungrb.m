@@ -107,8 +107,8 @@ if identda==1
 
                     % Get all variables for this cycle/experiment                                          
                     q_b2=ncread(wrfg2,'Q'); % kg/kg
-                    u_b2=ncread(wrfg2,'U').*1.94384; % m/s to knots
-                    v_b2=ncread(wrfg2,'V').*1.94384; % m/s to knots 
+                    u_b2=ncread(wrfg2,'U'); %m/s
+                    v_b2=ncread(wrfg2,'V'); %m/s
                     t_b2=ncread(wrfg2,'T'); % K
                     glon_b2=ncread(wrfg2,'GLON').*180/pi;
                     glat_b2=ncread(wrfg2,'GLAT').*180/pi;
@@ -129,8 +129,8 @@ if identda==1
                     anom_b2=spline(press,values,plev_b2);
 
                     q_a2=ncread(gsig2,'Q');
-                    u_a2=ncread(gsig2,'U').*1.94384; % m/s to knots ;
-                    v_a2=ncread(gsig2,'V').*1.94384; % m/s to knots ;
+                    u_a2=ncread(gsig2,'U');
+                    v_a2=ncread(gsig2,'V');
                     t_a2=ncread(gsig2,'T');
                     glon_a2=ncread(gsig2,'GLON').*180/pi;
                     glat_a2=ncread(gsig2,'GLAT').*180/pi;
@@ -151,8 +151,8 @@ if identda==1
                     anom_a2=spline(press,values,plev_a2);
                     
                     q_b3=ncread(wrfg3,'Q');
-                    u_b3=ncread(wrfg3,'U').*1.94384; % m/s to knots ;
-                    v_b3=ncread(wrfg3,'V').*1.94384; % m/s to knots ;
+                    u_b3=ncread(wrfg3,'U');
+                    v_b3=ncread(wrfg3,'V');
                     t_b3=ncread(wrfg3,'T');
                     glon_b3=ncread(wrfg3,'GLON').*180/pi;
                     glat_b3=ncread(wrfg3,'GLAT').*180/pi;
@@ -173,8 +173,8 @@ if identda==1
                     anom_b3=spline(press,values,plev_b3);
 
                     q_a3=ncread(gsig3,'Q');
-                    u_a3=ncread(gsig3,'U').*1.94384; % m/s to knots ;
-                    v_a3=ncread(gsig3,'V').*1.94384; % m/s to knots ;
+                    u_a3=ncread(gsig3,'U');
+                    v_a3=ncread(gsig3,'V');
                     t_a3=ncread(gsig3,'T');
                     glon_a3=ncread(gsig3,'GLON').*180/pi;
                     glat_a3=ncread(gsig3,'GLAT').*180/pi;
@@ -219,14 +219,14 @@ if identda==1
                     
                     % VORTICITY & DIVERGENCE
                     for dv=1:size(u_b2,3)
-                        vort_b2(:,:,dv)=((10^5).*curl(glon_b2'*111110,glat_b2'*111110,u_b2(:,:,dv)'./1.94384,v_b2(:,:,dv)'./1.94384))';
-                        divg_b2(:,:,dv)=((10^5).*divergence(glon_b2'*111110,glat_b2'*111110,u_b2(:,:,dv)'./1.94384,v_b2(:,:,dv)'./1.94384))';
-                        vort_a2(:,:,dv)=((10^5).*curl(glon_a2'*111110,glat_a2'*111110,u_a2(:,:,dv)'./1.94384,v_a2(:,:,dv)'./1.94384))';
-                        divg_a2(:,:,dv)=((10^5).*divergence(glon_a2'*111110,glat_a2'*111110,u_a2(:,:,dv)'./1.94384,v_a2(:,:,dv)'./1.94384))';
-                        vort_b3(:,:,dv)=((10^5).*curl(glon_b3'*111110,glat_b3'*111110,u_b3(:,:,dv)'./1.94384,v_b3(:,:,dv)'./1.94384))';
-                        divg_b3(:,:,dv)=((10^5).*divergence(glon_b3'*111110,glat_b3'*111110,u_b3(:,:,dv)'./1.94384,v_b3(:,:,dv)'./1.94384))';
-                        vort_a3(:,:,dv)=((10^5).*curl(glon_a3'*111110,glat_a3'*111110,u_a3(:,:,dv)'./1.94384,v_a3(:,:,dv)'./1.94384))';
-                        divg_a3(:,:,dv)=((10^5).*divergence(glon_a3'*111110,glat_a3'*111110,u_a3(:,:,dv)'./1.94384,v_a3(:,:,dv)'./1.94384))';
+                        vort_b2(:,:,dv)=((10^5).*curl(glon_b2'*111110,glat_b2'*111110,u_b2(:,:,dv)',v_b2(:,:,dv)'))';
+                        divg_b2(:,:,dv)=((10^5).*divergence(glon_b2'*111110,glat_b2'*111110,u_b2(:,:,dv)',v_b2(:,:,dv)'))';
+                        vort_a2(:,:,dv)=((10^5).*curl(glon_a2'*111110,glat_a2'*111110,u_a2(:,:,dv)',v_a2(:,:,dv)'))';
+                        divg_a2(:,:,dv)=((10^5).*divergence(glon_a2'*111110,glat_a2'*111110,u_a2(:,:,dv)',v_a2(:,:,dv)'))';
+                        vort_b3(:,:,dv)=((10^5).*curl(glon_b3'*111110,glat_b3'*111110,u_b3(:,:,dv)',v_b3(:,:,dv)'))';
+                        divg_b3(:,:,dv)=((10^5).*divergence(glon_b3'*111110,glat_b3'*111110,u_b3(:,:,dv)',v_b3(:,:,dv)'))';
+                        vort_a3(:,:,dv)=((10^5).*curl(glon_a3'*111110,glat_a3'*111110,u_a3(:,:,dv)',v_a3(:,:,dv)'))';
+                        divg_a3(:,:,dv)=((10^5).*divergence(glon_a3'*111110,glat_a3'*111110,u_a3(:,:,dv)',v_a3(:,:,dv)'))';
                     end                                        
 
                     % Centers
@@ -772,8 +772,8 @@ if identda==1
                             cl1=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl1,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl1,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -818,8 +818,8 @@ if identda==1
                             cl2=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl2,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl2,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl2,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -898,8 +898,8 @@ if identda==1
                             cl4=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl4,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl4,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -944,8 +944,8 @@ if identda==1
                             cl5=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl5,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl5,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1312,8 +1312,8 @@ if identda==1
                             cl1=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl1,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl1,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1358,8 +1358,8 @@ if identda==1
                             cl2=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl2,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl2,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl2,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1438,8 +1438,8 @@ if identda==1
                             cl4=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl4,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl4,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1484,8 +1484,8 @@ if identda==1
                             cl5=colorbar;
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
-                                set(cl5,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                set(cl5,'ticklabels',{'0','34','64','83','96','113','137'})
+                                set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+                                set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1764,8 +1764,8 @@ if identda==1
                                 cl1=colorbar;                                
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl1,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl1,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1805,8 +1805,8 @@ if identda==1
                                 cl2=colorbar;
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl2,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl2,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(cl2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(cl2,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1876,8 +1876,8 @@ if identda==1
                                 cl4=colorbar;
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl4,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl4,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1918,8 +1918,8 @@ if identda==1
                                 cl5=colorbar;
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl5,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl5,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2137,8 +2137,8 @@ if identda==1
                                 cl1=colorbar;                                
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl1,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl1,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2178,8 +2178,8 @@ if identda==1
                                 cl2=colorbar;
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl2,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl2,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(c2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(c2,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2249,8 +2249,8 @@ if identda==1
                                 cl4=colorbar;
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl4,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl4,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2291,8 +2291,8 @@ if identda==1
                                 cl5=colorbar;
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
-                                    set(cl5,'ticks',[0,34,64,83,96,113,137],'fontsize',10)
-                                    set(cl5,'ticklabels',{'0','34','64','83','96','113','137'})
+                                    set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
+									set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2985,7 +2985,7 @@ for hwrfvariables=1:size(identexp,1)
                             elseif strcmp(identvariables{identvar},'Absolute_vorticity_isobaric')==1
                                 tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen)).*10^5;  
                             elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen)).*1.94384;  
+                                tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
                             else
                                 tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
                             end
@@ -2998,7 +2998,7 @@ for hwrfvariables=1:size(identexp,1)
                             elseif strcmp(identvariables{identvar},'Absolute_vorticity_isobaric')==1
                                 tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen)).*10^5;  
                             elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen)).*1.94384;  
+                                tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
                             else
                                 tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
                             end
@@ -3156,7 +3156,7 @@ for hwrfvariables=1:size(identexp,1)
                             elseif strcmp(identvariables{identvar},'Absolute_vorticity_isobaric')==1
                                 tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen)).*10^5;  
                             elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen)).*1.94384;  
+                                tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
                             else
                                 tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
                             end
@@ -3169,7 +3169,7 @@ for hwrfvariables=1:size(identexp,1)
                             elseif strcmp(identvariables{identvar},'Geopotential_height_isobaric')==1
                                 tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen))./10;  
                             elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen)).*1.94384;  
+                                tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
                             else
                                 tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
                             end
@@ -3689,8 +3689,8 @@ for hwrfplots=1
                                                 cl=colorbar;
                                                 if identvar==88
                                                     colormap(gca,custommap(28,WC1))
-                                                    set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                                    set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                                    set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                                    set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3792,8 +3792,8 @@ for hwrfplots=1
                                         cl=colorbar;
                                         if identvar==88
                                             colormap(gca,custommap(28,WC1))
-                                                set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                                set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                                set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                                set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3859,8 +3859,8 @@ for hwrfplots=1
                                     cl=colorbar;
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
-                                        set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                        set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                        set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                         %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3941,8 +3941,8 @@ for hwrfplots=1
                                     cl=colorbar;
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
-                                        set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                        set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                        set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                         %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4622,8 +4622,8 @@ for hwrfplots=1
                                             cl=colorbar;
                                             if identvar==88
                                                 colormap(gca,custommap(28,WC1))
-                                                set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                                set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                                set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                                set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4735,8 +4735,8 @@ for hwrfplots=1
                                         cl=colorbar;
                                         if identvar==88
                                                 colormap(gca,custommap(28,WC1))
-                                                set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                                set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                                set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                                set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4802,8 +4802,8 @@ for hwrfplots=1
                                     cl=colorbar;
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
-                                        set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                        set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                        set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                         %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4885,8 +4885,8 @@ for hwrfplots=1
                                         cl=colorbar;
                                         if identvar==88
                                             colormap(gca,custommap(28,WC1))
-                                            set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                            set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                            set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                            set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                             %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4960,8 +4960,8 @@ for hwrfplots=1
                                     cl=colorbar;
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
-                                        set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                        set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                        set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                         %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -5041,8 +5041,8 @@ for hwrfplots=1
                                     cl=colorbar;
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
-                                        set(cl,'ticks',[0,34,64,83,96,113,137],'fontsize',20)
-                                        set(cl,'ticklabels',{'0','34','64','83','96','113','137'})
+                                        set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
+                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
                                         %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -5601,7 +5601,7 @@ for shear=1
                             set(gca,'fontsize',20)      
                             hold off
                             box on
-                            ylabel('200-850 hPa Magnitude (kts)','fontsize',22)
+                            ylabel('200-850 hPa Magnitude (m/s)','fontsize',22)
                             xlabel('Forecast Hour','fontsize',22)
                             set(gca,'fontsize',20)
                             set(gcf, 'InvertHardcopy', 'off')
@@ -5611,7 +5611,7 @@ for shear=1
                             set(gcf, 'InvertHardcopy', 'off') 
                             text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                             text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=200','$\mathbf{-}$800 km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                            text(0,1.065,['\textbf{Vertical Wind Shear (kts) $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
+                            text(0,1.065,['\textbf{Vertical Wind Shear (m/s) $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
                             ax=gca;
                             box on
                             set(ax, 'Layer', 'top')

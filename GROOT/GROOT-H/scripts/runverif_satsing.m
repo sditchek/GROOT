@@ -989,19 +989,19 @@ for satobs=1
                             hold on
                             azavcm=jet(7);
                             for i=1:length(LONall)
-                                if SPEEDall(i) > 0 && SPEEDall(i) < 34 
+                                if SPEEDall(i) > 0 && SPEEDall(i) < 34./1.94384 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(2,:),'markersize',12);            
-                                elseif SPEEDall(i) >= 34 && SPEEDall(i) < 64 
+                                elseif SPEEDall(i) >= 34./1.94384 && SPEEDall(i) < 64./1.94384 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(3,:),'markersize',12);            
-                                elseif SPEEDall(i) >= 64 && SPEEDall(i) < 83 
+                                elseif SPEEDall(i) >= 64./1.94384 && SPEEDall(i) < 83./1.94384 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(4,:),'markersize',12);            
-                                elseif SPEEDall(i) >= 83 && SPEEDall(i) < 96 
+                                elseif SPEEDall(i) >= 83./1.94384 && SPEEDall(i) < 96./1.94384 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(5,:),'markersize',12);            
-                                elseif SPEEDall(i) >= 96 && SPEEDall(i) < 113 
+                                elseif SPEEDall(i) >= 96./1.94384 && SPEEDall(i) < 113./1.94384 
                                     plot(LONall(i),LATall(i),'.','color',azavcm(6,:),'markersize',12);            
-                                elseif SPEEDall(i) >= 113 && SPEEDall(i) < 137
+                                elseif SPEEDall(i) >= 113./1.94384 && SPEEDall(i) < 137./1.94384
                                     plot(LONall(i),LATall(i),'.','color',azavcm(7,:),'markersize',12);           
-                                elseif SPEEDall(i) >= 137
+                                elseif SPEEDall(i) >= 137./1.94384
                                     plot(LONall(i),LATall(i),'.','color','m','markersize',12); 
                                 elseif strcmp(CATall(i,:),'LO')==1 || strcmp(CATall(i,:),'DB')==1 || strcmp(CATall(i,:),'WV')==1
                                     plot(LONall(i),LATall(i),'.','color',[.5 .5 .5],'markersize',12);             

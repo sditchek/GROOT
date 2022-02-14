@@ -580,7 +580,7 @@ elseif strcmp(identvariables{identvar},'Water_temperature_surface')==1
     cbar1=2; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1
-    units='kts';
+    units='m/s';
     varname='Zonal Wind (10 m)';
     savename='U10M';
     vara=-10;  % regular
@@ -590,7 +590,7 @@ elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground'
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1
-    units='kts';
+    units='m/s';
     varname='Zonal Wind';
     savename='U';
     vara=-50;  % regular
@@ -600,7 +600,7 @@ elseif strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1
-    units='kts';
+    units='m/s';
     varname='Zonal Wind (Tropopause)';
     savename='UTROPO';
     vara=-20;  % regular
@@ -610,7 +610,7 @@ elseif strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1
-    units='kts';
+    units='m/s';
     varname='Meridional Wind (10 m)';
     savename='V10M';
     vara=-10;  % regular
@@ -620,7 +620,7 @@ elseif strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground'
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1
-    units='kts';
+    units='m/s';
     varname='Meridional Wind';
     savename='V';
     vara=-50;  % regular
@@ -630,7 +630,7 @@ elseif strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-    units='kts';
+    units='m/s';
     varname='Meridional Wind (Tropopause)';
     savename='VTROPO';
     vara=-20;  % regular
@@ -640,7 +640,7 @@ elseif strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'radial-component_of_wind_height_above_ground')==1
-    units='kts';
+    units='m/s';
     varname='Radial Wind (10 m)';
     savename='RADWND10M';
     vara=-10;  % regular
@@ -650,7 +650,7 @@ elseif strcmp(identvariables{identvar},'radial-component_of_wind_height_above_gr
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'tangential-component_of_wind_height_above_ground')==1
-    units='kts';
+    units='m/s';
     varname='Tangential Wind (10 m)';
     savename='TANWND10M';
     vara=-50;  % regular
@@ -660,7 +660,7 @@ elseif strcmp(identvariables{identvar},'tangential-component_of_wind_height_abov
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'radial-component_of_wind_isobaric')==1
-    units='kts';
+    units='m/s';
     varname='Radial Wind';
     savename='RADWND';
     vara=-10;  % regular
@@ -670,7 +670,7 @@ elseif strcmp(identvariables{identvar},'radial-component_of_wind_isobaric')==1
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'tangential-component_of_wind_isobaric')==1
-    units='kts';
+    units='m/s';
     varname='Tangential Wind';
     savename='TANWND';
     vara=-50;  % regular
@@ -680,7 +680,7 @@ elseif strcmp(identvariables{identvar},'tangential-component_of_wind_isobaric')=
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'radial-component_of_wind_tropopause')==1
-    units='kts';
+    units='m/s';
     varname='Radial Wind (Tropopause)';
     savename='RADWNDTROPO';
     vara=-10;  % regular
@@ -690,7 +690,7 @@ elseif strcmp(identvariables{identvar},'radial-component_of_wind_tropopause')==1
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'tangential-component_of_wind_tropopause')==1
-    units='kts';
+    units='m/s';
     varname='Tangential Wind (Tropopause)';
     savename='TANWNDTROPO';
     vara=-50;  % regular
@@ -710,7 +710,7 @@ elseif strcmp(identvariables{identvar},'Relative_vorticity_isobaric')==1
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'wind_speed_height_above_ground')==1
-    units='kts';
+    units='m/s';
     varname='Wind Speed (10 m)';
     savename='WS10M';
     vara=0;  % regular
@@ -720,7 +720,7 @@ elseif strcmp(identvariables{identvar},'wind_speed_height_above_ground')==1
     cbar1=8; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'wind_speed_isobaric')==1
-    units='kts';
+    units='m/s';
     varname='Wind Speed';
     savename='WS';
     vara=0;  % regular
@@ -730,7 +730,7 @@ elseif strcmp(identvariables{identvar},'wind_speed_isobaric')==1
     cbar1=8; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7) windc(8)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'wind_speed_tropopause')==1
-    units='kts';
+    units='m/s';
     varname='Wind Speed (Tropopause)';
     savename='WSTROPO';
     vara=0;  % regular

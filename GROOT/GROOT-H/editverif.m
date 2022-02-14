@@ -3,34 +3,34 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identgroovpr=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/'];    % location of your GROOT-PR dirctory
-identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];                 % location of where all graphics will go
-identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                               	 % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
-identbasinmodel=1;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
+identgroovpr=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/'];% location of your GROOT-PR dirctory
+identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];             % location of where all graphics will go
+identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
+identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'ALL'};{'NO'}];                         				% folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
-                                                                                 	% NOTE: the first experiment listed MUST be the one with all the observations assimilated
-identexpsigimp='NO';                                                            % full folder name of improvement and significance wrt THIS experiment
-identexpcolors=[0 152 0;208 0 0]/255;     					% colors associated with each experiment
+identexp=[{'ALL'};{'NO'}];                         			          % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+                                                                                         % NOTE: the first experiment listed MUST be the one with all the observations assimilated
+identexpsigimp='NO';                                                              % full folder name of improvement and significance wrt THIS experiment
+identexpcolors=[0 152 0;208 0 0]/255;     					  % colors associated with each experiment
         	                                                                      	% EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										     	% EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroovpr,'/NO']);                                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroovpr,'/NO']);                                             % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
 % Case Study: recommendation - make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
-identcase=0';								        % run graphics for just 1 storm | yes (1) no (0)
-identcasename={'dorian05l'};						        % lowercase name of storm, ID, and basin identifier: dorian05l
-identcaseyear='2019';							        % year of storm: YYYY
+identcase=0';								          % run graphics for just 1 storm | yes (1) no (0)
+identcasename={'dorian05l'};						          % lowercase name of storm, ID, and basin identifier: dorian05l
+identcaseyear='2019';							          % year of storm: YYYY
 
 % Error Graphics Options
 identgraphicsbycycle=0;                                         % error graphics for EACH CYCLE - must be 0 if identcompositeonly=1 | yes (1) no (0 - this saves time)
 identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='RMDR';                                             % name for new subset - will be capitalized in the script
-identnewsubset=[{'2019082306-2019082612'};{'2019082800-2019090900'}];      % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
-                                                                     % range of cycles: [{'2017081800-2017083100'}]
-                                                                     % disjointed cycles: [{'2017081800'};{'2017090200'}]
-                                                                     % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+identnewsubset=[{'2019082306-2019082612'};{'2019082800-2019090900'}];  % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
+                	                                               	   % range of cycles: [{'2017081800-2017083100'}]% disjointed cycles: [{'2017081800'};{'2017090200'}]
+		        	                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+identremoveland=0;						% do you want to remove cycles where the best track was over land | yes (1) no (0)
 identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
 
 % Conventional Graphics Options
@@ -121,7 +121,7 @@ for i=1:size(identexp,1)
     else
         identfold=strcat(identfold,tmp,'_');
     end
-end
+end; if identremoveland==1;identfold=[identfold(1:end-1),'_noland/'];end;
 
 %% Make Experiment Directory
 if ~exist([identout,'RESULTS/',identfold], 'dir')
