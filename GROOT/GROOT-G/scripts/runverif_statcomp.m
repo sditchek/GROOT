@@ -3539,7 +3539,7 @@
 
 										% Save Figure
 										set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);  consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');
-										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'.png']);close all;
+										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'_',identexpshort{identexploop},'.png']);close all;
 
 										%% BACK TO SCORECARD
 										% Specify y labels
@@ -3665,7 +3665,7 @@
 										set(gcf,'Units','inches');
 										screenposition = get(gcf,'Position');
 										set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);    
-										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'.png'])
+										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'_',identexpshort{identexploop},'.png'])
 										close all
 									end
 								end                    
@@ -17257,7 +17257,7 @@
 										set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=2; set(gca,'position',[spPos(1)+.04 spPos(2) spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, .5, .2]);set(gca,'Color',[.9 .9 .9]);
 
 										% Save Figure
-										set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);  consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'.png']);close all;
+										set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);  consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'_',identexpshort{identexploop},'.png']);close all;
 
 										%% BACK TO SCORECARD
 										% Specify y labels
@@ -17500,7 +17500,7 @@
 										set(gcf,'Units','inches');
 										screenposition = get(gcf,'Position');
 										set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);    
-										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'.png'])
+										print('-dpng',[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'_',identexpshort{identexploop},'.png'])
 										close all
 									end
 								end                    
