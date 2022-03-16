@@ -136,6 +136,7 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+3/16/22  | Added the newly released SHIPS data for 2020 storms for usage in the shear stratifications
 2/14/22   | Switched wind speed from knots to m/s, since km is used elsewhere throughougt the package
 	 | Added a switch to only keep cases where at the initialization and verifying time the storm was over ocean
 	 | Renamed R34, R50, and R64 to RTSF, RSF, and RHF to be consistent with the new m/s units 
