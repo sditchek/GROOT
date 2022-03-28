@@ -20,10 +20,10 @@
 # Set Folders
 dirpth=/scratch1/AOML/aoml-osse/${USER}      # directory path above GROOT location
 cycling="6"               		# frequency of cycling in your model (often 6 for 6 h)
-set -A expyears 2019 	 		# years included
-numyears=1				# number of years in expyears - the number must match!	
+set -A expyears 2018 2019 2020	 		# years included
+numyears=3				# number of years in expyears - the number must match!	
 #atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/V16_HDOB/atcf/	# location of your atcf output
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_E_FINAL/atcf/ #/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/HWRF_HAFS/  # location of your atcf output
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_E_FINAL/atcf_recon/ #/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/HWRF_HAFS/  # location of your atcf output
 diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/anl/	# location of your diag output
 
 # Identify Experiments
@@ -39,9 +39,9 @@ emlold=sarah.d.ditchek@noaa.gov         # email address currently listed in SBAT
 emlnew=sarah.d.ditchek@noaa.gov         # email address you want listed in SBATCH above
 
 # Date range of files desired from first cycle of first year to last cycle of last year | format must be yyyy-mm-dd hh
-startdate1="2019-08-01 00"
-enddate1="2019-09-30 18"
-
+startdate1="2018-09-02 12"
+enddate1="2020-09-14 06"
+ 
 ########################
 # END OF USER SETTINGS #
 ########################

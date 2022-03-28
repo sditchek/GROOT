@@ -407,7 +407,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 						set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
 						set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 						f = getframe(hfig);
-						imwrite(f.cdata,[identtrackint,'/FULL/trkcomp_',identinittimesunique(identloop,:),'.png'],'png');
+						if identeps==1;filename=[identtrackint,'/FULL/trkcomp_',identinittimesunique(identloop,:)];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 						close all 
 				end
 				% Plot MaxSpd
@@ -477,7 +477,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 					set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
 					set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 					f = getframe(hfig);
-					imwrite(f.cdata,[identtrackint,'/FULL/spdcomp_',identinittimesunique(identloop,:),'.png'],'png');
+					if identeps==1;filename=[identtrackint,'/FULL/spdcomp_',identinittimesunique(identloop,:)];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 					close all 
 				end
 				% Plot Pres, RTSF/50/64 all quadrants, PO, RO, RMW
@@ -724,7 +724,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 						set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 						set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 						f = getframe(hfig);
-						imwrite(f.cdata,[identtrackint,'/FULL/',tmp_name,'comp_',identinittimesunique(identloop,:),'.png'],'png');
+						if identeps==1;filename=[identtrackint,'/FULL/',tmp_name,'comp_',identinittimesunique(identloop,:)];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 						close all                        
 					end
 				end
@@ -839,7 +839,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				set(cl,'position',clPos)
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 				f = getframe(hfig);
-				imwrite(f.cdata,[identtrackint,'/FULL/trkcomp_all_',identexp{fhr},'.png'],'png');
+				if identeps==1;filename=[identtrackint,'/FULL/trkcomp_all_',identexp{fhr}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 				close all 
 			end
 			% All Wind Speed
@@ -972,7 +972,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				set(cl,'position',clPos)
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 				f = getframe(hfig);
-				imwrite(f.cdata,[identtrackint,'/FULL/spdcomp_all_',identexp{fhr},'.png'],'png');
+				if identeps==1;filename=[identtrackint,'/FULL/spdcomp_all_',identexp{fhr}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 				close all 
 			end
 			% All Else
@@ -1274,7 +1274,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 					set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 					set(gca,'Color',[.9 .9 .9])
 					f = getframe(hfig);
-					imwrite(f.cdata,[identtrackint,'/FULL/',tmp_name,'_all_',identexp{fhr},'.png'],'png');
+					if identeps==1;filename=[identtrackint,'/FULL/',tmp_name,'_all_',identexp{fhr}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 					close all 
 				end
 			end
@@ -1627,7 +1627,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 					end
 				end
 				f = getframe(hfig);
-				imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_LAGCORR_',identexpshort{identexploop},'.png'],'png');
+				if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_LAGCORR_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 				close all													
 			end
 		end 
@@ -1969,7 +1969,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				end
 			end
 			f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end                    
 		% Create Graphics: trk, int, spd Skill vs. deny
@@ -2328,7 +2328,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				end
 			end
 			f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end
 		% Create Graphics: trk, int, spd FSP vs. deny            
@@ -2634,7 +2634,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				end
 			end
 			f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end             
 		% Create Graphics: trk, int, spd bias - bt-gh vs. bt-deny
@@ -2981,7 +2981,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				end
 			end
 			f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end  
 		% Create Graphics: trk, int, spd errors and Skill - bt-gh vs. bt-deny
@@ -3602,7 +3602,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				end
 			end
 			f = getframe(hfig);
-			if med==1; imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_mean.png'],'png'); elseif med==2; imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_median.png'],'png'); end;
+			if med==1; if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_mean'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_median'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
 			close all
 		end;end              
 		spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
@@ -3842,7 +3842,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				set(gca,'position',[pos(1)+.01 pos(2)-.33 pos(3) pos(4)+.34])
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
 				f = getframe(hfig);
-				imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_contr_',identexpshort{identexploop},'.png'],'png');
+				if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_contr_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 				close all   
 			end 														
 		end  																							
@@ -4239,7 +4239,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				set(ax2,'position',[pos(1) pos(2)-.31 pos(3) pos(4)-.48])
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
 				f = getframe(hfig);
-				imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_PPC_',identexpshort{identexploop},'.png'],'png');
+				if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_PPC_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 				%print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
 				close all   
 			end 
@@ -4596,7 +4596,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				set(gcf,'Units','inches');
 				screenposition = get(gcf,'Position');
 				set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);    
-				print('-dpng',[identtrackint,'/FULL/',identn,'_SCORECARD_',identexpshort{identexploop},'.png'])
+				if identeps==1;filename=[identtrackint,'/FULL/',identn,'_SCORECARD_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;					
 				close all
 			end
 		end                    
@@ -4923,7 +4923,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 			end
 			axis ij;f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end
 		% Create Graphics: by cycle trk, int, spd Skill vs. deny
@@ -5295,7 +5295,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 			end
 			axis ij;f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end
 		% Create Graphics: by cycle trk, int, spd FSP vs. deny            
@@ -5611,7 +5611,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 			end
 			axis ij;f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end            
 		% Create Graphics: by cycle trk, int, spd bias - bt-gh vs. bt-deny
@@ -5964,7 +5964,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 				text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 			end
 			axis ij;f = getframe(hfig);
-			imwrite(f.cdata,[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles.png'],'png');
+			if identeps==1;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 			close all
 		end
 	end
@@ -6966,7 +6966,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									 set(tx, 'Layer', 'front')            
 								end                                                    
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end   
 							% Create Graphics: trk, int, spd Skill vs. deny
@@ -7239,7 +7239,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 									set(tx, 'Layer', 'front')
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end
 							% Create Graphics: trk, int, spd FSP vs. deny                                    
@@ -7447,7 +7447,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 								set(tx, 'Layer', 'front')                                                    
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end                                    
 							% Create Graphics: trk, int, spd bias - bt-gh vs. bt-deny
@@ -7726,7 +7726,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									 set(tx, 'Layer', 'front')            
 								end                                                    
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end
 							% Create Graphics: trk, int, spd errors and Skill - bt-gh vs. bt-deny
@@ -8259,7 +8259,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 								set(tx, 'Layer', 'front')																								
 								f = getframe(hfig);
-								if med==1; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png'); elseif med==2; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png'); end;
+								if med==1;if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_mean'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2; if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_median'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
 								close all
 							end; end;																				 
 							
@@ -8524,7 +8524,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 								end
 							   
 								axis ij;f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end   
 							% Create Graphics: trk, int, spd Skill vs. deny
@@ -8773,16 +8773,16 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										screenposition = get(gcf,'Position');
 										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 										set(gcf, 'InvertHardcopy', 'off')
-								text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-								text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-								tmpuv = 0;                               
-								tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];                    
-								if strat==1
-								text(0,1.03,['\textbf{CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-								else
-								text(0,1.03,['\textbf{SUBSET: ',upper(stname),' $\mid$ CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-								end
-								ax=gca;
+										text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+										text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+										tmpuv = 0;                               
+										tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];                    
+										if strat==1
+										text(0,1.03,['\textbf{CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+										else
+										text(0,1.03,['\textbf{SUBSET: ',upper(stname),' $\mid$ CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+										end
+										ax=gca;
 										box on
 										set(ax, 'Layer', 'bottom')
 										ax.LineWidth=1; 
@@ -8790,10 +8790,10 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .85, 0.96]); % maximize figure window
 										set(gca,'Color',[.9 .9 .9])
 										clear cntexp                                                            
-											tx=text(0.02,0.98,'Not Enough Data','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
-											set(tx, 'Layer', 'front')                                                                                                                                
+										tx=text(0.02,0.98,'Not Enough Data','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+										set(tx, 'Layer', 'front')                                                                                                                                
 										axis ij;f = getframe(hfig);
-										imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+										if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all
 							end
 							% Create Graphics: trk, int, spd FSP vs. deny
@@ -8978,16 +8978,16 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										screenposition = get(gcf,'Position');
 										set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 										set(gcf, 'InvertHardcopy', 'off')
-								text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-								text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
-								tmpuv = size(tmpnm,1);                               
-								tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];                    
-								if strat==1
-								text(0,1.03,['\textbf{CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-								else
-								text(0,1.03,['\textbf{SUBSET: ',upper(stname),' $\mid$ CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-								end
-								ax=gca;
+										text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+										text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+										tmpuv = size(tmpnm,1);                               
+										tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];                    
+										if strat==1
+										text(0,1.03,['\textbf{CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+										else
+										text(0,1.03,['\textbf{SUBSET: ',upper(stname),' $\mid$ CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+										end
+										ax=gca;
 										box on
 										set(ax, 'Layer', 'bottom')
 										ax.LineWidth=1; 
@@ -8996,10 +8996,10 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										set(gca,'Color',[.9 .9 .9])
 										clear cntexp
 										
-											tx=text(0.02,0.98,'Not Enough Data','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
-											set(tx, 'Layer', 'front')                                                                                                                                  
+										tx=text(0.02,0.98,'Not Enough Data','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+										set(tx, 'Layer', 'front')                                                                                                                                  
 										axis ij;f = getframe(hfig);
-										imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+										if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all
 							end                                    
 							% Create Graphics: trk, int, spd bias - bt-gh vs. bt-deny
@@ -9272,7 +9272,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									 set(tx, 'Layer', 'front')            
 								end                                                               
 								axis ij;f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end                                      
 							% Create Graphics: Cycle-By-Cycle Skill!!!
@@ -9467,7 +9467,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gca,'position',[pos(1)+.01 pos(2)-.33 pos(3) pos(4)+.34])
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'.png'],'png');
+									if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all   
 								end 														
 							end  																							
@@ -9798,7 +9798,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(ax2,'position',[pos(1) pos(2)-.31 pos(3) pos(4)-.48])
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop},'.png'],'png');
+									if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
 									close all   
 								end 
@@ -10185,7 +10185,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									end
 									axis ij														
 									f = getframe(hfig);
-									imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop},'.png'],'png');
+									if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all													
 								end
 							end   																																		
@@ -10245,7 +10245,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									% Figure Sizing & Printing
 									set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=2;set(gca,'position',[spPos(1)+.04 spPos(2) spPos(3) spPos(4)]);
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, .5, .2]);set(gca,'Color',[.9 .9 .9]);set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1);centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');
-									print('-dpng',[identtrackint,'/',identn,'_',stname,'_CONSISTENCYSCORECARD','_',identexpshort{identexploop},'.png']);close all;
+									if identeps==1;filename=[identtrackint,'/',identn,'_',stname,'_CONSISTENCYSCORECARD','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;
 
 									%% BACK TO SCORECARD
 									% Specify y labels
@@ -10359,7 +10359,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gcf,'Units','inches');
 									screenposition = get(gcf,'Position');
 									set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);    
-									print('-dpng',[identtrackint,'/',identn,'_',stname,'_SCORECARD','_',identexpshort{identexploop},'.png'])
+									if identeps==1;filename=[identtrackint,'/',identn,'_',stname,'_SCORECARD','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;
 									close all
 								end
 							end                    
@@ -11179,7 +11179,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										end
 									end
 									f = getframe(hfig);
-									imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop},'.png'],'png');
+									if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all													
 								end
 							end;end;   														
@@ -12176,7 +12176,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									end
 								end
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end   
 							% Create Graphics: trk, int, spd Skill vs. deny
@@ -12877,7 +12877,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									end
 								end
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end
 							% Create Graphics: trk, int, spd FSP vs. deny                                    
@@ -13523,7 +13523,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									end
 								end
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end                                    
 							% Create Graphics: trk, int, spd bias - bt-gh vs. bt-deny
@@ -14212,7 +14212,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									end
 								end
 								f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end
 							% Create Graphics: trk, int, spd errors and Skill - bt-gh vs. bt-deny
@@ -15508,7 +15508,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									end
 								end
 								f = getframe(hfig);
-								if med==1; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_mean.png'],'png'); elseif med==2; imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_median.png'],'png'); end;
+								if med==1;if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_mean'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2; if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_median'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
 								close all
 							end; end;																	
 							
@@ -16182,7 +16182,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 								end
 								axis ij;f = getframe(hfig);
-								imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 								close all
 							end   
 							% Create Graphics: trk, int, spd Skill vs. deny
@@ -16880,7 +16880,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 											text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 										end
 										axis ij;f = getframe(hfig);
-										imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all
 							end
 							% Create Graphics: trk, int, spd FSP vs. deny
@@ -17520,7 +17520,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 											text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 										end
 										axis ij;f = getframe(hfig);
-										imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all
 							end                                    
 							% Create Graphics: trk, int, spd bias - bt-gh vs. bt-deny
@@ -18203,7 +18203,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 											text(minX+HorizontalOffset1,yTicks(xx),tmptxt1,'verticalalignment','middle','fontsize',12)
 										end
 										axis ij;f = getframe(hfig);
-										imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles.png'],'png');
+								if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_cycles'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all
 							end                                                
 							% Create Graphics: Cycle-By-Cycle Skill!!!
@@ -18769,7 +18769,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gca,'position',[pos(1)+.01 pos(2)-.33 pos(3) pos(4)+.34])
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'.png'],'png');
+									if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all   
 								end 														
 							end  																							
@@ -19494,7 +19494,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(ax2,'position',[pos(1) pos(2)-.31 pos(3) pos(4)-.48])
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									imwrite(f.cdata,[identtrackint,'/',identn,'_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop},'.png'],'png');
+									if identeps==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
 									close all   
 								end 
@@ -19944,7 +19944,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									text(0,1.11,['\textbf{Consistency Scorecard}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');text(1,1.11,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');text(1,1.06,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');tmpuv = size(tmpnm,1);tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];if strat==1;text(0,1.06,['\textbf{CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');else;	text(0,1.06,['\textbf{SUBSET: ',upper(stname),' $\mid$ CYCLES: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;
 
 									% Figure Sizing & Printing
-									set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=2;set(gca,'position',[spPos(1)+.04 spPos(2) spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, .5, .2]);set(gca,'Color',[.9 .9 .9]);set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1);centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');print('-dpng',[identtrackint,'/',identn,'_',stname,'_CONSISTENCYSCORECARD','_',identexpshort{identexploop},'.png']);close all;
+									set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=2;set(gca,'position',[spPos(1)+.04 spPos(2) spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, .5, .2]);set(gca,'Color',[.9 .9 .9]);set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1);centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');									if identeps==1;filename=[identtrackint,'/',identn,'_',stname,'_CONSISTENCYSCORECARD','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;
 									
 									%% BACK TO SCORECARD
 									% Specify y labels
@@ -20181,7 +20181,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									set(gcf,'Units','inches');
 									screenposition = get(gcf,'Position');
 									set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);    
-									print('-dpng',[identtrackint,'/',identn,'_',stname,'_SCORECARD','_',identexpshort{identexploop},'.png'])
+									if identeps==1;filename=[identtrackint,'/',identn,'_',stname,'_SCORECARD','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;
 									close all
 								end
 							end                    																						
@@ -20198,6 +20198,6 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 			end
 		end
 	end
-	clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-	clearvars -except identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
+	clearvars -except identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+	clearvars -except identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
 end   

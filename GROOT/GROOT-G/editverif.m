@@ -9,12 +9,12 @@ identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'V16H-E'};{'V16R-E'}];                         			          % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
-                                                                                         % NOTE: the first experiment listed MUST be the one with all the observations assimilated
+identexp=[{'V16H-E'};{'V16R-E'}];             			          	          % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+                                                                                       % NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='V16R-E';                                                              % full folder name of improvement and significance wrt THIS experiment
 identexpcolors=[255 0 0;0 0 0]/255; % colors associated with each experiment - GROOT-G Change
-        	                                                                      	% EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
-										     	% EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
+        	                                                                       % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
+										       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
 stormsdone=dir([identgroovpr,'/V16R-E/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
 % Case Study: recommendation - make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
@@ -28,8 +28,8 @@ identcompositeonly=1;						% only generate composite graphics | yes (1 - this sa
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='RMDR';                                             % name for new subset - will be capitalized in the script
 identnewsubset=[{'2019082306-2019082612'};{'2019082800-2019090900'}];  % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
-                	                                               	   % range of cycles: [{'2017081800-2017083100'}]% disjointed cycles: [{'2017081800'};{'2017090200'}]
-		        	                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+                	                                        % range of cycles: [{'2017081800-2017083100'}]% disjointed cycles: [{'2017081800'};{'2017090200'}]
+		        	                                % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
 identremoveland=0;						% do you want to remove cycles where the best track was over land | yes (1) no (0)
 identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
 
@@ -46,16 +46,16 @@ identconvcolors=[.8 .2 .8;.9 .4 .2];                            % colors for eac
 identconvlegend=[{'Assimilated Mie (Cloudy) Observations'};{'Assimilated Rayleigh (Clear) Observations'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options
-identsatobs=0;                                                  % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
-identgraphicssat=1;						% satellite graphics for EACH CYCLE | yes (1) no (0 - this saves time)
-identsatid='iasi_g13';                                          % if the above is yes (1), then type the satellite name here - must match the diag file
-identsatname='Geo-HSS';						% full name of satellite observation | uppercase first letter | singular
-identindivch=1;                                                 % create individual-channel graphics (turn off to save time) | yes (1) no (0)
-identchannel=[200];                                             % used to generate graphics of profiles assimilated by channel
-                                                                    % look in your COM directory for the file that ends in *channels.txt and choose the value(s) in col1 that you want 
-                                                                    % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel
-                                                                    % for 1 or more, identchannel=[a,b,c];
-                                                                    % for all, identchannel='all';                                                            
+identsatobs=0;                            % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
+identgraphicssat=1;			  % satellite graphics for EACH CYCLE | yes (1) no (0 - this saves time)
+identsatid='iasi_g13';                    % if the above is yes (1), then type the satellite name here - must match the diag file
+identsatname='Geo-HSS';			  % full name of satellite observation | uppercase first letter | singular
+identindivch=1;                           % create individual-channel graphics (turn off to save time) | yes (1) no (0)
+identchannel=[200];                       % used to generate graphics of profiles assimilated by channel
+                                          % look in your COM directory for the file that ends in *channels.txt and choose the value(s) in col1 that you want 
+                                          % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel;  for 1 or more, identchannel=[a,b,c]; for all, identchannel='all';                                                            
+% Graphics Options														
+identeps=0;				  % save as eps or png? | eps (1) png (0)
 
 %% %%%%%%%%%%%%%%%%%%%% %%
 %% END OF USER SETTINGS %%
@@ -170,4 +170,3 @@ fprintf(fid,'%s\n',['initcasestudy="',num2str(identcase),'"']);
 fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename),'*'],'"']);
 fprintf(fid,'%s\n',['initend="',[identout,'RESULTS/',identfold],'"']);
 fclose(fid);
- 
