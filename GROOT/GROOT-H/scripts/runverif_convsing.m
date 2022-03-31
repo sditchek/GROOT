@@ -228,7 +228,7 @@
                                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identtrackint,'/conv_basin_',identinittimesunique(identloop,:),'_',identexp{loop1}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identtrackint,'/conv_basin_',identinittimesunique(identloop,:),'_',identexp{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         close all
                                     end
                                     % Plot the location of all conv at all levels that are included, centered on storm
@@ -314,7 +314,7 @@
                                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                 f = getframe(hfig);
-												if identeps==1;filename=[identtrackint,'/conv_plan_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+												filename=[identtrackint,'/conv_plan_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                 close all 
                                                 % Denmap for Subtypes
                                                 if size(identconvtype,2)>1
@@ -399,7 +399,7 @@
                                                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                         f = getframe(hfig);
-														if identeps==1;filename=[identtrackint,'/conv_az_',identinittimesunique(identloop,:),'_',identexpshort{loop1},'_type',num2str(identconvtype(sot))];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+														filename=[identtrackint,'/conv_az_',identinittimesunique(identloop,:),'_',identexpshort{loop1},'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                         close all
                                                         alldenmap_t(sot,loop1)={denmapall};
                                                     end                             
@@ -484,7 +484,7 @@
                                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                 f = getframe(hfig);
-												if identeps==1;filename=[identtrackint,'/conv_az_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+												filename=[identtrackint,'/conv_az_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                 close all                                             
                                                  alldenmap(loop1)={denmapall}; 
                                                  RLON2=RLON(loop);
@@ -737,7 +737,7 @@
                                 set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 f = getframe(hfig);
-								if identeps==1;filename=[identtrackint,'/conv_hist_',identexpshort{exl}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+								filename=[identtrackint,'/conv_hist_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all    
                                 % Create storm-centered reference frame for all dropsonde locations
                                 spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
@@ -820,7 +820,7 @@
                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window                    
                                 f = getframe(hfig);                    
-								if identeps==1;filename=[identtrackint,'/conv_plan_',identexpshort{exl}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+								filename=[identtrackint,'/conv_plan_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all 
                                 %% Denmap for Subtypes  
                                 if size(identconvtype,2)>1
@@ -886,7 +886,7 @@
                                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identtrackint,'/conv_az_',identexpshort{exl},'_type',num2str(identconvtype(sot))];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identtrackint,'/conv_az_',identexpshort{exl},'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         close all 
                                     end
                                 end
@@ -947,7 +947,7 @@
                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 f = getframe(hfig);
-								if identeps==1;filename=[identtrackint,'/conv_az_',identexpshort{exl}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+								filename=[identtrackint,'/conv_az_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all                
                             end        
                             valuescomp{exl}=tmp1;
@@ -1139,7 +1139,7 @@
                             set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                             f = getframe(hfig);
-							if identeps==1;filename=[identtrackint,'/',identn,'_track_withobs_',identexpshort{track}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							filename=[identtrackint,'/',identn,'_track_withobs_',identexpshort{track}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
                         clearvars -except identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
                     end

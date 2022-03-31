@@ -1134,7 +1134,7 @@
                                          set(tx, 'Layer', 'front')            
                                     end                                    
                                     f = getframe(hfig);
-									if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end   
                                 % Create Graphics: trk, int, spd Skill vs. deny
@@ -1347,7 +1347,7 @@
                                     tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                     set(tx, 'Layer', 'front')                                                                               
                                     f = getframe(hfig);
-									if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end
                                 % Create Graphics: trk, int, spd FSP vs. deny
@@ -1568,9 +1568,9 @@
                                             set(tx, 'Layer', 'front')                                                  
                                         f = getframe(hfig);
                                         if fspsub==1
-											if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+											filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         else
-											if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_removed'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+											filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_removed'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         end
                                         close all
                                     end                                        
@@ -1806,7 +1806,7 @@
                                          set(tx, 'Layer', 'front')            
                                     end                                  
                                     f = getframe(hfig);
-									if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end
                                 % BT Value vs. EXP Value
@@ -2119,7 +2119,7 @@
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')                                    
                                     f = getframe(hfig);
-									if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end                                   
 								% Create Storm-By-Storm Skill Graphics
@@ -2325,7 +2325,7 @@
                                         set(gca,'position',[pos(1)+.01 pos(2) pos(3) pos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-                                        if med==1;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
+                                        if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
@@ -2531,7 +2531,7 @@
                                         set(gca,'position',[pos(1)+.01 pos(2) pos(3) pos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_fcst_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_fcst_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
@@ -2792,7 +2792,7 @@
 										set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.48])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
@@ -3202,7 +3202,7 @@
                                     tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                     set(tx, 'Layer', 'front')                                                                                
                                     f = getframe(hfig);
-                                    if med==1;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
+                                    if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
                                     close all
                                 end; end                                                                                                                    					
 								spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same								
@@ -3469,7 +3469,7 @@
 										end
 										axis ij										
 										f = getframe(hfig);
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all													
 									end									
 								end
@@ -3529,7 +3529,7 @@
 
 										% Save Figure
 										set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);  consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;		                            
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;		                            
 
 										%% BACK TO SCORECARD
 										% Specify y labels
@@ -3655,7 +3655,7 @@
 										set(gcf,'Units','inches');
 										screenposition = get(gcf,'Position');
 										set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);    
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;		                            
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;		                            
 										close all
 									end
 								end                    
@@ -5389,7 +5389,7 @@
 											end
 										end
 										f = getframe(hfig);save([identout,'scfactor.mat'],'scfactor','scfactor0')
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all													
 									end								
 								end
@@ -6835,7 +6835,7 @@
                                         end
                                     end
                                     f = getframe(hfig);
-									if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end   
                                 % Create Graphics: trk, int, spd Skill vs. deny
@@ -7834,7 +7834,7 @@
                                         end
                                     end
                                     f = getframe(hfig);
-									if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end
                                 % Create Graphics: trk, int, spd FSP vs. deny
@@ -8856,9 +8856,9 @@
                                         end
                                         f = getframe(hfig);
                                         if fspsub==1
-											if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+											filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         else
-											if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_removed'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+											filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_removed'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         end
                                         close all
                                     end                                        
@@ -9864,7 +9864,7 @@
                                         end
                                     end
                                     f = getframe(hfig);
-									if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end
                                  % BT Value vs. EXP Value
@@ -10895,7 +10895,7 @@
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')                                    
                                     f = getframe(hfig);
-               						if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+               						filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end                                   
 								% Create Storm-By-Storm Skill Graphics
@@ -12021,7 +12021,7 @@
                                         %set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-                                        if med==1;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
+                                        if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
@@ -13146,7 +13146,7 @@
 										%set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_fcst_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_fcst_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
@@ -14348,7 +14348,7 @@
 										set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_PPC_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
@@ -16248,7 +16248,7 @@
                                         end
                                     end
                                     f = getframe(hfig);
-                                    if med==1;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
+                                    if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
                                     close all
                                 end; end                                                                                         
 								spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same								
@@ -17063,7 +17063,7 @@
 										set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=2; set(gca,'position',[spPos(1)+.04 spPos(2) spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, .5, .2]);set(gca,'Color',[.9 .9 .9]);
 
 										% Save Figure
-										set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);  consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;
+										set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);  consPos=get(cl,'position');set(cl,'position',[consPos(1)+.005 consPos(2) consPos(3)+.01 consPos(4)]);ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_CONSISTENCYSCORECARD_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;
 
 										%% BACK TO SCORECARD
 										% Specify y labels
@@ -17306,7 +17306,7 @@
 										set(gcf,'Units','inches');
 										screenposition = get(gcf,'Position');
 										set(gcf,'PaperPosition',[0 0 screenposition(3)+3 screenposition(4)+3],'PaperSize',[screenposition(3)+3 screenposition(4)+3]);    
-										if identeps==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'_',identexpshort{identexploop}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;		                            
+										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_SCORECARD_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print('-dpng',filename);end;close all;		                            
 										close all
 									end
 								end                    

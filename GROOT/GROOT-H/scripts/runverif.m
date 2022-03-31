@@ -316,7 +316,7 @@ for identremoveinvest=1
                     set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                     f = getframe(hfig);
-					if identeps==1;filename=[identtrackint,'/',identn,'_track'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+					filename=[identtrackint,'/',identn,'_track'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                 end
                 %% %%%%%%%%%%%%%%%%%%%% %%
                 %% Plot Conventonal Obs %% 

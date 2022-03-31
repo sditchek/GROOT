@@ -1150,7 +1150,7 @@ if identda==1
                             clP=get(cl9,'Position');
                             set(cl9,'Position',[clP(1)+.02 clP(2)+.02 0.01 clP(4)-.04])
                             %f = getframe(hfig);
-							if identeps==1;filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
+							filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
                             %imwrite(f.cdata,[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA.png'],'pdf');
                             close all 
                             cnt=cnt+1;
@@ -1689,7 +1689,7 @@ if identda==1
                             set(cl8,'Position',[clP(1)+.02 clP(2)+.02 0.01 clP(4)-.04])
                             clP=get(cl9,'Position');
                             set(cl9,'Position',[clP(1)+.02 clP(2)+.02 0.01 clP(4)-.04])
-							if identeps==1;filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D03_HWRFDA'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
+							filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D03_HWRFDA'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
                             close all 
                             cnt=cnt+1;
                         end                        
@@ -2110,7 +2110,7 @@ if identda==1
                                 clP=get(cl9,'Position');
                                 set(cl9,'Position',[clP(1)+.01 clP(2)+.02 0.01 clP(4)-.04])
                                 %f = getframe(hfig);
-								if identeps==1;filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_AZAV_',savename,'_D02_HWRFDA'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
+								filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_AZAV_',savename,'_D02_HWRFDA'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
                                 %imwrite(f.cdata,[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA.png'],'pdf');
                                 close all 
                                 cnt=cnt+1;
@@ -2483,7 +2483,7 @@ if identda==1
                                 clP=get(cl9,'Position');
                                 set(cl9,'Position',[clP(1)+.01 clP(2)+.02 0.01 clP(4)-.04])
                                 %f = getframe(hfig);
-								if identeps==1;filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_AZAV_',savename,'_D03_HWRFDA'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
+								filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_AZAV_',savename,'_D03_HWRFDA'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
                                 %imwrite(f.cdata,[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA.png'],'pdf');
                                 close all 
                                 cnt=cnt+1;
@@ -3727,7 +3727,7 @@ for hwrfplots=1
                                                 set(cl,'position',clPos)
                                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                 f = getframe(hfig);
-                                                if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                                filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                 %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'],'-dpdf','-r200');
                                                 close all 
                                             end
@@ -3826,7 +3826,7 @@ for hwrfplots=1
                                         set(cl,'position',clPos)
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-                                        if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                        filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'],'-dpdf','-r200');
                                         close all
                                     end
@@ -3893,7 +3893,7 @@ for hwrfplots=1
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     f = getframe(hfig);
-                                    if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                    filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_3DRTAZAV'],'-dpdf','-r200');
                                     close all
                                 end
@@ -3975,7 +3975,7 @@ for hwrfplots=1
                                     set(cl,'position',clPos)                                
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     f = getframe(hfig);
-                                    if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                    filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename],'-dpdf','-r200');
                                     close all
                                 end
@@ -4040,7 +4040,7 @@ for hwrfplots=1
                                         set(cl,'position',clPos)
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-                                        if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                        filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'],'-dpdf','-r200');
                                         close all                            
                                         end
@@ -4118,7 +4118,7 @@ for hwrfplots=1
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     f = getframe(hfig);
-                                    if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                    filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'],'-dpdf','-r200');
                                     close all
                                 end
@@ -4222,7 +4222,7 @@ for hwrfplots=1
 												set(cl,'position',clPos)                
 												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 												f = getframe(hfig);
-												if identeps==1;filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+												filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 												%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 												close all
 											end
@@ -4291,7 +4291,7 @@ for hwrfplots=1
 											set(cl,'position',clPos)                
 											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 											f = getframe(hfig);
-											if identeps==1;filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+											filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 											%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 											close all  
 										end
@@ -4349,7 +4349,7 @@ for hwrfplots=1
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
 								end
@@ -4405,7 +4405,7 @@ for hwrfplots=1
 										set(cl,'position',clPos)                
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 										f = getframe(hfig);
-										if identeps==1;filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 										close all
 									end
@@ -4463,7 +4463,7 @@ for hwrfplots=1
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 									close all
 								end                        
@@ -4516,7 +4516,7 @@ for hwrfplots=1
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
 								end
@@ -4660,7 +4660,7 @@ for hwrfplots=1
                                             set(cl,'position',clPos)
                                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                             f = getframe(hfig);
-											if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+											filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                             %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'],'-dpdf','-r200');
                                             close all 
                                         end
@@ -4769,7 +4769,7 @@ for hwrfplots=1
                                         set(cl,'position',clPos)
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'],'-dpdf','-r200');
                                         close all
                                     end
@@ -4836,7 +4836,7 @@ for hwrfplots=1
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_3DRTAZAV'],'-dpdf','-r200');
                                     close all
                                 end
@@ -4919,7 +4919,7 @@ for hwrfplots=1
                                         set(cl,'position',clPos)                                
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename],'-dpdf','-r200');
                                         close all
                                     end
@@ -4994,7 +4994,7 @@ for hwrfplots=1
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'],'-dpdf','-r200');
                                     close all        
                                     end
@@ -5081,7 +5081,7 @@ for hwrfplots=1
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                     f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'],'-dpdf','-r200');
                                     close all
                                 end
@@ -5182,7 +5182,7 @@ for hwrfplots=1
 												set(cl,'position',clPos)                
 												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 												f = getframe(hfig);
-												if identeps==1;filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+												filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 												%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 												close all
 											end
@@ -5248,7 +5248,7 @@ for hwrfplots=1
 											set(cl,'position',clPos)                
 											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 											f = getframe(hfig);
-											if identeps==1;filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+											filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 											%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 											close all  
 										end
@@ -5306,7 +5306,7 @@ for hwrfplots=1
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
 								end
@@ -5362,7 +5362,7 @@ for hwrfplots=1
 										set(cl,'position',clPos)                
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 										f = getframe(hfig);
-										if identeps==1;filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 										close all
 									end
@@ -5420,7 +5420,7 @@ for hwrfplots=1
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 									close all
 								end                        
@@ -5473,7 +5473,7 @@ for hwrfplots=1
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
 									f = getframe(hfig);
-									if identeps==1;filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
 								end
@@ -5620,7 +5620,7 @@ for shear=1
                             set(gca,'position',spPos)
                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                             f = getframe(hfig);
-							if identeps==1;filename=[identfields,'/',identexp0,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_VWS'];set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							filename=[identfields,'/',identexp0,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_VWS'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                             %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_3DRTAZAV'],'-dpdf','-r200');
                             close all 
 
