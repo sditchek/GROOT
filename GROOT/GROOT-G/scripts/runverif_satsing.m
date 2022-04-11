@@ -558,7 +558,7 @@ for satobs=1
                                             ax1=subplot(3,4,[1:8]);
                                             imagesc((denmap))
                                             xlabel('','fontsize',20)
-                                            ylabel('Pressure (hPa)','fontsize',20)                                   
+                                            ylabel('PMIN (hPa)','fontsize',20)                                   
                                             set(gca,'fontsize',20)
                                             set(gca,'xtick',1:3)
                                             set(gca,'xticklabel',{'<75 km','75-250 km','>250 km'});
@@ -869,7 +869,7 @@ for satobs=1
                                 identvals=sum(sum(tmp1_den,1),3);
                                 imagesc(sum(tmp1_den,3))
                                 xlabel('','fontsize',20)
-                                ylabel('Pressure (hPa)','fontsize',20)                                   
+                                ylabel('PMIN (hPa)','fontsize',20)                                   
                                 set(gca,'fontsize',20)
                                 set(gca,'xtick',1:3)
                                 set(gca,'xticklabel',{'<75 km','75-250 km','>250 km'});

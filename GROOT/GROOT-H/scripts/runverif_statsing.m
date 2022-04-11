@@ -432,7 +432,7 @@ for graphics=1
 					alpha(0.25)
 					hold on                      
 					xlabel('Forecast Lead Time (h)','fontsize',20)        
-					ylabel('Wind Speed (m/s)','fontsize',20)            
+					ylabel('VMAX (m/s)','fontsize',20)            
 					set(gca,'fontsize',20)
 					box on
 					if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
@@ -468,7 +468,7 @@ for graphics=1
 					grid on
 					set(gca,'gridcolor','k','gridalpha',.15)                               
 					text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-					text(0,1.065,['\textbf{Wind Speed Comparision (m/s)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+					text(0,1.065,['\textbf{VMAX Comparision (m/s)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
 					text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
 					ax=gca;
 					box on
@@ -490,10 +490,10 @@ for graphics=1
 						ax1=subplot(3,4,[1:8]);                        
 						if pltcomp==1
 							tmp_name='prs';
-							tmp_title='Pressure Comparision (hPa)';
+							tmp_title='PMIN Comparision (hPa)';
 							tmp_bt=bt_minpres(1:skip:end);
 							tmp_exp=exp_minpres(1:skip:end,:);
-							ylabel('Pressure (hPa)','fontsize',20)            
+							ylabel('PMIN (hPa)','fontsize',20)            
 							ylim([880 1050])
 						elseif pltcomp==2
 							tmp_name='neRTSF';
@@ -584,7 +584,7 @@ for graphics=1
 							tmp_title='Outer Clsd Isbr Prs Comparision (hPa)';
 							tmp_bt=bt_po(1:skip:end);
 							tmp_exp=exp_po(1:skip:end,:);
-							ylabel('Pressure (hPa)','fontsize',20)            
+							ylabel('PMIN (hPa)','fontsize',20)            
 							ylim([880 1050]) 
 						elseif pltcomp==15
 							tmp_name='ro';
@@ -842,7 +842,7 @@ for graphics=1
 				filename=[identtrackint,'/FULL/trkcomp_all_',identexp{fhr}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 				close all 
 			end
-			% All Wind Speed
+			% All VMAX
 			for fhr=1:size(identexp,1)
 				clear EXPmx BTmx l tmp
 				set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -861,7 +861,7 @@ for graphics=1
 				h(7).FaceColor=[.5 .2 .5];                        
 				alpha(0.25)
 				hold on       
-				ylabel('Wind Speed (m/s)','fontsize',20)            
+				ylabel('VMAX (m/s)','fontsize',20)            
 				set(gca,'fontsize',20)
 				box on                        
 				ylim([0 100])
@@ -955,7 +955,7 @@ for graphics=1
 				set(gcf, 'InvertHardcopy', 'off')
 				text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
 				text(0,1.03,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-				text(0,1.065,['\textbf{Wind Speed Comparision (m/s)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+				text(0,1.065,['\textbf{VMAX Comparision (m/s)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
 				cl=colorbar;
 				if size(identinittimesunique,1)>50
 					set(cl,'YTick',1/size(tmp,1)/2:4/size(tmp,1):1,'fontsize',20)
@@ -988,8 +988,8 @@ for graphics=1
 						tmp_exp=EXP_minpres(:,1:skip:end,fhr);
 						tmp_bt=BT_minpres(:,1:skip:end);
 						tmp_name='prscomp';
-						tmp_title='Pressure Comparision (hPa)';
-						tmp_ylab='Pressure (hPa)';
+						tmp_title='PMIN Comparision (hPa)';
+						tmp_ylab='PMIN (hPa)';
 						ylim([880 1050])            
 					 elseif plt==2
 						tmp_exp=EXP_ne34(:,1:skip:end,fhr);
@@ -1080,7 +1080,7 @@ for graphics=1
 						tmp_bt=BT_po(:,1:skip:end);
 						tmp_name='pocomp';
 						tmp_title='Outer Clsd Isbr Prs Error Comparison (hPa)';
-						tmp_ylab='Pressure (hPa)';
+						tmp_ylab='PMIN (hPa)';
 						ylim([880 1050])            
 					elseif plt==15
 						tmp_exp=EXP_ro(:,1:skip:end,fhr);
@@ -1293,12 +1293,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prserr';
-				tmp_title='Pressure Error (hPa)';
+				tmp_title='PMIN Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderr';
-				tmp_title='Wind Speed Error (m/s)';
+				tmp_title='VMAX Error (m/s)';
 				tmp_ytitle='Error (m/s)';
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -1648,12 +1648,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prserr';
-				tmp_title='Pressure Error (hPa)';
+				tmp_title='PMIN Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderr';
-				tmp_title='Wind Speed Error (m/s)';
+				tmp_title='VMAX Error (m/s)';
 				tmp_ytitle='Error (m/s)';
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -1988,12 +1988,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prskill';
-				tmp_title='Pressure Skill (\%)';
+				tmp_title='PMIN Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spdskill';
-				tmp_title='Wind Speed Skill (\%)';
+				tmp_title='VMAX Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -2347,12 +2347,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prsfsp';
-				tmp_title='Pressure FSP (\%)';
+				tmp_title='PMIN FSP (\%)';
 				tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spdfsp';
-				tmp_title='Wind Speed FSP (\%)';
+				tmp_title='VMAX FSP (\%)';
 				tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -2653,12 +2653,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prsbias';
-				tmp_title='Pressure Bias (hPa)';
+				tmp_title='PMIN Bias (hPa)';
 				tmp_ytitle='Bias (hPa)';
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spdbias';
-				tmp_title='Wind Speed Bias (m/s)';
+				tmp_title='VMAX Bias (m/s)';
 				tmp_ytitle='Bias (m/s)';
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -3003,12 +3003,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prserr';
-				tmp_title='Pressure Error (hPa)';
+				tmp_title='PMIN Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderr';
-				tmp_title='Wind Speed Error (m/s)';
+				tmp_title='VMAX Error (m/s)';
 				tmp_ytitle='Error (m/s)';
 			elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -3265,12 +3265,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prserrskill';
-				tmp_title='Pressure Skill (\%)';
+				tmp_title='PMIN Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderrskill';
-				tmp_title='Wind Speed Skill (\%)';
+				tmp_title='VMAX Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -3618,12 +3618,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prserr';
-				tmp_title='Cycle-By-Cycle Pressure Skill (\%)';
+				tmp_title='Cycle-By-Cycle PMIN Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderr';
-				tmp_title='Cycle-By-Cycle Wind Speed Skill (\%)';
+				tmp_title='Cycle-By-Cycle VMAX Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -3857,12 +3857,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prserr';
-				tmp_title='Percentage Point Contribution to Pressure Skill (\%)';
+				tmp_title='Percentage Point Contribution to PMIN Skill (\%)';
 				tmp_ytitle='Error Contribution (\%)';
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderr';
-				tmp_title='Percentage Point Contribution to Wind Speed Skill (\%)';
+				tmp_title='Percentage Point Contribution to VMAX Skill (\%)';
 				tmp_ytitle='Error Contribution (\%)';
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -4266,12 +4266,12 @@ for graphics=1
 				elseif plt==3
 					tmp_exp=interr_exp(:,1:skip:end,:);plt0=2;
 					tmp_name='prserr';
-					tmp_title='Pressure Error (hPa)';
+					tmp_title='PMIN Error (hPa)';
 					tmp_ytitle='Error (hPa)';
 				elseif plt==2
 					tmp_exp=spderr_exp(:,1:skip:end,:);plt0=3;
 					tmp_name='spderr';
-					tmp_title='Wind Speed Error (m/s)';
+					tmp_title='VMAX Error (m/s)';
 					tmp_ytitle='Error (m/s)';                                 
 				elseif plt==7
 					tmp_exp=rmwerr_exp(:,1:skip:end,:);plt0=18;
@@ -4617,12 +4617,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prserr';
-				tmp_title='Pressure Error (hPa)';
+				tmp_title='PMIN Error (hPa)';
 				tmp_ytitle='Error (hPa)';
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spderr';
-				tmp_title='Wind Speed Error (m/s)';
+				tmp_title='VMAX Error (m/s)';
 				tmp_ytitle='Error (m/s)';
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -4943,13 +4943,13 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prskill';
-				tmp_title='Pressure Skill (\%)';
+				tmp_title='PMIN Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 				yrange=[-300 300]; 
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spdskill';
-				tmp_title='Wind Speed Skill (\%)';
+				tmp_title='VMAX Skill (\%)';
 				tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 				yrange=[-300 300]; 
 			 elseif plt==4
@@ -5315,13 +5315,13 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prsfsp';
-				tmp_title='Pressure FSP (\%)';
+				tmp_title='PMIN FSP (\%)';
 				tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 				yrange=[-300 300]; 
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spdfsp';
-				tmp_title='Wind Speed FSP (\%)';
+				tmp_title='VMAX FSP (\%)';
 				tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 				yrange=[-300 300]; 
 			 elseif plt==4
@@ -5630,12 +5630,12 @@ for graphics=1
 			elseif plt==2
 				tmp_exp=interr_exp(:,1:skip:end,:);
 				tmp_name='prsbias';
-				tmp_title='Pressure Bias (hPa)';
+				tmp_title='PMIN Bias (hPa)';
 				tmp_ytitle='Bias (hPa)';
 			elseif plt==3
 				tmp_exp=spderr_exp(:,1:skip:end,:);
 				tmp_name='spdbias';
-				tmp_title='Wind Speed Bias (m/s)';
+				tmp_title='VMAX Bias (m/s)';
 				tmp_ytitle='Bias (m/s)';
 			 elseif plt==4
 				tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -6709,12 +6709,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -6976,12 +6976,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prskill';
-									tmp_title='Pressure Skill (\%)';
+									tmp_title='PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdskill';
-									tmp_title='Wind Speed Skill (\%)';
+									tmp_title='VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -7249,12 +7249,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsfsp';
-									tmp_title='Pressure FSP (\%)';
+									tmp_title='PMIN FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdfsp';
-									tmp_title='Wind Speed FSP (\%)';
+									tmp_title='VMAX FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -7456,12 +7456,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsbias';
-									tmp_title='Pressure Bias (hPa)';
+									tmp_title='PMIN Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdbias';
-									tmp_title='Wind Speed Bias (m/s)';
+									tmp_title='VMAX Bias (m/s)';
 									tmp_ytitle='Bias (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -7738,12 +7738,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -7997,12 +7997,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserrskill';
-									tmp_title='Pressure Skill (\%)';
+									tmp_title='PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderrskill';
-									tmp_title='Wind Speed Skill (\%)';
+									tmp_title='VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -8270,12 +8270,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -8534,12 +8534,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prskill';
-									tmp_title='Pressure Skill (\%)';
+									tmp_title='PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdskill';
-									tmp_title='Wind Speed Skill (\%)';
+									tmp_title='VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -8803,12 +8803,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsfsp';
-									tmp_title='Pressure FSP (\%)';
+									tmp_title='PMIN FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdfsp';
-									tmp_title='Wind Speed FSP (\%)';
+									tmp_title='VMAX FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -9008,12 +9008,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsbias';
-									tmp_title='Pressure Bias (hPa)';
+									tmp_title='PMIN Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdbias';
-									tmp_title='Wind Speed Bias (m/s)';
+									tmp_title='VMAX Bias (m/s)';
 									tmp_ytitle='Bias (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -9276,12 +9276,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Cycle-By-Cycle Pressure Skill (\%)';
+									tmp_title='Cycle-By-Cycle PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Cycle-By-Cycle Wind Speed Skill (\%)';
+									tmp_title='Cycle-By-Cycle VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -9472,12 +9472,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Percentage Point Contribution to Pressure Skill (\%)';
+									tmp_title='Percentage Point Contribution to PMIN Skill (\%)';
 									tmp_ytitle='Error Contribution (\%)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Percentage Point Contribution to Wind Speed Skill (\%)';
+									tmp_title='Percentage Point Contribution to VMAX Skill (\%)';
 									tmp_ytitle='Error Contribution (\%)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -9804,12 +9804,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -9938,12 +9938,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -10368,12 +10368,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -10815,12 +10815,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -11182,12 +11182,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -12162,12 +12162,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prskill';
-									tmp_title='Pressure Skill (\%)';
+									tmp_title='PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdskill';
-									tmp_title='Wind Speed Skill (\%)';
+									tmp_title='VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -12855,12 +12855,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsfsp';
-									tmp_title='Pressure FSP (\%)';
+									tmp_title='PMIN FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdfsp';
-									tmp_title='Wind Speed FSP (\%)';
+									tmp_title='VMAX FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -13492,12 +13492,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsbias';
-									tmp_title='Pressure Bias (hPa)';
+									tmp_title='PMIN Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdbias';
-									tmp_title='Wind Speed Bias (m/s)';
+									tmp_title='VMAX Bias (m/s)';
 									tmp_ytitle='Bias (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -14158,7 +14158,7 @@ for graphics=1
 								close all
 							end
 							% Create Graphics: trk, int, spd errors and Skill - bt-gh vs. bt-deny
-							for med=1:2; for plt=[2:18,21:23]
+							for med=1:2; for plt=[1:18,21:23]
 								spPosA=[0.1886    0.6118    0.6328    0.7000/2.2];
 								spPosB=[0.1886    0.2300    0.6328    0.7000/2.2];
 								clear l cntexp
@@ -14176,12 +14176,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -14770,12 +14770,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserrskill';
-									tmp_title='Pressure Skill (\%)';
+									tmp_title='PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderrskill';
-									tmp_title='Wind Speed Skill (\%)';
+									tmp_title='VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -15455,12 +15455,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Pressure Error (hPa)';
+									tmp_title='PMIN Error (hPa)';
 									tmp_ytitle='Error (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Wind Speed Error (m/s)';
+									tmp_title='VMAX Error (m/s)';
 									tmp_ytitle='Error (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -16120,12 +16120,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prskill';
-									tmp_title='Pressure Skill (\%)';
+									tmp_title='PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdskill';
-									tmp_title='Wind Speed Skill (\%)';
+									tmp_title='VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -16810,12 +16810,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsfsp';
-									tmp_title='Pressure FSP (\%)';
+									tmp_title='PMIN FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdfsp';
-									tmp_title='Wind Speed FSP (\%)';
+									tmp_title='VMAX FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -17441,12 +17441,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prsbias';
-									tmp_title='Pressure Bias (hPa)';
+									tmp_title='PMIN Bias (hPa)';
 									tmp_ytitle='Bias (hPa)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spdbias';
-									tmp_title='Wind Speed Bias (m/s)';
+									tmp_title='VMAX Bias (m/s)';
 									tmp_ytitle='Bias (m/s)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -18111,12 +18111,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Cycle-By-Cycle Pressure Skill (\%)';
+									tmp_title='Cycle-By-Cycle PMIN Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Cycle-By-Cycle Wind Speed Skill (\%)';
+									tmp_title='Cycle-By-Cycle VMAX Skill (\%)';
 									tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -18670,12 +18670,12 @@ for graphics=1
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
 									tmp_name='prserr';
-									tmp_title='Percentage Point Contribution to Pressure Skill (\%)';
+									tmp_title='Percentage Point Contribution to PMIN Skill (\%)';
 									tmp_ytitle='Error Contribution (\%)';
 								elseif plt==3
 									tmp_exp=spderr_exp(:,1:skip:end,:);
 									tmp_name='spderr';
-									tmp_title='Percentage Point Contribution to Wind Speed Skill (\%)';
+									tmp_title='Percentage Point Contribution to VMAX Skill (\%)';
 									tmp_ytitle='Error Contribution (\%)';
 								 elseif plt==4
 									tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -19399,12 +19399,12 @@ for graphics=1
 										elseif plt==3
 											tmp_exp=interr_exp(:,1:skip:end,:);plt0=2;
 											tmp_name='prserr';
-											tmp_title='Pressure Error (hPa)';
+											tmp_title='PMIN Error (hPa)';
 											tmp_ytitle='Error (hPa)';
 										elseif plt==2
 											tmp_exp=spderr_exp(:,1:skip:end,:);plt0=3;
 											tmp_name='spderr';
-											tmp_title='Wind Speed Error (m/s)';
+											tmp_title='VMAX Error (m/s)';
 											tmp_ytitle='Error (m/s)';                                 
 										elseif plt==7
 											tmp_exp=rmwerr_exp(:,1:skip:end,:);plt0=18;

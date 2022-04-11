@@ -28,7 +28,7 @@ diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINA
 
 # Identify Experiments
 set -A expfold V16H V16R	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew V16H-E V16R-E             # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expnew V16H-E-R V16R-E-R             # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing and want graphics for
 

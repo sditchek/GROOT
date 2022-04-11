@@ -202,7 +202,7 @@
                         identvals=sum(sum(compdenmap,1),3);
                         imagesc(sum(compdenmap,3))
                         xlabel('','fontsize',20)
-                        ylabel('Pressure (hPa)','fontsize',20)                                   
+                        ylabel('PMIN (hPa)','fontsize',20)                                   
                         set(gca,'fontsize',20)
                         set(gca,'xtick',1:3)
                         set(gca,'xticklabel',{'<75 km','75-250 km','>250 km'});

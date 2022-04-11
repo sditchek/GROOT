@@ -839,12 +839,12 @@ for identremoveinvest=1
 					elseif plt==2
 						tmp_exp=interr_exp(:,1:skip:end,:);
 						tmp_name='prserr';
-						tmp_title='Pressure Error (hPa)';
+						tmp_title='PMIN Error (hPa)';
 						tmp_ytitle='Error (hPa)';
 					elseif plt==3
 						tmp_exp=spderr_exp(:,1:skip:end,:);
 						tmp_name='spderr';
-						tmp_title='Wind Speed Error (m/s)';
+						tmp_title='VMAX Error (m/s)';
 						tmp_ytitle='Error (m/s)';
 					 elseif plt==4
 						tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -1035,12 +1035,12 @@ for identremoveinvest=1
 					elseif plt==2
 						tmp_exp=interr_exp(:,1:skip:end,:);
 						tmp_name='prskill';
-						tmp_title='Pressure Skill (\%)';
+						tmp_title='PMIN Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 					elseif plt==3
 						tmp_exp=spderr_exp(:,1:skip:end,:);
 						tmp_name='spdskill';
-						tmp_title='Wind Speed Skill (\%)';
+						tmp_title='VMAX Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 					 elseif plt==4
 						tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -1251,12 +1251,12 @@ for identremoveinvest=1
 					elseif plt==2
 						tmp_exp=interr_exp(:,1:skip:end,:);
 						tmp_name='prsbias';
-						tmp_title='Pressure Bias (hPa)';
+						tmp_title='PMIN Bias (hPa)';
 						tmp_ytitle='Bias (hPa)';
 					elseif plt==3
 						tmp_exp=spderr_exp(:,1:skip:end,:);
 						tmp_name='spdbias';
-						tmp_title='Wind Speed Bias (m/s)';
+						tmp_title='VMAX Bias (m/s)';
 						tmp_ytitle='Bias (m/s)';
 					 elseif plt==4
 						tmp_exp=ne34err_exp(:,1:skip:end,:);
@@ -1453,14 +1453,14 @@ for identremoveinvest=1
 							tmp_exp=squeeze(EXP_pres(:,1,:));
 							tmp_bt=squeeze(BT_pres(:,1,:));
 							tmp_name='prsval';
-							tmp_title='Pressure (hPa)';
+							tmp_title='PMIN (hPa)';
 							tmp_ytitle=[ylabv,' (hPa)'];
 							tmp_u='(hPa)';
 						elseif plt==3
 							tmp_exp=squeeze(EXP_cat(:,1,:));
 							tmp_bt=squeeze(BT_cat(:,1,:));
 							tmp_name='spdval';
-							tmp_title='Wind Speed (m/s)';
+							tmp_title='VMAX (m/s)';
 							tmp_ytitle=[ylabv,' (m/s)'];
 							tmp_u='(m/s)';
 						 elseif plt==4
