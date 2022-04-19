@@ -18,8 +18,8 @@
 # 3) OTHERWISE THERE IS NOTHING ELSE TO EDIT HERE :)
 
 # Set Folders
-homepath=/scratch1/AOML/aoml-osse/${USER}/                   # directory path above the GROOT package
-noscrubpath=${homepath}/noscrub/atcf                    # path to your atcf files
+homepath=/scratch1/AOML/aoml-osse/${USER}/              # directory path above the GROOT package
+noscrubpath=${homepath}/noscrub/atcf                        # path to your atcf files
 scrubpath=${homepath}/scrub				# path to your scrub directory
 dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
 

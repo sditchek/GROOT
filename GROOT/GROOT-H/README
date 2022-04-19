@@ -136,6 +136,7 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+4/19/22  | Fixed a bug where the yaxis labels for the skill graphics weren't centered around 0
 4/11/22  | Changed "Wind Speed" to "VMAX" and "Pressure" to "PMIN"
 3/28/22  | Added a switch to save files as either eps or png
 3/16/22  | Added the newly released SHIPS data for 2020 storms for usage in the shear stratifications

@@ -122,7 +122,7 @@ for i=1:size(identexp,1)
     else
         identfold=strcat(identfold,tmp,'_');
     end
-end; if identremoveland==1;identfold=[identfold(1:end-1),'_noland/'];end;
+end; if identremoveland==1;identfold=[identfold(1:end-1),'_noland/'];end; if identeps==1;identfold=[identfold(1:end-1),'_eps/'];else;identfold=[identfold(1:end-1),'_png/'];end;
 
 %% Make Experiment Directory
 if ~exist([identout,'RESULTS/',identfold], 'dir')

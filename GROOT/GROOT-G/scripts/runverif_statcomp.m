@@ -3182,13 +3182,13 @@
                                     end 
                                     ylim(impylim(plt,:))                                    
                                     if impylim(plt,end)>200
-                                        set(gca,'ytick',impylim(plt,1):100:impylim(plt,end))
+                                        aylim=100:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     elseif impylim(plt,end)>100
-                                        set(gca,'ytick',impylim(plt,1):50:impylim(plt,end))
+                                        aylim=50:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     elseif impylim(plt,end)>50
-                                        set(gca,'ytick',impylim(plt,1):25:impylim(plt,end))
+                                        aylim=25:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     else
-                                        set(gca,'ytick',impylim(plt,1):10:impylim(plt,end))
+                                        aylim=10:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
                                     set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
@@ -3500,7 +3500,7 @@
 
 										% CONSISTENCY SCORECARD
 										% Specify y labels
-										tmp_ytitle={'TRACK','WIND SPEED','PRESSURE','RTSF','RSF','RHF'}';
+										tmp_ytitle={'TRACK','VMAX','PMIN','RTSF','RSF','RHF'}';
 
 										sconsistent=nan(6,(identmaxfhr+1)/2);
 
@@ -3616,9 +3616,9 @@
 
 										% Variable Titles
 										text(-1.75,5,['\textbf{TRACK}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
-										text(-1.88,13.5,['\textbf{WIND}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
-										text(-1.62,13.5,['\textbf{SPEED}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
-										text(-1.75,21.5,['\textbf{MSLP}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
+										%text(-1.88,13.5,['\textbf{WIND}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
+										text(-1.75,13.5,['\textbf{VMAX}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
+										text(-1.75,21.5,['\textbf{PMIN}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-1.75,29.5,['\textbf{RTSF}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-1.75,37.5,['\textbf{RSF}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-1.75,45.5,['\textbf{RHF}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
@@ -16315,14 +16315,14 @@
                                     end 
                                     ylim(impylim(plt,:))
                                     
-                                    if impylim(plt,end)>200
-                                        set(gca,'ytick',impylim(plt,1):100:impylim(plt,end))
+                                   if impylim(plt,end)>200
+                                        aylim=100:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     elseif impylim(plt,end)>100
-                                        set(gca,'ytick',impylim(plt,1):50:impylim(plt,end))
+                                        aylim=50:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     elseif impylim(plt,end)>50
-                                        set(gca,'ytick',impylim(plt,1):25:impylim(plt,end))
+                                        aylim=25:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     else
-                                        set(gca,'ytick',impylim(plt,1):10:impylim(plt,end))
+                                        aylim=10:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
                                     set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
@@ -17218,7 +17218,7 @@
 
 										%% CONSISTENCY SCORECARD
 										% Specify y labels
-										tmp_ytitle={'TRACK','WIND SPEED','PRESSURE','RTSF','RSF','RHF'}';
+										tmp_ytitle={'TRACK','VMAX','PMIN','RTSF','RSF','RHF'}';
 
 										sconsistent=nan(6,size(tmp_imp,1));
 										for vari=1:6
@@ -17459,9 +17459,9 @@
 
 										% Variable Titles
 										text(-1.75,5,['\textbf{TRACK}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
-										text(-1.88,13.5,['\textbf{WIND}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
-										text(-1.62,13.5,['\textbf{SPEED}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
-										text(-1.75,21.5,['\textbf{MSLP}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
+										%text(-1.88,13.5,['\textbf{WIND}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
+										text(-1.75,13.5,['\textbf{VMAX}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
+										text(-1.75,21.5,['\textbf{PMIN}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-1.75,29.5,['\textbf{RTSF}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-1.75,37.5,['\textbf{RSF}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-1.75,45.5,['\textbf{RHF}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
