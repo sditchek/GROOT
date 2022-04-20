@@ -55,7 +55,7 @@ identchannel=[200];                       % used to generate graphics of profile
                                           % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel;  for 1 or more, identchannel=[a,b,c]; for all, identchannel='all';                                                            
 % Graphics Options														
 identeps=0;				  % save as eps or png? | eps (1) png (0)
-
+identconmetric=1;			  % include the consistency metric on the error/skill combo graphics for both the mean and median | yes (1) no (0)
 %% %%%%%%%%%%%%%%%%%%%% %%
 %% END OF USER SETTINGS %%
 %% %%%%%%%%%%%%%%%%%%%% %%

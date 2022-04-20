@@ -101,6 +101,7 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+4/20/22  | Added a switch to automatically place the consistency metric on the error/skill combo plots for both mean and median
 4/19/22  | Fixed a bug where the yaxis labels for the skill graphics weren't centered around 0
 4/11/22  | Changed "Wind Speed" to "VMAX" and "Pressure" to "PMIN"
 3/28/22  | Added a switch to save files as either eps or png
