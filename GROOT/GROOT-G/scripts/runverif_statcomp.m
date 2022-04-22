@@ -1087,7 +1087,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -1310,7 +1310,7 @@
                                     end 
                                     ylim(impylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -1524,7 +1524,7 @@
                                         end  
                                         ylim([25 75])
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         grid on
                                         set(gca,'gridcolor','k','gridalpha',.15)
                                         set(gca,'fontsize',20)      
@@ -1747,7 +1747,7 @@
                                     end                                    
                                     ylim(biasylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -2279,7 +2279,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2487,7 +2487,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2692,7 +2692,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2770,7 +2770,7 @@
                                         end    
                                         set(gca,'xtick',[])
 										ylim([0 1])
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -2971,7 +2971,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     set(gca,'xticklabel',[]) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
@@ -3191,7 +3191,7 @@
                                         aylim=10:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -3211,7 +3211,7 @@
                                     set(ax2,'Color',[.9 .9 .9])            
                                     tx=text(0.99,0.1,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                     set(tx, 'Layer', 'front')                                                                                
-                                    if identconmetric==1;clear tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb;cmloc=0.0282/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;end;for identexploop=tmpu;cm=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.0282/size(tmpu,2)]);tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij; hold on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]);end;end;set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+3),-1:size(sconsistent,1)+1,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=1;set(gca,'Color',[.9 .9 .9]);end;end;f = getframe(hfig);
+                                    if identconmetric==1;clear tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb;cmloc=0.0282/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;end;for identexploop=tmpu;cm=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.0282/size(tmpu,2)]);tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);sconsistent(isnan(sconsistent))=0;imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij; hold on;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+3),-1:size(sconsistent,1)+1,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=1;set(cm,'Color',[.9 .9 .9]);end;end;f = getframe(hfig);
                                     if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
                                     close all
                                 end; end                                                                                                                    					
@@ -3383,7 +3383,7 @@
 											end
 										end         
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+										set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
 										set(gca,'gridcolor','k','gridalpha',.15)
 										set(gca,'fontsize',20)      
 										hold off
@@ -3508,10 +3508,10 @@
 										clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);hold on;
 
 										% Plot Matrix & Flip
-										imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij
+										sconsistent(isnan(sconsistent))=0;imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij
 
 										% X- and Y- Axes: Ticks, Labels, Ranges
-										xlabel('Forecast Lead Time (h)','fontsize',20);set(gca,'fontsize',14);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]);end;end;set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24);set(gca,'fontsize',16);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'ytick',1:1:size(sconsistent,1)+.5);set(gca,'yticklabel',tmp_ytitle);set(gca,'TickLength',[0 0]);
+										xlabel('Forecast Lead Time (h)','fontsize',20);set(gca,'fontsize',14);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]);end;end;set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));set(gca,'fontsize',16);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'ytick',1:1:size(sconsistent,1)+.5);set(gca,'yticklabel',tmp_ytitle);set(gca,'TickLength',[0 0]);
 
 										% Colormap
 										colorbar;caxis([-2.5 2.5]);run customcolorbars;cl=colorbar;cl.Ticks=[-2:1:2];colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));
@@ -3578,7 +3578,7 @@
 											end
 										end    
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+										set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
 										set(gca,'fontsize',9)
 										ylim([0.5 43.5])
 										set(gca,'ytick',1:1:size(sc,1)+.5)
@@ -5256,7 +5256,7 @@
 											end
 										end         
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+										set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
 										set(gca,'gridcolor','k','gridalpha',.15)
 										set(gca,'fontsize',20)      
 										hold off
@@ -6762,7 +6762,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -7768,7 +7768,7 @@
                                     end 
                                     ylim(impylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -8796,7 +8796,7 @@
                                         end  
                                         ylim([25 75])
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         grid on
                                         set(gca,'gridcolor','k','gridalpha',.15)
                                         set(gca,'fontsize',20)      
@@ -9818,7 +9818,7 @@
                                     end                                    
                                     ylim(biasylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -12057,7 +12057,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -13199,7 +13199,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -14358,7 +14358,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',1:skiptick:50)
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -14455,7 +14455,7 @@
                                             end
                                         end    
                                         set(gca,'xtick',[])
-                                        set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                        set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                         set(gca,'fontsize',14)
                                         hold on                        
                                         ylabel('','fontsize',14)                                   
@@ -15390,7 +15390,7 @@
                                     end                                    
                                     ylim(errylim(plt,:))
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     set(gca,'xticklabel',[]) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
@@ -16325,7 +16325,7 @@
                                         aylim=10:5:1000;bylim=aylim(find(rem(impylim(plt,end)*2,aylim)==0));bylim=bylim(1);set(gca,'ytick',impylim(plt,1):bylim:impylim(plt,end))
                                     end
                                     set(gca,'xtick',1:skiptick:50)
-                                    set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
                                     grid on
                                     set(gca,'gridcolor','k','gridalpha',.15)
                                     set(gca,'fontsize',20)      
@@ -16428,7 +16428,7 @@
                                             end    
                                         end
                                     end
-									if identconmetric==1;clear tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb;cmloc=0.0282/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;end;for identexploop=tmpu;tmp_err(:,:,identexploop)=squeeze(nanmean((tmp_exp),1));tmp_errmed(:,:,identexploop)=squeeze(nanmedian((tmp_exp),1));if size(tmp_exp,1)==1;sigtest_95(:,identexploop)=repmat(0,size(tmp_exp,2),1);sigtest_90(:,identexploop)=repmat(0,size(tmp_exp,2),1);else;sigtest_95(:,identexploop)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.05)';sigtest_90(:,identexploop)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.1)';end;tmp_imp(:,identexploop)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed(:,identexploop)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp1=abs(tmp_exp(:,:,identexploop));tmp2=abs(tmp_exp(:,:,tmpimp));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias(:,:,identexploop)=squeeze(nanmean((tmp_exp),1));tmp_fsp(:,identexploop)=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;for tmp=1:size(identexp,1);tmp_fcst(:,tmp,identexploop)=sum(~isnan(tmp_exp(:,:,tmp)),1);end;tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);a=find(tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1);sconsistent(a)=2;b=find((tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>-1) | (tmp_imp>=1 & tmp_fsp>-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1) | (tmp_imp>-1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b)=1;c=find(tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1);sconsistent(c)=-2;d=find((tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<1) | (tmp_imp<=-1 & tmp_fsp<((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1) | (tmp_imp<1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d)=-1;cm=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.0282/size(tmpu,2)]);imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;hold on;cnt=1;for i=1;for j=1:size(tmp_exp,2);if sigtest_90(j,cnt)+sigtest_95(j,cnt)==2;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7);elseif sigtest_90(j,cnt)+sigtest_95(j,cnt)==1;plot(j,i,'o','Color','k','markersize',5.5,'markerfacecolor','k');else;end;end;cnt=cnt+1;end;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]);end;end;set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+3),-1:size(sconsistent,1)+1,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=1;set(gca,'Color',[.9 .9 .9]);end;end;f = getframe(hfig);
+									if identconmetric==1;clear tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb;cmloc=0.0282/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;end;for identexploop=tmpu;tmp_err(:,:,identexploop)=squeeze(nanmean((tmp_exp),1));tmp_errmed(:,:,identexploop)=squeeze(nanmedian((tmp_exp),1));if size(tmp_exp,1)==1;sigtest_95(:,identexploop)=repmat(0,size(tmp_exp,2),1);sigtest_90(:,identexploop)=repmat(0,size(tmp_exp,2),1);else;sigtest_95(:,identexploop)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.05)';sigtest_90(:,identexploop)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.1)';end;tmp_imp(:,identexploop)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed(:,identexploop)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp1=abs(tmp_exp(:,:,identexploop));tmp2=abs(tmp_exp(:,:,tmpimp));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias(:,:,identexploop)=squeeze(nanmean((tmp_exp),1));tmp_fsp(:,identexploop)=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;for tmp=1:size(identexp,1);tmp_fcst(:,tmp,identexploop)=sum(~isnan(tmp_exp(:,:,tmp)),1);end;tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);a=find(tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1);sconsistent(a)=2;b=find((tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>-1) | (tmp_imp>=1 & tmp_fsp>-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1) | (tmp_imp>-1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b)=1;c=find(tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1);sconsistent(c)=-2;d=find((tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<1) | (tmp_imp<=-1 & tmp_fsp<((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1) | (tmp_imp<1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d)=-1;cm=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.0282/size(tmpu,2)]);sconsistent(isnan(sconsistent))=0;imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;hold on;cnt=1;for i=1;for j=1:size(tmp_exp,2);if sigtest_90(j,cnt)+sigtest_95(j,cnt)==2;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7);elseif sigtest_90(j,cnt)+sigtest_95(j,cnt)==1;plot(j,i,'o','Color','k','markersize',5.5,'markerfacecolor','k');else;end;end;cnt=cnt+1;end;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+3),-1:size(sconsistent,1)+1,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=1;set(cm,'Color',[.9 .9 .9]);end;end;f = getframe(hfig);
                                     if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
                                     close all
                                 end; end                                                                                         
@@ -17236,13 +17236,13 @@
 										clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);hold on;
 
 										% Plot Matrix & Flip
-										imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij
+										sconsistent(isnan(sconsistent))=0;imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij
 
 										% Markers for Stat. Sig.
 										cnt=1;for i=1:6;for j=1:size(sconsistent,2);if sigtest_90(j,cnt)+sigtest_95(j,cnt)==2;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7);elseif sigtest_90(j,cnt)+sigtest_95(j,cnt)==1;plot(j,i,'o','Color','k','markersize',5.5,'markerfacecolor','k');else;end;end;cnt=cnt+1;end;
 
 										% X- and Y- Axes: Ticks, Labels, Ranges
-										xlabel('Forecast Lead Time (h)','fontsize',20);set(gca,'fontsize',14);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]);end;end;set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24);set(gca,'fontsize',16);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'ytick',1:1:size(sconsistent,1)+.5);set(gca,'yticklabel',tmp_ytitle);set(gca,'TickLength',[0 0]);
+										xlabel('Forecast Lead Time (h)','fontsize',20);set(gca,'fontsize',14);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([0.5 (((identmaxfhr*3))/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1)-.5]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([0.5 (((identmaxfhr*3)-3)/skiphr+1)+.5]);else;xlim([0.5 (((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1)-.5]);end;end;set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));set(gca,'fontsize',16);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'ytick',1:1:size(sconsistent,1)+.5);set(gca,'yticklabel',tmp_ytitle);set(gca,'TickLength',[0 0]);
 
 										% Colormap
 										colorbar;caxis([-2.5 2.5]);run customcolorbars;cl=colorbar;cl.Ticks=[-2:1:2];colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));
@@ -17346,7 +17346,7 @@
 											end
 										end    
 										set(gca,'xtick',1:skiptick:50)
-										set(gca,'xticklabel',0:skiphr*skiptick:(identmaxfhr*3)+24) 
+										set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
 										set(gca,'fontsize',9)
 										ylim([0.5 size(sc,1)+.5])
 										set(gca,'ytick',1:1:size(sc,1)+.5)

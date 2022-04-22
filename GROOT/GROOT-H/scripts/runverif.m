@@ -348,6 +348,7 @@ for identremoveinvest=1
 					identfold=strcat(identfold,tmp,'_');
 				end
 			end; if identremoveland==1;identfold=[identfold(1:end-1),'_noland/'];end;if identeps==1;identfold=[identfold(1:end-1),'_eps/'];else;identfold=[identfold(1:end-1),'_png/'];end;
+			
 			%% Model outputs at 3 h, but to compare errors to BT make 6 h!
 			skip=2;                                                    % 6 h res | skip=1 is 3 h
 			skiphr=6;                                                  % 6 h res | skiphr=3 is 3 h res

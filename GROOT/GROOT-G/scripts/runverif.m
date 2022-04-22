@@ -358,6 +358,7 @@ for identremoveinvest=1
 					identfold=strcat(identfold,tmp,'_');
 				end
 			end; if identremoveland==1;identfold=[identfold(1:end-1),'_noland/'];end;if identeps==1;identfold=[identfold(1:end-1),'_eps/'];else;identfold=[identfold(1:end-1),'_png/'];end;
+			
 			%% Model outputs at 3 h, but to compare errors to BT make 6 h!
 			skip=2;                                                    % 6 h res | skip=1 is 3 h
 			skiphr=6;                                                  % 6 h res | skiphr=3 is 3 h res
@@ -402,7 +403,7 @@ for identremoveinvest=1
 					end
 					identbtyear=identbtyear';
 					if identconv==1 || identsatobs==1
-						stratlist=[1:14,100:108];
+						stratlist=[1:14,200,100:108];
 					else
 						stratlist=[1,4:14,100:102];
 					end
@@ -497,8 +498,8 @@ for identremoveinvest=1
 							% Initialize arrays
 							BT_name_all     =   {};
 							BT_target_all   =   [];
-							BT_drops_all    =   [];
-							BT_year_all    =   [];BT_obsg_all=[];
+							BT_drops_all    =   [];BT_obsg_all=[];
+							BT_year_all    =   [];
 							BT_date_all     =   [];
 							BT_storm_all    =   [];
 							BT_lat_all      =   [];
@@ -706,8 +707,8 @@ for identremoveinvest=1
 				% Reassign variables for easy plotting
 				BT_date=BT_date_all;
 				BT_name=BT_name_all;
-				BT_drops=BT_drops_all;
-				BT_target=BT_target_all;BT_obsg=BT_obsg_all;
+				BT_drops=BT_drops_all;BT_obsg=BT_obsg_all;
+				BT_target=BT_target_all;
 				BT_year=BT_year_all;
 				BT_storm=BT_storm_all;
 				BT_lat=BT_lat_all;
@@ -1436,7 +1437,7 @@ for identremoveinvest=1
 						% Mean Value            
 						ylabv=[];
 						for tmp=1:size(identexpshort,1)
-				identdr=dir([identgroovpr,identexp{tmp},'/anl/',identtmp1,'*','atcfunix']); %GROOT-G Change
+							if tmp==size(identexpshort,1)
 								ylabv=[ylabv, 'and ',identexpshort{tmp},' Values'];
 							else
 								ylabv=[ylabv,identexpshort{tmp},', '];

@@ -20,15 +20,14 @@
 # Set Folders
 dirpth=/scratch1/AOML/aoml-osse/${USER}      # directory path above GROOT location
 cycling="6"               		# frequency of cycling in your model (often 6 for 6 h)
-set -A expyears 2018 2019 2020	 		# years included
-numyears=3				# number of years in expyears - the number must match!	
-#atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/V16_HDOB/atcf/	# location of your atcf output
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_E_FINAL/atcf_recon/ #/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/HWRF_HAFS/  # location of your atcf output
+set -A expyears 2021	 		# years included
+numyears=1				# number of years in expyears - the number must match!	
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/hafstrak/early/     # location of your atcf output
 diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/anl/	# location of your diag output
 
 # Identify Experiments
-set -A expfold V16H V16R	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew V16H-E-R V16R-E-R             # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expfold HBDI H21I	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew HBDI H21I               # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing and want graphics for
 
@@ -39,8 +38,8 @@ emlold=sarah.d.ditchek@noaa.gov         # email address currently listed in SBAT
 emlnew=sarah.d.ditchek@noaa.gov         # email address you want listed in SBATCH above
 
 # Date range of files desired from first cycle of first year to last cycle of last year | format must be yyyy-mm-dd hh
-startdate1="2018-09-02 12"
-enddate1="2020-09-14 06"
+startdate1="2021-05-22 12"
+enddate1="2021-10-05 06"
  
 ########################
 # END OF USER SETTINGS #
@@ -63,7 +62,7 @@ progresspath=${dirpth}/GROOT/GROOT-G/GROOT-PR
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT_editsingle.txt
-#rm -f ${dirpth}/GROOT/GROOT-G/slurm*
+rm -f ${dirpth}/GROOT/GROOT-G/slurm*
 
 # Change Accounts and Emails
 cd ${homepath}/GROOT/GROOT-G/
