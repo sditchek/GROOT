@@ -41,12 +41,12 @@ for identremoveinvest=1
                         identfold=strcat(identfold,tmp,'_');
                     end
                 end; if identremoveland==1;identfold=[identfold(1:end-1),'_noland/'];end;if identeps==1;identfold=[identfold(1:end-1),'_eps/'];else;identfold=[identfold(1:end-1),'_png/'];end;
-                if ~exist([identout,'cases/',identfold], 'dir')                 % if this is the first time running these scripts, it will create the cases directory
-                    mkdir([identout,'cases/',identfold])
+                if ~exist(['cases/',identfold], 'dir')                 % if this is the first time running these scripts, it will create the cases directory
+                    mkdir(['cases/',identfold])
                 end
                 copyfile('editverif.m',['cases/',identfold,identn,'_verif.m'])  % copy file into cases directory so if you need to run again, you'll already have it saved!
                 % Save the output
-                save([identout,'indivparams.mat'])                              % this file will be saved in the [identout] directory so it can be used when needed
+                save('indivparams.mat')                              % this file will be saved in the running directory so it can be used when needed
                 % Get common initalizations between all experiments
                 for comm=1
                     cnt=1;
@@ -113,7 +113,7 @@ for identremoveinvest=1
                     % Load the indivparams.mat that is set in editsingle.m
                     load('indivparams.mat')
                     % Add paths to scripts
-                    addpath([identout,'scripts'])
+                    addpath('scripts')
                     identfold='';
                     for i=1:size(identexp,1)
                         tmp=identexpshort{i};
@@ -137,7 +137,7 @@ for identremoveinvest=1
                         disp('DIRECTORY STRUCTURE ALREADY EXISTS')
                     end
                     identtrackint=[identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/TRACKINT'];
-                    identbdecks=[identout,'bdeck/'];
+                    identbdecks='bdeck/';
                     % Get common initalizations between all experiments
                     cnt=1;
                      for tmp=1:size(identexpshort,1)
@@ -175,7 +175,7 @@ for identremoveinvest=1
 						identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
                 end
                     % Add package to read grb2 files to path
-                    run([identout,'nctoolbox-1.1.3/setup_nctoolbox'])
+                    run('nctoolbox-1.1.3/setup_nctoolbox')
                 end
                 %% %%%%%%%%% %%
                 %% Get BDECK %%
@@ -356,16 +356,16 @@ for identremoveinvest=1
 			skipfct=4;                                                 % 6 h res | skipfct=4 is still 3 h res
 
 			%% Add paths to scripts
-			addpath([identout,'scripts'])
+			addpath('scripts')
 
 			%% Get the storms that are part of the experiment
 			identdr5=dir([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/*']);
 			identdr5=unique({identdr5.name});
 			identdr5=identdr5(3:end);
-			save([identout,'compsave1.mat'])
+			save('compsave1.mat')
 			
 			%% Create output file for shell script
-			fid = fopen([identout,'compverif.txt'],'wt');
+			fid = fopen('compverif.txt','wt');
 			fprintf(fid,'%s\n',['initbasins="',num2str(1:size(identdr5,2)),'"']);
 			fclose(fid);	
 			
@@ -438,7 +438,7 @@ for identremoveinvest=1
 							cnt=cnt+1;
 						end
 					end
-					fid = fopen([identout,'stratverif_',num2str(basinloop),'.txt'],'wt');
+					fid = fopen(['stratverif_',num2str(basinloop),'.txt'],'wt');
 					fprintf(fid,'%s\n',['initstrat="',num2str(1:cnt),'"']);
 					if exist('identstratlist1','var')==1	
 						fprintf(fid,'%s\n',['initstrat1="[',num2str(identstratlist1),']"']);
@@ -460,7 +460,7 @@ for identremoveinvest=1
 			end			
 		end
 		if identcompositerun==1
-			load([identout,'compsave1.mat'])
+			load('compsave1.mat')
 			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1 || strcmp(identdr5{1},'WP')==1
 				%% To deal with multiple basins, if present
 				identbasincut(1)=1;
@@ -1674,16 +1674,16 @@ for identremoveinvest=1
 				ABT_target=BT_target;
 				ABT_targetB=BT_targetB;
 				clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT_drops ABT_dropsB ABT_dropsI ABT_dropsT ABT_targetI ABT_targetT ABT_target ABT_targetB *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone            
-				save([identout,'compsave2.mat'])						
-				run([identout,'scripts/runverif_statcomp'])
+				save('compsave2.mat')						
+				run('scripts/runverif_statcomp')
 			end
 		end
 		if identcompositefin==1
-			load([identout,'compsave1.mat'])
-			load([identout,'compsave2.mat'])
+			load('compsave1.mat')
+			load('compsave2.mat')
 			if size(stormsdone,2)>1
-				run([identout,'scripts/runverif_convcomp'])
-				run([identout,'scripts/runverif_satcomp'])		
+				run('scripts/runverif_convcomp')
+				run('scripts/runverif_satcomp')		
 			end
 		end
     end

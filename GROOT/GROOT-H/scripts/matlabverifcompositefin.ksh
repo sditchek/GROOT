@@ -44,6 +44,6 @@ rm -f ${scriptspath}/compverif.txt
 rm -f ${homepath}/GROOT/GROOT-H/com*.txt
 rm -f ${homepath}/GROOT/GROOT-H/*.mat
 
-sbatch ${scriptspath}/matlabveriffinished.ksh ${homepath}
+sbatch ${scriptspath}/matlabveriffinished.ksh ${homepath} ${scriptspath}
 
 exit 0

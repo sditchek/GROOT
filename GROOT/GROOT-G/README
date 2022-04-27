@@ -101,8 +101,10 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
-4/22/22  | Added a switch to automatically place the consistency metric on the error/skill combo plots for both mean and median
-         | Ensured that the xaxis labels were "strings" so that they would be centered on the tick marks
+4/26/22  | Added a switch to automatically place the consistency metric on the error/skill combo plots for both mean and median - it automatically resizes based on the number of experiments
+         | Changed the xaxis labels to "strings" so that they would be centered on the tick marks
+         | Changed CONSISTENCYSCORECARD graphics to 1) include RMW and 2) to  extend to the same x-axis limit as the error/skill graphics
+         | Enabled the location of the results output to be a different folder than the running folder
 4/19/22  | Fixed a bug where the yaxis labels for the skill graphics weren't centered around 0
 4/11/22  | Changed "Wind Speed" to "VMAX" and "Pressure" to "PMIN"
 3/28/22  | Added a switch to save files as either eps or png

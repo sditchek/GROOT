@@ -20,6 +20,7 @@
 ########################
 
 homepath=$1
+scriptspath=$2
 
 # Import the values in the output file
 cp caseverif.txt ${scriptspath}/

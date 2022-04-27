@@ -2,7 +2,7 @@
 #SBATCH -t 00:05:00         # XXXX: Time Limit | generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
-#SBATCH -p hera	    # XXXX: Partition | keep it hera
+#SBATCH -p hera		    # XXXX: Partition | keep it hera
 #SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
 #SBATCH --mail-type=fail    # XXXX: Email Type | NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov # XXXX: Email | Use your email
@@ -19,7 +19,8 @@
 
 # Set Folders
 homepath=/scratch1/AOML/aoml-osse/${USER}/              # directory path above the GROOT package
-noscrubpath=${homepath}/noscrub/atcf                        # path to your atcf files
+resultspath=/scratch2/AOML/aoml-osse/${USER}/           # directory path for results
+noscrubpath=${homepath}/noscrub/atcf                    # path to your atcf files
 scrubpath=${homepath}/scrub				# path to your scrub directory
 dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
 
@@ -38,16 +39,16 @@ emlnew=sarah.d.ditchek@noaa.gov         		# email address you want listed in SBA
 # END OF USER SETTINGS #
 ########################
 
-rm -rf ${homepath}/GROOT/GROOT-H/GROOT-PR/
-mkdir -p ${homepath}/GROOT/GROOT-H/GROOT-PR
+rm -rf ${resultspath}/GROOT/GROOT-H/GROOT-PR/
+mkdir -p ${resultspath}/GROOT/GROOT-H/GROOT-PR
 mkdir -p ${homepath}/GROOT/GROOT-H/output 
 outputpath=${homepath}/GROOT/GROOT-H/output
-verifpath=${homepath}/GROOT/GROOT-H/GROOT-PR
+verifpath=${resultspath}/GROOT/GROOT-H/GROOT-PR
 scriptspath=${homepath}/GROOT/GROOT-H/scripts
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT*VERIF*.txt
-rm -f ${homepath}/GROOT/GROOT-H/slurm* 
+#rm -f ${homepath}/GROOT/GROOT-H/slurm* 
 rm -f ${homepath}/GROOT/GROOT-H/SUBMISSION_FINISHED.txt
 
 # Change Accounts and Emails
@@ -95,7 +96,7 @@ done
 
 # Run the namelist
 cd ${homepath}/GROOT/GROOT-H/
-matlab -nosplash -nodesktop < editverif.m > ${outputpath}/OUTPUT_verif.txt
+matlab -nosplash -nodesktop < editverif.m > ${outputpath}/OUTPUT_VERIF.txt
 wait
 
 # Import the values in the output file

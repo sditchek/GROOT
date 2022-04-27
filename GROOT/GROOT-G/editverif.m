@@ -3,13 +3,13 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identgroovpr=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/'];% location of your GROOT-PR dirctory
-identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/'];             % location of where all graphics will go
+identout=['/scratch2/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/'];             % directory path for results | must be same as resultspath in runverif.ksh
+identgroovpr=[identout,'GROOT-PR/'];						  % DO NOT CHANGE - location of your GROOT-PR dirctory
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'HBDI'};{'H21I'}];             			          	          % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'HBDI'};{'H21I'}];	             			          	  % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='H21I';                                                              % full folder name of improvement and significance wrt THIS experiment
 identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment
@@ -55,7 +55,7 @@ identchannel=[200];                       % used to generate graphics of profile
                                           % look in your COM directory for the file that ends in *channels.txt and choose the value(s) in col1 that you want 
                                           % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel;  for 1 or more, identchannel=[a,b,c]; for all, identchannel='all';                                                            
 % Graphics Options														
-identeps=1;				  % save as eps or png? | eps (1) png (0)
+identeps=0;				  % save as eps or png? | eps (1) png (0)
 identconmetric=1;			  % include the consistency metric on the error/skill combo graphics for both the mean and median | yes (1) no (0)
 %% %%%%%%%%%%%%%%%%%%%% %%
 %% END OF USER SETTINGS %%
@@ -143,7 +143,7 @@ elseif identcase==1
 end
 
 %% Save the output
-save([identout,'startverif.mat'])                        % this file will be saved in the [identout] directory so it can be used when needed
+save('startverif.mat')                        % this file will be saved in the [identout] directory so it can be used when needed
 
 %% Create output file for shell script
 fid = fopen('commonverif.txt','wt');

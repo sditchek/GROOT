@@ -3,13 +3,13 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identgroovpr=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/'];% location of your GROOT-PR dirctory
-identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];             % location of where all graphics will go
+identout=['/scratch2/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];             % directory path for results | must be same as resultspath in runverif.ksh
+identgroovpr=[identout,'GROOT-PR/'];						  % DO NOT CHANGE - location of your GROOT-PR dirctory
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'ALL'};{'NO'}];             			          	          % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'ALL'};{'NO'}];	             			          	  % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='NO';                                                              % full folder name of improvement and significance wrt THIS experiment
 identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment
@@ -144,7 +144,7 @@ elseif identcase==1
 end
 
 %% Save the output
-save([identout,'startverif.mat'])                        % this file will be saved in the [identout] directory so it can be used when needed
+save('startverif.mat')                        % this file will be saved in the [identout] directory so it can be used when needed
 
 %% Create output file for shell script
 fid = fopen('commonverif.txt','wt');

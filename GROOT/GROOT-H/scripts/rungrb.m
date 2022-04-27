@@ -6,7 +6,7 @@ for setup=1
     load('startparams.mat')
 
     % Add paths to scripts
-    addpath([identout,'scripts'])
+    addpath('scripts')
     
     identfold='';
     for i=1:size(identexp,1)
@@ -45,7 +45,7 @@ for setup=1
     identfields=[identout,'RESULTS/',identfold,identn,'/FIELDS'];
     identtrackint=[identout,'RESULTS/',identfold,identn,'/TRACKINT'];
     identhwrfda=[identout,'RESULTS/',identfold,identn,'/HWRFDA'];
-    identbdecks=[identout,'bdeck/'];
+    identbdecks='bdeck/';
     %% Get common initalizations between all experiments
     cnt=1;
     for tmp=1:size(identexp,1)
@@ -65,7 +65,7 @@ for setup=1
     identinittimesunique=unique(identdr1(index,:),'rows');
 
     % Add package to read grb2 files to path
-    run([identout,'nctoolbox-1.1.3/setup_nctoolbox'])
+    run('nctoolbox-1.1.3/setup_nctoolbox')
 end
 
 %% %%%%%%%%% %%
