@@ -4482,7 +4482,7 @@ for graphics=1
 				plot(-1:size(sc,2)+1,repmat(49.5,size(sc,2)+3,1),'k','linewidth',2)
 
 				% Box Outside Graphic
-				plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',28)
+				plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',20)
 				plot(-2.5:size(sc,2)-7,repmat(0.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 				plot(-2.5:size(sc,2)-7,repmat(9.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 				plot(-2.5:size(sc,2)-7,repmat(17.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
@@ -10300,7 +10300,7 @@ for graphics=1
 									plot(-1:size(sc,2)+1,repmat(49.5,size(sc,2)+3,1),'k','linewidth',2)
 
 									% Box Outside Graphic
-									plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',28)
+									plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',20)
 									plot(-2.5:size(sc,2)-7,repmat(0.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 									plot(-2.5:size(sc,2)-7,repmat(9.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 									plot(-2.5:size(sc,2)-7,repmat(17.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
@@ -19929,7 +19929,7 @@ for graphics=1
 									plot(-1:size(sc,2)+1,repmat(49.5,size(sc,2)+3,1),'k','linewidth',2)
 
 									% Box Outside Graphic
-									plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',28)
+									plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',20)
 									plot(-2.5:size(sc,2)-7,repmat(0.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 									plot(-2.5:size(sc,2)-7,repmat(9.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 									plot(-2.5:size(sc,2)-7,repmat(17.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')

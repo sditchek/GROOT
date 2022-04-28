@@ -3604,7 +3604,7 @@
 										plot(-1:size(sc,2)+1,repmat(49.5,size(sc,2)+3,1),'k','linewidth',2)
 
 										% Box Outside Graphic
-										plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',28)
+										plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',20)
 										plot(-2.5:size(sc,2)-7,repmat(0.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 										plot(-2.5:size(sc,2)-7,repmat(9.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 										plot(-2.5:size(sc,2)-7,repmat(17.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
@@ -3615,7 +3615,7 @@
 										plot(-2.5:size(sc,2)-7,repmat(57.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')                
 
 										% Variable Titles
-										text(-2,1,5,['\textbf{TRACK}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
+										text(-2.1,5,['\textbf{TRACK}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										%text(-1.88,13.5,['\textbf{WIND}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-2.1,13.5,['\textbf{VMAX}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
 										text(-2.1,21.5,['\textbf{PMIN}'],'color','w','rotation',90,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex')
