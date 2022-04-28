@@ -26,8 +26,8 @@ for identremoveinvest=1
 		elseif strcmp(identtmp3,'CP')==1
 		    identtmp4='c';
 		end
-		addpath([identout,'scripts'])
-		identbdecks=[identout,'bdeck/'];
+		addpath(['scripts'])
+		identbdecks=['bdeck/'];
 		
 		%for bdecks=1
 		    filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];
@@ -332,8 +332,8 @@ for identremoveinvest=1
             elseif strcmp(identtmp3,'CP')==1
                 identtmp4='c';
             end
-            addpath([identout,'scripts'])
-            identbdecks=[identout,'bdeck/'];
+            addpath(['scripts'])
+            identbdecks=['bdeck/'];
 
             %for bdecks=1
                    filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];
