@@ -18,16 +18,17 @@
 # 3) OTHERWISE THERE IS NOTHING ELSE TO EDIT HERE :)
 
 # Set Folders
-dirpth=/scratch1/AOML/aoml-osse/${USER}      # directory path above GROOT location
-cycling="6"               		# frequency of cycling in your model (often 6 for 6 h)
-set -A expyears 2021	 		# years included
-numyears=1				# number of years in expyears - the number must match!	
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/hafstrak/early/     # location of your atcf output
+dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT running location
+resultspath=/scratch2/AOML/aoml-osse/${USER}/GROOT/GROOT-G/     # location where results folder should go
+cycling="6"               					# frequency of cycling in your model (often 6 for 6 h)
+set -A expyears 2021	 					# years included (i.e., YYYY) - for more than one year list with spaces between them
+numyears=1							# number of years in expyears - the number must match!	
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/H3BDH221_HBDIH21I/early/			# location of your atcf output
 diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/anl/	# location of your diag output
 
 # Identify Experiments
 set -A expfold HBDI H21I	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew HBDI H21I               # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expnew HBDI H21I                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing and want graphics for
 
@@ -46,19 +47,18 @@ enddate1="2021-10-05 06"
 ########################
 
 # Clear Directories
-rm -rf ${dirpth}/GROOT/GROOT-G/GROOT-PR
+rm -rf ${resultspath}/GROOT-PR
 
 # Paths
 mkdir -p ${dirpth}/GROOT/GROOT-G/scripts
 mkdir -p ${dirpth}/GROOT/GROOT-G/output
-mkdir -p ${dirpth}/GROOT/GROOT-G/RESULTS
-mkdir -p ${dirpth}/GROOT/GROOT-G/GROOT-PR
+mkdir -p ${resultspath}/RESULTS
+mkdir -p ${resultspath}/GROOT-PR
 
 homepath=${dirpth}
 scriptspath=${dirpth}/GROOT/GROOT-G/scripts
 outputpath=${dirpth}/GROOT/GROOT-G/output
-resultspath=${dirpth}/GROOT/GROOT-G/RESULTS/
-progresspath=${dirpth}/GROOT/GROOT-G/GROOT-PR
+progresspath=${resultspath}/GROOT-PR
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT_editsingle.txt
