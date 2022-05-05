@@ -4322,7 +4322,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 					tmp_bias(:,plt)=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_bias0(:,plt,:)=squeeze(nanmean((tmp_exp(:,:,:)),1));
 					tmp_fsp(:,plt)=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;  
 					for tmp=1
-						tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);
+						tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);tmp_fcst0(:,plt,:)=sum(~isnan(tmp_exp(:,:,:)),1);
 					end 
 				end        
 
@@ -19899,8 +19899,8 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 										tmp_bias(:,plt)=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_bias0(:,plt,:)=squeeze(nanmean((tmp_exp(:,:,:)),1));
 										tmp_fsp(:,plt)=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;  
 										for tmp=1
-											tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);
-										end 
+											tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);tmp_fcst0(:,plt,:)=sum(~isnan(tmp_exp(:,:,:)),1);
+										end
 									end        
 									
 									%% CONSISTENCY SCORECARD		
@@ -20059,7 +20059,7 @@ filename=[identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique
 									plot(-1:size(sc,2)+1,repmat(49.5,size(sc,2)+3,1),'k','linewidth',2)
 
 									% Box Outside Graphic
-									plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',28)
+									plot(repmat(-2.2,1,size(sc,1)+1),0.5:size(sc,1)+.5,'k','clipping','off','linewidth',20)
 									plot(-2.5:size(sc,2)-7,repmat(0.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 									plot(-2.5:size(sc,2)-7,repmat(9.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')
 									plot(-2.5:size(sc,2)-7,repmat(17.5,size(sc,2)-4,1),'k','linewidth',2,'clipping', 'off')

@@ -4322,7 +4322,7 @@ for graphics=1
 					tmp_bias(:,plt)=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_bias0(:,plt,:)=squeeze(nanmean((tmp_exp(:,:,:)),1));
 					tmp_fsp(:,plt)=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;  
 					for tmp=1
-						tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);
+						tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);tmp_fcst0(:,plt,:)=sum(~isnan(tmp_exp(:,:,:)),1);
 					end 
 				end        
 
@@ -19769,8 +19769,8 @@ for graphics=1
 										tmp_bias(:,plt)=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_bias0(:,plt,:)=squeeze(nanmean((tmp_exp(:,:,:)),1));
 										tmp_fsp(:,plt)=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;  
 										for tmp=1
-											tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);
-										end 
+											tmp_fcst(:,plt)=sum(~isnan(tmp_exp(:,:,identexploop)),1);tmp_fcst0(:,plt,:)=sum(~isnan(tmp_exp(:,:,:)),1);
+										end
 									end        
 									
 									%% CONSISTENCY SCORECARD		

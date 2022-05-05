@@ -29,7 +29,6 @@ set -A expfold HB20_B1_ALL HB20new HB20_B2_ALL HB20_B3_ALL HB20_B6_ALL HB20_B7_A
 set -A expnew ALL ALL ALL ALL ALL ALL ALL NO NO NO NO NO NO NO # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=14
 
-# Account Information
 acntold=aoml-osse                       		# account currently listed in SBATCH above
 acntnew=aoml-osse                       		# account you want listed in SBATCH above
 emlold=sarah.d.ditchek@noaa.gov        			# email address currently listed in SBATCH above
@@ -48,7 +47,7 @@ scriptspath=${homepath}/GROOT/GROOT-H/scripts
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT*VERIF*.txt
-#rm -f ${homepath}/GROOT/GROOT-H/slurm* 
+rm -f ${homepath}/GROOT/GROOT-H/slurm* 
 rm -f ${homepath}/GROOT/GROOT-H/SUBMISSION_FINISHED.txt
 
 # Change Accounts and Emails
