@@ -11,11 +11,11 @@ identbasinmodel=1;                                                              
 % Choose experiments and colors
 identexp=[{'HBDI'};{'H21I'}];	             			          	  % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
-identexpsigimp='H21I';                                                            % full folder name of improvement and significance wrt THIS experiment
-identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment
+identexpsigimp='H21I';                                                              % full folder name of improvement and significance wrt THIS experiment
+identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment - do not use black since the best track is black by default
         	                                                                       % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroovpr,'/H21I/atcf']);                	           	  % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroovpr,'/H21I/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
 % Case Study: recommendation - make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
 identcase=0';								          % run graphics for just 1 storm | yes (1) no (0)
@@ -39,7 +39,7 @@ identgraphicsconv=0;                                            % conventional o
 identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
 identconvobs=137;						% conventional observation obstype
 identconvtype=[0];                                              % subtypes desired 
-identincludeobs=1						% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
+identincludeobs=1					% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
                                                                     % NO SUBTYPE: identconvtype=0
                                                                     % YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
 identconvcolors=[.8 .2 .8;.9 .4 .2];                            % colors for each of your subtypes
@@ -55,7 +55,7 @@ identchannel=[200];                       % used to generate graphics of profile
                                           % look in your COM directory for the file that ends in *channels.txt and choose the value(s) in col1 that you want 
                                           % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel;  for 1 or more, identchannel=[a,b,c]; for all, identchannel='all';                                                            
 % Graphics Options														
-identeps=0;				  % save as eps or png? | eps (1) png (0)
+identeps=1;				  % save as eps or png? | eps (1) png (0)
 identconmetric=1;			  % include the consistency metric on the error/skill combo graphics for both the mean and median | yes (1) no (0)
 %% %%%%%%%%%%%%%%%%%%%% %%
 %% END OF USER SETTINGS %%

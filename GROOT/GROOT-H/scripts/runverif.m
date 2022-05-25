@@ -838,74 +838,74 @@ for identremoveinvest=1
 						tmp_ytitle='Error (m/s)';
 					 elseif plt==4
 						tmp_exp=ne34err_exp(:,1:skip:end,:);
-						tmp_name='neRTSFerr';
-						tmp_title='RTSF NEQ Error (km)';
+						tmp_name='neR34err';
+						tmp_title='R34 NEQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==5
 						tmp_exp=se34err_exp(:,1:skip:end,:);
-						tmp_name='seRTSFerr';
-						tmp_title='RTSF SEQ Error (km)';
+						tmp_name='seR34err';
+						tmp_title='R34 SEQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==6
 						tmp_exp=sw34err_exp(:,1:skip:end,:);
-						tmp_name='swRTSFerr';
-						tmp_title='RTSF SWQ Error (km)';
+						tmp_name='swR34err';
+						tmp_title='R34 SWQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==7
 						tmp_exp=nw34err_exp(:,1:skip:end,:);
-						tmp_name='nwRTSFerr';
-						tmp_title='RTSF NWQ Error (km)';
+						tmp_name='nwR34err';
+						tmp_title='R34 NWQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==8
 						tmp_exp=ne50err_exp(:,1:skip:end,:);
-						tmp_name='neRSFerr';
-						tmp_title='RSF NEQ Error (km)';
+						tmp_name='neR50err';
+						tmp_title='R50 NEQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==9
 						tmp_exp=se50err_exp(:,1:skip:end,:);
-						tmp_name='seRSFerr';
-						tmp_title='RSF SEQ Error (km)';
+						tmp_name='seR50err';
+						tmp_title='R50 SEQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==10
 						tmp_exp=sw50err_exp(:,1:skip:end,:);
-						tmp_name='swRSFerr';
-						tmp_title='RSF SWQ Error (km)';
+						tmp_name='swR50err';
+						tmp_title='R50 SWQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==11
 						tmp_exp=nw50err_exp(:,1:skip:end,:);
-						tmp_name='nwRSFerr';
-						tmp_title='RSF NWQ Error (km)';
+						tmp_name='nwR50err';
+						tmp_title='R50 NWQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==12
 						tmp_exp=ne64err_exp(:,1:skip:end,:);
-						tmp_name='neRHFerr';
-						tmp_title='RHF NEQ Error (km)';
+						tmp_name='neR64err';
+						tmp_title='R64 NEQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==13
 						tmp_exp=se64err_exp(:,1:skip:end,:);
-						tmp_name='seRHFerr';
-						tmp_title='RHF SEQ Error (km)';
+						tmp_name='seR64err';
+						tmp_title='R64 SEQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==14
 						tmp_exp=sw64err_exp(:,1:skip:end,:);
-						tmp_name='swRHFerr';
-						tmp_title='RHF SWQ Error (km)';
+						tmp_name='swR64err';
+						tmp_title='R64 SWQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==15
 						tmp_exp=nw64err_exp(:,1:skip:end,:);
-						tmp_name='nwRHFerr';
-						tmp_title='RHF NWQ Error (km)';
+						tmp_name='nwR64err';
+						tmp_title='R64 NWQ Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 200];
 					elseif plt==16
@@ -937,20 +937,20 @@ for identremoveinvest=1
 						yrange=[-500 500]; 
 					elseif plt==21
 						tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
-						tmp_name='RTSFerr';
-						tmp_title='RTSF Error (km)';
+						tmp_name='R34err';
+						tmp_title='R34 Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 100];
 					elseif plt==22
 						tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
-						tmp_name='RSFerr';
-						tmp_title='RSF Error (km)';
+						tmp_name='R50err';
+						tmp_title='R50 Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 100];
 					elseif plt==23
 						tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
-						tmp_name='RHFerr';
-						tmp_title='RHF Error (km)';
+						tmp_name='R64err';
+						tmp_title='R64 Error (km)';
 						tmp_ytitle='Error (km)';
 						yrange=[0 100];
 					end
@@ -1034,74 +1034,74 @@ for identremoveinvest=1
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 					 elseif plt==4
 						tmp_exp=ne34err_exp(:,1:skip:end,:);
-						tmp_name='neRTSFskill';
-						tmp_title='RTSF NEQ Skill (\%)';
+						tmp_name='neR34skill';
+						tmp_title='R34 NEQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==5
 						tmp_exp=se34err_exp(:,1:skip:end,:);
-						tmp_name='seRTSFskill';
-						tmp_title='RTSF SEQ Skill (\%)';
+						tmp_name='seR34skill';
+						tmp_title='R34 SEQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==6
 						tmp_exp=sw34err_exp(:,1:skip:end,:);
-						tmp_name='swRTSFskill';
-						tmp_title='RTSF SWQ Skill (\%)';
+						tmp_name='swR34skill';
+						tmp_title='R34 SWQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==7
 						tmp_exp=nw34err_exp(:,1:skip:end,:);
-						tmp_name='nwRTSFskill';
-						tmp_title='RTSF NWQ Skill (\%)';
+						tmp_name='nwR34skill';
+						tmp_title='R34 NWQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==8
 						tmp_exp=ne50err_exp(:,1:skip:end,:);
-						tmp_name='neRSFskill';
-						tmp_title='RSF NEQ Skill (\%)';
+						tmp_name='neR50skill';
+						tmp_title='R50 NEQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==9
 						tmp_exp=se50err_exp(:,1:skip:end,:);
-						tmp_name='seRSFskill';
-						tmp_title='RSF SEQ Skill (\%)';
+						tmp_name='seR50skill';
+						tmp_title='R50 SEQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==10
 						tmp_exp=sw50err_exp(:,1:skip:end,:);
-						tmp_name='swRSFskill';
-						tmp_title='RSF SWQ Skill (\%)';
+						tmp_name='swR50skill';
+						tmp_title='R50 SWQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==11
 						tmp_exp=nw50err_exp(:,1:skip:end,:);
-						tmp_name='nwRSFskill';
-						tmp_title='RSF NWQ Skill (\%)';
+						tmp_name='nwR50skill';
+						tmp_title='R50 NWQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==12
 						tmp_exp=ne64err_exp(:,1:skip:end,:);
-						tmp_name='neRHFskill';
-						tmp_title='RHF NEQ Skill (\%)';
+						tmp_name='neR64skill';
+						tmp_title='R64 NEQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==13
 						tmp_exp=se64err_exp(:,1:skip:end,:);
-						tmp_name='seRHFskill';
-						tmp_title='RHF SEQ Skill (\%)';
+						tmp_name='seR64skill';
+						tmp_title='R64 SEQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==14
 						tmp_exp=sw64err_exp(:,1:skip:end,:);
-						tmp_name='swRHFskill';
-						tmp_title='RHF SWQ Skill (\%)';
+						tmp_name='swR64skill';
+						tmp_title='R64 SWQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==15
 						tmp_exp=nw64err_exp(:,1:skip:end,:);
-						tmp_name='nwRHFskill';
-						tmp_title='RHF NWQ Skill (\%)';
+						tmp_name='nwR64skill';
+						tmp_title='R64 NWQ Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-100 100];                 
 					elseif plt==16
@@ -1133,20 +1133,20 @@ for identremoveinvest=1
 						yrange=[-200 200];                                 
 					elseif plt==21
 						tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
-						tmp_name='RTSFskill';
-						tmp_title='RTSF Skill (\%)';
+						tmp_name='R34skill';
+						tmp_title='R34 Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-50 50];
 					elseif plt==22
 						tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
-						tmp_name='RSFskill';
-						tmp_title='RSF Skill (\%)';
+						tmp_name='R50skill';
+						tmp_title='R50 Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-50 50];
 					elseif plt==23
 						tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
-						tmp_name='RHFskill';
-						tmp_title='RHF Skill (\%)';
+						tmp_name='R64skill';
+						tmp_title='R64 Skill (\%)';
 						tmp_ytitle=['Skill wrt ', identexpsigimpshort,' (%)'];
 						yrange=[-50 50];
 					end
@@ -1250,74 +1250,74 @@ for identremoveinvest=1
 						tmp_ytitle='Bias (m/s)';
 					 elseif plt==4
 						tmp_exp=ne34err_exp(:,1:skip:end,:);
-						tmp_name='neRTSFbias';
-						tmp_title='RTSF NEQ Bias (km)';
+						tmp_name='neR34bias';
+						tmp_title='R34 NEQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==5
 						tmp_exp=se34err_exp(:,1:skip:end,:);
-						tmp_name='seRTSFbias';
-						tmp_title='RTSF SEQ Bias (km)';
+						tmp_name='seR34bias';
+						tmp_title='R34 SEQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==6
 						tmp_exp=sw34err_exp(:,1:skip:end,:);
-						tmp_name='swRTSFbias';
-						tmp_title='RTSF SWQ Bias (km)';
+						tmp_name='swR34bias';
+						tmp_title='R34 SWQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==7
 						tmp_exp=nw34err_exp(:,1:skip:end,:);
-						tmp_name='nwRTSFbias';
-						tmp_title='RTSF NWQ Bias (km)';
+						tmp_name='nwR34bias';
+						tmp_title='R34 NWQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==8
 						tmp_exp=ne50err_exp(:,1:skip:end,:);
-						tmp_name='neRSFbias';
-						tmp_title='RSF NEQ Bias (km)';
+						tmp_name='neR50bias';
+						tmp_title='R50 NEQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==9
 						tmp_exp=se50err_exp(:,1:skip:end,:);
-						tmp_name='seRSFbias';
-						tmp_title='RSF SEQ Bias (km)';
+						tmp_name='seR50bias';
+						tmp_title='R50 SEQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==10
 						tmp_exp=sw50err_exp(:,1:skip:end,:);
-						tmp_name='swRSFbias';
-						tmp_title='RSF SWQ Bias (km)';
+						tmp_name='swR50bias';
+						tmp_title='R50 SWQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==11
 						tmp_exp=nw50err_exp(:,1:skip:end,:);
-						tmp_name='nwRSFbias';
-						tmp_title='RSF NWQ Bias (km)';
+						tmp_name='nwR50bias';
+						tmp_title='R50 NWQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==12
 						tmp_exp=ne64err_exp(:,1:skip:end,:);
-						tmp_name='neRHFbias';
-						tmp_title='RHF NEQ Bias (km)';
+						tmp_name='neR64bias';
+						tmp_title='R64 NEQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==13
 						tmp_exp=se64err_exp(:,1:skip:end,:);
-						tmp_name='seRHFbias';
-						tmp_title='RHF SEQ Bias (km)';
+						tmp_name='seR64bias';
+						tmp_title='R64 SEQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==14
 						tmp_exp=sw64err_exp(:,1:skip:end,:);
-						tmp_name='swRHFbias';
-						tmp_title='RHF SWQ Bias (km)';
+						tmp_name='swR64bias';
+						tmp_title='R64 SWQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==15
 						tmp_exp=nw64err_exp(:,1:skip:end,:);
-						tmp_name='nwRHFbias';
-						tmp_title='RHF NWQ Bias (km)';
+						tmp_name='nwR64bias';
+						tmp_title='R64 NWQ Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-200 200];
 					elseif plt==16
@@ -1349,20 +1349,20 @@ for identremoveinvest=1
 						yrange=[-500 500]; 
 					elseif plt==21
 						tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
-						tmp_name='RTSFbias';
-						tmp_title='RTSF Bias (km)';
+						tmp_name='R34bias';
+						tmp_title='R34 Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-100 100];
 					elseif plt==22
 						tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
-						tmp_name='RSFbias';
-						tmp_title='RSF Bias (km)';
+						tmp_name='R50bias';
+						tmp_title='R50 Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-100 100];
 					elseif plt==23
 						tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
-						tmp_name='RHFbias';
-						tmp_title='RHF Bias (km)';
+						tmp_name='R64bias';
+						tmp_title='R64 Bias (km)';
 						tmp_ytitle='Bias (km)';
 						yrange=[-100 100];
 					end
@@ -1456,96 +1456,96 @@ for identremoveinvest=1
 						 elseif plt==4
 							tmp_exp=squeeze(EXP_ne34(:,1,:));
 							tmp_bt=squeeze(BT_ne34(:,1,:));
-							tmp_name='neRTSFval';
-							tmp_title='RTSF NEQ (km)';
+							tmp_name='neR34val';
+							tmp_title='R34 NEQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==5
 							tmp_exp=squeeze(EXP_se34(:,1,:));
 							tmp_bt=squeeze(BT_se34(:,1,:));
-							tmp_name='seRTSFval';
-							tmp_title='RTSF SEQ (km)';
+							tmp_name='seR34val';
+							tmp_title='R34 SEQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==6
 							tmp_exp=squeeze(EXP_sw34(:,1,:));
 							tmp_bt=squeeze(BT_sw34(:,1,:));
-							tmp_name='swRTSFval';
-							tmp_title='RTSF SWQ (km)';
+							tmp_name='swR34val';
+							tmp_title='R34 SWQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==7
 							tmp_exp=squeeze(EXP_nw34(:,1,:));
 							tmp_bt=squeeze(BT_nw34(:,1,:));
-							tmp_name='nwRTSFval';
-							tmp_title='RTSF NWQ (km)';
+							tmp_name='nwR34val';
+							tmp_title='R34 NWQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==8
 							tmp_exp=squeeze(EXP_ne50(:,1,:));
 							tmp_bt=squeeze(BT_ne50(:,1,:));
-							tmp_name='neRSFval';
-							tmp_title='RSF NEQ (km)';
+							tmp_name='neR50val';
+							tmp_title='R50 NEQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==9
 							tmp_exp=squeeze(EXP_se50(:,1,:));
 							tmp_bt=squeeze(BT_se50(:,1,:));
-							tmp_name='seRSFval';
-							tmp_title='RSF SEQ (km)';
+							tmp_name='seR50val';
+							tmp_title='R50 SEQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==10
 							tmp_exp=squeeze(EXP_sw50(:,1,:));
 							tmp_bt=squeeze(BT_sw50(:,1,:));
-							tmp_name='swRSFval';
-							tmp_title='RSF SWQ (km)';
+							tmp_name='swR50val';
+							tmp_title='R50 SWQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==11
 							tmp_exp=squeeze(EXP_nw50(:,1,:));
 							tmp_bt=squeeze(BT_nw50(:,1,:));
-							tmp_name='nwRSFval';
-							tmp_title='RSF NWQ (km)';
+							tmp_name='nwR50val';
+							tmp_title='R50 NWQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==12
 							tmp_exp=squeeze(EXP_ne64(:,1,:));
 							tmp_bt=squeeze(BT_ne64(:,1,:));
-							tmp_name='neRHFval';
-							tmp_title='RHF NEQ (km)';
+							tmp_name='neR64val';
+							tmp_title='R64 NEQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==13
 							tmp_exp=squeeze(EXP_se64(:,1,:));
 							tmp_bt=squeeze(BT_se64(:,1,:));
-							tmp_name='seRHFval';
-							tmp_title='RHF SEQ (km)';
+							tmp_name='seR64val';
+							tmp_title='R64 SEQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==14
 							tmp_exp=squeeze(EXP_sw64(:,1,:));
 							tmp_bt=squeeze(BT_sw64(:,1,:));
-							tmp_name='swRHFval';
-							tmp_title='RHF SWQ (km)';
+							tmp_name='swR64val';
+							tmp_title='R64 SWQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
 						elseif plt==15
 							tmp_exp=squeeze(EXP_nw64(:,1,:));
 							tmp_bt=squeeze(BT_nw64(:,1,:));
-							tmp_name='nwRHFval';
-							tmp_title='RHF NWQ (km)';
+							tmp_name='nwR64val';
+							tmp_title='R64 NWQ (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							yrange=[0 200];
 							tmp_u='(km)';
@@ -1587,24 +1587,24 @@ for identremoveinvest=1
 						elseif plt==21
 							tmp_exp=squeeze(cat(1,EXP_ne34(:,1,:),EXP_nw34(:,1,:),EXP_se34(:,1,:),EXP_sw34(:,1,:)));
 							tmp_bt=squeeze(cat(1,BT_ne34(:,1,:),BT_nw34(:,1,:),BT_se34(:,1,:),BT_sw34(:,1,:)));
-							tmp_name='RTSFval';
-							tmp_title='RTSF (km)';
+							tmp_name='R34val';
+							tmp_title='R34 (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							tmp_u='(km)';
 							yrange=[0 100];
 						elseif plt==22
 							tmp_exp=squeeze(cat(1,EXP_ne50(:,1,:),EXP_nw50(:,1,:),EXP_se50(:,1,:),EXP_sw50(:,1,:)));
 							tmp_bt=squeeze(cat(1,BT_ne50(:,1,:),BT_nw50(:,1,:),BT_se50(:,1,:),BT_sw50(:,1,:)));
-							tmp_name='RSFval';
-							tmp_title='RSF (km)';
+							tmp_name='R50val';
+							tmp_title='R50 (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							tmp_u='(km)';
 							yrange=[0 100];
 						elseif plt==23
 							tmp_exp=squeeze(cat(1,EXP_ne64(:,1,:),EXP_nw64(:,1,:),EXP_se64(:,1,:),EXP_sw64(:,1,:)));
 							tmp_bt=squeeze(cat(1,BT_ne64(:,1,:),BT_nw64(:,1,:),BT_se64(:,1,:),BT_sw64(:,1,:)));
-							tmp_name='RHFval';
-							tmp_title='RHF (km)';
+							tmp_name='R64val';
+							tmp_title='R64 (km)';
 							tmp_ytitle=[ylabv,' (km)'];
 							tmp_u='(km)';
 							yrange=[0 100];

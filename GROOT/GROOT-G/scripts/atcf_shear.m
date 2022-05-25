@@ -135,7 +135,7 @@ for i=1:size(Dates1,1)
 end
 Shear=Shear1;
 
-% Reassign RTSF/RSF/RHF to one line instead of duplicate lines
+% Reassign R34/R50/R64 to one line instead of duplicate lines
 tmpfill=zeros(1,size(Dates1,1))';
 tmpnum=1:size(Dates1,1);
 tmp=cat(2,str2num(Dates),Latitude',Longitude',Speed,Pressure,RAD',NEQ,SEQ,SWQ,NWQ,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,PO,RO,RMW,tmpnum',FHR',Shear);

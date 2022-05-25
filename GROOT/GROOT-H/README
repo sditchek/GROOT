@@ -136,6 +136,9 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+5/25/22  | For projects with >2 experiments, added a new capability to identify the experiment with the highest degree of consistency
+	 | Modified consistency metric graphics to include value of the "degree of consistency"
+	 | For reader-comprehension purposes, switched labels RTSF, RSF, and RHF back to R34, R50, and R64 - they're still in m/s but their acronym is easier to comprehend
 4/26/22  | Added a switch to automatically place the consistency metric on the error/skill combo plots for both mean and median - it automatically resizes based on the number of experiments
 	 | Changed the xaxis labels to "strings" so that they would be centered on the tick marks
 	 | Changed CONSISTENCYSCORECARD graphics to 1) include RMW and 2) to  extend to the same x-axis limit as the error/skill graphics

@@ -12,7 +12,7 @@ identbasinmodel=1;                                                              
 identexp=[{'ALL'};{'NO'}];	             			          	  % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='NO';                                                              % full folder name of improvement and significance wrt THIS experiment
-identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment
+identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment - do not use black since the best track is black by default
         	                                                                       % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
 stormsdone=dir([identgroovpr,'/NO']);                                             % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
@@ -54,7 +54,7 @@ identchannel=[200];                       % used to generate graphics of profile
                                           % look in your COM directory for the file that ends in *channels.txt and choose the value(s) in col1 that you want 
                                           % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel;  for 1 or more, identchannel=[a,b,c]; for all, identchannel='all';                                                            
 % Graphics Options														
-identeps=0;				  % save as eps or png? | eps (1) png (0)
+identeps=1;				  % save as eps or png? | eps (1) png (0)
 identconmetric=1;			  % include the consistency metric on the error/skill combo graphics for both the mean and median | yes (1) no (0)
 %% %%%%%%%%%%%%%%%%%%%% %%
 %% END OF USER SETTINGS %%
