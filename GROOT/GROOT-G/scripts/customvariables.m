@@ -714,7 +714,7 @@ elseif strcmp(identvariables{identvar},'wind_speed_height_above_ground')==1
     varname='Wind Speed (10 m)';
     savename='WS10M';
     vara=0;  % regular
-    varb=180;
+    varb=180./1.94384;
     var1=5; % difference
     levs=1;  % 3d (1) 2d (0)
     cbar1=8; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
@@ -724,7 +724,7 @@ elseif strcmp(identvariables{identvar},'wind_speed_isobaric')==1
     varname='Wind Speed';
     savename='WS';
     vara=0;  % regular
-    varb=180;
+    varb=180./1.94384;
     var1=10; % difference
     levs=1;  % 3d (1) 2d (0)
     cbar1=8; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7) windc(8)
@@ -734,7 +734,7 @@ elseif strcmp(identvariables{identvar},'wind_speed_tropopause')==1
     varname='Wind Speed (Tropopause)';
     savename='WSTROPO';
     vara=0;  % regular
-    varb=180;
+    varb=180./1.94384;
     var1=5; % difference
     levs=0;  % 3d (1) 2d (0)
     cbar1=8; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
@@ -754,7 +754,7 @@ end
 %% Create bounds
 cmin=vara;
 if cbar1==8
-cmax=179.6;
+cmax=179.6./1.94384;
 cntr0=[vara varb];
 cntr=[vara:(varb-vara)/28:varb];
 cntr1=[vara:(varb-vara)/14:varb];  
