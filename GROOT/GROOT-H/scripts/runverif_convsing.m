@@ -1055,10 +1055,10 @@
                             end
                             for i=1:length(LONall)
                                 if strcmp(DATEall(i,9:10),'00')==1
-                                    plot(LONall(i),LATall(i),'o','markerfacecolor','w','markeredgecolor','k','markersize',6); 
+                                    plot(LONall(i),LATall(i),'o','markeredgecolor','w','markersize',3); 
                                 end
                             end                     
-                            set(gca,'plotboxaspectratio',[1 1 1])
+                            nonanplot=find(~isnan(LONall));plot(LONall(nonanplot(1)),LATall(nonanplot(1)),'o','markerfacecolor','w','markeredgecolor','k','markersize',6);set(gca,'plotboxaspectratio',[1 1 1])
                             set(gcf, 'InvertHardcopy', 'off')             
                             set(gca,'fontsize',20)
                             box on
@@ -1111,29 +1111,29 @@
                             end
                             text(0,1.03,['\textbf{DATES: ',DATEall(1,:),'$\mathbf{-}$',DATEall(end,:),' $\mid$ N=',num2str(size(lonpd,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                             ax.LineWidth=1; 
-                            l(1)=plot(-200,-100,'o','markerfacecolor','w','markeredgecolor','k','markersize',8); 
-                            l(2)=plot(-200,-100,'.','color',[.5 .5 .5],'markersize',25); 
-                            l(3)=plot(-200,-100,'s','markerfacecolor',[.5 .5 .5],'markeredgecolor',[.5 .5 .5],'markersize',8); 
-                            l(4)=plot(-200,-100,'d','markerfacecolor',[.5 .5 .5],'markeredgecolor',[.5 .5 .5],'markersize',6); 
-                            l(5)=plot(-200,-100,'.','color',azavcm(2,:),'markersize',25);
-                            l(6)=plot(-200,-100,'.','color',azavcm(3,:),'markersize',25);
-                            l(7)=plot(-200,-100,'.','color',azavcm(4,:),'markersize',25);
-                            l(8)=plot(-200,-100,'.','color',azavcm(5,:),'markersize',25);
-                            l(9)=plot(-200,-100,'.','color',azavcm(6,:),'markersize',25);
-                            l(10)=plot(-200,-100,'.','color',azavcm(7,:),'markersize',25);
-                            l(11)=plot(-200,-100,'.','color','m','markersize',25);
+                            %l(1)=plot(-200,-100,'o','markerfacecolor','w','markeredgecolor','k','markersize',8); 
+                            l(1)=plot(-200,-100,'.','color',[.5 .5 .5],'markersize',25); 
+                            l(2)=plot(-200,-100,'s','markerfacecolor',[.5 .5 .5],'markeredgecolor',[.5 .5 .5],'markersize',8); 
+                            l(3)=plot(-200,-100,'d','markerfacecolor',[.5 .5 .5],'markeredgecolor',[.5 .5 .5],'markersize',6); 
+                            l(4)=plot(-200,-100,'.','color',azavcm(2,:),'markersize',25);
+                            l(5)=plot(-200,-100,'.','color',azavcm(3,:),'markersize',25);
+                            l(6)=plot(-200,-100,'.','color',azavcm(4,:),'markersize',25);
+                            l(7)=plot(-200,-100,'.','color',azavcm(5,:),'markersize',25);
+                            l(8)=plot(-200,-100,'.','color',azavcm(6,:),'markersize',25);
+                            l(9)=plot(-200,-100,'.','color',azavcm(7,:),'markersize',25);
+                            l(10)=plot(-200,-100,'.','color','m','markersize',25);
                             if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
                                 for sot=1:size(identconvtype,2)
-                                     l(11+sot)=plot(-200,-100,'x','color',identconvcolors(sot,:),'markersize',6);
+                                     l(10+sot)=plot(-200,-100,'x','color',identconvcolors(sot,:),'markersize',6);
                                 end
                                 for sot=1:size(identconvtype,2)
                                     identlegendconv(sot)={['Obs ',num2str(identconvtype(sot)) ' (',num2str(lsz(sot)),')']};
                                 end
-                                lh=legend(l,'0000 UTC','WV/DB/LO','SD/SS','EX','TD','TS','C1','C2','C3','C4','C5',identlegendconv{:},'orientation','vertical');
+                                lh=legend(l,'WV/DB/LO','SD/SS','EX','TD','TS','C1','C2','C3','C4','C5',identlegendconv{:},'orientation','vertical');
                             else % there are no subtypes to this conventional bservation!
-                                  l(12)=plot(-200,-100,'x','color',[.5 0 .6],'markersize',6);
+                                  l(11)=plot(-200,-100,'x','color',[.5 0 .6],'markersize',6);
                                 legend off
-                                lh=legend(l,'0000 UTC','WV/DB/LO','SD/SS','EX','TD','TS','C1','C2','C3','C4','C5','Obs','orientation','vertical');
+                                lh=legend(l,'WV/DB/LO','SD/SS','EX','TD','TS','C1','C2','C3','C4','C5','Obs','orientation','vertical');
                             end
                             lh.FontSize=10;     
                             set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])

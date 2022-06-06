@@ -674,7 +674,7 @@ if identda==1
                                 % Create bounds
                                 cmin=vara;
                                 if cbar1==8
-                                cmax=179.6;
+                                cmax=179.6./1.94384;
                                 cntr0=[vara varb];
                                 cntr=[vara:(varb-vara)/28:varb];
                                 cntr1=[vara:(varb-vara)/14:varb];  
@@ -773,7 +773,7 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
+                                set(cl1,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -819,8 +819,8 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl2,'ticklabels',{'0','17','33','43','49','58','70'})
-                                %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                set(cl2,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.44,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -899,8 +899,8 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
-                                %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                set(cl4,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.44,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -945,8 +945,8 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
-                                %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                set(cl5,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.44,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1214,7 +1214,7 @@ if identda==1
                                 % Create bounds
                                 cmin=vara;
                                 if cbar1==8
-                                cmax=179.6;
+                                cmax=179.6./1.94384;
                                 cntr0=[vara varb];
                                 cntr=[vara:(varb-vara)/28:varb];
                                 cntr1=[vara:(varb-vara)/14:varb];  
@@ -1313,7 +1313,7 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
+                                set(cl1,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1359,7 +1359,7 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl2,'ticklabels',{'0','17','33','43','49','58','70'})
+                                set(cl2,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1439,7 +1439,7 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
+                                set(cl4,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1485,7 +1485,7 @@ if identda==1
                             if varloop==4
                                 colormap(gca,custommap(28,WC1))
                                 set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-                                set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
+                                set(cl5,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
                                 %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1765,7 +1765,7 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
+				    set(cl1,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1806,8 +1806,8 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(cl2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(cl2,'ticklabels',{'0','17','33','43','49','58','70'})
-                                    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                    set(cl2,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1877,8 +1877,8 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
-                                    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                    set(cl4,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -1919,8 +1919,8 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
-                                    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                    set(cl5,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2138,8 +2138,8 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(cl1,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(cl1,'ticklabels',{'0','17','33','43','49','58','70'})
-                                    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                    set(cl1,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2179,8 +2179,8 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(c2,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(c2,'ticklabels',{'0','17','33','43','49','58','70'})
-                                    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                    set(c2,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2250,8 +2250,8 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(cl4,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(cl4,'ticklabels',{'0','17','33','43','49','58','70'})
-                                    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
+                                    set(cl4,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+				    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -2292,7 +2292,7 @@ if identda==1
                                 if varloop==4
                                     colormap(gca,custommap(28,WC1))
                                     set(cl5,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',10)
-									set(cl5,'ticklabels',{'0','17','33','43','49','58','70'})
+                                    set(cl5,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
                                     %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',5,'color','k','units','normalized');
@@ -3690,8 +3690,8 @@ for hwrfplots=1
                                                 if identvar==88
                                                     colormap(gca,custommap(28,WC1))
                                                     set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                                    set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                                    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                                    set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+						    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3793,8 +3793,8 @@ for hwrfplots=1
                                         if identvar==88
                                             colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                                set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                                %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                                set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+						%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3860,8 +3860,8 @@ for hwrfplots=1
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                        %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                        set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3942,8 +3942,8 @@ for hwrfplots=1
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                        %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                        set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4127,27 +4127,27 @@ for hwrfplots=1
                         end
                                                 
                         %% Assign to EXP
-                        if levs==1
+                        if identexploop>1
+				if levs==1
+					load([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+				elseif levs==0
+					load([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+				end
+			end
+			if levs==1
                             EXPplan(:,:,:,:,identexploop)=var_f;
                             EXPvectnav(:,:,:,identexploop)=vectRAW;
                             EXPvectnavi(:,:,:,identexploop)=navi;
+			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
                         elseif levs==0
                             EXPplan(:,:,:,identexploop)=var_f;
                             EXPvectnav(:,:,identexploop)=vectRAW;      
-                        end                  
-                        ['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
+			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
+                        end   
+			['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
                     end
                     
                     if identvarexp0==size(identexp,1) % if it's the last experiment, that means all needed data has been saved and generated from above!
-					 	%% Save Data
-						if identsave==1
-							if levs==1
-								save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
-							elseif levs==0
-								save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
-							end
-						else
-						end
 						
 						if strcmp(identdiff,'all')==1
 							identdiff=nchoosek(1:size(identexp,1),2);
@@ -4623,8 +4623,8 @@ for hwrfplots=1
                                             if identvar==88
                                                 colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                                set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                                %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                                set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+						%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4736,8 +4736,8 @@ for hwrfplots=1
                                         if identvar==88
                                                 colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                                set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                                %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                                set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+						%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4803,8 +4803,8 @@ for hwrfplots=1
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                        %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                        set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4886,8 +4886,8 @@ for hwrfplots=1
                                         if identvar==88
                                             colormap(gca,custommap(28,WC1))
                                             set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                            set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                            %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                            set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+					    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4961,8 +4961,8 @@ for hwrfplots=1
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                        %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                        set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -5042,8 +5042,8 @@ for hwrfplots=1
                                     if identvar==88
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
-                                        set(cl,'ticklabels',{'0','17','33','43','49','58','70'})
-                                        %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+                                        set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
+					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -5090,28 +5090,27 @@ for hwrfplots=1
                         end
                         
                         %% Assign to EXP
-                        if levs==1
+                        if identexploop>1
+				if levs==1
+					load([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+				elseif levs==0
+					load([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+				end
+			end
+			if levs==1
                             EXPplan(:,:,:,:,identexploop)=var_f;
                             EXPvectnav(:,:,:,identexploop)=vectRAW;
                             EXPvectnavi(:,:,:,identexploop)=navi;
+			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
                         elseif levs==0
                             EXPplan(:,:,:,identexploop)=var_f;
                             EXPvectnav(:,:,identexploop)=vectRAW;      
-                        end                  
-                        ['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
+			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
+                        end    
+			['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
                     end                   
                     
                     if identvarexp0==size(identexp,1) % if it's the last experiment, that means all needed data has been saved and generated from above!					
-						%% Save Data
-						if identsave==1
-							if levs==1
-								save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
-							elseif levs==0
-								save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
-							end
-						else
-						end
-						
 						if strcmp(identdiff,'all')==1
 							identdiff=nchoosek(1:size(identexp,1),2);
 						end
@@ -5653,6 +5652,7 @@ for cleanup=1
                 identexp0=identexp{identexploop};
                 delete([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'*'])
                 delete([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'*'])
+		delete([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_','*','_','*','.mat'])
             end
         end 
     end
@@ -5664,6 +5664,7 @@ for cleanup=1
                 identexp0=identexp{identexploop};
                 delete([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'*'])
                 delete([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'*'])
+		delete([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_','*','_','*','.mat'])
             end
         end 
     end
