@@ -1,14 +1,14 @@
 # GROOT
 
 ## What Is GROOT?
-GROOT stands for GRaphics for OSEs and OSSEs on TCs. It is a visualization package for Observing System Experiments (OSEs) and Observing System Simulation Experiments (OSSEs) that use HWRF, the Basin-Scale HWRF, or the FV3GFS with a focus on tropical cyclone (TC) verification.
+GROOT stands for GRaphics for OS(S)Es and Other modeling applications on TCs. It is a visualization package for evaluating Observing System Experiments (OSEs), Observing System Simulation Experiments (OSSEs), new modeling systems, and model upgrades that use HWRF, Basin-Scale HWRF, HAFS, or the FV3GFS with a focus on tropical cyclone (TC) verification.
 
 ## What Capabilities Are Included?
 GROOT has a hurricane component (GROOT-H) and a global component (GROOT-G). Both still focus on TC verification, but their usage depends on what model is being used.
 
 ### GROOT-H
 
-Use this component if you are running HWRF or the basin-scale HWRF. It has four main features:
+Use this component if you are running HWRF, the basin-scale HWRF, or HAFS that do not use ADECKS. It has four main features:
 
   1) **Error Statistics Capability:** graphics for individual storms, composites, and various subsets are generated
   2) **Assimilated Observations Capability:** graphics for individual storms and storm-relative composites are generated
@@ -17,7 +17,7 @@ Use this component if you are running HWRF or the basin-scale HWRF. It has four 
 
 ### GROOT-G
 
-Use this component if you are running the FV3GFS. It has only two features at the moment - the Error Statistics Capability and the Assimilated Observations Capability. The GRB Capability and Retrieval Scripts will be added in the future as a new release:
+Use this component if you are running the FV3GFS or any output using ADECKS (even if from HWRF/basin-scale HWRF/HAFS. It has only two features at the moment - the Error Statistics Capability and the Assimilated Observations Capability. The GRB Capability and Retrieval Scripts will be added in the future as a new release:
 
   1) **Error Statistics Capability:** graphics for individual storms, composites, and various subsets are generated
   2) **Assimilated Observations Capability:** graphics for individual storms and storm-relative composites are generated
@@ -38,7 +38,7 @@ Use this component if you are running the FV3GFS. It has only two features at th
   You are free to use this package to generate results for your research!
   
   If using this graphics package in **PUBLICATIONS**, please include the following in the acknowledgements section: 
-  > The GRaphics for OSEs and OSSEs on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
+  > The GRaphics for OS(s)Es and Other modeling applications on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
   
   If using this graphics package in **PRESENTATIONS**, please indicate the following verbally or include the information somewhere on your slides:
   > Graphics were made using GROOT - a verification package developed by Dr. Sarah Ditchek and funded by QOSAP and the FY18 Hurricane Supplemental."
