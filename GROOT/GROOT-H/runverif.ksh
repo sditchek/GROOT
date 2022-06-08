@@ -13,12 +13,11 @@
 ##########################
 
 # FOLLOW THE BELOW STEPS IN ORDER OR THE VERIFICATION CAPABILITY WON'T WORK!!
-# 1) FILL OUT THE USER SETTINGS BELOW
-# 2) AFTER DOING STEP 1, CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
-# 3) OTHERWISE THERE IS NOTHING ELSE TO EDIT HERE :)
+# 1) DO NOT CHANGE ANYTHING ABOVE THIS LINE. FIRST FILL OUT THE USER SETTINGS BELOW
+# 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-homepath=/scratch1/AOML/aoml-osse/${USER}/              # directory path above the GROOT package
+homepath=/scratch1/AOML/aoml-osse/${USER}/              # directory path above the GROOT package running location
 resultspath=/scratch2/AOML/aoml-osse/${USER}/           # directory path for results
 noscrubpath=${homepath}/noscrub/atcf                    # path to your atcf files
 scrubpath=${homepath}/scrub				# path to your scrub directory
@@ -54,18 +53,18 @@ rm -f ${homepath}/GROOT/GROOT-H/SUBMISSION_FINISHED.txt
 cd ${homepath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
-sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${scriptspath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
-sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${retrievalpath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
-sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${homepath}
 
 for ((i=0;i<${numfold};++i))

@@ -9,9 +9,9 @@ identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'HBDI'};{'H21I'}];	             			          	  % folder name of all experiments to compare - (must match names in "expnew" in runverif.ksh)
+identexp=[{'HBDI'};{'H21I'}];	             			          	  % % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
-identexpsigimp='H21I';                                                              % full folder name of improvement and significance wrt THIS experiment
+identexpsigimp='H21I';                                                              % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
 identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment - do not use black since the best track is black by default
         	                                                                       % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
@@ -167,6 +167,6 @@ end
 tmpidentcasename=identcasename{:};
 fid = fopen('caseverif.txt','wt');
 fprintf(fid,'%s\n',['initcasestudy="',num2str(identcase),'"']);
-fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename),'*'],'"']);
+fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpcasefold),'*'],'"']);
 fprintf(fid,'%s\n',['initend="',[identout,'RESULTS/',identfold],'"']);
 fclose(fid);

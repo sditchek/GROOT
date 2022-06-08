@@ -1,9 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                 GROOT-H                  %%
-%%    GRaphics for OSEs and OSSEs on TCs    %%
-%%           Hurricane Component            %%
-%%    CREATED BY: DR. SARAH D. DITCHEK      %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                             GROOT-H                               %%
+%%    GRaphics for OS(S)Es and Other modeling applications on TCs    %%
+%%                        Hurricane Component                        %%
+%%                 CREATED BY: DR. SARAH D. DITCHEK                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% USAGE ACKNOWLEDGEMENTS %%
@@ -11,7 +11,7 @@
 
 If using this graphics package in PUBLICATIONS, please include the following in the acknowledgements section:
 
-"The GRaphics for OSEs and OSSEs on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
+"The GRaphics for OS(S)Es and Other modeling applications on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
 
 If using this graphics package in PRESENTATIONS, please indicate the following verbally or include the information somewhere on your slides:
 
@@ -21,7 +21,7 @@ If using this graphics package in PRESENTATIONS, please indicate the following v
 %% SUMMARY %%
 %%%%%%%%%%%%%
 
-THIS DIRECTORY CONTAINS A VISUALIZATION PACKAGE FOR OBSERVING SYSTEM EXPERIMENTS (OSES) AND OBSERVING SYSTEM SIMULATION EXPERIMENTS (OSSES) THAT USE HWRF OR THE BASIN-SCALE HWRF. 
+THIS DIRECTORY CONTAINS A VISUALIZATION PACKAGE FOR OBSERVING SYSTEM EXPERIMENTS (OSES), OBSERVING SYSTEM SIMULATION EXPERIMENTS (OSSES), NEW MODELING SYSTEMS, AND MODEL UPGRADES THAT USE HWRF, THE BASIN-SCALE HWRF, or HAFS.
 THE MAIN CAPABILITIES OF THIS GRAPHICS PACKAGE ARE TO GENERATE:
   1) ERROR STATISTICS (E.G., ERRORS/IMPROVEMENT/BIAS/FSP OF TRACK, INTENSITY, PRESSURE, TC SIZE)
   2) ASSIMILATED OBSERVATION GRAPHICS (I.E., THE EARTH-RELATIVE AND STORM-RELATIVE LOCATION OF THE OBSERVATION TYPE YOU ARE TESTING) 
@@ -123,7 +123,7 @@ GRB CAPABILITY:
 %%%%%%%%%%%%%%%%%%
 
 VERIFICATION CAPABILITY:
-1) Significance is displayed on error-statistic graphics as squares (95%) and circles (90%) wrt the identexpsigimp - this detail is not included on the graphics in order to save space.
+1) Significance is displayed on error-statistic graphics as squares (95%) with respect to identexpsigimp - this detail is not included on the graphics in order to save space.
 2) Every time you run this capability, if you ran the capability for the same set of experiments previously, those results are deleted. This is to ensure that your results include the most up-to-date data.
 
 GRB CAPABILITY:
@@ -136,6 +136,10 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+6/8/22   | Added capability to plot TC-by-TC FSP graphics
+	 | Added the newly released SHIPS data for 2020 storms for usage in the shear stratifications
+	 | Added in bdecks for 2021 storms
+	 | Removed 90% significance indicators, for clarity - kept 95%, only
 5/25/22  | For projects with >2 experiments, added a new capability to identify the experiment with the highest degree of consistency
 	 | Modified consistency metric graphics to include value of the "degree of consistency"
 	 | For reader-comprehension purposes, switched labels RTSF, RSF, and RHF back to R34, R50, and R64 - they're still in m/s but their acronym is easier to comprehend

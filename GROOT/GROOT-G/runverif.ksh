@@ -13,24 +13,24 @@
 ##########################
 
 # FOLLOW THE BELOW STEPS IN ORDER OR THE VERIFICATION CAPABILITY WON'T WORK!!
-# 1) FILL OUT THE USER SETTINGS BELOW
-# 2) AFTER DOING STEP 1, CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
-# 3) OTHERWISE THERE IS NOTHING ELSE TO EDIT HERE :)
+# 1) DO NOT CHANGE ANYTHING ABOVE THIS LINE. FIRST FILL OUT THE USER SETTINGS BELOW
+# 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT running location
-resultspath=/scratch2/AOML/aoml-osse/${USER}/GROOT/GROOT-G/     # location where results folder should go
+dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT package running location
+resultspath=/scratch1/AOML/aoml-osse/${USER}/GROOT/GROOT-G/     # directory path for results
 cycling="6"               					# frequency of cycling in your model (often 6 for 6 h)
-set -A expyears 2021	 					# years included (i.e., YYYY) - for more than one year list with spaces between them
-numyears=1							# number of years in expyears - the number must match!	
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/H3BDH221_HBDIH21I/early/			# location of your atcf output
-diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/anl/	# location of your diag output
+set -A expyears 2021					        # years included (i.e., YYYY) - for more than one year list with spaces between them
+numyears=1 							# number of years in expyears - the number must match!	
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/H3BDH221_HBDIH21I/early/    # location of your atcf or adeck output
+diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/anl/	     # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
+usingadecks=1							# are your atcf files merged into adecks? if so, GROOT has an additional preprocessing step | (1) yes (0) no
 
 # Identify Experiments
 set -A expfold HBDI H21I	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
 set -A expnew HBDI H21I                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
-obstype=uv				# the observation type you're testing and want graphics for
+obstype=uv				# the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
 
 # Account Information
 acntold=aoml-osse                       # account currently listed in SBATCH above
@@ -38,13 +38,17 @@ acntnew=aoml-osse                       # account you want listed in SBATCH abov
 emlold=sarah.d.ditchek@noaa.gov         # email address currently listed in SBATCH above
 emlnew=sarah.d.ditchek@noaa.gov         # email address you want listed in SBATCH above
 
-# Date range of files desired from first cycle of first year to last cycle of last year | format must be yyyy-mm-dd hh
+# Date range of files desired from 1) the first cycle of your first year to 2) the last cycle of your last year | format must be yyyy-mm-dd hh
 startdate1="2021-05-22 12"
 enddate1="2021-10-05 06"
  
 ########################
 # END OF USER SETTINGS #
 ########################
+
+# Save start and end dates
+startdate2=${startdate1}
+enddate2=${enddate1}
 
 # Clear Directories
 rm -rf ${resultspath}/GROOT-PR
@@ -62,19 +66,19 @@ progresspath=${resultspath}/GROOT-PR
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT_editsingle.txt
-rm -f ${dirpth}/GROOT/GROOT-G/slurm*
+#rm -f ${dirpth}/GROOT/GROOT-G/slurm*
 
 # Change Accounts and Emails
 cd ${homepath}/GROOT/GROOT-G/
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
-sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${scriptspath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
-sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe 
+sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${homepath}/GROOT/GROOT-G/
 
 # For each experiment, create directories, grab atcf and conv/rad diag files, separate the atcf files into individual storms, and process conv/rad diag files
@@ -104,9 +108,50 @@ do
 		cp ${diagoutput}/${expfold[$i]}/*${obstype}*anl*.gz ${indir1}
         	cp ${diagoutput}/${expfold[$i]}/*${obstype}*anl*.nc4 ${indir1}
 
+		# If using adecks, run an additional preprocessing step
+                if [ $usingadecks == 1 ]
+		then
+			cp ${atcfoutput}/a*${expyears[$j]}.dat ${indir2}
+			cat ${indir2}/a*${expyears[$j]}.dat > ${indir2}/${expyears[$j]}.dat  # Combine adeck files from the same year
+			grep ${expfold[$i]} ${indir2}/${expyears[$j]}.dat > ${indir2}/${expfold[$i]}_${expyears[$j]}.dat # Extract Experiment from given year
+	                if [ -z ${startdate1} ]
+		        then
+        		    echo  No Start Date Listed!
+		        else
+        			while [ "$startdate1" != "$( date -d "$enddate1 + $cycling hours" '+%Y-%m-%d %H')" ]; do
+			        usedate=$( date -d "$startdate1" '+%Y%m%d%H') # make format YYYYMMDDHH
+		        	startdate1=$( date -d "$startdate1 + $cycling hours" '+%Y-%m-%d %H') # increment by 6 hours
+		                storm_file=${indir2}/${expfold[$i]}_${expyears[$j]}.dat
+        	       			if [ -f $storm_file ] # if ATCF file exists...
+		        	        then
+        	                	        grep ", ${usedate}," ${storm_file} > ${indir2}/atcfunixp.gfs.${usedate}
+			                        if [ -s ${indir2}/atcfunixp.gfs.${usedate} ]
+                        		        then
+						       echo It Lives!
+						else
+	                                 	       rm -rf ${indir2}/atcfunixp.gfs.${usedate}
+						       echo It Dies!
+	        	                        fi
+					fi
+       				done
+	        	fi
+		        startdate1=${startdate2}
+		        enddate1=${enddate2}
+        		rm -rf ${indir2}/${expyears[$j]}.dat
+			rm -rf ${indir2}/${expfold[$i]}_${expyears[$j]}.dat
+			rm -rf ${indir2}/a*${expyears[$j]}.dat
+			sed -i "s/0,   ,  34,/0, XX,  34,/g" ${indir2}/*
+        		sed -i "s/0,   ,  50,/0, XX,  50,/g" ${indir2}/*
+		        sed -i "s/0,   ,  64,/0, XX,  64,/g" ${indir2}/*
+		fi
 
 		#Create file that has all unique storm names
-		grep -hEo ".{0,7} ${expyears[$j]}" ${indir2}/atcfunixp.gfs.* > ${progresspath}/out.txt # gets all text before 2019, only
+		grep -hEo ".{0,7} ${expyears[$j]}0" ${indir2}/atcfunixp.gfs.* > ${progresspath}/out1.txt # gets all text before 2019, only
+                grep -hEo ".{0,7} ${expyears[$j]}1" ${indir2}/atcfunixp.gfs.* > ${progresspath}/out2.txt # gets all text before 2019, only
+	        cat ${progresspath}/out* > /${progresspath}/out.txt
+		rm -rf ${progresspath}/out1.txt
+		rm -rf ${progresspath}/out2.txt
+		sed -i 's/.$//' ${progresspath}/out.txt
 		sort ${progresspath}/out.txt | uniq > ${progresspath}/listofstorms.txt # gets list of all storms 
 		rm ${progresspath}/out.txt
 		awk '{ t=$1 ; $1=$2; $2=t; print }' ${progresspath}/listofstorms.txt > ${progresspath}/nameofstorms.txt
