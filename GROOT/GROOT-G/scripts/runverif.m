@@ -422,30 +422,30 @@ for identremoveinvest=1
 						stratlist=[stratlist 888];
 					end
 					for i=1:size(stratlist,2)
-						if i<=20
+						if i<=10;
 							identstratlist1(i)=stratlist(i);														
-						elseif i>20 & i<=40
-							identstratlist2(i-20)=stratlist(i);
-						elseif i>40 & i<=60
-							identstratlist3(i-40)=stratlist(i);
-						elseif i>60 & i<=80
-							identstratlist4(i-60)=stratlist(i);	
-						elseif i>80 & i<=1000
-							identstratlist5(i-80)=stratlist(i);								
+						elseif i>10 & i<=20
+							identstratlist2(i-10)=stratlist(i);
+						elseif i>20 & i<=30
+							identstratlist3(i-20)=stratlist(i);
+						elseif i>30 & i<=40
+							identstratlist4(i-30)=stratlist(i);	
+						elseif i>40 & i<=50
+							identstratlist5(i-40)=stratlist(i);elseif i>50 & i<=60;identstratlist6(i-50)=stratlist(i);elseif i>60 & i<=70;identstratlist7(i-60)=stratlist(i);elseif i>70 & i<=80;identstratlist8(i-70)=stratlist(i);elseif i>80 & i<=1000;identstratlist9(i-80)=stratlist(i);
 						end
 					end
 					cnt=0;
 					for i=1:size(stratlist,2)
 						if i==1
 							cnt=cnt+1;
+						elseif i==11
+							cnt=cnt+1;
 						elseif i==21
 							cnt=cnt+1;
+						elseif i==31
+							cnt=cnt+1;
 						elseif i==41
-							cnt=cnt+1;
-						elseif i==61
-							cnt=cnt+1;
-						elseif i==81
-							cnt=cnt+1;
+							cnt=cnt+1;elseif i==51;cnt=cnt+1;elseif i==61;cnt=cnt+1;elseif i==71;cnt=cnt+1;elseif i==81;cnt=cnt+1;
 						end
 					end
 					fid = fopen(['stratverif_',num2str(basinloop),'.txt'],'wt');
@@ -464,7 +464,7 @@ for identremoveinvest=1
 					end
 					if exist('identstratlist5','var')==1	
 						fprintf(fid,'%s\n',['initstrat5="[',num2str(identstratlist5),']"']);
-					end
+					end; if exist('identstratlist6','var')==1;fprintf(fid,'%s\n',['initstrat6="[',num2str(identstratlist6),']"']);end;if exist('identstratlist7','var')==1;fprintf(fid,'%s\n',['initstrat7="[',num2str(identstratlist7),']"']);end;if exist('identstratlist8','var')==1;fprintf(fid,'%s\n',['initstrat8="[',num2str(identstratlist8),']"']);end;if exist('identstratlist9','var')==1;fprintf(fid,'%s\n',['initstrat9="[',num2str(identstratlist9),']"']);end;
 					fclose(fid);
 					clear identbtyear					
 			end			
