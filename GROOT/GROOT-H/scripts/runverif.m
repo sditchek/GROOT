@@ -102,7 +102,7 @@ for identremoveinvest=1
                     end
                 end
             end
-            if exist('breakscript','var')==1
+            if exist('breakscript','var')==1 || size(identinittimesunique,1)==0
                 disp([identn,' does not exist across all experiments yet...moving to next storm'])
                 clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv  
             else
