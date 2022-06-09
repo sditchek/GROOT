@@ -12022,7 +12022,7 @@
 
                                     for tmp=1:size(identexp,1);if strcmp(identexp(tmp),identexpsigimp);tmpimp=tmp;end;end;tmpu=1:size(identexp,1);tmpu(tmpu==tmpimp)=[];
 									for tmp=[tmpimp,tmpu]
-										if med==1;imprv=squeeze(100.*(1-nanmean(nm_stm(:,:,tmp,:),1)./nanmean(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;elseif med==2;imprv=squeeze(100.*(1-nanmedian(nm_stm(:,:,tmp,:),1)./nanmedian(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;end;										clear nm_pct;for tmp=tmpu;if med==3;tmp1=nm_stm(:,:,tmp,:);tmp2=nm_stm(:,:,tmpimp,:);tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);fspa=100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp;fspb=100*(nansum(tmp5,1)+nansum(tmp6,1)./2)./tmptmp;nm_pct(:,tmp,:)=squeeze(fspa);end;end;
+										if med==1;imprv=squeeze(100.*(1-nanmean(nm_stm(:,:,tmp,:),1)./nanmean(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;elseif med==2;imprv=squeeze(100.*(1-nanmedian(nm_stm(:,:,tmp,:),1)./nanmedian(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;end;if med==3;clear nm_pct;for tmp=tmpu;tmp1=nm_stm(:,:,tmp,:);tmp2=nm_stm(:,:,tmpimp,:);tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);fspa=100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp;fspb=100*(nansum(tmp5,1)+nansum(tmp6,1)./2)./tmptmp;nm_pct(:,tmp,:)=squeeze(fspa);end;end;
 									end                    
 
                                     % sort by year and then by name                               
