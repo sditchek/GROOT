@@ -101,12 +101,17 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+6/14/22  | Added # fcst axes to blank graphics so the aspect ration is identical to non-blank graphics when saving to eps
+         | Changed titles on nearly all figures to be more accurate (e.g., Mean Error > MAE)
+         | Changed "STORM" to "TC" on all figures for consistency
+         | Changed "# 6-h fcsts" to "# lead times", for clarity, on the cycle-by-cycle graphics
+         | For projects with at least 3 experiments, added a new capability to identify the experiment with the lowest degree of consistency (LDCI)
 6/8/22   | Added capability to plot TC-by-TC FSP graphics
          | Added the newly released SHIPS data for 2020 storms for usage in the shear stratifications
          | Added in bdecks for 2021 storms
          | Removed 90% significance indicators, for clarity - kept 95%, only
 	 | Added in capability to use adecks as input data by including an additional preprocessing step in runverif.ksh
-5/25/22  | For projects with >2 experiments, added a new capability to identify the experiment with the highest degree of consistency
+5/25/22  | For projects with at least 3 experiments, added a new capability to identify the experiment with the highest degree of consistency (HDCI)
          | Modified consistency metric graphics to include value of the "degree of consistency"
          | For reader-comprehension purposes, switched labels RTSF, RSF, and RHF back to R34, R50, and R64 - they're still in m/s but their acronym is easier to comprehend
 4/26/22  | Added a switch to automatically place the consistency metric on the error/skill combo plots for both mean and median - it automatically resizes based on the number of experiments
@@ -179,7 +184,7 @@ VERIFICATION CAPABILITY:
                  x<=-15 kt: categorize as RW
          | A bug fix which impacted basin-scale models when generating composite graphics of assmilated observations - it now takes into account storms in the entire basin
          | The y-axes for a given variable will be identical for all stratifications not just within one basin, but across all basins in your sample for easier comparision
-02/09/21 | Package v1.0.0 ready for distribution to OSA!
+2/09/21  | Package v1.0.0 ready for distribution to OSA!
 
 %%%%%%%%%%%%%
 %% FUNDING %%
