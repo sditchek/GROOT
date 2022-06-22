@@ -142,7 +142,7 @@ GRB CAPABILITY:
 	 | Changed "# 6-h fcsts" to "# lead times", for clarity, on the cycle-by-cycle graphics
 	 | For projects with at least 3 experiments, added a new capability to identify the experiment with the lowest degree of consistency (LDCI)
 6/8/22   | Added capability to plot TC-by-TC FSP graphics
-	 | Added the newly released SHIPS data for 2020 storms for usage in the shear stratifications
+	 | Added the newly released SHIPS data for 2021 storms for usage in the shear stratifications
 	 | Added in bdecks for 2021 storms
 	 | Removed 90% significance indicators, for clarity - kept 95%, only
 5/25/22  | For projects with at least 3 experiments, added a new capability to identify the experiment with the highest degree of consistency (HDCI)
