@@ -456,7 +456,7 @@ for identremoveinvest=1
 						fprintf(fid,'%s\n',['initstrat5="[',num2str(identstratlist5),']"']);
 					end; if exist('identstratlist6','var')==1;fprintf(fid,'%s\n',['initstrat6="[',num2str(identstratlist6),']"']);end;if exist('identstratlist7','var')==1;fprintf(fid,'%s\n',['initstrat7="[',num2str(identstratlist7),']"']);end;if exist('identstratlist8','var')==1;fprintf(fid,'%s\n',['initstrat8="[',num2str(identstratlist8),']"']);end;if exist('identstratlist9','var')==1;fprintf(fid,'%s\n',['initstrat9="[',num2str(identstratlist9),']"']);end;
 					fclose(fid);
-					clear identbtyear					
+					clear identbtyear
 			end			
 		end
 		if identcompositerun==1
