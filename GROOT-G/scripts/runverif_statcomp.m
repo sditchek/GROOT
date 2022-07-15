@@ -3217,7 +3217,7 @@
                                 end; end                                                                                                                    					
 								spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same								
 								% Create Graphics: Lagged Correlation
-								for plt=[1:18,21:23]
+								if strat==1;for plt=[1:18,21:23]
 									% Load saved matrices
 									load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat'])
 									% Grab initial sizes
@@ -3482,7 +3482,7 @@
 										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all													
 									end									
-								end
+								end;end;
 								fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', 'No Data!');fclose(fid);
 								load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat'])
 								% Scorecard

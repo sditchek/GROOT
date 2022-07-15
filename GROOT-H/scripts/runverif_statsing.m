@@ -9795,7 +9795,7 @@ for graphics=1
 							end                             
 							% Create Graphics: lagged corr
 							%if identlagcorr==1
-							for plt=[1:18,21:23]                                                  
+							if strat==1;for plt=[1:18,21:23]                                                  
 								if plt==1
 									 tmp_exp=trkerr_exp(:,1:skip:end,:);
 									 tmp_name='trkerr';
@@ -10178,7 +10178,7 @@ for graphics=1
 									filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all													
 								end
-							end   																																		
+							end;end;  																																		
 %							end
 							fid=fopen([identtrackint,'/',identn,'_scfactor.txt'],'w');fprintf(fid,'%s\n', 'No Data!');fclose(fid);
 							% Scorecard										
