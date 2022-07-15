@@ -51,7 +51,7 @@ for identremoveinvest=1
                 for comm=1
                     cnt=1;
                     for tmp=1:size(identexpshort,1)
-                        identdr=dir([identgroovpr,identexp{tmp},'/',identtmp1,'*','atcfunix']);
+                        identdr=dir([identgroovpr,identexp{tmp},'/',identtmp1,'*','atcfunix*']);
                         if isempty(identdr)==1
                             breakscript='yes';
                         else
@@ -141,7 +141,7 @@ for identremoveinvest=1
                     % Get common initalizations between all experiments
                     cnt=1;
                      for tmp=1:size(identexpshort,1)
-                        identdr=dir([identgroovpr,identexp{tmp},'/',identtmp1,'*','atcfunix']);
+                        identdr=dir([identgroovpr,identexp{tmp},'/',identtmp1,'*','atcfunix*']);
                         identdr=unique({identdr.name});
                         for i=1:size(identdr,2)
                             tmp2=identdr{i};

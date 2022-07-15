@@ -17,11 +17,12 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-homepath=/scratch1/AOML/aoml-osse/${USER}/              # directory path above the GROOT package running location
-resultspath=/scratch2/AOML/aoml-osse/${USER}/           # directory path for results
-noscrubpath=${homepath}/noscrub/atcf                    # path to your atcf files
+homepath=/scratch1/AOML/aoml-osse/${USER}/              # directory path above the GROOT package running location (typically your home directory)
+resultspath=/scratch2/AOML/aoml-osse/${USER}/           # directory path for results (can be any directory - typically your home directory)
+noscrubpath=${homepath}/noscrub/atcf  			# path to your atcf files
 scrubpath=${homepath}/scrub				# path to your scrub directory
 dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
+numatcf=0						# do your atcf files start with a number (numatcf=1) or the name of the storm (numatcf=0)?
 
 # Set Experiments
 set -A expfold HB20_B1_ALL HB20new HB20_B2_ALL HB20_B3_ALL HB20_B6_ALL HB20_B7_ALL HB20_B8_ALL HB20_B1_NO HB20_NO HB20_B2_NO HB20_B3_NO HB20_B6_NO HB20_B7_NO HB20_B8_NO #exp folders (the folders in scrub and noscrub that you want to include in the graphics e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
@@ -50,7 +51,7 @@ rm -f ${homepath}/GROOT/GROOT-H/slurm*
 rm -f ${homepath}/GROOT/GROOT-H/SUBMISSION_FINISHED.txt
 
 # Change Accounts and Emails
-cd ${homepath}
+cd ${homepath}/GROOT/GROOT-H/
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
 sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
@@ -65,7 +66,7 @@ sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
 sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
-cd ${homepath}
+cd ${homepath}/GROOT/GROOT-H/
 
 for ((i=0;i<${numfold};++i))
 do
@@ -89,7 +90,18 @@ do
         cp ${scrubpath}/${expfold[$i]}/**/**/**/*channels.txt ${verifpath}/obsall/${expnew[$i]}/
         cp ${scrubpath}/${expfold[$i]}/**/**/**/qcflags*.txt ${verifpath}/obsall/${expnew[$i]}/
 	cp ${scrubpath}/${expfold[$i]}/**/**/**/*vit ${verifpath}/tcvitals/
-	cp ${noscrubpath}/${expfold[$i]}/*.trak.hwrf.atcfunix* ${verifpath}/${expnew[$i]}/
+	cp ${noscrubpath}/${expfold[$i]}/*atcfunix* ${verifpath}/${expnew[$i]}/
+
+	if [ "${numatcf}" -eq 1 ]
+	then
+		matlab -nosplash -nodesktop -r  "identgrootpr='${verifpath}/${expnew[$i]}/';identout='${homepath}/GROOT/GROOT-H/';" < ${scriptspath}/tclookup.m > ${outputpath}/OUTPUT_TCLOOKUP.txt &
+		wait
+		mv ${homepath}/GROOT/GROOT-H/tclookup.txt ${verifpath}/${expnew[$i]}/tclookup.txt
+		cd ${verifpath}/${expnew[$i]}/
+		source ./tclookup.txt
+		rm ${verifpath}/${expnew[$i]}/tclookup.txt
+		cd ${homepath}/GROOT/GROOT-H/
+	fi
 done
 
 # Run the namelist

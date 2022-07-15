@@ -17,18 +17,18 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT package running location
-resultspath=/scratch1/AOML/aoml-osse/${USER}/GROOT/GROOT-G/     # directory path for results
+dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT package running location (typically your home directory)
+resultspath=/scratch1/AOML/aoml-osse/${USER}/GROOT/GROOT-G/     # directory path for results (can be any directory - typically your home directory)
 cycling="6"               					# frequency of cycling in your model (often 6 for 6 h)
-set -A expyears 2021					        # years included (i.e., YYYY) - for more than one year list with spaces between them
-numyears=1 							# number of years in expyears - the number must match!	
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/H3BDH221_HBDIH21I/early/    # location of your atcf or adeck output
-diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/HDOBS-DROPS-GFSV16/js_L_FINAL/anl/	     # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
+set -A expyears 2021					# years included (i.e., YYYY) - for more than one year list with spaces between them
+numyears=1							# number of years in expyears - the number must match!	
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/forjason/H3BDH221_HBDIH21I/early/     # location of your atcf or adeck output
+diagoutput=${atcfoutput}  	     # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
 usingadecks=1							# are your atcf files merged into adecks? if so, GROOT has an additional preprocessing step | (1) yes (0) no
 
 # Identify Experiments
 set -A expfold HBDI H21I	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew HBDI H21I                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expnew HF3I HFRI                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
 
@@ -66,7 +66,7 @@ progresspath=${resultspath}/GROOT-PR
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT_editsingle.txt
-#rm -f ${dirpth}/GROOT/GROOT-G/slurm*
+rm -f ${dirpth}/GROOT/GROOT-G/slurm*
 
 # Change Accounts and Emails
 cd ${homepath}/GROOT/GROOT-G/
@@ -202,7 +202,7 @@ do
 					    echo $q
 	 				   if grep -q "$p" ${storm_file}
 					   then
-					    	grep "$p" ${storm_file} > ${q}.${usedate}.trak.hwrf.atcfunix
+					    	grep "$p" ${storm_file} > ${q}.${usedate}.tctracker.atcfunix
 					   else
 					    	echo storm does not exist for this cycle
 					   fi

@@ -101,13 +101,16 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+7/15/22  | Removed hard coding for atcfunix file names
+         | Fixed a bug that arranged the composite by-TC graphics alphabetically instead of by stormid - quantatative resutls are identical, only aesthetics changed
+         | Rearranged github directories to get rid of GROOT/GROOT/ issue when pulling from github - you might need to do a clean pull!
 6/14/22  | Added # fcst axes to blank graphics so the aspect ration is identical to non-blank graphics when saving to eps
          | Changed titles on nearly all figures to be more accurate (e.g., Mean Error > MAE)
          | Changed "STORM" to "TC" on all figures for consistency
          | Changed "# 6-h fcsts" to "# lead times", for clarity, on the cycle-by-cycle graphics
          | For projects with at least 3 experiments, added a new capability to identify the experiment with the lowest degree of consistency (LDCI)
 6/8/22   | Added capability to plot TC-by-TC FSP graphics
-         | Added the newly released SHIPS data for 2021 storms for usage in the shear stratifications
+         | Added the newly released SHIPS data for 2020 storms for usage in the shear stratifications
          | Added in bdecks for 2021 storms
          | Removed 90% significance indicators, for clarity - kept 95%, only
 	 | Added in capability to use adecks as input data by including an additional preprocessing step in runverif.ksh

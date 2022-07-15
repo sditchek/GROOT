@@ -2630,7 +2630,7 @@ for errorstats=1
                     exp_rmw=nan(100,size(identexp,1)); 
                     % Loop
                     for tmp=1:size(identexp,1)                
-                        filename = [identnoscrub,'atcf/',identexp{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'.trak.hwrf.atcfunix'];
+                        filename = dir([identnoscrub,'atcf/',identexp{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/',filename.name];
                         [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,0);
                         initsizeexp=size(FHRall,2);
                         exp_fhr(1:initsizeexp,tmp)=FHRall';

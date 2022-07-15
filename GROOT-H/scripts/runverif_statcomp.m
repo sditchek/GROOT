@@ -11905,7 +11905,7 @@
 									end                    
 
                                     % sort by year and then by name                               
-                                    [a_sorted, a_order] = sort(tmpyr);if size(nm_pct,1)==1;nm_pct=permute(nm_pct,[3 2 1]);end;
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-2);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpid(i,:)=tmpsd1(end-2:end-1);end;end;end;tmpid=str2num(tmpid);tmpyrid=[tmpyr tmpid];[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);if size(nm_pct,1)==1;nm_pct=permute(nm_pct,[3 2 1]);end;clear tmpid;
                                     nm_pct = nm_pct(:,:,a_order);
                                     tmpnm = tmpnm(a_order);
 
@@ -13030,7 +13030,7 @@
 									nm_stm=squeeze(nm_stm);
 
                                     % sort by year and then by name                               
-                                    [a_sorted, a_order] = sort(tmpyr);
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-2);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpid(i,:)=tmpsd1(end-2:end-1);end;end;end;tmpid=str2num(tmpid);tmpyrid=[tmpyr tmpid];[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
                                     nm_pct = nm_stm(:,:,a_order);
                                     tmpnm = tmpnm(a_order);
 
@@ -14174,8 +14174,8 @@
                                     end  
 
                                     % sort by year and then by name                               
-                                    [a_sorted, a_order] = sort(tmpyr);
-                                    nm_pct = imprv2(:,a_order,:);
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-2);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpid(i,:)=tmpsd1(end-2:end-1);end;end;end;tmpid=str2num(tmpid);tmpyrid=[tmpyr tmpid];[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
+				    nm_pct = imprv2(:,a_order,:);
                                     tmpnm = tmpnm(a_order);
 									clear imprv imprv2 sm
 									

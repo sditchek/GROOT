@@ -5,19 +5,19 @@
 % Set Directories and Model Properties
 identout=['/scratch2/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/'];             % directory path for results | must be same as resultspath in runverif.ksh
 identgroovpr=[identout,'GROOT-PR/'];						  % DO NOT CHANGE - location of your GROOT-PR dirctory
-identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  % max forcast hour for graphics (e.g., 126/3+1) | max forecast hours in model (e.g., 126/3+1)
+identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'HBDI'};{'H21I'}];	             			          	  % % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
+identexp=[{'HBDI'};{'H21I'}]; 		 	                                  % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='H21I';                                                              % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
-identexpcolors=[0 152 0;208 0 0]/255;     					       % colors associated with each experiment - do not use black since the best track is black by default
+identexpcolors=[0 152 0;208 0 0]/255;  						  % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                                       % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
 stormsdone=dir([identgroovpr,'/H21I/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
-% Case Study: recommendation - make identgraphicsbycycle=1 and identgraphicsconv=1 or identgaphicssat=1, depending on your O(S)SE) for more details
+% Case Study: recommendation - also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0';								          % run graphics for just 1 storm | yes (1) no (0)
 identcasename={'05AL'};tmpcasefold='DORIAN19';                                      % identcasename=ID and basin identifier (05AL) | tmpcasefold=uppercase name and 2-digit year (DORIAN19)
 identcaseyear='2019';							          % year of storm: YYYY
@@ -27,9 +27,9 @@ identgraphicsbycycle=0;                                         % error graphics
 identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='RMDR';                                             % name for new subset - will be capitalized in the script
-identnewsubset=[{'2019082306-2019082612'};{'2019082800-2019090900'}];  % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
-                	                                        % range of cycles: [{'2017081800-2017083100'}]% disjointed cycles: [{'2017081800'};{'2017090200'}]
-		        	                                % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+identnewsubset=[{'2019082306-2019082612'}];  			% new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
+                	                                            % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]
+		        	                                    % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
 identremoveland=0;						% do you want to remove cycles where the best track was over land | yes (1) no (0)
 identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
 
@@ -46,14 +46,14 @@ identconvcolors=[.8 .2 .8;.9 .4 .2];                            % colors for eac
 identconvlegend=[{'Assimilated Mie (Cloudy) Observations'};{'Assimilated Rayleigh (Clear) Observations'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options
-identsatobs=0;                            % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
-identgraphicssat=1;			  % satellite graphics for EACH CYCLE | yes (1) no (0 - this saves time)
-identsatid='iasi_g13';                    % if the above is yes (1), then type the satellite name here - must match the diag file
-identsatname='Geo-HSS';			  % full name of satellite observation | uppercase first letter | singular
-identindivch=1;                           % create individual-channel graphics (turn off to save time) | yes (1) no (0)
-identchannel=[200];                       % used to generate graphics of profiles assimilated by channel
-                                          % look in your COM directory for the file that ends in *channels.txt and choose the value(s) in col1 that you want 
-                                          % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel;  for 1 or more, identchannel=[a,b,c]; for all, identchannel='all';                                                            
+identsatobs=0;                          % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
+identgraphicssat=1;			% satellite graphics for EACH CYCLE | yes (1) no (0 - this saves time)
+identsatid='iasi_g13';                  % if the above is yes (1), then type the satellite name here - must match the diag file
+identsatname='Geo-HSS';			% full name of satellite observation | uppercase first letter | singular
+identindivch=1;                         % create individual-channel graphics (turn off to save time) | yes (1) no (0)
+identchannel=[200];                     % used to generate graphics of profiles assimilated by channel
+                                             % look in your COM directory for the file that ends in *channels.txt and choose the value(s) in col1 that you want 
+                                             % col1=number | col2=frequency (kHz) | col4=wavenumber (1/cm) | col8=channel;  for 1 or more, identchannel=[a,b,c]; for all, identchannel='all';                                                            
 % Graphics Options														
 identeps=1;				  % save as eps or png? | eps (1) png (0)
 identconmetric=1;			  % include the consistency metric on the error/skill combo graphics for both the mean and median | yes (1) no (0)
@@ -83,7 +83,7 @@ end
 identexpshort=identexp;                                         
 identexpsigimpshort=identexpsigimp;
 stormsdone={stormsdone.name};
-stormsdone=stormsdone(3:end);
+stormsdone=stormsdone(3:end);%testtmp=stormsdone{1};if isnan(str2double(tmptest(1)))==0; for stmdn=1:size(stormsdone,2);identtmp1=stormsdone{stmdn};identtmp2=yearsdone(stmdn,:);identtmp3=identtmp1(3:4);if strcmp(identtmp3,'AL')==1;identtmp4='l';elseif strcmp(identtmp3,'EP')==1;identtmp4='e';elseif strcmp(identtmp3,'WP')==1;identtmp4='w';elseif strcmp(identtmp3,'CP')==1;identtmp4='c';end;addpath(['scripts']);identbdecks=['bdeck/'];filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];if isfile(filename)==1; [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);identn=unique(NAMEall,'rows','stable');identn=identn(end,:);identn=identn(isletter(identn));ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];identn=[identn,identtmp2(3:4)];identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end;stormsdone{stmdn}=identhwrf;end;end;end;clear testtmp;
 cnt=1;
 for i=1:size(stormsdone,2)
             tmp0=stormsdone{i};

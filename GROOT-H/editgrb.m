@@ -30,6 +30,7 @@ identdiff=[1 2;];                                               % for which expe
 identscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/scrub/'];      % location of your scrub dirctory that has the grb and observation files (either conventional or satellite)
 identnoscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/noscrub/'];  % location of your noscrub dirctory that has the atcf track files
 identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];% location of your GROOT-H directory 
+identnum=1							     % do your grib files start with a number (identnum=1) or the name of the storm (identnum=0)?
 
 % Graphics
 initgraphics=1;                                                 % create TRACK/INT error data - for graphics edit editverif.m | yes - first time running (1) or no - ran this before (0)
