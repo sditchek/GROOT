@@ -65,8 +65,9 @@ outputpath=${dirpth}/GROOT/GROOT-G/output
 progresspath=${resultspath}/GROOT-PR
 
 # Clean up old files
-rm -f ${outputpath}/OUTPUT_editsingle.txt
-rm -f ${dirpth}/GROOT/GROOT-G/slurm*
+rm -f ${outputpath}/OUTPUT*VERIF*.txt
+rm -f ${homepath}/GROOT/GROOT-G/slurm*
+rm -f ${homepath}/GROOT/GROOT-G/SUBMISSION_FINISHED.txt
 
 # Change Accounts and Emails
 cd ${homepath}/GROOT/GROOT-G/
