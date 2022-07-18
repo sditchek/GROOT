@@ -44,7 +44,7 @@ for identremoveinvest=1
                 if ~exist(['cases/',identfold], 'dir')                 % if this is the first time running these scripts, it will create the cases directory
                     mkdir(['cases/',identfold])
                 end
-                if identcase==1;copyfile('editverif.m',['cases/',identfold,identn,'_editverif.m']);else;copyfile('editverif.m',['cases/',identfold,'editverif.m']);end;  % copy file into cases directory so if you need to run again, you'll already have it saved!
+                if identcase==1;copyfile('editverif.m',['cases/',identfold,identn,'_editverif.m']);copyfile('runverif.ksh',['cases/',identfold,identn,'_runverif.m']);else;copyfile('editverif.m',['cases/',identfold,'editverif.m']);copyfile('runverif.m',['cases/',identfold,'runverif.m']);end; 
                 % Save the output
                 save('indivparams.mat')                              % this file will be saved in the running directory so it can be used when needed
                 % Get common initalizations between all experiments

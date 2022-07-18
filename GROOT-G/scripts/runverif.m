@@ -39,7 +39,7 @@ for identremoveinvest=1
 		%% Set Name
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-		identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end 
+		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end 
 		stormsdone{stmdn}=identhwrf;end; %GROOT-G Change End
                 % Model outputs at 3 h, but to compare errors to BT make 6 h!
                 skip=2;                                                  % 6 h res | skip=1 is 3 h
@@ -60,7 +60,7 @@ for identremoveinvest=1
                 if ~exist(['cases/',identfold], 'dir')                 % if this is the first time running these scripts, it will create the cases directory
                     mkdir(['cases/',identfold])
                 end
-                 if identcase==1;copyfile('editverif.m',['cases/',identfold,identn,'_editverif.m']);else;copyfile('editverif.m',['cases/',identfold,'editverif.m']);end;  % copy file into cases directory so if you need to run again, you'll already have it saved!
+                if identcase==1;copyfile('editverif.m',['cases/',identfold,identn,'_editverif.m']);copyfile('runverif.ksh',['cases/',identfold,identn,'_runverif.m']);else;copyfile('editverif.m',['cases/',identfold,'editverif.m']);copyfile('runverif.m',['cases/',identfold,'runverif.m']);end; 
                 % Save the output
                 save('indivparams.mat')                              % this file will be saved in the running directory so it can be used when needed
                 % Get common initalizations between all experiments
