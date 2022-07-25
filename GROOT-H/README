@@ -65,6 +65,7 @@ scripts/ 	  | folder that contains all scripts needed to run the package
   matlabverif* 	      | scripts related to running the verification capability
   rungrb.m	      | grb capability script
   runverif*.m	      | verification capability scripts
+  tclookup.m          | enables the use of atcf files that use the storm id rather than the storm name
   ttestsc.m           | function that incorporates serial correlation time of 12 h in the ttest calculation (as per Sim Aberson)
   windbarbm.m         | function to generate wind barbs (note that flags are currently not filled)
 
@@ -136,6 +137,8 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+7/25/22  | Added capability to plot time-lag correlation of composited variables in order to better select a time threshold for the interpolator when generating early-model forecasts
+	 | Cleaned up way GROOT saved files in cases/ and output/ 
 7/15/22  | Removed hard coding for atcfunix file names
 	 | Fixed a bug that arranged the composite by-TC graphics alphabetically instead of by stormid - quantatative resutls are identical, only aesthetics changed
 	 | Rearranged github directories to get rid of GROOT/GROOT/ issue when pulling from github - you might need to do a clean pull!

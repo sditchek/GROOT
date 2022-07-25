@@ -44,7 +44,7 @@ for identremoveinvest=1
                 if ~exist(['cases/',identfold], 'dir')                 % if this is the first time running these scripts, it will create the cases directory
                     mkdir(['cases/',identfold])
                 end
-                if identcase==1;copyfile('editverif.m',['cases/',identfold,identn,'_editverif.m']);copyfile('runverif.ksh',['cases/',identfold,identn,'_runverif.m']);else;copyfile('editverif.m',['cases/',identfold,'editverif.m']);copyfile('runverif.m',['cases/',identfold,'runverif.m']);end; 
+                if identcase==1;copyfile('editverif.m',['cases/',identfold,identn,'_editverif.m']);copyfile('runverif.ksh',['cases/',identfold,identn,'_runverif.ksh']);else;copyfile('editverif.m',['cases/',identfold,'editverif.m']);copyfile('runverif.ksh',['cases/',identfold,'runverif.ksh']);end;  % copy file into cases directory so if you need to run again, you'll already have it saved!
                 % Save the output
                 save('indivparams.mat')                              % this file will be saved in the running directory so it can be used when needed
                 % Get common initalizations between all experiments
@@ -456,7 +456,7 @@ for identremoveinvest=1
 						fprintf(fid,'%s\n',['initstrat5="[',num2str(identstratlist5),']"']);
 					end; if exist('identstratlist6','var')==1;fprintf(fid,'%s\n',['initstrat6="[',num2str(identstratlist6),']"']);end;if exist('identstratlist7','var')==1;fprintf(fid,'%s\n',['initstrat7="[',num2str(identstratlist7),']"']);end;if exist('identstratlist8','var')==1;fprintf(fid,'%s\n',['initstrat8="[',num2str(identstratlist8),']"']);end;if exist('identstratlist9','var')==1;fprintf(fid,'%s\n',['initstrat9="[',num2str(identstratlist9),']"']);end;
 					fclose(fid);
-					clear identbtyear
+					clear identbtyear identstratlist*
 			end			
 		end
 		if identcompositerun==1

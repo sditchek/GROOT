@@ -101,6 +101,8 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+7/25/22  | Added capability to plot time-lag correlation of composited variables in order to better select a time threshold for the interpolator when generating early-model forecasts
+         | Cleaned up way GROOT saved files in cases/ and output/
 7/15/22  | Removed hard coding for atcfunix file names
          | Fixed a bug that arranged the composite by-TC graphics alphabetically instead of by stormid - quantatative resutls are identical, only aesthetics changed
          | Rearranged github directories to get rid of GROOT/GROOT/ issue when pulling from github - you might need to do a clean pull!

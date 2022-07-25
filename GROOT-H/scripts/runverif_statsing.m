@@ -10178,7 +10178,7 @@ for graphics=1
 									filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all													
 								end
-							end;end;  																																		
+							end;end;
 %							end
 							fid=fopen([identtrackint,'/',identn,'_scfactor.txt'],'w');fprintf(fid,'%s\n', 'No Data!');fclose(fid);
 							% Scorecard										
