@@ -9,13 +9,13 @@ identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'HF3A'};{'HF3S'};{'HWRF'}]; 		 	                                  % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
+identexp=[{'HF3A'};{'HF3S'};{'H221'}]; 		 	                                  % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
-identexpsigimp='HWRF';                                                              % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
-identexpcolors=[0 152 0;208 0 0]/255;  						  % colors associated with each experiment - do NOT use black since the best track is black by default
+identexpsigimp='H221';                                                              % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
+identexpcolors=[240 130 41;30 60 255;160 32 240]/255;  				  % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                                       % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroovpr,'/HWRF/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroovpr,'/HF3A/atcf']);                           % short name location of the experiment that's furthest along (must match name in "expnew" in runverif.ksh)
 
 % Case Study: recommendation - also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0';								          % run graphics for just 1 storm | yes (1) no (0)

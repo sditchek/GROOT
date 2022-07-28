@@ -2834,7 +2834,7 @@ for errorstats=1
                             end
                             % Along-Track Error
                             ATE=deg2km(distance('gc',[bt_lat0,bt_lon0],[int_lat0,int_lon0]));
-                            % If distance from n1 to int is larger than bt0 to int AND distance from n1 to int is creater than n1 to bt0, then ahead!
+			    % If distance from n1 to int is larger than bt0 to int AND distance from n1 to int is creater than n1 to bt0, then ahead!
                             if dist_BTn1int0 >= ATE && dist_BTn1int0 >= dist_BTn1BT0 %dist_BTn1BT0 > dist_BTn1int0
                             else;ATE=-1.*ATE;
                             end
