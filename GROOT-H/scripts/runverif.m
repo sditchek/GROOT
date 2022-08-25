@@ -74,7 +74,7 @@ for identremoveinvest=1
 		% Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
 			cnt=1; clear identdr1
 			 for tmp=1:size(identexpshort,1)
-				identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*']);
+				identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*anl0*']);
 				identdr=unique({identdr.name});
 				for i=1:size(identdr,2)
 					tmp2=identdr{i};
@@ -159,7 +159,7 @@ for identremoveinvest=1
                     % Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
                         cnt=1; clear identdr1
                          for tmp=1:size(identexpshort,1)
-                                identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*']);
+                                identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*anl0*']);
                                 identdr=unique({identdr.name});
                                 for i=1:size(identdr,2)
                                         tmp2=identdr{i};

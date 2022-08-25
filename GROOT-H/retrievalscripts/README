@@ -16,7 +16,7 @@ RUN TO SEE WHEN CYCLES COMPLETE AND TO IDENTIFY WHAT CYCLES SHOULD BE GRABBED BY
 3) You can also run this any time during the day by doing ./iscyclescomplete.ksh twice on the command line. Running it twice ensures that the files needed for the retrieval scripts are updated.
 
 PROCESS CONVENTIONAL OBSERVATIONS: gsi_diag_conv.f90
-1) Edit gsi_diag_conv.f90 - note that you need to make sure that the columns match how the diag file was created (setupxxx.f90 in ProdGSI source code)
+1) Edit gsi_diag_conv.f90 - note that you need to make sure that the columns match how the diag file was created (setupxxx.f90 in ProdGSI source code); you should also ensure that the first three columns will be the obsname, obstype#, and subtype#.
 2) Compile the file: gfortran -c gsi_diag_conv.f90
 3) Create the executable: gfortran -o gsi_diag_conv.x gsi_diag_conv.o
 4) Nothing else! The gsi_diag_conv.x file will be used by the rtrv_conv_tmplt.sh script!

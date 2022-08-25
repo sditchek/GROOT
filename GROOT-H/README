@@ -137,6 +137,8 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+8/24/22  | Added capability for retrieval script to process multple obtypes and subobtypes and for GROOT to plot them
+	 | Retrieval script now grabs both anl and ges files
 7/25/22  | Added capability to plot time-lag correlation of composited variables in order to better select a time threshold for the interpolator when generating early-model forecasts
 	 | Cleaned up way GROOT saved files in cases/ and output/ 
 7/15/22  | Removed hard coding for atcfunix file names

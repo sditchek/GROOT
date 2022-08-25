@@ -7,8 +7,8 @@
 #SBATCH --mail-type=end	    # XXXX: NONE, BEGIN, END, FAIL, REQUEUE, ALL 
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov
 #SBATCH -J TAPE		    	# XXXX: Job Name: change
-#SBATCH -o /scratch1/BMC/qosap/Sarah.D.Ditchek/TAPE/archive_harvey09l.log # XXXX: Output
-#SBATCH -e /scratch1/BMC/qosap/Sarah.D.Ditchek/TAPE/error_harvey09l.log   # XXXX: Output
+#SBATCH -o /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/archive_harvey09l.log # XXXX: Output
+#SBATCH -e /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/error_harvey09l.log   # XXXX: Output
 
 #################################################################################################
 ########### This script retrieves scrubbed data from HPSS for a given experiment ################
@@ -35,10 +35,10 @@ storm_nm2=nine      	  								 		  # storm number - lowercase (e.g., nine)
 storm_nm3=invest     	  								 		  # storm invest - lowercase (e.g., invest)
 storm_yr="2017"		      								 		  # storm year
 subexp=$1                 								 		  # subexp name from model run passed in on command line
-hpssdir=/ESRL/BMC/qosap/5year/${usr}/HERA/HB20/${subexp} 		  # retrieval directory on hpss
-current=/scratch1/BMC/qosap/${usr}/GROOT/GROOT-H/retrievalscripts # current directory
-indir1=/scratch1/BMC/qosap/${usr}/scrub/${subexp}/com 	 		  # your scrub directory path
-indir2=/scratch1/BMC/qosap/${usr}/noscrub/atcf/${subexp} 		  # your noscrub directory path
+hpssdir=/ESRL/AOML/aoml-osse/5year/${usr}/HERA/HB20/${subexp} 		  # retrieval directory on hpss
+current=/scratch1/AOML/aoml-osse/${usr}/GROOT/GROOT-H/retrievalscripts # current directory
+indir1=/scratch1/AOML/aoml-osse/${usr}/scrub/${subexp}/com 	 		  # your scrub directory path
+indir2=/scratch1/AOML/aoml-osse/${usr}/noscrub/atcf/${subexp} 		  # your noscrub directory path
 satid=iasi_g13		  											  # the satellite id you want data of
 nc="618"		  												  # number of channels + 2 (e.g., iasi_g13 had 616 channels, so nc=616+2=618)
 ch1="16"		  												  # first channel (e.g., the first channel for iasi_g13 is 16)

@@ -27,9 +27,9 @@ diagoutput=${atcfoutput}			                # location of your diag output (if yo
 usingadecks=1							# are your atcf files merged into adecks? if so, GROOT has an additional preprocessing step | (1) yes (0) no
 
 # Identify Experiments
-set -A expfold HF3A HF3S H221	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew HF3A HF3S H221                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
-numfold=3                               # number of folders in expnew - the number must match!
+set -A expfold HF3A HWRF	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew HF3A HWRF                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
 
 # Account Information

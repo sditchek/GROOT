@@ -3,7 +3,7 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identout=['/scratch2/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];             % directory path for results | must be same as resultspath in runverif.ksh
+identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];             % directory path for results | must be same as resultspath in runverif.ksh
 identgroovpr=[identout,'GROOT-PR/'];						  % DO NOT CHANGE - location of your GROOT-PR dirctory
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)

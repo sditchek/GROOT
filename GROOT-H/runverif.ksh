@@ -84,7 +84,7 @@ done
 for ((i=0;i<${numfold};++i))
 do	
 	# Copy Over Files
-	cp ${scrubpath}/${expfold[$i]}/**/**/**/*conv.latlon* ${verifpath}/obsall/${expnew[$i]}/
+	cp ${scrubpath}/${expfold[$i]}/**/**/**/*.latlon* ${verifpath}/obsall/${expnew[$i]}/
         cp ${scrubpath}/${expfold[$i]}/**/**/**/*details.txt ${verifpath}/obsall/${expnew[$i]}/
         cp ${scrubpath}/${expfold[$i]}/**/**/**/*profiles.txt ${verifpath}/obsall/${expnew[$i]}/
         cp ${scrubpath}/${expfold[$i]}/**/**/**/*channels.txt ${verifpath}/obsall/${expnew[$i]}/

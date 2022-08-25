@@ -22,12 +22,12 @@
                         for identloop=1:size(identinittimesunique,1)
                             % What storms are run in the basin at this init time?   
                             if identbasinmodel==0
-								identdr=dir([identgroovpr,'obsall/',identexpshort{1},'/',identhwrf,'*',identinittimesunique(identloop,:),'*']);
+								identdr=dir([identgroovpr,'obsall/',identexpshort{1},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);
 								identdr=unique({identdr.name});
 							else
 								tmpt=[];
 								for identloopcheck=1:size(identexpshort,1)
-									tmp=dir([identgroovpr,'obsall/',identexpshort{identloopcheck},'/*',identinittimesunique(identloop,:),'*']);
+									tmp=dir([identgroovpr,'obsall/',identexpshort{identloopcheck},'/*',identinittimesunique(identloop,:),'*anl0*']);
 									tmpt=[tmpt unique({tmp.name})];									
 								end
 								a=unique(tmpt,'stable');

@@ -7,8 +7,8 @@
 #SBATCH --mail-type=fail    # XXXX: NONE, BEGIN, END, FAIL, REQUEUE, ALL
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov
 #SBATCH -J TAPE             # XXXX: Job Name: change
-#SBATCH -o /scratch1/BMC/qosap/Sarah.D.Ditchek/TAPE/archivecompcyc.log # XXXX: Output
-#SBATCH -e /scratch1/BMC/qosap/Sarah.D.Ditchek/TAPE/errorcompcyc.log # XXXX: Output
+#SBATCH -o /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/archivecompcyc.log # XXXX: Output
+#SBATCH -e /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/errorcompcyc.log # XXXX: Output
 
 #######################################################################################
 # This script emails the person specified under *emailme* when a new cycle completes! #
@@ -18,13 +18,13 @@
 # START OF USER SETTINGS #
 ##########################
 
-scrubdir=/scratch1/BMC/qosap/${USER}/scrub   							# location of your scrub directory
-currentdir=/scratch1/BMC/qosap/${USER}/GROOT/GROOT-H/retrievalscripts	# location of where this script is stored
+scrubdir=/scratch1/AOML/aoml-osse/${USER}/scrub   							# location of your scrub directory
+currentdir=/scratch1/AOML/aoml-osse/${USER}/GROOT/GROOT-H/retrievalscripts	# location of where this script is stored
 emailme=sarah.d.ditchek@noaa.gov										# who should be emailed when a new cycle is completed?
 exp="GSYESFR GSYESCR"													# names of your experiments to check (e.g., exp="exp1 exp2 exp3")
 
 # Enter this in your crontab, uncommented. Be sure to change the path to match your "currentdir" above - the below runs once a day at 5am Eastern
-#0 9 * * * /scratch1/BMC/qosap/Sarah.D.Ditchek/GROOT-H/retrievalscripts/iscyclecomplete.ksh
+#0 9 * * * /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT-H/retrievalscripts/iscyclecomplete.ksh
 
 ########################
 # END OF USER SETTINGS #

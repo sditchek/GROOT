@@ -7,8 +7,8 @@
 #SBATCH --mail-type=fail    # XXXX: NONE, BEGIN, END, FAIL, REQUEUE, ALL 
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov
 #SBATCH -J HWRFDA	    	# XXXX: Job Name: change
-#SBATCH -o /scratch1/BMC/qosap/Sarah.D.Ditchek/TAPE/hwrfda_o_03l.log # XXXX: Output
-#SBATCH -e /scratch1/BMC/qosap/Sarah.D.Ditchek/TAPE/hwrfda_e_03l.log # XXXX: Output
+#SBATCH -o /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/hwrfda_o_03l.log # XXXX: Output
+#SBATCH -e /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/hwrfda_e_03l.log # XXXX: Output
 
 #################################################################################
 ########### This script retrieves HWRFDA files for a given experiment ###########
@@ -39,15 +39,15 @@ startdate3="2006-09-07 18"
 enddate3="2006-09-11 18"
 
 # FOR YOUR CRONTAB
-# 0 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * * /scratch1/BMC/qosap/Sarah.D.Ditchek/TAPE/HWRFDA.ksh GSYESCR >/dev/null 2>&1
+# 0 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * * /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/HWRFDA.ksh GSYESCR >/dev/null 2>&1
 
 ########################
 # end of user settings #
 ########################
 
 # Setup Directories
-current=/scratch1/BMC/qosap/${usr}/TAPE
-indir1=/scratch1/BMC/qosap/${usr}/scrub/${subexp}/
+current=/scratch1/AOML/aoml-osse/${usr}/TAPE
+indir1=/scratch1/AOML/aoml-osse/${usr}/scrub/${subexp}/
 mkdir -p ${indir1}/HWRFDA/
 
 # Grab files (invest)
