@@ -34,12 +34,12 @@ subexp=$1                 						 # subexp name from model run passed in on comma
 hpssdir=/ESRL/BMC/qosap/5year/Benjamin.Johnston/HERA/HB20/${subexp} 		 # retrieval directory on hpss
 current=/scratch1/AOML/aoml-osse/${usr}/GROOT/GROOT-H/retrievalscripts   # current directory
 indir1=/scratch1/AOML/aoml-osse/${usr}/scrub/${subexp}/com 	 	 # your scrub directory path
-indir2= /scratch1/AOML/aoml-osse/${usr}/noscrub/atcf/${subexp} 		 # your noscrub directory path
+indir2=/scratch1/AOML/aoml-osse/${usr}/noscrub/atcf/${subexp} 		 # your noscrub directory path
 
 # Conventional Observation Section
 numvars=6                                                                # number of conventional observations being processed
-set -A convid 750 751 752 753 754 755                                    # conventional observation type (used by gsi_diag_conv_RO.x to extract your data)
-set -A convar gps gps gps gps gps gps                                    # conventional variable type (used by gsi_diag_conv_RO.x to extract your data)
+set -A convid 750 751 752 753 754 755                                    # conventional observation type (used by gsi_diag_conv.x to extract your data)
+set -A convar gps gps gps gps gps gps                                    # conventional variable type (used by gsi_diag_conv.x to extract your data)
 set -A newsubid 1 2 3 4 5 6						 # reassigned subtype ids for each conventional observation type | in editverif.m match identconvtype to this row
 										# if numvars=1, and you DO want to keep the subtypes, newsubid="" 
 										# if numvars=1, and you DO NOT want to keep the subtypes, newsubid=number
@@ -55,8 +55,8 @@ startdate2=""
 enddate2=""
 
 # Dates where files identified by "name" | if none, keep as "" | format must be yyyy-mm-dd hh
-startdate1="2020-08-25 00"
-enddate1="2020-08-25 00"
+startdate1="2020-08-26 06"
+enddate1="2020-08-26 06"
 
 # README: GSI DATA
 # You might need to change the gsi_diag_conv.f90 file and recompile for your particular case - see the README in this folder for more details
@@ -105,8 +105,8 @@ else
 					rename ${storm_nm3} ${storm_nm} *
                     			gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz					
-					${current}/gsi_diag_conv_RO.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
-					${current}/gsi_diag_conv_RO.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges ${indir1}/${usedate}/${storm_ID2}/ ${usedate} ges > log.ge
+					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
+					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges ${indir1}/${usedate}/${storm_ID2}/ ${usedate} ges > log.ge
 					rm log.an
 					rm log.ge
                                         for ((j=0;j<${numvars};++j))
@@ -116,7 +116,7 @@ else
                                                         grep "${convar[$j]}      ${convid[$j]}" gsidiag_anl.${usedate}.${convar[$j]}_conv > tmp.txt
                                                         uniq tmp.txt > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1
                                                         rm tmp.txt
-                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;else;awk '{print substr($0,1,29) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;fi
+                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;else;awk '{print substr($0,1,28) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;fi
                                                 else
                                                         echo none > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt
                                                 fi
@@ -125,7 +125,7 @@ else
                                                         grep "${convar[$j]}      ${convid[$j]}" gsidiag_ges.${usedate}.${convar[$j]}_conv > tmp.txt
                                                         uniq tmp.txt > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1
                                                         rm tmp.txt
-                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;else;awk '{print substr($0,1,29) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;fi
+                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;else;awk '{print substr($0,1,28) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;fi
                                                 else
                                                         echo none > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt
                                                 fi
@@ -190,8 +190,8 @@ else
 					rename ${storm_nm2} ${storm_nm} *
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz					
-					${current}/gsi_diag_conv_RO.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
-					${current}/gsi_diag_conv_RO.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges ${indir1}/${usedate}/${storm_ID2}/ ${usedate} ges > log.ge
+					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
+					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges ${indir1}/${usedate}/${storm_ID2}/ ${usedate} ges > log.ge
 					rm log.an
 					rm log.ge
                                         for ((j=0;j<${numvars};++j))
@@ -201,7 +201,7 @@ else
                                                         grep "${convar[$j]}      ${convid[$j]}" gsidiag_anl.${usedate}.${convar[$j]}_conv > tmp.txt
                                                         uniq tmp.txt > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1
                                                         rm tmp.txt
-                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;else;awk '{print substr($0,1,29) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;fi
+                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;else;awk '{print substr($0,1,28) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;fi
                                                 else
                                                         echo none > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt
                                                 fi
@@ -210,7 +210,7 @@ else
                                                         grep "${convar[$j]}      ${convid[$j]}" gsidiag_ges.${usedate}.${convar[$j]}_conv > tmp.txt
                                                         uniq tmp.txt > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1
                                                         rm tmp.txt
-                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;else;awk '{print substr($0,1,29) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;fi
+                                                        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;else;awk '{print substr($0,1,28) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;fi
                                                 else
                                                         echo none > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt
                                                 fi
@@ -275,8 +275,8 @@ else
 					htar -xvf ${hpssdir}/${storm_nm}${storm_ID}.${usedate}.tar ${storm_nm}${storm_ID}.${usedate}.storm_vit
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz					
-					${current}/gsi_diag_conv_RO.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
-					${current}/gsi_diag_conv_RO.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges ${indir1}/${usedate}/${storm_ID2}/ ${usedate} ges > log.ge
+					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
+					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges ${indir1}/${usedate}/${storm_ID2}/ ${usedate} ges > log.ge
 					rm log.an
 					rm log.ge
 					for ((j=0;j<${numvars};++j))
@@ -286,7 +286,7 @@ else
 							grep "${convar[$j]}      ${convid[$j]}" gsidiag_anl.${usedate}.${convar[$j]}_conv > tmp.txt
 				                        uniq tmp.txt > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1
 				                        rm tmp.txt
-							if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;else;awk '{print substr($0,1,29) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;fi
+							if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;else;awk '{print substr($0,1,28) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt;fi
 						else
 							echo none > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.anl0.latlon.txt
 						fi
@@ -295,7 +295,7 @@ else
 							grep "${convar[$j]}      ${convid[$j]}" gsidiag_ges.${usedate}.${convar[$j]}_conv > tmp.txt
 				                        uniq tmp.txt > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1
 				                        rm tmp.txt
-						        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;else;awk '{print substr($0,1,29) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;fi
+						        if [ -z "${newsubid}" ];then;cat ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;else;awk '{print substr($0,1,28) v substr($0,33)}' v="  ${newsubid[$j]}" ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt1 > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt;fi
 						else
 							echo none > ${storm_nm}${storm_ID}.${usedate}.${convar[$j]}.${convid[$j]}.indiv.ges0.latlon.txt
 						fi
