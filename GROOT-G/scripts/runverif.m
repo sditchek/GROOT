@@ -16,7 +16,7 @@ for identremoveinvest=1
             for editsingle=1
 		identtmp1=stormsdone{stmdn}; %GROOT-G Change Start
 		identtmp2=yearsdone(stmdn,:);
-		identtmp3=identtmp1(3:4);
+		identtmp3=identtmp1(3:4);clear identtmp4;
 		if strcmp(identtmp3,'AL')==1
 		    identtmp4='l';
 		elseif strcmp(identtmp3,'EP')==1
@@ -35,7 +35,7 @@ for identremoveinvest=1
 		%end
 		identn=unique(NAMEall,'rows','stable');
 		identn=identn(end,:);
-		identn=identn(isletter(identn));
+		identn=identn(double(identn)>0);
 		%% Set Name
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
@@ -322,7 +322,7 @@ for identremoveinvest=1
             %% %%%%%%%%%%%%%%%% %%
             identtmp1=stormsdone{stmdn};
             identtmp2=yearsdone(stmdn,:);
-            identtmp3=identtmp1(3:4);
+            identtmp3=identtmp1(3:4);clear identtmp4;
             if strcmp(identtmp3,'AL')==1
                 identtmp4='l';
             elseif strcmp(identtmp3,'EP')==1
@@ -341,7 +341,7 @@ for identremoveinvest=1
                %end
             identn=unique(NAMEall,'rows','stable');
             identn=identn(end,:);
-            identn=identn(isletter(identn));
+            identn=identn(double(identn)>0);
             %% Set Name
             ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
             identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
@@ -471,7 +471,7 @@ for identremoveinvest=1
 		end
 		if identcompositerun==1
 			load('compsave1.mat')
-			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1 || strcmp(identdr5{1},'WP')==1
+			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1 || strcmp(identdr5{1},'WP')==1 || strcmp(identdr5{1},'IO')==1 || strcmp(identdr5{1},'SH')==1 
 				%% To deal with multiple basins, if present
 				identbasincut(1)=1;
 				for basinloop=1:size(identdr5,2) 

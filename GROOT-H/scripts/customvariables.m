@@ -76,7 +76,7 @@ elseif strcmp(identvariables{identvar},'Dew-point_temperature_height_above_groun
     vara=200;  % regular
     varb=300;
     var1=10; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=2; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Dew-point_temperature_isobaric')==1
@@ -136,7 +136,7 @@ elseif strcmp(identvariables{identvar},'Drag_Coefficient_height_above_ground')==
     vara=0;  % regular
     varb=300;
     var1=10; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=2; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Geopotential_height_isobaric')==1
@@ -306,7 +306,7 @@ elseif strcmp(identvariables{identvar},'Relative_humidity_height_above_ground')=
     vara=0;  % regular
     varb=100;
     var1=20; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=5; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Relative_humidity_isobaric')==1
@@ -356,7 +356,7 @@ elseif strcmp(identvariables{identvar},'Specific_humidity_height_above_ground')=
     vara=0;  % regular
     varb=0.1;
     var1=0.01; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=5; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Specific_humidity_isobaric')==1
@@ -376,7 +376,7 @@ elseif strcmp(identvariables{identvar},'Storm_relative_helicity_height_above_gro
     vara=-200;  % regular
     varb=200;
     var1=10; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Surface_roughness_surface')==1
@@ -396,7 +396,7 @@ elseif strcmp(identvariables{identvar},'Temperature_height_above_ground')==1
     vara=275;  % regular
     varb=325;
     var1=10; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=2; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Temperature_isobaric')==1
@@ -546,7 +546,7 @@ elseif strcmp(identvariables{identvar},'VAR10-3-203_FROM_7-0-0_height_above_grou
     vara=0;  % regular
     varb=1;
     var1=0.1; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=2; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Vertical_Speed_Shear_tropopause')==1
@@ -586,7 +586,7 @@ elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground'
     vara=-10;  % regular
     varb=10;
     var1=1; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1
@@ -616,7 +616,7 @@ elseif strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground'
     vara=-10;  % regular
     varb=10;
     var1=1; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1
@@ -646,7 +646,7 @@ elseif strcmp(identvariables{identvar},'radial-component_of_wind_height_above_gr
     vara=-10;  % regular
     varb=10;
     var1=10; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'tangential-component_of_wind_height_above_ground')==1
@@ -656,7 +656,7 @@ elseif strcmp(identvariables{identvar},'tangential-component_of_wind_height_abov
     vara=-50;  % regular
     varb=50;
     var1=20; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'radial-component_of_wind_isobaric')==1
@@ -686,7 +686,7 @@ elseif strcmp(identvariables{identvar},'radial-component_of_wind_tropopause')==1
     vara=-10;  % regular
     varb=10;
     var1=10; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'tangential-component_of_wind_tropopause')==1
@@ -696,7 +696,7 @@ elseif strcmp(identvariables{identvar},'tangential-component_of_wind_tropopause'
     vara=-50;  % regular
     varb=50;
     var1=20; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=3; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'Relative_vorticity_isobaric')==1
@@ -716,7 +716,7 @@ elseif strcmp(identvariables{identvar},'wind_speed_height_above_ground')==1
     vara=0;  % regular
     varb=180./1.94384;
     var1=5; % difference
-    levs=1;  % 3d (1) 2d (0)
+    levs=0;  % 3d (1) 2d (0)
     cbar1=8; % negzero(1) zeropos(2) negpos(3) wet(4) wetdry(5) radar(6) tpw(7)
     cbar2=3;
 elseif strcmp(identvariables{identvar},'wind_speed_isobaric')==1

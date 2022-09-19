@@ -3,7 +3,7 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/'];             % directory path for results | must be same as resultspath in runverif.ksh
+identout=['/scratch2/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/'];             % directory path for results | must be same as resultspath in runverif.ksh
 identgroovpr=[identout,'GROOT-PR/'];						  % DO NOT CHANGE - location of your GROOT-PR dirctory
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
@@ -37,12 +37,11 @@ identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for
 identconv=0;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
-identconvobs=137;						% conventional observation obstype
 identconvtype=[0];                                              % subtypes desired 
-identincludeobs=1					% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
                                                                     % NO SUBTYPE: identconvtype=0
+identincludeobs=1					% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
                                                                     % YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
-identconvcolors=[.8 .2 .8;.9 .4 .2];                            % colors for each of your subtypes
+identconvcolors=[204 51 204;230 102 51]/255;                            % colors for each of your subtypes
 identconvlegend=[{'Assimilated Mie (Cloudy) Observations'};{'Assimilated Rayleigh (Clear) Observations'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options
@@ -57,6 +56,7 @@ identchannel=[200];                     % used to generate graphics of profiles 
 % Graphics Options														
 identeps=1;				  % save as eps or png? | eps (1) png (0)
 identconmetric=1;			  % include the consistency metric on the error/skill combo graphics for both the mean and median | yes (1) no (0)
+
 %% %%%%%%%%%%%%%%%%%%%% %%
 %% END OF USER SETTINGS %%
 %% %%%%%%%%%%%%%%%%%%%% %%

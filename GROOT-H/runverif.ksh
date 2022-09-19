@@ -104,6 +104,10 @@ do
 	fi
 done
 
+# Ensure BDECKs have HU instead of TY and ST
+sed -i "s/, TY, /, HU, /g" ${homepath}/GROOT/GROOT-H/bdeck/b*.dat
+sed -i "s/, ST, /, HU, /g" ${homepath}/GROOT/GROOT-H/bdeck/b*.dat
+
 # Run the namelist
 cd ${homepath}/GROOT/GROOT-H/
 matlab -nosplash -nodesktop < editverif.m > ${outputpath}/OUTPUT_VERIF.txt

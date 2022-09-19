@@ -11,7 +11,7 @@ tmpunique=unique(tmpunique,'rows');
  for stmdn=1:size(tmpunique,1)   %GROOT-G Change Start
 	identtmp1=tmpunique(stmdn,1:4);
 	identtmp2=tmpunique(stmdn,6:9);
-	identtmp3=identtmp1(3:4);
+	identtmp3=identtmp1(3:4);clear identtmp4;
 	if strcmp(identtmp3,'AL')==1
 		identtmp4='l';
 	elseif strcmp(identtmp3,'EP')==1
@@ -29,10 +29,10 @@ tmpunique=unique(tmpunique,'rows');
 		[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
 		identn=unique(NAMEall,'rows','stable');
 		identn=identn(end,:);
-		identn=identn(isletter(identn));
+		identn=identn(double(identn)>0);
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-		identhwrf{stmdn,:}=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];
+		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;identhwrf{stmdn,:}=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];
 		if strcmp(identtmp1(1),'9')==1; 
 			identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];
 		end 

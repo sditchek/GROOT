@@ -10,13 +10,13 @@
 ident=['AL052019'];                                             % basin, ID, and year (e.g., AL092016)
 identn=['DORIAN19'];                                            % NAMEYY (e.g., HERMINE16)
 identhwrf=['dorian05l'];                                        % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
-identcycles=['2019082700';'2019082706';'2019082712';'2019082718';'2019082800';'2019082806';'2019082812';'2019082818';'2019082900';'2019082906';'2019082912';'2019082918';'2019083000'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
+identcycles='2019082918'; %['2019082700';'2019082706';'2019082712';'2019082718';'2019082800';'2019082806';'2019082812';'2019082818';'2019082900';'2019082906';'2019082912';'2019082918';'2019083000'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
 identmaxfhr=(126)/3+1;identmodelfhr=(126)/3+1;                  % max forecast hours set in model (e.g., 126) - keep the /3+1
 identlevels=46;                                                 % number of pressure levels
-identexp=[{'HB20_B4_G4IC'};{'HB20_B4_noG4IC'}];                      % full folder name of all experiments to compare - name from your scrub directory
-identexpshort=[{'ALL'};{'NOG4IC-D'}];                           % short name of experiments (no more than 8 letters per experiment)
-identexpsigimp='HB20_B4_noG4IC';                                    % full folder name of experiment you want improvement and significance compared to
-identexpsigimpshort='NOG4IC-D';                                       % short name of experiment you want improvement and significance compared to (no more than 8 letters)
+identexp=[{'HB20new'};{'HB20_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
+identexpshort=[{'ALL'};{'NO'}];                           % short name of experiments (no more than 8 letters per experiment)
+identexpsigimp='NO';                                    % full folder name of experiment you want improvement and significance compared to
+identexpsigimpshort='NO';                                       % short name of experiment you want improvement and significance compared to (no more than 8 letters)
 identpresplan=[200,500,850];                                    % pressure levels of plan-view graphics
 identexpcolors=[0 152 0;208 0 0]/255;                           % colors associated with each experiment
                                                                       % EX1: For 2 experiments, recommended colors: green(included data)=[0,.7,0] red(denied data)=[.9,0,0]
@@ -30,18 +30,18 @@ identdiff=[1 2;];                                               % for which expe
 identscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/scrub/'];      % location of your scrub dirctory that has the grb and observation files (either conventional or satellite)
 identnoscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/noscrub/'];  % location of your noscrub dirctory that has the atcf track files
 identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];% location of your GROOT-H directory 
-identnum=1							     % do your grib files start with a number (identnum=1) or the name of the storm (identnum=0)?
+identnum=0							     % do your grib files start with a number (identnum=1) or the name of the storm (identnum=0)?
 
 % Graphics
 initgraphics=1;                                                 % create TRACK/INT error data - for graphics edit editverif.m | yes - first time running (1) or no - ran this before (0)
 initda=0;                                                       % create pre-GSI and post-GSI graphics if user-retrieved using the included retrieval script | yes (1) no (0)
-initsynoptic=1;                                                 % create SYNOPTIC grid .mat files | yes (1) or no (0)
-initgraphicssynoptic=1;                                         % create SYNOPTIC grid graphics | yes (1) or no (0)
+initsynoptic=0;                                                 % create SYNOPTIC grid .mat files | yes (1) or no (0)
+initgraphicssynoptic=0;                                         % create SYNOPTIC grid graphics | yes (1) or no (0)
 initstorm=1;                                                    % create STORM grid .mat files | yes (1) or no (0)
 initgraphicsstorm=1;                                            % create STORM grid graphics | yes (1) or no (0)
 identplan=1;                                                    % create plan-view graphics (turn off to save time) | yes (1) no (0)
 identsave=0;                                                    % do you want to save .mat files of the computed fields that make the graphics? This takes up more space! | yes (1) no (0)
-identeps=0;                                                     % save as eps or png? | eps (1) png (0)
+identeps=1;                                                     % save as eps or png? | eps (1) png (0)
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %% IF YOU CHOOSE v01, v16, or v73-v78, OUTPUT WILL INCLUDE  %%
@@ -54,10 +54,10 @@ identeps=0;                                                     % save as eps or
 %% 							    %%
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 
-v01=1;         %        10-5 s-1       Absolute vorticity | isobaric
+%v01=1;         %        10-5 s-1       Absolute vorticity | isobaric
 %v02=2;         %        kg m-2         Cloud Ice | isobaric
 %v03=3;         %        kg kg-1        Cloud mixing ratio | isobaric
-v04=4;         %        dB             Maximum/Composite radar reflectivity | 2D
+%v04=4;         %        dB             Maximum/Composite radar reflectivity | 2D
 %v05=5;         %        J kg**-1       Convective available potential energy | surface
 %v06=6;         %        J kg**-1       Convective inhibition | surface
 %v07=7;         %        kg m**-2       Convective accumulated precipitation (water) | surface
@@ -68,8 +68,8 @@ v04=4;         %        dB             Maximum/Composite radar reflectivity | 2D
 %v12=12;        %        W m**-2        Downward short-wave radiation flux | surface
 %v13=13;        %        W m**-2        Downward short-wave radiation flux Hour Average | surface
 %v14=14;        %        numeric        Drag coefficient
-v16=16;        %        gpm            Geopotential Height | isobaric
-%v17=17;        %        gpm            Geopotential Height | surface
+%v16=16;        %        gpm            Geopotential Height | isobaric
+v17=17;        %        gpm            Geopotential Height | surface
 %v18=18;        %        km             Orography | 2D
 %v19=19;        %        (0 - 1)        Land-sea mask | surface
 %v20=20;        %        kg m**-2       Nonconvective accumulated precipitation (large-scale) | surface
@@ -78,15 +78,15 @@ v16=16;        %        gpm            Geopotential Height | isobaric
 %v24=24;        %        N m**-2        Momentum flux, v component | surface
 %v25=25;        %        m              Planetary boundary layer height | 2D
 %v26=26;        %        K              Potential temperature | tropopause
-v27=27;        %        kg m**-2       Precipitable water | 2D
+%v27=27;        %        kg m**-2       Precipitable water | 2D
 %v28=28;        %        kg m**-2 s**-1 Precipitation rate | surface
-v29=29;        %        mb             Pressure reduced to MSL | surface
+%v29=29;        %        mb             Pressure reduced to MSL | surface
 %v30=30;        %        hPa            Surface pressure | surface
 %v31=31;        %        hPa            Pressure | tropopause
 %v32=32;        %        kg kg-1        Rain mixing ratio | isobaric
-v33=33;        %        dB             Radar reflectivity | isobaric
+%v33=33;        %        dB             Radar reflectivity | isobaric
 %v34=34;        %        %              Relative humidity | 2D
-v35=35;        %        %              Relative humidity | isobaric
+%v35=35;        %        %              Relative humidity | isobaric
 %v36=36;        %        numeric        Rime factor | isobaric
 %v37=37;        %        W m**-2        Sensible heat net flux | surface
 %v38=38;        %        kg kg-1        Snow mixing ratio | isobaric
@@ -95,7 +95,7 @@ v35=35;        %        %              Relative humidity | isobaric
 %v41=41;        %        J kg**-1       Storm relative helicity | 2D
 %v42=42;        %        m              Surface roughness | surface
 %v43=43;        %        K              Temperature | 2D
-v44=44;        %        K              Temperature | isobaric
+%v44=44;        %        K              Temperature | isobaric
 %v45=45;        %        K              Temperature | surface
 %v46=46;        %        K              2 metre temperature | 2D
 %v47=47;        %        kg m**-2       Total column integrated rain | 2D
@@ -113,8 +113,8 @@ v44=44;        %        K              Temperature | isobaric
 %v59=59;        %        s**-1          Vertical speed shear | tropopause
 %v60=60;        %        Pa s-1         Vertical velocity | isobaric
 %v61=61;        %        K              Sea surface temperature | surface
-%v73=[73,76];   %        m s**-1        10 metre U/V wind component | 2D
-v74=[74,77];   %        m s**-1        U/V component of wind | isobaric
+v73=[73,76];   %        m s**-1        10 metre U/V wind component | 2D
+%v74=[74,77];   %        m s**-1        U/V component of wind | isobaric
 %v75=[75,78];   %        m s**-1        U/V component of wind | tropopause
 
 %% %%%%%%%%%%%%%%%%%%%% %%
@@ -143,7 +143,7 @@ for i=1:size(identexp,1)
     else
         identfold=strcat(identfold,tmp,'_');
     end
-end   
+end;if identeps==1;identfold=[identfold(1:end-1),'_eps/'];else;identfold=[identfold(1:end-1),'_png/'];end;   
 if ~exist([identout,'cases/',identfold], 'dir')                      % if this is the first time running these scripts, it will create the cases directory
     mkdir([identout,'cases/',identfold])
 end
@@ -212,7 +212,7 @@ elseif find(identv0==74)>0
 elseif find(identv0==75)>0
     identv0=[identv0 82 85 89];
 end
-for i=[73:78,16]
+for i=[73:78,16,17]
     identv0(identv0==i)=NaN;
 end
 identvstorm=identv0(find(~isnan(identv0)));
@@ -229,7 +229,7 @@ elseif find(identv0==74)>0
 elseif find(identv0==75)>0
     identv0=[identv0 82 85 89];
 end
-for i=[73:78,16]
+for i=[73:78,16,17]
     identv0(identv0==i)=NaN;
 end
 identvsynoptic=identv0(find(~isnan(identv0)));

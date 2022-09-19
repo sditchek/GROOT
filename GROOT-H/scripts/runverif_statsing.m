@@ -1825,12 +1825,12 @@ for graphics=1
 			end
 			plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if plt==1;tmp_expbias=tmp_exp;end;
 			for tmp=1:size(identexp,1)
-				if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
-				sigtest_loc=find(sigtest==1);
-				sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
-				for tmpi=tmp
-					plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-				end
+%				if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
+%				sigtest_loc=find(sigtest==1);
+%				sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+%				for tmpi=tmp
+%					plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+%				end
 				%if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.1);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);end;
 				%sigtest_loc1=find(sigtest==1);
 				%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -2111,10 +2111,10 @@ for graphics=1
 				imprv=100.*(1-abs(nanmean(tmp_exp(:,:,tmp),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)));                  
 				imprv2(:,tmp)=imprv;
 				l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-				sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-				sigtest_loc=find(sigtest==1);
-				sigtest_exp=imprv(sigtest_loc);
-				plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+				%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+				%sigtest_loc=find(sigtest==1);
+				%sigtest_exp=imprv(sigtest_loc);
+				%plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 				%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 				%sigtest_loc1=find(sigtest==1);
 				%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -2482,10 +2482,10 @@ for graphics=1
 				%plot(1:size(fspb,2),fspb,'--s','Color',identexpcolors(tmp,:),'linewidth',.5,'markersize',2); 
 				l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
 				cntl=cntl+1;
-				sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-				sigtest_loc=find(sigtest==1);
-				sigtest_exp=fspa(sigtest_loc);
-				plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+				%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+				%sigtest_loc=find(sigtest==1);
+				%sigtest_exp=fspa(sigtest_loc);
+				%plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 				%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 				%sigtest_loc1=find(sigtest==1);
 				%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -2772,12 +2772,12 @@ for graphics=1
 			end
 			plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 			for tmp=1:size(identexp,1)
-				sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-				sigtest_loc=find(sigtest==1);
-				sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
-				for tmpi=tmp
-					plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-				end
+				%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+				%sigtest_loc=find(sigtest==1);
+				%sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+				%for tmpi=tmp
+			%		plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+				%end
 				%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 				%sigtest_loc1=find(sigtest==1);
 				%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -3181,12 +3181,12 @@ for graphics=1
 			end
 			plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 			for tmp=1:size(identexp,1)
-				sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-				sigtest_loc=find(sigtest==1);
-				if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
-				for tmpi=tmp
-					plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-				end
+				%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+				%sigtest_loc=find(sigtest==1);
+				%if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
+				%for tmpi=tmp
+				%	plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
+				%end
 				%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 				%sigtest_loc1=find(sigtest==1);
 				%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -3388,10 +3388,10 @@ for graphics=1
 				if med==1; imprv=100.*(1-abs(nanmean(tmp_exp(:,:,tmp),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1))); elseif med==2; imprv=100.*(1-abs(nanmedian(tmp_exp(:,:,tmp),1))./abs(nanmedian(tmp_exp(:,:,tmpimp),1))); end;                 
 				imprv2(:,tmp)=imprv; imprvmedian(:,tmp)=100.*(1-nanmean(tmp_exp(:,:,tmp),1)./nanmean(tmp_exp(:,:,tmpimp),1));
 				l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-				sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-				sigtest_loc=find(sigtest==1);
-				sigtest_exp=imprv(sigtest_loc);
-				plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
+				%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+				%sigtest_loc=find(sigtest==1);
+				%sigtest_exp=imprv(sigtest_loc);
+				%plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
 				%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 				%sigtest_loc1=find(sigtest==1);
 				%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -3601,7 +3601,7 @@ for graphics=1
 					end    
 				end
 			end
-			tmp_ylim=get(ax2,'xlim');if med==1 && identconmetric==1;clear ultconmean cm ultcon tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb cmlocc;cmloc=0.03/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;cmlocc=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;cmlocc=size(cmlocb,2)-1;end;for identexploop=tmpu;tmp_err=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_errmed=squeeze(nanmedian((tmp_exp(:,:,identexploop)),1));if size(tmp_exp,1)==1;sigtest_95=repmat(0,size(tmp_exp,2),1);else;sigtest_95=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.05)';end;tmp_imp=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp1=abs(tmp_exp(:,:,identexploop));tmp2=abs(tmp_exp(:,:,tmpimp));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_fsp=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;tmp_fcst=sum(~isnan(tmp_exp(:,:,identexploop)),1)';tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);a=find(tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1);sconsistent(a)=2;b=find((tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>-1) | (tmp_imp>=1 & tmp_fsp>-1 & tmp_impmed>=1) | (tmp_imp>-1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b)=1;c=find(tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1);sconsistent(c)=-2;d=find((tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<1) | (tmp_imp<=-1 & tmp_fsp<1 & tmp_impmed<=-1) | (tmp_imp<1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d)=-1;cm(identexploop)=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.03/size(tmpu,2)]);sconsistent(isnan(sconsistent))=0;sconsistent=sconsistent(1:tmp_ylim(2));imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;hold on;cnt=1;for i=1;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7-cmlocc);else;end;end;cnt=cnt+1;end;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+2),0.5:0.5:size(sconsistent,1)+0.5,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;set(ax, 'Layer', 'bottom');set(cm,'Color',[.9 .9 .9]);		sconsistent(sconsistent==-1)=-.5;sconsistent(sconsistent==1)=.5;sconsistent(sconsistent==-2)=-1;sconsistent(sconsistent==2)=1;ultcon(identexploop)=sum(sconsistent)/((identmaxfhr+1)/2);ultconmean(identexploop)=squeeze(nanmean(100.*(1-abs(nanmean(tmp_exp(:,:,identexploop),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)))));end;set(cm, 'layer', 'top');[uca,ucb]=max(ultcon);if size(find(ultcon==uca),2)==1;else;ultconmean(find(ultcon~=uca))=NaN;[ucaa,ucbb]=max(ultconmean);if sum(ucbb==find(ultcon==uca))>0;ucb=ucbb;end;end;for uuu=tmpu;axes(cm(uuu));set(gca,'Clipping','Off');uch1=plot(0:.1:.5,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uch2=plot(23.5:.1:24,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uistack(uch1,'bottom');uistack(uch2,'bottom');end;
+			tmp_ylim=get(ax2,'xlim');if med==1 && identconmetric==1;clear ultconmean cm ultcon tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb cmlocc;cmloc=0.03/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;cmlocc=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;cmlocc=size(cmlocb,2)-1;end;for identexploop=tmpu;tmp_err=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_errmed=squeeze(nanmedian((tmp_exp(:,:,identexploop)),1));if size(tmp_exp,1)==1;sigtest_95=repmat(0,size(tmp_exp,2),1);else;sigtest_95=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.05)';end;tmp_imp=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp1=abs(tmp_exp(:,:,identexploop));tmp2=abs(tmp_exp(:,:,tmpimp));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_fsp=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;tmp_fcst=sum(~isnan(tmp_exp(:,:,identexploop)),1)';tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);a=find(tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1);sconsistent(a)=2;b=find((tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>-1) | (tmp_imp>=1 & tmp_fsp>-1 & tmp_impmed>=1) | (tmp_imp>-1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b)=1;c=find(tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1);sconsistent(c)=-2;d=find((tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<1) | (tmp_imp<=-1 & tmp_fsp<1 & tmp_impmed<=-1) | (tmp_imp<1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d)=-1;cm(identexploop)=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.03/size(tmpu,2)]);sconsistent(isnan(sconsistent))=0;sconsistent=sconsistent(1:tmp_ylim(2));imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;hold on;cnt=1;for i=1;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;;else;end;end;cnt=cnt+1;end;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+2),0.5:0.5:size(sconsistent,1)+0.5,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;set(ax, 'Layer', 'bottom');set(cm,'Color',[.9 .9 .9]);		sconsistent(sconsistent==-1)=-.5;sconsistent(sconsistent==1)=.5;sconsistent(sconsistent==-2)=-1;sconsistent(sconsistent==2)=1;ultcon(identexploop)=sum(sconsistent)/((identmaxfhr+1)/2);ultconmean(identexploop)=squeeze(nanmean(100.*(1-abs(nanmean(tmp_exp(:,:,identexploop),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)))));end;set(cm, 'layer', 'top');[uca,ucb]=max(ultcon);if size(find(ultcon==uca),2)==1;else;ultconmean(find(ultcon~=uca))=NaN;[ucaa,ucbb]=max(ultconmean);if sum(ucbb==find(ultcon==uca))>0;ucb=ucbb;end;end;for uuu=tmpu;axes(cm(uuu));set(gca,'Clipping','Off');uch1=plot(0:.1:.5,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uch2=plot(23.5:.1:24,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uistack(uch1,'bottom');uistack(uch2,'bottom');end;
 			axes(ax1);if sum([cntexp(:)])==0;tmpstr='Not Enough Data';elseif size(identexp,1)<3;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb}];else;[ucc,ucd]=min(ultcon);if size(find(ultcon==ucc),2)==1;else;ultconmean(find(ultcon~=ucc))=NaN;[uccc,ucdd]=min(ultconmean);if sum(ucdd==find(ultcon==ucc))>0;ucd=ucdd;end;end;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb},' \color[rgb]{0,0,0}| LDCI: \color[rgb]{',num2str(identexpcolors(ucd,:)),'}',identexpshort{ucd}];end;end;if size(identexp,1)<3;else;if med==1;tx=text(0.99,0.1,tmpstr,'HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');end;end;f = getframe(hfig);			if med==1; filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identtrackint,'/FULL/',identn,'_',tmp_name,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
 			close all
 		end;end              
@@ -4309,7 +4309,7 @@ for graphics=1
 					else
 						tmp_err(:,plt)=squeeze(nanmean((tmp_exp(:,:,identexploop)),1)); tmp_errmed(:,plt)=squeeze(nanmedian((tmp_exp(:,:,identexploop)),1));  		tmp_err0(:,plt,:)=squeeze(nanmean((tmp_exp(:,:,:)),1)); tmp_errmed0(:,plt,:)=squeeze(nanmedian((tmp_exp(:,:,:)),1));                                                                     
 					end
-					if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'))==size(tmp_exp,2);sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'; end
+					%if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'))==size(tmp_exp,2);sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'; end
 					%if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)';   end
 					tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed(:,plt)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_imp0(:,plt,:)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,:)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)));tmp_impmed0(:,plt,:)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,:)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)));
 					tmp1=abs(tmp_exp(:,:,identexploop));
@@ -4351,7 +4351,7 @@ for graphics=1
 				sconsistent(isnan(sconsistent))=0;sconsistent=sconsistent(:,1:tmp_ylim(2));imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;
 
 				% Markers for Stat. Sig.
-				cnt=1;for i=1:7;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7);else;end;end;cnt=cnt+1;end;
+				%cnt=1;for i=1:7;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7);else;end;end;cnt=cnt+1;end;
 
 				% X- and Y- Axes: Ticks, Labels, Ranges
 				xlabel('Forecast Lead Time (h)','fontsize',20);set(gca,'fontsize',14);box on;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));set(gca,'fontsize',16);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'ytick',1:1:size(sconsistent,1)+.5);set(gca,'yticklabel',tmp_ytitle);set(gca,'TickLength',[0 0]);
@@ -4555,12 +4555,12 @@ for graphics=1
 				for i=[9,17,25,33,41,49,57]
 					for j=1:size(sc,2)
 						if isnan(sc(i,j))==1 % then put in stat. sig.
-							if sigtest_95(j,cnt)==1
-								plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7)
+							%if sigtest_95(j,cnt)==1
+								%plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7)
 							%elseif sigtest_90(j,cnt)+sigtest_95(j,cnt)==1
 							%	plot(j,i,'o','Color','k','markersize',5.5,'markerfacecolor','k')
-							else
-							end                                                
+							%else
+							%end                                                
 						else                       
 						end
 					end
@@ -11939,12 +11939,12 @@ for graphics=1
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
-									sigtest_loc=find(sigtest==1);
-									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
-									for tmpi=tmp
-										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									end
+									%if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
+									%sigtest_loc=find(sigtest==1);
+									%sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+									%for tmpi=tmp
+									%	plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+									%end
 									%if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.1);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);end;
 									%sigtest_loc1=find(sigtest==1);
 									%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -12615,10 +12615,10 @@ for graphics=1
 									imprv=100.*(1-abs(nanmean(tmp_exp(:,:,tmp),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)));                  
 									imprv2(:,tmp)=imprv;
 									l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-									sigtest_loc=find(sigtest==1);
-									sigtest_exp=imprv(sigtest_loc);
-									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+									%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+									%sigtest_loc=find(sigtest==1);
+									%sigtest_exp=imprv(sigtest_loc);
+									%plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 									%sigtest_loc1=find(sigtest==1);
 									%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -13319,10 +13319,10 @@ for graphics=1
 									fsp2(:,tmp)=fspa;
 									l(cntl)=plot(1:size(fspa,2),fspa,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
 									cntl=cntl+1;
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-									sigtest_loc=find(sigtest==1);
-									sigtest_exp=fspa(sigtest_loc);
-									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+									%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+									%sigtest_loc=find(sigtest==1);
+									%sigtest_exp=fspa(sigtest_loc);
+									%plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
 									%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 									%sigtest_loc1=find(sigtest==1);
 									%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -13939,12 +13939,12 @@ for graphics=1
 								end
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-									sigtest_loc=find(sigtest==1);
-									sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
-									for tmpi=tmp
-										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
-									end
+									%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+									%sigtest_loc=find(sigtest==1);
+									%sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1);
+									%for tmpi=tmp
+								%		plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',9)
+									%end
 									%sigtest=ttestsc(abs(tmp_exp(:,:,tmp)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 									%sigtest_loc1=find(sigtest==1);
 									%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -14627,12 +14627,12 @@ for graphics=1
 
 								plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
 								for tmp=1:size(identexp,1)
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-									sigtest_loc=find(sigtest==1);
-									if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
-									for tmpi=tmp
-										plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
-									end
+									%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+									%sigtest_loc=find(sigtest==1);
+									%if med==1; sigtest_exp=nanmean(tmp_exp(:,sigtest_loc,:),1); elseif med==2; sigtest_exp=nanmedian(tmp_exp(:,sigtest_loc,:),1); end;
+									%for tmpi=tmp
+									%	plot(sigtest_loc,sigtest_exp(:,:,tmpi),'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
+									%end
 									%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 									%sigtest_loc1=find(sigtest==1);
 									%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -15225,10 +15225,10 @@ for graphics=1
 									if med==1; imprv=100.*(1-abs(nanmean(tmp_exp(:,:,tmp),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)));   elseif med==2; imprv=100.*(1-abs(nanmedian(tmp_exp(:,:,tmp),1))./abs(nanmedian(tmp_exp(:,:,tmpimp),1))); end;                
 									imprv2(:,tmp)=imprv;
 									l(tmp)=plot(1:size(imprv,2),imprv,'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); 
-									sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
-									sigtest_loc=find(sigtest==1);
-									sigtest_exp=imprv(sigtest_loc);
-									plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
+									%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
+									%sigtest_loc=find(sigtest==1);
+									%sigtest_exp=imprv(sigtest_loc);
+									%plot(sigtest_loc,sigtest_exp,'s','Color','k','markerfacecolor',identexpcolors(tmp,:),'markersize',8)
 									%sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.1);
 									%sigtest_loc1=find(sigtest==1);
 									%sigtest_loc=setdiff(sigtest_loc1,sigtest_loc);
@@ -15433,7 +15433,7 @@ for graphics=1
 										end    
 									end
 								end
-								tmp_ylim=get(ax2,'xlim');if med==1 && identconmetric==1;clear ultconmean cm ultcon tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb cmlocc;cmloc=0.03/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;cmlocc=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;cmlocc=size(cmlocb,2)-1;end;for identexploop=tmpu;tmp_err=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_errmed=squeeze(nanmedian((tmp_exp(:,:,identexploop)),1));if size(tmp_exp,1)==1;sigtest_95=repmat(0,size(tmp_exp,2),1);else;sigtest_95=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.05)';end;tmp_imp=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp1=abs(tmp_exp(:,:,identexploop));tmp2=abs(tmp_exp(:,:,tmpimp));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_fsp=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;tmp_fcst=sum(~isnan(tmp_exp(:,:,identexploop)),1)';tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);a=find(tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1);sconsistent(a)=2;b=find((tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>-1) | (tmp_imp>=1 & tmp_fsp>-1 & tmp_impmed>=1) | (tmp_imp>-1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b)=1;c=find(tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1);sconsistent(c)=-2;d=find((tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<1) | (tmp_imp<=-1 & tmp_fsp<1 & tmp_impmed<=-1) | (tmp_imp<1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d)=-1;cm(identexploop)=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.03/size(tmpu,2)]);sconsistent(isnan(sconsistent))=0;sconsistent=sconsistent(1:tmp_ylim(2));imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;hold on;cnt=1;for i=1;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7-cmlocc);else;end;end;cnt=cnt+1;end;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+2),0.5:0.5:size(sconsistent,1)+0.5,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;set(ax, 'Layer', 'bottom');set(cm,'Color',[.9 .9 .9]);		sconsistent(sconsistent==-1)=-.5;sconsistent(sconsistent==1)=.5;sconsistent(sconsistent==-2)=-1;sconsistent(sconsistent==2)=1;ultcon(identexploop)=sum(sconsistent)/((identmaxfhr+1)/2);ultconmean(identexploop)=squeeze(nanmean(100.*(1-abs(nanmean(tmp_exp(:,:,identexploop),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)))));end;
+								tmp_ylim=get(ax2,'xlim');if med==1 && identconmetric==1;clear ultconmean cm ultcon tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb cmlocc;cmloc=0.03/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;cmlocc=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;cmlocc=size(cmlocb,2)-1;end;for identexploop=tmpu;tmp_err=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_errmed=squeeze(nanmedian((tmp_exp(:,:,identexploop)),1));if size(tmp_exp,1)==1;sigtest_95=repmat(0,size(tmp_exp,2),1);else;sigtest_95=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.05)';end;tmp_imp=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp1=abs(tmp_exp(:,:,identexploop));tmp2=abs(tmp_exp(:,:,tmpimp));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_fsp=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;tmp_fcst=sum(~isnan(tmp_exp(:,:,identexploop)),1)';tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);a=find(tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1);sconsistent(a)=2;b=find((tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>-1) | (tmp_imp>=1 & tmp_fsp>-1 & tmp_impmed>=1) | (tmp_imp>-1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b)=1;c=find(tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1);sconsistent(c)=-2;d=find((tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<1) | (tmp_imp<=-1 & tmp_fsp<1 & tmp_impmed<=-1) | (tmp_imp<1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d)=-1;cm(identexploop)=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.03/size(tmpu,2)]);sconsistent(isnan(sconsistent))=0;sconsistent=sconsistent(1:tmp_ylim(2));imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;hold on;cnt=1;for i=1;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;else;end;end;cnt=cnt+1;end;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+2),0.5:0.5:size(sconsistent,1)+0.5,'k');end;set(gcf, 'InvertHardcopy', 'off');ax=gca;set(ax, 'Layer', 'bottom');set(cm,'Color',[.9 .9 .9]);		sconsistent(sconsistent==-1)=-.5;sconsistent(sconsistent==1)=.5;sconsistent(sconsistent==-2)=-1;sconsistent(sconsistent==2)=1;ultcon(identexploop)=sum(sconsistent)/((identmaxfhr+1)/2);ultconmean(identexploop)=squeeze(nanmean(100.*(1-abs(nanmean(tmp_exp(:,:,identexploop),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)))));end;
 								set(cm, 'layer', 'top');[uca,ucb]=max(ultcon);if size(find(ultcon==uca),2)==1;else;ultconmean(find(ultcon~=uca))=NaN;[ucaa,ucbb]=max(ultconmean);if sum(ucbb==find(ultcon==uca))>0;ucb=ucbb;end;end;for uuu=tmpu;axes(cm(uuu));set(gca,'Clipping','Off');uch1=plot(0:.1:.5,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uch2=plot(23.5:.1:24,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uistack(uch1,'bottom');uistack(uch2,'bottom');end;axes(ax1);if sum([cntexp(:)])==0;tmpstr='Not Enough Data';elseif size(identexp,1)<3;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb}];else;[ucc,ucd]=min(ultcon);if size(find(ultcon==ucc),2)==1;else;ultconmean(find(ultcon~=ucc))=NaN;[uccc,ucdd]=min(ultconmean);if sum(ucdd==find(ultcon==ucc))>0;ucd=ucdd;end;end;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb},' \color[rgb]{0,0,0}| LDCI: \color[rgb]{',num2str(identexpcolors(ucd,:)),'}',identexpshort{ucd}];end;end;if size(identexp,1)<3;else;if med==1;tx=text(0.99,0.1,tmpstr,'HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');end;end;f = getframe(hfig);if med==1;filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2; filename=[identtrackint,'/',identn,'_',tmp_name,'_',stname,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
 								close all
 							end; end;																	
@@ -19756,7 +19756,7 @@ for graphics=1
 										else
 											tmp_err(:,plt)=squeeze(nanmean((tmp_exp(:,:,identexploop)),1)); tmp_errmed(:,plt)=squeeze(nanmedian((tmp_exp(:,:,identexploop)),1));  		tmp_err0(:,plt,:)=squeeze(nanmean((tmp_exp(:,:,:)),1)); tmp_errmed0(:,plt,:)=squeeze(nanmedian((tmp_exp(:,:,:)),1));                                                                     
 										end
-										if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'))==size(tmp_exp,2);sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'; end
+										%if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'))==size(tmp_exp,2);sigtest_95(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_95(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.05)'; end
 										%if sum(isnan(ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)'))==0 sigtest_90(:,plt)=repmat(0,1,size(tmp_exp,2)); else sigtest_90(:,plt)=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt0,identexploop,:))','alpha',.1)';   end                                                                                                       
 										tmp_imp(:,plt)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed(:,plt)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_imp0(:,plt,:)=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,:)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)));tmp_impmed0(:,plt,:)=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,:)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)));
 										tmp1=abs(tmp_exp(:,:,identexploop));
@@ -19798,7 +19798,7 @@ for graphics=1
 									sconsistent(isnan(sconsistent))=0;sconsistent=sconsistent(:,1:tmp_ylim(2));imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;
 
 									% Markers for Stat. Sig.
-									cnt=1;for i=1:7;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7);else;end;end;cnt=cnt+1;end;
+									%cnt=1;for i=1:7;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7);else;end;end;cnt=cnt+1;end;
 
 									% X- and Y- Axes: Ticks, Labels, Ranges
 									xlabel('Forecast Lead Time (h)','fontsize',20);set(gca,'fontsize',14);box on;xlim([0.5 tmp_ylim(2)+.5]);
@@ -20002,12 +20002,12 @@ for graphics=1
 									for i=[9,17,25,33,41,49,57]
 										for j=1:size(sc,2)
 											if isnan(sc(i,j))==1 % then put in stat. sig.
-												if sigtest_95(j,cnt)==1
-													plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7)
+												%if sigtest_95(j,cnt)==1
+												%	plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7)
 												%elseif sigtest_90(j,cnt)+sigtest_95(j,cnt)==1
 												%	plot(j,i,'o','Color','k','markersize',5.5,'markerfacecolor','k')
-												else
-												end                                                
+												%else
+												%end                                                
 											else                       
 											end
 										end

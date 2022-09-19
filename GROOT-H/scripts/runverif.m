@@ -18,7 +18,7 @@ for identremoveinvest=1
                 identtmp2=yearsdone(stmdn,:);
                 if strcmp(identtmp1(end),'l')==1;identtmp3='AL';
 					elseif strcmp(identtmp1(end),'e')==1;identtmp3='EP';
-					elseif strcmp(identtmp1(end),'w')==1;identtmp3='WP';
+					elseif strcmp(identtmp1(end),'w')==1;identtmp3='WP';elseif strcmp(identtmp1(end),'b')==1;identtmp3='IO';elseif strcmp(identtmp1(end),'a')==1;identtmp3='IO';elseif strcmp(identtmp1(end),'s')==1;identtmp3='SH';elseif strcmp(identtmp1(end),'p')==1;identtmp3='SH';
 					elseif strcmp(identtmp1(end),'c')==1;identtmp3='CP';
 				end
                 % Set Name
@@ -461,7 +461,7 @@ for identremoveinvest=1
 		end
 		if identcompositerun==1
 			load('compsave1.mat')
-			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1 || strcmp(identdr5{1},'WP')==1
+			if size(stormsdone,2)>1 && strcmp(identdr5{1},'AL')==1 || strcmp(identdr5{1},'EP')==1 || strcmp(identdr5{1},'CP')==1 || strcmp(identdr5{1},'WP')==1 || strcmp(identdr5{1},'IO')==1 || strcmp(identdr5{1},'SH')==1 
 				%% To deal with multiple basins, if present
 				identbasincut(1)=1;
 				for basinloop=1:size(identdr5,2) 

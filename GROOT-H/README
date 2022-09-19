@@ -137,6 +137,12 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+9/15/22  | Removed statistical significance from package
+		The significance test typically used is a parametric test (paired t-test). Yet, distributions are often skewed, so this violates the test assumptions. 
+		Given the consistency metric, which does not rely on a normal distribution, no significance test is needed, as consistency identifies which lead times to trust.
+	 | Enabled IO and SH in the composite scripts by accounting for different basin identifiers (e.g., IO can have the basin identifier of both a and b) 
+	 | Removed issue which didn't allow for hyphenated TC names
+8/31/22  | Made modifications to conventional graphics scripts to allow subobtypes that had data in only some cycles to be included in graphics
 8/24/22  | Added capability for retrieval script to process multple obtypes and subobtypes and for GROOT to plot them
 	 | Retrieval script now grabs both anl and ges files
 7/25/22  | Added capability to plot time-lag correlation of composited variables in order to better select a time threshold for the interpolator when generating early-model forecasts

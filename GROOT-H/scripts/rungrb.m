@@ -16,7 +16,7 @@ for setup=1
         else
             identfold=strcat(identfold,tmp,'_');
         end
-    end
+    end;if identeps==1;identfold=[identfold(1:end-1),'_eps/'];else;identfold=[identfold(1:end-1),'_png/'];end;
     
     if ~exist([identout,'RESULTS/',identfold], 'dir')
         disp('CREATING EXPERIMENT FOLDER')
@@ -2630,7 +2630,7 @@ for errorstats=1
                     exp_rmw=nan(100,size(identexp,1)); 
                     % Loop
                     for tmp=1:size(identexp,1)                
-                        filename = dir([identnoscrub,'atcf/',identexp{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/',filename.name];
+                        filename = dir([identnoscrub,'atcf/',identexp{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'*']);filename=[identnoscrub,'atcf/',identexp{tmp},'/',filename.name];
                         [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,0);
                         initsizeexp=size(FHRall,2);
                         exp_fhr(1:initsizeexp,tmp)=FHRall';
@@ -3262,7 +3262,7 @@ for hwrfvariables=1:size(identexp,1)
     end
 end
 
-ncid=ncgeodataset([identscrub,identexp{1},'/com/',identinittimesunique(1,:),'/',ident(3:4),upper(identhwrf(end)),'/',identhwrf,'.',identinittimesunique(1,:),'.hwrfprs.storm.0p015.f',num2str(3*(1-1),'%03d'),'.grb2']);
+ncid=ncgeodataset([identscrub,identexp{1},'/com/',identinittimesunique(identbatch,:),'/',ident(3:4),upper(identhwrf(end)),'/',identhwrf,'.',identinittimesunique(identbatch,:),'.hwrfprs.storm.0p015.f',num2str(3*(1-1),'%03d'),'.grb2']);
 identvariables=sort(ncid.variables);
 sv = ncid.geovariable('isobaric');
 plev=squeeze(sv.data(:,:,:,:))/100;   
@@ -3638,13 +3638,27 @@ for hwrfplots=1
                             v=var_f;
                             load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
                             gph=var_f;
+			elseif identvar==87
+  			    load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{73},'.mat']);
+                            u=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{76},'.mat']);
+                            v=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{17},'.mat']);
+                            gph=var_f;
+			elseif identvar==89
+			    load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{75},'.mat']);
+                            u=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{78},'.mat']);
+                            v=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
+                            gph=var_f;
                         end
                         load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{identvar}])
                         run customcolorbars
                         run customvariables % gets the colorbars and the variable bounds
                         if levs==1
                             %% Creates Plan-View plots for each init/fhr at each level: var_f=(lon)x(lat)x(plev)x(fhr)
-                            if identplan==1
+                            if identplan==1 & identvar~=[16:17,80:85]
                                 if isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.eps'])==0
                                     for loop=1:size(var_f,4)
                                         if isnan(BT_lat(identloop,loop))==1 || (identvar>=80 && identvar <=85)
@@ -3659,7 +3673,7 @@ for hwrfplots=1
                                                 hold on                                                                
                                                 [c,h]=contourf(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                                 hold on
-                                                if identvar==88
+                                                if identvar==88 || identvar==87 || identvar==89
                                                     [c1,h1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                                     windbarbm(varlt_f(:,:,loop),varln_f(:,:,loop),u(:,:,loop1,loop),v(:,:,loop1,loop),20,1,[.5 .5 .5])
                                                     [g1,p1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),gph(:,:,loop1,loop),[0:2:2000],'w','linewidth',2); 
@@ -3687,7 +3701,7 @@ for hwrfplots=1
                                                 set(gca,'fontsize',20)
                                                 set(gca,'plotboxaspectratio',[1 1 1])
                                                 cl=colorbar;
-                                                if identvar==88
+                                                if identvar==88 || identvar==87 || identvar==89
                                                     colormap(gca,custommap(28,WC1))
                                                     set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                     set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -3714,7 +3728,7 @@ for hwrfplots=1
                                                 set(gcf, 'InvertHardcopy', 'off')
                                                 text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                                 text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                                if identvar==88
+                                                if identvar==88 || identvar==87 || identvar==89
                                                     text(0,1.065,['\textbf{',varname,' (',units,') \& GPH (dam) $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
                                                 else
                                                     text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
@@ -3790,7 +3804,7 @@ for hwrfplots=1
                                         set(gca,'fontsize',20)
                                         set(gca,'plotboxaspectratio',[1 1 1])
                                         cl=colorbar;
-                                        if identvar==88
+                                        if identvar==88 || identvar==87 || identvar==89
                                             colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                 set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -3857,7 +3871,7 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88
+                                    if identvar==88 || identvar==87 || identvar==89
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -3939,7 +3953,7 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88
+                                    if identvar==88 || identvar==87 || identvar==89
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -3983,7 +3997,7 @@ for hwrfplots=1
                                                       
                         elseif levs==0
                             %% Creates Plan-View plots for each init/fhr: var_f=(lon)x(lat)x(fhr)
-                            if identplan==1
+                            if identplan==1 & identvar~=[16:17,80:85]
                                 if isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_',savename,'_PLAN.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_',savename,'_PLAN.eps'])==0                           
                                     for loop=1:size(var_f,3) % (lon)x(lat)x(fhr)
                                         if isnan(BT_lat(identloop,loop))==1
@@ -4160,7 +4174,7 @@ for hwrfplots=1
 							exp2=identdiff(df,2);
 							% Difference: PLAN
 							if levs==1   
-								if identplan==1
+								if identplan==1 & identvar~=[16:17,80:85]
 									for loop=1:size(var_f,4) 
 										if isnan(BT_lat(identloop,loop))==1
 										else
@@ -4230,7 +4244,7 @@ for hwrfplots=1
 									end
 								end
 							elseif levs==0
-								if identplan==1
+								if identplan==1 & identvar~=[16:17,80:85]
 									for loop=1:size(var_f,3) % by fhr
 										if isnan(BT_lat(identloop,loop))==1
 										else
@@ -4575,13 +4589,27 @@ for hwrfplots=1
                             v=var_f;
                             load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
                             gph=var_f;
+			elseif identvar==87
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{73},'.mat']);
+                            u=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{76},'.mat']);
+                            v=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{17},'.mat']);
+                            gph=var_f;
+                        elseif identvar==89
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{75},'.mat']);
+                            u=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{78},'.mat']);
+                            v=var_f;
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
+                            gph=var_f;
                         end
                         load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{identvar}])
                         run customcolorbars
                         run customvariables % gets the colorbars and the variable bounds
                         if levs==1
                             %% Creates Plan-View plots for each init/fhr at each level: var_f=(lon)x(lat)x(plev)x(fhr)
-                            if identplan==1
+                            if identplan==1 & identvar~=[16:17,80:85]
                                 if isfile([identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.eps'])==0
                                 for loop=1:size(var_f,4)
                                     if isnan(BT_lat(identloop,loop))==1 || (identvar>=80 && identvar <=85)
@@ -4596,7 +4624,7 @@ for hwrfplots=1
                                             hold on                                                          
                                             [c,h]=contourf(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                             hold on
-                                            if identvar==88
+                                            if identvar==88 || identvar==87 || identvar==89
                                                 [c1,h1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                                 windbarbm(varlt_f(:,:,loop),varln_f(:,:,loop),u(:,:,loop1,loop),v(:,:,loop1,loop),20,1,[.5 .5 .5])
                                                 [g1,p1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),gph(:,:,loop1,loop),[0:2:2000],'w','linewidth',2); 
@@ -4620,7 +4648,7 @@ for hwrfplots=1
                                             set(gca,'fontsize',20)
                                             set(gca,'plotboxaspectratio',[1 1 1])
                                             cl=colorbar;
-                                            if identvar==88
+                                            if identvar==88 || identvar==87 || identvar==89
                                                 colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                 set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -4647,7 +4675,7 @@ for hwrfplots=1
                                             set(gcf, 'InvertHardcopy', 'off')
                                             text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                            if identvar==88
+                                            if identvar==88 || identvar==87 || identvar==89
                                                     text(0,1.065,['\textbf{',varname,' (',units,') \& GPH (dam) $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
                                                 else
                                                     text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
@@ -4733,7 +4761,7 @@ for hwrfplots=1
                                         set(gca,'fontsize',20)
                                         set(gca,'plotboxaspectratio',[1 1 1])
                                         cl=colorbar;
-                                        if identvar==88
+                                        if identvar==88 || identvar==87 || identvar==89
                                                 colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                 set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -4800,7 +4828,7 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88
+                                    if identvar==88 || identvar==87 || identvar==89
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -4883,7 +4911,7 @@ for hwrfplots=1
                                         set(gca,'fontsize',20)
                                         set(gca,'plotboxaspectratio',[1 1 1])
                                         cl=colorbar;
-                                        if identvar==88
+                                        if identvar==88 || identvar==87 || identvar==89
                                             colormap(gca,custommap(28,WC1))
                                             set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                             set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -4958,7 +4986,7 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88
+                                    if identvar==88 || identvar==87 || identvar==89
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -5039,7 +5067,7 @@ for hwrfplots=1
                                     xlim([0 identmaxfhr*3-3])
                                     colormap(custommap(20,WC1))
                                     cl=colorbar;
-                                    if identvar==88
+                                    if identvar==88 || identvar==87 || identvar==89
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -5122,7 +5150,7 @@ for hwrfplots=1
 							exp2=identdiff(df,2);
 							% Difference: PLAN
 							if levs==1
-								if identplan==1
+								if identplan==1 & identvar~=[16:17,80:85]
 									for loop=1:size(var_f,4) 
 										if isnan(BT_lat(identloop,loop))==1
 										else
@@ -5189,7 +5217,7 @@ for hwrfplots=1
 									end
 								end    
 							elseif levs==0
-								if identplan==1
+								if identplan==1 & identvar~=[16:17,80:85]
 									for loop=1:size(var_f,3) % by fhr
 										if isnan(BT_lat(identloop,loop))==1
 										else
