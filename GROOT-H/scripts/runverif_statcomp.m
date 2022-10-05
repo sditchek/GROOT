@@ -10899,7 +10899,7 @@
                                     close all
                                 end                                   
 								% Create TC-By-TC Skill and FSP Graphics
-                                for med=1:3;for plt=[1:18,21:23] % no across or along for bias
+                                for med=1:4;for plt=[1:18,21:23] % no across or along for bias
                                     clear l cntexp
                                     set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                     hfig=figure;
@@ -11901,7 +11901,7 @@
 
                                     for tmp=1:size(identexp,1);if strcmp(identexp(tmp),identexpsigimp);tmpimp=tmp;end;end;tmpu=1:size(identexp,1);tmpu(tmpu==tmpimp)=[];
 									for tmp=[tmpimp,tmpu]
-										if med==1;imprv=squeeze(100.*(1-nanmean(nm_stm(:,:,tmp,:),1)./nanmean(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;elseif med==2;imprv=squeeze(100.*(1-nanmedian(nm_stm(:,:,tmp,:),1)./nanmedian(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;end;										if med==3;clear nm_pct;for tmp=tmpu;tmp1=nm_stm(:,:,tmp,:);tmp2=nm_stm(:,:,tmpimp,:);tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);fspa=100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp;fspb=100*(nansum(tmp5,1)+nansum(tmp6,1)./2)./tmptmp;nm_pct(:,tmp,:)=squeeze(fspa);end;end;
+										if med==1;imprv=squeeze(100.*(1-nanmean(nm_stm(:,:,tmp,:),1)./nanmean(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;elseif med==2;imprv=squeeze(100.*(1-nanmedian(nm_stm(:,:,tmp,:),1)./nanmedian(nm_stm(:,:,tmpimp,:),1)));nm_pct(:,tmp,:)=imprv;end;										if med==3;clear nm_pct;for tmp=tmpu;tmp1=nm_stm(:,:,tmp,:);tmp2=nm_stm(:,:,tmpimp,:);tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);fspa=100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp;fspb=100*(nansum(tmp5,1)+nansum(tmp6,1)./2)./tmptmp;nm_pct(:,tmp,:)=squeeze(fspa);end;end;if med==4;tmp_err=squeeze(nanmean((nm_stm(:,:,tmp,:)),1));tmp_errmed=squeeze(nanmedian((nm_stm(:,:,tmp,:)),1));tmp_imp=squeeze(100.*(1-nanmean(abs(nm_stm(:,:,tmp,:)),1)./nanmean(abs(nm_stm(:,:,tmpimp,:)),1)));tmp_impmed=squeeze(100.*(1-nanmedian(abs(nm_stm(:,:,tmp,:)),1)./nanmedian(abs(nm_stm(:,:,tmpimp,:)),1)));tmp1=abs(nm_stm(:,:,tmp,:));tmp2=abs(nm_stm(:,:,tmpimp,:));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias=squeeze(nanmean((nm_stm(:,:,tmp,:)),1));tmp_fsp=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)-50;tmp_fcst=squeeze(sum(~isnan(nm_stm(:,:,tmp,:)),1));sconsistent=nan(size(nm_stm,4),size(nm_stm,2),1)';for nmsc=1:size(nm_stm,4);a=find(tmp_imp(:,nmsc)>=1 & tmp_fsp(:,nmsc)>=((0.5.*tmp_fcst(:,nmsc)+max(5,0.01.*tmp_fcst(:,nmsc)))./tmp_fcst(:,nmsc)*100-50) & tmp_impmed(:,nmsc)>=1);sconsistent(a,nmsc)=2;b=find((tmp_imp(:,nmsc)>=1 & tmp_fsp(:,nmsc)>=((0.5.*tmp_fcst(:,nmsc)+max(5,0.01.*tmp_fcst(:,nmsc)))./tmp_fcst(:,nmsc)*100-50) & tmp_impmed(:,nmsc)>-1) | (tmp_imp(:,nmsc)>=1 & tmp_fsp(:,nmsc)>-1 & tmp_impmed(:,nmsc)>=1) | (tmp_imp(:,nmsc)>-1 & tmp_fsp(:,nmsc)>=((0.5.*tmp_fcst(:,nmsc)+max(5,0.01.*tmp_fcst(:,nmsc)))./tmp_fcst(:,nmsc)*100-50) & tmp_impmed(:,nmsc)>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b,nmsc)=1;c=find(tmp_imp(:,nmsc)<=-1 & tmp_fsp(:,nmsc)<=-((0.5.*tmp_fcst(:,nmsc)+max(5,0.01.*tmp_fcst(:,nmsc)))./tmp_fcst(:,nmsc)*100-50) & tmp_impmed(:,nmsc)<=-1);sconsistent(c,nmsc)=-2;d=find((tmp_imp(:,nmsc)<=-1 & tmp_fsp(:,nmsc)<=-((0.5.*tmp_fcst(:,nmsc)+max(5,0.01.*tmp_fcst(:,nmsc)))./tmp_fcst(:,nmsc)*100-50) & tmp_impmed(:,nmsc)<1) | (tmp_imp(:,nmsc)<=-1 & tmp_fsp(:,nmsc)<1 & tmp_impmed(:,nmsc)<=-1) | (tmp_imp(:,nmsc)<1 & tmp_fsp(:,nmsc)<=-((0.5.*tmp_fcst(:,nmsc)+max(5,0.01.*tmp_fcst(:,nmsc)))./tmp_fcst(:,nmsc)*100-50) & tmp_impmed(:,nmsc)<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d,nmsc)=-1;end;sconsistent(isnan(sconsistent))=0;nm_pct(:,tmp,:)=sconsistent;end;
 									end                    
 
                                     % sort by year and then by name                               
@@ -11955,10 +11955,10 @@
                                             end
                                         end
                                         set(gca,'yticklabel',plotsim(:));
-                                        colorbar
+                                        cl=colorbar;
                                         caxis(impylim(plt,:));
                                         run customcolorbars; colormap(gca,custommap(20,[flipud(negposc(7:end,:));drywetc(7:end,:)]));if med==3;caxis([25 75]);colormap(gca,custommap(10,[flipud(negposc(7:end,:));drywetc(7:end,:)]));end;
-                                        hold on
+										hold on
                                         for i=1:size(tmppct,1)
                                             plot(repmat(0.5+i,1,size(identdr,2)+3),-1:size(identdr,2)+1,'k')
                                         end
@@ -11972,7 +11972,7 @@
                                         set(gcf, 'InvertHardcopy', 'off')
                                         tmppctstr=isnan(tmppct);
                                         clear diffpct
-                                        for j=1:size(tmppct,2)
+                                        if med<4;for j=1:size(tmppct,2)
                                             for i=1:size(1:skip:identmaxfhr,2)
                                                 if tmppctstr(i,j)==0
                                                     %if sum(round(tmppct(i,:)))>100
@@ -11993,7 +11993,7 @@
                                                         end
                                                 end
                                             end
-                                        end        
+                                        end;end       
                                         set(gca,'TickLength',[0 0])
                                         if strat==1
                                             text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
@@ -12001,7 +12001,7 @@
                                             text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        if med==1;text(0,1.06,['\textbf{MAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
+                                        if med==1;text(0,1.06,['\textbf{MAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
                                         tmpphrase='';
@@ -12019,10 +12019,10 @@
                                         ax.LineWidth=1; 
                                         pos=get(ax1,'Position');set(ax1,'position',[pos(1)+.01 pos(2)-.25 pos(3) pos(4)+.25]);pos=get(gca,'Position');
                                         %set(gca,'position',[pos(1) pos(2)-.11 pos(3) pos(4)-.73]);
-                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
+                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]);if med==4;caxis([-2.5 2.5]);cl.Ticks=[-2:1:2];colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');end;                                        
                                         f = getframe(hfig);
-                                        if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];elseif med==3;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_fsp'];end;if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;
-					%print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
+                                        if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];elseif med==3;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_fsp'];elseif med==4;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_conmetric'];end;if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;
+										%print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
                                 end;end;

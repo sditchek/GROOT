@@ -101,6 +101,7 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+10/6/22  | Added capability to plot TC-by-TC consistency-metric graphics
 9/15/22  | Removed statistical significance from package
                 The significance test typically used is a parametric test (paired t-test). Yet, distributions are often skewed, so this violates the test assumptions.
                 Given the consistency metric, which does not rely on a normal distribution, no significance test is needed, as consistency identifies which lead times to trust.
