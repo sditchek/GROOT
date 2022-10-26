@@ -14281,7 +14281,7 @@
 										
 										
 					ax2=subplot(3,4,[9:12]);
-					tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;
+										tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;
                                         imagesc(tmppct2','AlphaData',~isnan(tmppct2'))
                                         %xlabel('Forecast Lead Time (h)','fontsize',14)        
                                         set(gca,'fontsize',14)
