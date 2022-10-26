@@ -418,9 +418,9 @@ for identremoveinvest=1
 						end
 					else
 					end                  
-					if identns==1
-						stratlist=[stratlist 888];
-					end
+					if identns==1;stratlist=[stratlist 888];end;
+					if identenkfexact==1 | identenkfoper==1;stratlist=[stratlist 890 891 892 893];end;
+					
 					for i=1:size(stratlist,2)
 						if i<=10;
 							identstratlist1(i)=stratlist(i);														
@@ -498,7 +498,7 @@ for identremoveinvest=1
 							% Initialize arrays
 							BT_name_all     =   {};
 							BT_target_all   =   [];
-							BT_drops_all    =   [];BT_obsg_all=[];
+							BT_drops_all    =   [];BT_enkf_all=[];BT_obsg_all=[];
 							BT_year_all    =   [];
 							BT_date_all     =   [];
 							BT_storm_all    =   [];
@@ -593,7 +593,7 @@ for identremoveinvest=1
 								load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])
 								load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_latlon.mat'])        
 								load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_data.mat'],'LOWbasin','HIGHbasin')        
-								BT_drops_all=cat(2,BT_drops_all,BT_drops);  % only cycles that had conventional obs   
+								BT_drops_all=cat(2,BT_drops_all,BT_drops);if identenkfexact==1 | identenkfoper==1;BT_enkf_all=cat(2,BT_enkf_all,BT_enkf);end;  % only cycles that had conventional obs   
 								btd=find(BT_drops==1);
 								if isempty(btd)==1 && identconv==1 % if the storm has conventional obs...           
 									keepstm(cntst)=NaN;
@@ -707,7 +707,7 @@ for identremoveinvest=1
 				% Reassign variables for easy plotting
 				BT_date=BT_date_all;
 				BT_name=BT_name_all;
-				BT_drops=BT_drops_all;BT_obsg=BT_obsg_all;
+				BT_drops=BT_drops_all;if identenkfexact==1 | identenkfoper==1;BT_enkf=BT_enkf_all;end;BT_obsg=BT_obsg_all;
 				BT_target=BT_target_all;
 				BT_year=BT_year_all;
 				BT_storm=BT_storm_all;

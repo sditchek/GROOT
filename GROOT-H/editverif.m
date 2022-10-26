@@ -28,8 +28,9 @@ identcompositeonly=1;						% only generate composite graphics | yes (1 - this sa
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='RMDR';                                             % name for new subset - will be capitalized in the script
 identnewsubset=[{'2019082306-2019082612'}];  			% new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
-                	                                            % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]
-		        	                                    % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+                	                                            % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]                                                                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+identenkfexact=0;						%  covariance-type stratification - exact method: if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
+identenkfoper=1;identenkfoperpath='/scratch1/NCEPDEV/hwrf/noscrub/input/TDR/'; % covariance-type stratification - operational method: all cycles from the first TDR available through the end of the TC used enfk (1) do not do stratifications by enkf (0) | identenkfoperpath is the path to the TDR files on disk | if your model doesn't have this, set to identenkfoper=0.
 identremoveland=0;						% do you want to remove cycles where the best track was over land | yes (1) no (0)
 identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
 
@@ -38,8 +39,7 @@ identconv=1;                                                    % conventional o
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
 identconvtype=[0];                                              % subtypes desired 
-                                                                    % NO SUBTYPE: identconvtype=0
-                                                                    % YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
+                                                                    % NO SUBTYPE: identconvtype=0 | YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
 identconvcolors=[204 51 204;230 102 51]/255;                            % colors for each of your subtypes
 identconvlegend=[{'Assimilated Mie (Cloudy) Observations'};{'Assimilated Rayleigh (Clear) Observations'}]; % names of each of your subtypes for the plot legends
 
@@ -168,6 +168,6 @@ end
 tmpidentcasename=identcasename{:};
 fid = fopen('caseverif.txt','wt');
 fprintf(fid,'%s\n',['initcasestudy="',num2str(identcase),'"']);
-fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename(1:end-3)),'*'],'"']);
+fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename(1:end-3)),yearsdone(end-1:end),'*'],'"']);
 fprintf(fid,'%s\n',['initend="',[identout,'RESULTS/',identfold],'"']);
 fclose(fid);

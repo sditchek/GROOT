@@ -90,6 +90,7 @@ do
         cp ${scrubpath}/${expfold[$i]}/**/**/**/*channels.txt ${verifpath}/obsall/${expnew[$i]}/
         cp ${scrubpath}/${expfold[$i]}/**/**/**/qcflags*.txt ${verifpath}/obsall/${expnew[$i]}/
 	cp ${scrubpath}/${expfold[$i]}/**/**/**/*vit ${verifpath}/tcvitals/
+	cp ${scrubpath}/${expfold[$i]}/**/**/**/*enkf* ${verifpath}/obsall/${expnew[$i]}/
 	cp ${noscrubpath}/${expfold[$i]}/*atcfunix* ${verifpath}/${expnew[$i]}/
 
 	if [ "${numatcf}" -eq 1 ]

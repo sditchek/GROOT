@@ -24,20 +24,20 @@ module load hpss
 # Storm and Directory Section
 usr=Sarah.D.Ditchek      						 # your user directory
 cycling="6" 		     						 # frequency of cycling in hours
-storm_ID=13l   	          						 # storm identifier - lowercase (e.g., 09l)
-storm_ID2=13L   	      						 # storm identifier - uppercase (e.g., 09L) 
-storm_nm=laura	  	      						 # storm name - lowercase (e.g., harvey)
-storm_nm2=thirteen  	  						 # storm number - lowercase (e.g., nine)
+storm_ID=11l   	          						 # storm identifier - lowercase (e.g., 09l)
+storm_ID2=11L   	      						 # storm identifier - uppercase (e.g., 09L) 
+storm_nm=irma	  	      						 # storm name - lowercase (e.g., harvey)
+storm_nm2=eleven  	  						 # storm number - lowercase (e.g., nine)
 storm_nm3=invest     	  						 # storm invest - lowercase (e.g., invest)
-storm_yr="2020"		      						 # storm year
+storm_yr="2017"		      						 # storm year
 subexp=$1                 						 # subexp name from model run passed in on command line
-hpssdir=/ESRL/BMC/qosap/5year/Benjamin.Johnston/HERA/HB20/${subexp} 		 # retrieval directory on hpss
+hpssdir=/ESRL/BMC/qosap/5year/${usr}/HERA/HB20/${subexp} 		 # retrieval directory on hpss
 current=/scratch1/AOML/aoml-osse/${usr}/GROOT/GROOT-H/retrievalscripts   # current directory
 indir1=/scratch1/AOML/aoml-osse/${usr}/scrub/${subexp}/com 	 	 # your scrub directory path
 indir2=/scratch1/AOML/aoml-osse/${usr}/noscrub/atcf/${subexp} 		 # your noscrub directory path
 
 # Conventional Observation Section
-numvars=6                                                                # number of conventional observations being processed
+numvars=0                                                                # number of conventional observations being processed
 set -A convid 750 751 752 753 754 755                                    # conventional observation type (used by gsi_diag_conv.x to extract your data)
 set -A convar gps gps gps gps gps gps                                    # conventional variable type (used by gsi_diag_conv.x to extract your data)
 set -A newsubid 1 2 3 4 5 6						 # reassigned subtype ids for each conventional observation type | in editverif.m match identconvtype to this row
@@ -47,16 +47,16 @@ set -A newsubid 1 2 3 4 5 6						 # reassigned subtype ids for each conventional
 										# if numvars>1, and you DO NOT want to keep the subtypes, then number these sequentially 
 
 # Dates where files identified by "invest" | if none, keep as "" | format must be yyyy-mm-dd hh
-startdate3=""
-enddate3=""
+startdate3="2017-08-30 06"
+enddate3="2017-08-30 06"
 
 # Dates where files identified by "number" | if none, keep as "" | format must be yyyy-mm-dd hh
 startdate2=""
 enddate2=""
 
 # Dates where files identified by "name" | if none, keep as "" | format must be yyyy-mm-dd hh
-startdate1="2020-08-26 06"
-enddate1="2020-08-26 06"
+startdate1="2017-08-30 12"
+enddate1="2017-08-30 18"
 
 # README: GSI DATA
 # You might need to change the gsi_diag_conv.f90 file and recompile for your particular case - see the README in this folder for more details
@@ -102,8 +102,19 @@ else
                   			htar -xvf ${hpssdir}/${storm_nm3}${storm_ID}.${usedate}.tar ${storm_nm3}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz
 					htar -xvf ${hpssdir}/${storm_nm3}${storm_ID}.${usedate}.tar ${storm_nm3}${storm_ID}.${usedate}.gsi_d02.stdout.anl
 					htar -xvf ${hpssdir}/${storm_nm3}${storm_ID}.${usedate}.tar ${storm_nm3}${storm_ID}.${usedate}.storm_vit
+					htar -xvf ${hpssdir}/${storm_nm3}${storm_ID}.${usedate}.tar ${storm_nm3}${storm_ID}.${usedate}.alert_cycled_ensda
+                                        htar -xvf ${hpssdir}/${storm_nm3}${storm_ID}.${usedate}.tar ${storm_nm3}${storm_ID}.${usedate}.ensda_001.wrfinput_d01
 					rename ${storm_nm3} ${storm_nm} *
-                    			gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
+					if [ ! -f ${storm_nm}${storm_ID}.${usedate}.ensda_001.wrfinput_d01 ] # if ensda file does not exist, then no enkf cov used
+					then
+						echo 0 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+					elif [ -f ${storm_nm}${storm_ID}.${usedate}.alert_cycled_ensda ] # if ensda file does exist but alert filed does not exist, then no enkf cov
+					then
+                                                echo 0 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+					else # enkf cov used
+                                                echo 1 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt					
+					fi
+					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz					
 					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
 					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges ${indir1}/${usedate}/${storm_ID2}/ ${usedate} ges > log.ge
@@ -136,13 +147,19 @@ else
                                         uniq ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt0 > ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
                                         rm ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt0
                                         sed -i "s/Infinity/0/g" ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
+                                        if [  $(wc -l <${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt) -ge 2 ]
+                                        then
                                         sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
+                                        fi
                                         cat ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
                                         rm ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt*
                                         uniq ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0 > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
                                         rm ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
                                         sed -i "s/Infinity/0/g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+                                        if [  $(wc -l <${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt) -ge 2 ]
+                                        then
                                         sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+                                        fi
 					cd ${indir2}
 					htar -xvf ${hpssdir}/${storm_nm3}${storm_ID}.${usedate}.tar ${storm_nm3}${storm_ID}.${usedate}.trak.hwrf.atcfunix
 					rename ${storm_nm3}${storm_ID} ${storm_nm}${storm_ID} *
@@ -187,7 +204,18 @@ else
 					htar -xvf ${hpssdir}/${storm_nm2}${storm_ID}.${usedate}.tar ${storm_nm2}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
                                         htar -xvf ${hpssdir}/${storm_nm2}${storm_ID}.${usedate}.tar ${storm_nm2}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz
 					htar -xvf ${hpssdir}/${storm_nm2}${storm_ID}.${usedate}.tar ${storm_nm2}${storm_ID}.${usedate}.storm_vit
-					rename ${storm_nm2} ${storm_nm} *
+					htar -xvf ${hpssdir}/${storm_nm2}${storm_ID}.${usedate}.tar ${storm_nm2}${storm_ID}.${usedate}.alert_cycled_ensda
+                                        htar -xvf ${hpssdir}/${storm_nm2}${storm_ID}.${usedate}.tar ${storm_nm2}${storm_ID}.${usedate}.ensda_001.wrfinput_d01
+                                        rename ${storm_nm2} ${storm_nm} *
+                                        if [ ! -f ${storm_nm}${storm_ID}.${usedate}.ensda_001.wrfinput_d01 ] # if ensda file does not exist, then no enkf cov used
+                                        then
+                                                echo 0 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+                                        elif [ -f ${storm_nm}${storm_ID}.${usedate}.alert_cycled_ensda ] # if ensda file does exist but alert filed does not exist, then no enkf cov
+                                        then
+                                                echo 0 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+                                        else # enkf cov used
+                                                echo 1 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+                                        fi
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz					
 					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
@@ -221,13 +249,19 @@ else
                                         uniq ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt0 > ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
                                         rm ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt0
                                         sed -i "s/Infinity/0/g" ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
+					if [  $(wc -l <${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt) -ge 2 ]
+                                        then
                                         sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
+                                        fi
                                         cat ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
                                         rm ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt*
                                         uniq ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0 > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
                                         rm ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
                                         sed -i "s/Infinity/0/g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+                                        if [  $(wc -l <${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt) -ge 2 ]
+                                        then
                                         sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+                                        fi
 					cd ${indir2}
 					htar -xvf ${hpssdir}/${storm_nm2}${storm_ID}.${usedate}.tar ${storm_nm2}${storm_ID}.${usedate}.trak.hwrf.atcfunix
 					rename ${storm_nm2}${storm_ID} ${storm_nm}${storm_ID} *
@@ -273,6 +307,17 @@ else
                                         htar -xvf ${hpssdir}/${storm_nm}${storm_ID}.${usedate}.tar ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz
 					htar -xvf ${hpssdir}/${storm_nm}${storm_ID}.${usedate}.tar ${storm_nm}${storm_ID}.${usedate}.gsi_d02.stdout.anl
 					htar -xvf ${hpssdir}/${storm_nm}${storm_ID}.${usedate}.tar ${storm_nm}${storm_ID}.${usedate}.storm_vit
+					htar -xvf ${hpssdir}/${storm_nm}${storm_ID}.${usedate}.tar ${storm_nm}${storm_ID}.${usedate}.alert_cycled_ensda
+                                        htar -xvf ${hpssdir}/${storm_nm}${storm_ID}.${usedate}.tar ${storm_nm}${storm_ID}.${usedate}.ensda_001.wrfinput_d01
+                                        if [ ! -f ${storm_nm}${storm_ID}.${usedate}.ensda_001.wrfinput_d01 ] # if ensda file does not exist, then no enkf cov used
+                                        then
+                                                echo 0 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+                                        elif [ -f ${storm_nm}${storm_ID}.${usedate}.alert_cycled_ensda ] # if ensda file does exist and alert filed does exist, then no enkf cov
+                                        then
+                                                echo 0 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+                                        else # enkf cov used
+                                                echo 1 > ${storm_nm}${storm_ID}.${usedate}.enkf.txt
+                                        fi
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl.gz
 					gunzip ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_ges.gz					
 					${current}/gsi_diag_conv.x ${storm_nm}${storm_ID}.${usedate}.gsi_d02.diag_conv_anl ${indir1}/${usedate}/${storm_ID2}/ ${usedate} anl > log.an
@@ -306,13 +351,19 @@ else
 			                uniq ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt0 > ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
 			                rm ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt0
 			                sed -i "s/Infinity/0/g" ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
-			                sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
-					cat ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
-			                rm ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt*
-			                uniq ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0 > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
-			                rm ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
-			                sed -i "s/Infinity/0/g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
-			                sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+					if [  $(wc -l <${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt) -ge 2 ]
+                                        then
+                                        sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.anl0.latlon.txt
+                                        fi
+                                        cat ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
+                                        rm ${storm_nm}${storm_ID}.${usedate}.*.indiv.ges0.latlon.txt*
+                                        uniq ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0 > ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+                                        rm ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt0
+                                        sed -i "s/Infinity/0/g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+                                        if [  $(wc -l <${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt) -ge 2 ]
+                                        then
+                                        sed -i "s/none//g" ${storm_nm}${storm_ID}.${usedate}.ges0.latlon.txt
+                                        fi
 					cd ${indir2}
 					htar -xvf ${hpssdir}/${storm_nm}${storm_ID}.${usedate}.tar ${storm_nm}${storm_ID}.${usedate}.trak.hwrf.atcfunix
 				else

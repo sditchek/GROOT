@@ -136,6 +136,12 @@ GRB CAPABILITY:
 %%%%%%%%%%%%%%%%%%%%%%
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
+
+10/26/22 | Added capability to stratify by covariance type. 
+                This functionality is primarily for HWRF and related models that sometimes use ENKF covariances on D03. There are three new namelist items associated with this addition. 
+		If you use the retrieval scripts to grab down files for GROOT, a new file will be created for each cycle of each TC identifying whether or not ENKF covariances were used.
+		If you did not use the retrieval scripts, there is still another option to stratify by covariance type. Once a TDR file is avilable, HWRF uses ENKF covariances.                                 Thus, the other option in the namelist (if turned on) identifies the first cycle in a TC where a TDR file is present and marks that and every cycle thereafter                                 through the dissipation of the TC as one that used ENKF covariances.  
+	 | Added capability for HDCI and LDCI to include the actual consistency score on the errskill graphics to understand the relative difference between HDCI and LDCI
 10/6/22  | Added capability to plot TC-by-TC consistency-metric graphics
 9/15/22  | Removed statistical significance from package
 		The significance test typically used is a parametric test (paired t-test). Yet, distributions are often skewed, so this violates the test assumptions. 
