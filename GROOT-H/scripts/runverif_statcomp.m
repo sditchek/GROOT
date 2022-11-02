@@ -2123,7 +2123,7 @@
                                     close all
                                 end                                   
 								% Create TC-By-TC Skill Graphics
-                                for med=1:3;for plt=[1:18,21:23] % no across or along for bias
+                                for med=1:4;for plt=[1:18,21:23] % no across or along for bias
                                     clear l cntexp                                   
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
@@ -2298,7 +2298,7 @@
                                             text(1,1.08,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.04,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        if med==1;text(0,1.08,['\textbf{MAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
+                                        if med==1;text(0,1.08,['\textbf{MAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
 										tmpyr=identdr;
 										for tmpyri=1:size(tmpyr,2)
 											tmpyra=tmpyr{tmpyri};
@@ -2323,9 +2323,9 @@
                                         ax.LineWidth=1; 
                                         pos=get(gca,'Position');
                                         set(gca,'position',[pos(1)+.01 pos(2) pos(3) pos(4)])
-                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
+                                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]);if med==4;caxis([-2.5 2.5]);cl.Ticks=[-2:1:2];colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));ticks = strsplit(num2str(cl.Ticks));ax = axes('Position', cl.Position);edges = linspace(0,1,numel(ticks)+1); centers = edges(2:end)-((edges(2)-edges(1))/2);text(ones(size(centers))*0.5, centers, {'C','MC','','MC','C'},'FontSize',cl.FontSize,'HorizontalAlignment','Center','VerticalAlignment','Middle','color','w');ax.Visible = 'off';cl.Ticks = [];text(1.2,.2,['\textbf{Degradation}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');text(1.2,.8,['\textbf{Improvement}'],'color','k','rotation',270,'HorizontalAlignment','center','VerticalAlignment','middle','fontsize',12,'fontweight','bold','interpreter','latex');end;
                                         f = getframe(hfig);
-                                        if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];elseif med==3;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_fsp'];end;if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;
+                                        if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_mean'];elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_median'];elseif med==3;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_fsp'];elseif med==4;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_contr_',stname,'_',identexpshort{identexploop},'_conmetric'];end;if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;
                                         %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                         close all   
                                     end 
@@ -3536,7 +3536,7 @@
 										tmp_ytitle={'MAE (km)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','AT Mean Bias (km)','XT Mean Bias (km)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.'}';									
 							
 										% Generate Matrix
-										sc=nan(57,(identmaxfhr+1)/2);     
+										sc=nan(57,(identmodelfhr+1)/2);     
 
 										% Start Figure
 										clear l cntexp
@@ -11891,7 +11891,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(1000,round(identmaxfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(1000,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -11918,7 +11918,7 @@
                                         hfig=figure;
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                         ax1=subplot(3,4,[1:8]);
-                                        imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
+                                        imagesc((tmppct(1:round(identmaxfhr/2),:))','AlphaData',~isnan((tmppct(1:round(identmaxfhr/2),:))'))
                                         xlabel('Forecast Lead Time (h)','fontsize',14)        
                                         set(gca,'fontsize',14)
                                         box on
@@ -13019,7 +13019,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(round(identmaxfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -13043,7 +13043,7 @@
                                         hfig=figure;
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                         ax1=subplot(3,4,[1:8]);
-                                        imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
+                                        imagesc((tmppct(1:round(identmaxfhr/2),:))','AlphaData',~isnan((tmppct(1:round(identmaxfhr/2),:))'))
                                         xlabel('Forecast Lead Time (h)','fontsize',14)        
                                         set(gca,'fontsize',14)
                                         box on
@@ -14139,7 +14139,7 @@
 
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
-									nm_stm=nan(1000,round(identmaxfhr/2),size(identexp,1),size(tmpnm,2));
+									nm_stm=nan(1000,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
                                     for i=1:size(tmpnm,2)
                                         nmtmp=tmpnm{i};                    
                                         nmindex=find(contains(BTnm,nmtmp));
@@ -14185,7 +14185,7 @@
                                         hfig=figure;
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                         ax1=subplot(3,4,[1:8]);
-                                        imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
+                                        imagesc((tmppct(1:round(identmaxfhr/2),:))','AlphaData',~isnan((tmppct(1:round(identmaxfhr/2),:))'))
                                         xlabel('Forecast Lead Time (h)','fontsize',14)        
                                         set(gca,'fontsize',14)
                                         box on
@@ -14281,8 +14281,8 @@
 										
 										
 					ax2=subplot(3,4,[9:12]);
-										tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;
-                                        imagesc(tmppct2','AlphaData',~isnan(tmppct2'))
+					tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;
+                                        imagesc(tmppct2(1:round(identmaxfhr/2),:)','AlphaData',~isnan(tmppct2(1:round(identmaxfhr/2),:)'))
                                         %xlabel('Forecast Lead Time (h)','fontsize',14)        
                                         set(gca,'fontsize',14)
                                         box on
@@ -16248,7 +16248,7 @@
                                         end
                                     end
                                     tmp_ylim=get(ax2,'xlim');if med==1 && identconmetric==1;clear ultconmean cm ultcon tmp_err tmp_errmed sigtest_95 sigtest_90 tmp_imp tmp_impmed tmp_bias tmp_fsp tmp_fcst cmloc clmoca cmlocb cmlocc;cmloc=0.03/size(tmpu,2);cnt=1;if size(tmpu,2)==1;cmlocb=0;cmlocc=0;else;for cmloca=size(tmpu,2)-1:-1:1;cmlocb(cnt)=cmloc.*cmloca;cnt=cnt+1;end;cmlocb(end+1)=0;cmlocc=size(cmlocb,2)-1;end;for identexploop=tmpu;tmp_err=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_errmed=squeeze(nanmedian((tmp_exp(:,:,identexploop)),1));if size(tmp_exp,1)==1;sigtest_95=repmat(0,size(tmp_exp,2),1);else;sigtest_95=ttestsc(abs(tmp_exp(:,:,identexploop)),abs(tmp_exp(:,:,tmpimp)),squeeze(scfactor(plt,identexploop,:))','alpha',.05)';end;tmp_imp=squeeze(100.*(1-nanmean(abs(tmp_exp(:,:,identexploop)),1)./nanmean(abs(tmp_exp(:,:,tmpimp)),1)))';tmp_impmed=squeeze(100.*(1-nanmedian(abs(tmp_exp(:,:,identexploop)),1)./nanmedian(abs(tmp_exp(:,:,tmpimp)),1)))';tmp1=abs(tmp_exp(:,:,identexploop));tmp2=abs(tmp_exp(:,:,tmpimp));tmp3=sign(tmp1-tmp2);tmp4=tmp3<0;tmp5=tmp3>0;tmp6=tmp3==0;tmptmp=sum(~isnan(tmp3),1);tmp_bias=squeeze(nanmean((tmp_exp(:,:,identexploop)),1));tmp_fsp=squeeze(100*(nansum(tmp4,1)+nansum(tmp6,1)./2)./tmptmp)'-50;tmp_fcst=sum(~isnan(tmp_exp(:,:,identexploop)),1)';tmp_ylim=get(ax2,'xlim');sconsistent=nan(1,tmp_ylim(2),1);a=find(tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1);sconsistent(a)=2;b=find((tmp_imp>=1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>-1) | (tmp_imp>=1 & tmp_fsp>-1 & tmp_impmed>=1) | (tmp_imp>-1 & tmp_fsp>=((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed>=1));[~,~,ind]  = intersect(a,b);b=b(~(ismember(1:numel(b),ind)));sconsistent(b)=1;c=find(tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1);sconsistent(c)=-2;d=find((tmp_imp<=-1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<1) | (tmp_imp<=-1 & tmp_fsp<1 & tmp_impmed<=-1) | (tmp_imp<1 & tmp_fsp<=-((0.5.*tmp_fcst(:,1)+max(5,0.01.*tmp_fcst(:,1)))./tmp_fcst(:,1)*100-50) & tmp_impmed<=-1));[~,~,ind]  = intersect(c,d);d=d(~(ismember(1:numel(d),ind)));sconsistent(d)=-1;cm(identexploop)=axes('Position',[.1886-(0.6328/size(tmp_exp,2)/2) 0.5650+cmlocb(identexploop) 0.6328+(0.6328/size(tmp_exp,2)) 0.03/size(tmpu,2)]);sconsistent(isnan(sconsistent))=0;sconsistent=sconsistent(1:tmp_ylim(2));imagesc(sconsistent,'AlphaData',~isnan((sconsistent)));axis ij;hold on;cnt=1;for i=1;for j=1:size(tmp_exp,2);if sigtest_95(j,cnt)==1;else;end;end;cnt=cnt+1;end;xlim([0.5 tmp_ylim(2)+.5]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',[]);set(gca,'yticklabel',[]);ylim([0.5 size(sconsistent,1)+.5]);set(gca,'TickLength',[0 0]);caxis([-2.5 2.5]);run customcolorbars;colormap(gca,flipud([56 87 35;169 209 142;229.5 229.5 229.5;244 177 131;132 60 12]/255));for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+2),0.5:0.5:size(sconsistent,1)+0.5,'k');end;
-									set(gcf, 'InvertHardcopy', 'off');ax=gca;set(ax, 'Layer', 'bottom');set(cm,'Color',[.9 .9 .9]);sconsistent(sconsistent==-1)=-.5;sconsistent(sconsistent==1)=.5;sconsistent(sconsistent==-2)=-1;sconsistent(sconsistent==2)=1;ultcon(identexploop)=sum(sconsistent)/((identmaxfhr+1)/2);ultconmean(identexploop)=squeeze(nanmean(100.*(1-abs(nanmean(tmp_exp(:,:,identexploop),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)))));end;set(cm, 'layer', 'top');[uca,ucb]=max(ultcon);if size(find(ultcon==uca),2)==1;else;ultconmean(find(ultcon~=uca))=NaN;[ucaa,ucbb]=max(ultconmean);if sum(ucbb==find(ultcon==uca))>0;ucb=ucbb;end;end;for uuu=tmpu;axes(cm(uuu));set(gca,'Clipping','Off');uch1=plot(0:.1:.5,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uch2=plot(tmp_ylim(end)+.5:.1:tmp_ylim(end)+1,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uistack(uch1,'bottom');uistack(uch2,'bottom');end;axes(ax1);if sum([cntexp(:)])==0;tmpstr='Not Enough Data';elseif size(identexp,1)<3;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb}];else;[ucc,ucd]=min(ultcon);if size(find(ultcon==ucc),2)==1;else;ultconmean(find(ultcon~=ucc))=NaN;[uccc,ucdd]=min(ultconmean);if sum(ucdd==find(ultcon==ucc))>0;ucd=ucdd;end;end;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb},' (',num2str(round(ultcon(ucb),2)*100),'%) \color[rgb]{0,0,0}| LDCI: \color[rgb]{',num2str(identexpcolors(ucd,:)),'}',identexpshort{ucd},' (',num2str(round(ultcon(ucb),2)*100),'%)'];end;end;if size(identexp,1)<3;else;if med==1;tx=text(0.99,0.1,tmpstr,'HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');end;end;f = getframe(hfig);if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
+									set(gcf, 'InvertHardcopy', 'off');ax=gca;set(ax, 'Layer', 'bottom');set(cm,'Color',[.9 .9 .9]);sconsistent(sconsistent==-1)=-.5;sconsistent(sconsistent==1)=.5;sconsistent(sconsistent==-2)=-1;sconsistent(sconsistent==2)=1;ultcon(identexploop)=sum(sconsistent)/((identmaxfhr+1)/2);ultconmean(identexploop)=squeeze(nanmean(100.*(1-abs(nanmean(tmp_exp(:,:,identexploop),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1)))));end;set(cm, 'layer', 'top');[uca,ucb]=max(ultcon);if size(find(ultcon==uca),2)==1;else;ultconmean(find(ultcon~=uca))=NaN;[ucaa,ucbb]=max(ultconmean);if sum(ucbb==find(ultcon==uca))>0;ucb=ucbb;end;end;for uuu=tmpu;axes(cm(uuu));set(gca,'Clipping','Off');uch1=plot(0:.1:.5,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uch2=plot(tmp_ylim(end)+.5:.1:tmp_ylim(end)+1,[1 1 1 1 1 1 ],'-','color',identexpcolors(uuu,:),'linewidth',7-cmlocc);uistack(uch1,'bottom');uistack(uch2,'bottom');end;axes(ax1);if sum([cntexp(:)])==0;tmpstr='Not Enough Data';elseif size(identexp,1)<3;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb}];else;[ucc,ucd]=min(ultcon);if size(find(ultcon==ucc),2)==1;else;ultconmean(find(ultcon~=ucc))=NaN;[uccc,ucdd]=min(ultconmean);if sum(ucdd==find(ultcon==ucc))>0;ucd=ucdd;end;end;tmpstr=['HDCI: \color[rgb]{',num2str(identexpcolors(ucb,:)),'}',identexpshort{ucb},' (',num2str(round(ultcon(ucb),2)*100),'%) \color[rgb]{0,0,0}| LDCI: \color[rgb]{',num2str(identexpcolors(ucd,:)),'}',identexpshort{ucd},' (',num2str(round(ultcon(ucd),2)*100),'%)'];end;end;if size(identexp,1)<3;else;if med==1;tx=text(0.99,0.1,tmpstr,'HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');end;end;f = getframe(hfig);if med==1;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_mean'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;elseif med==2;filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_median'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;end;
                                     close all
                                 end; end                                                                                         
 								spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same								
@@ -17070,7 +17070,7 @@
 										tmp_ytitle={'MAE (km)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','AT Mean Bias (km)','XT Mean Bias (km)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.'}';									
 											
 										% Generate Matrix
-										sc=nan(57,(identmaxfhr+1)/2);
+										sc=nan(57,(identmodelfhr+1)/2);
 										% TRACK
 										sc(1,:)=NaN; % error
 										sc(2,:)=tmp_imp(:,1); % imprv

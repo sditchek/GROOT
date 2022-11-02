@@ -3756,7 +3756,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 				hfig=figure;
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 				ax1=subplot(3,4,[1:8]);
-				imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
+				imagesc((tmppct(1:round(identmaxfhr/2),:))','AlphaData',~isnan((tmppct(1:round(identmaxfhr/2),:))'))
 				xlabel('Forecast Lead Time (h)','fontsize',14)        
 				set(gca,'fontsize',14)
 				box on
@@ -4025,7 +4025,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 				hfig=figure;
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 				ax1=subplot(3,4,[1:8]);
-				imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
+				imagesc((tmppct(1:round(identmaxfhr/2),:))','AlphaData',~isnan((tmppct(1:round(identmaxfhr/2),:))'))
 				xlabel('Forecast Lead Time (h)','fontsize',14)        
 				set(gca,'fontsize',14)
 				box on
@@ -4105,8 +4105,8 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 				
 				
 				ax2=subplot(3,4,[9:12]);
-				tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;				
-				imagesc(tmppct2','AlphaData',~isnan(tmppct2'))
+ 	 			tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;
+				imagesc(tmppct2(1:round(identmaxfhr/2),:)','AlphaData',~isnan(tmppct2(1:round(identmaxfhr/2),:)'))
 				%xlabel('Forecast Lead Time (h)','fontsize',14)        
 				set(gca,'fontsize',14)
 				box on
@@ -10252,7 +10252,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									tmp_ytitle={'MAE (km)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','AT Mean Bias (km)','XT Mean Bias (km)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.'}';									
 									
 									% Generate Matrix
-									sc=nan(57,(identmaxfhr+1)/2);        
+									sc=nan(57,(identmodelfhr+1)/2);        
 
 									% Start Figure
 									clear l cntexp
@@ -18677,7 +18677,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									hfig=figure;
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
-									imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
+									imagesc((tmppct(1:round(identmaxfhr/2),:))','AlphaData',~isnan((tmppct(1:round(identmaxfhr/2),:))'))
 									xlabel('Forecast Lead Time (h)','fontsize',14)        
 									set(gca,'fontsize',14)
 									box on
@@ -19274,7 +19274,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									hfig=figure;
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
-									imagesc((tmppct)','AlphaData',~isnan((tmppct)'))
+									imagesc((tmppct(1:round(identmaxfhr/2),:))','AlphaData',~isnan((tmppct(1:round(identmaxfhr/2),:))'))
 									xlabel('Forecast Lead Time (h)','fontsize',14)        
 									set(gca,'fontsize',14)
 									box on
@@ -19361,7 +19361,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									
 									ax2=subplot(3,4,[9:12]);
 									tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;
-									imagesc(tmppct2','AlphaData',~isnan(tmppct2'))
+									imagesc(tmppct2(1:round(identmaxfhr/2),:)','AlphaData',~isnan(tmppct2(1:round(identmaxfhr/2),:)'))
 									%xlabel('Forecast Lead Time (h)','fontsize',14)        
 									set(gca,'fontsize',14)
 									box on
