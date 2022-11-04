@@ -6299,8 +6299,8 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 				end
 				
 				if identns==1;stratlist=[stratlist 888];end;
-				if identenkfexact==1;stratlist=[stratlist 890 891 892 893];elseif identenkfoper==1;btd=find(BT_enkf==1);if isempty(btd)==1;else;BT_enkf(btd(1):end)=1;end;stratlist=[stratlist 890 891 892 893];end;
-				
+				if identenkfexact==1;stratlist=[stratlist 890 891];elseif identenkfoper==1;btd=find(BT_enkf==1);if isempty(btd)==1;else;BT_enkf(btd(1):end)=1;end;stratlist=[stratlist 890 891];end;
+                if identenkfexact==1 & identconv==1 | identsatobs==1;stratlist=[stratlist 892 893];elseif identenkfoper==1 & identconv==1 || identsatobs==1;btd=find(BT_enkf==1);if isempty(btd)==1;else;BT_enkf(btd(1):end)=1;end;stratlist=[stratlist 892 893];end;				
 				clear scfactor scfactor0
 				BT_cat1=BT_maxspd(:,1);BT_cat0=BT_cat(:,1);
 				BT_lat1=BT_lat(:,1);
