@@ -2288,7 +2288,7 @@
                                         cnt=1;
                                         clear plotsim                                        
                                         set(gca,'yticklabel',[]);
-                                        colorbar
+                                        cl=colorbar;
                                         caxis(impylim(plt,:))
                                         run customcolorbars; colormap(gca,custommap(20,[flipud(negposc(7:end,:));drywetc(7:end,:)]));if med==3;caxis([25 75]);colormap(gca,custommap(10,[flipud(negposc(7:end,:));drywetc(7:end,:)]));end;
                                         hold on                                        
