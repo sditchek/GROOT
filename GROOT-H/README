@@ -137,6 +137,9 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+11/16/22 | Removed "-Associated" from all graphics titles
+	 | Changed folder names from NAMEYY to NAME##BYY to account for TCs within a given basin that cross sub-basins and retain the same name (e.g., SETH04P and SETH04S in 2022)
+         | Fixed aesthetic bug with PPC graphics where TCs that crossed basins and retained the same name ended up being out of number/alphabetical order 
 10/26/22 | Added capability to stratify by covariance type. 
                 This functionality is primarily for HWRF and related models that sometimes use ENKF covariances on D03. There are three new namelist items associated with this addition. 
 		If you use the retrieval scripts to grab down files for GROOT, a new file will be created for each cycle of each TC identifying whether or not ENKF covariances were used.

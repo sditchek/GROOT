@@ -24,7 +24,7 @@ for identremoveinvest=1
                 % Set Name
                 ident=[identtmp3,identtmp1(end-2:end-1),identtmp2];      % basin, ID, and year (e.g., AL092016)
                 identn=[upper(identtmp1(1:end-3)),identtmp2(3:4)];       % NAMEYY (e.g., HERMINE16)
-                identhwrf=identtmp1; if strcmp(identtmp1(1:6),'invest')==1; identn= [upper(identtmp1),identtmp2(3:4)]; end                                  % name, ID, and short basin - check grb2 file output names if confused (e.g., hermine09l)
+                identhwrf=identtmp1; identn= [upper(identtmp1),identtmp2(3:4)];                                  % name, ID, and short basin - check grb2 file output names if confused (e.g., hermine09l)
                 % Model outputs at 3 h, but to compare errors to BT make 6 h!
                 skip=2;                                                  % 6 h res | skip=1 is 3 h
                 skiphr=6;                                                % 6 h res | skiphr=3 is 3 h res
@@ -290,7 +290,7 @@ for identremoveinvest=1
                     set(gcf, 'InvertHardcopy', 'off')
                     text(0,1.065,['\textbf{Track \& Intensity}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                     text(0,1.03,['\textbf{DATES: ',DATEall(1,:),'$\mathbf{-}$',DATEall(end,:),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-                    text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+                    text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
                     ax=gca;
                     box on
                     set(ax, 'Layer', 'bottom')
@@ -409,8 +409,8 @@ for identremoveinvest=1
 					else
 					end                  
 					if identns==1;stratlist=[stratlist 888];end;
-                    if identenkfexact==1 | identenkfoper==1;stratlist=[stratlist 890 891];if identconv==1 || identsatobs==1;stratlist=[stratlist 892 893];end;end;
-					
+					if identenkfexact==1 | identenkfoper==1;stratlist=[stratlist 890 891];if identconv==1 || identsatobs==1;stratlist=[stratlist 892 893];end;end;
+
 					for i=1:size(stratlist,2)
 						if i<=10;
 							identstratlist1(i)=stratlist(i);														

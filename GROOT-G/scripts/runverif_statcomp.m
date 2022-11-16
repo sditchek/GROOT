@@ -1158,135 +1158,135 @@
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
                                          tmp_name='trkskill';
-                                         tmp_title='Track MAE-Associated Skill (\%)';
-                                         tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                         tmp_title='Track MAE Skill (\%)';
+                                         tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                          yrange=[-20 20];
                                     elseif plt==2
                                         tmp_exp=interr_exp(:,1:skip:end,:);
                                         tmp_name='prsskill';
-                                        tmp_title='PMIN MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='PMIN MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==3
                                         tmp_exp=spderr_exp(:,1:skip:end,:);
                                         tmp_name='spdskill';
-                                        tmp_title='VMAX MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='VMAX MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                      elseif plt==4
                                         tmp_exp=ne34err_exp(:,1:skip:end,:);
                                         tmp_name='neR34skill';
-                                        tmp_title='R34 NEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 NEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==5
                                         tmp_exp=se34err_exp(:,1:skip:end,:);
                                         tmp_name='seR34skill';
-                                        tmp_title='R34 SEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 SEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==6
                                         tmp_exp=sw34err_exp(:,1:skip:end,:);
                                         tmp_name='swR34skill';
-                                        tmp_title='R34 SWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 SWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==7
                                         tmp_exp=nw34err_exp(:,1:skip:end,:);
                                         tmp_name='nwR34skill';
-                                        tmp_title='R34 NWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 NWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==8
                                         tmp_exp=ne50err_exp(:,1:skip:end,:);
                                         tmp_name='neR50skill';
-                                        tmp_title='R50 NEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 NEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==9
                                         tmp_exp=se50err_exp(:,1:skip:end,:);
                                         tmp_name='seR50skill';
-                                        tmp_title='R50 SEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 SEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==10
                                         tmp_exp=sw50err_exp(:,1:skip:end,:);
                                         tmp_name='swR50skill';
-                                        tmp_title='R50 SWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 SWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==11
                                         tmp_exp=nw50err_exp(:,1:skip:end,:);
                                         tmp_name='nwR50skill';
-                                        tmp_title='R50 NWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 NWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==12
                                         tmp_exp=ne64err_exp(:,1:skip:end,:);
                                         tmp_name='neR64skill';
-                                        tmp_title='R64 NEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 NEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==13
                                         tmp_exp=se64err_exp(:,1:skip:end,:);
                                         tmp_name='seR64skill';
-                                        tmp_title='R64 SEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 SEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==14
                                         tmp_exp=sw64err_exp(:,1:skip:end,:);
                                         tmp_name='swR64skill';
-                                        tmp_title='R64 SWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 SWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==15
                                         tmp_exp=nw64err_exp(:,1:skip:end,:);
                                         tmp_name='nwR64skill';
-                                        tmp_title='R64 NWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 NWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==16
                                         tmp_exp=poerr_exp(:,1:skip:end,:);
                                         tmp_name='poskill';
-                                        tmp_title='Outer Clsd Isbr Prs MAE-Associated Skill (hPa)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Outer Clsd Isbr Prs MAE Skill (hPa)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==17
                                         tmp_exp=roerr_exp(:,1:skip:end,:);
                                         tmp_name='roskill';
-                                        tmp_title='Outer Clsd Isbr Rad MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Outer Clsd Isbr Rad MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==18
                                         tmp_exp=rmwerr_exp(:,1:skip:end,:);
                                         tmp_name='rmwskill';
-                                        tmp_title='RMW MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='RMW MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==19
                                         tmp_exp=ateerr_exp(:,1:skip:end,:);
                                         tmp_name='ateskill';
-                                        tmp_title='Along-Track MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Along-Track MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-200 200];                                 
                                     elseif plt==20
                                         tmp_exp=xteerr_exp(:,1:skip:end,:);
                                         tmp_name='xteskill';
-                                        tmp_title='Across-Track MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Across-Track MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-200 200];                                 
                                     elseif plt==21
                                         tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
                                         tmp_name='R34skill';
-                                        tmp_title='R34 MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-50 50];
                                     elseif plt==22
                                         tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
                                         tmp_name='R50skill';
-                                        tmp_title='R50 MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-50 50];
                                     elseif plt==23
                                         tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
                                         tmp_name='R64skill';
-                                        tmp_title='R64 MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-50 50];
                                     end                                    
                                     plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);                                    
@@ -2308,7 +2308,7 @@
                                             text(1,1.08,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.04,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        if med==1;text(0,1.08,['\textbf{MAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
+                                        if med==1;text(0,1.08,['\textbf{MAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
 										tmpyr=identdr;
 										for tmpyri=1:size(tmpyr,2)
 											tmpyra=tmpyr{tmpyri};
@@ -2552,118 +2552,118 @@
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
                                          tmp_name='trkerr';
-                                         tmp_title='Percentage Point Contribution to Track MAE-Associated Skill (\%)';
+                                         tmp_title='Percentage Point Contribution to Track MAE Skill (\%)';
                                          tmp_ytitle='Contribution (\%)';
                                     elseif plt==2
                                         tmp_exp=interr_exp(:,1:skip:end,:);
                                         tmp_name='prserr';
-                                        tmp_title='Percentage Point Contribution to PMIN MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to PMIN MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==3
                                         tmp_exp=spderr_exp(:,1:skip:end,:);
                                         tmp_name='spderr';
-                                        tmp_title='Percentage Point Contribution to VMAX MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to VMAX MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                      elseif plt==4
                                         tmp_exp=ne34err_exp(:,1:skip:end,:);
                                         tmp_name='neR34err';
-                                        tmp_title='Percentage Point Contribution to R34 NEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 NEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==5
                                         tmp_exp=se34err_exp(:,1:skip:end,:);
                                         tmp_name='seR34err';
-                                        tmp_title='Percentage Point Contribution to R34 SEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 SEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==6
                                         tmp_exp=sw34err_exp(:,1:skip:end,:);
                                         tmp_name='swR34err';
-                                        tmp_title='Percentage Point Contribution to R34 SWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 SWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==7
                                         tmp_exp=nw34err_exp(:,1:skip:end,:);
                                         tmp_name='nwR34err';
-                                        tmp_title='Percentage Point Contribution to R34 NWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 NWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==8
                                         tmp_exp=ne50err_exp(:,1:skip:end,:);
                                         tmp_name='neR50err';
-                                        tmp_title='Percentage Point Contribution to R50 NEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 NEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==9
                                         tmp_exp=se50err_exp(:,1:skip:end,:);
                                         tmp_name='seR50err';
-                                        tmp_title='Percentage Point Contribution to R50 SEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 SEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==10
                                         tmp_exp=sw50err_exp(:,1:skip:end,:);
                                         tmp_name='swR50err';
-                                        tmp_title='Percentage Point Contribution to R50 SWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 SWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==11
                                         tmp_exp=nw50err_exp(:,1:skip:end,:);
                                         tmp_name='nwR50err';
-                                        tmp_title='Percentage Point Contribution to R50 NWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 NWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==12
                                         tmp_exp=ne64err_exp(:,1:skip:end,:);
                                         tmp_name='neR64err';
-                                        tmp_title='Percentage Point Contribution to R64 NEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 NEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==13
                                         tmp_exp=se64err_exp(:,1:skip:end,:);
                                         tmp_name='seR64err';
-                                        tmp_title='Percentage Point Contribution to R64 SEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 SEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==14
                                         tmp_exp=sw64err_exp(:,1:skip:end,:);
                                         tmp_name='swR64err';
-                                        tmp_title='Percentage Point Contribution to R64 SWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 SWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                         yrange=[-100 100];                 
                                     elseif plt==15
                                         tmp_exp=nw64err_exp(:,1:skip:end,:);
                                         tmp_name='nwR64err';
-                                        tmp_title='Percentage Point Contribution to R64 NWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 NWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==16
                                         tmp_exp=poerr_exp(:,1:skip:end,:);
                                         tmp_name='poerr';
-                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Prs MAE-Associated Skill (hPa)';
+                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Prs MAE Skill (hPa)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==17
                                         tmp_exp=roerr_exp(:,1:skip:end,:);
                                         tmp_name='roerr';
-                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Rad MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Rad MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==18
                                         tmp_exp=rmwerr_exp(:,1:skip:end,:);
                                         tmp_name='rmwerr';
-                                        tmp_title='Percentage Point Contribution to RMW MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to RMW MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==19
                                         tmp_exp=ateerr_exp(:,1:skip:end,:);
                                         tmp_name='ateerr';
-                                        tmp_title='Percentage Point Contribution to Along-Track MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to Along-Track MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==20
                                         tmp_exp=xteerr_exp(:,1:skip:end,:);
                                         tmp_name='xteerr';
-                                        tmp_title='Percentage Point Contribution to Across-Track MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to Across-Track MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==21
                                         tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
                                         tmp_name='R34err';
-                                        tmp_title='Percentage Point Contribution to R34 MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==22
                                         tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
                                         tmp_name='R50err';
-                                        tmp_title='Percentage Point Contribution to R50 MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==23
                                         tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
                                         tmp_name='R64err';
-                                        tmp_title='Percentage Point Contribution to R64 MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     end
                                     if plt <19 || plt >20
@@ -2985,7 +2985,7 @@
                                     screenposition = get(gcf,'Position');
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
-                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE \& MAE-Associated Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE-Associated Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
+                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE \& MAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
                                     if strat==1
                                     else
                                         text(1,1.07,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
@@ -6899,135 +6899,135 @@
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
                                          tmp_name='trkskill';
-                                         tmp_title='Track MAE-Associated Skill (\%)';
-                                         tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                         tmp_title='Track MAE Skill (\%)';
+                                         tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                          yrange=[-20 20];
                                     elseif plt==2
                                         tmp_exp=interr_exp(:,1:skip:end,:);
                                         tmp_name='prsskill';
-                                        tmp_title='PMIN MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='PMIN MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==3
                                         tmp_exp=spderr_exp(:,1:skip:end,:);
                                         tmp_name='spdskill';
-                                        tmp_title='VMAX MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='VMAX MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                      elseif plt==4
                                         tmp_exp=ne34err_exp(:,1:skip:end,:);
                                         tmp_name='neR34skill';
-                                        tmp_title='R34 NEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 NEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==5
                                         tmp_exp=se34err_exp(:,1:skip:end,:);
                                         tmp_name='seR34skill';
-                                        tmp_title='R34 SEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 SEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==6
                                         tmp_exp=sw34err_exp(:,1:skip:end,:);
                                         tmp_name='swR34skill';
-                                        tmp_title='R34 SWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 SWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==7
                                         tmp_exp=nw34err_exp(:,1:skip:end,:);
                                         tmp_name='nwR34skill';
-                                        tmp_title='R34 NWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 NWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==8
                                         tmp_exp=ne50err_exp(:,1:skip:end,:);
                                         tmp_name='neR50skill';
-                                        tmp_title='R50 NEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 NEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==9
                                         tmp_exp=se50err_exp(:,1:skip:end,:);
                                         tmp_name='seR50skill';
-                                        tmp_title='R50 SEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 SEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==10
                                         tmp_exp=sw50err_exp(:,1:skip:end,:);
                                         tmp_name='swR50skill';
-                                        tmp_title='R50 SWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 SWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==11
                                         tmp_exp=nw50err_exp(:,1:skip:end,:);
                                         tmp_name='nwR50skill';
-                                        tmp_title='R50 NWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 NWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==12
                                         tmp_exp=ne64err_exp(:,1:skip:end,:);
                                         tmp_name='neR64skill';
-                                        tmp_title='R64 NEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 NEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==13
                                         tmp_exp=se64err_exp(:,1:skip:end,:);
                                         tmp_name='seR64skill';
-                                        tmp_title='R64 SEQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 SEQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==14
                                         tmp_exp=sw64err_exp(:,1:skip:end,:);
                                         tmp_name='swR64skill';
-                                        tmp_title='R64 SWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 SWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==15
                                         tmp_exp=nw64err_exp(:,1:skip:end,:);
                                         tmp_name='nwR64skill';
-                                        tmp_title='R64 NWQ MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 NWQ MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-100 100];                 
                                     elseif plt==16
                                         tmp_exp=poerr_exp(:,1:skip:end,:);
                                         tmp_name='poskill';
-                                        tmp_title='Outer Clsd Isbr Prs MAE-Associated Skill (hPa)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Outer Clsd Isbr Prs MAE Skill (hPa)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==17
                                         tmp_exp=roerr_exp(:,1:skip:end,:);
                                         tmp_name='roskill';
-                                        tmp_title='Outer Clsd Isbr Rad MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Outer Clsd Isbr Rad MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==18
                                         tmp_exp=rmwerr_exp(:,1:skip:end,:);
                                         tmp_name='rmwskill';
-                                        tmp_title='RMW MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='RMW MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                     elseif plt==19
                                         tmp_exp=ateerr_exp(:,1:skip:end,:);
                                         tmp_name='ateskill';
-                                        tmp_title='Along-Track MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Along-Track MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-200 200];                                 
                                     elseif plt==20
                                         tmp_exp=xteerr_exp(:,1:skip:end,:);
                                         tmp_name='xteskill';
-                                        tmp_title='Across-Track MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='Across-Track MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-200 200];                                 
                                     elseif plt==21
                                         tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
                                         tmp_name='R34skill';
-                                        tmp_title='R34 MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R34 MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-50 50];
                                     elseif plt==22
                                         tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
                                         tmp_name='R50skill';
-                                        tmp_title='R50 MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R50 MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-50 50];
                                     elseif plt==23
                                         tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
                                         tmp_name='R64skill';
-                                        tmp_title='R64 MAE-Associated Skill (\%)';
-                                        tmp_ytitle=['MAE-Associated Skill wrt ', identexpsigimpshort,' (%)'];
+                                        tmp_title='R64 MAE Skill (\%)';
+                                        tmp_ytitle=['MAE Skill wrt ', identexpsigimpshort,' (%)'];
                                         yrange=[-50 50];
                                     end
                                     if plt <19 || plt >20
@@ -12026,7 +12026,7 @@
 									end                    
 
                                     % sort by year and then by name                               
-                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-2);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);if size(nm_pct,1)==1;nm_pct=permute(nm_pct,[3 2 1]);end;clear tmpid;
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);if size(nm_pct,1)==1;nm_pct=permute(nm_pct,[3 2 1]);end;clear tmpid;
                                     nm_pct = nm_pct(:,:,a_order);
                                     tmpnm = tmpnm(a_order);
 
@@ -12069,7 +12069,7 @@
                                             tmpsim=tmpnm{findsim};
                                             for findsim2=1:size(stormsdone,2)
                                                 tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; elseif strcmp(identdr5{basinloop},'SH')==1;   tmpbas={'s';'p'}; elseif strcmp(identdr5{basinloop},'IO')==1;   tmpbas={'a';'b'}; end;     
-                                                if (strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & sum(strcmp(tmpbas,tmpsd(end)))>0
+                                                if (strcmp(tmpsim(1:end-5),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & sum(strcmp(tmpbas,tmpsd(end)))>0
                                                     plotsim{cnt}=[upper(tmpsd(end-2:end)),' (',upper(tmpsd(1)),tmpsd(2:end-3),')'];
                                                     cnt=cnt+1;
                                                 end
@@ -12122,7 +12122,7 @@
                                             text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        if med==1;text(0,1.06,['\textbf{MAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE-Associated ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
+                                        if med==1;text(0,1.06,['\textbf{MAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
                                         tmpphrase='';
@@ -13168,7 +13168,7 @@
 									nm_stm=squeeze(nm_stm);
 
                                     % sort by year and then by name                               
-                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-2);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
                                     nm_pct = nm_stm(:,:,a_order);
                                     tmpnm = tmpnm(a_order);
 
@@ -13211,7 +13211,7 @@
                                             tmpsim=tmpnm{findsim};
                                             for findsim2=1:size(stormsdone,2)
                                                 tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; elseif strcmp(identdr5{basinloop},'SH')==1;   tmpbas={'s';'p'}; elseif strcmp(identdr5{basinloop},'IO')==1;   tmpbas={'a';'b'}; end;     
-                                                if (strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & sum(strcmp(tmpbas,tmpsd(end)))>0
+                                                if (strcmp(tmpsim(1:end-5),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & sum(strcmp(tmpbas,tmpsd(end)))>0
                                                     plotsim{cnt}=[upper(tmpsd(end-2:end)),' (',upper(tmpsd(1)),tmpsd(2:end-3),')'];
                                                     cnt=cnt+1;
                                                 end
@@ -13295,118 +13295,118 @@
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
                                          tmp_name='trkerr';
-                                         tmp_title='Percentage Point Contribution to Track MAE-Associated Skill (\%)';
+                                         tmp_title='Percentage Point Contribution to Track MAE Skill (\%)';
                                          tmp_ytitle='Contribution (\%)';
                                     elseif plt==2
                                         tmp_exp=interr_exp(:,1:skip:end,:);
                                         tmp_name='prserr';
-                                        tmp_title='Percentage Point Contribution to PMIN MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to PMIN MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==3
                                         tmp_exp=spderr_exp(:,1:skip:end,:);
                                         tmp_name='spderr';
-                                        tmp_title='Percentage Point Contribution to VMAX MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to VMAX MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                      elseif plt==4
                                         tmp_exp=ne34err_exp(:,1:skip:end,:);
                                         tmp_name='neR34err';
-                                        tmp_title='Percentage Point Contribution to R34 NEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 NEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==5
                                         tmp_exp=se34err_exp(:,1:skip:end,:);
                                         tmp_name='seR34err';
-                                        tmp_title='Percentage Point Contribution to R34 SEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 SEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==6
                                         tmp_exp=sw34err_exp(:,1:skip:end,:);
                                         tmp_name='swR34err';
-                                        tmp_title='Percentage Point Contribution to R34 SWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 SWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==7
                                         tmp_exp=nw34err_exp(:,1:skip:end,:);
                                         tmp_name='nwR34err';
-                                        tmp_title='Percentage Point Contribution to R34 NWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 NWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==8
                                         tmp_exp=ne50err_exp(:,1:skip:end,:);
                                         tmp_name='neR50err';
-                                        tmp_title='Percentage Point Contribution to R50 NEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 NEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==9
                                         tmp_exp=se50err_exp(:,1:skip:end,:);
                                         tmp_name='seR50err';
-                                        tmp_title='Percentage Point Contribution to R50 SEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 SEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==10
                                         tmp_exp=sw50err_exp(:,1:skip:end,:);
                                         tmp_name='swR50err';
-                                        tmp_title='Percentage Point Contribution to R50 SWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 SWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==11
                                         tmp_exp=nw50err_exp(:,1:skip:end,:);
                                         tmp_name='nwR50err';
-                                        tmp_title='Percentage Point Contribution to R50 NWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 NWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==12
                                         tmp_exp=ne64err_exp(:,1:skip:end,:);
                                         tmp_name='neR64err';
-                                        tmp_title='Percentage Point Contribution to R64 NEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 NEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==13
                                         tmp_exp=se64err_exp(:,1:skip:end,:);
                                         tmp_name='seR64err';
-                                        tmp_title='Percentage Point Contribution to R64 SEQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 SEQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==14
                                         tmp_exp=sw64err_exp(:,1:skip:end,:);
                                         tmp_name='swR64err';
-                                        tmp_title='Percentage Point Contribution to R64 SWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 SWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                         yrange=[-100 100];                 
                                     elseif plt==15
                                         tmp_exp=nw64err_exp(:,1:skip:end,:);
                                         tmp_name='nwR64err';
-                                        tmp_title='Percentage Point Contribution to R64 NWQ MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 NWQ MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==16
                                         tmp_exp=poerr_exp(:,1:skip:end,:);
                                         tmp_name='poerr';
-                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Prs MAE-Associated Skill (hPa)';
+                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Prs MAE Skill (hPa)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==17
                                         tmp_exp=roerr_exp(:,1:skip:end,:);
                                         tmp_name='roerr';
-                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Rad MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to Outer Clsd Isbr Rad MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==18
                                         tmp_exp=rmwerr_exp(:,1:skip:end,:);
                                         tmp_name='rmwerr';
-                                        tmp_title='Percentage Point Contribution to RMW MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to RMW MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==19
                                         tmp_exp=ateerr_exp(:,1:skip:end,:);
                                         tmp_name='ateerr';
-                                        tmp_title='Percentage Point Contribution to Along-Track MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to Along-Track MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==20
                                         tmp_exp=xteerr_exp(:,1:skip:end,:);
                                         tmp_name='xteerr';
-                                        tmp_title='Percentage Point Contribution to Across-Track MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to Across-Track MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==21
                                         tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
                                         tmp_name='R34err';
-                                        tmp_title='Percentage Point Contribution to R34 MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R34 MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==22
                                         tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
                                         tmp_name='R50err';
-                                        tmp_title='Percentage Point Contribution to R50 MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R50 MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     elseif plt==23
                                         tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
                                         tmp_name='R64err';
-                                        tmp_title='Percentage Point Contribution to R64 MAE-Associated Skill (\%)';
+                                        tmp_title='Percentage Point Contribution to R64 MAE Skill (\%)';
                                         tmp_ytitle='Contribution (\%)';
                                     end
                                     if plt <19 || plt >20
@@ -14329,7 +14329,7 @@
                                     end  
 
                                     % sort by year and then by name                               
-                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-2);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
 				    nm_pct = imprv2(:,a_order,:);
                                     tmpnm = tmpnm(a_order);
 									clear imprv imprv2 sm
@@ -14370,7 +14370,7 @@
                                             tmpsim=tmpnm{findsim};
                                             for findsim2=1:size(stormsdone,2)
 						tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; elseif strcmp(identdr5{basinloop},'SH')==1;   tmpbas={'s';'p'}; elseif strcmp(identdr5{basinloop},'IO')==1;   tmpbas={'a';'b'}; end;     
-                                                if (strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & sum(strcmp(tmpbas,tmpsd(end)))>0 
+                                                if (strcmp(tmpsim(1:end-5),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & sum(strcmp(tmpbas,tmpsd(end)))>0 
                                                     plotsim{cnt}=[upper(tmpsd(end-2:end)),' (',upper(tmpsd(1)),tmpsd(2:end-3),')'];
                                                     cnt=cnt+1;
                                                 end
@@ -15406,7 +15406,7 @@
                                     screenposition = get(gcf,'Position');
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
-                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE \& MAE-Associated Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE-Associated Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
+                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE \& MAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
                                     if strat==1
                                     else
                                         text(1,1.07,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')

@@ -39,7 +39,7 @@ for identremoveinvest=1
 		%% Set Name
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end 
+		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[upper(identhwrf),identtmp2(3:4)];else;identn=[upper(identhwrf),identtmp2(3:4)];end 
 		stormsdone{stmdn}=identhwrf;end; %GROOT-G Change End
                 % Model outputs at 3 h, but to compare errors to BT make 6 h!
                 skip=2;                                                  % 6 h res | skip=1 is 3 h
@@ -268,7 +268,7 @@ for identremoveinvest=1
                     set(gcf, 'InvertHardcopy', 'off')
                     text(0,1.065,['\textbf{Track \& Intensity}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                     text(0,1.03,['\textbf{DATES: ',DATEall(1,:),'$\mathbf{-}$',DATEall(end,:),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-                    text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+                    text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
                     ax=gca;
                     box on
                     set(ax, 'Layer', 'bottom')
@@ -345,8 +345,8 @@ for identremoveinvest=1
             %% Set Name
             ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
             identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-            if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end 
-            stormsdone{stmdn}=identhwrf;end;
+            if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[upper(identhwrf),identtmp2(3:4)];else;identn=[upper(identhwrf),identtmp2(3:4)];end 
+	    stormsdone{stmdn}=identhwrf;end;
         end %GROOT-G Change End
         if identcompositeprep==1
 			identfold='';
@@ -419,8 +419,8 @@ for identremoveinvest=1
 					else
 					end                  
 					if identns==1;stratlist=[stratlist 888];end;
-                    if identenkfexact==1 | identenkfoper==1;stratlist=[stratlist 890 891];if identconv==1 || identsatobs==1;stratlist=[stratlist 892 893];end;end;
-					
+					if identenkfexact==1 | identenkfoper==1;stratlist=[stratlist 890 891];if identconv==1 || identsatobs==1;stratlist=[stratlist 892 893];end;end;
+
 					for i=1:size(stratlist,2)
 						if i<=10;
 							identstratlist1(i)=stratlist(i);														
