@@ -160,7 +160,7 @@ for identremoveinvest=1
                 %% %%%%%%%%% %%
                 for bdecks=1
                     filename = [identbdecks,'b',lower(ident),'.dat'];
-					[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,SHRall,LOWbasin,HIGHbasin,LANDall]=atcf_shear(filename,1,identbdecks);
+					[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,SHRall,LOWbasin,HIGHbasin,LANDall,HFIPINTCHall]=atcf_shear(filename,1,identbdecks);
                     save([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/',identn,'_data.mat'])
                 end
                 %% %%%%%%%%%%%%%% %%
@@ -266,7 +266,7 @@ for identremoveinvest=1
                     screenposition = get(gcf,'Position');
                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                     set(gcf, 'InvertHardcopy', 'off')
-                    text(0,1.065,['\textbf{Track \& Intensity}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                    text(0,1.065,['\textbf{Track \& Classification}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                     text(0,1.03,['\textbf{DATES: ',DATEall(1,:),'$\mathbf{-}$',DATEall(end,:),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                     text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
                     ax=gca;
@@ -403,9 +403,9 @@ for identremoveinvest=1
 					end
 					identbtyear=identbtyear';
 					if identconv==1 || identsatobs==1
-						stratlist=[1:14,200,100:108];
+						stratlist=[1:14,200,894,100:108];
 					else
-						stratlist=[1,4:14,100:102];
+						stratlist=[1,4:14,894,100:102];
 					end
 					stratlist=[stratlist,15:15+size(unique(identbtyear),1)-1];
 					if identconv==1 || identsatobs==1 % stratify stratifications by dropsonde cycles
@@ -498,7 +498,7 @@ for identremoveinvest=1
 							% Initialize arrays
 							BT_name_all     =   {};
 							BT_target_all   =   [];
-							BT_drops_all    =   [];BT_enkf_all=[];BT_obsg_all=[];
+							BT_drops_all    =   [];BT_enkf_all=[];BT_hfip_all=[];BT_obsg_all=[];
 							BT_year_all    =   [];
 							BT_date_all     =   [];
 							BT_storm_all    =   [];
@@ -593,7 +593,7 @@ for identremoveinvest=1
 								load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])
 								load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_latlon.mat'])        
 								load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_data.mat'],'LOWbasin','HIGHbasin')        
-								BT_drops_all=cat(2,BT_drops_all,BT_drops);if identenkfexact==1 | identenkfoper==1;BT_enkf_all=cat(2,BT_enkf_all,BT_enkf);end;  % only cycles that had conventional obs   
+								BT_drops_all=cat(2,BT_drops_all,BT_drops);BT_hfip_all=cat(1,BT_hfip_all,BT_hfip);if identenkfexact==1 | identenkfoper==1;BT_enkf_all=cat(2,BT_enkf_all,BT_enkf);end;  % only cycles that had conventional obs   
 								btd=find(BT_drops==1);
 								if isempty(btd)==1 && identconv==1 % if the storm has conventional obs...           
 									keepstm(cntst)=NaN;
@@ -707,7 +707,7 @@ for identremoveinvest=1
 				% Reassign variables for easy plotting
 				BT_date=BT_date_all;
 				BT_name=BT_name_all;
-				BT_drops=BT_drops_all;if identenkfexact==1 | identenkfoper==1;BT_enkf=BT_enkf_all;end;BT_obsg=BT_obsg_all;
+				BT_drops=BT_drops_all;BT_hfip=BT_hfip_all;if identenkfexact==1 | identenkfoper==1;BT_enkf=BT_enkf_all;end;BT_obsg=BT_obsg_all;
 				BT_target=BT_target_all;
 				BT_year=BT_year_all;
 				BT_storm=BT_storm_all;

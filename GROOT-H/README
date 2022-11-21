@@ -63,6 +63,8 @@ scripts/ 	  | folder that contains all scripts needed to run the package
   matlab*batch.ksh    | this script generates mat files for each variable and generates graphics - uses 40 cores (1 node) and opens X matlab instances (X = # of variables the user requests)
   matlab*clean.ksh    | this script removes the duplicate matlab*batch_ files
   matlabverif* 	      | scripts related to running the verification capability
+  prctile.m	      | script that calculates percentile of a distribution (from statistics toolbox to eliminate runtime errors)
+  quantile.m          | script that calculates quantile of a distribution (from statistics toolbox to eliminate runtime errors)
   rungrb.m	      | grb capability script
   runverif*.m	      | verification capability scripts
   tclookup.m          | enables the use of atcf files that use the storm id rather than the storm name
@@ -137,6 +139,9 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+11/20/22 | Added ability to stratify by cycles that satisfy the HFIP-RI definition (https://www.mdpi.com/2073-4433/12/6/683/htm)
+         | Modified the scorecard to include the consistency-metric outcomes
+         | Modified titles to be more consistent
 11/16/22 | Removed "-Associated" from all graphics titles
 	 | Changed folder names from NAMEYY to NAME##BYY to account for TCs within a given basin that cross sub-basins and retain the same name (e.g., SETH04P and SETH04S in 2022)
          | Fixed aesthetic bug with PPC graphics where TCs that crossed basins and retained the same name ended up being out of number/alphabetical order 

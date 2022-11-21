@@ -1,5 +1,4 @@
-
-function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall]=atcf(filename,intrp)
+function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,intrp)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FUNCTION
@@ -140,6 +139,21 @@ else
 	INTCH(end+1)=NaN;
 end
 
+% BONUS: HFIP Intensity Change %
+if intrp==0
+	minusvar=9;
+elseif intrp==1
+	minusvar=5;
+end
+if size(Speed,1)<minusvar
+	HFIPINTCH=nan(size(Speed,1),1)';
+else
+	for tmpint=minusvar:size(Speed,1)
+		HFIPINTCH(tmpint)=Speed(tmpint)-Speed(tmpint-(minusvar-1));
+	end
+	HFIPINTCH(1:minusvar-1)=NaN;
+end
+
 % BONUS: Storm Relative Motion %
 EQDLON=111.11;
 ER=6.37122e3;
@@ -240,6 +254,7 @@ if sum(size(Longitude))==2
     FHRall=FHR;
     BASINall=Basin;
     INTCHall=INTCH;
+    HFIPINTCHall=HFIPINTCH;
 else
     LATall=interp1(t6h,Latitude,t3h);
     LONall=interp1(t6h,Longitude,t3h);
@@ -267,6 +282,7 @@ else
     VMOTall=interp1(t6h,VMOT,t3h);
     FHRall=interp1(t6h,FHR,t3h);
     INTCHall=interp1(t6h,INTCH,t3h);
+    HFIPINTCHall=interp1(t6h,HFIPINTCH,t3h);
     BASINall=Basin;
 end
 
@@ -290,4 +306,3 @@ end
 LANDall=lndfl;
 
 end
-

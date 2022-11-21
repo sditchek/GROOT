@@ -24,7 +24,7 @@
                     % Initialize arrays
                     BT_name_all     =   {};
                     BT_target_all   =   [];
-                    BT_drops_all    =   [];BT_enkf_all    =   [];
+                    BT_drops_all    =   [];BT_enkf_all    =   [];BT_hfip_all=[];
                     BT_year_all    =   [];
                     BT_date_all     =   [];
                     BT_storm_all    =   [];
@@ -118,7 +118,7 @@
                             load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])
                             load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_latlon.mat'])        
 							load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_data.mat'],'LOWbasin','HIGHbasin')        
-                            BT_drops_all=cat(2,BT_drops_all,BT_drops); if identenkfexact==1 | identenkfoper==1;BT_enkf_all=cat(2,BT_enkf_all,BT_enkf);end; % only cycles that had conventional obs  | only cycles that had enkf  
+                            BT_drops_all=cat(2,BT_drops_all,BT_drops); BT_hfip_all=cat(1,BT_hfip_all,BT_hfip);if identenkfexact==1 | identenkfoper==1;BT_enkf_all=cat(2,BT_enkf_all,BT_enkf);end; % only cycles that had conventional obs  | only cycles that had enkf  
                             btd=find(BT_drops==1);
                             if isempty(btd)==1 && identconv==1 % if the storm has conventional obs...           
                                 keepstm(cntst)=NaN;
@@ -229,7 +229,7 @@
                     % Reassign variables for easy plotting
                     BT_date=BT_date_all;
                     BT_name=BT_name_all;
-                    BT_drops=BT_drops_all;if identenkfexact==1 | identenkfoper==1;BT_enkf=BT_enkf_all;end;
+                    BT_drops=BT_drops_all;BT_hfip=BT_hfip_all;if identenkfexact==1 | identenkfoper==1;BT_enkf=BT_enkf_all;end;
                     BT_target=BT_target_all;
                     BT_year=BT_year_all;
                     BT_storm=BT_storm_all;
@@ -895,8 +895,7 @@
 							end 	
                         elseif strat==888
                             clear breakstrat
-                            stname=identnsname;
-                            clear tmpyrb
+                            stname=identnsname;clear tmpyrb;
                             numlist=[];
                             for ins=1:size(identnewsub,1)
                                 tmp=identnewsub(ins,:);
@@ -913,6 +912,7 @@
                         elseif strat==891;clear breakstrat;stname='GDAS';if sum(BT_enkf'==0)==0;breakstrat='yes';fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_GDAS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: GDAS');fprintf(fid,'%s\n','none');fclose(fid);end; 
                         elseif strat==892;clear breakstrat;stname='OBS-ENKF';if sum(BT_enkf'==1 & BT_drops'==1)==0;breakstrat='yes';fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_OBS-ENKF.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: OBS-ENKF');fprintf(fid,'%s\n','none');fclose(fid);end; 
                         elseif strat==893;clear breakstrat;stname='OBS-GDAS';if sum(BT_enkf'==0 & BT_drops'==1)==0;breakstrat='yes';fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_OBS-GDAS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: OBS-GDAS');fprintf(fid,'%s\n','none');fclose(fid);end; 						
+						elseif strat==894;clear breakstrat;stname='HFIP-RI';if sum(BT_hfip(:))==0;breakstrat='yes';fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_HFIP-RI.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: HFIP-RI');fprintf(fid,'%s\n','none');fclose(fid);end; 						
 						end
                         if exist('breakstrat','var')==1 % no subset! Making blank graphics...
 								% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
@@ -2298,7 +2298,7 @@
                                             text(1,1.08,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.04,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        if med==1;text(0,1.08,['\textbf{MAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
+                                        if med==1;text(0,1.08,['\textbf{',tmp_title(1:end-10),'MAE',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.08,['\textbf{',tmp_title(1:end-10),'MDAE',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.08,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.08,['\textbf{',tmp_title(1:end-10),'Consistency Metric}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
 										tmpyr=identdr;
 										for tmpyri=1:size(tmpyr,2)
 											tmpyra=tmpyr{tmpyri};
@@ -2811,133 +2811,133 @@
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
                                          tmp_name='trkerr';
-                                         tmp_title='Track (km)';
+                                         tmp_title='Track';
                                          if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                     elseif plt==2
                                         tmp_exp=interr_exp(:,1:skip:end,:);
                                         tmp_name='prserr';
-                                        tmp_title='PMIN (hPa)';
+                                        tmp_title='PMIN';
                                         if med==1;tmp_ytitle='MAE (hPa)';elseif med==2;tmp_ytitle='MDAE (hPa)';end;
                                     elseif plt==3
                                         tmp_exp=spderr_exp(:,1:skip:end,:);
                                         tmp_name='spderr';
-                                        tmp_title='VMAX (m/s)';
+                                        tmp_title='VMAX';
                                         if med==1;tmp_ytitle='MAE (m/s)';elseif med==2;tmp_ytitle='MDAE (m/s)';end;
                                      elseif plt==4
                                         tmp_exp=ne34err_exp(:,1:skip:end,:);
                                         tmp_name='neR34err';
-                                        tmp_title='R34 NEQ (km)';
+                                        tmp_title='R34 NEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==5
                                         tmp_exp=se34err_exp(:,1:skip:end,:);
                                         tmp_name='seR34err';
-                                        tmp_title='R34 SEQ (km)';
+                                        tmp_title='R34 SEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==6
                                         tmp_exp=sw34err_exp(:,1:skip:end,:);
                                         tmp_name='swR34err';
-                                        tmp_title='R34 SWQ (km)';
+                                        tmp_title='R34 SWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==7
                                         tmp_exp=nw34err_exp(:,1:skip:end,:);
                                         tmp_name='nwR34err';
-                                        tmp_title='R34 NWQ (km)';
+                                        tmp_title='R34 NWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==8
                                         tmp_exp=ne50err_exp(:,1:skip:end,:);
                                         tmp_name='neR50err';
-                                        tmp_title='R50 NEQ (km)';
+                                        tmp_title='R50 NEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==9
                                         tmp_exp=se50err_exp(:,1:skip:end,:);
                                         tmp_name='seR50err';
-                                        tmp_title='R50 SEQ (km)';
+                                        tmp_title='R50 SEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==10
                                         tmp_exp=sw50err_exp(:,1:skip:end,:);
                                         tmp_name='swR50err';
-                                        tmp_title='R50 SWQ (km)';
+                                        tmp_title='R50 SWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==11
                                         tmp_exp=nw50err_exp(:,1:skip:end,:);
                                         tmp_name='nwR50err';
-                                        tmp_title='R50 NWQ (km)';
+                                        tmp_title='R50 NWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==12
                                         tmp_exp=ne64err_exp(:,1:skip:end,:);
                                         tmp_name='neR64err';
-                                        tmp_title='R64 NEQ (km)';
+                                        tmp_title='R64 NEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==13
                                         tmp_exp=se64err_exp(:,1:skip:end,:);
                                         tmp_name='seR64err';
-                                        tmp_title='R64 SEQ (km)';
+                                        tmp_title='R64 SEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==14
                                         tmp_exp=sw64err_exp(:,1:skip:end,:);
                                         tmp_name='swR64err';
-                                        tmp_title='R64 SWQ (km)';
+                                        tmp_title='R64 SWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==15
                                         tmp_exp=nw64err_exp(:,1:skip:end,:);
                                         tmp_name='nwR64err';
-                                        tmp_title='R64 NWQ (km)';
+                                        tmp_title='R64 NWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==16
                                         tmp_exp=poerr_exp(:,1:skip:end,:);
                                         tmp_name='poerr';
-                                        tmp_title='Outer Clsd Isbr Prs (hPa)';
+                                        tmp_title='Outer Clsd Isbr Prs';
                                         if med==1;tmp_ytitle='MAE (hPa)';elseif med==2;tmp_ytitle='MDAE (hPa)';end;
                                     elseif plt==17
                                         tmp_exp=roerr_exp(:,1:skip:end,:);
                                         tmp_name='roerr';
-                                        tmp_title='Outer Clsd Isbr Rad (km)';
+                                        tmp_title='Outer Clsd Isbr Rad';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                     elseif plt==18
                                         tmp_exp=rmwerr_exp(:,1:skip:end,:);
                                         tmp_name='rmwerr';
-                                        tmp_title='RMW (km)';
+                                        tmp_title='RMW';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                     elseif plt==19
                                         tmp_exp=ateerr_exp(:,1:skip:end,:);
                                         tmp_name='ateerr';
-                                        tmp_title='Along-Track (km)';
+                                        tmp_title='Along-Track';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[-500 500];                
                                     elseif plt==20
                                         tmp_exp=xteerr_exp(:,1:skip:end,:);
                                         tmp_name='xteerr';
-                                        tmp_title='Across-Track (km)';
+                                        tmp_title='Across-Track';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[-500 500]; 
                                     elseif plt==21
                                         tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
                                         tmp_name='R34err';
-                                        tmp_title='R34 (km)';
+                                        tmp_title='R34';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 100];
                                     elseif plt==22
                                         tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
                                         tmp_name='R50err';
-                                        tmp_title='R50 (km)';
+                                        tmp_title='R50';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 100];
                                     elseif plt==23
                                         tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
                                         tmp_name='R64err';
-                                        tmp_title='R64 (km)';
+                                        tmp_title='R64';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 100];
                                     end                                    
@@ -2975,7 +2975,7 @@
                                     screenposition = get(gcf,'Position');
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
-                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE \& MAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
+                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE, MAE Skill, \& Consistency Metric}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE Skill}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
                                     if strat==1
                                     else
                                         text(1,1.07,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
@@ -3214,133 +3214,133 @@
 									if plt==1
 										 tmp_exp0=trkerr_exp(:,1:skip:end,:);
 										 tmp_name='trkerr';
-										 tmp_title='Track (km)';
+										 tmp_title='Track';
 										 tmp_ytitle='MAE (km)';
 									elseif plt==2
 										tmp_exp0=interr_exp(:,1:skip:end,:);
 										tmp_name='prserr';
-										tmp_title='PMIN (hPa)';
+										tmp_title='PMIN';
 										tmp_ytitle='MAE (hPa)';
 									elseif plt==3
 										tmp_exp0=spderr_exp(:,1:skip:end,:);
 										tmp_name='spderr';
-										tmp_title='VMAX (m/s)';
+										tmp_title='VMAX';
 										tmp_ytitle='MAE (m/s)';
 									 elseif plt==4
 										tmp_exp0=ne34err_exp(:,1:skip:end,:);
 										tmp_name='neR34err';
-										tmp_title='R34 NEQ (km)';
+										tmp_title='R34 NEQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==5
 										tmp_exp0=se34err_exp(:,1:skip:end,:);
 										tmp_name='seR34err';
-										tmp_title='R34 SEQ (km)';
+										tmp_title='R34 SEQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==6
 										tmp_exp0=sw34err_exp(:,1:skip:end,:);
 										tmp_name='swR34err';
-										tmp_title='R34 SWQ (km)';
+										tmp_title='R34 SWQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==7
 										tmp_exp0=nw34err_exp(:,1:skip:end,:);
 										tmp_name='nwR34err';
-										tmp_title='R34 NWQ (km)';
+										tmp_title='R34 NWQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==8
 										tmp_exp0=ne50err_exp(:,1:skip:end,:);
 										tmp_name='neR50err';
-										tmp_title='R50 NEQ (km)';
+										tmp_title='R50 NEQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==9
 										tmp_exp0=se50err_exp(:,1:skip:end,:);
 										tmp_name='seR50err';
-										tmp_title='R50 SEQ (km)';
+										tmp_title='R50 SEQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==10
 										tmp_exp0=sw50err_exp(:,1:skip:end,:);
 										tmp_name='swR50err';
-										tmp_title='R50 SWQ (km)';
+										tmp_title='R50 SWQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==11
 										tmp_exp0=nw50err_exp(:,1:skip:end,:);
 										tmp_name='nwR50err';
-										tmp_title='R50 NWQ (km)';
+										tmp_title='R50 NWQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==12
 										tmp_exp0=ne64err_exp(:,1:skip:end,:);
 										tmp_name='neR64err';
-										tmp_title='R64 NEQ (km)';
+										tmp_title='R64 NEQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==13
 										tmp_exp0=se64err_exp(:,1:skip:end,:);
 										tmp_name='seR64err';
-										tmp_title='R64 SEQ (km)';
+										tmp_title='R64 SEQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==14
 										tmp_exp0=sw64err_exp(:,1:skip:end,:);
 										tmp_name='swR64err';
-										tmp_title='R64 SWQ (km)';
+										tmp_title='R64 SWQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==15
 										tmp_exp0=nw64err_exp(:,1:skip:end,:);
 										tmp_name='nwR64err';
-										tmp_title='R64 NWQ (km)';
+										tmp_title='R64 NWQ';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 200];
 									elseif plt==16
 										tmp_exp0=poerr_exp(:,1:skip:end,:);
 										tmp_name='poerr';
-										tmp_title='Outer Clsd Isbr Prs (hPa)';
+										tmp_title='Outer Clsd Isbr Prs';
 										tmp_ytitle='MAE (hPa)';
 									elseif plt==17
 										tmp_exp0=roerr_exp(:,1:skip:end,:);
 										tmp_name='roerr';
-										tmp_title='Outer Clsd Isbr Rad (km)';
+										tmp_title='Outer Clsd Isbr Rad';
 										tmp_ytitle='MAE (km)';
 									elseif plt==18
 										tmp_exp0=rmwerr_exp(:,1:skip:end,:);
 										tmp_name='rmwerr';
-										tmp_title='RMW (km)';
+										tmp_title='RMW';
 										tmp_ytitle='MAE (km)';
 									elseif plt==19
 										tmp_exp0=ateerr_exp(:,1:skip:end,:);
 										tmp_name='ateerr';
-										tmp_title='Along-Track (km)';
+										tmp_title='Along-Track';
 										tmp_ytitle='MAE (km)';
 										yrange=[-500 500];                
 									elseif plt==20
 										tmp_exp0=xteerr_exp(:,1:skip:end,:);
 										tmp_name='xteerr';
-										tmp_title='Across-Track (km)';
+										tmp_title='Across-Track';
 										tmp_ytitle='MAE (km)';
 										yrange=[-500 500]; 
 									elseif plt==21
 										tmp_exp0=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
 										tmp_name='R34err';
-										tmp_title='R34 (km)';
+										tmp_title='R34';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 100];
 									elseif plt==22
 										tmp_exp0=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
 										tmp_name='R50err';
-										tmp_title='R50 (km)';
+										tmp_title='R50';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 100];
 									elseif plt==23
 										tmp_exp0=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
 										tmp_name='R64err';
-										tmp_title='R64 (km)';
+										tmp_title='R64';
 										tmp_ytitle='MAE (km)';
 										yrange=[0 100];
 									end				   					
@@ -3533,7 +3533,7 @@
 
 										%% BACK TO SCORECARD
 										% Specify y labels
-										tmp_ytitle={'MAE (km)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','AT Mean Bias (km)','XT Mean Bias (km)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.'}';									
+										tmp_ytitle={'MAE (km)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','AT Mean Bias (km)','XT Mean Bias (km)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM'}';									
 							
 										% Generate Matrix
 										sc=nan(57,(identmodelfhr+1)/2);     
@@ -5029,133 +5029,133 @@
 													if plt==1
 														 tmp_exp=trkerr_exp(:,1:skip:end,:);
 														 tmp_name='trkerr';
-														 tmp_title='Track (km)';
+														 tmp_title='Track';
 														 tmp_ytitle='MAE (km)';
 													elseif plt==2
 														tmp_exp=interr_exp(:,1:skip:end,:);
 														tmp_name='prserr';
-														tmp_title='PMIN (hPa)';
+														tmp_title='PMIN';
 														tmp_ytitle='MAE (hPa)';
 													elseif plt==3
 														tmp_exp=spderr_exp(:,1:skip:end,:);
 														tmp_name='spderr';
-														tmp_title='VMAX (m/s)';
+														tmp_title='VMAX';
 														tmp_ytitle='MAE (m/s)';
 													 elseif plt==4
 														tmp_exp=ne34err_exp(:,1:skip:end,:);
 														tmp_name='neR34err';
-														tmp_title='R34 NEQ (km)';
+														tmp_title='R34 NEQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==5
 														tmp_exp=se34err_exp(:,1:skip:end,:);
 														tmp_name='seR34err';
-														tmp_title='R34 SEQ (km)';
+														tmp_title='R34 SEQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==6
 														tmp_exp=sw34err_exp(:,1:skip:end,:);
 														tmp_name='swR34err';
-														tmp_title='R34 SWQ (km)';
+														tmp_title='R34 SWQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==7
 														tmp_exp=nw34err_exp(:,1:skip:end,:);
 														tmp_name='nwR34err';
-														tmp_title='R34 NWQ (km)';
+														tmp_title='R34 NWQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==8
 														tmp_exp=ne50err_exp(:,1:skip:end,:);
 														tmp_name='neR50err';
-														tmp_title='R50 NEQ (km)';
+														tmp_title='R50 NEQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==9
 														tmp_exp=se50err_exp(:,1:skip:end,:);
 														tmp_name='seR50err';
-														tmp_title='R50 SEQ (km)';
+														tmp_title='R50 SEQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==10
 														tmp_exp=sw50err_exp(:,1:skip:end,:);
 														tmp_name='swR50err';
-														tmp_title='R50 SWQ (km)';
+														tmp_title='R50 SWQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==11
 														tmp_exp=nw50err_exp(:,1:skip:end,:);
 														tmp_name='nwR50err';
-														tmp_title='R50 NWQ (km)';
+														tmp_title='R50 NWQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==12
 														tmp_exp=ne64err_exp(:,1:skip:end,:);
 														tmp_name='neR64err';
-														tmp_title='R64 NEQ (km)';
+														tmp_title='R64 NEQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==13
 														tmp_exp=se64err_exp(:,1:skip:end,:);
 														tmp_name='seR64err';
-														tmp_title='R64 SEQ (km)';
+														tmp_title='R64 SEQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==14
 														tmp_exp=sw64err_exp(:,1:skip:end,:);
 														tmp_name='swR64err';
-														tmp_title='R64 SWQ (km)';
+														tmp_title='R64 SWQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==15
 														tmp_exp=nw64err_exp(:,1:skip:end,:);
 														tmp_name='nwR64err';
-														tmp_title='R64 NWQ (km)';
+														tmp_title='R64 NWQ';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 200];
 													elseif plt==16
 														tmp_exp=poerr_exp(:,1:skip:end,:);
 														tmp_name='poerr';
-														tmp_title='Outer Clsd Isbr Prs (hPa)';
+														tmp_title='Outer Clsd Isbr Prs';
 														tmp_ytitle='MAE (hPa)';
 													elseif plt==17
 														tmp_exp=roerr_exp(:,1:skip:end,:);
 														tmp_name='roerr';
-														tmp_title='Outer Clsd Isbr Rad (km)';
+														tmp_title='Outer Clsd Isbr Rad';
 														tmp_ytitle='MAE (km)';
 													elseif plt==18
 														tmp_exp=rmwerr_exp(:,1:skip:end,:);
 														tmp_name='rmwerr';
-														tmp_title='RMW (km)';
+														tmp_title='RMW';
 														tmp_ytitle='MAE (km)';
 													elseif plt==19
 														tmp_exp=ateerr_exp(:,1:skip:end,:);
 														tmp_name='ateerr';
-														tmp_title='Along-Track (km)';
+														tmp_title='Along-Track';
 														tmp_ytitle='MAE (km)';
 														yrange=[-500 500];                
 													elseif plt==20
 														tmp_exp=xteerr_exp(:,1:skip:end,:);
 														tmp_name='xteerr';
-														tmp_title='Across-Track (km)';
+														tmp_title='Across-Track';
 														tmp_ytitle='MAE (km)';
 														yrange=[-500 500]; 
 													elseif plt==21
 														tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
 														tmp_name='R34err';
-														tmp_title='R34 (km)';
+														tmp_title='R34';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 100];
 													elseif plt==22
 														tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
 														tmp_name='R50err';
-														tmp_title='R50 (km)';
+														tmp_title='R50';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 100];
 													elseif plt==23
 														tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
 														tmp_name='R64err';
-														tmp_title='R64 (km)';
+														tmp_title='R64';
 														tmp_ytitle='MAE (km)';
 														yrange=[0 100];
 													end				   					
@@ -6664,8 +6664,8 @@
                                     elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));if plt==1;fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_GDAS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: GDAS');for prn=1:size(tmpnm,2);fprintf(fid,'%s\n',tmpnm{prn});end;fclose(fid);end;
                                     elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));if plt==1;fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_OBS-ENKF.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: OBS-ENKF');for prn=1:size(tmpnm,2);fprintf(fid,'%s\n',tmpnm{prn});end;fclose(fid);end;
                                     elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));if plt==1;fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_OBS-GDAS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: OBS-GDAS');for prn=1:size(tmpnm,2);fprintf(fid,'%s\n',tmpnm{prn});end;fclose(fid);end;
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));if plt==1;fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_HFIP-RI.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: HFIP-RI');for prn=1:size(tmpnm,2);fprintf(fid,'%s\n',tmpnm{prn});end;fclose(fid); end;
 									end
-
 									if plt==1;tmp_expbias=tmp_exp;end;
                                     for tmp=1:size(identexp,1)
                                         l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
@@ -6676,7 +6676,7 @@
                                             tmpimp=tmp;
                                         end
                                     end
-                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
+                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if strat==894 && plt==3;basehfip=[NaN NaN NaN NaN 26.1 27.35 28.6 30 31.4 33.05 34.7 35.8 36.9 36 35.1 33.2 31.3 32.15 33 32.55 32.1 NaN]./1.94384;targethfip=[NaN NaN NaN NaN 13.1 13.7 14.3 15 15.7 16.5 17.3 17.9 18.5 18.05 17.6 16.6 15.6 16.05 16.5 16.3 16.1 NaN]./1.94384;plot(1:size(tmp_exp,2),basehfip,'--s','Color',[.5 .5 .5],'linewidth',1,'markersize',2);plot(1:size(tmp_exp,2),targethfip,'--s','Color','k','linewidth',1,'markersize',2);end;
                                     for tmp=1:size(identexp,1)
 					%if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
                                         %sigtest_loc=find(sigtest==1);
@@ -7660,8 +7660,8 @@
 									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 									end
-
                                     % Find which experiment to compare to
                                     for tmp=1:size(identexp,1)
                                         if strcmp(identexp(tmp),identexpsigimp)
@@ -8664,8 +8664,8 @@
 									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));									
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 									end
-
                                         % Find which experiment to compare to
                                         for tmp=1:size(identexp,1)
                                             if strcmp(identexp(tmp),identexpsigimp)
@@ -9682,8 +9682,8 @@
 									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 									end
-
                                     for tmp=1:size(identexp,1)
                                         l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
                                     end           
@@ -10751,8 +10751,7 @@
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
-                                            clear tmpyrb
-                                            numlist=[];
+                                            clear tmpyrb;numlist=[];
                                             for ins=1:size(identnewsub,1)
                                                 tmp=identnewsub(ins,:);
                                                 for ins2=1:size(BT_date)
@@ -10772,6 +10771,7 @@
                                     elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);tmp_bt=tmp_bt([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);tmp_bt=tmp_bt(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));										
                                     elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);tmp_bt=tmp_bt([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);tmp_bt=tmp_bt(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));										
                                     elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);tmp_bt=tmp_bt([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);tmp_bt=tmp_bt(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));										
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[squeeze(BT_hfip(:,1,:));squeeze(BT_hfip(:,1,:));squeeze(BT_hfip(:,1,:));squeeze(BT_hfip(:,1,:))])=NaN;tmp_bt(~[squeeze(BT_hfip(:,1,1));squeeze(BT_hfip(:,1,1));squeeze(BT_hfip(:,1,1));squeeze(BT_hfip(:,1,1))])=NaN;else;tmp_exp(~squeeze(BT_hfip(:,1,:)))=NaN;tmp_bt(~squeeze(BT_hfip(:,1,1)))=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 									end
                                     % 1-1 Line
                                     plot(0:5000,0:5000,'Color',[0 0 0],'linewidth',1);
@@ -11887,8 +11887,8 @@
                                    elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);BTnm=BT_name(BT_enkf'==0);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);BTnm=BT_name(BT_enkf'==0);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
                                    elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
                                    elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==0 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==0 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));								   
+								   elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;BTnm=BT_name;BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp(~BT_hfip)=NaN;BTnm=BT_name;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 								   end                                            
-
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
 									nm_stm=nan(1000,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
@@ -11905,7 +11905,7 @@
 									end                    
 
                                     % sort by year and then by name                               
-                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);if size(nm_pct,1)==1;nm_pct=permute(nm_pct,[3 2 1]);end;clear tmpid;
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if strcmp(lower(tmpnm0),[tmpsd1 tmpsd2(end-1:end)])==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult;end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);if size(nm_pct,1)==1;nm_pct=permute(nm_pct,[3 2 1]);end;clear tmpid;
                                     nm_pct = nm_pct(:,:,a_order);
                                     tmpnm = tmpnm(a_order);
 
@@ -12001,7 +12001,7 @@
                                             text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         end
-                                        if med==1;text(0,1.06,['\textbf{MAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{MDAE ',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
+                                        if med==1;text(0,1.06,['\textbf{',tmp_title(1:end-10),'MAE',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{',tmp_title(1:end-10),'MDAE',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
                                         tmpphrase='';
@@ -13015,8 +13015,8 @@
                                    elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);BTnm=BT_name(BT_enkf'==0);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);BTnm=BT_name(BT_enkf'==0);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
                                    elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
                                    elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==0 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==0 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));								   
+								   elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;BTnm=BT_name;BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp(~BT_hfip)=NaN;BTnm=BT_name;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 								   end                                            
-
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
 									nm_stm=nan(round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
@@ -13030,7 +13030,7 @@
 									nm_stm=squeeze(nm_stm);
 
                                     % sort by year and then by name                               
-                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if strcmp(lower(tmpnm0),[tmpsd1 tmpsd2(end-1:end)])==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult;end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
                                     nm_pct = nm_stm(:,:,a_order);
                                     tmpnm = tmpnm(a_order);
 
@@ -14135,8 +14135,8 @@
                                    elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);BTnm=BT_name(BT_enkf'==0);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);BTnm=BT_name(BT_enkf'==0);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
                                    elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
                                    elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==0 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==0 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));								   
+								   elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;BTnm=BT_name;BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp(~BT_hfip)=NaN;BTnm=BT_name;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 								   end                                            
-
                                     % for each storm...
                                     clear nm_stm nm_sum nm_pct
 									nm_stm=nan(1000,round(identmodelfhr/2),size(identexp,1),size(tmpnm,2));
@@ -14174,7 +14174,7 @@
                                     end  
 
                                     % sort by year and then by name                               
-                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if  strcmp(lower(tmpnm1),tmpsd1(1:end-3))==1 && strcmp(tmpnm2,tmpsd2)==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult(basinloop,:);end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
+                                    for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if strcmp(lower(tmpnm0),[tmpsd1 tmpsd2(end-1:end)])==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult;end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
 				    nm_pct = imprv2(:,a_order,:);
                                     tmpnm = tmpnm(a_order);
 									clear imprv imprv2 sm
@@ -14367,133 +14367,133 @@
                                     if plt==1
                                          tmp_exp=trkerr_exp(:,1:skip:end,:);
                                          tmp_name='trkerr';
-                                         tmp_title='Track (km)';
+                                         tmp_title='Track';
                                          if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                     elseif plt==2
                                         tmp_exp=interr_exp(:,1:skip:end,:);
                                         tmp_name='prserr';
-                                        tmp_title='PMIN (hPa)';
+                                        tmp_title='PMIN';
                                         if med==1;tmp_ytitle='MAE (hPa)';elseif med==2;tmp_ytitle='MDAE (hPa)';end;
                                     elseif plt==3
                                         tmp_exp=spderr_exp(:,1:skip:end,:);
                                         tmp_name='spderr';
-                                        tmp_title='VMAX (m/s)';
+                                        tmp_title='VMAX';
                                         if med==1;tmp_ytitle='MAE (m/s)';elseif med==2;tmp_ytitle='MDAE (m/s)';end;
                                      elseif plt==4
                                         tmp_exp=ne34err_exp(:,1:skip:end,:);
                                         tmp_name='neR34err';
-                                        tmp_title='R34 NEQ (km)';
+                                        tmp_title='R34 NEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==5
                                         tmp_exp=se34err_exp(:,1:skip:end,:);
                                         tmp_name='seR34err';
-                                        tmp_title='R34 SEQ (km)';
+                                        tmp_title='R34 SEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==6
                                         tmp_exp=sw34err_exp(:,1:skip:end,:);
                                         tmp_name='swR34err';
-                                        tmp_title='R34 SWQ (km)';
+                                        tmp_title='R34 SWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==7
                                         tmp_exp=nw34err_exp(:,1:skip:end,:);
                                         tmp_name='nwR34err';
-                                        tmp_title='R34 NWQ (km)';
+                                        tmp_title='R34 NWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==8
                                         tmp_exp=ne50err_exp(:,1:skip:end,:);
                                         tmp_name='neR50err';
-                                        tmp_title='R50 NEQ (km)';
+                                        tmp_title='R50 NEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==9
                                         tmp_exp=se50err_exp(:,1:skip:end,:);
                                         tmp_name='seR50err';
-                                        tmp_title='R50 SEQ (km)';
+                                        tmp_title='R50 SEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==10
                                         tmp_exp=sw50err_exp(:,1:skip:end,:);
                                         tmp_name='swR50err';
-                                        tmp_title='R50 SWQ (km)';
+                                        tmp_title='R50 SWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==11
                                         tmp_exp=nw50err_exp(:,1:skip:end,:);
                                         tmp_name='nwR50err';
-                                        tmp_title='R50 NWQ (km)';
+                                        tmp_title='R50 NWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==12
                                         tmp_exp=ne64err_exp(:,1:skip:end,:);
                                         tmp_name='neR64err';
-                                        tmp_title='R64 NEQ (km)';
+                                        tmp_title='R64 NEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==13
                                         tmp_exp=se64err_exp(:,1:skip:end,:);
                                         tmp_name='seR64err';
-                                        tmp_title='R64 SEQ (km)';
+                                        tmp_title='R64 SEQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==14
                                         tmp_exp=sw64err_exp(:,1:skip:end,:);
                                         tmp_name='swR64err';
-                                        tmp_title='R64 SWQ (km)';
+                                        tmp_title='R64 SWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==15
                                         tmp_exp=nw64err_exp(:,1:skip:end,:);
                                         tmp_name='nwR64err';
-                                        tmp_title='R64 NWQ (km)';
+                                        tmp_title='R64 NWQ';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 200];
                                     elseif plt==16
                                         tmp_exp=poerr_exp(:,1:skip:end,:);
                                         tmp_name='poerr';
-                                        tmp_title='Outer Clsd Isbr Prs (hPa)';
+                                        tmp_title='Outer Clsd Isbr Prs';
                                         if med==1;tmp_ytitle='MAE (hPa)';elseif med==2;tmp_ytitle='MDAE (hPa)';end;
                                     elseif plt==17
                                         tmp_exp=roerr_exp(:,1:skip:end,:);
                                         tmp_name='roerr';
-                                        tmp_title='Outer Clsd Isbr Rad (km)';
+                                        tmp_title='Outer Clsd Isbr Rad';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                     elseif plt==18
                                         tmp_exp=rmwerr_exp(:,1:skip:end,:);
                                         tmp_name='rmwerr';
-                                        tmp_title='RMW (km)';
+                                        tmp_title='RMW';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                     elseif plt==19
                                         tmp_exp=ateerr_exp(:,1:skip:end,:);
                                         tmp_name='ateerr';
-                                        tmp_title='Along-Track (km)';
+                                        tmp_title='Along-Track';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[-500 500];                
                                     elseif plt==20
                                         tmp_exp=xteerr_exp(:,1:skip:end,:);
                                         tmp_name='xteerr';
-                                        tmp_title='Across-Track (km)';
+                                        tmp_title='Across-Track';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[-500 500]; 
                                     elseif plt==21
                                         tmp_exp=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));
                                         tmp_name='R34err';
-                                        tmp_title='R34 (km)';
+                                        tmp_title='R34';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 100];
                                     elseif plt==22
                                         tmp_exp=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));
                                         tmp_name='R50err';
-                                        tmp_title='R50 (km)';
+                                        tmp_title='R50';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 100];
                                     elseif plt==23
                                         tmp_exp=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));
                                         tmp_name='R64err';
-                                        tmp_title='R64 (km)';
+                                        tmp_title='R64';
                                         if med==1;tmp_ytitle='MAE (km)';elseif med==2;tmp_ytitle='MDAE (km)';end;
                                         yrange=[0 100];
                                     end                                                                        
@@ -15158,8 +15158,7 @@
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
-                                            clear tmpyrb
-                                            numlist=[];
+                                            clear tmpyrb;numlist=[];
                                             for ins=1:size(identnewsub,1)
                                                 tmp=identnewsub(ins,:);
                                                 for ins2=1:size(BT_date)
@@ -15177,6 +15176,7 @@
 									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));									
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 									end
                                     for tmp=1:size(identexp,1)
                                         if med==1; l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); elseif med==2; l(tmp)=plot(1:size(tmp_exp,2),nanmedian(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); end;
@@ -15187,7 +15187,7 @@
                                             tmpimp=tmp;
                                         end
                                     end
-                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);
+                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if strat==894 && plt==3;basehfip=[NaN NaN NaN NaN 26.1 27.35 28.6 30 31.4 33.05 34.7 35.8 36.9 36 35.1 33.2 31.3 32.15 33 32.55 32.1 NaN]./1.94384;targethfip=[NaN NaN NaN NaN 13.1 13.7 14.3 15 15.7 16.5 17.3 17.9 18.5 18.05 17.6 16.6 15.6 16.05 16.5 16.3 16.1 NaN]./1.94384;plot(1:size(tmp_exp,2),basehfip,'--s','Color',[.5 .5 .5],'linewidth',1,'markersize',2);plot(1:size(tmp_exp,2),targethfip,'--s','Color','k','linewidth',1,'markersize',2);end;
                                     for tmp=1:size(identexp,1)
                                         %sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                         %sigtest_loc=find(sigtest==1);
@@ -15238,7 +15238,7 @@
                                     screenposition = get(gcf,'Position');
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
-                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE \& MAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE Skill (\%)}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
+                                    if med==1;text(0,1.145,['\textbf{',tmp_title,' MAE, MAE Skill, \& Consistency Metric}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.145,['\textbf{',tmp_title,' MDAE \& MDAE Skill}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;    
                                     if strat==1
                                     else
                                         text(1,1.07,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
@@ -16071,8 +16071,7 @@
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
                                     elseif strat==888
-                                        clear tmpyrb
-                                        numlist=[];
+                                        clear tmpyrb;numlist=[];
                                         for ins=1:size(identnewsub,1)
                                             tmp=identnewsub(ins,:);
                                             for ins2=1:size(BT_date)
@@ -16090,6 +16089,7 @@
 									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));									
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 									end
                                     % Find which experiment to compare to
                                     for tmp=1:size(identexp,1)
@@ -16989,8 +16989,8 @@
 											elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 											elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 											elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));									
+											elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 											end
-
 											
 											
 											
@@ -17067,7 +17067,7 @@
 
 										%% BACK TO SCORECARD
 										% Specify y labels
-										tmp_ytitle={'MAE (km)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','AT Mean Bias (km)','XT Mean Bias (km)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','Stat. Sig.'}';									
+										tmp_ytitle={'MAE (km)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','AT Mean Bias (km)','XT Mean Bias (km)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM','MAE (m/s)','MAE Skill (%)','FSP (wrt 50%)','MDAE (km)','MDAE Skill (%)','Mean Bias (m/s)','# fcsts','CM'}';									
 											
 										% Generate Matrix
 										sc=nan(57,(identmodelfhr+1)/2);
@@ -17251,12 +17251,12 @@
 										for i=[9,17,25,33,41,49,57]
 											for j=1:size(sc,2)
 												if isnan(sc(i,j))==1 % then put in stat. sig.
-													%if sigtest_95(j,cnt)==1
-													%	plot(j,i,'s','Color','k','markerfacecolor','k','markersize',7)
-													%elseif sigtest_90(j,cnt)+sigtest_95(j,cnt)==1
-													%	plot(j,i,'o','Color','k','markersize',5.5,'markerfacecolor','k')
-													%else
-													%end                                                
+													if sconsistent(cnt,j)==1;text(j,i, 'CI', 'color',[56 87 35]/255,'HorizontalAlignment', 'Center','fontsize',6)
+													elseif sconsistent(cnt,j)==0.5;text(j,i, 'MCI', 'color',[169 209 142]/255,'HorizontalAlignment', 'Center','fontsize',6)
+													%elseif sconsistent(cnt,j)==0;text(j,i, 'NC', 'color',[229.5 229.5 229.5]/255,'HorizontalAlignment', 'Center','fontsize',6)
+													elseif sconsistent(cnt,j)==-0.5;text(j,i, 'MCD', 'color',[244 177 131]/255,'HorizontalAlignment', 'Center','fontsize',6)
+													elseif sconsistent(cnt,j)==-1;text(j,i, 'CD', 'color',[132 60 12]/255,'HorizontalAlignment', 'Center','fontsize',6)
+													end	
 												else                       
 												end
 											end
@@ -18003,8 +18003,7 @@
 												end
 												tmpyr=tmpyrb+2000;
 											elseif strat==888
-												clear tmpyrb
-												numlist=[];
+												clear tmpyrb;numlist=[];
 												for ins=1:size(identnewsub,1)
 													tmp=identnewsub(ins,:);
 													for ins2=1:size(BT_date)
@@ -18022,6 +18021,7 @@
 											elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 											elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 											elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));																		
+											elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[cat(4,BT_hfip,BT_hfip,BT_hfip);cat(4,BT_hfip,BT_hfip,BT_hfip);cat(4,BT_hfip,BT_hfip,BT_hfip);cat(4,BT_hfip,BT_hfip,BT_hfip)])=NaN;else;tmp_exp(~cat(4,BT_hfip,BT_hfip,BT_hfip))=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
 											end
 											early_spd=nan(1,43);
 											early_trk=nan(1,43);
@@ -18189,4 +18189,4 @@
                     end
                 end
                 clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
-            end 
+            end
