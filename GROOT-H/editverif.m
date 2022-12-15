@@ -168,6 +168,6 @@ end
 tmpidentcasename=identcasename{:};
 fid = fopen('caseverif.txt','wt');
 fprintf(fid,'%s\n',['initcasestudy="',num2str(identcase),'"']);
-fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename(1:end-3)),yearsdone(end-1:end),'*'],'"']);
+fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename),yearsdone(end-1:end),'*'],'"']);
 fprintf(fid,'%s\n',['initend="',[identout,'RESULTS/',identfold],'"']);
 fclose(fid);

@@ -5,7 +5,7 @@ function [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,
 % atcfgfs_bystorm(filename,intrp)
 % INPUT
 % filename: location and name of file
-% intrp: (1) [interp to 3 h] or (0) [already 3 h or keep at 6 h]
+% intrp: (2) interp from 12 to 3 h (1) [interp to 3 h] or (0) [already 3 h or keep at 6 h]
 % OUTPUT
 % All data from atcf file in vector format (all radii in km)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +128,7 @@ Category=Cat(tmp(:,24),:);
 Name=Name(tmp(:,24),:);
 FHR=tmp(:,25);
 
-% BONUS: Intensity Change %
+% BONUS: Intensity Change % - don't actually use in the code! Only use IntCh from the atcf_shear code on the BDECK which always has the same time resolution
 if size(Speed,1)<3
 	INTCH=nan(size(Speed,1),1);
 else
@@ -144,6 +144,8 @@ if intrp==0
 	minusvar=9;
 elseif intrp==1
 	minusvar=5;
+elseif intrp==2
+	minusvar=3;
 end
 if size(Speed,1)<minusvar
 	HFIPINTCH=nan(size(Speed,1),1)';
@@ -191,7 +193,38 @@ end
 end
 
 % Interpolation
-if intrp==1 % Interpolate to 3-h
+if intrp==2
+	for loop=1:2
+		cnt=1;
+		for i=2:size(Date,1)
+			dtsc(cnt,:)=Date(i-1,:);
+			dtsc(cnt+1,:)=Date(i-1,:); 
+			ctsc(cnt,:)=Category(i-1,:);
+			ctsc(cnt+1,:)=Category(i-1,:); 
+			nmsc(cnt,:)=Name(i-1,:);
+			nmsc(cnt+1,:)=Name(i-1,:); 
+			cnt=cnt+2;
+		end
+		dtsc(cnt,:)=Date(end,:);
+		ctsc(cnt,:)=Category(end,:);    
+		nmsc(cnt,:)=Name(end,:);    
+		dtesc=dtsc(:,1:8);
+		hrsc=str2num(dtsc(:,9:10));
+		for i=2:2:length(hrsc)
+			hrsc(i)=hrsc(i)+3;
+		end
+		hrsc=num2str(hrsc,'%02.f');
+		dtsc=[dtesc,hrsc];   
+		Date=dtsc;
+		Category=ctsc;
+		Name=nmsc;
+	end
+	t6h=1:1:size(Latitude,1);
+	t3h=1:.25:size(Latitude,1);
+	DATEall=dtsc;
+	CATall=ctsc;
+	NAMEall=nmsc; 
+elseif intrp==1 % Interpolate to 3-h
     cnt=1;
     for i=2:size(Latitude,1)
         dtsc(cnt,:)=Date(i-1,:);

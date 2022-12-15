@@ -19,7 +19,7 @@ stormsdone=dir([identgroovpr,'/HWRF/atcf']);                           % short n
 
 % Case Study: recommendation - also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0';								          % run graphics for just 1 storm | yes (1) no (0)
-identcasename={'05AL'};tmpcasefold='DORIAN19';                                      % identcasename=ID and basin identifier (05AL) | tmpcasefold=uppercase name and 2-digit year (DORIAN19)
+identcasename={'05AL'};tmpcasefold='DORIAN19';identcasebasin='DORIAN05L';      % identcasename=ID and basin identifier (e.g., 05AL) | tmpcasefold=uppercase name and 2-digit year (e.g., DORIAN19) | identcasebasin=uppercase name, ID, and single-letter identifier for the basin (e.g., 05L)
 identcaseyear='2019';							          % year of storm: YYYY
 
 % Error Graphics Options
@@ -167,6 +167,6 @@ end
 tmpidentcasename=identcasename{:};
 fid = fopen('caseverif.txt','wt');
 fprintf(fid,'%s\n',['initcasestudy="',num2str(identcase),'"']);
-fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpcasefold),yearsdone(end-1:end),'*'],'"']);
+fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(identcasebasin),yearsdone(end-1:end),'*'],'"']);
 fprintf(fid,'%s\n',['initend="',[identout,'RESULTS/',identfold],'"']);
 fclose(fid);

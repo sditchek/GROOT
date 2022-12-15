@@ -20,14 +20,14 @@
 dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT package running location (typically your home directory)
 resultspath=/scratch2/AOML/aoml-osse/${USER}/GROOT/GROOT-G/     # directory path for results (can be any directory - typically your home directory)
 cycling="6"               					# frequency of cycling in your model (often 6 for 6 h)
-set -A expyears 2020 2021					# years included (i.e., YYYY) - for more than one year list with spaces between them
+set -A expyears 2020 2021 					# years included (i.e., YYYY) - for more than one year list with spaces between them
 numyears=2							# number of years in expyears - the number must match!	
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/foremc/from_bin_new/  # location of your atcf or adeck output
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/foremc/from_bin_new/ # location of your atcf or adeck output
 diagoutput=${atcfoutput}			                # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
 usingadecks=1							# are your atcf files merged into adecks? if so, GROOT has an additional preprocessing step | (1) yes (0) no
 
 # Identify Experiments
-set -A expfold HF3A HWRF	 	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expfold HF3A HWRF               	# exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
 set -A expnew HF3A HWRF                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
 obstype=uv				# the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)

@@ -103,6 +103,9 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+12/15/22 | Modified labeling of consistency metric, for clarity, from "consistent" to "fully consistent".
+         | Modified labeling of experiment with highest and lowest degree of consistent improvmeent to be highest and lowst degree of consistency - HDC and LDC, respectively.
+         | Added ability to handle atcf/adeck files that are 12 h resolution
 11/20/22 | Added ability to stratify by cycles that satisfy the HFIP-RI definition (https://www.mdpi.com/2073-4433/12/6/683/htm)
          | Modified the scorecard to include the consistency-metric outcomes
          | Modified titles to be more consistent
@@ -110,9 +113,9 @@ VERIFICATION CAPABILITY:
          | Changed folder names from NAMEYY to NAME##BYY to account for TCs within a given basin that cross sub-basins and retain the same name (e.g., SETH04P and SETH04S in 2022)
          | Fixed aesthetic bug with PPC graphics where TCs that crossed basins and retained the same name ended up being out of number/alphabetical order
 10/26/22 | Added capability to stratify by covariance type.
-                This functionality is primarily for HWRF and related models that sometimes use ENKF covariances on D03. There are three new namelist items associated with this addition.
-                If you use the retrieval scripts to grab down files for GROOT, a new file will be created for each cycle of each TC identifying whether or not ENKF covariances were used.
-                If you did not use the retrieval scripts, there is still another option to stratify by covariance type. Once a TDR file is avilable, HWRF uses ENKF covariances.                                 Thus, the other option in the namelist (if turned on) identifies the first cycle in a TC where a TDR file is present and marks that and every cycle thereafter                                 through the dissipation of the TC as one that used ENKF covariances.
+                This functionality is primarily for HWRF and related models that can use HWRF-cycled covariance on D03. There are three new namelist items associated with this addition.
+                If you use the retrieval scripts to grab down files for GROOT, a new file will be created for each cycle of each TC identifying whether HWRF-cycled covariance was used.
+                If you did not use the retrieval scripts, there is still another option to stratify by covariance type. Once a TDR file is avilable, HWRF uses HWRF-cycled covariance.                                 Thus, the other option in the namelist (if turned on) identifies the first cycle in a TC where a TDR file is present and marks that and every cycle thereafter                                 through the dissipation of the TC as one that used HWRF-cycled covariance.
          | Added capability for HDCI and LDCI to include the actual consistency score on the errskill graphics to understand the relative difference between HDCI and LDCI
 10/6/22  | Added capability to plot TC-by-TC consistency-metric graphics
 9/15/22  | Removed statistical significance from package
