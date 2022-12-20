@@ -1,0 +1,3 @@
+IO, 96, 2013060500,   , BEST,   0, 210N, 0606E,  25, 1000, XX,  34, NEQ,    0,    0,    0,    0, 1003,  160,  40,   0,   0,   A,   0,   X, 295,   9,     INVEST, S,   ,    ,     ,     ,     ,     ,      TCGP EXTRA DATA, IO962013, JTWC, NCEP_TCVITALS, 
+IO, 96, 2013060506,   , BEST,   0, 212N, 0602E,  25, 1004, XX,  34, NEQ,    0,    0,    0,    0, 1005,  150,  40,   0,   0,   A,   0,   X, 300,   8,     INVEST, S,   ,    ,     ,     ,     ,     ,      TCGP EXTRA DATA, IO962013, JTWC, NCEP_TCVITALS, 
+IO, 96, 2013060512,   , BEST,   0, 213N, 0599E,  15, 1010, XX,  34, NEQ,    0,    0,    0,    0, 1011,  140,  40,   0,   0,   A,   0,   X, 305,   5,     INVEST, S,   ,    ,     ,     ,     ,     ,      TCGP EXTRA DATA, IO962013, JTWC, NCEP_TCVITALS, 
