@@ -56,9 +56,9 @@ for i=1:size(Dates1,1)
     SEQ(i,:)=str2num(R2{i}).*1.852;
     SWQ(i,:)=str2num(R3{i}).*1.852;
     NWQ(i,:)=str2num(R4{i}).*1.852;
-    PO(i,:)=str2num(PO1{i});
-    RO(i,:)=str2num(RO1{i}).*1.852;
-    RMW(i,:)=str2num(RMW1{i}).*1.852; 
+    if isempty(str2num(PO1{i}))==1;PO(i,:)=0;else;PO(i,:)=str2num(PO1{i});end;
+    if isempty(str2num(RO1{i}))==1;RO(i,:)=0;else;RO(i,:)=str2num(RO1{i}).*1.852;end;
+    if isempty(str2num(RMW1{i}))==1;RMW(i,:)=0;else;RMW(i,:)=str2num(RMW1{i}).*1.852;end 
 end
 
 for i=1:size(Dates1,1)
@@ -122,8 +122,11 @@ SE64=tmp(:,18);
 SW64=tmp(:,19);
 NW64=tmp(:,20);
 PO=tmp(:,21);
+PO(PO==0)=NaN;
 RO=tmp(:,22);
+RO(RO==0)=NaN;
 RMW=tmp(:,23);
+RMW(RMW==0)=NaN;
 Category=Cat(tmp(:,24),:);
 Name=Name(tmp(:,24),:);
 FHR=tmp(:,25);
