@@ -39,7 +39,7 @@ editgrb.m   	  | this script is the "namelist" - it is the only script that need
 rungrb.ksh        | this is the script that you will submit via batch which runs the grb capability
 editverif.m       | this script is the "namelist" - it is the only script that needs to be edited to run verification capability
 runverif.ksh      | this is the script that you will submit via batch which runs the verification capability
-bdeck/		  | folder that contains the bdecks for TCs from 2016-2019
+bdeck/		  | folder that contains the bdecks for TCs from 2010-2021 - note that these are the final bdecks and have been post-processed to fill in blank columns so that GROOT can read it properly!
 nctoolbox-1.1.3/  | folder that allows for matlab to read the grb files
 retrievalscripts/ | folder that contains all scripts to retrieve files for package to run
   README              | this file explains how to edit and compile the the gsi scripts and how to run the retrieval script
@@ -139,6 +139,7 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+12/19/22 | Extended the bdeck/ catalog back through 2010
 12/15/22 | Modified labeling of consistency metric, for clarity, from "consistent" to "fully consistent".
 	 | Modified labeling of experiment with highest and lowest degree of consistent improvmeent to be highest and lowst degree of consistency - HDC and LDC, respectively.
 11/20/22 | Added ability to stratify by cycles that satisfy the HFIP-RI definition (https://www.mdpi.com/2073-4433/12/6/683/htm)

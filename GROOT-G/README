@@ -103,6 +103,7 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+12/19/22 | Extended the bdeck/ catalog back through 2010
 12/15/22 | Modified labeling of consistency metric, for clarity, from "consistent" to "fully consistent".
          | Modified labeling of experiment with highest and lowest degree of consistent improvmeent to be highest and lowst degree of consistency - HDC and LDC, respectively.
          | Added ability to handle atcf/adeck files that are 12 h resolution

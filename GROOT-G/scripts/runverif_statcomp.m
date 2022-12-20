@@ -926,7 +926,7 @@
 						end
                         if exist('breakstrat','var')==1 % no subset! Making blank graphics...
 								% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-                                for plt=1:23
+                                for plt=[1:23]
                                     clear l cntexp
                                     set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                     hfig=figure;
@@ -5425,7 +5425,7 @@
 								end;load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/scfactor.mat']);fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', scfactor0{:});fclose(fid);
 								load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat'])
 								% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-                                for plt=1:23
+                                for plt=[1:23]
                                     clear l cntexp
                                     set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                     hfig=figure;

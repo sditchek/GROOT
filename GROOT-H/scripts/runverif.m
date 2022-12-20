@@ -820,7 +820,7 @@ for identremoveinvest=1
 				BT_year=BT_year(:,1);
 				BT_storm=BT_storm(:,1);            
 				% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-				for plt=1:23                                   
+				for plt=[1:23]                                   
 					if plt==1
 						 tmp_exp=trkerr_exp(:,1:skip:end,:);
 						 tmp_name='trkerr';
@@ -1015,7 +1015,7 @@ for identremoveinvest=1
 					errylim(plt,:)=yrange;
 				end   
 				% Create Graphics: trk, int, spd Skill vs. deny
-				for plt=1:23                                    
+				for plt=[1:23]                                    
 					if plt==1
 						 tmp_exp=trkerr_exp(:,1:skip:end,:);
 						 tmp_name='trkskill';

@@ -131,7 +131,7 @@ for graphics=1
 			exp_shr=nan(100,size(identexp,1)); 
 			% Loop
 			for tmp=1:size(identexp,1)                
-				filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/atcf/',filename.name]; fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0; elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2; else identoutputres=1; end; end;
+filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/atcf/',filename.name]; fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0; elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2; else identoutputres=1; end; end;
 				[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,identoutputres);
 				initsizeexp=size(FHRall,2);
 				exp_fhr(1:initsizeexp,tmp)=FHRall';
@@ -482,7 +482,7 @@ for graphics=1
 				end
 				% Plot Pres, R34/50/64 all quadrants, PO, RO, RMW
 				for plt_trk=1
-					for pltcomp=1:18 
+					for pltcomp=[1:18] 
 						clear l
 						set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 						hfig=figure;
@@ -976,7 +976,7 @@ for graphics=1
 				close all 
 			end
 			% All Else
-			for plt=1:18
+			for plt=[1:18]
 				for fhr=1:size(identexp,1)
 					clear EXPmx BTmx l tmp cmtmp cm
 					set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -1633,7 +1633,7 @@ for graphics=1
 		end 
 		fid=fopen([identtrackint,'/FULL/',identn,'_scfactor.txt'],'w');fprintf(fid,'%s\n', scfactor0{:});fclose(fid);
 		% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-		for plt=1:23
+		for plt=[1:23]
 			clear l cntexp
 			set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 			hfig=figure;
@@ -4602,7 +4602,7 @@ for graphics=1
 		end                    
 		spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
 		% Create Graphics: by cycle trk, int, spd errors - bt-gh vs. bt-deny
-		for plt=1:23
+		for plt=[1:18,19:23]
 			clear l cntexp
 			set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 			hfig=figure;
@@ -6704,7 +6704,7 @@ for graphics=1
 					end
 					if exist('breakstrat','var')==1 && identcompositeonly==0
 							% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-							for plt=1:23
+							for plt=[1:23]
 								clear l cntexp
 								set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 								hfig=figure;
@@ -8265,7 +8265,7 @@ for graphics=1
 							
 							spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
 							% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-							for plt=1:23
+							for plt=[1:18,19:23]
 								clear l cntexp
 								set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 								hfig=figure;
@@ -11185,7 +11185,7 @@ for graphics=1
 							end;end;   														
 							fid=fopen([identtrackint,'/',identn,'_scfactor.txt'],'w');fprintf(fid,'%s\n', scfactor0{:});fclose(fid);
 							% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-							for plt=1:23
+							for plt=[1:18,19:23]
 								clear l cntexp
 								set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 								hfig=figure;
@@ -15514,7 +15514,7 @@ for graphics=1
 							
 							spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
 							% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
-							for plt=1:23
+							for plt=[1:23]
 								clear l cntexp
 								set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 								hfig=figure;
