@@ -34,7 +34,7 @@ for identremoveinvest=1
 		    if isfile(filename)==1; [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
 		%end
 		identn=unique(NAMEall,'rows','stable');
-		identn=identn(end,:);
+		if sum(isletter(identn(end,:)))==0;identn=identn(end-1,:);else;identn=identn(end,:);end;
 		identn=identn(double(identn)>0);
 		%% Set Name
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
@@ -340,7 +340,7 @@ for identremoveinvest=1
                    if isfile(filename)==1; [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
                %end
             identn=unique(NAMEall,'rows','stable');
-            identn=identn(end,:);
+            if sum(isletter(identn(end,:)))==0;identn=identn(end-1,:);else;identn=identn(end,:);end;
             identn=identn(double(identn)>0);
             %% Set Name
             ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
