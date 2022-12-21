@@ -17121,7 +17121,7 @@
 										sc(53,:)=NaN; sc(54,:)=tmp_impmed(:,7);sc(55,:)=NaN; % bias
 										sc(56,:)=NaN; % #fcst
 										sc(57,:)=NaN; % sig.
-
+										sc=sc(:,1:tmp_ylim(2));
 										% Start Figure
 										clear l cntexp
 										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
