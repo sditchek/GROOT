@@ -84,15 +84,15 @@
                         end
                         tmpuv = unique(tmpyr);
                         tmpn  = histc(tmpyr,tmpuv); 
-                        tmpphrase='';
+                        if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                         for tmpdr=1:length(tmpn)
                             if tmpdr==length(tmpn)
                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                             else
                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                             end
-                        end    
-                        text(0,1.032,['\textbf{STORMS: ',tmpphrase,'$\mid$ PP=',num2str(size(compvalues,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                        end;end;   
+                        text(0,1.032,['\textbf{TCS: ',tmpphrase,'$\mid$ PP=',num2str(size(compvalues,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                         text(0,1.07,['\textbf{Potential ',identsatname,' Profiles}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                         text(1,1.035,['\textbf{',identexpshort{j},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(j,:),'units','normalized');                    
                         ax=gca;
@@ -167,15 +167,15 @@
                         end
                         tmpuv = unique(tmpyr);
                         tmpn  = histc(tmpyr,tmpuv); 
-                        tmpphrase='';
+                        if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                         for tmpdr=1:length(tmpn)
                             if tmpdr==length(tmpn)
                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                             else
                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                             end
-                        end    
-                        text(-.015,1.032,['\textbf{STORMS: ',tmpphrase,'$\mid$ PP=',num2str(size(compvalues,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                        end;end;    
+                        text(-.015,1.032,['\textbf{TCS: ',tmpphrase,'$\mid$ PP=',num2str(size(compvalues,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                         text(-.015,1.065,['\textbf{Potential ',identsatname,' Profiles}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                         text(1.015,1.035,['\textbf{',identexpshort{j},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(j,:),'units','normalized');                    
                         ax=gca;
@@ -222,7 +222,7 @@
                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                         set(gcf, 'InvertHardcopy', 'off')
                         tmpsum=sum(identvals);                
-                        text(0,1.027,['\textbf{STORMS: ',tmpphrase,'$\mid$ PP=',num2str(tmpsum),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                        text(0,1.027,['\textbf{TCS: ',tmpphrase,'$\mid$ PP=',num2str(tmpsum),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                         text(0,1.065,['\textbf{Potential ',identsatname,' Profiles}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                         text(1,1.03,['\textbf{',identexpshort{j},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(j,:),'units','normalized');                    
                         tmpsum=sum(compdenmap,3);                            

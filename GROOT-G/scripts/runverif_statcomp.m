@@ -1113,14 +1113,14 @@
 									tmpyr=tmpyrb+2000;									
                                     tmpuv = unique(tmpyr);
                                     tmpn  = repmat(0,size(tmpuv,2),1)';
-                                    tmpphrase='';
+                                    if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end  
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -1336,14 +1336,14 @@
 									tmpyr=tmpyrb+2000;	
 									tmpuv = unique(tmpyr);
                                     tmpn  = repmat(0,size(tmpuv,2),1)';
-                                    tmpphrase='';
+                                    if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end; 
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -1556,14 +1556,14 @@
 										tmpyr=tmpyrb+2000;	
 										tmpuv = unique(tmpyr);
                                         tmpn  = repmat(0,size(tmpuv,2),1)';
-                                        tmpphrase='';
+                                        if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                         for tmpdr=1:length(tmpn)
                                             if tmpdr==length(tmpn)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;   
                                         text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         ax=gca;
                                         box on
@@ -1773,14 +1773,14 @@
 									tmpyr=tmpyrb+2000;	
 									tmpuv = unique(tmpyr);
                                     tmpn  = repmat(0,size(tmpuv,2),1)';
-                                    tmpphrase='';
+                                    if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;   
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -2083,14 +2083,14 @@
 									tmpyr=tmpyrb+2000;									
                                     tmpuv = unique(tmpyr);
                                     tmpn  = repmat(0,size(tmpuv,2),1)';
-                                    tmpphrase='';
+                                    if size(tmpuv,2)>3;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;    
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,' $\mid$ FHR: 0}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -2317,14 +2317,14 @@
 										tmpyr=tmpyrb+2000;									
 										tmpuv = unique(tmpyr);
 										tmpn  = repmat(0,size(tmpuv,2),1);
-										tmpphrase='';
+										if size(tmpuv,2)>10;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                         for tmpdr=1:size(tmpn,1)
                                             if tmpdr==size(tmpn,1)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;    
                                         text(0,1.035,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         tx=text(0.99,0.06,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 										ax=gca;
@@ -2523,14 +2523,14 @@
 										tmpyr=tmpyrb+2000;									
 										tmpuv = unique(tmpyr);
 										tmpn  = repmat(0,size(tmpuv,2),1);
-										tmpphrase='';
+										if size(tmpuv,2)>10;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                         for tmpdr=1:size(tmpn,1)
                                             if tmpdr==size(tmpn,1)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;  
                                         text(0,1.035,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
 										tx=text(0.99,0.06,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
                                         ax=gca;
@@ -2732,14 +2732,14 @@
 										tmpyr=tmpyrb+2000;									
 										tmpuv = unique(tmpyr);
 										tmpn  = repmat(0,size(tmpuv,2),1);
-										tmpphrase='';
+										if size(tmpuv,2)>10;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                         for tmpdr=1:size(tmpn,1)
                                             if tmpdr==size(tmpn,1)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;  
                                         text(0,1.035,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         tx=text(0.99,0.06,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 										ax=gca;
@@ -2998,14 +2998,14 @@
 									tmpyr=tmpyrb+2000;	
 									tmpuv = unique(tmpyr);
                                     tmpn  = repmat(0,size(tmpuv,2),1)';
-                                    tmpphrase='';
+                                    if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;    
                                     text(0,1.055,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')                                   
                                     set(ax1, 'Layer', 'bottom')
                                     ax1.LineWidth=1; 
@@ -3449,14 +3449,14 @@
 										tmpyr=tmpyrb+2000;									
 										tmpuv = unique(tmpyr);
 										tmpn  = repmat(0,size(tmpuv,2),1)';
-										tmpphrase='';
+										if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
 										for tmpdr=1:length(tmpn)
 											if tmpdr==length(tmpn)
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
 											else
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
 											end
-										end    
+										end;end;   
 										text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
 										ax=gca;
 										box on
@@ -3481,11 +3481,11 @@
 										b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);set(b,'plotboxaspectratio',[1 1 1]);set(b,'Color','none');set(b,'YColor','none');set(b,'tickdir','both');set(b,'XColor',[0 0 0]);set(b,'ytick',[]);if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim(b,[1 ((identmaxfhr*3))/skiphr+1]);tmpxend=((identmaxfhr*3))/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;end;else;if mod(identmaxfhr*3-3,12)==0;	xlim(b,[1 ((identmaxfhr*3)-3)/skiphr+1]);tmpxend=((identmaxfhr*3)-3)/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);	tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;end;end;set(b,'xtick',[1:skiptick:50]);trkerr_exp_fcnt=zeros(1,tmpxend);trkerr_exp_fcnt1=zeros(1,tmpxend);trkerr_exp_fcnt2=zeros(1,tmpxend);for tmp=1:size(identexp,1);cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);end;set(gca,'fontsize',14);xlabel('# fcsts','Position',[-1 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized');set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)]);screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1));xTicks0 = get(gca, 'xticklabel');xTicks = get(gca, 'xtick');if size(maxmin,1)<size(xTicks0,1);for n=1:size(xTicks0,1)-size(maxmin,1);maxmin(end+n,:)=0;end;end;set(b,'xticklabels',[]);minY =0;VerticalOffset1=0.03;HorizontalOffset = 0.2;maxmin=maxmin.*0;for xx = 1:size(xTicks0,1);tmptxt0=maxmin(xx,:);tmplines=size(tmptxt0,2);if size(unique(tmptxt0),2)==1;tmptxt1=num2str(tmptxt0(1));text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;for n=1:tmplines;tmptxt1=[];tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];if n==1;text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14);end;end;end;end;f = getframe(hfig);
 										filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_',stname,'_LAGCORR','_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										close all													
-									end									
-								end;end;
-								fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', 'No Data!');fclose(fid); %ERRCORR
-								load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat']);for plt=[1,21];for identexploop=1:size(identexp,1);for j=1:3;identvarcolors=[204 37 41;57 106 177;62 150 81]/255;clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);hold on;if plt==1;tmp_exp=cat(4,trkerr_exp(:,1:skip:end,:),spderr_exp(:,1:skip:end,:),interr_exp(:,1:skip:end,:));tmp_name='trkspdprs';elseif plt==21;tmpr34=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));tmpr50=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));tmpr64=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));tmp_exp=cat(4,tmpr34,tmpr50,tmpr64);tmp_name='R34R50R64';end;l(4)=plot(1:43,repmat(0.3162,1,43),'--k','linewidth',2);plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);  set(gca,'plotboxaspectratio',[1 1 1]);xlabel('Forecast Lead Time (h)','fontsize',20);ylabel('Correlation','fontsize',20);set(gca,'fontsize',20);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([1 ((identmaxfhr*3))/skiphr+1]);else;xlim([1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([1 ((identmaxfhr*3)-3)/skiphr+1]);else;xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);end;end;ylim([-.2 1]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));grid on;set(gca,'gridcolor','k','gridalpha',.15);set(gca,'fontsize',20);hold off;box on;set(gcf,'Units','inches');a1Pos = get(gca,'Position');set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.065,['\textbf{Time-Lag Error Correlation for ',num2str((j-1)*6),' h}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');else;text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpuv = unique(tmpyr);tmpn  = histc(tmpyr,tmpuv); tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');ax=gca;box on;set(ax, 'Layer', 'bottom');ax.LineWidth=1; set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);set(gca,'Color',[.9 .9 .9]);for tmp=1:3;cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,identexploop,tmp)),1);end;
-								tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);set(b,'plotboxaspectratio',[1 1 1]);set(b,'Color','none');set(b,'YColor','none');set(b,'tickdir','both');set(b,'XColor',[0 0 0]);set(b,'ytick',[]);if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim(b,[1 ((identmaxfhr*3))/skiphr+1]);tmpxend=((identmaxfhr*3))/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;end;else;if mod(identmaxfhr*3-3,12)==0;	xlim(b,[1 ((identmaxfhr*3)-3)/skiphr+1]);tmpxend=((identmaxfhr*3)-3)/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);	tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;end;end;set(b,'xtick',[1:skiptick:50]);trkerr_exp_fcnt=zeros(1,tmpxend);trkerr_exp_fcnt1=zeros(1,tmpxend);trkerr_exp_fcnt2=zeros(1,tmpxend);for tmp=1:size(identexp,1);cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);end;set(gca,'fontsize',14);xlabel('# fcsts','Position',[-1 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized');set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)]);screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1));xTicks0 = get(gca, 'xticklabel');xTicks = get(gca, 'xtick');if size(maxmin,1)<size(xTicks0,1);for n=1:size(xTicks0,1)-size(maxmin,1);maxmin(end+n,:)=0;end;end;set(b,'xticklabels',[]);minY =0;VerticalOffset1=0.03;HorizontalOffset = 0.2;maxmin=maxmin.*0;for xx = 1:size(xTicks0,1);tmptxt0=maxmin(xx,:);tmplines=size(tmptxt0,2);if size(unique(tmptxt0),2)==1;tmptxt1=num2str(tmptxt0(1));text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;for n=1:tmplines;tmptxt1=[];tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];if n==1;text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14);end;end;end;end;f = getframe(hfig);filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_ERRCORR_',num2str((j-1)*6),'h_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;end;end;end;load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat']);
+									end;end;end;fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', 'No Data!');fclose(fid); %ERRCORR
+								load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat']);for plt=[1,21];for identexploop=1:size(identexp,1);for j=1:3;identvarcolors=[204 37 41;57 106 177;62 150 81]/255;clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);hold on;if plt==1;tmp_exp=cat(4,trkerr_exp(:,1:skip:end,:),spderr_exp(:,1:skip:end,:),interr_exp(:,1:skip:end,:));tmp_name='trkspdprs';elseif plt==21;tmpr34=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));tmpr50=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));tmpr64=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));tmp_exp=cat(4,tmpr34,tmpr50,tmpr64);tmp_name='R34R50R64';end;l(4)=plot(1:43,repmat(0.3162,1,43),'--k','linewidth',2);plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);  set(gca,'plotboxaspectratio',[1 1 1]);xlabel('Forecast Lead Time (h)','fontsize',20);ylabel('Correlation','fontsize',20);set(gca,'fontsize',20);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([1 ((identmaxfhr*3))/skiphr+1]);else;xlim([1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([1 ((identmaxfhr*3)-3)/skiphr+1]);else;xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);end;end;ylim([-.2 1]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));grid on;set(gca,'gridcolor','k','gridalpha',.15);set(gca,'fontsize',20);hold off;box on;set(gcf,'Units','inches');a1Pos = get(gca,'Position');set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.065,['\textbf{Time-Lag Error Correlation for ',num2str((j-1)*6),' h}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');else;text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpuv = unique(tmpyr);tmpn  = repmat(0,size(tmpuv,2),1)';if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;end;text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');ax=gca;box on;set(ax, 'Layer', 'bottom');ax.LineWidth=1; set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);set(gca,'Color',[.9 .9 .9]);for tmp=1:3;cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,identexploop,tmp)),1);end;
+								tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);set(b,'plotboxaspectratio',[1 1 1]);set(b,'Color','none');set(b,'YColor','none');set(b,'tickdir','both');set(b,'XColor',[0 0 0]);set(b,'ytick',[]);if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim(b,[1 ((identmaxfhr*3))/skiphr+1]);tmpxend=((identmaxfhr*3))/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;end;else;if mod(identmaxfhr*3-3,12)==0;	xlim(b,[1 ((identmaxfhr*3)-3)/skiphr+1]);tmpxend=((identmaxfhr*3)-3)/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);	tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;end;end;set(b,'xtick',[1:skiptick:50]);trkerr_exp_fcnt=zeros(1,tmpxend);trkerr_exp_fcnt1=zeros(1,tmpxend);trkerr_exp_fcnt2=zeros(1,tmpxend);for tmp=1:size(identexp,1);cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);end;set(gca,'fontsize',14);xlabel('# fcsts','Position',[-1 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized');set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)]);screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1));xTicks0 = get(gca, 'xticklabel');xTicks = get(gca, 'xtick');if size(maxmin,1)<size(xTicks0,1);for n=1:size(xTicks0,1)-size(maxmin,1);maxmin(end+n,:)=0;end;end;set(b,'xticklabels',[]);minY =0;VerticalOffset1=0.03;HorizontalOffset = 0.2;maxmin=maxmin.*0;for xx = 1:size(xTicks0,1);tmptxt0=maxmin(xx,:);tmplines=size(tmptxt0,2);if size(unique(tmptxt0),2)==1;tmptxt1=num2str(tmptxt0(1));text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;for n=1:tmplines;tmptxt1=[];tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];if n==1;text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14);end;end;end;end;f = getframe(hfig);filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_ERRCORR_',num2str((j-1)*6),'h_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;end;end;end;load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat']); % TRKSPDERRCORR
+								for identexploop=1:size(identexp,1);clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);hold on;tmp_title='Track and VMAX Error Correlation';tmp_ytitle='Correlation (r)';	tmp_name1='trkerr';clear tmp_exp;tmp_name2='spderr';clear tmp_exp;plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);for i=1:size(tmp_exp1,2);corR(i)=NaN;corP(i)=NaN;corRL(i)=NaN;corRU(i)=NaN;end; l(1)=plot(1:size(corR,2),corR,'-s','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);l(3)=plot(-999,-999,'s','Color','k','markerfacecolor',identexpcolors(1,:),'markersize',9);l(2)=plot(1:size(corRU,2),corRU,'--','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);set(gca,'plotboxaspectratio',[1 1 1]);xlabel('Forecast Lead Time (h)','fontsize',20);ylabel(tmp_ytitle,'fontsize',20);set(gca,'fontsize',20);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([1 ((identmaxfhr*3))/skiphr+1]);else;xlim([1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([1 ((identmaxfhr*3)-3)/skiphr+1]);else;xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);end;end;ylim([-1 1]);set(gca,'ytick',-1:.2:1);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));grid on;set(gca,'gridcolor','k','gridalpha',.15);set(gca,'fontsize',20);hold off;box on;lh=legend(l,identexpshort{identexploop},'95% CI','Stat. Sig.','location','northeast');lh.FontSize=10;set(gcf,'Units','inches');a1Pos = get(gca,'Position');set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;else;text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpyr=identdr;for tmpyri=1:size(tmpyr,2);tmpyra=tmpyr{tmpyri};tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));end;tmpyr=tmpyrb+2000;	tmpuv = unique(tmpyr);tmpn  = repmat(0,size(tmpuv,2),1)';if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;end;text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');ax=gca;box on;set(ax, 'Layer', 'bottom');ax.LineWidth=1;
+								set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);set(gca,'Color',[.9 .9 .9]);cntexp=sum(~isnan(tmp_exp1(:,1:skiptick:end)),1);tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);set(b,'plotboxaspectratio',[1 1 1]);set(b,'Color','none');set(b,'YColor','none');set(b,'tickdir','both');set(b,'XColor',[0 0 0]);set(b,'ytick',[]);if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim(b,[1 ((identmaxfhr*3))/skiphr+1]);tmpxend=((identmaxfhr*3))/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;end;else;if mod(identmaxfhr*3-3,12)==0;	xlim(b,[1 ((identmaxfhr*3)-3)/skiphr+1]);tmpxend=((identmaxfhr*3)-3)/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);	tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;end;end;set(b,'xtick',[1:skiptick:50]);trkerr_exp_fcnt=zeros(1,tmpxend);trkerr_exp_fcnt1=zeros(1,tmpxend);trkerr_exp_fcnt2=zeros(1,tmpxend);cntexp=sum(~isnan(tmp_exp1(:,1:skiptick:end)),1);set(gca,'fontsize',14);xlabel('# fcsts','Position',[-1 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized');set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)]);screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');maxmin=squeeze(sum(~isnan(tmp_exp1(:,1:skiptick:end)),1));xTicks0 = get(gca, 'xticklabel');xTicks = get(gca, 'xtick');if size(maxmin,1)<size(xTicks0,1);for n=1:size(xTicks0,1)-size(maxmin,1);maxmin(end+n,:)=0;end;end;set(b,'xticklabels',[]);minY =0;VerticalOffset1=0.03;HorizontalOffset = 0.2;maxmin=maxmin.*0;for xx = 1:size(xTicks0,1);tmptxt0=maxmin(xx,:);tmplines=size(tmptxt0,2);if size(unique(tmptxt0),2)==1;tmptxt1=num2str(tmptxt0(1));text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;for n=1:tmplines;tmptxt1=[];tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];if n==1;text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14);end;end;end;end;f = getframe(hfig);filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_trkspdcorr_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;end;								
 								for scorecard=1 %SCORECARD
 									% Which Experiment to Compare To
 									for tmp=1:size(identexp,1)
@@ -3530,8 +3530,8 @@
 											text(1,1.11,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
 											text(1,1.06,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');
 										end
-										tmpuv = unique(tmpyr);tmpn  = histc(tmpyr,tmpuv);tmpphrase='';
-										for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;text(0,1.05,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');
+										tmpuv = unique(tmpyr);tmpn  = repmat(0,size(tmpuv,2),1)';if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
+										for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;end;text(0,1.05,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');
 										tx=text(0.99,0.09,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 										
 										% Figure Sizing & Printing
@@ -3633,14 +3633,14 @@
 										tmpyr=tmpyrb+2000;	
 										tmpuv = unique(tmpyr);
 										tmpn  = repmat(0,size(tmpuv,2),1)';
-										tmpphrase='';
+										if size(tmpuv,2)>10;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
 										for tmpdr=1:length(tmpn)
 											if tmpdr==length(tmpn)
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
 											else
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
 											end
-										end    
+										end;end;   
 										tx=text(0.99,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
 										set(tx, 'Layer', 'front')              
 										text(0,1.065,['\textbf{Scorecard}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
@@ -4508,7 +4508,7 @@
 										for fhr=1:size(tmp_exp0,2)
 											ac2=[];
 											for i=1:size(identdr,2)  
-												load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat'],'BT_dropsB','BT_dropsI','BT_dropsT','BT_targetB','BT_targetI','BT_targetT')												
+												 load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat'],'BT_dropsB','BT_dropsI','BT_dropsT','BT_targetB','BT_targetI','BT_targetT')												
 												if isfile([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])==1   
 													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])	
 													load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_latlon.mat'])
@@ -5234,7 +5234,7 @@
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 										ax1=subplot(3,4,[1:8]);
 										hold on					
-										imagesc(cc,'AlphaData',~isnan(cc))
+										imagesc(cc(:,1:round(identmaxfhr/2)),'AlphaData',~isnan(cc(:,1:round(identmaxfhr/2))))
 										set(gca,'plotboxaspectratio',[1 1 1])
 										ylabel('Lag (6-h Cycles)','fontsize',20)
 										set(gca,'ytick',1:11)
@@ -5316,14 +5316,14 @@
 										end                
 										tmpuv = unique(tmpyr);
 										tmpn  = histc(tmpyr,tmpuv); 
-										tmpphrase='';
+										if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
 										for tmpdr=1:length(tmpn)
 											if tmpdr==length(tmpn)
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
 											else
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
 											end
-										end    
+										end;end;    
 										text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
 										ax=gca;
 										box on
@@ -6726,7 +6726,7 @@
                                             tmpimp=tmp;
                                         end
                                     end
-                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if strat==894 && plt==3;basehfip=[NaN NaN NaN NaN 26.1 27.35 28.6 30 31.4 33.05 34.7 35.8 36.9 36 35.1 33.2 31.3 32.15 33 32.55 32.1 NaN]./1.94384;targethfip=[NaN NaN NaN NaN 13.1 13.7 14.3 15 15.7 16.5 17.3 17.9 18.5 18.05 17.6 16.6 15.6 16.05 16.5 16.3 16.1 NaN]./1.94384;plot(1:size(tmp_exp,2),basehfip,'--s','Color',[.5 .5 .5],'linewidth',1,'markersize',2);plot(1:size(tmp_exp,2),targethfip,'--s','Color','k','linewidth',1,'markersize',2);end;
+                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if strat==894 && plt==3;basehfip=[NaN NaN NaN NaN 26.1 27.35 28.6 30 31.4 33.05 34.7 35.8 36.9 36 35.1 33.2 31.3 32.15 33 32.55 32.1 NaN]./1.94384;targethfip=[NaN NaN NaN NaN 13.1 13.7 14.3 15 15.7 16.5 17.3 17.9 18.5 18.05 17.6 16.6 15.6 16.05 16.5 16.3 16.1 NaN]./1.94384;if size(basehfip,2)>size(tmp_exp,2)==1;basehfip=basehfip(1:size(tmp_exp2));targethfip=targethfip(1:size(tmp_exp2));else;basehfip=[basehfip nan(1,size(tmp_exp,2)-size(basehfip,2))];targethfip=[targethfip nan(1,size(tmp_exp,2)-size(targethfip,2))];end;plot(1:size(tmp_exp,2),basehfip,'--s','Color',[.5 .5 .5],'linewidth',1,'markersize',2);plot(1:size(tmp_exp,2),targethfip,'--s','Color','k','linewidth',1,'markersize',2);end;
                                     for tmp=1:size(identexp,1)
 					%if plt==19 || plt==20; sigtest=ttestsc(tmp_expbias(:,:,tmp),tmp_expbias(:,:,tmpimp),squeeze(scfactor(1,tmp,:))','alpha',.05);else;sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);end;
                                         %sigtest_loc=find(sigtest==1);
@@ -6784,14 +6784,14 @@
                                     end                
                                     tmpuv = unique(tmpyr);
                                     tmpn  = histc(tmpyr,tmpuv); 
-                                    tmpphrase='';
+                                    if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;    
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -7790,14 +7790,14 @@
                                     end                
                                     tmpuv = unique(tmpyr);
                                     tmpn  = histc(tmpyr,tmpuv); 
-                                    tmpphrase='';
+                                    if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;    
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -8824,14 +8824,14 @@
                                         end                
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
-                                        tmpphrase='';
+                                        if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                         for tmpdr=1:length(tmpn)
                                             if tmpdr==length(tmpn)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;   
                                         text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         ax=gca;
                                         box on
@@ -9840,14 +9840,14 @@
                                     end                
                                     tmpuv = unique(tmpyr);
                                     tmpn  = histc(tmpyr,tmpuv); 
-                                    tmpphrase='';
+                                    if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;    
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -10951,14 +10951,14 @@
                                     end                
                                     tmpuv = unique(tmpyr);
                                     tmpn  = histc(tmpyr,tmpuv); 
-                                    tmpphrase='';
+                                    if size(tmpuv,1)>3;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;    
                                     text(0,1.027,['\textbf{TCS: ',tmpphrase,' $\mid$ FHR: 0}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                     ax=gca;
                                     box on
@@ -12091,7 +12091,7 @@
                                         screenposition = get(gcf,'Position');
                                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                         set(gcf, 'InvertHardcopy', 'off')
-                                        tmppctstr=isnan(tmppct);
+                                        tmppctstr=isnan(tmppct);if size(plotsim,2)>250;setfontsize=1;elseif size(plotsim,2)>175;setfontsize=2;elseif size(plotsim,2)>150;setfontsize=3;elseif size(plotsim,2)>100;setfontsize=4;elseif size(plotsim,2)>60;setfontsize=5;elseif size(plotsim,2)>40;setfontsize=8;else;setfontsize=10;end;
                                         clear diffpct
                                         if med<4;for j=1:size(tmppct,2)
                                             for i=1:size(1:skip:identmaxfhr,2)
@@ -12108,9 +12108,9 @@
                                                     %    tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))+diffpct(k);
                                                     %end
                                                         if (med<3 & tmppct(i,j)>15 || tmppct(i,j)<-15) || (med==3 & tmppct(i,j)>65 || tmppct(i,j)<35)
-                                                            text(i,j, [num2str(round(tmppct(i,j))),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',10)
+                                                            text(i,j, [num2str(round(tmppct(i,j))),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',setfontsize)
                                                         else
-                                                            text(i,j, [num2str(round(tmppct(i,j))),'%'], 'HorizontalAlignment', 'Center','fontsize',10)
+                                                            text(i,j, [num2str(round(tmppct(i,j))),'%'], 'HorizontalAlignment', 'Center','fontsize',setfontsize)
                                                         end
                                                 end
                                             end
@@ -12125,14 +12125,14 @@
                                         if med==1;text(0,1.06,['\textbf{',tmp_title(1:end-10),'MAE Skill',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==2;text(0,1.06,['\textbf{',tmp_title(1:end-10),'MDAE Skill',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==3;text(0,1.06,['\textbf{',tmp_title(1:end-10),'FSP',tmp_title(end-4:end),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');elseif med==4;text(0,1.06,['\textbf{',tmp_title(1:end-10),'Consistency Metric}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
-                                        tmpphrase='';
+                                        if size(tmpuv,1)>10;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                         for tmpdr=1:size(tmpn,1)
                                             if tmpdr==size(tmpn,1)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;if sum(tmpn)>250;set(gca,'fontsize',1);elseif sum(tmpn)>175;set(gca,'fontsize',2);elseif sum(tmpn)>150;set(gca,'fontsize',3);elseif sum(tmpn)>100;set(gca,'fontsize',4);elseif sum(tmpn)>60;set(gca,'fontsize',5);elseif sum(tmpn)>40;set(gca,'fontsize',8);end;    
                                         text(0,1.025,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         ax=gca;
                                         box on
@@ -13233,7 +13233,7 @@
                                         screenposition = get(gcf,'Position');
                                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                         set(gcf, 'InvertHardcopy', 'off')
-                                        tmppctstr=isnan(tmppct);
+                                        tmppctstr=isnan(tmppct);if size(plotsim,2)>250;setfontsize=1;elseif size(plotsim,2)>175;setfontsize=2;elseif size(plotsim,2)>150;setfontsize=3;elseif size(plotsim,2)>100;setfontsize=4;elseif size(plotsim,2)>60;setfontsize=5;elseif size(plotsim,2)>40;setfontsize=8;else;setfontsize=10;end;
                                         clear diffpct
                                         for j=1:size(tmppct,2)
                                             for i=1:size(1:skip:identmaxfhr,2)
@@ -13250,9 +13250,9 @@
                                                         tmppct(i,find(diffpct==max(diffpct')))=tmppct(i,find(diffpct==max(diffpct')))+diffpct(k);
                                                     end
                                                         if tmppct(i,j)>70
-                                                            text(i,j, [num2str(round(tmppct(i,j)))], 'color','w','HorizontalAlignment', 'Center','fontsize',10)
+                                                            text(i,j, [num2str(round(tmppct(i,j)))], 'color','w','HorizontalAlignment', 'Center','fontsize',setfontsize)
                                                         else
-                                                            text(i,j, [num2str(round(tmppct(i,j)))], 'HorizontalAlignment', 'Center','fontsize',10)
+                                                            text(i,j, [num2str(round(tmppct(i,j)))], 'HorizontalAlignment', 'Center','fontsize',setfontsize)
                                                         end
                                                 end
                                             end
@@ -13267,14 +13267,14 @@
                                         text(0,1.06,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
-                                        tmpphrase='';
+                                        if size(tmpuv,1)>10;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                         for tmpdr=1:size(tmpn,1)
                                             if tmpdr==size(tmpn,1)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;if sum(tmpn)>250;set(gca,'fontsize',1);elseif sum(tmpn)>175;set(gca,'fontsize',2);elseif sum(tmpn)>150;set(gca,'fontsize',3);elseif sum(tmpn)>100;set(gca,'fontsize',4);elseif sum(tmpn)>60;set(gca,'fontsize',5);elseif sum(tmpn)>40;set(gca,'fontsize',8);end;    
                                         text(0,1.025,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                         ax=gca;
                                         box on
@@ -14330,7 +14330,7 @@
 
                                     % sort by year and then by name                               
                                     for i=1:size(tmpnm,2);tmpnm0=tmpnm{i};tmpnm1=tmpnm0(1:end-5);tmpnm2=num2str(str2num(tmpnm0(end-1:end))+2000);cnt=1;clear tmpidmult;for j=1:size(stormsdone,2);tmpsd1=stormsdone{j};tmpsd2=yearsdone(j,:);if strcmp(lower(tmpnm0),[tmpsd1 tmpsd2(end-1:end)])==1;tmpidmult(cnt,:)=tmpsd1(end-2:end-1);cnt=cnt+1;end;end;tmpid(i,:)=tmpidmult;end;tmpid=str2num(tmpid);if size(tmpyr,1)==1;tmpyrid=[tmpyr' tmpid];else;tmpyrid=[tmpyr tmpid];end;[a_sorted, a_order] = sortrows(tmpyrid,[1,2]);clear tmpid;
-				    nm_pct = imprv2(:,a_order,:);
+									nm_pct = imprv2(:,a_order,:);
                                     tmpnm = tmpnm(a_order);
 									clear imprv imprv2 sm
 									
@@ -14369,7 +14369,7 @@
                                         for findsim=1:size(tmpnm,2)
                                             tmpsim=tmpnm{findsim};
                                             for findsim2=1:size(stormsdone,2)
-						tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; elseif strcmp(identdr5{basinloop},'SH')==1;   tmpbas={'s';'p'}; elseif strcmp(identdr5{basinloop},'IO')==1;   tmpbas={'a';'b'}; end;     
+												tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; elseif strcmp(identdr5{basinloop},'SH')==1;   tmpbas={'s';'p'}; elseif strcmp(identdr5{basinloop},'IO')==1;   tmpbas={'a';'b'}; end;     
                                                 if (strcmp(tmpsim(1:end-5),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & sum(strcmp(tmpbas,tmpsd(end)))>0 
                                                     plotsim{cnt}=[upper(tmpsd(end-2:end)),' (',upper(tmpsd(1)),tmpsd(2:end-3),')'];
                                                     cnt=cnt+1;
@@ -14394,15 +14394,15 @@
                                         screenposition = get(gcf,'Position');
                                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                         set(gcf, 'InvertHardcopy', 'off')
-                                        tmppctstr=isnan(tmppct);
+                                        tmppctstr=isnan(tmppct);if size(plotsim,2)>250;setfontsize=1;elseif size(plotsim,2)>175;setfontsize=2;elseif size(plotsim,2)>150;setfontsize=3;elseif size(plotsim,2)>100;setfontsize=4;elseif size(plotsim,2)>60;setfontsize=5;elseif size(plotsim,2)>40;setfontsize=8;else;setfontsize=10;end;
                                         clear diffpct
                                         for j=1:size(tmppct,2)
                                             for i=1:size(1:skip:identmaxfhr,2)
                                                 if tmppctstr(i,j)==0                                                   
                                                         if tmppct(i,j)>5/2 || tmppct(i,j)<-5/2
-                                                            text(i,j, [num2str(round(tmppct(i,j),1)),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',10)
+                                                            text(i,j, [num2str(round(tmppct(i,j),1)),'%'], 'color','w','HorizontalAlignment', 'Center','fontsize',setfontsize)
                                                         else
-                                                            text(i,j, [num2str(round(tmppct(i,j),1)),'%'], 'HorizontalAlignment', 'Center','fontsize',10)
+                                                            text(i,j, [num2str(round(tmppct(i,j),1)),'%'], 'HorizontalAlignment', 'Center','fontsize',setfontsize)
                                                         end
                                                 end
                                             end
@@ -14417,16 +14417,16 @@
                                         text(0,1.06,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
                                         tmpuv = unique(tmpyr);
                                         tmpn  = histc(tmpyr,tmpuv); 
-                                        tmpphrase='';
+                                        if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                         for tmpdr=1:size(tmpn,1)
                                             if tmpdr==size(tmpn,1)
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                             else
                                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                             end
-                                        end    
+                                        end;end;if sum(tmpn)>250;set(gca,'fontsize',1);elseif sum(tmpn)>175;set(gca,'fontsize',2);elseif sum(tmpn)>150;set(gca,'fontsize',3);elseif sum(tmpn)>100;set(gca,'fontsize',4);elseif sum(tmpn)>60;set(gca,'fontsize',5);elseif sum(tmpn)>40;set(gca,'fontsize',8);end;    
                                         text(0,1.025,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
-					ax=gca;
+										ax=gca;
                                         box on
                                         set(ax, 'Layer', 'top')
                                         ax.LineWidth=1; 
@@ -14435,8 +14435,8 @@
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
 										
 										
-					ax2=subplot(3,4,[9:12]);
-					tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;
+										ax2=subplot(3,4,[9:12]);
+										tp2=find(sum(isnan(tmppct),2)==size(tmppct,2));tmppct2=(nansum(tmppct,2));if isempty(tp2)==1;else;tmppct2(find(sum(isnan(tmppct),2)==size(tmppct,2)))=NaN;end;
                                         imagesc(tmppct2(1:round(identmaxfhr/2),:)','AlphaData',~isnan(tmppct2(1:round(identmaxfhr/2),:)'))
                                         %xlabel('Forecast Lead Time (h)','fontsize',14)        
                                         set(gca,'fontsize',14)
@@ -15355,7 +15355,7 @@
                                             tmpimp=tmp;
                                         end
                                     end
-                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if strat==894 && plt==3;basehfip=[NaN NaN NaN NaN 26.1 27.35 28.6 30 31.4 33.05 34.7 35.8 36.9 36 35.1 33.2 31.3 32.15 33 32.55 32.1 NaN]./1.94384;targethfip=[NaN NaN NaN NaN 13.1 13.7 14.3 15 15.7 16.5 17.3 17.9 18.5 18.05 17.6 16.6 15.6 16.05 16.5 16.3 16.1 NaN]./1.94384;plot(1:size(tmp_exp,2),basehfip,'--s','Color',[.5 .5 .5],'linewidth',1,'markersize',2);plot(1:size(tmp_exp,2),targethfip,'--s','Color','k','linewidth',1,'markersize',2);end;
+                                    plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);if strat==894 && plt==3;basehfip=[NaN NaN NaN NaN 26.1 27.35 28.6 30 31.4 33.05 34.7 35.8 36.9 36 35.1 33.2 31.3 32.15 33 32.55 32.1 NaN]./1.94384;targethfip=[NaN NaN NaN NaN 13.1 13.7 14.3 15 15.7 16.5 17.3 17.9 18.5 18.05 17.6 16.6 15.6 16.05 16.5 16.3 16.1 NaN]./1.94384;if size(basehfip,2)>size(tmp_exp,2)==1;basehfip=basehfip(1:size(tmp_exp2));targethfip=targethfip(1:size(tmp_exp2));else;basehfip=[basehfip nan(1,size(tmp_exp,2)-size(basehfip,2))];targethfip=[targethfip nan(1,size(tmp_exp,2)-size(targethfip,2))];end;plot(1:size(tmp_exp,2),basehfip,'--s','Color',[.5 .5 .5],'linewidth',1,'markersize',2);plot(1:size(tmp_exp,2),targethfip,'--s','Color','k','linewidth',1,'markersize',2);end;
                                     for tmp=1:size(identexp,1)
                                         %sigtest=ttestsc(tmp_exp(:,:,tmp),tmp_exp(:,:,tmpimp),squeeze(scfactor(plt,tmp,:))','alpha',.05);
                                         %sigtest_loc=find(sigtest==1);
@@ -15413,14 +15413,14 @@
                                     end                
                                     tmpuv = unique(tmpyr);
                                     tmpn  = histc(tmpyr,tmpuv); 
-                                    tmpphrase='';
+                                    if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
                                     for tmpdr=1:length(tmpn)
                                         if tmpdr==length(tmpn)
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
                                         else
                                             tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                                         end
-                                    end    
+                                    end;end;    
                                     text(0,1.055,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')                                   
                                     set(ax1, 'Layer', 'bottom')
                                     ax1.LineWidth=1; 
@@ -17251,7 +17251,7 @@
 										for i=1:size(sconsistent,2);plot(repmat(0.5+i,1,size(sconsistent,1)+3),-1:size(sconsistent,1)+1,'k');end;plot(-1:size(sconsistent,2)+1,repmat(1.5,size(sconsistent,2)+3,1),'k','linewidth',2);plot(-1:size(sconsistent,2)+1,repmat(2.5,size(sconsistent,2)+3,1),'k','linewidth',2);plot(-1:size(sconsistent,2)+1,repmat(3.5,size(sconsistent,2)+3,1),'k','linewidth',2);plot(-1:size(sconsistent,2)+1,repmat(4.5,size(sconsistent,2)+3,1),'k','linewidth',2);plot(-1:size(sconsistent,2)+1,repmat(5.5,size(sconsistent,2)+3,1),'k','linewidth',2);plot(-1:size(sconsistent,2)+1,repmat(6.5,size(sconsistent,2)+3,1),'k','linewidth',2);
 
 										% Title Text
-										text(0,1.11,['\textbf{Consistency Scorecard}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');else;text(1,1.11,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');	text(1,1.06,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpuv = unique(tmpyr);tmpn  = histc(tmpyr,tmpuv);tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;text(0,1.05,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');
+										text(0,1.11,['\textbf{Consistency Scorecard}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');else;text(1,1.11,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');	text(1,1.06,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpuv = unique(tmpyr);tmpn  = histc(tmpyr,tmpuv);if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;end;text(0,1.05,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');
 
 										% Figure Sizing & Printing
 										set(gcf, 'InvertHardcopy', 'off');ax=gca;box on;set(ax, 'Layer', 'top');ax.LineWidth=2; set(gca,'position',[spPos(1)+.04 spPos(2) spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, .6, .6]);set(gca,'Color',[.9 .9 .9]);
@@ -17477,14 +17477,14 @@
 										end                
 										tmpuv = unique(tmpyr);
 										tmpn  = histc(tmpyr,tmpuv); 
-										tmpphrase='';
+										if size(tmpuv,1)>10;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
 										for tmpdr=1:length(tmpn)
 											if tmpdr==length(tmpn)
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
 											else
 												tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
 											end
-										end    
+										end;end;    
 										text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')   
 									   
 										% Figure Sizing & Printing
@@ -18279,14 +18279,14 @@
 											end                                  
 											tmpuv = unique(tmpyr);
 											tmpn  = histc(tmpyr,tmpuv); 
-											tmpphrase='';
+											if size(tmpuv,1)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,1))];else;tmpphrase='';
 											for tmpdr=1:length(tmpn)
 												if tmpdr==length(tmpn)
 													tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
 												else
 													tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
 												end
-											end    
+											end;end;    
 											text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
 											ax=gca;
 											box on
@@ -18376,8 +18376,1555 @@
 										end   
 									end
 								end
-
-							                    
+								% Create TRK/VMAX Error Correlation
+                                for identexploop=1:size(identexp,1)
+                                    clear l cntexp
+                                    set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+                                    hfig=figure;
+                                    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+                                    ax1=subplot(3,4,[1:8]);
+                                    hold on
+                                    % Plot Terms
+									tmp_title='Track and VMAX Error Correlation';
+									tmp_ytitle='Correlation (r)';	
+									% Get Track and Stratify
+									tmp_exp=trkerr_exp(:,1:skip:end,identexploop);
+									if plt <19 || plt >20
+                                        tmp_exp=abs(tmp_exp); % added for MAE
+                                    end
+                                     % Strat
+                                    if strat==1
+                                        clear tmpyrb
+                                        tmpyr=identdr;
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==2
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_drops==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_drops==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==3
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_target';BT_target';BT_target';BT_target']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_target==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_target==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==4 % TD
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]<34./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1) BT_storm(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1));
+                                    elseif strat==5 % TS
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=34./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<64./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1) BT_storm(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;                
+                                        tmpnm=unique(BT_name(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1));
+                                    elseif strat==6 % H12
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=64./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1));
+                                    elseif strat==7 % H345
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1));
+                                    elseif strat==8 % N30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                    elseif strat==9 % S30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat<30));
+                                    elseif strat==10 % RI
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]>=15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch>=15./1.94384,:,:);
+                                        end     															
+										tmpyr=unique([BT_year(BT_intch>=15./1.94384) BT_storm(BT_intch>=15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch>=15./1.94384));		
+									elseif strat==11 % IN
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]>5./1.94384 & [BT_intch;BT_intch;BT_intch;BT_intch]<15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch>5./1.94384 & BT_intch<15./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch>5./1.94384 & BT_intch<15./1.94384) BT_storm(BT_intch>5./1.94384 & BT_intch<15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch>5./1.94384 & BT_intch<15./1.94384));
+									elseif strat==12 % SS
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]>=-5./1.94384 & [BT_intch;BT_intch;BT_intch;BT_intch]<=5./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384) BT_storm(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384));
+									elseif strat==13 % W
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]<-5./1.94384 & [BT_intch;BT_intch;BT_intch;BT_intch]>-15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch<-5./1.94384 & BT_intch>-15./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch<-5./1.94384 & BT_intch>-15./1.94384) BT_storm(BT_intch<-5./1.94384 & BT_intch>-15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch<-5./1.94384 & BT_intch>-15./1.94384));
+									elseif strat==14 % RW
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]<=-15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch<=-15./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch<=-15./1.94384) BT_storm(BT_intch<=-15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch<=-15./1.94384));
+									elseif strat>14 && strat<=14+size(unique(BT_year),1) % by year
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-14);
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]==tmps,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year==tmps,:,:);
+                                        end                    
+                                        tmpnm=unique(BT_name(BT_year==tmps));
+                                        tmpyr=repmat(tmps+2000,size(tmpnm,2),1);
+                                    elseif strat==14+size(unique(BT_year),1)+1 %% TD strat obs only
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]<34./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1) BT_storm(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+2 % TS
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=34./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<64./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1) BT_storm(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;                
+                                        tmpnm=unique(BT_name(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+3 % H12
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=64./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+4 % H345
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+5 % N30
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                         end                     
+                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+6 % S30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                    elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-(14+size(unique(BT_year),1)+6));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year==tmps & BT_drops'==1,:,:);
+                                         end                                                
+                                        tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==1));
+                                        tmpyr=repmat(tmps+2000,size(tmpnm,2),1);   
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+1
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_drops==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_drops==0));                           
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+2
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_target';BT_target';BT_target';BT_target']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_target==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_target==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;  
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+3
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsB==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsB==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+4
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetB==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetB==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;   
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+5
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsB==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsB==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+6
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetB==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetB==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+7
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsB==1 & BT_drops==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsB==1 & BT_drops==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+8
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1 & [BT_target';BT_target';BT_target';BT_target']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetB==1 & BT_target==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetB==1 & BT_target==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+9
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsI==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsI==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;  
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+10
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsT==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsT==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+11
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetI';BT_targetI';BT_targetI';BT_targetI']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetI==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetI==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;  
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+12
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetT';BT_targetT';BT_targetT';BT_targetT']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetT==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetT==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+13 %% TD no obs only
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]<34./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0) BT_storm(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+14 % TS no obs only
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=34./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<64./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0) BT_storm(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;                
+                                        tmpnm=unique(BT_name(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+15 % H12 no obs only
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=64./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+16 % H345 no obs only
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)); 
+                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                         end                     
+                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                    elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year==tmps & BT_drops'==0,:,:);
+                                         end                                                
+                                        tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==0));
+                                        tmpyr=repmat(tmps+2000,size(tmpnm,2),1);    
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only[
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']'==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsI==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                     
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']'==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsT==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                    
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1 & [BT_drops';BT_drops';BT_drops';BT_drops']'==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsB==1 & BT_drops==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                                                                                                                      
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsB==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1));                                        
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                     
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsB==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+									elseif strat==100 % Low Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1<LOWbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin));
+									elseif strat==101 % Moderate Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin));												
+									elseif strat==102 % High Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>HIGHbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin));
+									elseif strat==103 % Low Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==1));
+									elseif strat==104 % Moderate Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1));
+									elseif strat==105 % High Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==1));
+									elseif strat==106 % Low Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==0));
+									elseif strat==107 % Moderate Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0));
+									elseif strat==108 % High Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
+                                    elseif strat==888
+                                        clear tmpyrb
+                                        numlist=[];
+                                        for ins=1:size(identnewsub,1)
+                                            tmp=identnewsub(ins,:);
+                                            for ins2=1:size(BT_date)
+                                                if strcmp(BT_date(ins2,:),tmp)==1
+                                                    numlist=[numlist ins2];
+                                                end
+                                            end
+                                        end
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
+                                        else
+                                            tmp_exp=tmp_exp(numlist,:,:);
+                                        end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(numlist));    
+                                    elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1) BT_storm(BT_enkf'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1));
+									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
+									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
+									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
+									end
+                                    tmp_exp1=tmp_exp;
+									tmp_name1='trkerr';
+									clear tmp_exp	
+									% Get Intensity and Stratify	
+									tmp_exp=spderr_exp(:,1:skip:end,identexploop);
+									if plt <19 || plt >20
+										tmp_exp=abs(tmp_exp); % added for MAE
+                                    end
+                                     % Strat
+                                    if strat==1
+                                        clear tmpyrb
+                                        tmpyr=identdr;
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==2
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_drops==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_drops==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==3
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_target';BT_target';BT_target';BT_target']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_target==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_target==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==4 % TD
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]<34./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1) BT_storm(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1));
+                                    elseif strat==5 % TS
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=34./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<64./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1) BT_storm(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;                
+                                        tmpnm=unique(BT_name(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1));
+                                    elseif strat==6 % H12
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=64./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1));
+                                    elseif strat==7 % H345
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1) BT_storm(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1));
+                                    elseif strat==8 % N30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                    elseif strat==9 % S30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat<30));
+                                    elseif strat==10 % RI
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]>=15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch>=15./1.94384,:,:);
+                                        end     															
+										tmpyr=unique([BT_year(BT_intch>=15./1.94384) BT_storm(BT_intch>=15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch>=15./1.94384));		
+									elseif strat==11 % IN
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]>5./1.94384 & [BT_intch;BT_intch;BT_intch;BT_intch]<15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch>5./1.94384 & BT_intch<15./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch>5./1.94384 & BT_intch<15./1.94384) BT_storm(BT_intch>5./1.94384 & BT_intch<15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch>5./1.94384 & BT_intch<15./1.94384));
+									elseif strat==12 % SS
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]>=-5./1.94384 & [BT_intch;BT_intch;BT_intch;BT_intch]<=5./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384) BT_storm(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch>=-5./1.94384 & BT_intch<=5./1.94384));
+									elseif strat==13 % W
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]<-5./1.94384 & [BT_intch;BT_intch;BT_intch;BT_intch]>-15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch<-5./1.94384 & BT_intch>-15./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch<-5./1.94384 & BT_intch>-15./1.94384) BT_storm(BT_intch<-5./1.94384 & BT_intch>-15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch<-5./1.94384 & BT_intch>-15./1.94384));
+									elseif strat==14 % RW
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_intch;BT_intch;BT_intch;BT_intch]<=-15./1.94384,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_intch<=-15./1.94384,:,:);
+                                        end     
+                                        tmpyr=unique([BT_year(BT_intch<=-15./1.94384) BT_storm(BT_intch<=-15./1.94384)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_intch<=-15./1.94384));
+									elseif strat>14 && strat<=14+size(unique(BT_year),1) % by year
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-14);
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]==tmps,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year==tmps,:,:);
+                                        end                    
+                                        tmpnm=unique(BT_name(BT_year==tmps));
+                                        tmpyr=repmat(tmps+2000,size(tmpnm,2),1);
+                                    elseif strat==14+size(unique(BT_year),1)+1 %% TD strat obs only
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]<34./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1) BT_storm(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+2 % TS
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=34./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<64./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1) BT_storm(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;                
+                                        tmpnm=unique(BT_name(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+3 % H12
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=64./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+4 % H345
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1) BT_storm(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+5 % N30
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                         end                     
+                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                    elseif strat==14+size(unique(BT_year),1)+6 % S30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                    elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-(14+size(unique(BT_year),1)+6));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year==tmps & BT_drops'==1,:,:);
+                                         end                                                
+                                        tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==1));
+                                        tmpyr=repmat(tmps+2000,size(tmpnm,2),1);   
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+1
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_drops==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_drops==0));                           
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+2
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_target';BT_target';BT_target';BT_target']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_target==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_target==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;  
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+3
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsB==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsB==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+4
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetB==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetB==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;   
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+5
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsB==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsB==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+6
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetB==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetB==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+7
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsB==1 & BT_drops==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsB==1 & BT_drops==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+8
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetB';BT_targetB';BT_targetB';BT_targetB']==1 & [BT_target';BT_target';BT_target';BT_target']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetB==1 & BT_target==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetB==1 & BT_target==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+9
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsI==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsI==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;  
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+10
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_dropsT==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_dropsT==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+11
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetI';BT_targetI';BT_targetI';BT_targetI']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetI==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetI==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;  
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+12
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_targetT';BT_targetT';BT_targetT';BT_targetT']==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_targetT==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_targetT==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+13 %% TD no obs only
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]<34./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TD')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0,:,:);
+                                        end                    
+                                        tmpyr=unique([BT_year(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0) BT_storm(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat<34./1.94384  & strcmp(BT_cat0,'TD')==1 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+14 % TS no obs only
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=34./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<64./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'TS')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0) BT_storm(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;                
+                                        tmpnm=unique(BT_name(BT_cat>=34./1.94384  & BT_cat<64./1.94384  & strcmp(BT_cat0,'TS')==1 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+15 % H12 no obs only
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=64./1.94384  & [BT_cat;BT_cat;BT_cat;BT_cat]<96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=64./1.94384  & BT_cat<96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+16 % H345 no obs only
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_cat;BT_cat;BT_cat;BT_cat]>=96./1.94384  & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);
+                                         end
+                                        tmpyr=unique([BT_year(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0) BT_storm(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_cat>=96./1.94384  & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)); 
+                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
+                                        clear tmpyrb
+                                         if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                         end                     
+                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
+                                        clear tmpyrb
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                        end
+                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=tmpyr(:,1);
+                                        tmpyr=tmpyr+2000;
+                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                    elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]==tmps & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year==tmps & BT_drops'==0,:,:);
+                                         end                                                
+                                        tmpnm=unique(BT_name(BT_year==tmps & BT_drops'==0));
+                                        tmpyr=repmat(tmps+2000,size(tmpnm,2),1);    
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only[
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsI';BT_dropsI';BT_dropsI';BT_dropsI']'==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsI==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsI==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                     
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsT';BT_dropsT';BT_dropsT';BT_dropsT']'==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsT==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsT==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                    
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1 & [BT_drops';BT_drops';BT_drops';BT_drops']'==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsB==1 & BT_drops==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1 & BT_drops==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                                                                                                                      
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==1,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsB==1,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==1));                                        
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==1));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;                                     
+                                    elseif strat>(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1) %% By Year strat noobs only
+                                        clear tmpyrb
+                                        tmps=sort(unique(BT_year));
+                                        tmps=tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)));
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([BT_year;BT_year;BT_year;BT_year]'==tmps & [BT_dropsB';BT_dropsB';BT_dropsB';BT_dropsB']'==0,:,:);
+                                        else
+                                            tmp_exp=tmp_exp(BT_year'==tmps & BT_dropsB==0,:,:);
+                                        end
+                                        tmpyr=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
+                                        tmpnm=unique(BT_name(BT_year'==tmps & BT_dropsB==0));
+                                        for tmpyri=1:size(tmpyr,2)
+                                            tmpyra=tmpyr{tmpyri};
+                                            tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+                                        end
+                                        tmpyr=tmpyrb+2000;
+									elseif strat==100 % Low Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1<LOWbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin));
+									elseif strat==101 % Moderate Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin));												
+									elseif strat==102 % High Shear
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>HIGHbasin,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin));
+									elseif strat==103 % Low Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==1));
+									elseif strat==104 % Moderate Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1));
+									elseif strat==105 % High Shear Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==1,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==1));
+									elseif strat==106 % Low Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<LOWbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==0));
+									elseif strat==107 % Moderate Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0));
+									elseif strat==108 % High Shear No Drops
+										clear tmpyrb
+										if plt>=21 && plt<=23
+											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+										else
+											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
+										end
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=tmpyr(:,1);
+										tmpyr=tmpyr+2000;
+										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
+                                    elseif strat==888
+                                        clear tmpyrb
+                                        numlist=[];
+                                        for ins=1:size(identnewsub,1)
+                                            tmp=identnewsub(ins,:);
+                                            for ins2=1:size(BT_date)
+                                                if strcmp(BT_date(ins2,:),tmp)==1
+                                                    numlist=[numlist ins2];
+                                                end
+                                            end
+                                        end
+                                        if plt>=21 && plt<=23
+                                            tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
+                                        else
+                                            tmp_exp=tmp_exp(numlist,:,:);
+                                        end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(numlist));    
+                                    elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1) BT_storm(BT_enkf'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1));
+									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
+									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
+									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
+									end
+                                    tmp_exp2=tmp_exp;
+									tmp_name2='spderr';
+									clear tmp_exp																
+									% Start Plotting
+									plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);                                    
+									for i=1:size(tmp_exp1,2)
+										tmpnan=[tmp_exp1(:,i) tmp_exp2(:,i)];
+										tmpnan(any(isnan(tmpnan), 2), :) = [];
+										cor(i)=corr2(tmpnan(:,1),tmpnan(:,2));
+										[R,P,RL,RU] = corrcoef(tmpnan(:,1),tmpnan(:,2),'Alpha',0.05);
+										if size(R)==1
+											corR(i)=NaN;
+											corP(i)=NaN;
+											corRL(i)=NaN;
+											corRU(i)=NaN;
+										else
+											corR(i)=R(1,2);
+											corP(i)=P(1,2);
+											corRL(i)=RL(1,2);
+											corRU(i)=RU(1,2);
+										end
+									end
+									l(1)=plot(1:size(tmp_exp1,2),corR,'-s','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);
+									corP=find(corP<=0.05);
+									l(3)=plot(corP,corR(corP),'s','Color','k','markerfacecolor',identexpcolors(1,:),'markersize',9)    
+									l(2)=plot(1:size(tmp_exp1,2),corRU,'--','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);
+									plot(1:size(tmp_exp1,2),corRL,'--','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);
+									set(gca,'plotboxaspectratio',[1 1 1])
+                                    xlabel('Forecast Lead Time (h)','fontsize',20)
+                                    ylabel(tmp_ytitle,'fontsize',20)
+                                    set(gca,'fontsize',20)
+                                    box on
+                                    if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
+                                        if mod(identmaxfhr*3,12)==0
+                                            xlim([1 ((identmaxfhr*3))/skiphr+1])
+                                        else
+                                            xlim([1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]) 
+                                        end
+                                    else
+                                        if mod(identmaxfhr*3-3,12)==0
+                                            xlim([1 ((identmaxfhr*3)-3)/skiphr+1])
+                                        else
+                                            xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]) 
+                                        end
+                                    end                                    
+									ylim([-1 1]);set(gca,'ytick',-1:.2:1);
+                                    set(gca,'xtick',1:skiptick:50)
+                                    set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
+                                    grid on
+                                    set(gca,'gridcolor','k','gridalpha',.15)
+                                    set(gca,'fontsize',20)      
+                                    hold off
+                                    box on
+									lh=legend(l,identexpshort{identexploop},'95% CI','Stat. Sig.','location','northeast');
+									lh.FontSize=10;
+                                    set(gcf,'Units','inches');
+                                    a1Pos = get(gca,'Position');
+                                    set(gcf, 'InvertHardcopy', 'off')
+                                    set(gcf,'Units','inches');
+                                    screenposition = get(gcf,'Position');
+                                    set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+                                    set(gcf, 'InvertHardcopy', 'off')
+                                    text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
+                                    if strat==1
+                                    else
+                                        text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                    end                
+                                    tmpuv = unique(tmpyr);
+                                    tmpn  = histc(tmpyr,tmpuv); 
+                                    if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
+                                    for tmpdr=1:length(tmpn)
+                                        if tmpdr==length(tmpn)
+                                            tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
+                                        else
+                                            tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
+                                        end
+                                    end;end;    
+                                    text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                                    ax=gca;
+                                    box on
+                                    set(ax, 'Layer', 'bottom')
+                                    ax.LineWidth=1; 
+                                    set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
+                                    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+                                    set(gca,'Color',[.9 .9 .9])
+                                    cntexp=sum(~isnan(tmp_exp1(:,1:skiptick:end)),1);
+                                    if sum([cntexp(:)])==0
+                                        tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+                                        set(tx, 'Layer', 'front')
+                                    end          
+                                    if plt==19
+                                         tx=text(0.02,0.05,'Slower than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+                                         tx=text(0.02,0.98,'Faster than BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+                                         set(tx, 'Layer', 'front')            
+                                    elseif plt==20
+                                         tx=text(0.02,0.05,'Left of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+                                         tx=text(0.02,0.98,'Right of BT','HorizontalAlignment','left','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');
+                                         set(tx, 'Layer', 'front')            
+                                    end
+                                    b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);
+                                    set(b,'plotboxaspectratio',[1 1 1])
+                                    set(b,'Color','none');
+                                    set(b,'YColor','none');
+                                    set(b,'tickdir','both')
+                                    set(b,'XColor',[0 0 0]);
+                                    set(b,'ytick',[]);
+                                    if mod(identmaxfhr*3,skiphr)==0  % xrange to nearest tickmark
+                                        if mod(identmaxfhr*3,12)==0
+                                            xlim(b,[1 ((identmaxfhr*3))/skiphr+1])
+                                            tmpxend=((identmaxfhr*3))/skiphr+1;
+                                        else
+                                            xlim(b,[1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]) 
+                                            tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;
+                                        end
+                                    else
+                                        if mod(identmaxfhr*3-3,12)==0
+                                            xlim(b,[1 ((identmaxfhr*3)-3)/skiphr+1])
+                                            tmpxend=((identmaxfhr*3)-3)/skiphr+1;
+                                        else
+                                            xlim(b,[1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]) 
+                                            tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;
+                                        end
+                                    end        
+                                    set(b,'xtick',[1:skiptick:50]);
+                                    trkerr_exp_fcnt=zeros(1,tmpxend);            
+                                    trkerr_exp_fcnt1=zeros(1,tmpxend);            
+                                    trkerr_exp_fcnt2=zeros(1,tmpxend);
+                                    cntexp=sum(~isnan(tmp_exp1(:,1:skiptick:end)),1);
+                                    set(gca,'fontsize',14)
+                                    xlabel('# fcsts','Position',[-1 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized'); 
+                                    set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)])
+                                    screenposition = get(gcf,'Position');
+                                    set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+                                    set(gcf, 'InvertHardcopy', 'off')
+                                    % Create a text box at every Tick label position
+                                    maxmin=squeeze(sum(~isnan(tmp_exp1(:,1:skiptick:end)),1))'; 
+                                    xTicks0 = get(gca, 'xticklabel');
+                                    xTicks = get(gca, 'xtick');
+                                    if size(maxmin,1)<size(xTicks0,1)
+                                        for n=1:size(xTicks0,1)-size(maxmin,1)
+                                            maxmin(end+n,:)=0;
+                                        end
+                                    end
+                                    set(b,'xticklabels',[]);
+                                    minY =0;
+                                    VerticalOffset1=0.03;
+                                    HorizontalOffset = 0.2;
+                                    for xx = 1:size(xTicks0,1)
+                                        tmptxt0=maxmin(xx,:);
+                                        tmplines=size(tmptxt0,2);
+                                        if size(unique(tmptxt0),2)==1
+                                            tmptxt1=num2str(tmptxt0(1)); 
+                                            text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)                    
+                                        else
+                                            for n=1:tmplines
+                                                tmptxt1=[];                            
+                                                tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];                           
+                                                if n==1
+                                                    text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14)
+                                                else
+                                                    text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14)                                
+                                                end
+                                            end    
+                                        end
+                                    end
+                                    f = getframe(hfig);
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_trkspdcorr_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                    close all
+                                end             
 							end
                         end
                     end

@@ -139,6 +139,9 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+12/22/22 | Enabled title header for samples of >5 or >10 years to be compressed
+	 | Enabled TC-by-TC, #fcsts, and PPC graphics to have adaptive font sizes as a function of the number of years in the sample
+	 | Added the capability to calculate the track vs. VMAX correlation for each stratification
 12/19/22 | Extended the bdeck/ catalog back through 2010
 12/15/22 | Modified labeling of consistency metric, for clarity, from "consistent" to "fully consistent".
 	 | Modified labeling of experiment with highest and lowest degree of consistent improvmeent to be highest and lowst degree of consistency - HDC and LDC, respectively.
