@@ -4,7 +4,7 @@
                     convyear=size(unique(yearsdone,'rows'),1);
                 else
                     convyear=size(unique(yearsdone,'rows'),1)+1;
-                end
+                end;set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual'); 
                 for yrlp=1:convyear
                    if yrlp==1
                    else

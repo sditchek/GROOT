@@ -18,13 +18,13 @@ identexpcolors=[0 152 0;208 0 0]/255;  						  % colors associated with each exp
 stormsdone=dir([identgroovpr,'/ALL']);                                            % short name of experiment that's completed the most cycles (must match name in "expnew" in runverif.ksh)
 
 % Case Study: recommendation - also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
-identcase=0';								          % run graphics for just 1 storm | yes (1) no (0)
-identcasename={'dorian05l'};						          % lowercase name of storm, ID, and basin identifier: dorian05l
+identcase=1';								          % run graphics for just 1 storm | yes (1) no (0)
+identcasename={'dorian05l'};identbasinid='AL';					  % identcasename: lowercase name of storm, ID, and basin identifier (e.g., dorian05l) | identbasinid:upper case 2-letter basin identifier
 identcaseyear='2019';							          % year of storm: YYYY
 
 % Error Graphics Options
 identgraphicsbycycle=0;                                         % error graphics for EACH CYCLE - must be 0 if identcompositeonly=1 | yes (1) no (0 - this saves time)
-identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
+identcompositeonly=0;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='RMDR';                                             % name for new subset - will be capitalized in the script
 identnewsubset=[{'2019082306-2019082612'}];  			% new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
@@ -139,8 +139,8 @@ elseif identcase==0
 elseif identcase==1
     disp('CLEANING UP PREVIOUS VERIFICATION RESULTS FOR THIS STORM...')
     tmpcasefold=upper(stormsdone{:});
-    tmpcasefold=[tmpcasefold(1:end-3) identcaseyear(3:4)]
-    if exist([identout,'RESULTS/',identfold,tmpcasefold,'/'], 'dir' ); rmdir([identout,'RESULTS/',identfold,tmpcasefold,'/'],'s');end;
+    tmpcasefold=[tmpcasefold identcaseyear(3:4)]
+    if exist([identout,'RESULTS/',identfold,tmpcasefold,'/TRACKINT/'], 'dir' ); rmdir([identout,'RESULTS/',identfold,tmpcasefold,'/TRACKINT/'],'s');end;
 end
 
 %% Save the output
@@ -168,6 +168,7 @@ end
 tmpidentcasename=identcasename{:};
 fid = fopen('caseverif.txt','wt');
 fprintf(fid,'%s\n',['initcasestudy="',num2str(identcase),'"']);
-fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/**/**/',upper(tmpidentcasename),yearsdone(end-1:end),'*'],'"']);
+fprintf(fid,'%s\n',['initpath="',[identout,'RESULTS/',identfold,'VERIFICATION/InvestN/',identbasinid,'/',upper(tmpidentcasename),yearsdone(end-1:end),'/'],'"']);
 fprintf(fid,'%s\n',['initend="',[identout,'RESULTS/',identfold],'"']);
+fprintf(fid,'%s\n',['initcasetcname="',[upper(tmpidentcasename),yearsdone(end-1:end)],'"']);
 fclose(fid);

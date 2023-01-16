@@ -1,7 +1,7 @@
 for satobs=1
                     if identsatobs==1
                         %clear identsatobs
-                        identinnerdrops=0;
+                        identinnerdrops=0;set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual');
                         identinnergaledrops=0;
                         identouterdrops=0;
                         identdenmap=zeros(10,3);

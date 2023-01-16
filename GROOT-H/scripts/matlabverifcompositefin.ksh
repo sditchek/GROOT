@@ -30,10 +30,17 @@ homepath=$3
 # Import the values in the output file
 cp commonverif.txt ${scriptspath}/
 source ./commonverif.txt
+cp caseverif.txt ${scriptspath}/
+source ./caseverif.txt
 
-# FINISH COMPOSITE STORMS
-matlab -nosplash -nodesktop -r "identindivstorm=0;identcomposite=1;identcompositeprep=0;identcompositerun=0;identcompositefin=1;" < ${scriptspath}/runverif.m > ${outputpath}/OUTPUT_VERIF_COMPOSITE.txt &
-wait
+# FINISH COMPOSITE TCS
+if [ "${initcasestudy}" -eq 1 ]
+then
+        echo Cleaning up now since this is a case study...
+else
+	matlab -nosplash -nodesktop -r "identindivstorm=0;identcomposite=1;identcompositeprep=0;identcompositerun=0;identcompositefin=1;" < ${scriptspath}/runverif.m > ${outputpath}/OUTPUT_VERIF_COMPOSITE.txt &
+	wait
+fi
 
 # Clean up old files
 rm -f ${scriptspath}/matlabverifbatch_*.ksh

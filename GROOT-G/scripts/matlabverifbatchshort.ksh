@@ -31,6 +31,8 @@ homepath=$4
 # Import the values in the output file
 cp commonverif.txt ${scriptspath}/
 source ./commonverif.txt
+cp caseverif.txt ${scriptspath}/
+source ./caseverif.txt
 
 # Remove slurm
 #rm -f ${homepath}/GROOT/GROOT-G/slurm*
@@ -54,7 +56,7 @@ then
 	#echo ${arr[$numcyc]}
 	echo Starting storm number ${numarr} ...
 
-	# INDIVIDUAL STORMS
+	# INDIVIDUAL TCS
 	matlab -nosplash -nodesktop -r "identstormsdone=${numarr};identindivstorm=1;identcomposite=0;" < ${scriptspath}/runverif.m > ${outputpath}/OUTPUT_VERIF_${numarr}.txt &
 	wait
 	
@@ -67,9 +69,15 @@ then
 		#echo $numcyc
 	        #echo ${arr[$numcyc]}
 	        #echo ${numarr}
-		echo Starting the composite section of GROOT ...
+		if [ "${initcasestudy}" -eq 1 ]
+		then
+			echo This is a case study so no need to start the composite section of GROOT...
+		        sbatch ${scriptspath}/matlabverifcompositefin.ksh $scriptspath $outputpath $homepath
+		else
 		
-                sbatch ${scriptspath}/matlabverifcomposite.ksh $scriptspath $outputpath $homepath
+			echo Starting the composite section of GROOT ...	
+                	sbatch ${scriptspath}/matlabverifcomposite.ksh $scriptspath $outputpath $homepath
+		fi
 	fi
 
 fi

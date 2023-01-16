@@ -31,7 +31,7 @@ homepath=$3
 cp commonverif.txt ${scriptspath}/
 source ./commonverif.txt
 
-# PREP COMPOSITE STORMS
+# PREP COMPOSITE TCS
 matlab -nosplash -nodesktop -r "identindivstorm=0;identcomposite=1;identcompositeprep=1;identcompositerun=0;identcompositefin=0;" < ${scriptspath}/runverif.m > ${outputpath}/OUTPUT_VERIF_COMPOSITE.txt &
 wait
 

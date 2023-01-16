@@ -7,7 +7,7 @@ for identremoveinvest=1
         identremoveinv=0;
         identremovename='InvestY';
     end
-    identremoveex=1;
+    identremoveex=1;set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual'); 
     if identindivstorm==1
         for stmdn=identstormsdone
             %% %%%%%%%%%%%%%%%% %%
@@ -175,7 +175,7 @@ for identremoveinvest=1
 						identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
                 end
                     % Add package to read grb2 files to path
-                    run('nctoolbox-1.1.3/setup_nctoolbox')
+                    %run('nctoolbox-1.1.3/setup_nctoolbox')
                 end
                 %% %%%%%%%%% %%
                 %% Get BDECK %%

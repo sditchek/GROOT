@@ -26,7 +26,7 @@ THE MAIN CAPABILITIES OF THIS GRAPHICS PACKAGE ARE TO GENERATE:
   1) ERROR STATISTICS (E.G., ERRORS/IMPROVEMENT/BIAS/FSP OF TRACK, INTENSITY, PRESSURE, TC SIZE)
   2) ASSIMILATED OBSERVATION GRAPHICS (I.E., THE EARTH-RELATIVE AND STORM-RELATIVE LOCATION OF THE OBSERVATION TYPE YOU ARE TESTING) 
   3) STORM-CENTERED DIFFERENCES OF ANY FIELD OUTPUTTED BY THE MODEL
-MOST IMPORTANTLY, THIS PACKAGE CAN BE USED FOR OSES/OSSES WITH ANY NUMBER OF EXPERIMENTS, WITH USER INPUT BEING CONFINED TO A BRIEF NAMELIST - EVERYTHING ELSE IS AUTOMATED.
+MOST IMPORTANTLY, THIS PACKAGE CAN BE USED WITH ANY NUMBER OF EXPERIMENTS, WITH USER INPUT BEING CONFINED TO A BRIEF NAMELIST - EVERYTHING ELSE IS AUTOMATED.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FILES AND DIRECTORIES %%
@@ -39,7 +39,7 @@ editgrb.m   	  | this script is the "namelist" - it is the only script that need
 rungrb.ksh        | this is the script that you will submit via batch which runs the grb capability
 editverif.m       | this script is the "namelist" - it is the only script that needs to be edited to run verification capability
 runverif.ksh      | this is the script that you will submit via batch which runs the verification capability
-bdeck/		  | folder that contains the bdecks for TCs from 2010-2021 - note that these are the final bdecks and have been post-processed to fill in blank columns so that GROOT can read it properly!
+bdeck/		  | folder that contains the bdecks for TCs from 2010-2021 - note that these are the final bdecks!
 nctoolbox-1.1.3/  | folder that allows for matlab to read the grb files
 retrievalscripts/ | folder that contains all scripts to retrieve files for package to run
   README              | this file explains how to edit and compile the the gsi scripts and how to run the retrieval script
@@ -68,7 +68,7 @@ scripts/ 	  | folder that contains all scripts needed to run the package
   rungrb.m	      | grb capability script
   runverif*.m	      | verification capability scripts
   tclookup.m          | enables the use of atcf files that use the storm id rather than the storm name
-  ttestsc.m           | function that incorporates serial correlation time of 12 h in the ttest calculation (as per Sim Aberson)
+  ttestsc.m           | function that incorporates serial correlation time of 12 h in the ttest calculation
   windbarbm.m         | function to generate wind barbs (note that flags are currently not filled)
 
 CREATED FOLDERS:
@@ -126,8 +126,7 @@ GRB CAPABILITY:
 %%%%%%%%%%%%%%%%%%
 
 VERIFICATION CAPABILITY:
-1) Significance is displayed on error-statistic graphics as squares (95%) with respect to identexpsigimp - this detail is not included on the graphics in order to save space.
-2) Every time you run this capability, if you ran the capability for the same set of experiments previously, those results are deleted. This is to ensure that your results include the most up-to-date data.
+Every time you run this capability, if you ran the capability for the same set of experiments previously, those results are deleted. This is to ensure that your results include the most up-to-date data.
 
 GRB CAPABILITY:
 1) Only the SYNOPTIC and STORM grids are used for the grb capability. 
@@ -139,6 +138,9 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+1/16/23  | Enabled GROOT compatibility with R2022b version of Matlab that was included on Hera as of the 1/10/23 maintenance
+	 | Ensured that if running a case study, the composite batch scripts would not be submitted - previously they were submited anyway even though there was nothing to composite
+	 | Fixed some bugs with the new track vs. VMAX correlation: 1) filename now has experiment, 2) experiment is in title bar, and 3) graphic now works if no stat. sig. points
 12/22/22 | Enabled title header for samples of >5 or >10 years to be compressed
 	 | Enabled TC-by-TC, #fcsts, and PPC graphics to have adaptive font sizes as a function of the number of years in the sample
 	 | Added the capability to calculate the track vs. VMAX correlation for each stratification

@@ -25,7 +25,7 @@ THIS DIRECTORY CONTAINS A VISUALIZATION PACKAGE FOR OBSERVING SYSTEM EXPERIMENTS
 THE MAIN CAPABILITY OF THIS GRAPHICS PACKAGE IS TO GENERATE:
   1) ERROR STATISTICS (E.G., ERRORS/IMPROVEMENT/BIAS/FSP OF TRACK, INTENSITY, PRESSURE, TC SIZE)
   2) ASSIMILATED OBSERVATION GRAPHICS (I.E., THE EARTH-RELATIVE AND STORM-RELATIVE LOCATION OF THE OBSERVATION TYPE YOU ARE TESTING)
-MOST IMPORTANTLY, THIS PACKAGE CAN BE USED FOR OSES/OSSES WITH ANY NUMBER OF EXPERIMENTS, WITH USER INPUT BEING CONFINED TO A BRIEF NAMELIST - EVERYTHING ELSE IS AUTOMATED.
+MOST IMPORTANTLY, THIS PACKAGE CAN BE USED WITH ANY NUMBER OF EXPERIMENTS, WITH USER INPUT BEING CONFINED TO A BRIEF NAMELIST - EVERYTHING ELSE IS AUTOMATED.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FILES AND DIRECTORIES %%
@@ -36,7 +36,7 @@ INITIALLY INCLUDED IN PACKAGE:
 README            | this file that explains what this visualization package is along with a description of the files and directories included and how to run the package
 editverif.m       | this script is the "namelist" - it is the only script that needs to be edited to run verification capability
 runverif.ksh      | this is the script that you will submit via batch which runs the verification capability
-bdeck/            | folder that contains the bdecks  
+bdeck/            | folder that contains the bdecks for TCs from 2010-2021 - note that these are the final bdecks!
 nctoolbox-1.1.3/  | folder that allows for matlab to read the grb files
 retrievalscripts/ | folder that contains all scripts to retrieve files for package to run
   gsi_diag_conv.f90   | this is the file you'd edit if you wanted to retrieve gsidiag files
@@ -95,14 +95,16 @@ VERIFICATION CAPABILITY:
 %%%%%%%%%%%%%%%%%%
 
 VERIFICATION CAPABILITY:
-1) Significance is displayed on error-statistic graphics as squares (95%) with respect to identexpsigimp - this detail is not included on the graphics in order to save space.
-2) Every time you run this capability, if you ran the capability for the same set of experiments previously, those results are deleted. This is to ensure that your results include the most up-to-date data.
-3) In order for observation-related subsets to work, observations are tabulated within 2000 km of each storm's center. In this way for the global model, the near-storm observational impact is quantified. On the conv_* graphics, it will be indicated whether the count value of assimilated observations is for R<2000 km.
+1) Every time you run this capability, if you ran the capability for the same set of experiments previously, those results are deleted. This is to ensure that your results include the most up-to-date data.
+2) In order for observation-related subsets to work, observations are tabulated within 2000 km of each storm's center. In this way for the global model, the near-storm observational impact is quantified. On the *conv* graphics, it will be indicated whether the count value of assimilated observations is for R<2000 km.
 
 %%%%%%%%%%%%%%%%%%%%%%
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+1/16/23  | Enabled GROOT compatibility with R2022b version of Matlab that was included on Hera as of the 1/10/23 maintenance
+         | Ensured that if running a case study, the composite batch scripts would not be submitted - previously they were submited anyway even though there was nothing to composite
+         | Fixed some bugs with the new track vs. VMAX correlation: 1) filename now has experiment, 2) experiment is in title bar, and 3) graphic now works if no stat. sig. points
 12/22/22 | Enabled title header for samples of >5 or >10 years to be compressed
          | Enabled TC-by-TC, #fcsts, and PPC graphics to have adaptive font sizes as a function of the number of years in the sample
          | Added the capability to calculate the track vs. VMAX correlation for each stratification

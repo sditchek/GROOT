@@ -1,7 +1,7 @@
 %% Since Basin-Scale, must get BT and common data for ALL storms run
                 for drops=1
                     if identconv==1
-                        clear identdrops
+                        clear identdrops;set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual'); 
                         identinnerdrops=0;
                         identinnergaledrops=0;
                         identouterdrops=0;
@@ -754,7 +754,7 @@ alldrops0=alldrops_stm{loop1};
                                 set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 f = getframe(hfig);
-								filename=[identtrackint,'/conv_hist_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+								filename=[identtrackint,'/',identn,'_convcomp_hist_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all    
                                 % Create storm-centered reference frame for all dropsonde locations
                                 spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
@@ -837,7 +837,7 @@ alldrops0=alldrops_stm{loop1};
                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window                    
                                 f = getframe(hfig);                    
-								filename=[identtrackint,'/conv_plan_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+								filename=[identtrackint,'/',identn,'_convcomp_plan_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all 
                                 %% Denmap for Subtypes  
                                 if size(identconvtype,2)>1
@@ -903,7 +903,7 @@ alldrops0=alldrops_stm{loop1};
                                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										filename=[identtrackint,'/conv_az_',identexpshort{exl},'_',identconvlegend{sot}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identtrackint,'/',identn,'_convcomp_az_',identexpshort{exl},'_',identconvlegend{sot}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         close all 
                                     end
                                 end
@@ -964,7 +964,7 @@ alldrops0=alldrops_stm{loop1};
                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 f = getframe(hfig);
-								filename=[identtrackint,'/conv_az_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+								filename=[identtrackint,'/',identn,'_convcomp_az_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all                
                             end        
                             valuescomp{exl}=tmp1;

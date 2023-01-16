@@ -3,9 +3,9 @@
                 %delete([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP*']);
                 %delete([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/*.txt']);
                 identdr=dir([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/*']);
-                dirFlags = [identdr.isdir];
-				identdr = identdr(dirFlags);
-				identdr=unique({identdr.name});
+                dirFlags = [identdr.isdir];set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual'); 
+		identdr = identdr(dirFlags);
+		identdr=unique({identdr.name});
                 identdr=identdr(3:end);
                 % Deal with storms that aren't finished or incomplete
                 cnt=1;clear tmprm;
@@ -17315,7 +17315,7 @@
 										sc(53,:)=NaN; sc(54,:)=tmp_impmed(:,7);sc(55,:)=NaN; % bias
 										sc(56,:)=NaN; % #fcst
 										sc(57,:)=NaN; % sig.
-										sc=sc(:,1:tmp_ylim(2));
+										if size(sc,2)>tmp_ylim(2);sc=sc(:,1:tmp_ylim(2));end;
 										% Start Figure
 										clear l cntexp
 										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -18388,7 +18388,7 @@
 									tmp_title='Track and VMAX Error Correlation';
 									tmp_ytitle='Correlation (r)';	
 									% Get Track and Stratify
-									tmp_exp=trkerr_exp(:,1:skip:end,identexploop);
+									tmp_exp=trkerr_exp(:,1:skip:end,identexploop);plt=1;
 									if plt <19 || plt >20
                                         tmp_exp=abs(tmp_exp); % added for MAE
                                     end
@@ -19068,7 +19068,7 @@
 									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));
-									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip(:,:,identexploop);BT_hfip(:,:,identexploop);BT_hfip(:,:,identexploop);BT_hfip(:,:,identexploop)])=NaN;else;tmp_exp(~BT_hfip(:,:,identexploop))=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip(:,:,identexploop),3),2)>0) BT_storm(sum(sum(BT_hfip(:,:,identexploop),3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip(:,:,identexploop),3),2)>0));
 									end
                                     tmp_exp1=tmp_exp;
 									tmp_name1='trkerr';
@@ -19754,7 +19754,7 @@
 									elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
 									elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
 									elseif strat==893;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0 & BT_drops'==1,:,:);end;tmpyr=unique([BT_year(BT_enkf'==0 & BT_drops'==1) BT_storm(BT_enkf'==0 & BT_drops'==1)],'rows');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0 & BT_drops'==1));
-									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip;BT_hfip;BT_hfip;BT_hfip])=NaN;else;tmp_exp(~BT_hfip)=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip,3),2)>0) BT_storm(sum(sum(BT_hfip,3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip,3),2)>0));
+									elseif strat==894;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp(~[BT_hfip(:,:,identexploop);BT_hfip(:,:,identexploop);BT_hfip(:,:,identexploop);BT_hfip(:,:,identexploop)])=NaN;else;tmp_exp(~BT_hfip(:,:,identexploop))=NaN;end;tmpyr=unique([BT_year(sum(sum(BT_hfip(:,:,identexploop),3),2)>0) BT_storm(sum(sum(BT_hfip(:,:,identexploop),3),2)>0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(sum(sum(BT_hfip(:,:,identexploop),3),2)>0));
 									end
                                     tmp_exp2=tmp_exp;
 									tmp_name2='spderr';
@@ -19780,7 +19780,7 @@
 									end
 									l(1)=plot(1:size(tmp_exp1,2),corR,'-s','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);
 									corP=find(corP<=0.05);
-									l(3)=plot(corP,corR(corP),'s','Color','k','markerfacecolor',identexpcolors(1,:),'markersize',9)    
+									if isempty(corP)==1;l(3)=plot(-999,-999,'s','Color','k','markerfacecolor',identexpcolors(1,:),'markersize',9);else;l(3)=plot(corP,corR(corP),'s','Color','k','markerfacecolor',identexpcolors(1,:),'markersize',9);end;
 									l(2)=plot(1:size(tmp_exp1,2),corRU,'--','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);
 									plot(1:size(tmp_exp1,2),corRL,'--','Color',identexpcolors(1,:),'linewidth',2,'markersize',2);
 									set(gca,'plotboxaspectratio',[1 1 1])
@@ -19809,8 +19809,8 @@
                                     set(gca,'fontsize',20)      
                                     hold off
                                     box on
-									lh=legend(l,identexpshort{identexploop},'95% CI','Stat. Sig.','location','northeast');
-									lh.FontSize=10;
+				    lh=legend(l,'Correlation','95% CI','Stat. Sig.','location','northeast');
+				    lh.FontSize=10;
                                     set(gcf,'Units','inches');
                                     a1Pos = get(gca,'Position');
                                     set(gcf, 'InvertHardcopy', 'off')
@@ -19820,9 +19820,11 @@
                                     set(gcf, 'InvertHardcopy', 'off')
                                     text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')    
                                     if strat==1
-                                    else
+					text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
+				    else
+					text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                         text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
-                                    end                
+				    end	
                                     tmpuv = unique(tmpyr);
                                     tmpn  = histc(tmpyr,tmpuv); 
                                     if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
@@ -19922,7 +19924,7 @@
                                         end
                                     end
                                     f = getframe(hfig);
-									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_trkspdcorr_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+			   	    filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_trkspdcorr_',stname,'_',identexp{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     close all
                                 end             
 							end

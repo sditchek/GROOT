@@ -28,7 +28,12 @@ source ./caseverif.txt
 
 if [ "${initcasestudy}" -eq 1 ]
 then
-	mv ${initpath} ${initend}
+	echo This is a case study so 1. moving the TC directory outside of the VERIFICATION/ folder and 2. making a copy of files typically produced for this TC when not a case study in the VERIFICATION/ folder...
+	mv ${initpath}/TRACKINT/ ${initend}/${initcasetcname}/
+	mkdir -p ${initpath}/TRACKINT/FULL/
+	cp ${initend}/${initcasetcname}/*.mat ${initpath}
+	cp ${initend}/${initcasetcname}/TRACKINT/*track* ${initpath}/TRACKINT/
+        cp ${initend}/${initcasetcname}/TRACKINT/*convcomp* ${initpath}/TRACKINT/
 fi
 
 echo "Thank you for using GROOT! Check out your results in the ${homepath}GROOT/GROOT-G/RESULTS/ directory. If you have any questions, please contact Sarah Ditchek (CIMAS-AOML)." > ${homepath}/GROOT/GROOT-G/SUBMISSION_FINISHED.txt

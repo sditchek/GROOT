@@ -1,5 +1,5 @@
 for graphics=1
-	clear l 
+	clear l;set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual');  
 	% Parameters
 	trkerr_sz=0; % find longest lead time - initialize value
 	spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
@@ -4424,7 +4424,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 				sc(53,:)=NaN; sc(54,:)=tmp_impmed(:,7);sc(55,:)=NaN; % bias
 				sc(56,:)=NaN; % #fcst
 				sc(57,:)=NaN; % sig.
-				sc=sc(:,1:tmp_ylim(2));
+				if size(sc,2)>tmp_ylim(2);sc=sc(:,1:tmp_ylim(2));end;
 
 				% Start Figure
 				clear l cntexp
@@ -20002,7 +20002,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									sc(53,:)=NaN; sc(54,:)=tmp_impmed(:,7);sc(55,:)=NaN; % bias
 									sc(56,:)=NaN; % #fcst
 									sc(57,:)=NaN; % sig.
-									sc=sc(:,1:tmp_ylim(2));
+									if size(sc,2)>tmp_ylim(2);sc=sc(:,1:tmp_ylim(2));end;
 									% Start Figure
 									clear l cntexp
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color

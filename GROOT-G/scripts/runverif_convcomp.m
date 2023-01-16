@@ -4,7 +4,7 @@
                     convyear=size(unique(yearsdone,'rows'),1);
                 else
                     convyear=size(unique(yearsdone,'rows'),1)+1;
-                end
+                end;set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual'); 
                 for yrlp=1:convyear
                    if yrlp==1
                    else
@@ -138,9 +138,9 @@
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                         f = getframe(hfig);
                         if yrlp==1
-							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_histcomp_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_hist_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
-							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_histcomp_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_hist_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
                         close all    
 
@@ -242,9 +242,9 @@
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                         f = getframe(hfig);
                         if yrlp==1
-							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_plancomp_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_plan_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
-                            filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_plancomp_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                            filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_plan_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
                         close all         
                         %% Denmap for Subtypes  
@@ -311,9 +311,9 @@
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 f = getframe(hfig);
                                 if yrlp==1
-									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_azcomp_',identexpshort{j},'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 else
-									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_azcomp_',identexpshort{j},'_',curyear,'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_',curyear,'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 end
                                 close all   
                             end
@@ -375,9 +375,9 @@
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                         f = getframe(hfig);
                         if yrlp==1
-							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_azcomp_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
-							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/conv_azcomp_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
                         close all   
                     end
