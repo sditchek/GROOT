@@ -52,8 +52,8 @@ rm -f ${homepath}/GROOT/GROOT-H/SUBMISSION_FINISHED.txt
 
 # Change Accounts and Emails
 cd ${homepath}/GROOT/GROOT-H/
-sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
-sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" rungrb.ksh
+sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" rungrb.ksh
 sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${scriptspath}
