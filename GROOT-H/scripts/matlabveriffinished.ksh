@@ -29,7 +29,7 @@ source ./caseverif.txt
 if [ "${initcasestudy}" -eq 1 ]
 then
 	echo This is a case study so 1. moving the TC directory outside of the VERIFICATION/ folder and 2. making a copy of files typically produced for this TC when not a case study in the VERIFICATION/ folder...
-	mv ${initpath}/TRACKINT/ ${initend}/${initcasetcname}/
+	mv ${initpath}/ ${initend}/
 	mkdir -p ${initpath}/TRACKINT/FULL/
 	cp ${initend}/${initcasetcname}/*.mat ${initpath}
 	cp ${initend}/${initcasetcname}/TRACKINT/*track* ${initpath}/TRACKINT/
