@@ -9,9 +9,9 @@ identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                                 	  
 identbasinmodel=1;                                                                % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'HF3A'};{'HWRF'}]; 		 	                                  % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
+identexp=[{'HF3A'};{'HWRF'}];  		 	                                  % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
                                                                                        % NOTE: the first experiment listed MUST be the one with all the observations assimilated
-identexpsigimp='HWRF';                                                              % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
+identexpsigimp='HWRF';                                                            % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
 identexpcolors=[0 152 0;208 0 0]/255;  						  % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                                       % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 										       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
@@ -20,14 +20,15 @@ stormsdone=dir([identgroovpr,'/HWRF/atcf']);                           % short n
 % Case Study: recommendation - also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0';								          % run graphics for just 1 storm | yes (1) no (0)
 identcasename={'05AL'};tmpcasefold='DORIAN19';identcasebasin='DORIAN05L';identbasinid='AL';    % identcasename=ID and basin identifier (e.g., 05AL) | tmpcasefold=uppercase name and 2-digit year (e.g., DORIAN19) | identcasebasin=uppercase name, ID, and single-letter identifier for the basin (e.g., 05L) | identbasinid=uppercase 2-letter basin identifier
-identcaseyear='2019';							          % year of storm: YYYY
+identcaseyear='2019;							          % year of storm: YYYY
 
 % Error Graphics Options
 identgraphicsbycycle=0;                                         % error graphics for EACH CYCLE - must be 0 if identcompositeonly=1 | yes (1) no (0 - this saves time)
 identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
 identns=0;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
-identnsname='RMDR';                                             % name for new subset - will be capitalized in the script
-identnewsubset=[{'2019082306-2019082612'}];  			% new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
+identnsname='OG4IC';                                            % name for new subset - will be capitalized in the script
+identnewsubset_id=[{'06L'};{'06L'};{'06L'};{'06L'};{'06L'};{'14L'};{'14L'};{'14L'};{'05L'};{'05L'};{'05L'};{'05L'};{'05L'};{'05L'};{'14L'};{'13L'};{'13L'}]; % new subset stormids if identns=1 - each associated entry in identnewsubset, enter the stormid (if range of cycles, enter the stormid once)
+identnewsubset=[{'2018091000'}; {'2018091200'}; {'2018091212'}; {'2018091300'}; {'2018091400'}; {'2018100900'}; {'2018100912'}; {'2018101000'}; {'2019082700'}; {'2019082800'}; {'2019083000'}; {'2019090100'}; {'2019090112'}; {'2019090312'}; {'2020082306'}; {'2020082512'}; {'2020082600'}]; %new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
                 	                                            % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]                                                                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
 identenkfexact=0;						%  covariance-type stratification - exact method: if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
 identenkfoper=1;identenkfoperpath='/scratch1/NCEPDEV/hwrf/noscrub/input/TDR/'; % covariance-type stratification - operational method: all cycles from the first TDR available through the end of the TC used enfk (1) do not do stratifications by enkf (0) | identenkfoperpath is the path to the TDR files on disk | if your model doesn't have this, set to identenkfoper=0.
@@ -38,10 +39,9 @@ identserialcorr=.5;identlagcorr=5;                        	% variance cutoff for
 identconv=0;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Dropsonde';                                        % full name of conventional observation | uppercase first letter | singular - will be come "Assimilated ____ Observations"
-identconvtype=[0];                                              % subtypes desired 
 identincludeobs=1					% the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
-                                                                    % NO SUBTYPE: identconvtype=0 | YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
-identconvcolors=[204 51 204;230 102 51]/255;                            % colors for each of your subtypes
+identconvtype=[0];                                              % subtypes desired = NO SUBTYPE: identconvtype=0 | YES SUBTYPE: identconvtype=[A B], where A and B are numbers from the diag file - any number of subtypes are supported
+identconvcolors=[204 51 204;230 102 51]/255;                    % colors for each of your subtypes
 identconvlegend=[{'Assimilated Mie (Cloudy) Observations'};{'Assimilated Rayleigh (Clear) Observations'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options
@@ -63,19 +63,19 @@ identconmetric=1;			  % include the consistency metric on the error/skill combo 
 
 identcycles=['all']; if identcompositeonly==1 identgraphicsbycycle=0; end  
 if identns==1
-    identnewsub=[];
+    identnewsub=[];identnewsub_id=[];
     for i=1:size(identnewsubset,1)
-        tmpnewsub=identnewsubset{i};
+        tmpnewsub=identnewsubset{i};tmpnewsub_id=identnewsubset_id{i};
         if isempty(strfind(tmpnewsub,'-'))==0 % then this is a range of dates...get all intermediate dates
             tmpnewsuba=tmpnewsub(1:10);
             tmpnewsubb=tmpnewsub(12:end);
             t1 = datetime(str2num(tmpnewsuba(1,1:4)),str2num(tmpnewsuba(1,5:6)),str2num(tmpnewsuba(1,7:8)),str2num(tmpnewsuba(1,9:10)),0,0,'format','yyyyMMddhh');
             t2 = datetime(str2num(tmpnewsubb(1,1:4)),str2num(tmpnewsubb(1,5:6)),str2num(tmpnewsubb(1,7:8)),str2num(tmpnewsubb(1,9:10)),0,0,'format','yyyyMMddhh');
             identinittimesunique2=datestr(t1:hours(6):t2,'yyyymmddhh');
-            identnewsub=[identnewsub;identinittimesunique2];
+            identnewsub=[identnewsub;identinittimesunique2];identnewsub_id=[identnewsub_id;repmat(identnewsubset_id,size(identnewsub,1),1)];
             clear identinittimesunique2
         else % then this is just one date...record this date
-            identnewsub=[identnewsub;tmpnewsub];
+            identnewsub=[identnewsub;tmpnewsub];identnewsub_id=[identnewsub_id;tmpnewsub_id];
             clear identinittimesunique2
         end
     end

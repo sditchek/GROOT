@@ -138,6 +138,7 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+3/20/23	 | Enabled new-subset stratification to take both the TC id and the TC cycle
 1/16/23  | Enabled GROOT compatibility with R2022b version of Matlab that was included on Hera as of the 1/10/23 maintenance
 	 | Ensured that if running a case study, the composite batch scripts would not be submitted - previously they were submited anyway even though there was nothing to composite
 	 | Fixed some bugs with the new track vs. VMAX correlation: 1) filename now has experiment, 2) experiment is in title bar, and 3) graphic now works if no stat. sig. points

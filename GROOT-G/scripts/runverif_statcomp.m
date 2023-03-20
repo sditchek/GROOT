@@ -4,8 +4,8 @@
                 %delete([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/*.txt']);
                 identdr=dir([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/*']);
                 dirFlags = [identdr.isdir];set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual'); 
-		identdr = identdr(dirFlags);
-		identdr=unique({identdr.name});
+				identdr = identdr(dirFlags);
+				identdr=unique({identdr.name});
                 identdr=identdr(3:end);
                 % Deal with storms that aren't finished or incomplete
                 cnt=1;clear tmprm;
@@ -552,7 +552,7 @@
                             stname=[num2str(2000+tmps(strat-(14+size(unique(BT_year),1)+6))),'-OBS'];
 							if sum(BT_year==str2num(stname(3:4)) & BT_drops'==1)==0
                                 breakstrat='yes';
-                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname],'wt');
+                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname,'.txt'],'wt');
                                 fprintf(fid,'%s\n',['STRATIFICATION: ',stname]);
                                 fprintf(fid,'%s\n','none');
                                 fclose(fid); 
@@ -743,7 +743,7 @@
                             stname=[num2str(2000+tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18))),'-NOOBS'];    
 							if sum(BT_year==str2num(stname(3:4)) & BT_drops'==0)==0
                                 breakstrat='yes';
-                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname],'wt');
+                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname,'.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: ',stname);
                                 fprintf(fid,'%s\n','none');
                                 fclose(fid); 
@@ -754,7 +754,7 @@
                             stname=[num2str(2000+tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)))),'-OBS-I'];  
 							if sum(BT_year'==str2num(stname(3:4)) & BT_dropsI==1)==0
                                 breakstrat='yes';
-                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname],'wt');
+                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname,'.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: ',stname);
                                 fprintf(fid,'%s\n','none');
                                 fclose(fid); 
@@ -765,7 +765,7 @@
                             stname=[num2str(2000+tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)))),'-OBS-T'];  
 							if sum(BT_year'==str2num(stname(3:4)) & BT_dropsT==1)==0
                                 breakstrat='yes';
-                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname],'wt');
+                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname,'.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: ',stname);
                                 fprintf(fid,'%s\n','none');
                                 fclose(fid); 
@@ -776,7 +776,7 @@
                             stname=[num2str(2000+tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)))),'-OBS-O'];  
 							if sum(BT_year'==str2num(stname(3:4)) & BT_dropsB==1 & BT_drops==0)==0
                                 breakstrat='yes';
-                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname],'wt');
+                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname,'.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: ',stname);
                                 fprintf(fid,'%s\n','none');
                                 fclose(fid); 
@@ -787,7 +787,7 @@
                             stname=[num2str(2000+tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)))),'-OBS-P'];  
 							if sum(BT_year'==str2num(stname(3:4)) & BT_dropsB==1)==0
                                 breakstrat='yes';
-                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname],'wt');
+                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname,'.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: ',stname);
                                 fprintf(fid,'%s\n','none');
                                 fclose(fid); 
@@ -798,7 +798,7 @@
                             stname=[num2str(2000+tmps(strat-((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)+size(unique(BT_year),1)))),'-NOOBS-P'];                                                  
 							if sum(BT_year'==str2num(stname(3:4)) & BT_dropsB==0)==0
                                 breakstrat='yes';
-                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname],'wt');
+                                fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',stname,'.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: ',stname);
                                 fprintf(fid,'%s\n','none');
                                 fclose(fid); 
@@ -908,9 +908,9 @@
                             stname=identnsname;clear tmpyrb;
                             numlist=[];
                             for ins=1:size(identnewsub,1)
-                                tmp=identnewsub(ins,:);
-                                for ins2=1:size(BT_date)
-                                    if strcmp(BT_date(ins2,:),tmp)==1
+                                tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+                                for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+                                    if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
                                         numlist=[numlist ins2];
                                     end
                                 end
@@ -3484,7 +3484,7 @@
 									end;end;end;fid=fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_scfactor.txt'],'w');fprintf(fid,'%s\n', 'No Data!');fclose(fid); %ERRCORR
 								load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat']);for plt=[1,21];for identexploop=1:size(identexp,1);for j=1:3;identvarcolors=[204 37 41;57 106 177;62 150 81]/255;clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);hold on;if plt==1;tmp_exp=cat(4,trkerr_exp(:,1:skip:end,:),spderr_exp(:,1:skip:end,:),interr_exp(:,1:skip:end,:));tmp_name='trkspdprs';elseif plt==21;tmpr34=cat(1,ne34err_exp(:,1:skip:end,:),nw34err_exp(:,1:skip:end,:),se34err_exp(:,1:skip:end,:),sw34err_exp(:,1:skip:end,:));tmpr50=cat(1,ne50err_exp(:,1:skip:end,:),nw50err_exp(:,1:skip:end,:),se50err_exp(:,1:skip:end,:),sw50err_exp(:,1:skip:end,:));tmpr64=cat(1,ne64err_exp(:,1:skip:end,:),nw64err_exp(:,1:skip:end,:),se64err_exp(:,1:skip:end,:),sw64err_exp(:,1:skip:end,:));tmp_exp=cat(4,tmpr34,tmpr50,tmpr64);tmp_name='R34R50R64';end;l(4)=plot(1:43,repmat(0.3162,1,43),'--k','linewidth',2);plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);  set(gca,'plotboxaspectratio',[1 1 1]);xlabel('Forecast Lead Time (h)','fontsize',20);ylabel('Correlation','fontsize',20);set(gca,'fontsize',20);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([1 ((identmaxfhr*3))/skiphr+1]);else;xlim([1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([1 ((identmaxfhr*3)-3)/skiphr+1]);else;xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);end;end;ylim([-.2 1]);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));grid on;set(gca,'gridcolor','k','gridalpha',.15);set(gca,'fontsize',20);hold off;box on;set(gcf,'Units','inches');a1Pos = get(gca,'Position');set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.065,['\textbf{Time-Lag Error Correlation for ',num2str((j-1)*6),' h}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');else;text(1,1.06,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpuv = unique(tmpyr);tmpn  = repmat(0,size(tmpuv,2),1)';if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;end;text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');ax=gca;box on;set(ax, 'Layer', 'bottom');ax.LineWidth=1; set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);set(gca,'Color',[.9 .9 .9]);for tmp=1:3;cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,identexploop,tmp)),1);end;
 								tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);set(b,'plotboxaspectratio',[1 1 1]);set(b,'Color','none');set(b,'YColor','none');set(b,'tickdir','both');set(b,'XColor',[0 0 0]);set(b,'ytick',[]);if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim(b,[1 ((identmaxfhr*3))/skiphr+1]);tmpxend=((identmaxfhr*3))/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;end;else;if mod(identmaxfhr*3-3,12)==0;	xlim(b,[1 ((identmaxfhr*3)-3)/skiphr+1]);tmpxend=((identmaxfhr*3)-3)/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);	tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;end;end;set(b,'xtick',[1:skiptick:50]);trkerr_exp_fcnt=zeros(1,tmpxend);trkerr_exp_fcnt1=zeros(1,tmpxend);trkerr_exp_fcnt2=zeros(1,tmpxend);for tmp=1:size(identexp,1);cntexp(:,tmp)=sum(~isnan(tmp_exp(:,1:skiptick:end,tmp)),1);end;set(gca,'fontsize',14);xlabel('# fcsts','Position',[-1 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized');set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)]);screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');maxmin=squeeze(sum(~isnan(tmp_exp(:,1:skiptick:end,:)),1));xTicks0 = get(gca, 'xticklabel');xTicks = get(gca, 'xtick');if size(maxmin,1)<size(xTicks0,1);for n=1:size(xTicks0,1)-size(maxmin,1);maxmin(end+n,:)=0;end;end;set(b,'xticklabels',[]);minY =0;VerticalOffset1=0.03;HorizontalOffset = 0.2;maxmin=maxmin.*0;for xx = 1:size(xTicks0,1);tmptxt0=maxmin(xx,:);tmplines=size(tmptxt0,2);if size(unique(tmptxt0),2)==1;tmptxt1=num2str(tmptxt0(1));text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;for n=1:tmplines;tmptxt1=[];tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];if n==1;text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14);end;end;end;end;f = getframe(hfig);filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_',tmp_name,'_ERRCORR_',num2str((j-1)*6),'h_',stname,'_',identexpshort{identexploop}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;end;end;end;load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat']); % TRKSPDERRCORR
-								for identexploop=1:size(identexp,1);clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);hold on;tmp_title='Track and VMAX Error Correlation';tmp_ytitle='Correlation (r)';	tmp_name1='trkerr';clear tmp_exp;tmp_name2='spderr';clear tmp_exp;plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);for i=1:size(tmp_exp1,2);corR(i)=NaN;corP(i)=NaN;corRL(i)=NaN;corRU(i)=NaN;end; l(1)=plot(1:size(corR,2),corR,'-s','Color',identexpcolors(identexploop,:),'linewidth',2,'markersize',2);l(3)=plot(-999,-999,'s','Color','k','markerfacecolor',identexpcolors(identexploop,:),'markersize',9);l(2)=plot(1:size(corRU,2),corRU,'--','Color',identexpcolors(identexploop,:),'linewidth',2,'markersize',2);set(gca,'plotboxaspectratio',[1 1 1]);xlabel('Forecast Lead Time (h)','fontsize',20);ylabel(tmp_ytitle,'fontsize',20);set(gca,'fontsize',20);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([1 ((identmaxfhr*3))/skiphr+1]);else;xlim([1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([1 ((identmaxfhr*3)-3)/skiphr+1]);else;xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);end;end;ylim([-1 1]);set(gca,'ytick',-1:.2:1);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));grid on;set(gca,'gridcolor','k','gridalpha',.15);set(gca,'fontsize',20);hold off;box on;lh=legend(l,identexpshort{identexploop},'95% CI','Stat. Sig.','location','northeast');lh.FontSize=10;set(gcf,'Units','inches');a1Pos = get(gca,'Position');set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;else;text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpyr=identdr;for tmpyri=1:size(tmpyr,2);tmpyra=tmpyr{tmpyri};tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));end;tmpyr=tmpyrb+2000;	tmpuv = unique(tmpyr);tmpn  = repmat(0,size(tmpuv,2),1)';if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;end;text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');ax=gca;box on;set(ax, 'Layer', 'bottom');ax.LineWidth=1;
+								for identexploop=1:size(identexp,1);clear l cntexp;set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);hold on;tmp_title='Track and VMAX Error Correlation';tmp_ytitle='Correlation (r)';	tmp_name1='trkerr';clear tmp_exp;tmp_name2='spderr';clear tmp_exp;plot(-10:89,zeros(1,100),'Color',[.5 .5 .5],'linewidth',2);tmp_exp1=trkerr_exp(:,1:skip:end,:);set(gca,'plotboxaspectratio',[1 1 1]);xlabel('Forecast Lead Time (h)','fontsize',20);ylabel(tmp_ytitle,'fontsize',20);set(gca,'fontsize',20);box on;if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim([1 ((identmaxfhr*3))/skiphr+1]);else;xlim([1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);end;else;if mod(identmaxfhr*3-3,12)==0;xlim([1 ((identmaxfhr*3)-3)/skiphr+1]);else;xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);end;end;ylim([-1 1]);set(gca,'ytick',-1:.2:1);set(gca,'xtick',1:skiptick:50);set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24)));grid on;set(gca,'gridcolor','k','gridalpha',.15);set(gca,'fontsize',20);hold off;box on;a1Pos = get(gca,'Position');set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.065,['\textbf{',tmp_title,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');if strat==1;else;text(1,1.03,['\textbf{SUBSET: ',upper(stname),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');end;tmpyr=identdr;for tmpyri=1:size(tmpyr,2);tmpyra=tmpyr{tmpyri};tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));end;tmpyr=tmpyrb+2000;	tmpuv = unique(tmpyr);tmpn  = repmat(0,size(tmpuv,2),1)';if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';for tmpdr=1:length(tmpn);if tmpdr==length(tmpn);tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];else;tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];end;end;end;text(0,1.027,['\textbf{TCS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized');ax=gca;box on;set(ax, 'Layer', 'bottom');ax.LineWidth=1;
 								set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);set(gca,'Color',[.9 .9 .9]);cntexp=sum(~isnan(tmp_exp1(:,1:skiptick:end)),1);tx=text(0.98,0.05,'Not Enough Data','HorizontalAlignment','right','VerticalAlignment','top','BackgroundColor', 'w','EdgeColor','k','fontsize',12,'units','normalized');set(tx, 'Layer', 'front');b=axes('Position',[a1Pos(1) a1Pos(2)-.11 a1Pos(3) a1Pos(4)]);set(b,'plotboxaspectratio',[1 1 1]);set(b,'Color','none');set(b,'YColor','none');set(b,'tickdir','both');set(b,'XColor',[0 0 0]);set(b,'ytick',[]);if mod(identmaxfhr*3,skiphr)==0;if mod(identmaxfhr*3,12)==0;xlim(b,[1 ((identmaxfhr*3))/skiphr+1]);tmpxend=((identmaxfhr*3))/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1]);tmpxend=((identmaxfhr*3)+(12-mod(identmaxfhr*3,12)))/skiphr+1;end;else;if mod(identmaxfhr*3-3,12)==0;	xlim(b,[1 ((identmaxfhr*3)-3)/skiphr+1]);tmpxend=((identmaxfhr*3)-3)/skiphr+1;else;xlim(b,[1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]);	tmpxend=((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1;end;end;set(b,'xtick',[1:skiptick:50]);trkerr_exp_fcnt=zeros(1,tmpxend);trkerr_exp_fcnt1=zeros(1,tmpxend);trkerr_exp_fcnt2=zeros(1,tmpxend);cntexp=sum(~isnan(tmp_exp1(:,1:skiptick:end)),1);set(gca,'fontsize',14);xlabel('# fcsts','Position',[-1 0],'VerticalAlignment','top','HorizontalAlignment','center','Rotation',90,'units','normalized');set(gca,'position',[spPos(1)+.02 spPos(2)-.05 spPos(3) spPos(4)]);screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');maxmin=squeeze(sum(~isnan(tmp_exp1(:,1:skiptick:end)),1));xTicks0 = get(gca, 'xticklabel');xTicks = get(gca, 'xtick');if size(maxmin,1)<size(xTicks0,1);for n=1:size(xTicks0,1)-size(maxmin,1);maxmin(end+n,:)=0;end;end;set(b,'xticklabels',[]);minY =0;VerticalOffset1=0.03;HorizontalOffset = 0.2;maxmin=maxmin.*0;for xx = 1:size(xTicks0,1);tmptxt0=maxmin(xx,:);tmplines=size(tmptxt0,2);if size(unique(tmptxt0),2)==1;tmptxt1=num2str(tmptxt0(1));text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;for n=1:tmplines;tmptxt1=[];tmptxt1=[tmptxt1,'\color[rgb]{',num2str(identexpcolors(n,:)),'}',num2str(tmptxt0(n))];if n==1;text(xTicks(xx), minY - VerticalOffset1,tmptxt1,'horizontalalignment','center','fontsize',14);else;text(xTicks(xx), minY - (VerticalOffset1+(.02*(n-1))),tmptxt1,'horizontalalignment','center','fontsize',14);end;end;end;end;f = getframe(hfig);filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/COMP_trkspdcorr_',stname];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;end;								
 								for scorecard=1 %SCORECARD
 									% Which Experiment to Compare To
@@ -4485,9 +4485,9 @@
 										clear tmpyrb
 										numlist=[];
 										for ins=1:size(identnewsub,1)
-											tmp=identnewsub(ins,:);
-											for ins2=1:size(BT_date)
-												if strcmp(BT_date(ins2,:),tmp)==1
+											tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+											for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+												if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
 													numlist=[numlist ins2];
 												end
 											end
@@ -5039,14 +5039,14 @@
 													elseif strat==888
 														numlist=[];
 														for ins=1:size(identnewsub,1)
-															tmp=identnewsub(ins,:);
-															for ins2=1:size(BT_date)
-																if strcmp(BT_date(ins2,:),tmp)==1
-																	numlist=[numlist ins2];
-																end
+														tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+														for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+															if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+																numlist=[numlist ins2];
 															end
 														end
-														if plt>=21 && plt<=23;tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);else;tmp_exp(numlist,:,:);end;
+													end
+													if plt>=21 && plt<=23;tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);else;tmp_exp(numlist,:,:);end;
 													elseif strat==890;if plt>=21 && plt<=23;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0,:,:)=NaN;end;
 													elseif strat==891;if plt>=21 && plt<=23;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:)=NaN;else;tmp_exp(BT_enkf'==1,:,:)=NaN;end;
 													elseif strat==892;if plt>=21 && plt<=23;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0 & BT_drops'==0,:,:)=NaN;end;
@@ -6690,13 +6690,13 @@
                                             clear tmpyrb
                                             numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                             else
@@ -7707,13 +7707,13 @@
                                         clear tmpyrb
                                         numlist=[];
                                         for ins=1:size(identnewsub,1)
-                                            tmp=identnewsub(ins,:);
-                                            for ins2=1:size(BT_date)
-                                                if strcmp(BT_date(ins2,:),tmp)==1
-                                                    numlist=[numlist ins2];
-                                                end
-                                            end
-                                        end
+											tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+											for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+												if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+													numlist=[numlist ins2];
+												end
+											end
+										end
                                         if plt>=21 && plt<=23
                                             tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                         else
@@ -8724,13 +8724,13 @@
                                             clear tmpyrb
                                             numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                             else
@@ -9755,13 +9755,13 @@
                                             clear tmpyrb
                                             numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                             else
@@ -10857,13 +10857,13 @@
                                     elseif strat==888
                                             clear tmpyrb;numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);tmp_bt=tmp_bt([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                             else
@@ -11990,13 +11990,13 @@
                                             clear tmpyrb
                                             numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                                 BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];
@@ -13135,13 +13135,13 @@
                                             clear tmpyrb
                                             numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                                 BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];
@@ -14272,13 +14272,13 @@
                                             clear tmpyrb
                                             numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                                 BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];
@@ -15328,13 +15328,13 @@
                                     elseif strat==888
                                             clear tmpyrb;numlist=[];
                                             for ins=1:size(identnewsub,1)
-                                                tmp=identnewsub(ins,:);
-                                                for ins2=1:size(BT_date)
-                                                    if strcmp(BT_date(ins2,:),tmp)==1
-                                                        numlist=[numlist ins2];
-                                                    end
-                                                end
-                                            end
+												tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+													if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+														numlist=[numlist ins2];
+													end
+												end
+											end
                                             if plt>=21 && plt<=23
                                                 tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                             else
@@ -16254,13 +16254,13 @@
                                     elseif strat==888
                                         clear tmpyrb;numlist=[];
                                         for ins=1:size(identnewsub,1)
-                                            tmp=identnewsub(ins,:);
-                                            for ins2=1:size(BT_date)
-                                                if strcmp(BT_date(ins2,:),tmp)==1
-                                                    numlist=[numlist ins2];
-                                                end
-                                            end
-                                        end
+											tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+											for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+												if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+													numlist=[numlist ins2];
+												end
+											end
+										end
                                         if plt>=21 && plt<=23
                                             tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                         else
@@ -17167,9 +17167,9 @@
 												clear tmpyrb
 												numlist=[];
 												for ins=1:size(identnewsub,1)
-													tmpns=identnewsub(ins,:);
-													for ins2=1:size(BT_date)
-														if strcmp(BT_date(ins2,:),tmpns)==1
+													tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+													for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+														if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
 															numlist=[numlist ins2];
 														end
 													end
@@ -18199,9 +18199,9 @@
 											elseif strat==888
 												clear tmpyrb;numlist=[];
 												for ins=1:size(identnewsub,1)
-													tmp=identnewsub(ins,:);
-													for ins2=1:size(BT_date)
-														if strcmp(BT_date(ins2,:),tmp)==1
+													tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+													for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+														if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
 															numlist=[numlist ins2];
 														end
 													end
@@ -19052,13 +19052,13 @@
                                         clear tmpyrb
                                         numlist=[];
                                         for ins=1:size(identnewsub,1)
-                                            tmp=identnewsub(ins,:);
-                                            for ins2=1:size(BT_date)
-                                                if strcmp(BT_date(ins2,:),tmp)==1
-                                                    numlist=[numlist ins2];
-                                                end
-                                            end
-                                        end
+											tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+											for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+												if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+													numlist=[numlist ins2];
+												end
+											end
+										end
                                         if plt>=21 && plt<=23
                                             tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                         else
@@ -19738,13 +19738,13 @@
                                         clear tmpyrb
                                         numlist=[];
                                         for ins=1:size(identnewsub,1)
-                                            tmp=identnewsub(ins,:);
-                                            for ins2=1:size(BT_date)
-                                                if strcmp(BT_date(ins2,:),tmp)==1
-                                                    numlist=[numlist ins2];
-                                                end
-                                            end
-                                        end
+											tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+											for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);
+												if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1 
+													numlist=[numlist ins2];
+												end
+											end
+										end
                                         if plt>=21 && plt<=23
                                             tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);
                                         else
@@ -19931,5 +19931,5 @@
                         end
                     end
                 end
-                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
+                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
             end

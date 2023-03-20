@@ -6676,9 +6676,9 @@ for graphics=1
 						clear tmpyrb
 						numlist=[];
 						for ins=1:size(identnewsub,1)
-							tmpns=identnewsub(ins,:);
-							for ins2=1:size(identinittimesunique,1)
-								if strcmp(identinittimesunique(ins2,:),tmpns)==1
+							tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+							for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+								if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 									numlist=[numlist ins2];
 								end
 							end
@@ -10788,9 +10788,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -11904,9 +11904,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -12587,9 +12587,9 @@ for graphics=1
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -13280,9 +13280,9 @@ for graphics=1
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -13913,9 +13913,9 @@ for graphics=1
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -14600,9 +14600,9 @@ for graphics=1
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -15196,9 +15196,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -15880,9 +15880,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -16546,9 +16546,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -17235,9 +17235,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -17864,9 +17864,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -18526,9 +18526,9 @@ for graphics=1
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -19094,9 +19094,9 @@ for graphics=1
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -19734,15 +19734,15 @@ for graphics=1
 											clear tmpyrb
 											numlist=[];
 											for ins=1:size(identnewsub,1)
-												tmpns=identnewsub(ins,:);
-												for ins2=1:size(identinittimesunique,1)
-													if strcmp(identinittimesunique(ins2,:),tmpns)==1
+												tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+													if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 														numlist=[numlist ins2];
 													end
 												end
 											end
-											if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;
-											tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
+										if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;
+										tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 										elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
 										elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpnm=identinittimesunique(BT_enkf'==0 & ~isnan(BT_cat1)==1,:);
 										elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & BT_drops'==1 & ~isnan(BT_cat1)==1,:);
@@ -20068,6 +20068,6 @@ for graphics=1
 			end
 		end
 	end
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
+	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
 end

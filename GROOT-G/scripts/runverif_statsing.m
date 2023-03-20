@@ -131,7 +131,7 @@ for graphics=1
 			exp_shr=nan(100,size(identexp,1)); 
 			% Loop
 			for tmp=1:size(identexp,1)                
-filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/atcf/',filename.name]; fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end; end;
+filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/atcf/',filename.name]; fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end;end;
 				[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,identoutputres);
 				initsizeexp=size(FHRall,2);
 				exp_fhr(1:initsizeexp,tmp)=FHRall';
@@ -6686,9 +6686,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 						clear tmpyrb
 						numlist=[];
 						for ins=1:size(identnewsub,1)
-							tmpns=identnewsub(ins,:);
-							for ins2=1:size(identinittimesunique,1)
-								if strcmp(identinittimesunique(ins2,:),tmpns)==1
+							tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+							for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+								if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 									numlist=[numlist ins2];
 								end
 							end
@@ -10806,9 +10806,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -11938,9 +11938,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -12629,9 +12629,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -13330,9 +13330,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -13971,9 +13971,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -14666,9 +14666,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -15270,9 +15270,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											end
 										end
@@ -15962,9 +15962,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -16636,9 +16636,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -17333,9 +17333,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -17970,9 +17970,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -18640,9 +18640,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									clear tmpyrb
 									numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -19216,9 +19216,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								elseif strat==888
 									clear tmpyrb;numlist=[];
 									for ins=1:size(identnewsub,1)
-										tmpns=identnewsub(ins,:);
-										for ins2=1:size(identinittimesunique,1)
-											if strcmp(identinittimesunique(ins2,:),tmpns)==1
+										tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+										for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+											if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 												numlist=[numlist ins2];
 											else
 											end
@@ -19864,15 +19864,15 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 											clear tmpyrb
 											numlist=[];
 											for ins=1:size(identnewsub,1)
-												tmpns=identnewsub(ins,:);
-												for ins2=1:size(identinittimesunique,1)
-													if strcmp(identinittimesunique(ins2,:),tmpns)==1
+												tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);
+												for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);
+													if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 
 														numlist=[numlist ins2];
 													end
 												end
 											end
-											if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;
-											tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
+										if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;
+										tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 										elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
 										elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpnm=identinittimesunique(BT_enkf'==0 & ~isnan(BT_cat1)==1,:);
 										elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & BT_drops'==1 & ~isnan(BT_cat1)==1,:);
@@ -20198,6 +20198,6 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 			end
 		end
 	end
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
+	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
 end
