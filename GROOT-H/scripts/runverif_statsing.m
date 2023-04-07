@@ -131,8 +131,8 @@ for graphics=1
 			exp_shr=nan(100,size(identexp,1)); 
 			% Loop
 			for tmp=1:size(identexp,1)                
-				filename = dir([identgroovpr,identexpshort{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/',filename.name];
-				[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,0);
+				filename = dir([identgroovpr,identexpshort{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/',filename.name];fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end;end;				
+				[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,identoutputres);
 				initsizeexp=size(FHRall,2);
 				exp_fhr(1:initsizeexp,tmp)=FHRall';
 				exp_lon(1:initsizeexp,tmp)=LONall;exp_land(1:initsizeexp,tmp)=LANDall;
@@ -20068,6 +20068,6 @@ for graphics=1
 			end
 		end
 	end
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
+	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
 end

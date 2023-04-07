@@ -28,20 +28,26 @@ tmpunique=unique(tmpunique,'rows');
 	if isfile(filename)==1; 
 		[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);
 		identn=unique(NAMEall,'rows','stable');
-		identn=identn(end,:);
+		if sum(isletter(identn(end,:)))==0;identn=identn(end-1,:);else;identn=identn(end,:);end;
 		identn=identn(double(identn)>0);
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;identhwrf{stmdn,:}=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];
+		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;
+		identhwrf{stmdn,:}=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];	
 		if strcmp(identtmp1(1),'9')==1; 
-			identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];
+			identhwrf{stmdn,:}=['invest',lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];
 		end 
+	elseif strcmp(identtmp1(1),'9')==1;
+		identhwrf{stmdn,:}=['invest',lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];
 	end;
 end
 % RENAME FILES
 fid = fopen([identout,'tclookup.txt'],'wt');
 for id=1:size(identhwrf,1)
-	tcl=['rename ',tmpunique(id,:),' ',identhwrf{id},' *'] 
-	fprintf(fid,'%s\n',tcl);
+	if isempty(identhwrf{id})==1
+	else
+		tcl=['rename ',tmpunique(id,:),' ',identhwrf{id},' *'] 
+		fprintf(fid,'%s\n',tcl);
+	end
 end
 fclose(fid);

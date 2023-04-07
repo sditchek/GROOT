@@ -10,10 +10,12 @@
 #SBATCH -o /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/archive.log # XXXX: Output
 #SBATCH -e /scratch1/AOML/aoml-osse/Sarah.D.Ditchek/TAPE/error.log   # XXXX: Output
 
-#################################################################################################
-########### This script retrieves scrubbed data from HPSS for a given experiment ################
-# 1) 3-h track files | 2) synoptic .grb2 files | 3) storm .grb2 files  | 4) gsi data you choose #
-#################################################################################################
+########################################################################################################
+########### This script retrieves scrubbed data from hpss for a given experiment         ###############
+########### NOTE: if you did not have iscyclecomplete.ksh in your crontab, just fill it  ###############
+########### out and run it twice before running this retrieval script.                   ###############
+########################################################################################################
+
 set -x
 module load hpss
 

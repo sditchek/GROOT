@@ -12,25 +12,25 @@
 # start of user settings #
 ##########################
 
-# FOLLOW THE BELOW STEPS IN ORDER OR THE VERIFICATION CAPABILITY WON'T WORK!!
+# FOLLOW THE BELOW STEPS ~~IN ORDER~~ OR THE VERIFICATION CAPABILITY WON'T WORK!!
 # 1) DO NOT CHANGE ANYTHING ABOVE THIS LINE. FIRST FILL OUT THE USER SETTINGS BELOW
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-dirpth=/scratch1/AOML/aoml-osse/${USER} # directory path above GROOT package running location (typically your home directory)
-resultspath=/scratch2/AOML/aoml-osse/${USER}/GROOT/GROOT-G/                              # directory path for results (can be any directory - typically your home directory)
-cycling="6"               				# frequency of cycling in your model (often 6 for 6 h)
-set -A expyears 2020 2021				# years included (i.e., YYYY) - for more than one year list with spaces between them
-numyears=2								# number of years in expyears - the number must match!	
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/foremc/from_bin_new/             # location of your atcf or adeck output
-diagoutput=${atcfoutput}			    # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
+dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT package running location (typically your home directory)
+resultspath=/scratch1/AOML/aoml-hafs1/${USER}/GROOT/GROOT-G/    # directory path for results (can be any directory - typically your home directory)
+cycling="6"               					# frequency of cycling in your model (often 6 for 6 h)
+set -A expyears 2020 2021					# years included (i.e., YYYY) - for more than one year list with spaces between them
+numyears=2							# number of years in expyears - the number must match!	
+atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/for/foremc/from_bin_new/ # location of your atcf or adeck output
+diagoutput=${atcfoutput}			                # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
 usingadecks=1							# are your atcf files merged into adecks? if so, GROOT has an additional preprocessing step | (1) yes (0) no
 
 # Identify Experiments
-set -A expfold HF3A HWRF 	            # exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
-set -A expnew HF3A HWRF                 # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
+set -A expfold GFS-CTL GFS-EXP 	        # exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expnew GFS-CTL GFS-EXP           # names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               # number of folders in expnew - the number must match!
-obstype=uv				                # the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
+obstype=uv				# the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
 
 # Account Information
 acntold=aoml-osse                       # account currently listed in SBATCH above
@@ -42,9 +42,10 @@ emlnew=sarah.d.ditchek@noaa.gov         # email address you want listed in SBATC
 startdate1="2020-06-01 12"
 enddate1="2021-11-07 06"
  
-########################
-# END OF USER SETTINGS #
-########################
+##########################################
+########## END OF USER SETTINGS ##########
+# DO NOT CHANGE ANYTHING BELOW THIS LINE #
+##########################################
 
 # Save start and end dates
 startdate2=${startdate1}

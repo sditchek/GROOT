@@ -10,7 +10,7 @@
 ident=['AL052019'];                                             % basin, ID, and year (e.g., AL092016)
 identn=['DORIAN19'];                                            % NAMEYY (e.g., HERMINE16)
 identhwrf=['dorian05l'];                                        % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
-identcycles='2019082918'; %['2019082700';'2019082706';'2019082712';'2019082718';'2019082800';'2019082806';'2019082812';'2019082818';'2019082900';'2019082906';'2019082912';'2019082918';'2019083000'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
+identcycles='2019082700'; %['2019082700';'2019082706';'2019082712';'2019082718';'2019082800';'2019082806';'2019082812';'2019082818';'2019082900';'2019082906';'2019082912';'2019082918';'2019083000'];			 		        % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
 identmaxfhr=(126)/3+1;identmodelfhr=(126)/3+1;                  % max forecast hours set in model (e.g., 126) - keep the /3+1
 identlevels=46;                                                 % number of pressure levels
 identexp=[{'HB20new'};{'HB20_NO'}];                      % full folder name of all experiments to compare - name from your scrub directory
@@ -39,7 +39,7 @@ initsynoptic=0;                                                 % create SYNOPTI
 initgraphicssynoptic=0;                                         % create SYNOPTIC grid graphics | yes (1) or no (0)
 initstorm=1;                                                    % create STORM grid .mat files | yes (1) or no (0)
 initgraphicsstorm=1;                                            % create STORM grid graphics | yes (1) or no (0)
-identplan=1;                                                    % create plan-view graphics (turn off to save time) | yes (1) no (0)
+identplan=0;                                                    % create plan-view graphics (turn off to save time) | yes (1) no (0)
 identsave=0;                                                    % do you want to save .mat files of the computed fields that make the graphics? This takes up more space! | yes (1) no (0)
 identeps=1;                                                     % save as eps or png? | eps (1) png (0)
 

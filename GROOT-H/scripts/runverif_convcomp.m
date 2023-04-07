@@ -36,7 +36,7 @@
                             presum=sum(presum,3);
                             compvalues=cat(1,compvalues,presum);
 
-                            if size(identconvtype,2)>1
+                            if size(identconvobssubtype,2)>1
                                 compdenmap_t=cat(1,compdenmap_t,denmapcomp_t{j});
                                 compinner_t=identdroplist{5}+compinner_t;
                                 compgale_t=identdroplist{6}+compgale_t;
@@ -64,20 +64,20 @@
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                         hold on
                         if isempty(compvalues)==1
-                            if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                for sot=1:size(identconvtype,2)
-                                     l(sot)=plot(0,5000,'.','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:));
+                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                for sot=1:size(identconvobssubtype,2)
+                                     l(sot)=plot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));
                                      lsz(sot)=0;
                                 end
                             else % there are no subtypes to this conventional bservation!
                                 l(1)=plot(0,5000,'.k');
                             end
                         else
-                            if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                for sot=1:size(identconvtype,2)
-                                    [counts,centers]=hist(compvalues((compvalues(:,9)==identconvtype(sot)),5),[0:5:2000]);
-                                    l(sot)=plot(centers,counts,'-','color',identconvcolors(sot,:),'linewidth',2);            
-                                    lsz(sot)=size(compvalues((compvalues(:,9)==identconvtype(sot)),1),1);
+                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                for sot=1:size(identconvobssubtype,2)
+                                    [counts,centers]=hist(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),5),[0:5:2000]);
+                                    l(sot)=plot(centers,counts,'-','color',identconvobscolors(sot,:),'linewidth',2);            
+                                    lsz(sot)=size(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),1),1);
                                 end
                             else % there are no subtypes to this conventional observation!
                                    [counts,centers]=hist(compvalues(:,5),[0:5:2000]);
@@ -89,9 +89,9 @@
                             ymaxallbasin=round(max(counts)/100)*100+50;
                         end
                         ylim([0 ymaxallbasin])
-                        if size(identconvtype,2)>1
-                                for sot=1:size(identconvtype,2)
-                                    identlegendconv(sot)={[identconvlegend{sot} ' (',num2str(lsz(sot)),')']};
+                        if size(identconvobssubtype,2)>1
+                                for sot=1:size(identconvobssubtype,2)
+                                    identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                 end
                                 ll=legend(l,identlegendconv,'location','northeast');
                         else
@@ -164,27 +164,27 @@
                         ax1=subplot(3,4,[1:8],polaraxes);
                          hold on
                         if isempty(compvalues)==1
-                            if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                for sot=1:size(identconvtype,2)
-                                     l(sot)=polarplot(0,5000,'.','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:));
+                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                for sot=1:size(identconvobssubtype,2)
+                                     l(sot)=polarplot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));
                                      lsz(sot)=0;
                                 end
                             else % there are no subtypes to this conventional bservation!
                                 l(1)=polarplot(0,5000,'.k');
                             end
                         else
-                            if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                for sot=1:size(identconvtype,2)
-                                    l(sot)=polarplot(compvalues((compvalues(:,9)==identconvtype(sot)),6)*pi/180,compvalues((compvalues(:,9)==identconvtype(sot)),5),'.','color',identconvcolors(sot,:));
-                                    lsz(sot)=size(compvalues((compvalues(:,9)==identconvtype(sot)),1),1);
+                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                for sot=1:size(identconvobssubtype,2)
+                                    l(sot)=polarplot(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),6)*pi/180,compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),5),'.','color',identconvobscolors(sot,:));
+                                    lsz(sot)=size(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),1),1);
                                 end
                             else % there are no subtypes to this conventional bservation!
                                     l(1)=polarplot(compvalues(:,6)*pi/180,compvalues(:,5),'.k');
                             end
                         end
-                        if size(identconvtype,2)>1
-                                for sot=1:size(identconvtype,2)
-                                    identlegendconv(sot)={[identconvlegend{sot} ' (',num2str(lsz(sot)),')']};
+                        if size(identconvobssubtype,2)>1
+                                for sot=1:size(identconvobssubtype,2)
+                                    identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                 end
                                 l=legend(l,identlegendconv,'location','northeast');
                         else
@@ -248,8 +248,8 @@
                         end
                         close all         
                         %% Denmap for Subtypes  
-                        if size(identconvtype,2)>1
-                            for sot=1:size(identconvtype,2)
+                        if size(identconvobssubtype,2)>1
+                            for sot=1:size(identconvobssubtype,2)
                                 clear tmp1_den_tt
                                 if isempty(compdenmap_t)==1
                                     tmp1_den_tt=zeros(11,3);
@@ -311,9 +311,9 @@
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 f = getframe(hfig);
                                 if yrlp==1
-									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_',erase(erase(identconvobslegend{sot}," "),"-")];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 else
-									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_',curyear,'_type',num2str(identconvtype(sot))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_',curyear,'_',erase(erase(identconvobslegend{sot}," "),"-")];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 end
                                 close all   
                             end
@@ -381,7 +381,7 @@
                         end
                         close all   
                     end
-                    clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone convyear ymaxallbasin identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsbycycle identgraphicsconv yrlp identconvid  ident* skip* stormsdone yearsdone
+                    clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone convyear ymaxallbasin identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv yrlp identconvid  ident* skip* stormsdone yearsdone
 
                 end
             end

@@ -906,7 +906,7 @@
                                 end
                             end
                             if isempty(numlist)==1
-                                breakstrat='yes';fid = fopen([identtrackint,'/STRAT_',identnsname,'.txt'],'wt');fprintf(fid,'%s\n',['STRATIFICATION: ',identnsname]);fprintf(fid,'%s\n','none');fclose(fid);
+                                breakstrat='yes';fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_',identnsname,'.txt'],'wt');fprintf(fid,'%s\n',['STRATIFICATION: ',identnsname]);fprintf(fid,'%s\n','none');fclose(fid);
                             end     
                         elseif strat==890;clear breakstrat;stname='HCOV';if sum(BT_enkf'==1)==0;breakstrat='yes';fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_HCOV.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: HCOV');fprintf(fid,'%s\n','none');fclose(fid);end; 
                         elseif strat==891;clear breakstrat;stname='GCOV';if sum(BT_enkf'==0)==0;breakstrat='yes';fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_GCOV.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: GCOV');fprintf(fid,'%s\n','none');fclose(fid);end; 
@@ -19737,5 +19737,5 @@
                         end
                     end
                 end
-                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
+                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
             end

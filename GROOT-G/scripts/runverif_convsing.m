@@ -63,7 +63,7 @@
 				identbasin=identbasinname;
                                 % Get the TC VITALS for each storm
                                 for i=1:size(identdropsdat,1)                                
-                                    filename = [identgroovpr,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];                                                                               
+                                    if identhwrfmodel==1;filename = [identgroovpr,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];elseif identhafsmodel==1;filename = [identgroovpr,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];delimiter = ' ';formatSpec = '%10s%4s%4s%[^\n\r]';fileID = fopen(filename,'r');dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);fclose(fileID);tcvit_id=dataArray{2};tcvit_id=tcvit_id{:};tcvit_id=tcvit_id(2:4);filename = [identgroovpr,'tcvitals/',tcvit_id,'.',identinittimesunique(identloop,:),'.storm_vit'];end;                                                                   
                                     delimiter = ' ';
                                     formatSpec = '%3s%5s%5s%14s%5s%5s%6s%4s%4s%5s%5s%5s%3s%4s%5s%5s%5s%5s%2s%5s%5s%5s%5s%3s%5s%6s%5s%5s%5s%s%[^\n\r]';
                                     fileID = fopen(filename,'r');
@@ -187,21 +187,21 @@
                                             alldrops0=alldrops{loop1};
                                             alldrops0=alldrops0{loop};
                                             if sum(~isnan(alldrops0(:)))==0
-                                                if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                                    for sot=1:size(identconvtype,2)
-                                                         l(sot)=plot(-360,-360,'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);
+                                                if size(identconvobssubtype,2)>1 % there are multiple types of conv obs!
+                                                    for sot=1:size(identconvobssubtype,2)
+                                                         l(sot)=plot(-360,-360,'o','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:),'markersize',2);
                                                          lsz(sot)=0;
                                                     end
-                                                else % there are no subtypes to this conventional bservation!
+                                                else % there is 1 type of conv obs!
                                                     l(1)=plot(-360,-360,'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');
                                                 end
                                             else                       
-                                                if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                                    for sot=1:size(identconvtype,2)
-                                                         if size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1)==0; l(sot)=plot(-360,-360,'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2); else;l(sot)=plot(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),alldrops0((alldrops0(:,9)==identconvtype(sot)),2),'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);end;
-                                                         lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1);
+                                                if size(identconvobssubtype,2)>1 % there are multiple types of conv obs!
+                                                    for sot=1:size(identconvobssubtype,2)
+                                                         if size(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),1)==0; l(sot)=plot(-360,-360,'o','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:),'markersize',2); else;l(sot)=plot(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),2),'o','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:),'markersize',2);end;
+                                                         lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),1);
                                                     end
-                                                else % there are no subtypes to this conventional bservation!
+                                                else % there is 1 type of conv obs!
                                                     l(1)=plot(alldrops0(:,1),alldrops0(:,2),'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');
                                                 end
                                                 numdrops=numdrops+size(alldrops0,1);
@@ -209,9 +209,9 @@
                                             lloop=identbasin{loop};
                                             text(RLON(loop),STMLAT(loop),upper(lloop(end-2:end)),'horizontalalignment','center','fontsize',10,'color',[.5 .5 .5])
                                         end
-                                        if size(identconvtype,2)>1
-                                            for sot=1:size(identconvtype,2)
-                                                identlegendconv(sot)={[identconvlegend{sot} ' (',num2str(lsz(sot)),')']};
+                                        if size(identconvobssubtype,2)>1
+                                            for sot=1:size(identconvobssubtype,2)
+                                                identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                             end
                                             l=legend(l,identlegendconv,'location','northeast');
                                         else
@@ -244,7 +244,7 @@
                                     for loop1=1:size(identexp,1)
                                         for loop=1:size(identdr,2)
                                             ttt=identdr{loop};alldrops0=alldrops{loop1};alldrops0=alldrops0{loop};alldrops3{loop1}={alldrops0};
-                                            if strcmp(ttt(1:3),upper(identhwrf(end-2:end)))==0
+                                            if strcmp(ttt(1:3),upper(identhwrf(end-2:end)))==0 && identhafsmodel==0
                                             else
                                                 set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                                 hfig=figure;
@@ -273,21 +273,21 @@ alldrops0=alldrops_stm{loop1};
                                                  numdrops=0;
                                                  clear l lsz
                                                  if sum(~isnan(alldrops0(:)))==0
-                                                     if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                                        for sot=1:size(identconvtype,2)
-                                                             l(sot)=plot(-360,-360,'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);
+                                                     if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                                        for sot=1:size(identconvobssubtype,2)
+                                                             l(sot)=plot(-360,-360,'o','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:),'markersize',2);
                                                              lsz(sot)=0;
                                                         end
                                                     else % there are no subtypes to this conventional bservation!
                                                         l(1)=plot(-360,-360,'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');
                                                     end
                                                  else                        
-                                                        if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                                            for sot=1:size(identconvtype,2)
-                                                                 if size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1)==0; l(sot)=plot(-360,-360,'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2); else; l(sot)=plot(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),alldrops0((alldrops0(:,9)==identconvtype(sot)),2),'o','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:),'markersize',2);end;
-                                                                 lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvtype(sot)),1),1);
+                                                        if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                                            for sot=1:size(identconvobssubtype,2)
+                                                                 if size(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),1)==0; l(sot)=plot(-360,-360,'o','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:),'markersize',2); else; l(sot)=plot(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),2),'o','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:),'markersize',2);end;
+                                                                 lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),1);
                                                             end
-                                                        else % there are no subtypes to this conventional bservation!
+                                                        else % there are no subtypes to this conventional observation!
                                                             l(1)=plot(alldrops0(:,1),alldrops0(:,2),'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');
                                                         end
                                                         numdrops=size(alldrops0,1);
@@ -296,9 +296,9 @@ alldrops0=alldrops_stm{loop1};
                                                 text(.5,.39,'250 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ])
                                                 text(.5,.278,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ])
                                                 text(.5,.05,'1000 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ])
-                                                if size(identconvtype,2)>1
-                                                    for sot=1:size(identconvtype,2)
-                                                        identlegendconv(sot)={[identconvlegend{sot} ' (',num2str(lsz(sot)),')']};
+                                                if size(identconvobssubtype,2)>1
+                                                    for sot=1:size(identconvobssubtype,2)
+                                                        identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                                     end
                                                     l=legend(l,identlegendconv,'location','northeast');
                                                 else
@@ -326,11 +326,11 @@ alldrops0=alldrops_stm{loop1};
 												filename=[identtrackint,'/conv_plan_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                 close all 
                                                 % Denmap for Subtypes
-                                                if size(identconvtype,2)>1
-                                                    for sot=1:size(identconvtype,2)
+                                                if size(identconvobssubtype,2)>1
+                                                    for sot=1:size(identconvobssubtype,2)
                                                          % Density Map
-                                                         pall=squeeze(alldrops0((alldrops0(:,9)==identconvtype(sot)),3,:));
-                                                         dall=squeeze(alldrops0((alldrops0(:,9)==identconvtype(sot)),5,:));                                
+                                                         pall=squeeze(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),3,:));
+                                                         dall=squeeze(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),5,:));                                
                                                          places=[];
                                                          denmapall=[];
                                                          for drp=1
@@ -408,7 +408,7 @@ alldrops0=alldrops_stm{loop1};
                                                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                         f = getframe(hfig);
-														filename=[identtrackint,'/conv_az_',identinittimesunique(identloop,:),'_',identexpshort{loop1},'_',identconvlegend{sot}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+														filename=[identtrackint,'/conv_az_',identinittimesunique(identloop,:),'_',identexpshort{loop1},'_',erase(erase(identconvobslegend{sot}," "),"-")];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                         close all
                                                         alldenmap_t(sot,loop1)={denmapall};
                                                     end                             
@@ -508,7 +508,7 @@ alldrops0=alldrops_stm{loop1};
                                     for loop1=1:size(identexp,1)
                                         for loop=1:size(identdr,2)
                                          ttt=identdr{loop};alldrops0=alldrops{loop1};alldrops0=alldrops0{loop};alldrops3{loop1}={alldrops0};
-                                            if strcmp(ttt(1:3),upper(identhwrf(end-2:end)))==0
+                                            if strcmp(ttt(1:3),upper(identhwrf(end-2:end)))==0  && identhafsmodel==0
                                             else
 alldrops0=alldrops_stm{loop1};
                                                  alldrops0=alldrops0{loop};  
@@ -521,11 +521,11 @@ alldrops0=alldrops_stm{loop1};
                                                      end
                                                  end
                                                 %% Denmap for Subtypes
-                                                if size(identconvtype,2)>1
-                                                    for sot=1:size(identconvtype,2)
+                                                if size(identconvobssubtype,2)>1
+                                                    for sot=1:size(identconvobssubtype,2)
                                                          % Density Map
-                                                         pall=squeeze(alldrops0((alldrops0(:,9)==identconvtype(sot)),3,:));
-                                                         dall=squeeze(alldrops0((alldrops0(:,9)==identconvtype(sot)),5,:));                                
+                                                         pall=squeeze(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),3,:));
+                                                         dall=squeeze(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),5,:));                                
                                                          places=[];
                                                          denmapall=[];
                                                          for drp=1
@@ -628,7 +628,7 @@ alldrops0=alldrops_stm{loop1};
                                 tmp0_lat=EXP_latcomp{cyc};
                                 tmp0_name=EXP_namecomp{cyc};
                                 tmp0_denmap=alldenmapcomp{cyc};
-                                if size(identconvtype,2)>1
+                                if size(identconvobssubtype,2)>1
                                     tmp0_denmap_t=alldenmapcomp_t{cyc};                             
                                 end
                                 tmp2_all=tmp0_all{exl};
@@ -643,7 +643,7 @@ alldrops0=alldrops_stm{loop1};
                                     tmp3_lat=tmp0_lat(i); 
                                     tmp3_name=tmp0_name{i}; 
                                     tmp3_denmap=tmp0_denmap{i,exl};
-                                    if size(identconvtype,2)>1
+                                    if size(identconvobssubtype,2)>1
                                         tmp3_denmap_t=tmp0_denmap_t(:,exl); 
                                     end
                                     tmp3_all=tmp2_all{i};
@@ -654,7 +654,7 @@ alldrops0=alldrops_stm{loop1};
                                         tmp3_all(:,4)=repmat(tmp3_lat,size(tmp3_all,1),1);
                                         tmp1=cat(1,tmp1,tmp3_all); % all storms for ALL experiment
                                         tmp1_den=cat(3,tmp1_den,tmp3_denmap);
-                                        if size(identconvtype,2)>1
+                                        if size(identconvobssubtype,2)>1
                                             tmp1_den_t=cat(1,tmp1_den_t,tmp3_denmap_t');                             
                                         end
                                     end
@@ -668,8 +668,8 @@ alldrops0=alldrops_stm{loop1};
                                 identgalesdrops_t(:,exl)=0;
                                 identouterdrops_t(:,exl)=0;
                             else
-                                if size(identconvtype,2)>1
-                                    for sot=1:size(identconvtype,2)
+                                if size(identconvobssubtype,2)>1
+                                    for sot=1:size(identconvobssubtype,2)
                                         for soti=1:size(tmp1_den_t,1)
                                             tmp1_den_tt(:,:,soti)=tmp1_den_t{soti,sot};
                                         end
@@ -697,10 +697,10 @@ alldrops0=alldrops_stm{loop1};
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 hold on
                                 if isempty(tmp1)==1
-                                    if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                        for sot=1:size(identconvtype,2)
+                                    if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                        for sot=1:size(identconvobssubtype,2)
                                              counts=0;
-                                             l(sot)=plot(0,5000,'.','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:));
+                                             l(sot)=plot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));
                                              lsz(sot)=0;
                                         end
                                     else % there are no subtypes to this conventional bservation!
@@ -708,11 +708,11 @@ alldrops0=alldrops_stm{loop1};
                                         l(1)=plot(0,5000,'.k');
                                     end
                                 else
-                                    if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                        for sot=1:size(identconvtype,2)
-                                            [counts,centers]=hist(tmp1((tmp1(:,9)==identconvtype(sot)),5),[0:5:2000]);
-                                            l(sot)=plot(centers,counts,'-','color',identconvcolors(sot,:),'linewidth',2);            
-                                            lsz(sot)=size(tmp1((tmp1(:,9)==identconvtype(sot)),1),1);
+                                    if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                        for sot=1:size(identconvobssubtype,2)
+                                            [counts,centers]=hist(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),5),[0:5:2000]);
+                                            l(sot)=plot(centers,counts,'-','color',identconvobscolors(sot,:),'linewidth',2);            
+                                            lsz(sot)=size(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),1),1);
                                         end
                                     else % there are no subtypes to this conventional observation!
                                            [counts,centers]=hist(tmp1(:,5),[0:5:2000]);
@@ -724,9 +724,9 @@ alldrops0=alldrops_stm{loop1};
                                     ymaxallbasin=round(max(counts)/100)*100+50;
                                 end
                                 ylim([0 ymaxallbasin])
-                                if size(identconvtype,2)>1
-                                        for sot=1:size(identconvtype,2)
-                                            identlegendconv(sot)={[identconvlegend{sot} ' (',num2str(lsz(sot)),')']};
+                                if size(identconvobssubtype,2)>1
+                                        for sot=1:size(identconvobssubtype,2)
+                                            identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                         end
                                         ll=legend(l,identlegendconv,'location','northeast');
                                 else
@@ -777,28 +777,28 @@ alldrops0=alldrops_stm{loop1};
                                 hold on               
                                 clear l lsz
                                 if isempty(tmp1)==1
-                                    if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                        for sot=1:size(identconvtype,2)
-                                             l(sot)=polarplot(0,5000,'.','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:));
+                                    if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                        for sot=1:size(identconvobssubtype,2)
+                                             l(sot)=polarplot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));
                                              lsz(sot)=0;
                                         end
                                     else % there are no subtypes to this conventional bservation!
                                         l(1)=polarplot(0,5000,'.k');
                                     end
                                 else
-                                    if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                        for sot=1:size(identconvtype,2)
-                                            if size(tmp1((tmp1(:,9)==identconvtype(sot)),1),1)==0;l(sot)=polarplot(0,5000,'.','markerfacecolor',identconvcolors(sot,:),'markeredgecolor',identconvcolors(sot,:));else;l(sot)=polarplot(tmp1((tmp1(:,9)==identconvtype(sot)),6)*pi/180,tmp1((tmp1(:,9)==identconvtype(sot)),5),'.','color',identconvcolors(sot,:));end;
-                                            lsz(sot)=size(tmp1((tmp1(:,9)==identconvtype(sot)),1),1);
+                                    if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                        for sot=1:size(identconvobssubtype,2)
+                                            if size(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),1),1)==0;l(sot)=polarplot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));else;l(sot)=polarplot(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),6)*pi/180,tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),5),'.','color',identconvobscolors(sot,:));end;
+                                            lsz(sot)=size(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),1),1);
                                         end
                                     else % there are no subtypes to this conventional bservation!
                                             l(1)=polarplot(tmp1(:,6)*pi/180,tmp1(:,5),'.k');
                                     end
                                 end
 
-                                if size(identconvtype,2)>1
-                                        for sot=1:size(identconvtype,2)
-                                            identlegendconv(sot)={[identconvlegend{sot} ' (',num2str(lsz(sot)),')']};
+                                if size(identconvobssubtype,2)>1
+                                        for sot=1:size(identconvobssubtype,2)
+                                            identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                         end
                                         ll=legend(l,identlegendconv,'location','northeast');
                                 else
@@ -840,8 +840,8 @@ alldrops0=alldrops_stm{loop1};
 								filename=[identtrackint,'/',identn,'_convcomp_plan_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all 
                                 %% Denmap for Subtypes  
-                                if size(identconvtype,2)>1
-                                    for sot=1:size(identconvtype,2)
+                                if size(identconvobssubtype,2)>1
+                                    for sot=1:size(identconvobssubtype,2)
                                         clear tmp1_den_tt
                                         if isempty(tmp1_den_t)==1
                                             tmp1_den_tt=zeros(11,3);
@@ -903,7 +903,7 @@ alldrops0=alldrops_stm{loop1};
                                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                         f = getframe(hfig);
-										filename=[identtrackint,'/',identn,'_convcomp_az_',identexpshort{exl},'_',identconvlegend{sot}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+										filename=[identtrackint,'/',identn,'_convcomp_az_',identexpshort{exl},'_',erase(erase(identconvobslegend{sot}," "),"-")];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         close all 
                                     end
                                 end
@@ -970,14 +970,14 @@ alldrops0=alldrops_stm{loop1};
                             valuescomp{exl}=tmp1;
                             denmapcomp{exl}=tmp1_den;
                             listcomp{exl}=tmp1;
-                            if size(identconvtype,2)>1
+                            if size(identconvobssubtype,2)>1
                                 denmapcomp_t{exl}=tmp1_den_t;
                             end
                         end
                         if ~exist([identout,'RESULTS/',identfold,'VERIFICATION/OBS/'], 'dir')
                             mkdir([identout,'RESULTS/',identfold,'VERIFICATION/OBS/'])
                         end
-                        if size(identconvtype,2)>1
+                        if size(identconvobssubtype,2)>1
                             identdroplist={identn identinnerdrops identgalesdrops identouterdrops identinnerdrops_t identgalesdrops_t identouterdrops_t};
                             save([identout,'RESULTS/',identfold,'VERIFICATION/OBS/',upper(identhwrf),identn(end-1:end),'_conv.mat'],'identdroplist','identdropcyc','valuescomp','denmapcomp','denmapcomp_t','listcomp','-v7.3')
                         else
@@ -1108,19 +1108,19 @@ alldrops0=alldrops_stm{loop1};
                             lonpd=plotdrops(:,1);
                             clear l lsz
                             if isempty(latpd)==1
-                                    if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                        for sot=1:size(identconvtype,2)
-                                             l(sot)=plot(-360,-360,'x','color',identconvcolors(sot,:),'markersize',2);
+                                    if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                        for sot=1:size(identconvobssubtype,2)
+                                             l(sot)=plot(-360,-360,'x','color',identconvobscolors(sot,:),'markersize',2);
                                              lsz(sot)=0;
                                         end
                                     else % there are no subtypes to this conventional bservation!
                                         l(1)=plot(-360,-360,'x','color',[.5 0 .6],'markersize',2);
                                     end
                             else
-                                if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                    for sot=1:size(identconvtype,2)
-                                         if size(lonpd((plotdrops(:,9)==identconvtype(sot)),1),1)==0;l(sot)=plot(-360,-360,'x','color',identconvcolors(sot,:),'markersize',2);else;l(sot)=plot(lonpd((plotdrops(:,9)==identconvtype(sot))),latpd((plotdrops(:,9)==identconvtype(sot))),'x','color',identconvcolors(sot,:),'markersize',2);end;
-                                         lsz(sot)=size(lonpd((plotdrops(:,9)==identconvtype(sot)),1),1);
+                                if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                    for sot=1:size(identconvobssubtype,2)
+                                         if size(lonpd((plotdrops(:,9)==identconvobssubtype(sot) & plotdrops(:,11)==identconvobstype(sot)),1),1)==0;l(sot)=plot(-360,-360,'x','color',identconvobscolors(sot,:),'markersize',2);else;l(sot)=plot(lonpd((plotdrops(:,9)==identconvobssubtype(sot) & plotdrops(:,11)==identconvobstype(sot))),latpd((plotdrops(:,9)==identconvobssubtype(sot) & plotdrops(:,11)==identconvobstype(sot))),'x','color',identconvobscolors(sot,:),'markersize',2);end;
+                                         lsz(sot)=size(lonpd((plotdrops(:,9)==identconvobssubtype(sot) & plotdrops(:,11)==identconvobstype(sot)),1),1);
                                     end
                                 else % there are no subtypes to this conventional bservation!
                                     l(1)=plot(lonpd,latpd,'x','color',[.5 0 .6],'markersize',2);
@@ -1139,12 +1139,12 @@ alldrops0=alldrops_stm{loop1};
                             l(8)=plot(-200,-100,'.','color',azavcm(6,:),'markersize',25);
                             l(9)=plot(-200,-100,'.','color',azavcm(7,:),'markersize',25);
                             l(10)=plot(-200,-100,'.','color','m','markersize',25);
-                            if size(identconvtype,2)>1 % there are subtypes to this conventional observation!
-                                for sot=1:size(identconvtype,2)
-                                     l(10+sot)=plot(-200,-100,'x','color',identconvcolors(sot,:),'markersize',6);
+                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                for sot=1:size(identconvobssubtype,2)
+                                     l(10+sot)=plot(-200,-100,'x','color',identconvobscolors(sot,:),'markersize',6);
                                 end
-                                for sot=1:size(identconvtype,2)
-                                    identlegendconv(sot)={[identconvlegend{sot} ' (',num2str(lsz(sot)),')']};
+                                for sot=1:size(identconvobssubtype,2)
+                                    identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                 end
                                 lh=legend(l,'WV/DB/LO','SD/SS','EX','TD','TS','C1','C2','C3','C4','C5',identlegendconv{:},'orientation','vertical');
                             else % there are no subtypes to this conventional bservation!
@@ -1158,7 +1158,7 @@ alldrops0=alldrops_stm{loop1};
                             f = getframe(hfig);
 							filename=[identtrackint,'/',identn,'_track_withobs_',identexpshort{track}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
-                        clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvtype identconvcolors identconvlegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
+                        clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
                     end
                 end
               
