@@ -30,24 +30,24 @@ identns=0;                                                      % do you want to
 identnsname='OG4IC';                                            % name for new subset - will be capitalized in the script
 identnewsubset_id=[{'06L'};{'06L'};{'06L'};{'06L'};{'06L'};{'14L'};{'14L'};{'14L'};{'05L'};{'05L'};{'05L'};{'05L'};{'05L'};{'05L'};{'14L'};{'13L'};{'13L'}]; % new subset stormids if identns=1 - each associated entry in identnewsubset, enter the stormid (if range of cycles, enter the stormid once)
 identnewsubset=[{'2018091000'}; {'2018091200'}; {'2018091212'}; {'2018091300'}; {'2018091400'}; {'2018100900'}; {'2018100912'}; {'2018101000'}; {'2019082700'}; {'2019082800'}; {'2019083000'}; {'2019090100'}; {'2019090112'}; {'2019090312'}; {'2020082306'}; {'2020082512'}; {'2020082600'}]; % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
-                	                                            % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]                                                                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
-identenkfexact=0;						%  covariance-type stratification - exact method | if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
-identenkfoper=1;identenkfoperpath='/scratch1/NCEPDEV/hwrf/noscrub/input/TDR/'; % covariance-type stratification - operational method | all cycles from the first TDR available through the end of the TC used enfk (1) do not do stratifications by enkf (0) | note that identenkfoperpath is the path to the TDR files on disk - if your model doesn't have this, set to identenkfoper=0.
+                	            	                                % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]                                                                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
+if identhwrfmodel==1;identenkfexact=0;end;				%  covariance-type stratification - exact method ONLY WORKS FOR HWRF | if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
+identenkfoper=1;identenkfoperpath='/scratch1/NCEPDEV/hwrf/noscrub/input/TDR/'; % covariance-type stratification - operational method - note that for HAFS if this is enabled, graphics will indicate pre- and post- TDR rahter than enkf vs gdas covariance | all cycles from the first TDR available through the end of the TC used enfk (1) do not do stratifications by enkf (0) | note that identenkfoperpath is the path to the TDR files on disk - if your model doesn't have this, set to identenkfoper=0.
 identremoveland=0;						% do you want to remove cycles where the best track was over land | yes (1) no (0)
 
 % Conventional Graphics Options
-identconv=1;                                                    % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
-identgraphicsconv=0;                                            % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
-identconvid='Recon';                                            % name of observation for graphic titles | uppercase first letter | will become "Assimilated ____ Observations"
+identconv=1;                                                   		   % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
+identgraphicsconv=0;                                            	   % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
+identconvid='Recon';                                            	   % name of observation for graphic titles | uppercase first letter | will become "Assimilated ____ Observations"
 if identhafsmodel==1
-   identconvid_filename=[{'_t_anl'};{'_rw_anl'}];	 	% if identhafsmodel=1, then filename of data desired ensuring it starts with "_"
+   identconvid_filename=[{'_rw_anl'};{'_rw_anl'};{'_t_anl'};{'_t_anl'}];   % if identhafsmodel=1, filenames of data desired ensuring it starts with "_" and equals length of identconvobstype
 end
-identconvobstype=[992 993 136 137];				% obstype number(s) | number of obstypes must match number of obssubtypes
-									% if one obstype is associated with multiple obssubtypes, repeat the obstype for each obssubtype
-									% the order of the obstypes will be plotting order, so put more sparse obs last
-identconvobssubtype=[0 0 0 0];				        % corresponding obssubtype number(s) | number of obssubtypes must match number of obstypes
-identconvobscolors=[0 152 0;30 144 255;230 102 51;204 51 204]/255; % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value)
-identconvobslegend=[{'G-IV TDR Observations'};{'P3 TDR Observations'};{'High-Density Observations'};{'Dropsonde Observations'}]; % names of each of your subtypes for the plot legends
+identconvobstype=[993 992 136 137];					   % obstype number(s) | number of obstypes must match number of obssubtypes
+							 	      		% if an obstype is associated with multiple obssubtypes, repeat obstype for each obssubtype. if you want ALL obssubtypes for a given obstype, only list the obstype once and enter "0" as the corresponding obssubtype and set the corresponding identsubtypekeep to 0.
+									        % the order of the obstypes will be plotting order, so put more sparse obs last
+identconvobssubtype=[0 0 0 0];identsubtypekeep=[1 1 1 1];		   % corresponding obssubtype number(s) | number of obssubtypes must match number of obstypes | identsubtypekeep must match number of identconvobstype and identconvobssubtype | keep subtype (1) use all subtypes for this obtype (0)
+identconvobscolors=[30 144 255;0 152 0;230 102 51;204 51 204]/255; 	   % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value)
+identconvobslegend=[{'P3 TDR Observations'};{'G-IV TDR Observations'};{'High-Density Observations'};{'Dropsonde Observations'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options - ONLY WORKS FOR IDENTHWRFMODEL=1!!!!!!!
 identsatobs=0;                          % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
