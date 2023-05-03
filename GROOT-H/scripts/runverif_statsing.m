@@ -20543,7 +20543,7 @@ for graphics=1
 											xlim([1 ((identmaxfhr*3)-3+(12-mod(identmaxfhr*3-3,12)))/skiphr+1]) 
 										end
 									end                                    
-									if sum(~isnan(tmp_exp(:)))<4;else;ylim([min(min(min(tmp_exp))) max(max(max(tmp_exp)))]);end;
+									if sum(~isnan(tmp_exp(:)))<4;elseif min(min(min(tmp_exp)))==max(max(max(tmp_exp)));else;ylim([min(min(min(tmp_exp))) max(max(max(tmp_exp)))]);end;
 									set(gca,'xtick',1:skiptick:50)
 									set(gca,'xticklabel',strsplit(num2str(0:skiphr*skiptick:(identmaxfhr*3)+24))) 
 									grid on
@@ -21141,11 +21141,11 @@ for graphics=1
 									finalrange_beg=[0:-1.*binsizeguess:min(min(min(tmp_exp(:,fhrloop,:))))];finalrange_beg(end)=min(min(min(tmp_exp(:,fhrloop,:))));
 									end;
 									finalrange=[fliplr(finalrange_beg) finalrange_end(2:end)];
-									for histi=size(identexp,1):-1:1
+									if size(finalrange,2)==1;l(histi)=plot(-360,-360,'-s','Color',identexpcolors(histi,:),'linewidth',2,'markersize',2);else;for histi=size(identexp,1):-1:1
 										  [a,b]=hist(tmp_exp(:,fhrloop,histi),finalrange);
 										  l(histi)=plot(b,a,'-s','Color',identexpcolors(histi,:),'linewidth',2,'markersize',2);
 										  histmax(histi,:)=a;
-									end
+									end;end;
 									end
 									set(gca,'plotboxaspectratio',[1 1 1])
 									ylabel('Frequency','fontsize',20)
@@ -21154,7 +21154,7 @@ for graphics=1
 									box on                        										
 									if sum(sum(~isnan(tmp_exp(:,fhrloop,:))))<4
 									else
-									xlim([-1.*max(abs(finalrange)) max(abs(finalrange))])									
+									if size(finalrange,2)==1;else;xlim([-1.*max(abs(finalrange)) max(abs(finalrange))])									
 									xlimrange=[0:2*binsizeguess:max(abs(finalrange))];
 									xlimrange=[-1.*fliplr(xlimrange) xlimrange(2:end)];										
 									if size(xlimrange,2)<10
@@ -21164,7 +21164,7 @@ for graphics=1
 									end
 									ll=plot(zeros(round((max(histmax(:))+20)/10)*10+1), 0:round((max(histmax(:))+20)/10)*10,'k','linewidth',2');										
 									uistack(ll,'bottom')
-									ylim([0 round((max(histmax(:))+20)/10)*10])
+									ylim([0 round((max(histmax(:))+20)/10)*10]);end;
 									end
 									grid on
 									set(gca,'gridcolor','k','gridalpha',.15)
@@ -21697,18 +21697,18 @@ for graphics=1
 									roundTargets = [0.01 .1 1 5 25 50 100];
 									binsizeguess = interp1(roundTargets,roundTargets,binsizeguess,'nearest','extrap');
 									finalrange=[0:binsizeguess:max(max(max(tmp_exp(:,fhrloop,:))))];
-									for histi=size(identexp,1):-1:1
+									if size(finalrange,2)==1;l(histi)=plot(-360,-360,'-s','Color',identexpcolors(histi,:),'linewidth',2,'markersize',2);else;for histi=size(identexp,1):-1:1
 										  [a,b]=hist(tmp_exp(:,fhrloop,histi),finalrange); % min(min(min(tmp_exp(:,fhrloop,histi)))):0.05.*max(max(max(tmp_exp(:,fhrloop,histi)))):max(max(max(tmp_exp(:,fhrloop,histi)))));
 										  l(histi)=plot(b,a,'-s','Color',identexpcolors(histi,:),'linewidth',2,'markersize',2);
 										  histmax(histi,:)=a;
-									end
+									end;end;
 									end
 									set(gca,'plotboxaspectratio',[1 1 1])
 									ylabel('Frequency','fontsize',20)
 									xlabel(tmp_ytitle,'fontsize',20)
 									set(gca,'fontsize',20)
 									box on  
-									if sum(sum(~isnan(tmp_exp(:,fhrloop,:))))<4
+									if size(finalrange,2)==1;else;if sum(sum(~isnan(tmp_exp(:,fhrloop,:))))<4
 									else									
 									ylim([0 round((max(histmax(:))+20)/10)*10])
 									xlim([0 max(abs(finalrange))])
@@ -21717,7 +21717,7 @@ for graphics=1
 									else	
 										set(gca,'xtick',[(finalrange(1:2:end-1))])										
 									end
-									end
+									end;end;
 									grid on
 									set(gca,'gridcolor','k','gridalpha',.15)
 									set(gca,'fontsize',20)      

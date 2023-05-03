@@ -175,8 +175,8 @@
                         else
                             if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
                                 for sot=1:size(identconvobssubtype,2)
-                                    l(sot)=polarplot(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),6)*pi/180,compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),5),'.','color',identconvobscolors(sot,:));
-                                    lsz(sot)=size(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),1),1);
+                                        if size(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),6)*pi/180,1)==0; l(sot)=polarplot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));else;l(sot)=polarplot(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),6)*pi/180,compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),5),'.','color',identconvobscolors(sot,:));end;
+					lsz(sot)=size(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),1),1);
                                 end
                             else % there are no subtypes to this conventional bservation!
                                     l(1)=polarplot(compvalues(:,6)*pi/180,compvalues(:,5),'.k');
