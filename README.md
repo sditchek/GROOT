@@ -8,16 +8,16 @@ GROOT has a hurricane component (GROOT-H) and a global component (GROOT-G). Both
 
 ### GROOT-H
 
-Use this component if you are running HWRF, the basin-scale HWRF, or HAFS that do not use ADECKS. It has four main features:
+Use this component if you are running HWRF, the basin-scale HWRF, or HAFS. It has four main features:
 
   1) **Error Statistics Capability:** graphics for individual storms, composites, and various subsets are generated
   2) **Assimilated Observations Capability:** graphics for individual storms and storm-relative composites are generated
-  3) **GRB Capability:** plan-view and azimuthally-averaged graphics for individual storms for each experiment and difference graphics between experiments are generated
+  3) **GRB Capability:** plan-view and azimuthally-averaged graphics for individual storms for each experiment and difference graphics between experiments are generated (currently for HWRF, only)
   4) **Retrieval Scripts:** shell scripts are included that grab down all required files for error statistics, assimilated observations, and GRB graphics from HPSS
 
 ### GROOT-G
 
-Use this component if you are running the FV3GFS or any output using ADECKS (even if from HWRF/basin-scale HWRF/HAFS. It has only two features at the moment - the Error Statistics Capability and the Assimilated Observations Capability. The GRB Capability and Retrieval Scripts will be added in the future as a new release:
+Use this component if you are running the FV3GFS. It has only two features at the moment - the Error Statistics Capability and the Assimilated Observations Capability. The GRB Capability and Retrieval Scripts will be added in the future as a new release:
 
   1) **Error Statistics Capability:** graphics for individual storms, composites, and various subsets are generated
   2) **Assimilated Observations Capability:** graphics for individual storms and storm-relative composites are generated
