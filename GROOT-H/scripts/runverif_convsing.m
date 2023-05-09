@@ -22,12 +22,12 @@
                         for identloop=1:size(identinittimesunique,1)
                             % What storms are run in the basin at this init time?   
                             if identbasinmodel==0
-								if identhwrfmodel==1;tmp=dir([identgroovpr,'obsall/',identexpshort{1},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);identdr=unique({tmp.name});
-								elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroovpr,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};identdr=identdr';end;end;						
+								if identhwrfmodel==1;tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);identdr=unique({tmp.name});
+								elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};identdr=identdr';end;end;						
 							else
 								tmpt=[];
 								for identloopcheck=1:size(identexpshort,1)
-									if identhwrfmodel==1;tmp=dir([identgroovpr,'obsall/',identexpshort{identloopcheck},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroovpr,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};identdr=identdr';end;end;
+									if identhwrfmodel==1;tmp=dir([identgroot,'obsall/',identexpshort{identloopcheck},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};identdr=identdr';end;end;
 									tmpt=[tmpt unique({tmp.name})];									
 								end
 								a=unique(tmpt,'stable');
@@ -58,7 +58,7 @@
                                 end
                                 % Get the TC VITALS for each storm
                                 for i=1:size(identdropsdat,1)                                
-                                    if identhwrfmodel==1;filename = [identgroovpr,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];elseif identhafsmodel==1;filename = [identgroovpr,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];delimiter = ' ';formatSpec = '%10s%4s%4s%[^\n\r]';fileID = fopen(filename,'r');dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);fclose(fileID);tcvit_id=dataArray{2};tcvit_id=tcvit_id{:};tcvit_id=tcvit_id(2:4);filename = [identgroovpr,'tcvitals/',tcvit_id,'.',identinittimesunique(identloop,:),'.storm_vit'];end;                                                                   
+                                    if identhwrfmodel==1;filename = [identgroot,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];elseif identhafsmodel==1;filename = [identgroot,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];delimiter = ' ';formatSpec = '%10s%4s%4s%[^\n\r]';fileID = fopen(filename,'r');dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);fclose(fileID);tcvit_id=dataArray{2};tcvit_id=tcvit_id{:};tcvit_id=tcvit_id(2:4);filename = [identgroot,'tcvitals/',tcvit_id,'.',identinittimesunique(identloop,:),'.storm_vit'];end;                                                                   
                                     delimiter = ' ';
                                     formatSpec = '%3s%5s%5s%14s%5s%5s%6s%4s%4s%5s%5s%5s%3s%4s%5s%5s%5s%5s%2s%5s%5s%5s%5s%3s%5s%6s%5s%5s%5s%s%[^\n\r]';
                                     fileID = fopen(filename,'r');
@@ -94,7 +94,7 @@
                                 for j=1:size(identexp,1)
                                     for i=1:size(identdr,2)
                                     %% Initialize variables.
-                                    if identhwrfmodel==1;filename=[identgroovpr,'obsall/',identexpshort{j},'/',identdr{i}];
+                                    if identhwrfmodel==1;filename=[identgroot,'obsall/',identexpshort{j},'/',identdr{i}];
                                     formatSpec = '%10C%9f%13f%16f%16f%16f%16f%f%[^\n\r]';
                                     fileID = fopen(filename,'r');
                                     dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);
@@ -111,7 +111,7 @@
                                     droppres=drops{:,6};
                                     dropdhr=drops{:,7};
                                     dropinc=drops{:,8};
-                                    dropsubtype=drops{:,3};droptype=drops{:,2};elseif identhafsmodel==1;droptype=[];dropsubtype=[];droplat=[];droplon=[];droppres=[];dropdhr=[];dropinc=[];for filetype=1:size(identdr,1);filename=[identgroovpr,'obsall/',identexpshort{j},'/',identdr{filetype}];ncid = netcdf.open(filename,'NC_NOWRITE');droptype00 = single(netcdf.getVar(ncid,2));dropsubtype00 = single(netcdf.getVar(ncid,3)).*identsubtypekeep(filetype); dropc=ismember(droptype00,identconvobstype(filetype));dropd=ismember(dropsubtype00,identconvobssubtype(filetype));drope=dropc+dropd;drope(drope==1)=0;drope(drope==2)=1;drope=logical(drope);droptype0 = single(netcdf.getVar(ncid,2)); droptype0=droptype0(drope);droptype=[droptype;droptype0];dropsubtype0 = single(netcdf.getVar(ncid,3)).*identsubtypekeep(filetype); dropsubtype0=dropsubtype0(drope);dropsubtype=[dropsubtype;dropsubtype0];droplat0 = netcdf.getVar(ncid,4);droplat0=droplat0(drope);droplat=[droplat;droplat0];droplon0 = netcdf.getVar(ncid,5); droplon0=droplon0(drope);droplon0(droplon0>=180)=droplon0(droplon0>=180)-360;droplon0=-1.*droplon0;droplon=[droplon;droplon0];droppres0 = netcdf.getVar(ncid,7); droppres0=droppres0(drope);droppres=[droppres;droppres0];dropdhr0 = netcdf.getVar(ncid,9); dropdhr0=dropdhr0(drope);dropdhr=[dropdhr;dropdhr0];dropinc0 = netcdf.getVar(ncid,netcdf.inqVarID(ncid,'Analysis_Use_Flag')); dropinc0=dropinc0(drope);dropinc=[dropinc;dropinc0];end;end;             
+                                    dropsubtype=drops{:,3};droptype=drops{:,2};elseif identhafsmodel==1;droptype=[];dropsubtype=[];droplat=[];droplon=[];droppres=[];dropdhr=[];dropinc=[];for filetype=1:size(identdr,1);filename=[identgroot,'obsall/',identexpshort{j},'/',identdr{filetype}];ncid = netcdf.open(filename,'NC_NOWRITE');droptype00 = single(netcdf.getVar(ncid,2));dropsubtype00 = single(netcdf.getVar(ncid,3)).*identsubtypekeep(filetype); dropc=ismember(droptype00,identconvobstype(filetype));dropd=ismember(dropsubtype00,identconvobssubtype(filetype));drope=dropc+dropd;drope(drope==1)=0;drope(drope==2)=1;drope=logical(drope);droptype0 = single(netcdf.getVar(ncid,2)); droptype0=droptype0(drope);droptype=[droptype;droptype0];dropsubtype0 = single(netcdf.getVar(ncid,3)).*identsubtypekeep(filetype); dropsubtype0=dropsubtype0(drope);dropsubtype=[dropsubtype;dropsubtype0];droplat0 = netcdf.getVar(ncid,4);droplat0=droplat0(drope);droplat=[droplat;droplat0];droplon0 = netcdf.getVar(ncid,5); droplon0=droplon0(drope);droplon0(droplon0>=180)=droplon0(droplon0>=180)-360;droplon0=-1.*droplon0;droplon=[droplon;droplon0];droppres0 = netcdf.getVar(ncid,7); droppres0=droppres0(drope);droppres=[droppres;droppres0];dropdhr0 = netcdf.getVar(ncid,9); dropdhr0=dropdhr0(drope);dropdhr=[dropdhr;dropdhr0];dropinc0 = netcdf.getVar(ncid,netcdf.inqVarID(ncid,'Analysis_Use_Flag')); dropinc0=dropinc0(drope);dropinc=[dropinc;dropinc0];end;end;             
 									% Add distance away from center at each pressure level
                                     if isnan(droplat)==1
                                         dropaz=NaN;
@@ -1141,6 +1141,6 @@
                             f = getframe(hfig);
 							filename=[identtrackint,'/',identn,'_track_withobs_',identexpshort{track}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
-                        clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
+                        clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
                     end
                 end             

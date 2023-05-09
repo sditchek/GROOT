@@ -139,6 +139,7 @@ GRB CAPABILITY:
 %%%%%%%%%%%%%%%%%%%%%%
 
 4/25/23  | Added new capability to plot 1) boxplots of MAE for each experiment at all lead times and 2) histograms of MAE & bias for all experiments at each lead time
+	 | Added compatibility to run GROOT-H with adecks
 4/7/23   | Enabled GROOT compatibility with HAFS output files
 		Added new retrieval script
 		Added new code to read and process any number of conventional observations from HAFS (HWRF code still enabled - switches in namelist added)

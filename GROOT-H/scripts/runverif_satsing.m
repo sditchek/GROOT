@@ -21,12 +21,12 @@ for satobs=1
                         for identloop=1:size(identinittimesunique,1)
                             % What storms are run in the basin at this init time?   
                             if identbasinmodel==0
-								if identhwrfmodel==1;identdr=dir([identgroovpr,'obsall/',identexpshort{1},'/',identhwrf,'*',identinittimesunique(identloop,:),'*']);identdr=unique({identdr.name});
-								elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identsatid_filename,1);tmp=dir([identgroovpr,'obsall/',identexpshort{1},'/*',identsatid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr=[identdr identdr00]';end;end;
+								if identhwrfmodel==1;identdr=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identinittimesunique(identloop,:),'*']);identdr=unique({identdr.name});
+								elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identsatid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/*',identsatid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr=[identdr identdr00]';end;end;
 							else
 								tmpt=[];
 								for identloopcheck=1:size(identexpshort,1)
-									if identhwrfmodel==1;tmp=dir([identgroovpr,'obsall/',identexpshort{identloopcheck},'/*',identinittimesunique(identloop,:),'*']);elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identsatid_filename,1);tmp=dir([identgroovpr,'obsall/',identexpshort{1},'/*',identsatid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr=[identdr identdr00]';end;end;
+									if identhwrfmodel==1;tmp=dir([identgroot,'obsall/',identexpshort{identloopcheck},'/*',identinittimesunique(identloop,:),'*']);elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identsatid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/*',identsatid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr=[identdr identdr00]';end;end;
 									tmpt=[tmpt unique({tmp.name})];									
 								end
 								a=unique(tmpt,'stable');
@@ -57,7 +57,7 @@ for satobs=1
                                 end        
                                 % Get the TC VITALS for each storm
                                 for i=1:size(identdropsdat,1)                                
-                                    if identhwrfmodel==1;filename = [identgroovpr,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];elseif identhafsmodel==1;filename = [identgroovpr,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];delimiter = ' ';formatSpec = '%10s%4s%4s%[^\n\r]';fileID = fopen(filename,'r');dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);fclose(fileID);tcvit_id=dataArray{2};tcvit_id=tcvit_id{:};tcvit_id=tcvit_id(2:4);filename = [identgroovpr,'tcvitals/',tcvit_id,'.',identinittimesunique(identloop,:),'.storm_vit'];end;                                                                                                            
+                                    if identhwrfmodel==1;filename = [identgroot,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];elseif identhafsmodel==1;filename = [identgroot,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];delimiter = ' ';formatSpec = '%10s%4s%4s%[^\n\r]';fileID = fopen(filename,'r');dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);fclose(fileID);tcvit_id=dataArray{2};tcvit_id=tcvit_id{:};tcvit_id=tcvit_id(2:4);filename = [identgroot,'tcvitals/',tcvit_id,'.',identinittimesunique(identloop,:),'.storm_vit'];end;                                                                                                            
                                     delimiter = ' ';
                                     formatSpec = '%3s%5s%5s%14s%5s%5s%6s%4s%4s%5s%5s%5s%3s%4s%5s%5s%5s%5s%2s%5s%5s%5s%5s%3s%5s%6s%5s%5s%5s%s%[^\n\r]';
                                     fileID = fopen(filename,'r');
@@ -93,8 +93,8 @@ for satobs=1
                                 for j=1:size(identexp,1)
                                     for i=1:size(identdr,2)                
                                         %% Get profile locations
-                                        filename=[identgroovpr,'obsall/',identexpshort{j},'/',identbasin{i},'.',identinittimesunique(identloop,:),'.details.txt'];
-                                        filenameqc=[identgroovpr,'obsall/',identexpshort{j},'/qcflags_',identinittimesunique(identloop,:),'.txt'];    
+                                        filename=[identgroot,'obsall/',identexpshort{j},'/',identbasin{i},'.',identinittimesunique(identloop,:),'.details.txt'];
+                                        filenameqc=[identgroot,'obsall/',identexpshort{j},'/qcflags_',identinittimesunique(identloop,:),'.txt'];    
                                         tmpf=dir(filename);
                                          if tmpf.bytes==0 % the satellite in question was NOT assimilated
                                             alldrops0={[]};
@@ -177,7 +177,7 @@ for satobs=1
                                             alldrops0{i}=tmpdrops;
                                             clear dropaz tmp tmpdrops dropan xtob ytob
                                             %% Get profiles
-                                            filename=[identgroovpr,'obsall/',identexpshort{j},'/',identbasin{i},'.',identinittimesunique(identloop,:),'.profiles.txt'];                     
+                                            filename=[identgroot,'obsall/',identexpshort{j},'/',identbasin{i},'.',identinittimesunique(identloop,:),'.profiles.txt'];                     
                                             formatSpec = '%5s%5s%9s%15s%7s%11s%12s%12s%12s%12s%s%[^\n\r]';
                                             fileID = fopen(filename,'r');
                                             dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);
@@ -221,7 +221,7 @@ for satobs=1
                                             usage{i}=numericData(:,6);
                                             clearvars filename formatSpec fileID dataArray ans raw col numericData rawData row regexstr result numbers invalidThousandsSeparator thousandsRegExp;
                                             %% Get wavelength and wavenumber
-                                            filename=[identgroovpr,'obsall/',identexpshort{j},'/',identbasin{i},'.',identinittimesunique(identloop,:),'.channels.txt'];                     
+                                            filename=[identgroot,'obsall/',identexpshort{j},'/',identbasin{i},'.',identinittimesunique(identloop,:),'.channels.txt'];                     
                                             startRow = 3;
                                             formatSpec = '%7C%3f%10f%10f%10f%10f%10f%5f%5f%f%[^\n\r]';
                                             fileID = fopen(filename,'r');
@@ -1075,7 +1075,7 @@ for satobs=1
                             f = getframe(hfig);
 							filename=[identtrackint,'/',identn,'_track_withobs_',identexpshort{track}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
-                        clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identsatobs identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
+                        clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identsatobs identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
                     end
                 end
                 

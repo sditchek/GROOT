@@ -3,10 +3,10 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identout=['/scratch2/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/'];  % directory path for results | must be same as resultspath in runverif.ksh
-identgroovpr=[identout,'GROOT-PR/'];					% DO NOT CHANGE - location of your GROOT-PR dirctory
-identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                            % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
-identbasinmodel=0;                                                      % are there multiple storms being tracked at once (e.g., GFS)? | yes (1) no (0)
+identout=['/scratch2/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/'];  	 % top-level directory path for results folder
+identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/']; % location of GROOT-G directory (${homepath}/GROOT/GROOT-G/, where homepath is same as in runverif.ksh)
+identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                            	 % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
+identbasinmodel=0;                                                               % are there multiple storms being tracked at once (e.g., GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
 identexp=[{'GFS-CTL'};{'GFS-EXP'}];			   	        % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
@@ -15,10 +15,10 @@ identexpsigimp='GFS-EXP';                                                  % ful
 identexpcolors=[0 152 0;208 0 0]/255;                       % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 									     % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroovpr,'/GFS-CTL']);                                  % short name of experiment that's completed the most cycles (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroot,'/GFS-CTL']);                                    % short name of experiment that's completed the most cycles (must match name in "expnew" in runverif.ksh)
 
 % Case Study: also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
-identcase=0';								% run graphics for just 1 storm | yes (1) no (0)
+identcase=0;								% run graphics for just 1 storm | yes (1) no (0)
 identcasename={'13AL'};tmpcasefold='LAURA20';identcasebasin='LAURA13L';identbasinid='AL';    % identcasename=ID and basin identifier (e.g., 05AL) | tmpcasefold=uppercase name and 2-digit year (e.g., DORIAN19) | identcasebasin=uppercase name, ID, and single-letter identifier for the basin (e.g., 05L) | identbasinid=uppercase 2-letter basin identifier
 identcaseyear='2020';							% year of storm: YYYY
 

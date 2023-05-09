@@ -17,11 +17,9 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-homepath=/scratch1/AOML/aoml-osse/${USER}/              # directory path above the GROOT package running location (typically your home directory)
-resultspath=/scratch2/AOML/aoml-hafs1/${USER}/          # directory path for results (can be any directory - typically your home directory)
-noscrubpath=${resultspath}/noscrub/hafstrak/	   	# path to your atcf files
-scrubpath=${resultspath}/scrub/				# path to your scrub directory
-dirpth=${homepath}/GROOT                                # directory path above GROOT-H location
+homepath=/scratch1/AOML/aoml-osse/${USER}/                              # directory path above the GROOT package running location (typically your home directory)
+noscrubpath=/scratch2/AOML/aoml-hafs1/${USER}/noscrub/hafstrak/	        # path to your atcf files
+scrubpath=/scratch2/AOML/aoml-hafs1/${USER}/scrub/			# path to your scrub directory
 
 # What type of tracker files are you using?
 usingadecks=0                                           # are you using ADECKS? if so, GROOT has an additional preprocessing step | (1) yes (0) no
@@ -33,11 +31,11 @@ enddate1="2022-11-30 18"				# last date in your sample in format "YYYY-MM-DD HH"
 cycling="6"               				# frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
-set -A expfold ISAIAS-ALL ISAIAS-NONS ISAIAS-NOG4 LAURA-ALL LAURA-NONS LAURA-NOG4  # names of the folders in scrub and noscrub that you want to include in the graphics
+set -A expfold ISAIAS-ALL ISAIAS-NONS ISAIAS-NOG4 LAURA-ALL LAURA-NONS LAURA-NOG4 MARCO-ALL MARCO-NONS MARCO-NOG4 DELTA-ALL DELTA-NONS DELTA-NOG4 ZETA-ALL ZETA-NONS ZETA-NOG4 # names of the folders in scrub and noscrub that you want to include in the graphics
 	                        	 					        # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
-set -A expnew ALL NONS NOG4 ALL NONS NOG4					   # names of exps (these will be the names on the graphics)
+set -A expnew ALL NONS NOG4 ALL NONS NOG4 ALL NONS NOG4 ALL NONS NOG4 ALL NONS NOG4					   # names of exps (these will be the names on the graphics)
 											# e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
-numfold=6                                               # number of entries in expnew
+numfold=15                                              # number of entries in expnew
 set -A expyears 2020					# years the experiments cover
 numyears=1						# number of years
 hafsmodel=1						# did you run with HAFS (hafsmodel=1) or HWRF (hafsmodel=0)
@@ -52,11 +50,11 @@ emlnew=sarah.d.ditchek@noaa.gov         		# email address you want listed in SBA
 # DO NOT CHANGE ANYTHING BELOW THIS LINE #
 ##########################################
 
-rm -rf ${resultspath}/GROOT/GROOT-H/GROOT-PR/
-mkdir -p ${resultspath}/GROOT/GROOT-H/GROOT-PR
+rm -rf ${homepath}/GROOT/GROOT-H/GROOT-PR/
+mkdir -p ${homepath}/GROOT/GROOT-H/GROOT-PR
 mkdir -p ${homepath}/GROOT/GROOT-H/output 
 outputpath=${homepath}/GROOT/GROOT-H/output
-verifpath=${resultspath}/GROOT/GROOT-H/GROOT-PR
+verifpath=${homepath}/GROOT/GROOT-H/GROOT-PR
 scriptspath=${homepath}/GROOT/GROOT-H/scripts
 
 # Clean up old files
@@ -244,6 +242,7 @@ do
 		startdate1=${startdate2}
 		enddate1=${enddate2}
 		rm ${indir2}/atcfunixp.gfs.*
+                rm ${verifpath}/nameofstorms.txt
 		rm ${verifpath}/listofstorms.txt
 	done
 

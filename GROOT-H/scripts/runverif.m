@@ -51,7 +51,7 @@ for identremoveinvest=1
                 for comm=1
                     cnt=1;
                     for tmp=1:size(identexpshort,1)
-                        identdr=dir([identgroovpr,identexp{tmp},'/',identtmp1,'*','atcfunix*']);
+                        identdr=dir([identgroot,identexp{tmp},'/',identtmp1,'*','atcfunix*']);
                         if isempty(identdr)==1
                             breakscript='yes';
                         else
@@ -74,7 +74,7 @@ for identremoveinvest=1
 		% Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
 			cnt=1; clear identdr1
 			 for tmp=1:size(identexpshort,1)
-				if identhwrfmodel==1;identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*anl0*']);elseif identhafsmodel==1;identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*',identconvid_filename{1},'*']);end
+				if identhwrfmodel==1;identdr=dir([identgroot,'obsall/',identexp{tmp},'/',identtmp1,'*anl0*']);elseif identhafsmodel==1;identdr=dir([identgroot,'obsall/',identexp{tmp},'/',identtmp1,'*',identconvid_filename{1},'*']);end
 				identdr=unique({identdr.name});
 				for i=1:size(identdr,2)
 					tmp2=identdr{i};
@@ -104,7 +104,7 @@ for identremoveinvest=1
             end
             if exist('breakscript','var')==1 || size(identinittimesunique,1)==0
                 disp([identn,' does not exist across all experiments yet...moving to next storm'])
-                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv  
+                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv  
             else
                 %% %%%%%%%%%%%% %%
                 %% Setup script %%
@@ -141,7 +141,7 @@ for identremoveinvest=1
                     % Get common initalizations between all experiments
                     cnt=1;
                      for tmp=1:size(identexpshort,1)
-                        identdr=dir([identgroovpr,identexp{tmp},'/',identtmp1,'*','atcfunix*']);
+                        identdr=dir([identgroot,identexp{tmp},'/',identtmp1,'*','atcfunix*']);
                         identdr=unique({identdr.name});
                         for i=1:size(identdr,2)
                             tmp2=identdr{i};
@@ -159,7 +159,7 @@ for identremoveinvest=1
                     % Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
                         cnt=1; clear identdr1
                          for tmp=1:size(identexpshort,1)
-								if identhwrfmodel==1;identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*anl0*']);elseif identhafsmodel==1;identdr=dir([identgroovpr,'obsall/',identexp{tmp},'/',identtmp1,'*',identconvid_filename{1},'*']);end
+								if identhwrfmodel==1;identdr=dir([identgroot,'obsall/',identexp{tmp},'/',identtmp1,'*anl0*']);elseif identhafsmodel==1;identdr=dir([identgroot,'obsall/',identexp{tmp},'/',identtmp1,'*',identconvid_filename{1},'*']);end
                                 identdr=unique({identdr.name});
                                 for i=1:size(identdr,2)
                                         tmp2=identdr{i};
@@ -330,7 +330,7 @@ for identremoveinvest=1
                 %% By Cycle (Individual & All) and By Forecast Hour (Errors, EDiffs, Imprv) %%
                 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
                 run runverif_statsing
-				clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroovpr identout identconv
+				clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
             end
         end
     end      
