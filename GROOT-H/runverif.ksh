@@ -112,7 +112,7 @@ do
 
 	if [ "${numatcf}" -eq 1 ]
 	then
-		matlab -nosplash -nodesktop -r  "identgrootpr='${verifpath}/${expnew[$i]}/';identout='${homepath}/GROOT/GROOT-H/';" < ${scriptspath}/tclookup.m > ${outputpath}/OUTPUT_TCLOOKUP.txt &
+		matlab -nosplash -nodesktop -r  "identgrootpr='${verifpath}/${expnew[$i]}/';identout='${homepath}/GROOT/GROOT-H/';" < ${scriptspath}/tclookup_atcf.m > ${outputpath}/OUTPUT_TCLOOKUP.txt &
 		wait
 		mv ${homepath}/GROOT/GROOT-H/tclookup.txt ${verifpath}/${expnew[$i]}/tclookup.txt
 		cd ${verifpath}/${expnew[$i]}/
@@ -257,7 +257,7 @@ do
         rm ${indir2}/*HC* # not a valid bdeck identifier (default)
         rm ${indir2}/6* # not a valid bdeck identifer
 
-	matlab -nosplash -nodesktop -r  "identgrootpr='${verifpath}/${expnew[$i]}/';identout='${homepath}/GROOT/GROOT-H/';" < ${scriptspath}/tclookup.m > ${outputpath}/OUTPUT_TCLOOKUP.txt &
+	matlab -nosplash -nodesktop -r  "identgrootpr='${verifpath}/${expnew[$i]}/';identout='${homepath}/GROOT/GROOT-H/';" < ${scriptspath}/tclookup_adeck.m > ${outputpath}/OUTPUT_TCLOOKUP.txt &
         wait
         mv ${homepath}/GROOT/GROOT-H/tclookup.txt ${verifpath}/${expnew[$i]}/tclookup.txt
         cd ${verifpath}/${expnew[$i]}/
