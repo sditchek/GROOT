@@ -2,7 +2,7 @@
 #SBATCH -t 04:00:00         # XXXX: Time Limit: generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account:   Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
-#SBATCH --partition=hera  # XXXX: request specific partition for resource allocation
+#SBATCH --partition=bigmem  # XXXX: request specific partition for resource allocation
 #SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
 #SBATCH --mail-type=fail    # XXXX: NONE, BEGIN, END, FAIL, REQUEUE, ALL 
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov
@@ -17,8 +17,7 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-dirpth=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT package running location (typically your home directory)
-resultspath=/scratch1/AOML/aoml-hafs1/${USER}/GROOT/GROOT-G/    # directory path for results (can be any directory - typically your home directory)
+homepath=/scratch1/AOML/aoml-osse/${USER} 			# directory path above GROOT package running location (typically your home directory)
 cycling="6"               					# frequency of cycling in your model (often 6 for 6 h)
 set -A expyears 2020 2021					# years included (i.e., YYYY) - for more than one year list with spaces between them
 numyears=2							# number of years in expyears - the number must match!	
@@ -52,18 +51,17 @@ startdate2=${startdate1}
 enddate2=${enddate1}
 
 # Clear Directories
-rm -rf ${resultspath}/GROOT-PR
+rm -rf ${homepath}/GROOT/GROOT-G/GROOT-PR
 
 # Paths
-mkdir -p ${dirpth}/GROOT/GROOT-G/scripts
-mkdir -p ${dirpth}/GROOT/GROOT-G/output
-mkdir -p ${resultspath}/RESULTS
-mkdir -p ${resultspath}/GROOT-PR
+mkdir -p ${homepath}/GROOT/GROOT-G/scripts
+mkdir -p ${homepath}/GROOT/GROOT-G/output
+mkdir -p ${homepath}GROOT/GROOT-G/GROOT-PR
 
-homepath=${dirpth}
-scriptspath=${dirpth}/GROOT/GROOT-G/scripts
-outputpath=${dirpth}/GROOT/GROOT-G/output
-progresspath=${resultspath}/GROOT-PR
+homepath=${homepath}
+scriptspath=${homepath}/GROOT/GROOT-G/scripts
+outputpath=${homepath}/GROOT/GROOT-G/output
+progresspath=${homepath}/GROOT/GROOT-G//GROOT-PR
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT*VERIF*.txt

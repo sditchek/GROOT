@@ -21,6 +21,7 @@ fclose(fileID);
 
 % Get columns of data you need
 Dates1=dataArray{3};
+Minutes1=dataArray{4};
 FHR1=dataArray{6};
 Latitude1=dataArray{7};
 Longitude1=dataArray{8};
@@ -41,6 +42,11 @@ Name1=dataArray{28};
 % Transform to proper units and classes
 for i=1:size(Dates1,1)
     Dates(i,:)=Dates1{i};
+	if isempty(Minutes1{i});
+		Minutes(i,:)='00';
+	else
+		Minutes(i,:)=Minutes1{i};
+	end
     FHR(i)=str2num(FHR1{i});
     tmp=Latitude1{i};
     Latitude(i)=str2num(tmp(1:end-1))./10;
@@ -60,6 +66,7 @@ for i=1:size(Dates1,1)
     if isempty(str2num(RO1{i}))==1;RO(i,:)=0;else;RO(i,:)=str2num(RO1{i}).*1.852;end;
     if isempty(str2num(RMW1{i}))==1;RMW(i,:)=0;else;RMW(i,:)=str2num(RMW1{i}).*1.852;end  
 end
+
 for i=1:size(Dates1,1)
     if strcmp(identhemi(i)','W')
         Longitude(i)=-1*Longitude(i);
@@ -138,7 +145,19 @@ Shear=Shear1;
 % Reassign R34/R50/R64 to one line instead of duplicate lines
 tmpfill=zeros(1,size(Dates1,1))';
 tmpnum=1:size(Dates1,1);
-tmp=cat(2,str2num(Dates),Latitude',Longitude',Speed,Pressure,RAD',NEQ,SEQ,SWQ,NWQ,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,PO,RO,RMW,tmpnum',FHR',Shear);
+tmp=cat(2,str2num(Dates),str2num(Minutes),Latitude',Longitude',Speed,Pressure,RAD',NEQ,SEQ,SWQ,NWQ,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,tmpfill,PO,RO,RMW,tmpnum',FHR',Shear);
+
+% Remove Minutes not 0
+for i=1:size(tmp,1)
+    tmp1=(tmp(i,2));
+    if tmp1>0
+        tmp(i,:)=NaN;           
+    else
+    end
+end
+tmp(any(isnan(tmp), 2), :) = [];
+tmp=tmp(:,[1,3:end]);
+
 for i=2:size(tmp,1)
     if strcmp(num2str(tmp(i,1)),num2str(tmp(i-1,1))) || strcmp(num2str(tmp(i-1,1)),'NaN')
         if tmp(i,6)==50
@@ -377,3 +396,4 @@ LANDall=lndfl;
 
 			
 end
+

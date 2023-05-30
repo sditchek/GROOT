@@ -31,11 +31,11 @@ enddate1="2022-11-30 18"				# last date in your sample in format "YYYY-MM-DD HH"
 cycling="6"               				# frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
-set -A expfold ISAIAS-ALL ISAIAS-NONS ISAIAS-NOG4 LAURA-ALL LAURA-NONS LAURA-NOG4 MARCO-ALL MARCO-NONS MARCO-NOG4 DELTA-ALL DELTA-NONS DELTA-NOG4 ZETA-ALL ZETA-NONS ZETA-NOG4 # names of the folders in scrub and noscrub that you want to include in the graphics
+set -A expfold ISAIAS-ALL ISAIAS-NONS ISAIAS-NOIC ISAIAS-NOG4 LAURA-ALL LAURA-NONS LAURA-NOIC LAURA-NOG4 MARCO-ALL MARCO-NONS MARCO-NOIC MARCO-NOG4 DELTA-ALL DELTA-NONS DELTA-NOIC DELTA-NOG4 # names of the folders in scrub and noscrub that you want to include in the graphics
 	                        	 					        # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
-set -A expnew ALL NONS NOG4 ALL NONS NOG4 ALL NONS NOG4 ALL NONS NOG4 ALL NONS NOG4					   # names of exps (these will be the names on the graphics)
+set -A expnew ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4					   # names of exps (these will be the names on the graphics)
 											# e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
-numfold=15                                              # number of entries in expnew
+numfold=16                                              # number of entries in expnew
 set -A expyears 2020					# years the experiments cover
 numyears=1						# number of years
 hafsmodel=1						# did you run with HAFS (hafsmodel=1) or HWRF (hafsmodel=0)
@@ -106,7 +106,7 @@ do
 	cp ${scrubpath}/${expfold[$i]}/**/**/**/*vit ${verifpath}/tcvitals/
 	cp ${scrubpath}/${expfold[$i]}/**/**/**/*enkf* ${verifpath}/obsall/${expnew[$i]}/
 	cp ${scrubpath}/${expfold[$i]}/**/**/**/*nc4 ${verifpath}/obsall/${expnew[$i]}/
-	cp ${noscrubpath}/${expfold[$i]}/*atcfunix ${verifpath}/${expnew[$i]}/
+	cp -r ${noscrubpath}/${expfold[$i]}/*atcfunix ${verifpath}/${expnew[$i]}/
 	rm ${verifpath}/${expnew[$i]}/*parent*
         rm ${verifpath}/${expnew[$i]}/*storm*
 

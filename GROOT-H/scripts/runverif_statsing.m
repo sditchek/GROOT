@@ -132,7 +132,7 @@ for graphics=1
 			% Loop
 			for tmp=1:size(identexp,1)                
 				filename = dir([identgroot,identexpshort{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'*']);filename=[identgroot,identexpshort{tmp},'/',filename.name];fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end;end;				
-				[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,identoutputres);
+				if strcmp('OFCL',identexp{tmp})==1;identoutputres=2;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf_OFCL(filename,identoutputres);elseif strcmp('OCD5',identexp{tmp})==1;identoutputres=2;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf_OCD5(filename,identoutputres);else;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,identoutputres);end;
 				initsizeexp=size(FHRall,2);
 				exp_fhr(1:initsizeexp,tmp)=FHRall';
 				exp_lon(1:initsizeexp,tmp)=LONall;exp_land(1:initsizeexp,tmp)=LANDall;
@@ -233,7 +233,7 @@ for graphics=1
 				exp_shr=exp_shr(1:initsize,:);   
 			end         
 			%% Turn missing spots and non-homogeneous spots into NaNs
-			exp_ne34(exp_ne34==0)=NaN;exp_ne34(any(isnan(exp_ne34), 2), :) = NaN;
+			exp_ne34(exp_ne34==0)=NaN;exp_ne34(any(isnan(exp_ne34), 2), :) = NaN;if sum(strcmp('OFCL',identexp))>0 ||  sum(strcmp('OCD5',identexp))>0  ||  sum(strcmp('CLP5',identexp))>0;exp_lon(exp_lon==0)=NaN;exp_lat(exp_lat==0)=NaN;exp_minpres(exp_minpres==0)=NaN;exp_maxspd(exp_maxspd==0)=NaN;end;
 			exp_ne50(exp_ne50==0)=NaN;exp_ne50(any(isnan(exp_ne50), 2), :) = NaN;
 			exp_ne64(exp_ne64==0)=NaN;exp_ne64(any(isnan(exp_ne64), 2), :) = NaN;
 			exp_se34(exp_se34==0)=NaN;exp_se34(any(isnan(exp_se34), 2), :) = NaN;
@@ -6280,7 +6280,7 @@ for graphics=1
 			else
 				spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
 				% Subsets
-				if identconv==1 || identsatobs==1 
+				if identconv==1 || identsatobs==1
 					stratlist=[1:37,894];
 					BT_drops=identdropcyc;
 					BT_target=identdropcyc;
@@ -21775,7 +21775,7 @@ for graphics=1
 						end
 					end
 				end
-				if identconv==1 || identsatobs==1
+				if identconv==1 || identsatobs==1 
 					BT_drops=identdropcyc;clear keephfipri;for cycle=1:size(EXP_hfipintch,1);for fhr=1:size(EXP_hfipintch,2);hfiptest=[BT_hfipintch(cycle,fhr).*1.94384 squeeze(EXP_hfipintch(cycle,fhr,:))'.*1.94384];if sum(hfiptest>=29.9999)>0;keephfipri(cycle,fhr)=1;else;keephfipri(cycle,fhr)=0;end;end;end;keephfipri=keephfipri(:,1:skip:end,:);keephfipricycles=sum(keephfipri,2);keephfipri=repmat(keephfipri,1,1,size(identexp,1));BT_hfip=keephfipri;
 				else
 					BT_drops=[];clear keephfipri;for cycle=1:size(EXP_hfipintch,1);for fhr=1:size(EXP_hfipintch,2);hfiptest=[BT_hfipintch(cycle,fhr).*1.94384 squeeze(EXP_hfipintch(cycle,fhr,:))'.*1.94384];if sum(hfiptest>=29.9999)>0;keephfipri(cycle,fhr)=1;else;keephfipri(cycle,fhr)=0;end;end;end;keephfipri=keephfipri(:,1:skip:end,:);keephfipricycles=sum(keephfipri,2);keephfipri=repmat(keephfipri,1,1,size(identexp,1));BT_hfip=keephfipri;

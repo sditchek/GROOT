@@ -4,16 +4,16 @@
 
 % Set Directories and Model Properties
 identout=['/scratch2/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-H/'];  	 % top-level directory path for results folder
-identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/']; % location of GROOT-H directory (${homepath}/GROOT/GROOT-H/, where homepath is same as in runverif.ksh)
+identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/']; % location of GROOT-PR directory (${homepath}/GROOT/GROOT-H/GROOT-PR/, where homepath is same as in runverif.ksh)
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                            	 % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=0;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 identhwrfmodel=0;identhafsmodel=1;					         % did you run HWRF or HAFS? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'ALL'};{'NONS'};{'NOG4'}];			   	        % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
+identexp=[{'ALL'};{'NONS'};{'NOIC'};{'NOG4'}];		   	        % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
                                                                              % NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='NOG4';                                                  % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
-identexpcolors=[0 152 0;146 108 172;208 0 0]/255;                       % colors associated with each experiment - do NOT use black since the best track is black by default
+identexpcolors=[0 152 0;146 108 172;213 157 1;208 0 0]/255              % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 									     % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
 stormsdone=dir([identgroot,'/ALL']);                                    % short name of experiment that's completed the most cycles (must match name in "expnew" in runverif.ksh)

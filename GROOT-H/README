@@ -53,6 +53,9 @@ retrievalscripts/ | folder that contains all scripts to retrieve files for packa
 scripts/ 	  | folder that contains all scripts needed to run the package
   arrow3.m 	      | script that allows for vertical wind shear direction to be plotted
   atcf.m 	      | function that reads the atcf files and formats them to be on one line per forecast hour
+  atcf_OCD5.m         | function that processes OCD5 entries
+  atcf_OFCL.m         | function that processes OFCL entries 
+  atcf_shear.m        | function that reads the bdeck files, formats them to be on one line per forecasts hour, and calculates the SHIPS shear values
   borders.shp         | shapefile to make country borders
   borders.shx         | shapefile to make country borders
   confplot.m 	      | function that calculates the 95% confidence interval
@@ -138,6 +141,8 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+5/30/23  | Added new capability to handle OFCL and OCD5
+	 | Ensured bdecks were final bdecks
 4/25/23  | Added new capability to plot 1) boxplots of MAE for each experiment at all lead times and 2) histograms of MAE & bias for all experiments at each lead time
 	 | Added compatibility to run GROOT-H with adecks
 4/7/23   | Enabled GROOT compatibility with HAFS output files
