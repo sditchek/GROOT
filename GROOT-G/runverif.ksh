@@ -2,7 +2,7 @@
 #SBATCH -t 04:00:00         # XXXX: Time Limit: generally sufficient; may need to increase it
 #SBATCH -A aoml-osse        # XXXX: Account:   Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
-#SBATCH --partition=bigmem  # XXXX: request specific partition for resource allocation
+#SBATCH --partition=hera  # XXXX: request specific partition for resource allocation
 #SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
 #SBATCH --mail-type=fail    # XXXX: NONE, BEGIN, END, FAIL, REQUEUE, ALL 
 #SBATCH --mail-user=sarah.d.ditchek@noaa.gov
