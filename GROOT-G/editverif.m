@@ -12,7 +12,7 @@ identbasinmodel=0;                                                              
 identexp=[{'GFS-CTL'};{'GFS-EXP'}];		   	        % folder name of all experiments - must match "expnew" in runverif.ksh and last must be the BASELINE
                                                                              % NOTE: the first experiment listed MUST be the one with all the observations assimilated
 identexpsigimp='GFS-EXP';                                                  % full folder name of improvement and significance wrt THIS experiment (i.e., your BASELINE)
-identexpcolors=[0 152 0;208 0 0]/255              % colors associated with each experiment - do NOT use black since the best track is black by default
+identexpcolors=[0 152 0;208 0 0]/255;             % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 									     % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
 stormsdone=dir([identgroot,'/GFS-CTL']);                                    % short name of experiment that's completed the most cycles (must match name in "expnew" in runverif.ksh)
@@ -30,9 +30,9 @@ identnsname='OG4IC';                                            % name for new s
 identnewsubset_id=[{'06L'};{'06L'};{'06L'};{'06L'};{'06L'};{'14L'};{'14L'};{'14L'};{'05L'};{'05L'};{'05L'};{'05L'};{'05L'};{'05L'};{'14L'};{'13L'};{'13L'}]; % new subset stormids if identns=1 - each associated entry in identnewsubset, enter the stormid (if range of cycles, enter the stormid once)
 identnewsubset=[{'2018091000'}; {'2018091200'}; {'2018091212'}; {'2018091300'}; {'2018091400'}; {'2018100900'}; {'2018100912'}; {'2018101000'}; {'2019082700'}; {'2019082800'}; {'2019083000'}; {'2019090100'}; {'2019090112'}; {'2019090312'}; {'2020082306'}; {'2020082512'}; {'2020082600'}]; % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
                 	            	                                % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]                                                                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
-identenkfexact=0;							%  covariance-type stratification - exact method ONLY WORKS FOR HWRF | if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
+identenkfexact=0;						%  covariance-type stratification - exact method ONLY WORKS FOR HWRF | if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
 identenkfoper=1;identenkfoperpath='/scratch1/NCEPDEV/hwrf/noscrub/input/TDR/'; % covariance-type stratification - operational method - note that for HAFS if this is enabled, graphics will indicate pre- and post- TDR rahter than enkf vs gdas covariance | all cycles from the first TDR available through the end of the TC used enfk (1) do not do stratifications by enkf (0) | note that identenkfoperpath is the path to the TDR files on disk - if your model doesn't have this, set to identenkfoper=0.
-identremoveland=0;						% do you want to remove cycles where the best track was over land | yes (1) no (0)
+identremoveland=0;						% do you want to remove cycles where either best track or forecast was over land | yes (1) no (0)
 
 % Conventional Graphics Options
 identconv=0;                                                   		   % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)

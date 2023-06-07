@@ -260,7 +260,7 @@ for graphics=1
 			bt_nw50(bt_nw50==0)=NaN;
 			bt_nw64(bt_nw64==0)=NaN;                
 			bt_po(bt_po<0)=NaN;
-			bt_ro(bt_ro<0)=NaN;
+			bt_ro(bt_ro<0)=NaN;combland=[bt_land;exp_land']';bt_land=double(bt_land);bt_land(find(sum(combland,2)>0))=NaN;exp_land(find(sum(combland,2)>0),:)=NaN;
 			%% Save lat/lons
 			for ct=1:size(bt_cat,1)
 				BT_cat(identloop,ct)={bt_cat(ct,:)};
@@ -6129,83 +6129,83 @@ for graphics=1
 				end                    
 			end
 			
-			%% Remove times when initial and verification time are over land, as specified by the namelist
+			%% Remove times when bdeck or atcf are over land, as specified by the namelist
 			if identremoveland==1
 				% First remove forecasts when t=0=LAND
-				for exrm=1:size(BT_land,1)
-					if BT_land(exrm,1)==1 
-						for exno=1:size(BT_cat,2)
-							BT_cat{exrm,exno}=NaN;                        
-							BT_lon(exrm,exno)=NaN;BT_land(exrm,exno)=NaN;
-							BT_lat(exrm,exno)=NaN;
-							BT_maxspd(exrm,exno)=NaN;
-							BT_minpres(exrm,exno)=NaN;
-							BT_ne34(exrm,exno)=NaN;
-							BT_ne50(exrm,exno)=NaN;
-							BT_ne64(exrm,exno)=NaN;
-							BT_se34(exrm,exno)=NaN;
-							BT_se50(exrm,exno)=NaN;
-							BT_se64(exrm,exno)=NaN;
-							BT_sw34(exrm,exno)=NaN;
-							BT_sw50(exrm,exno)=NaN;
-							BT_sw64(exrm,exno)=NaN;
-							BT_nw34(exrm,exno)=NaN;
-							BT_nw50(exrm,exno)=NaN;
-							BT_nw64(exrm,exno)=NaN;
-							BT_po(exrm,exno)=NaN;
-							BT_ro(exrm,exno)=NaN;
-							BT_rmw(exrm,exno)=NaN;         
-							BT_intch(exrm,exno)=NaN;BT_hfipintch(exrm,exno)=NaN;         
-							BT_shr(exrm,exno)=NaN;         
-							EXP_lon(exrm,exno,:)=NaN;EXP_land(exrm,exno,:)=NaN;
-							EXP_lat(exrm,exno,:)=NaN;
-							EXP_maxspd(exrm,exno,:)=NaN;
-							EXP_minpres(exrm,exno,:)=NaN;
-							EXP_ne34(exrm,exno,:)=NaN;
-							EXP_ne50(exrm,exno,:)=NaN;
-							EXP_ne64(exrm,exno,:)=NaN;
-							EXP_se34(exrm,exno,:)=NaN;
-							EXP_se50(exrm,exno,:)=NaN;
-							EXP_se64(exrm,exno,:)=NaN;
-							EXP_sw34(exrm,exno,:)=NaN;
-							EXP_sw50(exrm,exno,:)=NaN;
-							EXP_sw64(exrm,exno,:)=NaN;
-							EXP_nw34(exrm,exno,:)=NaN;
-							EXP_nw50(exrm,exno,:)=NaN;
-							EXP_nw64(exrm,exno,:)=NaN;
-							EXP_po(exrm,exno,:)=NaN;
-							EXP_ro(exrm,exno,:)=NaN;
-							EXP_rmw(exrm,exno,:)=NaN;         
-							EXP_intch(exrm,exno,:)=NaN;EXP_hfipintch(exrm,exno,:)=NaN;         
-							EXP_shr(exrm,exno,:)=NaN;         
-							ateerr_exp(exrm,exno,:)=NaN;
-							xteerr_exp(exrm,exno,:)=NaN;
-							trkerr_exp(exrm,exno,:)=NaN;
-							interr_exp(exrm,exno,:)=NaN;
-							spderr_exp(exrm,exno,:)=NaN;
-							ne34err_exp(exrm,exno,:)=NaN;
-							se34err_exp(exrm,exno,:)=NaN;
-							sw34err_exp(exrm,exno,:)=NaN;
-							nw34err_exp(exrm,exno,:)=NaN;
-							ne50err_exp(exrm,exno,:)=NaN;
-							se50err_exp(exrm,exno,:)=NaN;
-							sw50err_exp(exrm,exno,:)=NaN;
-							nw50err_exp(exrm,exno,:)=NaN;
-							ne64err_exp(exrm,exno,:)=NaN;
-							se64err_exp(exrm,exno,:)=NaN;
-							sw64err_exp(exrm,exno,:)=NaN;
-							nw64err_exp(exrm,exno,:)=NaN;
-							poerr_exp(exrm,exno,:)=NaN;
-							roerr_exp(exrm,exno,:)=NaN;
-							rmwerr_exp(exrm,exno,:)=NaN;
-						end       
-					end
-				end                    
+				% for exrm=1:size(BT_land,1)
+					% if BT_land(exrm,1)==1 
+						% for exno=1:size(BT_cat,2)
+							% BT_cat{exrm,exno}=NaN;                        
+							% BT_lon(exrm,exno)=NaN;BT_land(exrm,exno)=NaN;
+							% BT_lat(exrm,exno)=NaN;
+							% BT_maxspd(exrm,exno)=NaN;
+							% BT_minpres(exrm,exno)=NaN;
+							% BT_ne34(exrm,exno)=NaN;
+							% BT_ne50(exrm,exno)=NaN;
+							% BT_ne64(exrm,exno)=NaN;
+							% BT_se34(exrm,exno)=NaN;
+							% BT_se50(exrm,exno)=NaN;
+							% BT_se64(exrm,exno)=NaN;
+							% BT_sw34(exrm,exno)=NaN;
+							% BT_sw50(exrm,exno)=NaN;
+							% BT_sw64(exrm,exno)=NaN;
+							% BT_nw34(exrm,exno)=NaN;
+							% BT_nw50(exrm,exno)=NaN;
+							% BT_nw64(exrm,exno)=NaN;
+							% BT_po(exrm,exno)=NaN;
+							% BT_ro(exrm,exno)=NaN;
+							% BT_rmw(exrm,exno)=NaN;         
+							% BT_intch(exrm,exno)=NaN;BT_hfipintch(exrm,exno)=NaN;         
+							% BT_shr(exrm,exno)=NaN;         
+							% EXP_lon(exrm,exno,:)=NaN;EXP_land(exrm,exno,:)=NaN;
+							% EXP_lat(exrm,exno,:)=NaN;
+							% EXP_maxspd(exrm,exno,:)=NaN;
+							% EXP_minpres(exrm,exno,:)=NaN;
+							% EXP_ne34(exrm,exno,:)=NaN;
+							% EXP_ne50(exrm,exno,:)=NaN;
+							% EXP_ne64(exrm,exno,:)=NaN;
+							% EXP_se34(exrm,exno,:)=NaN;
+							% EXP_se50(exrm,exno,:)=NaN;
+							% EXP_se64(exrm,exno,:)=NaN;
+							% EXP_sw34(exrm,exno,:)=NaN;
+							% EXP_sw50(exrm,exno,:)=NaN;
+							% EXP_sw64(exrm,exno,:)=NaN;
+							% EXP_nw34(exrm,exno,:)=NaN;
+							% EXP_nw50(exrm,exno,:)=NaN;
+							% EXP_nw64(exrm,exno,:)=NaN;
+							% EXP_po(exrm,exno,:)=NaN;
+							% EXP_ro(exrm,exno,:)=NaN;
+							% EXP_rmw(exrm,exno,:)=NaN;         
+							% EXP_intch(exrm,exno,:)=NaN;EXP_hfipintch(exrm,exno,:)=NaN;         
+							% EXP_shr(exrm,exno,:)=NaN;         
+							% ateerr_exp(exrm,exno,:)=NaN;
+							% xteerr_exp(exrm,exno,:)=NaN;
+							% trkerr_exp(exrm,exno,:)=NaN;
+							% interr_exp(exrm,exno,:)=NaN;
+							% spderr_exp(exrm,exno,:)=NaN;
+							% ne34err_exp(exrm,exno,:)=NaN;
+							% se34err_exp(exrm,exno,:)=NaN;
+							% sw34err_exp(exrm,exno,:)=NaN;
+							% nw34err_exp(exrm,exno,:)=NaN;
+							% ne50err_exp(exrm,exno,:)=NaN;
+							% se50err_exp(exrm,exno,:)=NaN;
+							% sw50err_exp(exrm,exno,:)=NaN;
+							% nw50err_exp(exrm,exno,:)=NaN;
+							% ne64err_exp(exrm,exno,:)=NaN;
+							% se64err_exp(exrm,exno,:)=NaN;
+							% sw64err_exp(exrm,exno,:)=NaN;
+							% nw64err_exp(exrm,exno,:)=NaN;
+							% poerr_exp(exrm,exno,:)=NaN;
+							% roerr_exp(exrm,exno,:)=NaN;
+							% rmwerr_exp(exrm,exno,:)=NaN;
+						% end       
+					% end
+				% end                    
 
-				% Second remove forecasts when t=x=LAND            
+				% Remove lead times when either the BT or ATCF is over land           
 				for exrm=1:size(BT_land,1)
-					for exno=1:size(BT_cat,2)
-						if BT_land(exrm,exno)==1 
+					for exno=1:size(BT_land,2)
+						if isnan(BT_land(exrm,exno))==1 
 							BT_cat{exrm,exno}=NaN;                        
 							BT_lon(exrm,exno)=NaN;BT_land(exrm,exno)=NaN;
 							BT_lat(exrm,exno)=NaN;

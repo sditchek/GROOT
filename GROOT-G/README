@@ -102,6 +102,7 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+6/7/23   | Added new capability to remove points where the TC or forecast was over land
 5/30/23  | Ensured bdecks were final bdecks 
 4/25/23  | Added new capability to plot 1) boxplots of MAE for each experiment at all lead times and 2) histograms of MAE & bias for all experiments at each lead time
 4/7/23   | Added AL and EP final bdecks for 2022
