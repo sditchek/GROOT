@@ -109,7 +109,7 @@ for i=2:size(tmp,1)
 end
 tmp(any(isnan(tmp), 2), :) = [];
 
-% Remove 3 h FHR
+% Remove 1:11 h, 144 h, and 168 h FHR
 for i=1:size(tmp,1)
     tmp1=(tmp(i,end));
     if tmp1 == 1 || tmp1 == 2 || tmp1 == 3 || tmp1 == 4 || tmp1 == 5 || tmp1 == 6 || tmp1 == 7 || tmp1 == 8 || tmp1 == 9 || tmp1 == 10 || tmp1 == 11 || tmp1 == 144 || tmp1 == 168
@@ -133,7 +133,7 @@ tmp(any(isnan(tmp), 2), :) = [];
 
 
 checkyear=num2str(tmp(1,1));
-if strcmp(checkyear(1:4),'2018')==1
+if str2num(checkyear(1:4))<2019
 	% Interpolate middle values 48 - 60 - 72 - 84 - 96 - 108 - 120
 	if size(tmp,1)==6 % this means goes to 72
 		Cat=Cat(tmp(:,end-1),:);

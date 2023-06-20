@@ -23,11 +23,11 @@
                             % What storms are run in the basin at this init time?   
                             if identbasinmodel==0
 								if identhwrfmodel==1;tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);identdr=unique({tmp.name});
-								elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};identdr=identdr';end;end;						
+								elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};end;identdr=identdr';end;						
 							else
 								tmpt=[];
 								for identloopcheck=1:size(identexpshort,1)
-									if identhwrfmodel==1;tmp=dir([identgroot,'obsall/',identexpshort{identloopcheck},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};identdr=identdr';end;end;
+									if identhwrfmodel==1;tmp=dir([identgroot,'obsall/',identexpshort{identloopcheck},'/',identhwrf,'*',identinittimesunique(identloop,:),'*anl0*']);elseif identhafsmodel==1;identdr=[];for filetypes=1:size(identconvid_filename,1);tmp=dir([identgroot,'obsall/',identexpshort{1},'/',identhwrf,'*',identconvid_filename{filetypes},'*',identinittimesunique(identloop,:),'*']);identdr00=unique({tmp.name});identdr{filetypes}=identdr00{:};end;identdr=identdr';end;
 									tmpt=[tmpt unique({tmp.name})];									
 								end
 								a=unique(tmpt,'stable');
