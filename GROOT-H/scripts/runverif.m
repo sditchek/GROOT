@@ -70,7 +70,7 @@ for identremoveinvest=1
                     index    = find(ismember(bin, multiple));
                     identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
                 end
-                if identconv==1 && isempty(identinittimesunique)==0
+                if identconv==1 && isempty(identinittimesunique)==0 && identhwrfmodel==1
 		% Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
 			cnt=1; clear identdr1
 			 for tmp=1:size(identexpshort,1)
@@ -155,7 +155,7 @@ for identremoveinvest=1
                     multiple = find(n > size(identexpshort,1)-1);
                     index    = find(ismember(bin, multiple));
                     identinittimesunique=unique(identdr1(index,:),'rows');investhelp=sum(identinittimesunique(:,1:4)==yearsdone(stmdn,:),2);identinittimesunique=identinittimesunique(investhelp==4,:);
-					if identconv==1 && isempty(identinittimesunique)==0
+					if identconv==1 && isempty(identinittimesunique)==0 & identhwrfmodel==1
                     % Get common initalizations between all experiment - this might be different from the original atcf count due to in-progress runs! This only is needed for the conv and sat sections since they have new, unique files in scrub/
                         cnt=1; clear identdr1
                          for tmp=1:size(identexpshort,1)
