@@ -179,8 +179,8 @@
                                         axis equal
                                         axis([-180 180 -90 90])
                                         numdrops=0;
-                                        clear l lsz
-                                        for loop=1:size(identdr,2)
+                                        clear l lsz; if isempty(identdr)==1;loopfix=1;else;loopfix=size(identdr,2);end;
+                                        for loop=1:loopfix
                                             viscircles([RLON(loop) STMLAT(loop)],500/111.11,'Color',[.5 .5 .5],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
                                             viscircles([RLON(loop) STMLAT(loop)],1000/111.11,'Color',[.5 .5 .5],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
                                             hold on
@@ -241,9 +241,9 @@
                                         close all
                                     end
                                     % Plot the location of all conv at all levels that are included, centered on storm
-                                    for loop1=1:size(identexp,1)
-                                        for loop=1:size(identdr,2)
-                                            ttt=identdr{loop};alldrops0=alldrops{loop1};alldrops0=alldrops0{loop};alldrops3{loop1}={alldrops0};
+                                    for loop1=1:size(identexp,1);if isempty(identdr)==1;loopfix=1;else;loopfix=size(identdr,2);end;
+                                        for loop=1:loopfix
+											if identhafsmodel==0;ttt=identdr{loop};else;ttt='nopenopenopenopenopenope';end;alldrops0=alldrops{loop1};alldrops0=alldrops0{loop};alldrops3{loop1}={alldrops0};
                                             if strcmp(ttt(1:3),upper(identhwrf(end-2:end)))==0 && identhafsmodel==0
                                             else
                                                 set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -505,9 +505,9 @@ alldrops0=alldrops_stm{loop1};
                                     end
                                 else
                                     spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same   
-                                    for loop1=1:size(identexp,1)
-                                        for loop=1:size(identdr,2)
-                                         ttt=identdr{loop};alldrops0=alldrops{loop1};alldrops0=alldrops0{loop};alldrops3{loop1}={alldrops0};
+                                    for loop1=1:size(identexp,1);if isempty(identdr)==1;loopfix=1;else;loopfix=size(identdr,2);end;
+                                        for loop=1:loopfix
+											if identhafsmodel==0;ttt=identdr{loop};else;ttt='nopenopenopenopenopenope';end;alldrops0=alldrops{loop1};alldrops0=alldrops0{loop};alldrops3{loop1}={alldrops0};
                                             if strcmp(ttt(1:3),upper(identhwrf(end-2:end)))==0  && identhafsmodel==0
                                             else
 alldrops0=alldrops_stm{loop1};
@@ -1160,4 +1160,4 @@ alldrops0=alldrops_stm{loop1};
                         end
                         clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
                     end
-                end             
+                end         

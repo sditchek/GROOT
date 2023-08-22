@@ -141,6 +141,7 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+8/22/23  | Added a new stratification which includes all forecasts not included in the user-defined custom stratification
 6/7/23   | Added new capability to remove points where the TC or forecast was over land 
 5/30/23  | Added new capability to handle OFCL and OCD5
 	 | Ensured bdecks were final bdecks

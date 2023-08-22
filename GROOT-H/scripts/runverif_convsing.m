@@ -39,10 +39,10 @@
 								a(rmstm)=[];
 								identdr=a;
 							end
-                            if isempty(identdr)==1
+                            if isempty(identdr)==1 && identhwrfmodel==1
                                 identinittimesunique(identloop,:)=[];
                             else
-                                for i=1:size(identdr,2);if identhwrfmodel==1;
+                               if identhwrfmodel==1;for i=1:size(identdr,2);
                                     identdrops=identdr{i};
                                     if strcmp(identdrops(end-27),'l')==1
                                         identdropsdat(i,:)=['al',identdrops(end-29:end-28)];
@@ -54,8 +54,8 @@
                                         identdropsdat(i,:)=['cp',identdrops(end-29:end-28)];
                                     end
                                     identbasin{i}=identdrops(1:end-27);
-                                    identbasinname{i}=[upper(identdrops(end-29:end-27)),' (',upper(identdrops(1)),identdrops(2:end-30),')'];elseif identhafsmodel==1;identdropsdat=lower(ident(1:4));identbasin={identhwrf};identbasinname={[upper(identn(end-4:end-2)),' (',upper(identn(1)),lower(identn(2:end-5)),')']};end
-                                end
+                                    identbasinname{i}=[upper(identdrops(end-29:end-27)),' (',upper(identdrops(1)),identdrops(2:end-30),')'];end;end;if identhafsmodel==1;identdropsdat=lower(ident(1:4));identbasin={identhwrf};identbasinname={[upper(identn(end-4:end-2)),' (',upper(identn(1)),lower(identn(2:end-5)),')']};end
+                                %end
                                 % Get the TC VITALS for each storm
                                 for i=1:size(identdropsdat,1)                                
                                     if identhwrfmodel==1;filename = [identgroot,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];elseif identhafsmodel==1;filename = [identgroot,'tcvitals/',identbasin{i},'.',identinittimesunique(identloop,:),'.storm_vit'];delimiter = ' ';formatSpec = '%10s%4s%4s%[^\n\r]';fileID = fopen(filename,'r');dataArray = textscan(fileID, formatSpec, 'Delimiter', '', 'WhiteSpace', '', 'TextType', 'string',  'ReturnOnError', false);fclose(fileID);tcvit_id=dataArray{2};tcvit_id=tcvit_id{:};tcvit_id=tcvit_id(2:4);filename = [identgroot,'tcvitals/',tcvit_id,'.',identinittimesunique(identloop,:),'.storm_vit'];end;                                                                   
@@ -92,7 +92,7 @@
                                 end
                                 % Get the conv for each storm/experiment
                                 for j=1:size(identexp,1)
-                                    for i=1:size(identdr,2)
+                                    if isempty(identdr)==1;dropaz=NaN;dropan=NaN;xtob=NaN;ytob=NaN;Observation_Class=NaN;droptype0 = NaN;dropsubtype = NaN;droplat = NaN;droplon = NaN;droppres = NaN;dropdhr = NaN;dropinc = NaN;droptype=NaN;if strcmp(tcv_lonew(1),'W')==1;tmpdrops=[-1*droplon droplat droppres dropinc dropaz' dropan' -1*xtob' ytob' dropsubtype repmat(identloop,size(droplat,1),1) droptype];if j==size(identexp,1);RLON(1)=-1*RLON(1);end;else;tmpdrops=[droplon droplat droppres dropinc dropaz' dropan' xtob' ytob' dropsubtype repmat(identloop,size(droplat,1),1) droptype];end;tmpdrops(tmpdrops(:,4)<=0)=NaN;tmpdrops(any(isnan(tmpdrops), 2), :) = [];alldrops01{1}=tmpdrops;else;for i=1:size(identdr,2);
                                     %% Initialize variables.
                                     if identhwrfmodel==1;filename=[identgroot,'obsall/',identexpshort{j},'/',identdr{i}];
                                     formatSpec = '%10C%9f%13f%16f%16f%16f%16f%f%[^\n\r]';
@@ -142,7 +142,7 @@
                                     end
                                     tmpdrops(tmpdrops(:,4)<=0)=NaN;
                                     tmpdrops(any(isnan(tmpdrops), 2), :) = [];                
-
+									end
                                     alldrops01{i}=tmpdrops;
                                     clear dropaz tmp tmpdrops dropan xtob ytob
                                     end
@@ -170,8 +170,8 @@
                                         axis equal
                                         axis([-180 180 -90 90])
                                         numdrops=0;
-                                        clear l lsz
-                                        for loop=1:size(identdr,2)
+                                        clear l lsz; if isempty(identdr)==1;loopfix=1;else;loopfix=size(identdr,2);end;
+                                        for loop=1:loopfix
                                             viscircles([RLON(loop) STMLAT(loop)],500/111.11,'Color',[.5 .5 .5],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
                                             viscircles([RLON(loop) STMLAT(loop)],1000/111.11,'Color',[.5 .5 .5],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
                                             hold on
@@ -232,9 +232,9 @@
                                         close all
                                     end
                                     % Plot the location of all conv at all levels that are included, centered on storm
-                                    for loop1=1:size(identexp,1)
-                                        for loop=1:size(identdr,2)
-                                            ttt=identdr{loop};
+                                    for loop1=1:size(identexp,1);if isempty(identdr)==1;loopfix=1;else;loopfix=size(identdr,2);end;
+                                        for loop=1:loopfix
+											if identhafsmodel==0;ttt=identdr{loop};else;ttt='nopenopenopenopenopenope';end;
                                             if strcmp(ttt(1:end-27),identhwrf)==0 && identhafsmodel==0
                                             else
                                                 set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -496,9 +496,9 @@
                                     end
                                 else
                                     spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same   
-                                    for loop1=1:size(identexp,1)
-                                        for loop=1:size(identdr,2)
-                                         ttt=identdr{loop};
+                                    for loop1=1:size(identexp,1);if isempty(identdr)==1;loopfix=1;else;loopfix=size(identdr,2);end;
+                                        for loop=1:loopfix
+											if identhafsmodel==0;ttt=identdr{loop};else;ttt='nopenopenopenopenopenope';end;
                                             if strcmp(ttt(1:end-27),identhwrf)==0  && identhafsmodel==0
                                             else
                                                  alldrops0=alldrops{loop1};
@@ -1143,4 +1143,4 @@
                         end
                         clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
                     end
-                end             
+                end         
