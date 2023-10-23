@@ -70,13 +70,13 @@
                                      lsz(sot)=0;
                                 end
                             else % there are no subtypes to this conventional bservation!
-                                l(1)=plot(0,5000,'.k');
+                                l(1)=plot(0,5000,'.k');lsz=0;
                             end
                         else
                             if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
                                 for sot=1:size(identconvobssubtype,2)
                                     [counts,centers]=hist(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),5),[0:5:2000]);
-                                    l(sot)=plot(centers,counts,'-','color',identconvobscolors(sot,:),'linewidth',2);            
+                                    l(sot)=plot(centers,counts,'-','color',identconvobscolors(sot,:),'linewidth',2);centersmatrix(j,sot,:)=centers;countsmatrix(j,sot,:)=counts;            
                                     lsz(sot)=size(compvalues((compvalues(:,9)==identconvobssubtype(sot) & compvalues(:,11)==identconvobstype(sot)),1),1);
                                 end
                             else % there are no subtypes to this conventional observation!
@@ -95,7 +95,7 @@
                                 end
                                 ll=legend(l,identlegendconv,'location','northeast');
                         else
-                                ll=legend(l,['Assimilated Observations'],'location','northeast');
+                                ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(compvalues,1);
                         end
                         ll.FontSize=10;
                         ylabel('Number of Assimilated Observations','fontsize',20)                                   
@@ -127,7 +127,7 @@
                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                             end
                         end;end;    
-                        text(0,1.027,['\textbf{TCS: ',tmpphrase,'$\mid$ N=',num2str(size(compvalues,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                        text(0,1.027,['\textbf{TCS: ',tmpphrase,'$\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                         text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                         text(1,1.03,['\textbf{',identexpshort{j},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(j,:),'units','normalized');                    
                         ax=gca;
@@ -170,7 +170,7 @@
                                      lsz(sot)=0;
                                 end
                             else % there are no subtypes to this conventional bservation!
-                                l(1)=polarplot(0,5000,'.k');
+                                l(1)=polarplot(0,5000,'.k');lsz=0;
                             end
                         else
                             if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
@@ -188,7 +188,7 @@
                                 end
                                 l=legend(l,identlegendconv,'location','northeast');
                         else
-                                l=legend(l,['Assimilated Observations'],'location','northeast');
+                                l=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(compvalues,1);
                         end
                         l.FontSize=10;
                         ax1.ThetaDir = 'clockwise';
@@ -231,7 +231,7 @@
                                 tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
                             end
                         end;end;    
-                        text(-.015,1.032,['\textbf{TCS: ',tmpphrase,'$\mid$ N=',num2str(size(compvalues,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                        text(-.015,1.032,['\textbf{TCS: ',tmpphrase,'$\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                         text(-.015,1.07,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                         text(1.015,1.035,['\textbf{',identexpshort{j},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(j,:),'units','normalized');                    
                         ax=gca;
@@ -381,8 +381,100 @@
                         end
                         close all   
                     end
-                    clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone convyear ymaxallbasin identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv yrlp identconvid  ident* skip* stormsdone yearsdone
+                    
+					for j=2:size(identexp,1) 
+						% Histogram Difference Composite Graphic
+                        spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
+                        set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+                        hfig=figure;
+                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+                        ax1=subplot(3,4,[1:8]);
+                        set(gca,'plotboxaspectratio',[1 1 1])
+                        box on
+                        set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
+                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+                        hold on
+                        if isempty(compvalues)==1
+                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                for sot=1:size(identconvobssubtype,2)
+                                     l(sot)=plot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));
+                                     lsz(sot)=0;
+                                end
+                            else % there are no subtypes to this conventional bservation!
+                                l(1)=plot(0,5000,'.k');lsz=0;
+                            end
+                        else
+                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                                for sot=1:size(identconvobssubtype,2)
+                                    l(sot)=plot(squeeze(centersmatrix(j,sot,:)),squeeze(countsmatrix(1,sot,:)-countsmatrix(j,sot,:)),'-','color',identconvobscolors(sot,:),'linewidth',2);
+                                    lsz(sot)=sum(countsmatrix(1,sot,:)-countsmatrix(j,sot,:));
+                                end
+                            else % there are no subtypes to this conventional observation!
+                                   [counts,centers]=hist(compvalues(:,5),[0:5:2000]);
+                                    l(1)=plot(centers,counts,'-k','linewidth',2);            
+                            end
+                        end
+                        xlim([-.5 2000])
+                        if yrlp==1 && j==1
+                            ymaxallbasin=round(max(counts)/100)*100+50;
+                        end
+                        ylim([0 ymaxallbasin])
+                        if size(identconvobssubtype,2)>1
+                                for sot=1:size(identconvobssubtype,2)
+                                    identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
+                                end
+                                ll=legend(l,identlegendconv,'location','northeast');
+                        else
+                                ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(compvalues,1);
+                        end
+                        ll.FontSize=10;
+                        ylabel('Diff Btw Number of Assimilated Observations','fontsize',20)                                   
+                        xlabel('Radius (km)','fontsize',20)                                   
+                        set(gca,'fontsize',20)
+                        grid on
+                        set(gca,'xtick',0:250:2000)
+                        set(gcf, 'InvertHardcopy', 'off')
+                        set(gcf,'Units','inches');
+                        screenposition = get(gcf,'Position');
+                        set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+                        set(gcf, 'InvertHardcopy', 'off')    
+                        for tmpdr=1:size(identdr,2)
+                            tmp=identdr{tmpdr};
+                            tmpyr1=str2num(tmp(end-10:end-9));
+                            if tmpyr1<80
+                                tmpyr(tmpdr)=tmpyr1+2000;
+                            else
+                                tmpyr(tmpdr)=tmpyr1+1900;
+                            end
+                        end
+                        tmpuv = unique(tmpyr);
+                        tmpn  = histc(tmpyr,tmpuv); 
+                        if size(tmpuv,2)>5;tmpphrase=[num2str(sum(tmpn)),' $\mid$ YEARS: ',num2str(size(tmpuv,2))];else;tmpphrase='';
+                        for tmpdr=1:length(tmpn)
+                            if tmpdr==length(tmpn)
+                                tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
+                            else
+                                tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
+                            end
+                        end;end;    
+                        text(0,1.027,['\textbf{TCS: ',tmpphrase,'$\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+                        text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations - Differences from ',identexpshort{j},'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                        text(1,1.03,['\textbf{',identexpshort{1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(1,:),'units','normalized');                    
+                        ax=gca;
+                        set(gca,'Color',[.9 .9 .9])
+                        set(ax, 'Layer', 'top')
+                        ax.LineWidth=1; 
+                        set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
+                        set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+                        f = getframe(hfig);
+                        if yrlp==1
+							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                        else
+							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                        end
+                        close all   
+					end															
+					clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone convyear ymaxallbasin identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv yrlp identconvid  ident* skip* stormsdone yearsdone
 
                 end
-            end
-            
+            end          

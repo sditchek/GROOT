@@ -3,8 +3,8 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identout=['/scratch2/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/'];  	 % top-level directory path for results folder
-identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/']; % location of GROOT-PR directory (${homepath}/GROOT/GROOT-G/GROOT-PR/, where homepath is same as in runverif.ksh)
+identout=['/scratch2/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/'];  	 % top-level directory path for results folder - must include end "/"
+identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/']; % path of GROOT-PR directory (i.e., ${homepath}/GROOT/GROOT-G/GROOT-PR/, where homepath is same as in runverif.ksh) - must include end "/"
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                            	 % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=0;                                                               % are there multiple storms being tracked at once (e.g., GFS)? | yes (1) no (0)
 
@@ -27,8 +27,8 @@ identgraphicsbycycle=0;                                         % error graphics
 identcompositeonly=1;						% only generate composite graphics | yes (1 - this saves time) no (0 - you get indiv. storm error statistics output)
 identns=1;                                                      % do you want to create a new subset, different that what is in the package? | yes (1) no (0)
 identnsname='OG4';                                              % name for new subset - will be capitalized in the script
-identnewsubset_id=[{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'14L'};{'14L'};{'14L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'05L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'18L'};{'18L'};{'18L'};{'18L'}]; % new subset stormids if identns=1 - each associated entry in identnewsubset, enter the stormid (if range of cycles, enter the stormid once)
-identnewsubset=[{'2020073118'};{'2020080100'};{'2020080106'};{'2020080112'};{'2020080118'};{'2020080200'};{'2020082118'};{'2020082200'};{'2020082218'};{'2020082300'};{'2020082406'};{'2020082412'};{'2020082418'};{'2020082500'};{'2020082506'};{'2020082512'};{'2020082518'};{'2020082600'};{'2020082212'};{'2020082306'};{'2020082312'};{'2020100618'};{'2020100700'};{'2020100706'};{'2020100712'};{'2020100718'};{'2020100800'};{'2020100806'};{'2020100812'};{'2020102518'};{'2020102600'};{'2020102606'};{'2020102612'};{'2020102618'};{'2020102700'};{'2020102706'};{'2020102712'};{'2021070300'};{'2021081918'};{'2021082000'};{'2021082006'};{'2021082012'};{'2021082018'};{'2021082100'};{'2021082106'};{'2021082112'};{'2021082706'};{'2021082712'};{'2021082718'};{'2021082800'};{'2021082806'};{'2021082812'};{'2021092618'};{'2021092700'};{'2021092718'};{'2021092800'}]; % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
+identnewsubset_id=[{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'13L'};{'14L'};{'14L'};{'14L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'26L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'28L'};{'05L'};{'05L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'08L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'18L'};{'18L'};{'18L'};{'18L'};{'07L'};{'07L'};{'07L'};{'07L'};{'07L'};{'07L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'17L'};{'17L'};{'17L'};{'17L'};{'17L'};{'17L'}]; % new subset stormids if identns=1 - each associated entry in identnewsubset, enter the stormid (if range of cycles, enter the stormid once)
+identnewsubset=[{'2020073118'};{'2020080100'};{'2020080106'};{'2020080112'};{'2020080118'};{'2020080200'};{'2020082118'};{'2020082200'};{'2020082218'};{'2020082300'};{'2020082406'};{'2020082412'};{'2020082418'};{'2020082500'};{'2020082506'};{'2020082512'};{'2020082518'};{'2020082600'};{'2020082212'};{'2020082306'};{'2020082312'};{'2020100618'};{'2020100700'};{'2020100706'};{'2020100712'};{'2020100718'};{'2020100800'};{'2020100806'};{'2020100812'};{'2020102518'};{'2020102600'};{'2020102606'};{'2020102612'};{'2020102618'};{'2020102700'};{'2020102706'};{'2020102712'};{'2021070218'};{'2021070300'};{'2021081918'};{'2021082000'};{'2021082006'};{'2021082012'};{'2021082018'};{'2021082100'};{'2021082106'};{'2021082112'};{'2021082706'};{'2021082712'};{'2021082718'};{'2021082800'};{'2021082806'};{'2021082812'};{'2021092618'};{'2021092700'};{'2021092718'};{'2021092800'};{'2022091718'};{'2022091800'};{'2022091818'};{'2022091900'};{'2022092018'};{'2022092100'};{'2022092418'};{'2022092500'};{'2022092506'};{'2022092512'};{'2022092518'};{'2022092600'};{'2022092606'};{'2022092612'};{'2022092618'};{'2022092700'};{'2022092706'};{'2022092712'};{'2022092718'};{'2022092800'};{'2022110806'};{'2022110812'};{'2022110818'};{'2022110900'};{'2022110906'};{'2022110912'}]; % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
                 	            	                                % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]                                                                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
 identenkfexact=0;							%  covariance-type stratification - exact method ONLY WORKS FOR HWRF | if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
 identenkfoper=1;identenkfoperpath='/scratch1/NCEPDEV/hwrf/noscrub/input/TDR/'; % covariance-type stratification - operational method - note that for HAFS if this is enabled, graphics will indicate pre- and post- TDR rahter than enkf vs gdas covariance | all cycles from the first TDR available through the end of the TC used enfk (1) do not do stratifications by enkf (0) | note that identenkfoperpath is the path to the TDR files on disk - if your model doesn't have this, set to identenkfoper=0.
@@ -39,12 +39,11 @@ identconv=0;                                                   		   % convention
 identgraphicsconv=0;                                            	   % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Recon';                                            	   % name of observation for graphic titles | uppercase first letter | will become "Assimilated ____ Observations"
 identincludeobs=1					        % the value of (Prep_Use_Flag+Analysis_Use_Flag) that means that the observation was assimilated
-identconvobstype=[136 993 992 137];					   % obstype number(s) | number of obstypes must match number of obssubtypes
-							 	      		% if an obstype is associated with multiple obssubtypes, repeat obstype for each obssubtype. if you want GFS-CTL obssubtypes for a given obstype, only list the obstype once and enter "0" as the corresponding obssubtype and set the corresponding identsubtypekeep to 0.
-									        % the order of the obstypes will be plotting order, so put more sparse obs last
-identconvobssubtype=[0 0 0 0];identsubtypekeep=[1 1 1 1];		   % corresponding obssubtype number(s) | number of obssubtypes must match number of obstypes | identsubtypekeep must match number of identconvobstype and identconvobssubtype | keep subtype (1) use all subtypes for this obtype (0)
-identconvobscolors=[230 102 51;30 144 255;0 152 0;204 51 204]/255; 	   % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value)
-identconvobslegend=[{'High-Density Observations'};{'P3 TDR Observations'};{'G-IV TDR Observations'};{'Dropsonde Observations'}]; % names of each of your subtypes for the plot legends
+identconvobstype=[136 136 236 213 993 992 137 137 237];			   % obstype number(s) | number of obstypes must match number of obssubtypes
+							 	      		% NOTE: if an obstype is associated with multiple obssubtypes, repeat obstype for each obssubtype. if you want GFS-CTL obssubtypes for a given obstype, only list the obstype once and enter "0" as the corresponding obssubtype and set the corresponding identsubtypekeep to 0. Also, the order of the obstypes will be plotting order, so put more sparse obs last
+identconvobssubtype=[0 0 0 0 0 0 0 0 0];identsubtypekeep=[1 1 1 1 1 1 1 1 1]; % corresponding obssubtype number(s) | number of obssubtypes must match number of obstypes | identsubtypekeep must match number of identconvobstype and identconvobssubtype | keep subtype (1) use all subtypes for this obtype (0)
+identconvobscolors=[229 96 43;237 146 109;164 61 20;248 211 196;30 144 255;0 152 0;204 51 204;233 169 233;107 27 107]/255; % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value)
+identconvobslegend=[{'High-Density T Observations'};{'High-Density Q Observations'};{'High-Density UV Observations'};{'High-Density SPD Observations'};{'P3 TDR Observations'};{'G-IV TDR Observations'};{'Dropsonde T Observations'};{'Dropsonde Q Observations'};{'Dropsonde UV Observations'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options
 identsatobs=0;                          % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
@@ -144,12 +143,12 @@ elseif identcase==0
     if exist([identout,'RESULTS/',identfold,'VERIFICATION/'], 'dir'); rmdir([identout,'RESULTS/',identfold,'VERIFICATION/'],'s');end;
 elseif identcase==1
     disp('CLEANING UP PREVIOUS VERIFICATION RESULTS FOR THIS STORM...')
-    if exist([identout,'RESULTS/',identfold,tmpcasefold,'/TRACKINT/'], 'dir' ); rmdir([identout,'RESULTS/',identfold,tmpcasefold,'/TRACKINT/'],'s');end;
+    tmpcasefold=upper(stormsdone{:});
 end
 
 %% Save the output
-identhwrfmodel=0
 save('startverif.mat')                        % this file will be saved in the [identout] directory so it can be used when needed
+identhwrfmodel=0
 
 %% Create output file for shell script
 fid = fopen('commonverif.txt','wt');

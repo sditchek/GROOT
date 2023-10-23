@@ -69,7 +69,7 @@ for i=1:size(Dates1,1)
     identhemi(i)=tmp(end);
     Speed(i,:)=str2num(Speed1{i})./1.94384;
     Pressure(i,:)=str2num(Pressure1{i});
-    Cat(i,:)=(Category1{i});
+    if isempty(str2num(Category1{i}))==1;if str2num(Speed1{i})./1.94384 < 34./1.94384;Cat(i,:)='TD';elseif str2num(Speed1{i})./1.94384 >= 34./1.94384 && str2num(Speed1{i})./1.94384 < 64./1.94384;Cat(i,:)='TS';elseif str2num(Speed1{i})./1.94384 >= 64./1.94384;Cat(i,:)='HU';end;else;Cat(i,:)=(Category1{i});end;
     Name(i,1:size(Name1{i},2))=(Name1{i});
     RAD(i)=str2num(RAD1{i});
     NEQ(i,:)=str2num(R1{i}).*1.852;

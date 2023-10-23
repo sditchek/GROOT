@@ -1,6 +1,6 @@
 #!/bin/ksh
 #SBATCH -t 00:10:00         # XXXX: Time Limit | generally sufficient; may need to increase it
-#SBATCH -A aoml-osse            # XXXX: Account |  Use your project account
+#SBATCH -A aoml-hafs1            # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
 #SBATCH -p hera	    # XXXX: Partition | keep it hera
 #SBATCH --ntasks=1	    # XXXX: tasks 

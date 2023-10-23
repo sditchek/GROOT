@@ -184,7 +184,7 @@
                                                          lsz(sot)=0;
                                                     end
                                                 else % there is 1 type of conv obs!
-                                                    l(1)=plot(-360,-360,'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');
+                                                    l(1)=plot(-360,-360,'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');lsz=0;
                                                 end
                                             else                       
                                                 if size(identconvobssubtype,2)>1 % there are multiple types of conv obs!
@@ -206,7 +206,7 @@
                                             end
                                             l=legend(l,identlegendconv,'location','northeast');
                                         else
-                                            l=legend(l,['Assimilated Observations'],'location','northeast');
+                                            l=legend(l,['Assimilated Observations'],'location','northeast');lsz=numdrops;
                                         end
                                         l.FontSize=10;
                                         hold off                        
@@ -218,7 +218,7 @@
                                         screenposition = get(gcf,'Position');
                                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                         set(gcf, 'InvertHardcopy', 'off')
-                                        text(0,1.055,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(numdrops),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                        text(0,1.055,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         text(0,1.11,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                         text(1,1.055,['\textbf{',identexpshort{loop1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(loop1,:),'units','normalized');
                                         ax=gca;
@@ -270,7 +270,7 @@
                                                              lsz(sot)=0;
                                                         end
                                                     else % there are no subtypes to this conventional bservation!
-                                                        l(1)=plot(-360,-360,'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');
+                                                        l(1)=plot(-360,-360,'o','markerfacecolor','k','markersize',2,'markeredgecolor','k');lsz=0;
                                                     end
                                                  else                        
                                                         if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
@@ -293,7 +293,7 @@
                                                     end
                                                     l=legend(l,identlegendconv,'location','northeast');
                                                 else
-                                                    l=legend(l,['Assimilated Observations'],'location','northeast');
+                                                    l=legend(l,['Assimilated Observations'],'location','northeast');lsz=numdrops;
                                                 end
                                                 l.FontSize=10;
                                                 hold off
@@ -303,7 +303,7 @@
                                                 screenposition = get(gcf,'Position');
                                                 set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                                 set(gcf, 'InvertHardcopy', 'off')
-                                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(numdrops),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                                 text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                                 text(1,1.03,['\textbf{',upper(identbasinname{loop}),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                                 text(1,1.065,['\textbf{',identexpshort{loop1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(loop1,:),'units','normalized');                    
@@ -341,14 +341,14 @@
                                                              for i=1:size(places0,1)
                                                                  if isnan(places0(i,1))==1 || isnan(places0(i,2))==1
                                                                  else
-                                                                     denmap(places0(i,1),places0(i,2))=nansum([denmap(places0(i,1),places0(i,2)),1]);
+                                                                     denmap(places0(i,1),places0(i,2))=sum([denmap(places0(i,1),places0(i,2)),1],'omitnan');
                                                                  end
                                                              end
                                                              denmapall=denmap;
                                                          end
                                                          denmapall(isnan(denmapall))=0;                
                                                          denmap=nan(11,3);
-                                                         denmap=nansum(denmapall,3);                
+                                                         denmap=sum(denmapall,3,'omitnan');                
                                                         set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                                         hfig=figure;
                                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -426,14 +426,14 @@
                                                      for i=1:size(places0,1)
                                                          if isnan(places0(i,1))==1 || isnan(places0(i,2))==1
                                                          else
-                                                             denmap(places0(i,1),places0(i,2))=nansum([denmap(places0(i,1),places0(i,2)),1]);
+                                                             denmap(places0(i,1),places0(i,2))=sum([denmap(places0(i,1),places0(i,2)),1],'omitnan');
                                                          end
                                                      end
                                                      denmapall=denmap;
                                                  end
                                                  denmapall(isnan(denmapall))=0;                
                                                  denmap=nan(11,3);
-                                                 denmap=nansum(denmapall,3);                
+                                                 denmap=sum(denmapall,3,'omitnan');                
                                                 set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                                 hfig=figure;
                                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -536,14 +536,14 @@
                                                              for i=1:size(places0,1)
                                                                  if isnan(places0(i,1))==1 || isnan(places0(i,2))==1
                                                                  else
-                                                                     denmap(places0(i,1),places0(i,2))=nansum([denmap(places0(i,1),places0(i,2)),1]);
+                                                                     denmap(places0(i,1),places0(i,2))=sum([denmap(places0(i,1),places0(i,2)),1],'omitnan');
                                                                  end
                                                              end
                                                              denmapall=denmap;
                                                          end
                                                          denmapall(isnan(denmapall))=0;                
                                                          denmap=nan(11,3);
-                                                         denmap=nansum(denmapall,3);                                                       
+                                                         denmap=sum(denmapall,3,'omitnan');                                                       
                                                          alldenmap_t(sot,loop1)={denmapall};
                                                     end                             
                                                 end
@@ -569,14 +569,14 @@
                                                      for i=1:size(places0,1)
                                                          if isnan(places0(i,1))==1 || isnan(places0(i,2))==1
                                                          else
-                                                             denmap(places0(i,1),places0(i,2))=nansum([denmap(places0(i,1),places0(i,2)),1]);
+                                                             denmap(places0(i,1),places0(i,2))=sum([denmap(places0(i,1),places0(i,2)),1],'omitnan');
                                                          end
                                                      end
                                                      denmapall=denmap;
                                                  end
                                                  denmapall(isnan(denmapall))=0;                
                                                  denmap=nan(11,3);
-                                                 denmap=nansum(denmapall,3);                       
+                                                 denmap=sum(denmapall,3,'omitnan');                       
                                                  alldenmap(loop1)={denmapall}; 
                                                  RLON2=RLON(loop);
                                                  STMLAT2=STMLAT(loop);
@@ -688,7 +688,7 @@
                                         end
                                     else % there are no subtypes to this conventional bservation!
                                         counts=0;
-                                        l(1)=plot(0,5000,'.k');
+                                        l(1)=plot(0,5000,'.k');lsz=0;
                                     end
                                 else
                                     if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
@@ -713,7 +713,7 @@
                                         end
                                         ll=legend(l,identlegendconv,'location','northeast');
                                 else
-                                        ll=legend(l,['Assimilated Observations'],'location','northeast');
+                                        ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(tmp1,1);
                                 end
                                 ll.FontSize=10;
                                 ylabel('Number of Assimilated Observations','fontsize',20)                                   
@@ -726,7 +726,7 @@
                                 screenposition = get(gcf,'Position');
                                 set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                 set(gcf, 'InvertHardcopy', 'off')                       
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),' $\mid$ N=',num2str(size(tmp1,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                 text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                 text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
                                 text(1,1.065,['\textbf{',identexpshort{exl},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(exl,:),'units','normalized');                    
@@ -766,7 +766,7 @@
                                              lsz(sot)=0;
                                         end
                                     else % there are no subtypes to this conventional bservation!
-                                        l(1)=polarplot(0,5000,'.k');
+                                        l(1)=polarplot(0,5000,'.k');lsz=0;
                                     end
                                 else
                                     if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
@@ -785,7 +785,7 @@
                                         end
                                         ll=legend(l,identlegendconv,'location','northeast');
                                 else
-                                        ll=legend(l,['Assimilated Observations'],'location','northeast');
+                                        ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(tmp1,1);
                                 end
                                 ll.FontSize=10;
                                 ax1.ThetaDir = 'clockwise';
@@ -809,7 +809,7 @@
                                 text(.5,.347,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
                                 text(.5,.19,'1000 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
                                 text(.5,.034,'1500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
-                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),' $\mid$ N=',num2str(size(tmp1,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                text(0,1.03,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                 text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                 text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
                                 text(1,1.065,['\textbf{',identexpshort{exl},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(exl,:),'units','normalized');                    
@@ -1097,7 +1097,7 @@
                                              lsz(sot)=0;
                                         end
                                     else % there are no subtypes to this conventional bservation!
-                                        l(1)=plot(-360,-360,'x','color',[.5 0 .6],'markersize',2);
+                                        l(1)=plot(-360,-360,'x','color',[.5 0 .6],'markersize',2);lsz=0;
                                     end
                             else
                                 if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
@@ -1106,10 +1106,10 @@
                                          lsz(sot)=size(lonpd((plotdrops(:,9)==identconvobssubtype(sot) & plotdrops(:,11)==identconvobstype(sot)),1),1);
                                     end
                                 else % there are no subtypes to this conventional bservation!
-                                    l(1)=plot(lonpd,latpd,'x','color',[.5 0 .6],'markersize',2);
+                                    l(1)=plot(lonpd,latpd,'x','color',[.5 0 .6],'markersize',2);lsz=size(lonpd,1);
                                 end
                             end
-                            text(0,1.03,['\textbf{DATES: ',DATEall(1,:),'$\mathbf{-}$',DATEall(end,:),' $\mid$ N=',num2str(size(lonpd,1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                            text(0,1.03,['\textbf{DATES: ',DATEall(1,:),'$\mathbf{-}$',DATEall(end,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                             ax.LineWidth=1; 
                             %l(1)=plot(-200,-100,'o','markerfacecolor','w','markeredgecolor','k','markersize',8); 
                             l(1)=plot(-200,-100,'.','color',[.5 .5 .5],'markersize',25); 

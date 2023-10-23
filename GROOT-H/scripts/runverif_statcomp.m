@@ -11749,7 +11749,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin));
@@ -11763,7 +11763,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin));												
@@ -11777,7 +11777,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin));
@@ -11791,7 +11791,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==1));
@@ -11805,7 +11805,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1));
@@ -11819,7 +11819,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==1));
@@ -11833,7 +11833,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==0));
@@ -11847,7 +11847,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0));
@@ -11861,7 +11861,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
@@ -11882,7 +11882,7 @@
                                             else
                                                 tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);                                    
                                             end
-                                            tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];else;tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));
+                                            tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist),'stable');elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];else;tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));
                                    elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);BTnm=BT_name(BT_enkf'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);BTnm=BT_name(BT_enkf'==1);end;tmpyr=unique([BT_year(BT_enkf'==1) BT_storm(BT_enkf'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1));
                                    elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);BTnm=BT_name(BT_enkf'==0);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);BTnm=BT_name(BT_enkf'==0);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
                                    elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
@@ -12877,7 +12877,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin));
@@ -12891,7 +12891,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin));												
@@ -12905,7 +12905,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin));
@@ -12919,7 +12919,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==1));
@@ -12933,7 +12933,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1));
@@ -12947,7 +12947,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==1));
@@ -12961,7 +12961,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==0));
@@ -12975,7 +12975,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0));
@@ -12989,7 +12989,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
@@ -13010,7 +13010,7 @@
                                             else
                                                 tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);                                    
                                             end
-                                            tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];else;tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));
+                                            tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist),'stable');elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];else;tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));
                                    elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);BTnm=BT_name(BT_enkf'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);BTnm=BT_name(BT_enkf'==1);end;tmpyr=unique([BT_year(BT_enkf'==1) BT_storm(BT_enkf'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1));
                                    elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);BTnm=BT_name(BT_enkf'==0);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);BTnm=BT_name(BT_enkf'==0);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
                                    elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));
@@ -13997,7 +13997,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin) BT_storm(BT_shr1<LOWbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin));
@@ -14011,7 +14011,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin));												
@@ -14025,7 +14025,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin) BT_storm(BT_shr1>HIGHbasin)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin));
@@ -14039,7 +14039,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==1) BT_storm(BT_shr1<LOWbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==1));
@@ -14053,7 +14053,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==1));
@@ -14067,7 +14067,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==1,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin & BT_drops'==1);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==1) BT_storm(BT_shr1>HIGHbasin & BT_drops'==1)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==1));
@@ -14081,7 +14081,7 @@
 											tmp_exp=tmp_exp(BT_shr1<LOWbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1<LOWbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1<LOWbasin & BT_drops'==0) BT_storm(BT_shr1<LOWbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1<LOWbasin & BT_drops'==0));
@@ -14095,7 +14095,7 @@
 											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0));
@@ -14109,7 +14109,7 @@
 											tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
 											BTnm=BT_name(BT_shr1>HIGHbasin & BT_drops'==0);
 										end
-										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_shr1>HIGHbasin & BT_drops'==0) BT_storm(BT_shr1>HIGHbasin & BT_drops'==0)],'rows','stable');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
 										tmpnm=unique(BT_name(BT_shr1>HIGHbasin & BT_drops'==0));	
@@ -14130,7 +14130,7 @@
                                             else
                                                 tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);                                    
                                             end
-                                            tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];else;tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));
+                                            tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist),'stable');elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmp=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(BT_date);tmp3=BT_name{ins2};tmp3=tmp3(end-4:end-2);if strcmp(BT_date(ins2,:),tmp)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist,numlist+size(BT_date,1)*1,numlist+size(BT_date,1)*2,numlist+size(BT_date,1)*3],:,:);BTnm=[BT_name(numlist) BT_name(numlist) BT_name(numlist) BT_name(numlist)];else;tmp_exp=tmp_exp(numlist,:,:);BTnm=BT_name(numlist);end;tmpyr=unique([BT_year(numlist) BT_storm(numlist)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr'+2000;tmpnm=unique(BT_name(numlist));
                                    elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);BTnm=BT_name(BT_enkf'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);BTnm=BT_name(BT_enkf'==1);end;tmpyr=unique([BT_year(BT_enkf'==1) BT_storm(BT_enkf'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1));
                                    elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);BTnm=BT_name(BT_enkf'==0);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);BTnm=BT_name(BT_enkf'==0);end;tmpyr=unique([BT_year(BT_enkf'==0) BT_storm(BT_enkf'==0)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==0));
                                    elseif strat==892;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);BTnm=[BTnm BTnm BTnm BTnm];else;tmp_exp=tmp_exp(BT_enkf'==1 & BT_drops'==1,:,:);BTnm=BT_name(BT_enkf'==1 & BT_drops'==1);end;tmpyr=unique([BT_year(BT_enkf'==1 & BT_drops'==1) BT_storm(BT_enkf'==1 & BT_drops'==1)],'rows','stable');tmpyr=tmpyr(:,1);tmpyr=tmpyr+2000;tmpnm=unique(BT_name(BT_enkf'==1 & BT_drops'==1));

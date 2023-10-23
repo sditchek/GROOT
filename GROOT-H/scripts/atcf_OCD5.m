@@ -63,6 +63,30 @@ for i=1:size(tmp,1)
 end
 tmp(any(isnan(tmp), 2), :) = [];
 
+checkyear=num2str(tmp(1,1));
+if str2num(checkyear(1:4))<2013
+        % Interpolate middle values 48 - 60 - 72 - 84 - 96 - 108 - 120
+        if size(tmp,1)==6 % this means goes to 72
+                tmp(7,:)=tmp(6,:);
+                tmp(6,:)=(tmp(5,:)+tmp(7,:))/2;
+                tmp(:,end-1)=1:7;
+        elseif size(tmp,1)==7 % this means goes to 96
+                tmp(9,:)=tmp(7,:);
+                tmp(7,:)=tmp(6,:);
+                tmp(6,:)=(tmp(5,:)+tmp(7,:))/2;
+                tmp(8,:)=(tmp(7,:)+tmp(9,:))/2;
+                tmp(:,end-1)=1:9;
+        elseif size(tmp,1)==8 % this means goes to 120
+                tmp(11,:)=tmp(8,:);
+                tmp(9,:)=tmp(7,:);
+                tmp(7,:)=tmp(6,:);
+                tmp(6,:)=(tmp(5,:)+tmp(7,:))/2;
+                tmp(8,:)=(tmp(7,:)+tmp(9,:))/2;
+                tmp(10,:)=(tmp(9,:)+tmp(11,:))/2;
+                tmp(:,end-1)=1:11;
+        end
+end
+
 % Save Data Vectors
 Date=num2str(tmp(:,1));
 Latitude=tmp(:,2);

@@ -1,6 +1,6 @@
 #!/bin/ksh
 #SBATCH -t 02:00:00         # XXXX: Time Limit | generally sufficient; may need to increase it
-#SBATCH -A aoml-osse       # XXXX: Account |  Use your project account
+#SBATCH -A aoml-hafs1      # XXXX: Account |  Use your project account
 #SBATCH -q batch	    # XXXX: quality of service
 #SBATCH -p hera	    # XXXX: Partition | keep it hera
 #SBATCH --ntasks=1	    # XXXX: maximum of 1 task / node
@@ -19,7 +19,7 @@
 # Set Folders
 homepath=/scratch1/AOML/aoml-osse/${USER}/                              # directory path above the GROOT package running location (typically your home directory)
 noscrubpath=/scratch2/AOML/aoml-hafs1/${USER}/noscrub/hafstrak/         # path to your atcf files
-scrubpath=/scratch2/AOML/aoml-hafs1/${USER}/scrub/ 			# path to your scrub directory
+scrubpath=/scratch2/AOML/aoml-hafs1/${USER}/scrub/ 			# path to your scrub directory (if you are not running the assim obs capabilty, you can set this to $noscrubpath)
 
 # What type of tracker files are you using?
 usingadecks=0                                           # are you using ADECKS? if so, GROOT has an additional preprocessing step | (1) yes (0) no
@@ -31,15 +31,15 @@ enddate1="2022-11-30 18"				# last date in your sample in format "YYYY-MM-DD HH"
 cycling="6"               				# frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
-set -A expfold ELSA-ALL ELSA-NONS ELSA-NOIC ELSA-NOG4 HENRI-ALL HENRI-NONS HENRI-NOIC HENRI-NOG4 IDA-ALL IDA-NONS IDA-NOIC IDA-NOG4 SAM-ALL SAM-NONS SAM-NOIC SAM-NOG4 ISAIAS-ALL ISAIAS-NONS ISAIAS-NOIC ISAIAS-NOG4 LAURA-ALL LAURA-NONS LAURA-NOIC LAURA-NOG4 MARCO-ALL MARCO-NONS MARCO-NOIC MARCO-NOG4 DELTA-ALL DELTA-NONS DELTA-NOIC DELTA-NOG4 ZETA-ALL ZETA-NONS ZETA-NOIC ZETA-NOG4 # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
-set -A expnew ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
-numfold=36                                              # number of entries in expnew
-set -A expyears 2020 2021					# years the experiments cover
-numyears=2						# number of years
+set -A expfold FIONA-ALL FIONA-NONS FIONA-NOIC FIONA-NOG4 IAN-ALL IAN-NONS IAN-NOIC IAN-NOG4 NICOLE-ALL NICOLE-NONS NICOLE-NOIC NICOLE-NOG4 ELSA-ALL ELSA-NONS ELSA-NOIC ELSA-NOG4 HENRI-ALL HENRI-NONS HENRI-NOIC HENRI-NOG4 IDA-ALL IDA-NONS IDA-NOIC IDA-NOG4 SAM-ALL SAM-NONS SAM-NOIC SAM-NOG4 ISAIAS-ALL ISAIAS-NONS ISAIAS-NOIC ISAIAS-NOG4 LAURA-ALL LAURA-NONS LAURA-NOIC LAURA-NOG4 MARCO-ALL MARCO-NONS MARCO-NOIC MARCO-NOG4 DELTA-ALL DELTA-NONS DELTA-NOIC DELTA-NOG4 ZETA-ALL ZETA-NONS ZETA-NOIC ZETA-NOG4 # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
+set -A expnew ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 ALL NONS NOIC NOG4 # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
+numfold=48                                              # number of entries in expnew
+set -A expyears 2020 2021 2022				# years the experiments cover
+numyears=3						# number of years
 hafsmodel=1						# did you run with HAFS (hafsmodel=1) or HWRF (hafsmodel=0)
 
-acntold=aoml-osse					# account currently listed in SBATCH above
-acntnew=aoml-osse                       		# account you want listed in SBATCH above
+acntold=aoml-hafs1  					# account currently listed in SBATCH above
+acntnew=aoml-hafs1                      		# account you want listed in SBATCH above
 emlold=sarah.d.ditchek@noaa.gov        			# email address currently listed in SBATCH above
 emlnew=sarah.d.ditchek@noaa.gov         		# email address you want listed in SBATCH above
 
