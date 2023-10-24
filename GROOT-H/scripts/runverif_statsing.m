@@ -20056,7 +20056,7 @@ for graphics=1
 								end
 							end                    																						
 							% Create Graphics: boxplots - all forecast hours by experiment
-							for identexploop=1:size(identexp,1)
+							if identgraphicsbycycle==2; for identexploop=1:size(identexp,1)
 								for plt=[1:18,21:23]
 									clear l cntexp
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background colorBT_obsg=identobscyc;
@@ -21771,7 +21771,7 @@ for graphics=1
 									filename=[identtrackint,'/',identn,'_',tmp_name,'_aehist_',stname,'_',num2str(fhrlist(fhrloop))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all
 								end
-							end												
+							end; end											
 						end
 					end
 				end
