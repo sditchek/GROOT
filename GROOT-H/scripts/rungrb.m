@@ -337,7 +337,7 @@ if identda==1
             ANOM_A2(:,hwrfvariables)=anom_a2;
             ANOM_B3(:,hwrfvariables)=anom_b3;
             ANOM_A3(:,hwrfvariables)=anom_a3;
-            clearvars -except skip* ident* hwrfvariables mslp* ANOM* PT* SM* WS* RVRT* DIVG_* MSLP* PLEV* RH_* V_* U_* GLON_* GLAT_* LONA LATA P_* T_* Q_*
+            clearvars -except identboxhist skip* ident* hwrfvariables mslp* ANOM* PT* SM* WS* RVRT* DIVG_* MSLP* PLEV* RH_* V_* U_* GLON_* GLAT_* LONA LATA P_* T_* Q_*
             disp(['COMPLETED CYCLE #', num2str(identloop),' for ',identexp0,'!'])
        end
        disp(['STARTING HWRFDA GRAPHICS: EXPERIMENT COMPARISION'])   
@@ -2494,7 +2494,7 @@ if identda==1
             end
         end
        disp(['COMPLETED CYCLE #', num2str(identloop),' for ',identexpshort{exp1},' & ',identexpshort{exp2},' COMPARISION'])
-       clearvars -except skip* ident* hwrfvariables
+       clearvars -except identboxhist skip* ident* hwrfvariables
     end                      
 end
 
@@ -2871,9 +2871,9 @@ for errorstats=1
 
             save([identout,'RESULTS/',identfold,identn,'/',identn,'_latlon.mat'],'BT*','EXP*');        
             save([identout,'RESULTS/',identfold,identn,'/',identn,'_errors.mat'],'*err_exp','trkerr_sz')       
-            clearvars -except identgraphicsconv identgraphicsbycycle identconvid identbasinscale stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-            clearvars -except identgraphicsconv identgraphicsbycycle identconvid identbasinscale ident* skip* stormsdone yearsdone
-            clearvars -except ident* skip*
+            clearvars -except identboxhist identgraphicsconv identgraphicsbycycle identconvid identbasinscale stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+            clearvars -except identboxhist identgraphicsconv identgraphicsbycycle identconvid identbasinscale ident* skip* stormsdone yearsdone
+            clearvars -except identboxhist ident* skip*
     end
 end
 
@@ -3071,7 +3071,7 @@ for hwrfvariables=1:size(identexp,1)
                 disp(['COMPLETED CYCLE #: ', num2str(identloop),' for ',identvariables{identvar},'!'])
             end
         end
-        clearvars -except skip* ident* hwrfvariables
+        clearvars -except identboxhist skip* ident* hwrfvariables
     end
 end
 
@@ -3258,7 +3258,7 @@ for hwrfvariables=1:size(identexp,1)
                 disp(['COMPLETED CYCLE #: ', num2str(identloop),' for ',identvariables{identvar},'!'])
             end
         end
-        clearvars -except skip* ident*
+        clearvars -except identboxhist skip* ident*
     end
 end
 
@@ -3383,13 +3383,13 @@ for hwrfvariables=1
                                 end
                             end
                         end
-                        clearvars -except skip* ident* tmpvar*
+                        clearvars -except identboxhist skip* ident* tmpvar*
                     end
                 end    
             end
             clear tmpvar1 tmpvar2
         end
-        clearvars -except skip* ident*
+        clearvars -except identboxhist skip* ident*
     end
 end 
 
@@ -3465,13 +3465,13 @@ for hwrfvariables=1
                                 end
                             end
                         end
-                        clearvars -except skip* ident* tmpvar*
+                        clearvars -except identboxhist skip* ident* tmpvar*
                     end
                 end    
             end
             clear tmpvar1 tmpvar2
         end
-        clearvars -except skip* ident*
+        clearvars -except identboxhist skip* ident*
     end
 end 
 
@@ -3520,13 +3520,13 @@ for hwrfvariables=1
                                 end
                             end
                         end
-                        clearvars -except skip* ident* tmpvar*
+                        clearvars -except identboxhist skip* ident* tmpvar*
                     end
                 end    
             end
             clear tmpvar1 tmpvar2
         end
-        clearvars -except skip* ident*
+        clearvars -except identboxhist skip* ident*
     end
 end 
 
@@ -3572,13 +3572,13 @@ for hwrfvariables=1
                                 end
                             end
                         end
-                        clearvars -except skip* ident* tmpvar*
+                        clearvars -except identboxhist skip* ident* tmpvar*
                     end
                 end    
             end
             clear tmpvar1 tmpvar2
         end
-        clearvars -except skip* ident*
+        clearvars -except identboxhist skip* ident*
     end
 end 
 
@@ -4545,7 +4545,7 @@ for hwrfplots=1
 					end					
                end
             end
-            clearvars -except ident* skip* pltkm innerradu* outerradu* pltcen radbin pltpt nav spPos clPos
+            clearvars -except identboxhist ident* skip* pltkm innerradu* outerradu* pltcen radbin pltpt nav spPos clPos
             disp(['ENDING VARIABLE: ',identvariables{identvar}])                        
         end 
     end
@@ -5516,7 +5516,7 @@ for hwrfplots=1
 					end					
                 end
             end
-            clearvars -except ident* skip* pltkm innerradu* outerradu* pltcen radbin pltpt nav spPos clPos
+            clearvars -except identboxhist ident* skip* pltkm innerradu* outerradu* pltcen radbin pltpt nav spPos clPos
             disp(['ENDING VARIABLE: ',identvariables{identvar}])                        
         end
     end

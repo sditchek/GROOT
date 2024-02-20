@@ -6294,7 +6294,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 						keepstm=1; % save storm index since it has conventional obs
 					end
 				else
-					stratlist=[1,4:14,894,29:31];
+					stratlist=[1,4:14,894,29:31];BT_obsg=[];
 					keepstm=NaN;
 				end
 				
@@ -20186,7 +20186,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								end
 							end                    																						
 							% Create Graphics: boxplots - all forecast hours by experiment
-							for identexploop=1:size(identexp,1)
+							if identboxhist==1; for identexploop=1:size(identexp,1)
 								for plt=[1:18,21:23]
 									clear l cntexp
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background colorBT_obsg=identobscyc;BT_obsg=identobscyc;
@@ -21901,7 +21901,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									filename=[identtrackint,'/',identn,'_',tmp_name,'_aehist_',stname,'_',num2str(fhrlist(fhrloop))];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									close all
 								end
-							end												
+							end;end;												
 						end
 					end
 				end
@@ -21915,6 +21915,6 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 			end
 		end
 	end
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-	clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
+	clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+	clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* skip* stormsdone yearsdone
 end

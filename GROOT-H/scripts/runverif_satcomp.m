@@ -254,7 +254,7 @@
                         end
                         close all   
                     end
-                    clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone convyear ymaxallbasin identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv yrlp identconvid  ident* skip* stormsdone yearsdone
+                    clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone convyear ymaxallbasin identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv yrlp identconvid  ident* skip* stormsdone yearsdone
 
                 end
             end  

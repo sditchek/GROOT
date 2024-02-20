@@ -101,7 +101,7 @@ for identremoveinvest=1
             end
             if exist('breakscript','var')==1 || size(identinittimesunique,1)==0
                 disp([identn,' does not exist across all experiments yet...moving to next storm'])
-                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv  
+                clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  stormsdone yearsdone identdiff identremovename identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv  
             else
                 %% %%%%%%%%%%%% %%
                 %% Setup script %%
@@ -308,7 +308,7 @@ for identremoveinvest=1
                 %% By Cycle (Individual & All) and By Forecast Hour (Errors, EDiffs, Imprv) %%
                 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
                 run runverif_statsing
-				clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
+				clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsconv identgraphicsbycycle identconvid  stormsdone identremovename yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
             end
         end
     end      
@@ -1683,7 +1683,7 @@ for identremoveinvest=1
 				ABT_targetT=BT_targetT;
 				ABT_target=BT_target;
 				ABT_targetB=BT_targetB;
-				clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT_drops ABT_dropsB ABT_dropsI ABT_dropsT ABT_targetI ABT_targetT ABT_target ABT_targetB *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone            
+				clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT_drops ABT_dropsB ABT_dropsI ABT_dropsT ABT_targetI ABT_targetT ABT_target ABT_targetB *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone            
 				save('compsave2.mat')						
 				run('scripts/runverif_statcomp')
 			end

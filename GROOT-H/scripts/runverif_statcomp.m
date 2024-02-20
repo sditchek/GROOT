@@ -19734,7 +19734,7 @@
                                     close all
                                 end             
 								% Create Graphics: boxplots - all forecast hours by experiment
-                                for identexploop=1:size(identexp,1)
+                                if identboxhist==1; for identexploop=1:size(identexp,1)
 									for plt=[1:18,21:23]
 										clear l cntexp
 										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -22580,9 +22580,9 @@
 										close all
 									end
                                 %end
-							end
+							end;end;
                         end
                     end
                 end
-                clearvars -except identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
+                clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr LOWbasin HIGHbasin ABT* *ylim identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv identconvid  ident* skip* stormsdone yearsdone
             end
