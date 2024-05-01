@@ -32,7 +32,7 @@ tmpunique=unique(tmpunique,'rows');
 		identn=identn(double(identn)>0);
 		ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];      % basin, ID, and year (e.g., AL092016)
 		identn=[identn,identtmp2(3:4)];                       % NAMEYY (e.g., HERMINE16)
-		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{:});end;
+		if exist('identtmp4','var')==0;identtmp4=lower(BASINall{end});end;
 		identhwrf{stmdn,:}=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];	
 		if strcmp(identtmp1(1),'9')==1; 
 			identhwrf{stmdn,:}=['invest',lower(identtmp1(1:2)),lower(identtmp4),'.',identtmp2];

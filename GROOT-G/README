@@ -102,6 +102,7 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+5/1/24   | Added various new assimilated obs capabilities including new graphics types (for indiv. tcs: cycle-by-cycle assimilated obs, total assimilated obs, log histogram view | for composite tcs: tc-by-tc assimilated obs, total assimilated obs, log histogram view) as well as made various aesthetic changes to the existing graphics including better colorbars (i.e., dynamic) for RP view graphics.
 2/20/24  | Added new capability to turn off boxplots and histograms to save time
 8/22/23  | Added a new stratification which includes all forecasts not included in the user-defined custom stratification
 6/7/23   | Added new capability to remove points where the TC or forecast was over land

@@ -209,15 +209,15 @@
                                             lloop=identbasin{loop};
                                             text(RLON(loop),STMLAT(loop),upper(lloop(end-2:end)),'horizontalalignment','center','fontsize',10,'color',[.5 .5 .5])
                                         end
-                                        if size(identconvobssubtype,2)>1
+                                        if size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==0
                                             for sot=1:size(identconvobssubtype,2)
                                                 identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                             end
-                                            l=legend(l,identlegendconv,'location','northeast');
-                                        else
-                                            l=legend(l,['Assimilated Observations'],'location','northeast');lsz=numdrops;
+                                            l=legend(l,identlegendconv,'location','northeast');l.FontSize=8;l.ItemTokenSize=[10 10];
+                                        elseif size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;lsz=numdrops;else;
+                                            l=legend(l,['Assimilated Observations'],'location','northeast');lsz=numdrops;l.FontSize=8;l.ItemTokenSize=[10 10];
                                         end
-                                        l.FontSize=10;
+                                        %l.FontSize=8;l.ItemTokenSize=[10 10];
                                         hold off                        
                                         set(gca,'xtick',-180:60:180)
                                         set(gca,'ytick',-90:30:90)
@@ -260,10 +260,10 @@
                                                 ylabel('Latitude','fontsize',20)                                   
                                                 set(gca,'fontsize',20)
                                                 fhr=1;
-                                                axis([RLON(loop)-10 RLON(loop)+10 STMLAT(loop)-10 STMLAT(loop)+10])
+                                                if identhafsmodel==1;axis([RLON(loop)-7 RLON(loop)+7 STMLAT(loop)-7 STMLAT(loop)+7]);else;axis([RLON(loop)-10 RLON(loop)+10 STMLAT(loop)-10 STMLAT(loop)+10]);end;
                                                 viscircles([RLON(loop) STMLAT(loop)],75/111.11,'Color',[.5 .5 .5 ],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
                                                 viscircles([RLON(loop) STMLAT(loop)],250/111.11,'Color',[.5 .5 .5 ],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
-                                                viscircles([RLON(loop) STMLAT(loop)],500/111.11,'Color',[.5 .5 .5 ],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
+                                                viscircles([RLON(loop) STMLAT(loop)],500/111.11,'Color',[.5 .5 .5 ],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);viscircles([RLON(loop) STMLAT(loop)],750/111.11,'Color',[.5 .5 .5 ],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
                                                 viscircles([RLON(loop) STMLAT(loop)],1000/111.11,'Color',[.5 .5 .5 ],'linewidth',.5,'linestyle','--','EnhanceVisibility',0);
                                                 hold on
                                                 clear l
@@ -292,19 +292,19 @@ alldrops0=alldrops_stm{loop1};
                                                         end
                                                         numdrops=size(alldrops0,1);
                                                  end                      
-                                                text(.5,.468,'75 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ])
-                                                text(.5,.39,'250 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ])
-                                                text(.5,.278,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ])
-                                                text(.5,.05,'1000 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ])
-                                                if size(identconvobssubtype,2)>1
+                                                if identhafsmodel==1;text(.5,.48,'75 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);else; text(.5,.468,'75 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);end;
+                                                if identhafsmodel==1;text(.5,.36,'250 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);else;text(.5,.39,'250 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);end;
+                                                if identhafsmodel==1;text(.5,.2,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]); text(.5,.04,'750 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);else;text(.5,.278,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);end;
+                                                if identhafsmodel==1;else;text(.5,.05,'1000 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);end;
+                                                if size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==0
                                                     for sot=1:size(identconvobssubtype,2)
                                                         identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                                     end
-                                                    l=legend(l,identlegendconv,'location','northeast');
-                                                else
-                                                    l=legend(l,['Assimilated Observations'],'location','northeast');lsz=numdrops;
+                                                    l=legend(l,identlegendconv,'location','northeast');l.FontSize=8;l.ItemTokenSize=[10 10];
+                                                elseif size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;lsz=numdrops;else;
+                                                    l=legend(l,['Assimilated Observations'],'location','northeast');lsz=numdrops;l.FontSize=8;l.ItemTokenSize=[10 10];
                                                 end
-                                                l.FontSize=10;
+                                                %l.FontSize=8;l.ItemTokenSize=[10 10];
                                                 hold off
                                                 set(gca,'plotboxaspectratio',[1 1 1])
                                                 set(gcf, 'InvertHardcopy', 'off')
@@ -324,9 +324,10 @@ alldrops0=alldrops_stm{loop1};
                                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                                 f = getframe(hfig);
 												filename=[identtrackint,'/conv_plan_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
-                                                close all 
-                                                % Denmap for Subtypes
-                                                if size(identconvobssubtype,2)>1
+                                                close all;if size(identconvobssubtype,2)>1;clear l lsz;spPos=[0.11 0.13 0.75 0.75];set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);set(gca,'plotboxaspectratio',[1 1 1]);box on;set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);hold on;if isempty(alldrops0)==1;if size(identconvobssubtype,2)>1;for sot=1:size(identconvobssubtype,2);counts=0;lsz(sot)=0;ylim([0 1]);end;else;counts=0;lsz=0;ylim([0 1]);end;else;if size(identconvobssubtype,2)>1; for sot=1:size(identconvobssubtype,2);lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),1);end;else; lsz=size(alldrops0,1);end;end;b=bar(lsz);b.FaceColor = 'flat';cnt=1;for i=1:size(lsz,2);if lsz(i)==0;else;b.CData(i,:) =  identconvobscolors(cnt,:);cnt=cnt+1;end;end;ylabel('Number of Assimilated Observations','fontsize',20);ax=gca;ax.YGrid = 'on';ax.YMinorGrid='on';ax.GridAlpha=0.35;ax.YAxis.Exponent = 0;set(gca,'xtick',1:1:50);xlim([0.5 size(lsz,2)+.5]);if strcmp(identconvid,'Recon') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV');set(gca,'xticklabel',{'T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 18;text(.165,-.062,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');text(.385,-.062,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');text(.55,-.062,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');text(.83,-.062,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');elseif strcmp(identconvid,'Recon+') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV');set(gca,'xticklabel',{'UV','RW','T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 18;text(.095,-.062,['OTHER'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');text(.32,-.062,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');text(.5,-.062,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');text(.64,-.062,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');text(.87,-.062,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');elseif strcmp(identconvid,'Conv+Recon') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV');set(gca,'xticklabel',{'S','NS','S','NS','S','NS','88D','T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 15;annotation('line',[.479 .479],[.02 .875]);text(.06,-.055,['UV'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.19,-.055,['TQ'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.28,-.055,['P'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.345,-.055,['RO'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.41,-.055,['RW'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized'); 
+												text(.53,-.055,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.65,-.055,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.75,-.055,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.9,-.055,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.7,-.1,['RECON'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');text(.22,-.1,['CONV'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');else;set(gca,'xticklabel',upper(identconvobslegend));xtickangle(45);ax.XAxis.FontSize = 18;end;ax.YAxis.FontSize = 20;set(gca,'TickLength',[0 0]);set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');text(1,1.03,['\textbf{',upper(identbasinname{loop}),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');text(1,1.065,['\textbf{',identexpshort{loop1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(loop1,:),'units','normalized');set(gca,'Color',[.9 .9 .9]);ax.LineWidth=1;set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);f = getframe(hfig);filename=[identtrackint,'/conv_bar_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;end;
+												for histdrops=1;for yy=1:2;clear l lsz;spPos=[0.11 0.13 0.75 0.75];set(0,'defaultfigurecolor',[1 1 1]);hfig=figure;set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]);ax1=subplot(3,4,[1:8]);set(gca,'plotboxaspectratio',[1 1 1]);box on;set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);hold on;if isempty(alldrops0)==1;if size(identconvobssubtype,2)>1;for sot=1:size(identconvobssubtype,2);counts=0;counts_tally=0;l(sot)=plot(0,5000,'.','markerfacecolor',identconvobscolors(sot,:),'markeredgecolor',identconvobscolors(sot,:));lsz(sot)=0;end;else;counts=0;l(1)=plot(0,5000,'.k');counts_tally=0;lsz=0;end;else;if size(identconvobssubtype,2)>1;for sot=1:size(identconvobssubtype,2);[counts,centers]=hist(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),5),[0:5:2000]);counts_tally(sot)=max(counts);l(sot)=plot(centers,counts,'-','color',identconvobscolors(sot,:),'linewidth',2);lsz(sot)=size(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),1),1);end;else;[counts,centers]=hist(alldrops0(:,5),[0:5:2000]);counts_tally(sot)=max(counts);l(1)=plot(centers,counts,'-k','linewidth',2);end;end;if identhafsmodel==1;xlim([-0.5 1000]);else;xlim([-.5 2000]);end;if loop1==1;ymaxallbasin=max(round(ceil(counts_tally+100),-2));clear counts_tally;end;if isempty(alldrops0)==1;ylim([0 1]);else;ylim([0 ymaxallbasin]);end;if size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==0;for sot=1:size(identconvobssubtype,2);identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};end;ll=legend(l,identlegendconv,'location','northeast');ll.FontSize=8;ll.ItemTokenSize=[10 10];elseif size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;lsz=size(alldrops0,1);else;ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(alldrops0,1);ll.FontSize=8;ll.ItemTokenSize=[10 10];end;ylabel('Number of Assimilated Observations','fontsize',20);xlabel('Radius (km)','fontsize',20);set(gca,'fontsize',20);grid on;if identhafsmodel==1;set(gca,'xtick',0:100:2000);else;set(gca,'xtick',0:250:2000);end;set(gcf, 'InvertHardcopy', 'off');set(gcf,'Units','inches');screenposition = get(gcf,'Position');set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);set(gcf, 'InvertHardcopy', 'off');text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');text(1,1.03,['\textbf{',upper(identbasinname{loop}),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized');text(1,1.065,['\textbf{',identexpshort{loop1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(loop1,:),'units','normalized');ax=gca;set(gca,'Color',[.9 .9 .9]);set(ax, 'Layer', 'top');ax.LineWidth=1;ax.XGrid='on';ax.XMinorGrid='on';ax.GridAlpha=0.35;set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02]);set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);f = getframe(hfig);if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;filename=[identtrackint,'/conv_hist_',identinittimesunique(identloop,:),'_',identexpshort{loop1},'_',yyscale];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;end;end;
+												if size(identconvobssubtype,2)>1 % denmap for subtypes
                                                     for sot=1:size(identconvobssubtype,2)
                                                          % Density Map
                                                          pall=squeeze(alldrops0((alldrops0(:,9)==identconvobssubtype(sot) & alldrops0(:,11)==identconvobstype(sot)),3,:));
@@ -371,8 +372,8 @@ alldrops0=alldrops_stm{loop1};
                                                         set(gca,'ytick',0.5:1:12)
                                                         set(gca,'yticklabel',{'0','100','200','300','400','500','600','700','800','900','1000','1100'});
                                                         colorbar
-                                                        caxis([0 50])
-                                                        colormap(flipud(gray(25)))
+                                                        if max(max(denmap))>100000;caxis([0 100000]);colcut=5000*4;elseif max(max(denmap))>50000;caxis([0 50000]);colcut=2500*4;elseif max(max(denmap))>25000;caxis([0 25000]);colcut=1250*4;elseif max(max(denmap))>10000;caxis([0 10000]);colcut=500*4;elseif max(max(denmap))>5000;caxis([0 5000]);colcut=250*4;elseif max(max(denmap))>2500;caxis([0 2500]);colcut=125*4;elseif max(max(denmap))>1000;caxis([0 1000]);colcut=50*4;else;caxis([0 250]);colcut=12.5*4;end
+                                                        if loop1==1;cmax=caxis;cmax0(sot)=cmax(2);colcut0(sot)=colcut;end;colormap(flipud(gray(20)));caxis([0 cmax0(sot)]);
                                                         set(gca, 'YGrid', 'on', 'XGrid', 'off')
                                                         hold on
                                                         plot(repmat(1.5,1,13),0:12,'k')
@@ -382,14 +383,14 @@ alldrops0=alldrops_stm{loop1};
                                                         set(gcf,'Units','inches');
                                                         screenposition = get(gcf,'Position');
                                                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
-                                                        set(gcf, 'InvertHardcopy', 'off')
                                                         text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(sum(denmap(:))),'/',num2str(numdrops),' $\mid$ R$<$2000 km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+                                                        text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,:),' $\mid$ N=',num2str(sum(denmap(:))),'/',num2str(numdrops),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                                         text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                                         text(1,1.03,['\textbf{',upper(identbasinname{loop}),'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                                         text(1,1.065,['\textbf{',identexpshort{loop1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(loop1,:),'units','normalized');
                                                         for i=1:3
                                                             for j=1:11
-                                                                if denmap(j,i)>=40
+                                                                if denmap(j,i)>=colcut0(sot)
                                                                     text(i,j, num2str(denmap(j,i)), 'color','w','HorizontalAlignment', 'Center','fontsize',16)
                                                                 else
                                                                     text(i,j, num2str(denmap(j,i)), 'HorizontalAlignment', 'Center','fontsize',16)
@@ -413,7 +414,6 @@ alldrops0=alldrops_stm{loop1};
                                                         alldenmap_t(sot,loop1)={denmapall};
                                                     end                             
                                                 end
-                                                 % Full Density Map
                                                  pall=squeeze(alldrops0(:,3,:));
                                                  dall=squeeze(alldrops0(:,5,:));                                
                                                  places=[];
@@ -456,8 +456,8 @@ alldrops0=alldrops_stm{loop1};
                                                 set(gca,'ytick',0.5:1:12)
                                                 set(gca,'yticklabel',{'0','100','200','300','400','500','600','700','800','900','1000','1100'});
                                                 colorbar
-                                                caxis([0 50])
-                                                colormap(flipud(gray(25)))
+                                                if max(max(denmap))>100000;caxis([0 100000]);colcut=5000*4;elseif max(max(denmap))>50000;caxis([0 50000]);colcut=2500*4;elseif max(max(denmap))>25000;caxis([0 25000]);colcut=1250*4;elseif max(max(denmap))>10000;caxis([0 10000]);colcut=500*4;elseif max(max(denmap))>5000;caxis([0 5000]);colcut=250*4;elseif max(max(denmap))>2500;caxis([0 2500]);colcut=125*4;elseif max(max(denmap))>1000;caxis([0 1000]);colcut=50*4;else;caxis([0 250]);colcut=12.5*4;end;
+                                                if loop1==1;cmax=caxis;cmax00=cmax(2);colcut00=colcut;end;colormap(flipud(gray(20)));caxis([0 cmax00]);colormap(flipud(gray(20)))
                                                 set(gca, 'YGrid', 'on', 'XGrid', 'off')
                                                 hold on
                                                 plot(repmat(1.5,1,13),0:12,'k')
@@ -474,7 +474,7 @@ alldrops0=alldrops_stm{loop1};
                                                 text(1,1.065,['\textbf{',identexpshort{loop1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(loop1,:),'units','normalized');
                                                 for i=1:3
                                                     for j=1:11
-                                                        if denmap(j,i)>=40
+                                                        if denmap(j,i)>=colcut00
                                                             text(i,j, num2str(denmap(j,i)), 'color','w','HorizontalAlignment', 'Center','fontsize',16)
                                                         else
                                                             text(i,j, num2str(denmap(j,i)), 'HorizontalAlignment', 'Center','fontsize',16)
@@ -686,7 +686,7 @@ alldrops0=alldrops_stm{loop1};
                             end
                             for loopdrops=1 % loop over all drops                
                                 % Histogram
-                                spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
+                                for yy=1:2;spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
                                 set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                 hfig=figure;
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -710,34 +710,34 @@ alldrops0=alldrops_stm{loop1};
                                 else
                                     if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
                                         for sot=1:size(identconvobssubtype,2)
-                                            [counts,centers]=hist(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),5),[0:5:2000]);
+                                            [counts,centers]=hist(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),5),[0:5:2000]);counts_tally(sot)=max(counts);											
                                             l(sot)=plot(centers,counts,'-','color',identconvobscolors(sot,:),'linewidth',2);            
                                             lsz(sot)=size(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),1),1);
                                         end
                                     else % there are no subtypes to this conventional observation!
-                                           [counts,centers]=hist(tmp1(:,5),[0:5:2000]);
+                                           [counts,centers]=hist(tmp1(:,5),[0:5:2000]);counts_tally(sot)=max(counts);
                                             l(1)=plot(centers,counts,'-k','linewidth',2);            
                                     end
                                 end
-                                xlim([-.5 2000])
+                                if identhafsmodel==1;xlim([-0.5 1000]);else;xlim([-.5 2000]);end;
                                 if exl==1
-                                    ymaxallbasin=round(max(counts)/100)*100+50;
+                                    ymaxallbasin=max(round(ceil(counts_tally+100),-2));clear counts_tally;
                                 end
                                 ylim([0 ymaxallbasin])
-                                if size(identconvobssubtype,2)>1
+                                if size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==0
                                         for sot=1:size(identconvobssubtype,2)
                                             identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                         end
-                                        ll=legend(l,identlegendconv,'location','northeast');
-                                else
-                                        ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(tmp1,1);
+                                        ll=legend(l,identlegendconv,'location','northeast');ll.FontSize=8;ll.ItemTokenSize=[10 10];
+                                elseif size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;lsz=size(tmp1,1);else;
+                                        ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(tmp1,1);ll.FontSize=8;ll.ItemTokenSize=[10 10];
                                 end
-                                ll.FontSize=10;
+                                %ll.FontSize=8;ll.ItemTokenSize=[10 10];
                                 ylabel('Number of Assimilated Observations','fontsize',20)                                   
                                 xlabel('Radius (km)','fontsize',20)                                   
                                 set(gca,'fontsize',20)
                                 grid on
-                                set(gca,'xtick',0:250:2000)
+                                if identhafsmodel==1;set(gca,'xtick',0:100:2000);else;set(gca,'xtick',0:250:2000);end;
                                 set(gcf, 'InvertHardcopy', 'off')
                                 set(gcf,'Units','inches');
                                 screenposition = get(gcf,'Position');
@@ -750,12 +750,12 @@ alldrops0=alldrops_stm{loop1};
                                 ax=gca;
                                 set(gca,'Color',[.9 .9 .9])
                                 set(ax, 'Layer', 'top')
-                                ax.LineWidth=1; 
+                                ax.LineWidth=1;ax.XGrid='on';ax.XMinorGrid='on';ax.GridAlpha=0.35;
                                 set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                                 f = getframe(hfig);
-								filename=[identtrackint,'/',identn,'_convcomp_hist_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
-                                close all    
+								if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;filename=[identtrackint,'/',identn,'_convcomp_hist_',identexpshort{exl},'_',yyscale];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+                                close all;end;    
                                 % Create storm-centered reference frame for all dropsonde locations
                                 spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
                                 set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -796,20 +796,20 @@ alldrops0=alldrops_stm{loop1};
                                     end
                                 end
 
-                                if size(identconvobssubtype,2)>1
+                                if size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==0
                                         for sot=1:size(identconvobssubtype,2)
                                             identlegendconv(sot)={[identconvobslegend{sot} ' (',num2str(lsz(sot)),')']};
                                         end
-                                        ll=legend(l,identlegendconv,'location','northeast');
-                                else
-                                        ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(tmp1,1);
+                                        ll=legend(l,identlegendconv,'location','northeast');ll.FontSize=8;ll.ItemTokenSize=[10 10];
+                                elseif size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;lsz=size(tmp1,1);else;
+                                        ll=legend(l,['Assimilated Observations'],'location','northeast');lsz=size(tmp1,1);ll.FontSize=8;ll.ItemTokenSize=[10 10];
                                 end
-                                ll.FontSize=10;
+                                %ll.FontSize=8;ll.ItemTokenSize=[10 10];
                                 ax1.ThetaDir = 'clockwise';
                                 ax1.ThetaZeroLocation = 'top';
-                                ax1.RLim=[0 1600];
+                                if identhafsmodel==1;ax1.RLim=[0 1100];else;ax1.RLim=[0 1600];end;
                                 ax1.ThetaTick = [];
-                                rticks([75 250 500 1000 1500])
+                                if identhafsmodel==1;rticks([75 250 500 1000]);else;rticks([75 250 500 1000 1500]);end;
                                 rticklabels({})
                                 thetaticklabels({}) 
                                 ax1.GridLineStyle = '--';
@@ -821,11 +821,11 @@ alldrops0=alldrops_stm{loop1};
                                 screenposition = get(gcf,'Position');
                                 set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                 set(gcf, 'InvertHardcopy', 'off')   
-                                text(.5,.484,'75 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
-                                text(.5,.426,'250 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
-                                text(.5,.347,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
-                                text(.5,.19,'1000 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
-                                text(.5,.034,'1500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5])
+                                if identhafsmodel==1;text(.5,.468,'75 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);else;text(.5,.484,'75 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5]);end;
+                                if identhafsmodel==1;text(.5,.39,'250 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);else;text(.5,.426,'250 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5]);end;
+                                if identhafsmodel==1;text(.5,.278,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);else;text(.5,.347,'500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5]);end;
+                                if identhafsmodel==1;text(.5,.05,'1000 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5 ]);else;text(.5,.19,'1000 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5]);end;
+                                if identhafsmodel==1;else;text(.5,.034,'1500 km','HorizontalAlignment','center','VerticalAlignment','top','fontsize',10,'units','normalized','color',[.5 .5 .5]);end;
                                 text(0,1.025,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),' $\mid$ N=',num2str(size(tmp1,1)),' $\mid$ R$<$2000 km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
                                 text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
                                 text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
@@ -864,8 +864,8 @@ alldrops0=alldrops_stm{loop1};
                                         set(gca,'ytick',0.5:1:12)
                                         set(gca,'yticklabel',{'0','100','200','300','400','500','600','700','800','900','1000','1100'});
                                         colorbar
-                                        caxis([0 250])
-                                        colormap(flipud(gray(25)))
+                                        if max(tmp1_den(:))>100000;caxis([0 100000]);colcut=5000*4;elseif max(tmp1_den(:))>50000;caxis([0 50000]);colcut=2500*4;elseif max(tmp1_den(:))>25000;caxis([0 25000]);colcut=1250*4;elseif max(tmp1_den(:))>10000;caxis([0 10000]);colcut=500*4;elseif max(tmp1_den(:))>5000;caxis([0 5000]);colcut=250*4;elseif max(tmp1_den(:))>2500;caxis([0 2500]);colcut=125*4;elseif max(tmp1_den(:))>1000;caxis([0 1000]);colcut=50*4;else;caxis([0 250]);colcut=12.5*4;end;
+                                        if exl==1;cmax=caxis;cmax0(sot)=cmax(2);colcut0(sot)=colcut;end;colormap(flipud(gray(20)));caxis([0 cmax0(sot)]);colormap(flipud(gray(20)))
                                         set(gca, 'YGrid', 'on', 'XGrid', 'off')
                                         hold on
                                         plot(repmat(1.5,1,13),0:12,'k')
@@ -884,7 +884,7 @@ alldrops0=alldrops_stm{loop1};
                                         tmpsum=sum(tmp1_den_tt,3);                
                                         for i=1:3
                                             for j=1:11
-                                                if tmpsum(j,i)>=200
+                                                if tmpsum(j,i)>=colcut0(sot)
                                                     text(i,j, num2str(tmpsum(j,i)),'color','w','HorizontalAlignment', 'Center','fontsize',16)
                                                 else
                                                     text(i,j, num2str(tmpsum(j,i)), 'HorizontalAlignment', 'Center','fontsize',16)
@@ -925,8 +925,8 @@ alldrops0=alldrops_stm{loop1};
                                 set(gca,'ytick',0.5:1:12)
                                 set(gca,'yticklabel',{'0','100','200','300','400','500','600','700','800','900','1000','1100'});
                                 colorbar
-                                caxis([0 250])
-                                colormap(flipud(gray(25)))
+                                if max(max((sum(tmp1_den,3))))>100000;caxis([0 100000]);colcut=5000*4;elseif max(max((sum(tmp1_den,3))))>50000;caxis([0 50000]);colcut=2500*4;elseif max(max((sum(tmp1_den,3))))>25000;caxis([0 25000]);colcut=1250*4;elseif max(max((sum(tmp1_den,3))))>10000;caxis([0 10000]);colcut=500*4;elseif max(max((sum(tmp1_den,3))))>5000;caxis([0 5000]);colcut=250*4;elseif max(max((sum(tmp1_den,3))))>2500;caxis([0 2500]);colcut=125*4;elseif max(max((sum(tmp1_den,3))))>1000;caxis([0 1000]);colcut=50*4;else;caxis([0 250]);colcut=12.5*4;end;
+                                if exl==1;cmax=caxis;cmax00=cmax(2);colcut00=colcut;end;colormap(flipud(gray(20)));caxis([0 cmax00]);colormap(flipud(gray(20)));
                                 set(gca, 'YGrid', 'on', 'XGrid', 'off')
                                 hold on
                                 plot(repmat(1.5,1,13),0:12,'k')
@@ -945,7 +945,7 @@ alldrops0=alldrops_stm{loop1};
                                 tmpsum=sum(tmp1_den,3);                
                                 for i=1:3
                                     for j=1:11
-                                        if tmpsum(j,i)>=200
+                                        if tmpsum(j,i)>=colcut00
                                             text(i,j, num2str(tmpsum(j,i)),'color','w','HorizontalAlignment', 'Center','fontsize',16)
                                         else
                                             text(i,j, num2str(tmpsum(j,i)), 'HorizontalAlignment', 'Center','fontsize',16)
@@ -1139,7 +1139,7 @@ alldrops0=alldrops_stm{loop1};
                             l(8)=plot(-200,-100,'.','color',azavcm(6,:),'markersize',25);
                             l(9)=plot(-200,-100,'.','color',azavcm(7,:),'markersize',25);
                             l(10)=plot(-200,-100,'.','color','m','markersize',25);
-                            if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+                            if size(identconvobssubtype,2)>1 && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==0% there are subtypes to this conventional observation!
                                 for sot=1:size(identconvobssubtype,2)
                                      l(10+sot)=plot(-200,-100,'x','color',identconvobscolors(sot,:),'markersize',6);
                                 end
@@ -1152,12 +1152,272 @@ alldrops0=alldrops_stm{loop1};
                                 legend off
                                 lh=legend(l,'WV/DB/LO','SD/SS','EX','TD','TS','C1','C2','C3','C4','C5','Obs','orientation','vertical');
                             end
-                            lh.FontSize=10;     
+                            lh.FontSize=9;lh.ItemTokenSize=[10 10];   
                             set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
                             f = getframe(hfig);
 							filename=[identtrackint,'/',identn,'_track_withobs_',identexpshort{track}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
-                        clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
+                        %% Bar Graph to show how many of each variable
+						for exl=1:size(identexp,1);if size(identconvobssubtype,2)>1
+							 % Loop over all of the cycles
+                            tmp1=[];
+                            tmp1_den=[];
+                            tmp1_den_t=[];
+                            for cyc=1:size(alldropscomp,2)
+                                tmp0_all=alldropscomp{cyc};
+                                tmp0_lon=EXP_loncomp{cyc};
+                                tmp0_lat=EXP_latcomp{cyc};
+                                tmp0_name=EXP_namecomp{cyc};
+                                tmp0_denmap=alldenmapcomp{cyc};
+                                if size(identconvobssubtype,2)>1
+                                    tmp0_denmap_t=alldenmapcomp_t{cyc};                             
+                                end
+                                tmp2_all=tmp0_all{exl};
+                                cycleswithdrops=tmp0_all{1};
+                                if isempty(cycleswithdrops{:})==1
+                                   identdropcyc(cyc)=0;
+                                else
+                                    identdropcyc(cyc)=1;                        
+                                end
+                                for i=1:size(tmp2_all,2)
+                                    tmp3_lon=tmp0_lon(i); 
+                                    tmp3_lat=tmp0_lat(i); 
+                                    tmp3_name=tmp0_name{i}; 
+                                    tmp3_denmap=tmp0_denmap{i,exl};
+                                    if size(identconvobssubtype,2)>1
+                                        tmp3_denmap_t=tmp0_denmap_t(:,exl); 
+                                    end
+                                    tmp3_all=tmp2_all{i};
+
+                                    if isempty(tmp3_all)==1
+                                    else                                                
+                                        tmp3_all(:,3)=repmat(tmp3_lon,size(tmp3_all,1),1);
+                                        tmp3_all(:,4)=repmat(tmp3_lat,size(tmp3_all,1),1);
+                                        tmp1=cat(1,tmp1,tmp3_all); % all storms for ALL experiment
+                                        tmp1_den=cat(3,tmp1_den,tmp3_denmap);
+                                        if size(identconvobssubtype,2)>1
+                                            tmp1_den_t=cat(1,tmp1_den_t,tmp3_denmap_t');                             
+                                        end
+                                    end
+                                end
+                            end               
+                            if isempty(tmp1)==1
+                                identinnerdrops(exl)=0;
+                                identgalesdrops(exl)=0;
+                                identouterdrops(exl)=0;
+                                identinnerdrops_t(:,exl)=0;
+                                identgalesdrops_t(:,exl)=0;
+                                identouterdrops_t(:,exl)=0;
+                            else
+                                if size(identconvobssubtype,2)>1
+                                    for sot=1:size(identconvobssubtype,2)
+                                        for soti=1:size(tmp1_den_t,1)
+                                            tmp1_den_tt(:,:,soti)=tmp1_den_t{soti,sot};
+                                        end
+                                        t_t(sot,:)=sum(sum(tmp1_den_tt,1),3);
+                                    end                        
+                                    identinnerdrops_t(:,exl)=t_t(:,1);
+                                    identgalesdrops_t(:,exl)=t_t(:,2);
+                                    identouterdrops_t(:,exl)=t_t(:,3);                            
+                                end
+                                t=sum(sum(tmp1_den,1),3);
+                                identinnerdrops(exl)=t(1);
+                                identgalesdrops(exl)=t(2);
+                                identouterdrops(exl)=t(3);
+                            end
+							% Legend
+							spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
+							set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+							hfig=figure;
+							set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+							ax1=subplot(3,4,[1:8]);
+							set(gca,'plotboxaspectratio',[1 1 1])
+							box on
+							set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
+							set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+							hold on
+							if isempty(tmp1)==1
+								if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+									for sot=1:size(identconvobssubtype,2)
+										 counts=0;
+										 lsz(sot)=0;
+									end
+								else % there are no subtypes to this conventional bservation!
+									counts=0;
+									lsz=0;
+								end
+							else
+								if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+									for sot=1:size(identconvobssubtype,2)
+										lsz(sot)=size(tmp1((tmp1(:,9)==identconvobssubtype(sot) & tmp1(:,11)==identconvobstype(sot)),1),1);
+									end
+								else % there are no subtypes to this conventional observation!
+									   lsz=size(tmp1,1)           
+								end
+							end
+							b=bar(lsz);
+							b.FaceColor = 'flat';
+							cnt=1;
+							for i=1:size(lsz,2)
+								if lsz(i)==0
+								else	
+									b.CData(i,:) =  identconvobscolors(cnt,:);
+									cnt=cnt+1;
+								end
+							end
+							%text(.5,-.11,['Assimilated Reconnaissance Data'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',20,'interpreter','tex','color','k','units','normalized');
+							ylabel('Number of Assimilated Observations','fontsize',20)                                   
+							%set(gca,'fontsize',20)
+							ax=gca;
+							ax.YGrid = 'on';
+							ax.YMinorGrid='on';
+							ax.GridAlpha=0.35	
+							ax.YAxis.Exponent = 0;
+							set(gca,'xtick',1:1:50)
+							xlim([0.5 size(lsz,2)+.5]);if exl==1;fixyaxis=axis;fixyaxis0=fixyaxis(4);end;ylim([0 fixyaxis0]);
+							if strcmp(identconvid,'Recon') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
+								set(gca,'xticklabel',{'T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 18;
+								text(.165,-.062,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');        
+								text(.385,-.062,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
+								text(.55,-.062,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
+								text(.83,-.062,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
+							elseif strcmp(identconvid,'Recon+') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
+								set(gca,'xticklabel',{'UV','RW','T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 18;
+								text(.095,-.062,['OTHER'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');        
+								text(.32,-.062,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');        
+								text(.5,-.062,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
+								text(.64,-.062,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
+								text(.87,-.062,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
+							elseif strcmp(identconvid,'Conv+Recon') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
+								set(gca,'xticklabel',{'S','NS','S','NS','S','NS','88D','T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 15;annotation('line',[.479 .479],[.02 .875]);
+								text(.06,-.055,['UV'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        
+								text(.19,-.055,['TQ'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        
+								text(.28,-.055,['P'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        
+								text(.345,-.055,['RO'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        
+								text(.41,-.055,['RW'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        
+								text(.53,-.055,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        
+								text(.65,-.055,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');
+								text(.75,-.055,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');
+								text(.9,-.055,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');
+								text(.7,-.1,['RECON'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');
+								text(.22,-.1,['CONV'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');
+							else
+								set(gca,'xticklabel',upper(identconvobslegend))	
+								xtickangle(45);ax.XAxis.FontSize = 18;		
+							end					
+							ax.YAxis.FontSize = 20;
+							set(gca,'TickLength',[0 0])
+							set(gcf, 'InvertHardcopy', 'off')
+							set(gcf,'Units','inches');
+							screenposition = get(gcf,'Position');
+							set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+							set(gcf, 'InvertHardcopy', 'off') 
+							text(0,1.03,['\textbf{INIT: ',identinittimesunique(1,:),'$\mathbf{-}$',identinittimesunique(end,:),' $\mid$ N=',num2str(sum(lsz)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+							text(0,1.065,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+							text(1,1.03,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');
+							text(1,1.065,['\textbf{',identexpshort{exl},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(exl,:),'units','normalized');                    
+							set(gca,'Color',[.9 .9 .9])
+							%set(ax, 'Layer', 'top')
+							ax.LineWidth=1; 
+							set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
+							set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
+							f = getframe(hfig);
+							filename=[identtrackint,'/',identn,'_barcomp_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							close all    
+						end;end
+						%% Cycle-By-Cycle to show how many of each variable
+                        for exl=1:size(identexp,1) 
+                            for cyc=1:size(alldropscomp,2)
+                                tmp0_all=alldropscomp{cyc};                                
+                                tmp2_all=tmp0_all{exl};                               
+                                for i=1:size(tmp2_all,2)                                   
+                                    tmp3_all=tmp2_all{i};
+									clear lsz
+									if isempty(tmp3_all)==1
+										if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+											for sot=1:size(identconvobssubtype,2)
+												 counts=0;
+												 lsz(sot)=0;
+											end
+										else % there are no subtypes to this conventional bservation!
+											counts=0;
+											lsz=0;
+										end
+									else
+										if size(identconvobssubtype,2)>1 % there are subtypes to this conventional observation!
+											for sot=1:size(identconvobssubtype,2)
+												lsz(sot)=size(tmp3_all((tmp3_all(:,9)==identconvobssubtype(sot) & tmp3_all(:,11)==identconvobstype(sot)),1),1);
+											end
+										else % there are no subtypes to this conventional observation!
+											   lsz=size(tmp3_all,1)           
+										end
+									end
+									aomlmvlsz(cyc,:)=lsz;
+                                end
+                            end  
+							set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+							hfig=figure;
+							set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+							ax1=subplot(3,4,[1:8]);
+							b=barh(aomlmvlsz,'stacked','FaceColor','flat'); % stacks values in each row together
+							for i=1:size(identconvobscolors,1)											
+								b(i).CData= identconvobscolors(i,:);										
+							end
+							xlabel('Number of Assimilated Observations','fontsize',14)        
+							set(gca,'fontsize',14)
+							box on									
+							set(gca,'fontsize',14)
+							hold on                        
+							ylabel('Cycle Initialization Time','fontsize',14)
+							box on
+							xstart=1;          
+							ylim([xstart-.5 size(identinittimesunique,1)+.5])                                                   
+							if size(identinittimesunique,1)>50
+								set(gca,'ytick',1:4:100)
+								set(gca,'yticklabel',identinittimesunique(1:4:end,:))
+							else
+								set(gca,'ytick',1:2:100)
+								set(gca,'yticklabel',identinittimesunique(1:2:end,:))
+							end                           
+							set(gca,'fontsize',14)
+							cnt=1;    
+							set(gcf, 'InvertHardcopy', 'off')
+							set(gcf,'Units','inches');
+							screenposition = get(gcf,'Position');
+							set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+							set(gcf, 'InvertHardcopy', 'off')																
+							set(gca,'TickLength',[0 0])										
+							text(1,1.052,['\textbf{',identexpshort{exl},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color',identexpcolors(exl,:),'units','normalized');
+							text(1,1.025,['\textbf{',upper(identhwrf(end-2:end)),' (',identn(1:end-5),')}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','color','k','units','normalized');                
+							text(0,1.052,['\textbf{Assimilated ',identconvid,' Observations}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')                                        
+							%lh=legend(identlegendconv,'location','northeast');									
+							%lh.FontSize=10;lh.ItemTokenSize=[10 10];								
+							if strcmp(identconvid,'Recon')
+								set(gca,'xtick',0:5000:100000000)
+							else
+								set(gca,'xtick',0:10000:100000000)
+							end
+							tmpuv = sum(sum(aomlmvlsz,2)>0);                               
+							tmpphrase=[num2str(tmpuv),'/',num2str(size(identinittimesunique,1))];                    
+							text(0,1.025,['\textbf{CYCLES: ',tmpphrase,' $\mid$ N=',num2str(sum(aomlmvlsz(:))),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+							set(gca,'Color',[.9 .9 .9])
+							axis ij
+							ax=gca;
+							ax.XGrid='on';
+							ax.XMinorGrid='on';
+							ax.GridAlpha=0.35
+							ax.XAxis.Exponent = 0;if exl==1;fixxaxis=axis;fixxaxis0=fixxaxis(2);end;xlim([0 fixxaxis0]);
+							box on
+							set(ax, 'Layer', 'bottom')
+							ax.LineWidth=1; 
+							pos=get(gca,'Position');
+							set(gca,'position',[pos(1)+.01 pos(2)-.33 pos(3) pos(4)+.34])
+							set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
+							f = getframe(hfig);
+							filename=[identtrackint,'/',identn,'_reconcontr_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+							close all   
+						end 
+						clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
                     end
                 end         
