@@ -549,7 +549,7 @@
 							b.FaceColor = 'flat';
 							cnt=1;
 							for i=1:size(lsz,2)
-								if lsz(i)==0
+								if lsz(i)==0;cnt=cnt+1;
 								else	
 									b.CData(i,:) =  identconvobscolors(cnt,:);
 									cnt=cnt+1;
