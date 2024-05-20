@@ -293,7 +293,7 @@ for identremoveinvest=1
                     lh.FontSize=10;     
                     set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                    f = getframe(hfig);
+                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
 					filename=[identtrackint,'/',identn,'_track'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                 end
                 %% %%%%%%%%%%%%%%%%%%%% %%

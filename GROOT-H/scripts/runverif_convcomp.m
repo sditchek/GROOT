@@ -136,7 +136,7 @@
                         ax.LineWidth=1;ax.XGrid='on';ax.XMinorGrid='on';ax.GridAlpha=0.35;ax.YAxis.Exponent = 0;
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        f = getframe(hfig);if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_hist_',identexpshort{j},'_',yyscale];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -240,7 +240,7 @@
                         ax.LineWidth=1; 
                         set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        f = getframe(hfig);
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_plan_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -309,7 +309,7 @@
                                 ax.LineWidth=1; 
                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                f = getframe(hfig);
+                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
                                 if yrlp==1
 									filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j},'_',erase(erase(identconvobslegend{sot}," "),"-")];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 else
@@ -373,7 +373,7 @@
                         ax.LineWidth=1; 
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        f = getframe(hfig);
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_az_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -383,8 +383,8 @@
                     end
                     % Histogram Difference Composite Graphic
 					for j=2:size(identexp,1) 
-                        
-						spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
+
+			spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
                         set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                         hfig=figure;
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -466,7 +466,7 @@
                         ax.LineWidth=1; ax.XGrid='on';ax.XMinorGrid='on';ax.GridAlpha=0.35;ax.YAxis.Exponent = 0;
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        f = getframe(hfig);
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -549,7 +549,7 @@
 							b.FaceColor = 'flat';
 							cnt=1;
 							for i=1:size(lsz,2)
-								if lsz(i)==0;cnt=cnt+1;
+								if lsz(i)==0
 								else	
 									b.CData(i,:) =  identconvobscolors(cnt,:);
 									cnt=cnt+1;
@@ -610,7 +610,7 @@
 							ax.LineWidth=1;ax.YAxis.Exponent = 0; 
 							set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
 							set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-							f = getframe(hfig);
+							axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
 							if yrlp==1
 								filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_barcomp_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 							else
@@ -724,7 +724,7 @@
 							pos=get(gca,'Position');
 							set(gca,'position',[pos(1)+.01 pos(2)-.33 pos(3) pos(4)+.34])
 							set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .9, 0.96]); % maximize figure window
-							f = getframe(hfig);
+							axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
 							if yrlp==1
 								filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_reconcontr_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 							else

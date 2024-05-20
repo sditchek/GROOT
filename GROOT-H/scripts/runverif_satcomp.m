@@ -101,7 +101,7 @@
                         ax.LineWidth=1; 
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        f = getframe(hfig);
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/sat_histcomp_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -184,7 +184,7 @@
                         ax.LineWidth=1; 
                         set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        f = getframe(hfig);
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/sat_plancomp_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -246,7 +246,7 @@
                         ax.LineWidth=1; 
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        f = getframe(hfig);
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/sat_azcomp_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
