@@ -1149,7 +1149,7 @@ if identda==1
                             set(cl8,'Position',[clP(1)+.02 clP(2)+.02 0.01 clP(4)-.04])
                             clP=get(cl9,'Position');
                             set(cl9,'Position',[clP(1)+.02 clP(2)+.02 0.01 clP(4)-.04])
-                            %axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                            %axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 							filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
                             %imwrite(f.cdata,[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA.png'],'pdf');
                             close all 
@@ -2109,7 +2109,7 @@ if identda==1
                                 set(cl8,'Position',[clP(1)+.01 clP(2)+.02 0.01 clP(4)-.04])
                                 clP=get(cl9,'Position');
                                 set(cl9,'Position',[clP(1)+.01 clP(2)+.02 0.01 clP(4)-.04])
-                                %axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                %axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 								filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_AZAV_',savename,'_D02_HWRFDA'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
                                 %imwrite(f.cdata,[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA.png'],'pdf');
                                 close all 
@@ -2482,7 +2482,7 @@ if identda==1
                                 set(cl8,'Position',[clP(1)+.01 clP(2)+.02 0.01 clP(4)-.04])
                                 clP=get(cl9,'Position');
                                 set(cl9,'Position',[clP(1)+.01 clP(2)+.02 0.01 clP(4)-.04])
-                                %axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                %axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 								filename=[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_AZAV_',savename,'_D03_HWRFDA'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;print(filename,'-dpng');end;					                            
                                 %imwrite(f.cdata,[identhwrfda,'/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(cnt)),'_',savename,'_D02_HWRFDA.png'],'pdf');
                                 close all 
@@ -3740,7 +3740,7 @@ for hwrfplots=1
                                                 set(gca,'position',spPos)
                                                 set(cl,'position',clPos)
                                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
                                                 filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                 %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'],'-dpdf','-r200');
                                                 close all 
@@ -3839,7 +3839,7 @@ for hwrfplots=1
                                         set(gca,'position',spPos)
                                         set(cl,'position',clPos)
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
                                         filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'],'-dpdf','-r200');
                                         close all
@@ -3906,7 +3906,7 @@ for hwrfplots=1
                                     set(gca,'position',spPos)
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
                                     filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_3DRTAZAV'],'-dpdf','-r200');
                                     close all
@@ -3988,7 +3988,7 @@ for hwrfplots=1
                                     set(gca,'position',spPos)
                                     set(cl,'position',clPos)                                
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
                                     filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename],'-dpdf','-r200');
                                     close all
@@ -4053,7 +4053,7 @@ for hwrfplots=1
                                         set(gca,'position',spPos)
                                         set(cl,'position',clPos)
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
                                         filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'],'-dpdf','-r200');
                                         close all                            
@@ -4131,7 +4131,7 @@ for hwrfplots=1
                                     set(gca,'position',spPos)
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
                                     filename=[identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'],'-dpdf','-r200');
                                     close all
@@ -4235,7 +4235,7 @@ for hwrfplots=1
 												set(gca,'position',spPos)
 												set(cl,'position',clPos)                
 												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-												axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+												axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 												filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 												%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 												close all
@@ -4304,7 +4304,7 @@ for hwrfplots=1
 											set(gca,'position',spPos)
 											set(cl,'position',clPos)                
 											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-											axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+											axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 											filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 											%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 											close all  
@@ -4362,7 +4362,7 @@ for hwrfplots=1
 									set(gca,'position',spPos)
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
@@ -4418,7 +4418,7 @@ for hwrfplots=1
 										set(gca,'position',spPos)
 										set(cl,'position',clPos)                
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-										axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+										axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 										filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 										close all
@@ -4476,7 +4476,7 @@ for hwrfplots=1
 									set(gca,'position',spPos)
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 									close all
@@ -4529,7 +4529,7 @@ for hwrfplots=1
 									set(gca,'position',spPos)
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/DIFFSYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
@@ -4687,7 +4687,7 @@ for hwrfplots=1
                                             set(gca,'position',spPos)
                                             set(cl,'position',clPos)
                                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 											filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                             %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLAN'],'-dpdf','-r200');
                                             close all 
@@ -4796,7 +4796,7 @@ for hwrfplots=1
                                         set(gca,'position',spPos)
                                         set(cl,'position',clPos)
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 										filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV'],'-dpdf','-r200');
                                         close all
@@ -4863,7 +4863,7 @@ for hwrfplots=1
                                     set(gca,'position',spPos)
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_3DRTAZAV'],'-dpdf','-r200');
                                     close all
@@ -4946,7 +4946,7 @@ for hwrfplots=1
                                         set(gca,'position',spPos)
                                         set(cl,'position',clPos)                                
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 										filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_EVO_',filerad,'_',savename],'-dpdf','-r200');
                                         close all
@@ -5021,7 +5021,7 @@ for hwrfplots=1
                                     set(gca,'position',spPos)
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLAN'],'-dpdf','-r200');
                                     close all        
@@ -5108,7 +5108,7 @@ for hwrfplots=1
                                     set(gca,'position',spPos)
                                     set(cl,'position',clPos)
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                     %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV'],'-dpdf','-r200');
                                     close all
@@ -5208,7 +5208,7 @@ for hwrfplots=1
 												set(gca,'position',spPos)
 												set(cl,'position',clPos)                
 												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-												axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+												axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 												filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 												%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_PLEV',num2str(plev(loop1)),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 												close all
@@ -5274,7 +5274,7 @@ for hwrfplots=1
 											set(gca,'position',spPos)
 											set(cl,'position',clPos)                
 											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-											axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+											axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 											filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 											%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_PLANDIFF'],'-dpdf','-r200');
 											close all  
@@ -5332,7 +5332,7 @@ for hwrfplots=1
 									set(gca,'position',spPos)
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_PLEV',num2str(plev(loop)),'_',savename,'_3DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_3DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
@@ -5388,7 +5388,7 @@ for hwrfplots=1
 										set(gca,'position',spPos)
 										set(cl,'position',clPos)                
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-										axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+										axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 										filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_RPAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 										%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 										close all
@@ -5446,7 +5446,7 @@ for hwrfplots=1
 									set(gca,'position',spPos)
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_EVODIFF_',identexpshort{exp1},'-',identexpshort{exp2},'_',filerad,'_',savename];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_FHR',num2str((loop1-1)*3),savename,'_RPAZAV_DIFF'],'-dpdf','-r200');
 									close all
@@ -5499,7 +5499,7 @@ for hwrfplots=1
 									set(gca,'position',spPos)
 									set(cl,'position',clPos)                
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+									axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 									filename=[identfields,'/DIFFSTORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV_DIFF_',identexpshort{exp1},'-',identexpshort{exp2}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
 									%print([identfields,'/',identn,'_',identinittimesunique(loop,:),'_',savename,'_2DRTAZAV_DIFF'],'-dpdf','-r200');
 									close all
@@ -5646,7 +5646,7 @@ for shear=1
                             set(gca,'Color',[.9 .9 .9])
                             set(gca,'position',spPos)
                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 							filename=[identfields,'/',identexp0,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_VWS'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                             %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_3DRTAZAV'],'-dpdf','-r200');
                             close all 

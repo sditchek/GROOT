@@ -305,7 +305,7 @@ for satobs=1
                                         ax.LineWidth=1; 
                                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 										filename=[identtrackint,'/sat_basin_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                         close all
                                     end
@@ -397,7 +397,7 @@ for satobs=1
                                             ax.LineWidth=1; 
                                             set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 											filename=[identtrackint,'/sat_plan_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                             close all 
                                             %% Individual Channel Graphics
@@ -472,7 +472,7 @@ for satobs=1
                                                     ax.LineWidth=1; 
                                                     set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                                    axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 													filename=[identtrackint,'/sat_plan_C',num2str(channel(identchannel)),'_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                                     %print([identtrackint,'/trackcomp_fhr_',num2str((fhr-1)*3),'h'],'-dpdf','-r200');
                                                     close all                     
@@ -518,7 +518,7 @@ for satobs=1
                                             text(.5, -.13,'(Wavenumber)','horizontalalignment','center','fontsize',10,'units','normalized')                    
                                             set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 											filename=[identtrackint,'/sat_channels_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                             close all
                                             %% Density Map
@@ -601,7 +601,7 @@ for satobs=1
                                             ax.LineWidth=1; 
                                             set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 											filename=[identtrackint,'/sat_az_',identinittimesunique(identloop,:),'_',identexpshort{loop1}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                             close all
                                             alldenmap(loop,loop1)={denmapall};  
@@ -794,7 +794,7 @@ for satobs=1
                                 ax.LineWidth=1; 
                                 set(gca,'position',[spPos(1)+.035 spPos(2)+.015 spPos(3) spPos(4)-.02])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 								filename=[identtrackint,'/sat_hist_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all    
                                 % Create storm-centered reference frame for all dropsonde locations
@@ -855,7 +855,7 @@ for satobs=1
                                 ax1.LineWidth=1; 
                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window                    
-                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;                    
+                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);                    
 								filename=[identtrackint,'/sat_plan_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all                            
                                 %% Density Map                
@@ -914,7 +914,7 @@ for satobs=1
                                 ax.LineWidth=1; 
                                 set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                                axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 								filename=[identtrackint,'/sat_az_',identexpshort{exl}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                                 close all                
                             end        
@@ -1072,7 +1072,7 @@ for satobs=1
                             lh.FontSize=10;     
                             set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);;
+                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 							filename=[identtrackint,'/',identn,'_track_withobs_',identexpshort{track}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
                         clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identsatobs identindivstorm identcomposite identstormsdone identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsconv identgraphicsbycycle identconvid  ident* stormsdone yearsdone identdiff identremoveex identremoveinv identcycles identmaxfhr identlevels identexp identexpshort identexpsigimp identexpsigimpshort identexpcolors identscrub identgroot identout identconv
