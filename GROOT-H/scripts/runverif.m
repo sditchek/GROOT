@@ -325,7 +325,7 @@ for identremoveinvest=1
                 %% %%%%%%%%%%%%%%%%%% %%
                 %% Plot Satellite Obs %% 
                 %% %%%%%%%%%%%%%%%%%% %%
-                run runverif_satsing
+                run runverif_satsing				
 				%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
                 %% By Cycle (Individual & All) and By Forecast Hour (Errors, EDiffs, Imprv) %%
                 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
@@ -1684,6 +1684,229 @@ for identremoveinvest=1
 			if size(stormsdone,2)>1
 				run('scripts/runverif_convcomp')
 				run('scripts/runverif_satcomp')		
+			end
+			for compositetcs=1
+				clear l cntexp
+				spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
+				set(0,'defaultfigurecolor',[1 1 1]) % figure background color
+				hfig=figure;
+				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
+				ax1=subplot(3,4,[1:8]);
+				hold on
+				load coastlines                        
+				h=fill([360,-360,-360,360],[-90,-90,90,90],[.5 .8 1]);
+				hold on
+				geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
+				hold on
+				states = shaperead('usastatehi', 'UseGeoCoords', true);
+				geoshow(states,'FaceColor',[0.9 0.9 0.9]);                    
+				hold on
+				xlabel('Longitude','fontsize',20)
+				ylabel('Latitude','fontsize',20)                                   
+				set(gca,'fontsize',18)  
+				set(gca,'xtick',-180:10:180)
+				set(gca,'ytick',-90:10:90)
+				tmpyrall=[];
+				for basinloop=1:size(identdr5,2)
+					identdr=dir([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',identdr5{basinloop},'/*']);
+					dirFlags = [identdr.isdir];
+					identdr = identdr(dirFlags);
+					identdr=unique({identdr.name});
+					identdr=identdr(3:end);
+					% Deal with storms that aren't finished or incomplete
+					cnt=1;clear tmprm;
+					for i=1:size(identdr,2)    
+						if isfile([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])==0
+							tmprm(cnt)=i;
+							cnt=cnt+1;
+						end
+					end
+					if exist('tmprm','var')==1
+						identdr(tmprm)=[];
+					end
+					if isempty(identdr)==1
+					else	
+						load([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/tempsave.mat'])
+						clear tmpyrb
+						tmpyr=identdr;
+						for tmpyri=1:size(tmpyr,2)
+							tmpyra=tmpyr{tmpyri};
+							tmpyrb(tmpyri)=str2num(tmpyra(end-1:end));
+						end
+						tmpyr=tmpyrb'+2000;
+						tmpnm=unique(BT_name);		
+						BTnm=BT_name;		
+						% for each storm...
+						clear nm_stm* nm_sum nm_pct
+						nm_stm1=nan(100,1,size(tmpnm,2));
+						nm_stm2=nan(100,1,size(tmpnm,2));
+						nm_stm3=nan(100,1,size(tmpnm,2));									
+						for i=1:size(tmpnm,2)
+							nmtmp=tmpnm{i};                    
+							nmindex=find(contains(BTnm,nmtmp));
+							nmvar1=BT_lat(nmindex,1);
+							nmvar2=BT_lon(nmindex,1);
+							nmvar3=BT_cat(nmindex,1);										
+							nmvar4=BT_date(nmindex,:);										
+							nm_stm1(1:size(nmvar1,1),:,i)=nmvar1;
+							nm_stm2(1:size(nmvar2,1),:,i)=nmvar2;
+							nm_stm3(1:size(nmvar3,1),:,i)=nmvar3;
+							nm_stm4(1:size(nmvar4,1),:,i)=nmvar4;
+						end									
+						nm_stm1=squeeze(nm_stm1);
+						nm_stm2=squeeze(nm_stm2);
+						nm_stm3=squeeze(nm_stm3);
+						nm_stm4=squeeze(nm_stm4);
+						% sort by year and then by name                               
+						[a_sorted, a_order] = sort(tmpyr);
+						nm_pctlat = nm_stm1(:,a_order);
+						nm_pctlon = nm_stm2(:,a_order);
+						nm_pctspd = nm_stm3(:,a_order);
+						nm_pctdate = nm_stm4(:,:,a_order);
+						tmpnm = tmpnm(a_order);					
+						clear plotsim
+						cnt=1;
+						for findsim=1:size(tmpnm,2)
+							tmpsim=tmpnm{findsim};
+							for findsim2=1:size(stormsdone,2)
+								tmpsd=stormsdone{findsim2}; if strcmp(identdr5{basinloop},'AL')==1; tmpbas='l'; elseif strcmp(identdr5{basinloop},'EP')==1; tmpbas='e'; elseif strcmp(identdr5{basinloop},'WP')==1;  tmpbas='w'; elseif strcmp(identdr5{basinloop},'CP')==1;   tmpbas='c'; end;     
+								if (strcmp(tmpsim(1:end-2),upper(tmpsd(1:end-3)))==1 || strcmp(tmpsim(1:end-4),upper(tmpsd(1:end-1)))==1 || strcmp(tmpsim(1:end-2),upper(tmpsd(1:end)))==1) & strcmp(tmpsim(end-1:end),yearsdone(findsim2,3:4))==1 & strcmp(tmpbas,tmpsd(end))==1
+									plotsim{cnt}=[yearsdone(findsim2,3:4),':',upper(tmpsd(end-2:end))];
+									cnt=cnt+1;
+								end
+							end
+						end
+						% Plot TCs from this basin
+						for pltstm=1:size(tmpnm,2)
+							plot(nm_pctlon(:,pltstm),nm_pctlat(:,pltstm),'-k','linewidth',4);
+							hold on
+							azavcm=jet(7);
+							for i=1:size(nm_pctdate,1)
+								if strcmp(nm_pctdate(i,9:10,pltstm),'00')==1 || strcmp(nm_pctdate(i,9:10,pltstm),'06')==1 || strcmp(nm_pctdate(i,9:10,pltstm),'12')==1 || strcmp(nm_pctdate(i,9:10,pltstm),'18')==1                        
+									if nm_pctspd(i,pltstm) > 0 && nm_pctspd(i,pltstm) < 34./1.94384 
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(2,:),'markersize',12);            
+									elseif nm_pctspd(i,pltstm) >= 34./1.94384 && nm_pctspd(i,pltstm) < 64./1.94384 
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(3,:),'markersize',12);            
+									elseif nm_pctspd(i,pltstm) >= 64./1.94384 && nm_pctspd(i,pltstm) < 83./1.94384
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(4,:),'markersize',12);            
+									elseif nm_pctspd(i,pltstm) >= 83./1.94384 && nm_pctspd(i,pltstm) < 96./1.94384 
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(5,:),'markersize',12);            
+									elseif nm_pctspd(i,pltstm) >= 96./1.94384 && nm_pctspd(i,pltstm) < 113./1.94384 
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(6,:),'markersize',12);            
+									elseif nm_pctspd(i,pltstm) >=113./1.94384 && nm_pctspd(i,pltstm) < 137./1.94384 
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(7,:),'markersize',12);           
+									elseif nm_pctspd(i,pltstm) >= 137./1.94384
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color','m','markersize',12); 								            
+									end
+								end
+							end
+							for i=1:size(nm_pctdate,1)
+								if strcmp(nm_pctdate(i,9:10,pltstm),'00')==1
+									plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'o','markeredgecolor','w','markersize',3); 
+								end
+							end				
+							% Find the first non-NAN point plotted
+							nonanplot=find(~isnan(nm_pctlon(:,pltstm)));						
+							backwardslon=nm_pctlon(nonanplot(1)+1,pltstm)-nm_pctlon(nonanplot(1),pltstm);
+							backwardslat=nm_pctlat(nonanplot(1)+1,pltstm)-nm_pctlat(nonanplot(1),pltstm);
+							if backwardslon>0
+								backwardslon=backwardslon+.3;
+							else
+								backwardslon=backwardslon-.3;
+							end
+							if backwardslat>0
+								backwardslat=backwardslat+.3;
+							else
+								backwardslat=backwardslat-.3;
+							end
+							%plot(nm_pctlon(nonanplot(1),pltstm),nm_pctlat(nonanplot(1),pltstm),'o','markerfacecolor','w','markeredgecolor','k','markersize',6); 
+							%t=text(nm_pctlon(nonanplot(1),pltstm)-backwardslon,nm_pctlat(nonanplot(1),pltstm)-backwardslat,plotsim(pltstm),'horizontalalignment','center','fontsize',8,'color',[0 0 0],'backgroundcolor','w','margin',0.5,'edgecolor','k')
+							%t=text(nm_pctlon(nonanplot(1),pltstm)-backwardslon,nm_pctlat(nonanplot(1),pltstm)-backwardslat,num2str(pltstm),'horizontalalignment','center','fontsize',8,'color',[0 0 0],'backgroundcolor','w','margin',0.5,'edgecolor','k')
+							t(pltstm)=text(nm_pctlon(nonanplot(1),pltstm),nm_pctlat(nonanplot(1),pltstm)-1.2,plotsim{pltstm},'verticalalignment','middle','horizontalalignment','center','fontsize',6,'color',[0 0 0],'backgroundcolor','w','margin',0.5,'edgecolor','k','Interpreter','latex');
+						end					
+						tmpyrall=[tmpyrall;tmpyr];                    
+						tmpminlat(basinloop)=min(nm_pctlat(:));
+						tmpmaxlat(basinloop)=max(nm_pctlat(:));
+						tmpminlon(basinloop)=min(nm_pctlon(:));
+						tmpmaxlon(basinloop)=max(nm_pctlon(:));
+					end
+				end
+				uistack(t,'top')
+				set(gca,'plotboxaspectratio',[1 1 1])
+				set(gcf, 'InvertHardcopy', 'off')             
+				set(gca,'fontsize',20)
+				box on
+				set(gcf,'Units','inches');
+				a1Pos = get(gca,'Position');
+				set(gcf, 'InvertHardcopy', 'off')
+				set(gcf,'Units','inches');
+				screenposition = get(gcf,'Position');
+				set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
+				set(gcf, 'InvertHardcopy', 'off')
+				text(0,1.065,['\textbf{Track \& Classification}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+				tmpuv = unique(tmpyrall);
+				tmpn  = histc(tmpyrall,tmpuv); 
+				tmpphrase='';
+				for tmpdr=1:size(tmpn,1)
+					if tmpdr==size(tmpn,1)
+						tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),')'];
+					else
+						tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
+					end
+				end
+				text(0,1.03,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+				ax=gca;
+				box on
+				set(ax, 'Layer', 'bottom')
+				ax.LineWidth=1; 
+				ax=gca;
+				box on
+				set(ax, 'Layer', 'top')
+				ax.LineWidth=1; 
+				l(1)=plot(-200,-100,'.','color',[.5 .5 .5],'markersize',25); 
+				l(2)=plot(-200,-100,'s','markerfacecolor',[.5 .5 .5],'markeredgecolor',[.5 .5 .5],'markersize',8); 
+				l(3)=plot(-200,-100,'d','markerfacecolor',[.5 .5 .5],'markeredgecolor',[.5 .5 .5],'markersize',6); 
+				l(4)=plot(-200,-100,'.','color',azavcm(2,:),'markersize',25);
+				l(5)=plot(-200,-100,'.','color',azavcm(3,:),'markersize',25);
+				l(6)=plot(-200,-100,'.','color',azavcm(4,:),'markersize',25);
+				l(7)=plot(-200,-100,'.','color',azavcm(5,:),'markersize',25);
+				l(8)=plot(-200,-100,'.','color',azavcm(6,:),'markersize',25);
+				l(9)=plot(-200,-100,'.','color',azavcm(7,:),'markersize',25);
+				l(10)=plot(-200,-100,'.','color','m','markersize',25);
+				legend off
+				lh=legend(l,'WV/DB/LO','SD/SS','EX','TD','TS','C1','C2','C3','C4','C5','orientation','vertical');
+				lh.FontSize=6;  
+				lh.ItemTokenSize(1) = 10;   
+				set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
+				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window                    					
+				tmplat=tmpmaxlat+5-(tmpminlat-5);
+				tmplon=tmpmaxlon+5-(tmpminlon-5);
+				difftmp=tmplat-tmplon;
+				if difftmp<0 % longitude is wider than latitude
+					diffmult=tmplon/2;
+					diffmid=(tmpmaxlat+5+(tmpminlat-5))/2;
+					xlim([tmpminlon-5 tmpmaxlon+5])
+					x_dist=(tmpminlon-5)-(tmpmaxlon+5);
+					x_mean=((tmpminlon-5)+(tmpmaxlon+5))/2;
+					ylim([diffmid-diffmult diffmid+diffmult])
+					y_dist=(diffmid-diffmult)-(diffmid+diffmult);
+					y_mean=((diffmid-diffmult)-(diffmid+diffmult))/2;
+				else         % latitude is wider than longitude
+					diffmult=tmplat/2;
+					diffmid=(tmpmaxlon+5+(tmpminlon-5))/2;
+					xlim([tmpminlon-diffmult tmpmaxlon+diffmult])
+					x_dist=(tmpminlon-diffmult)-(tmpmaxlon+diffmult);
+					x_mean=((tmpminlon-diffmult)+(tmpmaxlon+diffmult))/2;
+					ylim([tmpminlat-5 tmpmaxlat+5])
+					y_dist=(tmpminlat-5)-(tmpmaxlat+5);
+					y_mean=((tmpminlat-5)+(tmpmaxlat+5))/2;
+				end
+				c_adj=cosd(y_mean);
+				c_dist=abs(x_dist*c_adj/2);
+				c_mid=x_mean;
+				xlim([c_mid-c_dist-5 c_mid+c_dist+5])
+				axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
+				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_tracks'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;
 			end
 		end
     end

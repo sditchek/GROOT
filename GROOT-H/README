@@ -141,6 +141,7 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+6/10/24  | Added a new graphics type that plots all TC tracks and classifications in a multi-TC sample
 5/15/24  | Fixed a bug where if the RMW value is 0 (e.g., CTCX for Don and Harold in 2023), that forecast lead time is removed for all experiments (i.e., homogeneous sample)
          | Added "Graphic created using GROOT" to all graphics
 5/1/24   | Added various new assimilated obs capabilities including...
