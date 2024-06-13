@@ -1686,7 +1686,7 @@ for identremoveinvest=1
 				run('scripts/runverif_satcomp')		
 			end
 			for compositetcs=1
-				clear l cntexp
+				clear l cntexp;addpath('scripts');
 				spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
 				set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 				hfig=figure;
