@@ -1,5 +1,5 @@
 %% Conventional Obs Composite - all and by year, if multiple years present
-            if identconv==1;identconvobstype=(1001:1000+size(identconvobstype,2))';
+            if identconv==1;[a,b,c]=unique(identconvobscolors,'rows','stable');identconvid_filename=identconvid_filename(b);identconvobscolors=identconvobscolors(b);identconvobslegend=identconvobslegend(b);identconvobssubtype=identconvobssubtype(b);identconvobstype=identconvobstype(b);identsubtypekeep=identsubtypekeep(b);
                 if size(unique(yearsdone,'rows'),1)==1
                     convyear=size(unique(yearsdone,'rows'),1);
                 else
