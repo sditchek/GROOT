@@ -1,5 +1,5 @@
 %% Conventional Obs Composite - all and by year, if multiple years present
-            if identconv==1;identconvobstype=(1001:1000+size(identconvobstype,2))';
+            if identconv==1;[a,b,c]=unique(identconvobscolors,'rows','stable');identconvid_filename=identconvid_filename(b);identconvobscolors=identconvobscolors(b,:);identconvobslegend=identconvobslegend(b);identconvobssubtype=identconvobssubtype(b);identconvobstype=identconvobstype(b);identsubtypekeep=identsubtypekeep(b);             
                 if size(unique(yearsdone,'rows'),1)==1
                     convyear=size(unique(yearsdone,'rows'),1);
                 else
@@ -382,7 +382,7 @@
                         close all   
                     end
                     % Histogram Difference Composite Graphic
-					for j=2:size(identexp,1) 
+			for yy=1:2;for j=2:size(identexp,1) 
 
 			spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
                         set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -466,14 +466,14 @@
                         ax.LineWidth=1; ax.XGrid='on';ax.XMinorGrid='on';ax.GridAlpha=0.35;ax.YAxis.Exponent = 0;
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;
                         if yrlp==1
-							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j}];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j},'_',yyscale];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
-							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j},'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
+				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j},'_',yyscale,'_',curyear];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         end
                         close all   
-					end																				
+		end;end																		
 					% Bar Graph Totals
 					 for j=1:size(identexp,1) 
                         if yrlp==1

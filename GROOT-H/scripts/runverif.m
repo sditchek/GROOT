@@ -325,7 +325,7 @@ for identremoveinvest=1
                 %% %%%%%%%%%%%%%%%%%% %%
                 %% Plot Satellite Obs %% 
                 %% %%%%%%%%%%%%%%%%%% %%
-                run runverif_satsing				
+                run runverif_satsing
 				%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
                 %% By Cycle (Individual & All) and By Forecast Hour (Errors, EDiffs, Imprv) %%
                 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
@@ -1685,7 +1685,7 @@ for identremoveinvest=1
 				run('scripts/runverif_convcomp')
 				run('scripts/runverif_satcomp')		
 			end
-			for compositetcs=1
+for compositetcs=1
 				clear l cntexp;addpath('scripts');
 				spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
 				set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -1906,8 +1906,8 @@ for identremoveinvest=1
 				c_mid=x_mean;
 				xlim([c_mid-c_dist-5 c_mid+c_dist+5])
 				axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
-				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_tracks'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all;
-			end
+				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/InvestN/COMP_tracks'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all
+			end		
 		end
     end
 end

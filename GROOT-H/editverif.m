@@ -3,19 +3,19 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identout=['/scratch2/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-H/'];  	 % top-level directory path for results folder - must include end "/"
+identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];  	 % top-level directory path for results folder - must include end "/"
 identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/']; % path of GROOT-PR directory (i.e., ${homepath}/GROOT/GROOT-H/GROOT-PR/, where homepath is same as in runverif.ksh) - must include end "/"
 identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                            	 % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=0;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 identhwrfmodel=0;identhafsmodel=1;					         % did you run HWRF or HAFS? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'ALL'};{'NOG4'}]; 		   	        % folder name of all experiments: 1) must match "expnew" in runverif.ksh, 2) first experiment MUST be the one with al the obs assimilated, and 3) last experiment MUST be the BASELINE
-identexpsigimp='NOG4';                                                  % full folder name of improvement wrt THIS experiment (i.e., your BASELINE)
+identexp=[{'ALL-A'};{'NOG4-A'}]; 		   	        % folder name of all experiments: 1) must match "expnew" in runverif.ksh, 2) first experiment MUST be the one with al the obs assimilated, and 3) last experiment MUST be the BASELINE
+identexpsigimp='NOG4-A';                                                  % full folder name of improvement wrt THIS experiment (i.e., your BASELINE)
 identexpcolors=[0 152 0;208 0 0]/255;  	        % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 									     % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroot,'/ALL']);                                    % short name of experiment that has completed the most cycles (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroot,'/ALL-A']);                                    % short name of experiment that has completed the most cycles (must match name in "expnew" in runverif.ksh)
 
 % Case Study: also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0;								% run graphics for just 1 storm | yes (1) no (0)
@@ -39,13 +39,13 @@ identboxhist=0;								% do you want to create boxplots of absolute error for ea
 identconv=1;                                                   		   % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
 identgraphicsconv=0;                                            	   % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='Recon';                                            	   % name of observation for graphic titles | uppercase first letter | will become "Assimilated ____ Observations"
-if identhafsmodel==1							   % if identhafsmodel=1, filenames of data desired ensuring it starts with "_" and equals length of identconvobstype
+if identhafsmodel==1							   % if identhafsmodel=1, filenames of data desired ensuring it starts with "_" and equals # of identconvobstype
    identconvid_filename=[{'_t_anl'};{'_q_anl'};{'_uv_anl'};{'_spd_anl'};{'_rw_anl'};{'_rw_anl'};{'_t_anl'};{'_q_anl'};{'_uv_anl'}];
 end
 identconvobstype=[136 136 236 213 993 992 137 137 237];			   % obstype number(s) | number of obstypes must match number of obssubtypes
-							 	      		% NOTE: if an obstype is associated with multiple obssubtypes, repeat obstype for each obssubtype. if you want ALL obssubtypes for a given obstype, only list the obstype once and enter "0" as the corresponding obssubtype and set the corresponding identsubtypekeep to 0. Also, the order of the obstypes will be plotting order, so put more sparse obs last
+							 	      		% NOTE: if an obstype is associated with multiple obssubtypes and you want to keep that obssubtype, repeat obstype for each obssubtype and set identsubtypekeep=1. if you want ALL obssubtypes for a given obstype, only list the obstype once and enter "0" as the corresponding obssubtype and set the corresponding identsubtypekeep to 0. Also, the order of the obstypes will be plotting order, so put more sparse obs last
 identconvobssubtype=[0 0 0 0 0 0 0 0 0];identsubtypekeep=[1 1 1 1 1 1 1 1 1]; % corresponding obssubtype number(s) | number of obssubtypes must match number of obstypes | identsubtypekeep must match number of identconvobstype and identconvobssubtype | keep subtype (1) use all subtypes for this obtype (0)
-identconvobscolors=[229 96 43;237 146 109;164 61 20;248 211 196;56 87 35;112 173 71;204 51 204;233 169 233;107 27 107]/255; % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value)
+identconvobscolors=[229 96 43;237 146 109;164 61 20;248 211 196;56 87 35;112 173 71;204 51 204;233 169 233;107 27 107]/255; % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value) | NOTE: if you want to group together different obstypes as one category (e.g., COSMIC2 FM1 - FM6 > COSMIC2), repeat the same color for each obstype and then repeat the same name in identconvobslegend.
 identconvobslegend=[{'T-HDOBS'};{'Q-HDOBS'};{'UV-HDOBS'};{'SPD-SFMR'};{'RW-P3'};{'RW-GIV'};{'T-DROPS'};{'Q-DROPS'};{'UV-DROPS'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options - ONLY WORKS FOR IDENTHWRFMODEL=1!!!!!!!
