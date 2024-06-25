@@ -1,5 +1,5 @@
 %% Conventional Obs Composite - all and by year, if multiple years present
-            if identconv==1;[a,b,c]=unique(identconvobscolors,'rows','stable');identconvid_filename=identconvid_filename(b);identconvobscolors=identconvobscolors(b,:);identconvobslegend=identconvobslegend(b);identconvobssubtype=identconvobssubtype(b);identconvobstype=identconvobstype(b);identsubtypekeep=identsubtypekeep(b);             
+            if identconv==1;[a,b,c]=unique(identconvobscolors,'rows','stable');identconvid_filename=identconvid_filename(b);identconvobscolors=identconvobscolors(b,:);identconvobslegend=identconvobslegend(b);identconvobssubtype=identconvobssubtype(b);identconvobstype=1001:1001+size(identconvobssubtype,2);identsubtypekeep=identsubtypekeep(b);             
                 if size(unique(yearsdone,'rows'),1)==1
                     convyear=size(unique(yearsdone,'rows'),1);
                 else
@@ -136,7 +136,7 @@
                         ax.LineWidth=1;ax.XGrid='on';ax.XMinorGrid='on';ax.GridAlpha=0.35;ax.YAxis.Exponent = 0;
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;f = getframe(hfig);
                         if yrlp==1
 							filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_hist_',identexpshort{j},'_',yyscale];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -466,7 +466,7 @@
                         ax.LineWidth=1; ax.XGrid='on';ax.XMinorGrid='on';ax.GridAlpha=0.35;ax.YAxis.Exponent = 0;
                         set(gca,'position',[spPos(1)+.035 spPos(2) spPos(3) spPos(4)])
                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;
+                        axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');if yy==1;set(gca,'yscale','log');yyscale='log';elseif yy==2;set(gca,'yscale','linear');yyscale='linear';end;f = getframe(hfig);
                         if yrlp==1
 				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/OBS/COMP_conv_histdiff_',identexpshort{j},'_',yyscale];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                         else
@@ -549,7 +549,7 @@
 							b.FaceColor = 'flat';
 							cnt=1;
 							for i=1:size(lsz,2)
-								if lsz(i)==0
+								if lsz(i)==0;cnt=cnt+1;
 								else	
 									b.CData(i,:) =  identconvobscolors(cnt,:);
 									cnt=cnt+1;
@@ -735,4 +735,4 @@
 						
 				end
 				clearvars -except identboxhist identconmetric identeps identmodelfhr identincludeobs identconvobs identserialcorr identbasinmodel identsatobs identgraphicssat identsatid identsatname identindivch identchannel identindivstorm identcomposite identstormsdone convyear ymaxallbasin identconvobssubtype identconvobscolors identconvobslegend identns* identnewsub* identgraphicsbycycle identgraphicsconv yrlp identconvid  ident* skip* stormsdone yearsdone               
-            end          
+            end
