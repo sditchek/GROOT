@@ -25,11 +25,12 @@
 
 # Paths
 scriptspath=$1
+homepath=$2
 
 # Import the values in the output file
 source ./common.txt
 
-echo "Thank you for using GROOT! Check out your SYNOPTIC GRID results in the ${homepath}/GROOT/GROOT-H/RESULTS/ directory. If you have any questions, please contact Sarah Ditchek (CIMAS-AOML)." > ${homepath}/GROOT/GROOT-H/SUBMISSION_SYNOPTICGRID_FINISHED.txt
+echo "Thank you for using GROOT! Check out your SYNOPTIC GRID results in the ${homepath}/GROOT/GROOT-H/RESULTS/ directory. If you have any questions, please contact Sarah Ditchek (CIMAS-AOML)." > ${homepath}/SUBMISSION_SYNOPTICGRID_FINISHED.txt
 
 # Clean up old files
 rm -f ${scriptspath}/matlabsynopticbatch_*.ksh

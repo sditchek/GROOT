@@ -11,7 +11,7 @@
 
 If using this graphics package in PUBLICATIONS, please include the following in the acknowledgements section:
 
-"The GRaphics for OS(S)Es and Other modeling applications on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
+"The GRaphics for OS(S)Es and Other modeling applications on TCs (GROOT) verification package developed by Dr. Sarah Ditchek and funded by the Quantitative Observing System Assessment Program (QOSAP) and the FY18 Hurricane Supplemental (NOAA Award ID #NA19OAR0220188) was used to generate graphics for this publication."
 
 If using this graphics package in PRESENTATIONS, please indicate the following verbally or include the information somewhere on your slides:
 
@@ -56,21 +56,26 @@ scripts/ 	  | folder that contains all scripts needed to run the package
   atcf_OCD5.m         | function that processes OCD5 entries
   atcf_OFCL.m         | function that processes OFCL entries 
   atcf_shear.m        | function that reads the bdeck files, formats them to be on one line per forecasts hour, and calculates the SHIPS shear values
+  bordersdata.mat     | data file to enable border plotting without mapping toolbox
+  borders.m	      | script to enable border plotting without mapping toolbox
   borders.shp         | shapefile to make country borders
   borders.shx         | shapefile to make country borders
+  coastlines.mat      | data file to enable border plotting without mapping toolbox
   confplot.m 	      | function that calculates the 95% confidence interval
   customcolorbars.m   | script that creates the colorbars used
   custommap.m 	      | function that creates a balanced colormap with a specific number of colors given one color
   customvariables.m   | script that identifies properties related to variables outputted by HWRF and the basin-scale HWRF (e.g., name, units, min/max bounds)
+  distancegroot.m     | script to enable distance calculations without mapping toolbox
   matlab*graphics.ksh | this script generates copies of the matlab*batch script based on how many cycles need to be run - allows for submission of multiple jobs, one at a time
   matlab*batch.ksh    | this script generates mat files for each variable and generates graphics - uses 40 cores (1 node) and opens X matlab instances (X = # of variables the user requests)
   matlab*clean.ksh    | this script removes the duplicate matlab*batch_ files
   matlabverif* 	      | scripts related to running the verification capability
+  nanmean.m           | script that calculates the mean while ignoring nans (from statistics toolbox to eliminate runtime errors)
   prctile.m	      | script that calculates percentile of a distribution (from statistics toolbox to eliminate runtime errors)
   quantile.m          | script that calculates quantile of a distribution (from statistics toolbox to eliminate runtime errors)
   rungrb.m	      | grb capability script
   runverif*.m	      | verification capability scripts
-  tclookup.m          | enables the use of atcf files that use the storm id rather than the storm name
+  tclookup*.m         | enables the use of atcf or adeck files that use the storm id rather than the storm name
   ttestsc.m           | function that incorporates serial correlation time of 12 h in the ttest calculation
   windbarbm.m         | function to generate wind barbs (note that flags are currently not filled)
 
@@ -141,6 +146,8 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+8/13/24  | The GRB component is now working for HAFS & MATLABv2023b! Lots of changes made to scripts to enable this fix.
+         | Removed the need for the mapping toolbox from the verification capability.
 6/24/24  | Added AL and EP final bdecks for 2023
 	 | Added the SHIPS data for 2022 storms for usage in the shear stratifications
 6/10/24  | Added a new graphics type that plots all TC tracks and classifications in a multi-TC sample

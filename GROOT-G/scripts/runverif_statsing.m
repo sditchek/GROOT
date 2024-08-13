@@ -131,7 +131,7 @@ for graphics=1
 			exp_shr=nan(100,size(identexp,1)); 
 			% Loop
 			for tmp=1:size(identexp,1)                
-filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'*']);filename=[identgroovpr,identexpshort{tmp},'/atcf/',filename.name]; fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end;end;
+filename=dir([identgroot,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesunique(identloop,:),'*']);filename=[identgroot,identexpshort{tmp},'/atcf/',filename.name]; fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end;end;
 				if strcmp('OFCL',identexp{tmp})==1;identoutputres=2;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf_OFCL(filename,identoutputres);elseif strcmp('OCD5',identexp{tmp})==1;identoutputres=2;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf_OCD5(filename,identoutputres);else;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,identoutputres);end;
 				initsizeexp=size(FHRall,2);
 				exp_fhr(1:initsizeexp,tmp)=FHRall';
@@ -329,11 +329,11 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 					int_lon0=Xinter(1);
 					int_lat0=Xinter(2);            
 					% BT0 to GH0 (hypotenuse)
-					dist_BT0GH0=deg2km(distance('gc',[bt_lat0,bt_lon0],[exp_lat0,exp_lon0]));
-					dist_BTn1int0=deg2km(distance('gc',[bt_latn1,bt_lonn1],[int_lat0,int_lon0]));
-					dist_BTn1BT0=deg2km(distance('gc',[bt_latn1,bt_lonn1],[bt_lat0,bt_lon0]));
+					dist_BT0GH0=111.11.*(distancegroot(bt_lat0,bt_lon0,exp_lat0,exp_lon0));
+					dist_BTn1int0=111.11.*(distancegroot(bt_latn1,bt_lonn1,int_lat0,int_lon0));
+					dist_BTn1BT0=111.11.*(distancegroot(bt_latn1,bt_lonn1,bt_lat0,bt_lon0));
 					% Across-Track Error: GH0 to intersection point
-					XTE=deg2km(distance('gc',[int_lat0,int_lon0],[exp_lat0,exp_lon0]));                     
+					XTE=111.11.*(distancegroot(int_lat0,int_lon0,exp_lat0,exp_lon0));                     
 					% Position Left Right:
 					% if value > 0, p2 is on the left side of the line.
 					% if value = 0, p2 is on the same line.
@@ -343,7 +343,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 					   XTE=XTE*-1;
 					end
 					% Along-Track Error
-					ATE=deg2km(distance('gc',[bt_lat0,bt_lon0],[int_lat0,int_lon0]));
+					ATE=111.11.*(distancegroot(bt_lat0,bt_lon0,int_lat0,int_lon0));
 					% If distance from n1 to int is larger than bt0 to int AND distance from n1 to int is creater than n1 to bt0, then ahead! 
 					if dist_BTn1int0 >= ATE && dist_BTn1int0 >= dist_BTn1BT0 %dist_BTn1BT0 > dist_BTn1int0
 					else;ATE=-1.*ATE; 
@@ -360,11 +360,11 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 						set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 						ax1=subplot(3,4,[1:8]);
 						h=fill([200,-200,-200,200],[-90,-90,90,90],[.5 .8 1]);
-						hold on                                           
-						geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
-						hold on
-						states = shaperead('usastatehi', 'UseGeoCoords', true);
-						geoshow(states,'FaceColor',[0.9 0.9 0.9]);
+						hold on;borders('countries','facecolor',[.9 .9 .9]);borders('continental us','k');                                           
+						%geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
+						%hold on
+						%states = shaperead('usastatehi', 'UseGeoCoords', true);
+						%geoshow(states,'FaceColor',[0.9 0.9 0.9]);
 						tmpminlat=min([bt_lat(:); exp_lat(:)]);
 						tmpmaxlat=max([bt_lat(:); exp_lat(:)]);
 						tmpminlon=min([bt_lon(:); exp_lon(:)]);
@@ -732,7 +732,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 			end
 			%% Find errors - ALL init times                
 			for tmp=1:size(identexp,1)
-				trkerr_exp(identloop,1:initsize,tmp)=(deg2km(distance('gc',bt_lat,bt_lon,exp_lat(:,tmp)',exp_lon(:,tmp)')));
+				trkerr_exp(identloop,1:initsize,tmp)=(111.11.*(distancegroot(bt_lat,bt_lon,exp_lat(:,tmp)',exp_lon(:,tmp)')));
 				trkerr_sz=max(size(bt_lat,2),trkerr_sz);
 				interr_exp(identloop,1:initsize,tmp)=(exp_minpres(:,tmp)-bt_minpres');
 				spderr_exp(identloop,1:initsize,tmp)=(exp_maxspd(:,tmp)-bt_maxspd');
@@ -768,11 +768,11 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 				ax1=subplot(3,4,[1:8]);
 				h=fill([200,-200,-200,200],[-90,-90,90,90],[.5 .8 1]);
-				hold on                                           
-				geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
-				hold on
-				states = shaperead('usastatehi', 'UseGeoCoords', true);
-				geoshow(states,'FaceColor',[0.9 0.9 0.9]);
+				hold on;borders('countries','facecolor',[.9 .9 .9]);borders('continental us','k');                                           
+				%geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
+				%hold on
+				%states = shaperead('usastatehi', 'UseGeoCoords', true);
+				%geoshow(states,'FaceColor',[0.9 0.9 0.9]);
 				tmpminlat=min([BT_lat(:); EXP_lat(:)]);
 				tmpmaxlat=max([BT_lat(:); EXP_lat(:)]);
 				tmpminlon=min([BT_lon(:); EXP_lon(:)]);
@@ -7258,7 +7258,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									 yrange=[-20 20];
 								elseif plt==2
 									tmp_exp=interr_exp(:,1:skip:end,:);
-									tmp_name='pfsfsp';
+									tmp_name='prsfsp';
 									tmp_title='PMIN FSP (\%)';
 									tmp_ytitle=['FSP wrt ', identexpsigimpshort,' (%)'];
 								elseif plt==3
@@ -14964,7 +14964,7 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								if plt <19 || plt >20
 									tmp_exp=abs(tmp_exp); % added for MAE
 								end
-								tmp_exp0=squeeze(100.*(1-abs(nanmean(tmp_exp(:,:,:),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1))));               													
+								tmp_exp0=squeeze(100.*(1-abs(nanmean(tmp_exp(:,:,:),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1))));if strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;               													
 								
 								% Strat
 								if strat==1
@@ -15328,18 +15328,18 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								end
 								% YRANGE
 								clear allquad imprv3
-								imprv3(:,:,1)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,2)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,3)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,4)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,5)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,6)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,7)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,8)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,9)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,10)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,11)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
-								imprv3(:,:,12)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,1)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,2)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,3)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,4)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,5)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,6)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,7)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,8)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,9)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,10)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,11)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
+								imprv3(:,:,12)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
 								allquadmax=max(max(max(imprv3)));
 								allquadmin=min(min(min(imprv3)));
 								tmpvalq=max(abs(allquadmin),abs(allquadmax));
@@ -18909,9 +18909,9 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 								tmpu(tmpu==tmpimp)=[];
 								if plt>=21
 									tmp_exp1=abs(tmp_exp1); % added for MAE
-									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp1(:,:,:),1)./nanmean(tmp_exp1(:,:,tmpimp),1)));                  
+									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp1(:,:,:),1)./nanmean(tmp_exp1(:,:,tmpimp),1)));if strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;                  
 								else
-									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp(:,:,:),1)./nanmean(tmp_exp(:,:,tmpimp),1)));                  
+									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp(:,:,:),1)./nanmean(tmp_exp(:,:,tmpimp),1)));if strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;                  
 								end
 								% Strat
 								if strat==1
@@ -19390,18 +19390,18 @@ filename=dir([identgroovpr,identexp{tmp},'/atcf/',identtmp1,'.',identinittimesun
 									colorbar
 									% YRANGE
 									clear allquad imprv3
-									imprv3(:,:,1)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,2)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,3)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,4)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,5)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,6)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,7)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,8)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,9)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,:)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,10)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,:)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,11)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
-									imprv3(:,:,12)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,:)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,1)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,2)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,3)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,4)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,5)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,6)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,7)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,8)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,9)=100.*(1-nanmean(abs(ne34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(ne34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,10)=100.*(1-nanmean(abs(se34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(se34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,11)=100.*(1-nanmean(abs(nw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(nw34err_exp(:,1:skip:end,tmpimp)),1));
+									imprv3(:,:,12)=100.*(1-nanmean(abs(sw34err_exp(:,1:skip:end,ignavno)),1)./nanmean(abs(sw34err_exp(:,1:skip:end,tmpimp)),1));
 									allquadmax=max(max(max(imprv3)));
 									allquadmin=min(min(min(imprv3)));
 									tmpvalq=max(abs(allquadmin),abs(allquadmax));

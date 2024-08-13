@@ -18,10 +18,10 @@
 
 # Account Information
 acntold=aoml-osse				# account currently listed in SBATCH above
-acntnew=aoml-osse				# account you want listed in SBATCH above
+acntnew=aoml-hafs1				# account you want listed in SBATCH above
 emlold=sarah.d.ditchek@noaa.gov			# email address currently listed in SBATCH above
 emlnew=sarah.d.ditchek@noaa.gov			# email address you want listed in SBATCH above
-dirpth=/scratch1/AOML/aoml-osse/${USER}/GROOT	# directory path above GROOT-H location
+dirpth=/scratch1/AOML/aoml-osse/${USER}/GROOT/	# directory path above GROOT-H location
 
 ########################
 # END OF USER SETTINGS #
@@ -82,10 +82,15 @@ sbatch ${scriptspath}/matlabdagraphics.ksh $scriptspath $outputpath $homepath
 fi
 
 # Submits SYNOPTIC scripts
+if [ "${initsynoptic}" -eq 1 ]
+then
 sbatch ${scriptspath}/matlabsynopticgraphics.ksh $scriptspath $outputpath $homepath
+fi
 
 # Submits STORM scripts
+if [ "${initstorm}" -eq 1 ]
+then
 sbatch ${scriptspath}/matlabstormgraphics.ksh $scriptspath $outputpath $homepath
+fi
 
 exit 0
-

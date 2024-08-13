@@ -71,9 +71,9 @@ end
 %% %%%%%%%%% %%
 %% Get BDECK %%
 %% %%%%%%%%% %%
-for bdecks=1
-    filename = [identbdecks,'b',lower(ident),'.dat'];
-    [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,1);
+ for bdecks=1
+	filename = [identbdecks,'b',lower(ident),'.dat'];
+	[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,SHRall,LOWbasin,HIGHbasin,LANDall,HFIPINTCHall]=atcf_shear(filename,1,identbdecks);
     save([identout,'RESULTS/',identfold,identn,'/',identn,'_data.mat'])
 end
 
@@ -428,7 +428,7 @@ if identda==1
                             rds=[rds2 rds(2:end)]';
                             [x,y] = meshgrid(rds,rds);
                             [theta,rho] = cart2pol(x,y);
-                            theta=((flipud((theta+pi)')));
+                            theta=(fliplr(theta+pi));
                             if varloop==1
                                 tmptmp1=(U_B2(MSLP_B2(1,1)-140:MSLP_B2(1,1)+140,MSLP_B2(2,1)-140:MSLP_B2(2,1)+140,:,:).*cos(theta) + V_B2(MSLP_B2(1,1)-140:MSLP_B2(1,1)+140,MSLP_B2(2,1)-140:MSLP_B2(2,1)+140,:,:).*sin(theta));                                
                             elseif varloop==2
@@ -471,7 +471,7 @@ if identda==1
                             rds=[rds2 rds(2:end)]';
                             [x,y] = meshgrid(rds,rds);
                             [theta,rho] = cart2pol(x,y);
-                            theta=((flipud((theta+pi)')));
+                            theta=(fliplr(theta+pi));
                             if varloop==1
                                 tmptmp2=(U_A2(MSLP_A2(1,1)-140:MSLP_A2(1,1)+140,MSLP_A2(2,1)-140:MSLP_A2(2,1)+140,:,:).*cos(theta) + V_A2(MSLP_A2(1,1)-140:MSLP_A2(1,1)+140,MSLP_A2(2,1)-140:MSLP_A2(2,1)+140,:,:).*sin(theta));                                
                             elseif varloop==2
@@ -514,7 +514,7 @@ if identda==1
                             rds=[rds2 rds(2:end)]';
                             [x,y] = meshgrid(rds,rds);
                             [theta,rho] = cart2pol(x,y);
-                            theta=((flipud((theta+pi)')));
+                            theta=(fliplr(theta+pi));
                             if varloop==1
                                 tmptmp3=(U_B3(MSLP_B3(1,1)-210:MSLP_B3(1,1)+210,MSLP_B3(2,1)-210:MSLP_B3(2,1)+210,:,:).*cos(theta) + V_B3(MSLP_B3(1,1)-210:MSLP_B3(1,1)+210,MSLP_B3(2,1)-210:MSLP_B3(2,1)+210,:,:).*sin(theta));                                
                             elseif varloop==2
@@ -557,7 +557,7 @@ if identda==1
                             rds=[rds2 rds(2:end)]';
                             [x,y] = meshgrid(rds,rds);
                             [theta,rho] = cart2pol(x,y);
-                            theta=((flipud((theta+pi)')));
+                            theta=(fliplr(theta+pi));
                             if varloop==1
                                 tmptmp4=(U_A3(MSLP_A3(1,1)-210:MSLP_A3(1,1)+210,MSLP_A3(2,1)-210:MSLP_A3(2,1)+210,:,:).*cos(theta) + V_A3(MSLP_A3(1,1)-210:MSLP_A3(1,1)+210,MSLP_A3(2,1)-210:MSLP_A3(2,1)+210,:,:).*sin(theta));                                
                             elseif varloop==2
@@ -2502,379 +2502,389 @@ end
 %% Generated error statisics for later usage %%
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 for errorstats=1
-    if identgraphics==1
-            clear l 
-            % Parameters
-            trkerr_sz=0; % find longest lead time - initialize value
-            spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
-            clPos=[0.88 0.13+.05 0.04 0.75-.05]; % arrange plots the same
-            % Initialize BT
-            BT_lon=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_lat=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_maxspd=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_minpres=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_ne34=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_ne50=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_ne64=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_se34=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_se50=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_se64=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_sw34=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_sw50=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_sw64=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_nw34=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_nw50=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_nw64=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_po=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_ro=nan(size(identinittimesunique,1),identmodelfhr);
-            BT_rmw=nan(size(identinittimesunique,1),identmodelfhr);         
-
-            % Initialize EXP
-            EXP_lon=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_lat=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_maxspd=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_minpres=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_ne34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_ne50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_ne64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_se34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_se50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_se64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_sw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_sw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_sw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_nw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_nw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_nw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_po=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_ro=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            EXP_rmw=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));         
-
-            % Initialize Errors
-            ateerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            xteerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            trkerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            interr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            spderr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            ne34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            se34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            sw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            nw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            ne50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            se50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            sw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            nw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            ne64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            se64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            sw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            nw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            poerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            roerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-            rmwerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
-
-            % Individual Cycles
-            for identloop=1:size(identinittimesunique,1)
-                load([identout,'RESULTS/',identfold,identn,'/',identn,'_data.mat'])
-                for i=1:size(DATEall,1)
-                    if strcmp(identinittimesunique(identloop,:),DATEall(i,:))==1
-                        initnum=i
-                    end
-                end
-                if exist('initnum','var')==0 %% to take care of invests not in BT
-                else
-                    %% BT
-                    initsize=size(DATEall,1)-initnum+1;
-                    bt_date=DATEall(initnum:end,:);
-                    bt_cat=CATall(initnum:end,:);
-                    bt_lat=LATall(initnum:end);
-                    bt_lon=LONall(initnum:end);
-                    bt_maxspd=SPEEDall(initnum:end);
-                    bt_minpres=PRESSall(initnum:end);
-                    bt_ne34=NE34all(initnum:end);
-                    bt_ne50=NE50all(initnum:end);
-                    bt_ne64=NE64all(initnum:end);
-                    bt_se34=SE34all(initnum:end);
-                    bt_se50=SE50all(initnum:end);
-                    bt_se64=SE64all(initnum:end);
-                    bt_sw34=SW34all(initnum:end);
-                    bt_sw50=SW50all(initnum:end);
-                    bt_sw64=SW64all(initnum:end);
-                    bt_nw34=NW34all(initnum:end);
-                    bt_nw50=NW50all(initnum:end);
-                    bt_nw64=NW64all(initnum:end);
-                    bt_po=POall(initnum:end);
-                    bt_ro=ROall(initnum:end);
-                    bt_rmw=RMWall(initnum:end); 
-
-                    %% EXP - grab stats file
-                    % Initialize Individual
-                    exp_fhr=nan(100,size(identexp,1));
-                    exp_lon=nan(100,size(identexp,1));
-                    exp_lat=nan(100,size(identexp,1));
-                    exp_minpres=nan(100,size(identexp,1));
-                    exp_maxspd=nan(100,size(identexp,1));                   
-                    exp_ne34=nan(100,size(identexp,1));
-                    exp_ne50=nan(100,size(identexp,1));
-                    exp_ne64=nan(100,size(identexp,1));
-                    exp_se34=nan(100,size(identexp,1));
-                    exp_se50=nan(100,size(identexp,1));
-                    exp_se64=nan(100,size(identexp,1));
-                    exp_sw34=nan(100,size(identexp,1));
-                    exp_sw50=nan(100,size(identexp,1));
-                    exp_sw64=nan(100,size(identexp,1));
-                    exp_nw34=nan(100,size(identexp,1));
-                    exp_nw50=nan(100,size(identexp,1));
-                    exp_nw64=nan(100,size(identexp,1));
-                    exp_po=nan(100,size(identexp,1));
-                    exp_ro=nan(100,size(identexp,1));
-                    exp_rmw=nan(100,size(identexp,1)); 
-                    % Loop
-                    for tmp=1:size(identexp,1)                
-                        filename = dir([identnoscrub,'atcf/',identexp{tmp},'/',identhwrf,'.',identinittimesunique(identloop,:),'*']);filename=[identnoscrub,'atcf/',identexp{tmp},'/',filename.name];
-                        [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall]=atcf(filename,0);
-                        initsizeexp=size(FHRall,2);
-                        exp_fhr(1:initsizeexp,tmp)=FHRall';
-                        exp_lon(1:initsizeexp,tmp)=LONall;
-                        exp_lat(1:initsizeexp,tmp)=LATall;
-                        exp_minpres(1:initsizeexp,tmp)=PRESSall;
-                        exp_maxspd(1:initsizeexp,tmp)=SPEEDall;                    
-                        exp_ne34(1:initsizeexp,tmp)=NE34all;
-                        exp_ne50(1:initsizeexp,tmp)=NE50all;
-                        exp_ne64(1:initsizeexp,tmp)=NE64all;
-                        exp_se34(1:initsizeexp,tmp)=SE34all;
-                        exp_se50(1:initsizeexp,tmp)=SE50all;
-                        exp_se64(1:initsizeexp,tmp)=SE64all;
-                        exp_sw34(1:initsizeexp,tmp)=SW34all;
-                        exp_sw50(1:initsizeexp,tmp)=SW50all;
-                        exp_sw64(1:initsizeexp,tmp)=SW64all;
-                        exp_nw34(1:initsizeexp,tmp)=NW34all;
-                        exp_nw50(1:initsizeexp,tmp)=NW50all;
-                        exp_nw64(1:initsizeexp,tmp)=NW64all;
-                        exp_po(1:initsizeexp,tmp)=POall;
-                        exp_ro(1:initsizeexp,tmp)=ROall;
-                        exp_rmw(1:initsizeexp,tmp)=RMWall;                    
-                    end  
-                    % Cut off rows with NaNs to make lengths equal
-                    exp_lon(any(isnan(exp_fhr), 2), :) = [];
-                    exp_lat(any(isnan(exp_fhr), 2), :) = [];
-                    exp_minpres(any(isnan(exp_fhr), 2), :) = [];
-                    exp_maxspd(any(isnan(exp_fhr), 2), :) = [];                  
-                    exp_ne34(any(isnan(exp_fhr), 2), :) = [];
-                    exp_ne50(any(isnan(exp_fhr), 2), :) = [];
-                    exp_ne64(any(isnan(exp_fhr), 2), :) = [];
-                    exp_se34(any(isnan(exp_fhr), 2), :) = [];
-                    exp_se50(any(isnan(exp_fhr), 2), :) = [];
-                    exp_se64(any(isnan(exp_fhr), 2), :) = [];
-                    exp_sw34(any(isnan(exp_fhr), 2), :) = [];
-                    exp_sw50(any(isnan(exp_fhr), 2), :) = [];
-                    exp_sw64(any(isnan(exp_fhr), 2), :) = [];
-                    exp_nw34(any(isnan(exp_fhr), 2), :) = [];
-                    exp_nw50(any(isnan(exp_fhr), 2), :) = [];
-                    exp_nw64(any(isnan(exp_fhr), 2), :) = [];
-                    exp_po(any(isnan(exp_fhr), 2), :) = [];
-                    exp_ro(any(isnan(exp_fhr), 2), :) = [];
-                    exp_rmw(any(isnan(exp_fhr), 2), :) = []; 
-                    exp_fhr(any(isnan(exp_fhr), 2), :) = [];
-                    % Measure size
-                    initsizeexp=size(exp_lon,1);                
-                    % Make BT and EXP same size
-                    if initsize>initsizeexp                    
-                        bt_cat=bt_cat(1:initsizeexp,:);
-                        bt_lon=bt_lon(1:initsizeexp);
-                        bt_lat=bt_lat(1:initsizeexp);
-                        bt_minpres=bt_minpres(1:initsizeexp);
-                        bt_maxspd=bt_maxspd(1:initsizeexp);
-                        bt_date=bt_date(1:initsizeexp,:);                    
-                        bt_ne34=bt_ne34(1:initsizeexp);
-                        bt_ne50=bt_ne50(1:initsizeexp);
-                        bt_ne64=bt_ne64(1:initsizeexp);
-                        bt_se34=bt_se34(1:initsizeexp);
-                        bt_se50=bt_se50(1:initsizeexp);
-                        bt_se64=bt_se64(1:initsizeexp);
-                        bt_sw34=bt_sw34(1:initsizeexp);
-                        bt_sw50=bt_sw50(1:initsizeexp);
-                        bt_sw64=bt_sw64(1:initsizeexp);
-                        bt_nw34=bt_nw34(1:initsizeexp);
-                        bt_nw50=bt_nw50(1:initsizeexp);
-                        bt_nw64=bt_nw64(1:initsizeexp);
-                        bt_po=bt_po(1:initsizeexp);
-                        bt_ro=bt_ro(1:initsizeexp);
-                        bt_rmw=bt_rmw(1:initsizeexp);   
-                        initsize=initsizeexp;
-                    else
-                        exp_fhr=exp_fhr(1:initsize,:);
-                        exp_lon=exp_lon(1:initsize,:);
-                        exp_lat=exp_lat(1:initsize,:);
-                        exp_minpres=exp_minpres(1:initsize,:);
-                        exp_maxspd=exp_maxspd(1:initsize,:);
-                        exp_ne34=exp_ne34(1:initsize,:);
-                        exp_ne50=exp_ne50(1:initsize,:);
-                        exp_ne64=exp_ne64(1:initsize,:);
-                        exp_se34=exp_se34(1:initsize,:);
-                        exp_se50=exp_se50(1:initsize,:);
-                        exp_se64=exp_se64(1:initsize,:);
-                        exp_sw34=exp_sw34(1:initsize,:);
-                        exp_sw50=exp_sw50(1:initsize,:);
-                        exp_sw64=exp_sw64(1:initsize,:);
-                        exp_nw34=exp_nw34(1:initsize,:);
-                        exp_nw50=exp_nw50(1:initsize,:);
-                        exp_nw64=exp_nw64(1:initsize,:);
-                        exp_po=exp_po(1:initsize,:);
-                        exp_ro=exp_ro(1:initsize,:);
-                        exp_rmw=exp_rmw(1:initsize,:);   
-                    end         
-
-                    %% Turn missing spots into NaNs
-                    exp_ne34(exp_ne34==0)=NaN;
-                    exp_ne50(exp_ne50==0)=NaN;
-                    exp_ne64(exp_ne64==0)=NaN;
-                    exp_se34(exp_se34==0)=NaN;
-                    exp_se50(exp_se50==0)=NaN;
-                    exp_se64(exp_se64==0)=NaN;
-                    exp_sw34(exp_sw34==0)=NaN;
-                    exp_sw50(exp_sw50==0)=NaN;
-                    exp_sw64(exp_sw64==0)=NaN;
-                    exp_nw34(exp_nw34==0)=NaN;
-                    exp_nw50(exp_nw50==0)=NaN;
-                    exp_nw64(exp_nw64==0)=NaN;
-                    exp_po(exp_po<0)=NaN;
-                    exp_ro(exp_ro<0)=NaN;
-                    bt_ne34(bt_ne34==0)=NaN;
-                    bt_ne50(bt_ne50==0)=NaN;
-                    bt_ne64(bt_ne64==0)=NaN;
-                    bt_se34(bt_se34==0)=NaN;
-                    bt_se50(bt_se50==0)=NaN;
-                    bt_se64(bt_se64==0)=NaN;
-                    bt_sw34(bt_sw34==0)=NaN;
-                    bt_sw50(bt_sw50==0)=NaN;
-                    bt_sw64(bt_sw64==0)=NaN;
-                    bt_nw34(bt_nw34==0)=NaN;
-                    bt_nw50(bt_nw50==0)=NaN;
-                    bt_nw64(bt_nw64==0)=NaN;                
-                    bt_po(bt_po<0)=NaN;
-                    bt_ro(bt_ro<0)=NaN;
-
-                    %% Save lat/lons
-                    for ct=1:size(bt_cat,1)
-                        BT_cat(identloop,ct)={bt_cat(ct,:)};
-                    end
-                    BT_lon(identloop,1:size(bt_lon,2))=bt_lon;
-                    BT_lat(identloop,1:size(bt_lat,2))=bt_lat;
-                    BT_maxspd(identloop,1:size(bt_maxspd,2))=bt_maxspd;
-                    BT_minpres(identloop,1:size(bt_minpres,2))=bt_minpres;                
-                    BT_ne34(identloop,1:size(bt_lon,2))=bt_ne34;
-                    BT_ne50(identloop,1:size(bt_lon,2))=bt_ne50;
-                    BT_ne64(identloop,1:size(bt_lon,2))=bt_ne64;
-                    BT_se34(identloop,1:size(bt_lon,2))=bt_se34;
-                    BT_se50(identloop,1:size(bt_lon,2))=bt_se50;
-                    BT_se64(identloop,1:size(bt_lon,2))=bt_se64;
-                    BT_sw34(identloop,1:size(bt_lon,2))=bt_sw34;
-                    BT_sw50(identloop,1:size(bt_lon,2))=bt_sw50;
-                    BT_sw64(identloop,1:size(bt_lon,2))=bt_sw64;
-                    BT_nw34(identloop,1:size(bt_lon,2))=bt_nw34;
-                    BT_nw50(identloop,1:size(bt_lon,2))=bt_nw50;
-                    BT_nw64(identloop,1:size(bt_lon,2))=bt_nw64;
-                    BT_po(identloop,1:size(bt_lon,2))=bt_po;
-                    BT_ro(identloop,1:size(bt_lon,2))=bt_ro;
-                    BT_rmw(identloop,1:size(bt_lon,2))=bt_rmw; 
-                    EXP_lon(identloop,1:size(exp_lon,1),:)=exp_lon;
-                    EXP_lat(identloop,1:size(exp_lat,1),:)=exp_lat;
-                    EXP_maxspd(identloop,1:size(exp_maxspd,1),:)=exp_maxspd;
-                    EXP_minpres(identloop,1:size(exp_minpres,1),:)=exp_minpres;
-                    EXP_ne34(identloop,1:size(exp_lon,1),:)=exp_ne34;
-                    EXP_ne50(identloop,1:size(exp_lon,1),:)=exp_ne50;
-                    EXP_ne64(identloop,1:size(exp_lon,1),:)=exp_ne64;
-                    EXP_se34(identloop,1:size(exp_lon,1),:)=exp_se34;
-                    EXP_se50(identloop,1:size(exp_lon,1),:)=exp_se50;
-                    EXP_se64(identloop,1:size(exp_lon,1),:)=exp_se64;
-                    EXP_sw34(identloop,1:size(exp_lon,1),:)=exp_sw34;
-                    EXP_sw50(identloop,1:size(exp_lon,1),:)=exp_sw50;
-                    EXP_sw64(identloop,1:size(exp_lon,1),:)=exp_sw64;
-                    EXP_nw34(identloop,1:size(exp_lon,1),:)=exp_nw34;
-                    EXP_nw50(identloop,1:size(exp_lon,1),:)=exp_nw50;
-                    EXP_nw64(identloop,1:size(exp_lon,1),:)=exp_nw64;
-                    EXP_po(identloop,1:size(exp_lon,1),:)=exp_po;
-                    EXP_ro(identloop,1:size(exp_lon,1),:)=exp_ro;
-                    EXP_rmw(identloop,1:size(exp_lon,1),:)=exp_rmw;   
-
-                    % Across- and Along-Track Errors
-                    for exp=1:size(identexp,1)
-                        for acal=2:size(bt_lon,2)
-                            % Set points
-                            bt_lonn1=bt_lon(acal-1);
-                            bt_latn1=bt_lat(acal-1);
-                            bt_lon0=bt_lon(acal);
-                            bt_lat0=bt_lat(acal);       
-                            exp_lon0=exp_lon(acal,exp);
-                            exp_lat0=exp_lat(acal,exp);
-                            % Fine perpendicular coordinates from point to line                
-                            a = [bt_lonn1, bt_latn1]; %line - x1
-                            b = [bt_lon0, bt_lat0]; % line - x2
-                            c = [exp_lon0, exp_lat0]; %point - x0
-                            ab = b - a; %// Find x2 - x1
-                            %// -(x1 - x0).(x2 - x1) / (|x2 - x1|^2)
-                            t = -(a - c)*(ab.') / (ab*ab.'); %// Calculate t
-                            %// Find point of intersection
-                            Xinter = a + (b - a)*t;
-                            int_lon0=Xinter(1);
-                            int_lat0=Xinter(2);            
-                            % BT0 to GH0 (hypotenuse)
-                            dist_BT0GH0=deg2km(distance('gc',[bt_lat0,bt_lon0],[exp_lat0,exp_lon0]));
-                            dist_BTn1int0=deg2km(distance('gc',[bt_latn1,bt_lonn1],[int_lat0,int_lon0]));
-                            dist_BTn1BT0=deg2km(distance('gc',[bt_latn1,bt_lonn1],[bt_lat0,bt_lon0]));
-                            % Across-Track Error: GH0 to intersection point
-                            XTE=deg2km(distance('gc',[int_lat0,int_lon0],[exp_lat0,exp_lon0]));                     
-                            % Position Left Right:
-                            % if value > 0, p2 is on the left side of the line.
-                            % if value = 0, p2 is on the same line.
-                            % if value < 0, p2 is on the right side of the line.
-                            value = (bt_lon0 - bt_lonn1).*(exp_lat0 - bt_latn1) - (exp_lon0 - bt_lonn1).*(bt_lat0 - bt_latn1);
-                            if value > 0
-                               XTE=XTE*-1;
-                            end
-                            % Along-Track Error
-                            ATE=deg2km(distance('gc',[bt_lat0,bt_lon0],[int_lat0,int_lon0]));
-			    % If distance from n1 to int is larger than bt0 to int AND distance from n1 to int is creater than n1 to bt0, then ahead!
-                            if dist_BTn1int0 >= ATE && dist_BTn1int0 >= dist_BTn1BT0 %dist_BTn1BT0 > dist_BTn1int0
-                            else;ATE=-1.*ATE;
-                            end
-                            ateerr_exp(identloop,acal,exp)=ATE;
-                            xteerr_exp(identloop,acal,exp)=XTE;
-                        end
-                    end                
-
-
-                    %% Find errors - ALL init times                
-                    for tmp=1:size(identexp,1)
-                        trkerr_exp(identloop,1:initsize,tmp)=(deg2km(distance('gc',bt_lat,bt_lon,exp_lat(:,tmp)',exp_lon(:,tmp)')));
-                        trkerr_sz=max(size(bt_lat,2),trkerr_sz);
-                        interr_exp(identloop,1:initsize,tmp)=(exp_minpres(:,tmp)-bt_minpres');
-                        spderr_exp(identloop,1:initsize,tmp)=(exp_maxspd(:,tmp)-bt_maxspd');
-                        ne34err_exp(identloop,1:initsize,tmp)=(exp_ne34(:,tmp)-bt_ne34');
-                        se34err_exp(identloop,1:initsize,tmp)=(exp_se34(:,tmp)-bt_se34');
-                        sw34err_exp(identloop,1:initsize,tmp)=(exp_sw34(:,tmp)-bt_sw34');
-                        nw34err_exp(identloop,1:initsize,tmp)=(exp_nw34(:,tmp)-bt_nw34');
-                        ne50err_exp(identloop,1:initsize,tmp)=(exp_ne50(:,tmp)-bt_ne50');
-                        se50err_exp(identloop,1:initsize,tmp)=(exp_se50(:,tmp)-bt_se50');
-                        sw50err_exp(identloop,1:initsize,tmp)=(exp_sw50(:,tmp)-bt_sw50');
-                        nw50err_exp(identloop,1:initsize,tmp)=(exp_nw50(:,tmp)-bt_nw50');
-                        ne64err_exp(identloop,1:initsize,tmp)=(exp_ne64(:,tmp)-bt_ne64');
-                        se64err_exp(identloop,1:initsize,tmp)=(exp_se64(:,tmp)-bt_se64');
-                        sw64err_exp(identloop,1:initsize,tmp)=(exp_sw64(:,tmp)-bt_sw64');
-                        nw64err_exp(identloop,1:initsize,tmp)=(exp_nw64(:,tmp)-bt_nw64');            
-                        poerr_exp(identloop,1:initsize,tmp)=(exp_po(:,tmp)-bt_po');
-                        roerr_exp(identloop,1:initsize,tmp)=(exp_ro(:,tmp)-bt_ro');
-                        rmwerr_exp(identloop,1:initsize,tmp)=(exp_rmw(:,tmp)-bt_rmw');
-                    end
-                end
-            end
-
-            save([identout,'RESULTS/',identfold,identn,'/',identn,'_latlon.mat'],'BT*','EXP*');        
-            save([identout,'RESULTS/',identfold,identn,'/',identn,'_errors.mat'],'*err_exp','trkerr_sz')       
-            clearvars -except identboxhist identgraphicsconv identgraphicsbycycle identconvid identbasinscale stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
-            clearvars -except identboxhist identgraphicsconv identgraphicsbycycle identconvid identbasinscale ident* skip* stormsdone yearsdone
-            clearvars -except identboxhist ident* skip*
-    end
+    if identgraphics==1;clear l;set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual');  
+		% Parameters
+		trkerr_sz=0; % find longest lead time - initialize value
+		spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
+		clPos=[0.88 0.13+.05 0.04 0.75-.05]; % arrange plots the same
+		% Initialize BT
+		BT_lon=nan(size(identinittimesunique,1),identmodelfhr);BT_land=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_lat=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_maxspd=nan(size(identinittimesunique,1),identmodelfhr);BT_cat=cell(size(identinittimesunique,1),identmodelfhr);BT_cat(:) = {'  '};
+		BT_minpres=nan(size(identinittimesunique,1),identmodelfhr);BT_enkf=nan(1,size(identinittimesunique,1));
+		BT_ne34=nan(size(identinittimesunique,1),identmodelfhr); 
+		BT_ne50=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_ne64=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_se50=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_se34=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_se64=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_sw34=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_sw50=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_sw64=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_nw34=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_nw50=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_nw64=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_po=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_ro=nan(size(identinittimesunique,1),identmodelfhr);
+		BT_rmw=nan(size(identinittimesunique,1),identmodelfhr);        
+		BT_intch=nan(size(identinittimesunique,1),identmodelfhr);BT_hfipintch=nan(size(identinittimesunique,1),identmodelfhr);         
+		BT_shr=nan(size(identinittimesunique,1),identmodelfhr);         
+		% Initialize EXP
+		EXP_lon=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));EXP_land=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_lat=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_maxspd=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_minpres=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_ne34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_ne50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_ne64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_se34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_se50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_se64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_sw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_sw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_sw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_nw34=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_nw50=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_nw64=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_po=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_ro=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		EXP_rmw=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));         
+		EXP_intch=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));EXP_hfipintch=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));        
+		EXP_shr=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));         
+		% Initialize Errors
+		ateerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		xteerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		trkerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		interr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		spderr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		ne34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		se34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		sw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		nw34err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		ne50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		se50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		sw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		nw50err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		ne64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		se64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		sw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		nw64err_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		poerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		roerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		rmwerr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		intcherr_exp=nan(size(identinittimesunique,1),identmodelfhr,size(identexp,1));
+		% Individual Cycles
+		for identloop=1:size(identinittimesunique,1)
+			 load([identout,'RESULTS/',identfold,identn,'/',identn,'_data.mat'])  % load([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/',identn,'_data.mat']);clear initnum;
+			for i=1:size(DATEall,1)
+				if strcmp(identinittimesunique(identloop,:),DATEall(i,:))==1
+					initnum=i
+				end
+			end
+			if exist('initnum','var')==0 %% to take care of invests not in BT
+			else
+				%% BT
+				initsize=size(DATEall,1)-initnum+1;
+				bt_date=DATEall(initnum:end,:);
+				bt_cat=CATall(initnum:end,:);
+				bt_lat=LATall(initnum:end);
+				bt_lon=LONall(initnum:end);bt_land=LANDall(initnum:end);
+				bt_maxspd=SPEEDall(initnum:end);
+				bt_minpres=PRESSall(initnum:end);
+				bt_ne34=NE34all(initnum:end);
+				bt_ne50=NE50all(initnum:end);
+				bt_ne64=NE64all(initnum:end);
+				bt_se34=SE34all(initnum:end);
+				bt_se50=SE50all(initnum:end);
+				bt_se64=SE64all(initnum:end);
+				bt_sw34=SW34all(initnum:end);
+				bt_sw50=SW50all(initnum:end);
+				bt_sw64=SW64all(initnum:end);
+				bt_nw34=NW34all(initnum:end);
+				bt_nw50=NW50all(initnum:end);
+				bt_nw64=NW64all(initnum:end);
+				bt_po=POall(initnum:end);
+				bt_ro=ROall(initnum:end);
+				bt_rmw=RMWall(initnum:end); 
+				bt_intch=INTCHall(initnum:end);bt_hfipintch=HFIPINTCHall(initnum:end);
+				bt_shr=SHRall(initnum:end); 
+				%% EXP - grab stats file
+				% Initialize Individual
+				exp_fhr=nan(100,size(identexp,1));
+				exp_lon=nan(100,size(identexp,1));exp_land=nan(100,size(identexp,1));
+				exp_lat=nan(100,size(identexp,1));
+				exp_minpres=nan(100,size(identexp,1));
+				exp_maxspd=nan(100,size(identexp,1));                   
+				exp_ne34=nan(100,size(identexp,1));
+				exp_ne50=nan(100,size(identexp,1));
+				exp_ne64=nan(100,size(identexp,1));
+				exp_se34=nan(100,size(identexp,1));
+				exp_se50=nan(100,size(identexp,1));
+				exp_se64=nan(100,size(identexp,1));
+				exp_sw34=nan(100,size(identexp,1));
+				exp_sw50=nan(100,size(identexp,1));
+				exp_sw64=nan(100,size(identexp,1));
+				exp_nw34=nan(100,size(identexp,1));
+				exp_nw50=nan(100,size(identexp,1));
+				exp_nw64=nan(100,size(identexp,1));
+				exp_po=nan(100,size(identexp,1));
+				exp_ro=nan(100,size(identexp,1));
+				exp_rmw=nan(100,size(identexp,1)); 
+				exp_intch=nan(100,size(identexp,1));exp_hfipintch=nan(100,size(identexp,1));
+				exp_shr=nan(100,size(identexp,1)); 
+				% Loop
+				for tmp=1:size(identexp,1)                
+					filename = dir([identnoscrub,'hafstrak/',identexp{tmp},'/',lower(identhwrf),'.',identinittimesunique(identloop,:),'*']);filename=[identnoscrub,'hafstrak/',identexp{tmp},'/',filename.name];fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end;end;				
+					if strcmp('OFCL',identexp{tmp})==1;identoutputres=2;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf_OFCL(filename,identoutputres);elseif strcmp('OCD5',identexp{tmp})==1;identoutputres=2;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf_OCD5(filename,identoutputres);else;[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,LANDall,HFIPINTCHall]=atcf(filename,identoutputres);end;
+					initsizeexp=size(FHRall,2);
+					exp_fhr(1:initsizeexp,tmp)=FHRall';
+					exp_lon(1:initsizeexp,tmp)=LONall;exp_land(1:initsizeexp,tmp)=LANDall;
+					exp_lat(1:initsizeexp,tmp)=LATall;
+					exp_minpres(1:initsizeexp,tmp)=PRESSall;
+					exp_maxspd(1:initsizeexp,tmp)=SPEEDall;                    
+					exp_ne34(1:initsizeexp,tmp)=NE34all;
+					exp_ne50(1:initsizeexp,tmp)=NE50all;
+					exp_ne64(1:initsizeexp,tmp)=NE64all;
+					exp_se34(1:initsizeexp,tmp)=SE34all;
+					exp_se50(1:initsizeexp,tmp)=SE50all;
+					exp_se64(1:initsizeexp,tmp)=SE64all;
+					exp_sw34(1:initsizeexp,tmp)=SW34all;
+					exp_sw50(1:initsizeexp,tmp)=SW50all;
+					exp_sw64(1:initsizeexp,tmp)=SW64all;
+					exp_nw34(1:initsizeexp,tmp)=NW34all;
+					exp_nw50(1:initsizeexp,tmp)=NW50all;
+					exp_nw64(1:initsizeexp,tmp)=NW64all;
+					exp_po(1:initsizeexp,tmp)=POall;
+					exp_ro(1:initsizeexp,tmp)=ROall;
+					exp_rmw(1:initsizeexp,tmp)=RMWall;                    
+					exp_intch(1:initsizeexp,tmp)=INTCHall;exp_shr(1:initsizeexp,tmp)=INTCHall;exp_hfipintch(1:initsizeexp,tmp)=HFIPINTCHall;
+				end  
+				% Cut off rows with NaNs to make lengths equal
+				exp_lon(any(isnan(exp_fhr), 2), :) = [];exp_land(any(isnan(exp_fhr), 2), :) = [];
+				exp_lat(any(isnan(exp_fhr), 2), :) = [];
+				exp_minpres(any(isnan(exp_fhr), 2), :) = [];
+				exp_maxspd(any(isnan(exp_fhr), 2), :) = [];                  
+				exp_ne34(any(isnan(exp_fhr), 2), :) = [];
+				exp_ne50(any(isnan(exp_fhr), 2), :) = [];
+				exp_ne64(any(isnan(exp_fhr), 2), :) = [];
+				exp_se34(any(isnan(exp_fhr), 2), :) = [];
+				exp_se50(any(isnan(exp_fhr), 2), :) = [];
+				exp_se64(any(isnan(exp_fhr), 2), :) = [];
+				exp_sw34(any(isnan(exp_fhr), 2), :) = [];
+				exp_sw50(any(isnan(exp_fhr), 2), :) = [];
+				exp_sw64(any(isnan(exp_fhr), 2), :) = [];
+				exp_nw34(any(isnan(exp_fhr), 2), :) = [];
+				exp_nw50(any(isnan(exp_fhr), 2), :) = [];
+				exp_nw64(any(isnan(exp_fhr), 2), :) = [];
+				exp_po(any(isnan(exp_fhr), 2), :) = [];
+				exp_ro(any(isnan(exp_fhr), 2), :) = [];
+				exp_rmw(any(isnan(exp_fhr), 2), :) = []; 
+				exp_intch(any(isnan(exp_fhr), 2), :) = [];exp_hfipintch(any(isnan(exp_fhr), 2), :) = []; 
+				exp_shr(any(isnan(exp_fhr), 2), :) = []; 
+				exp_fhr(any(isnan(exp_fhr), 2), :) = [];
+				% Measure size
+				initsizeexp=size(exp_lon,1);                
+				% Make BT and EXP same size
+				if initsize>initsizeexp                    
+					bt_cat=bt_cat(1:initsizeexp,:);
+					bt_lon=bt_lon(1:initsizeexp);bt_land=bt_land(1:initsizeexp);
+					bt_lat=bt_lat(1:initsizeexp);
+					bt_minpres=bt_minpres(1:initsizeexp);
+					bt_maxspd=bt_maxspd(1:initsizeexp);
+					bt_date=bt_date(1:initsizeexp,:);                    
+					bt_ne34=bt_ne34(1:initsizeexp);
+					bt_ne50=bt_ne50(1:initsizeexp);
+					bt_ne64=bt_ne64(1:initsizeexp);
+					bt_se34=bt_se34(1:initsizeexp);
+					bt_se50=bt_se50(1:initsizeexp);
+					bt_se64=bt_se64(1:initsizeexp);
+					bt_sw34=bt_sw34(1:initsizeexp);
+					bt_sw50=bt_sw50(1:initsizeexp);
+					bt_sw64=bt_sw64(1:initsizeexp);
+					bt_nw34=bt_nw34(1:initsizeexp);
+					bt_nw50=bt_nw50(1:initsizeexp);
+					bt_nw64=bt_nw64(1:initsizeexp);
+					bt_po=bt_po(1:initsizeexp);
+					bt_ro=bt_ro(1:initsizeexp);
+					bt_rmw=bt_rmw(1:initsizeexp);   
+					bt_intch=bt_intch(1:initsizeexp);bt_hfipintch=bt_hfipintch(1:initsizeexp);   
+					bt_shr=bt_shr(1:initsizeexp);   
+					initsize=initsizeexp;
+				else
+					exp_fhr=exp_fhr(1:initsize,:);
+					exp_lon=exp_lon(1:initsize,:);exp_land=exp_land(1:initsize,:);
+					exp_lat=exp_lat(1:initsize,:);
+					exp_minpres=exp_minpres(1:initsize,:);
+					exp_maxspd=exp_maxspd(1:initsize,:);
+					exp_ne34=exp_ne34(1:initsize,:);
+					exp_ne50=exp_ne50(1:initsize,:);
+					exp_ne64=exp_ne64(1:initsize,:);
+					exp_se34=exp_se34(1:initsize,:);
+					exp_se50=exp_se50(1:initsize,:);
+					exp_se64=exp_se64(1:initsize,:);
+					exp_sw34=exp_sw34(1:initsize,:);
+					exp_sw50=exp_sw50(1:initsize,:);
+					exp_sw64=exp_sw64(1:initsize,:);
+					exp_nw34=exp_nw34(1:initsize,:);
+					exp_nw50=exp_nw50(1:initsize,:);
+					exp_nw64=exp_nw64(1:initsize,:);
+					exp_po=exp_po(1:initsize,:);
+					exp_ro=exp_ro(1:initsize,:);
+					exp_rmw=exp_rmw(1:initsize,:);   
+					exp_intch=exp_intch(1:initsize,:);exp_hfipintch=exp_hfipintch(1:initsize,:);   
+					exp_shr=exp_shr(1:initsize,:);   
+				end         
+				%% Turn missing spots and non-homogeneous spots into NaNs
+				exp_ne34(exp_ne34==0)=NaN;exp_ne34(any(isnan(exp_ne34), 2), :) = NaN;if sum(strcmp('OFCL',identexp))>0 ||  sum(strcmp('OCD5',identexp))>0  ||  sum(strcmp('CLP5',identexp))>0;exp_lon(exp_lon==0)=NaN;exp_lat(exp_lat==0)=NaN;exp_minpres(exp_minpres==0)=NaN;exp_maxspd(exp_maxspd==0)=NaN;end;
+				exp_ne50(exp_ne50==0)=NaN;exp_ne50(any(isnan(exp_ne50), 2), :) = NaN;exp_rmw(exp_rmw==0)=NaN;exp_rmw(any(isnan(exp_rmw), 2), :) = NaN;
+				exp_ne64(exp_ne64==0)=NaN;exp_ne64(any(isnan(exp_ne64), 2), :) = NaN;
+				exp_se34(exp_se34==0)=NaN;exp_se34(any(isnan(exp_se34), 2), :) = NaN;
+				exp_se50(exp_se50==0)=NaN;exp_se50(any(isnan(exp_se50), 2), :) = NaN;
+				exp_se64(exp_se64==0)=NaN;exp_se64(any(isnan(exp_se64), 2), :) = NaN;
+				exp_sw34(exp_sw34==0)=NaN;exp_sw34(any(isnan(exp_sw34), 2), :) = NaN;
+				exp_sw50(exp_sw50==0)=NaN;exp_sw50(any(isnan(exp_sw50), 2), :) = NaN;
+				exp_sw64(exp_sw64==0)=NaN;exp_sw64(any(isnan(exp_sw64), 2), :) = NaN;
+				exp_nw34(exp_nw34==0)=NaN;exp_nw34(any(isnan(exp_nw34), 2), :) = NaN;
+				exp_nw50(exp_nw50==0)=NaN;exp_nw50(any(isnan(exp_nw50), 2), :) = NaN;
+				exp_nw64(exp_nw64==0)=NaN;exp_nw64(any(isnan(exp_nw64), 2), :) = NaN;
+				exp_po(exp_po<0)=NaN;exp_po(any(isnan(exp_po), 2), :) = NaN;
+				exp_ro(exp_ro<0)=NaN;exp_ro(any(isnan(exp_ro), 2), :) = NaN;
+				bt_ne34(bt_ne34==0)=NaN;
+				bt_ne50(bt_ne50==0)=NaN;bt_rmw(bt_rmw==0)=NaN;
+				bt_ne64(bt_ne64==0)=NaN;
+				bt_se34(bt_se34==0)=NaN;
+				bt_se50(bt_se50==0)=NaN;
+				bt_se64(bt_se64==0)=NaN;
+				bt_sw34(bt_sw34==0)=NaN;
+				bt_sw50(bt_sw50==0)=NaN;
+				bt_sw64(bt_sw64==0)=NaN;
+				bt_nw34(bt_nw34==0)=NaN;
+				bt_nw50(bt_nw50==0)=NaN;
+				bt_nw64(bt_nw64==0)=NaN;                
+				bt_po(bt_po<0)=NaN;
+				bt_ro(bt_ro<0)=NaN;combland=[bt_land;exp_land']';bt_land=double(bt_land);bt_land(find(sum(combland,2)>0))=NaN;exp_land(find(sum(combland,2)>0),:)=NaN;
+				%% Save lat/lons
+				for ct=1:size(bt_cat,1)
+					BT_cat(identloop,ct)={bt_cat(ct,:)};
+				end
+				BT_lon(identloop,1:size(bt_lon,2))=bt_lon;BT_land(identloop,1:size(bt_lon,2))=bt_land;
+				BT_lat(identloop,1:size(bt_lat,2))=bt_lat;
+				BT_maxspd(identloop,1:size(bt_maxspd,2))=bt_maxspd;
+				BT_minpres(identloop,1:size(bt_minpres,2))=bt_minpres;                
+				BT_ne34(identloop,1:size(bt_lon,2))=bt_ne34;
+				BT_ne50(identloop,1:size(bt_lon,2))=bt_ne50;
+				BT_ne64(identloop,1:size(bt_lon,2))=bt_ne64;
+				BT_se34(identloop,1:size(bt_lon,2))=bt_se34;
+				BT_se50(identloop,1:size(bt_lon,2))=bt_se50;
+				BT_se64(identloop,1:size(bt_lon,2))=bt_se64;
+				BT_sw34(identloop,1:size(bt_lon,2))=bt_sw34;
+				BT_sw50(identloop,1:size(bt_lon,2))=bt_sw50;
+				BT_sw64(identloop,1:size(bt_lon,2))=bt_sw64;
+				BT_nw34(identloop,1:size(bt_lon,2))=bt_nw34;
+				BT_nw50(identloop,1:size(bt_lon,2))=bt_nw50;
+				BT_nw64(identloop,1:size(bt_lon,2))=bt_nw64;
+				BT_po(identloop,1:size(bt_lon,2))=bt_po;
+				BT_ro(identloop,1:size(bt_lon,2))=bt_ro;
+				BT_rmw(identloop,1:size(bt_lon,2))=bt_rmw; 
+				BT_intch(identloop,1:size(bt_lon,2))=bt_intch;BT_hfipintch(identloop,1:size(bt_lon,2))=bt_hfipintch; 
+				BT_shr(identloop,1:size(bt_lon,2))=bt_shr; 
+				EXP_lon(identloop,1:size(exp_lon,1),:)=exp_lon;EXP_land(identloop,1:size(exp_land,1),:)=exp_land;
+				EXP_lat(identloop,1:size(exp_lat,1),:)=exp_lat;
+				EXP_maxspd(identloop,1:size(exp_maxspd,1),:)=exp_maxspd;
+				EXP_minpres(identloop,1:size(exp_minpres,1),:)=exp_minpres;
+				EXP_ne34(identloop,1:size(exp_lon,1),:)=exp_ne34;
+				EXP_ne50(identloop,1:size(exp_lon,1),:)=exp_ne50;
+				EXP_ne64(identloop,1:size(exp_lon,1),:)=exp_ne64;
+				EXP_se34(identloop,1:size(exp_lon,1),:)=exp_se34;
+				EXP_se50(identloop,1:size(exp_lon,1),:)=exp_se50;
+				EXP_se64(identloop,1:size(exp_lon,1),:)=exp_se64;
+				EXP_sw34(identloop,1:size(exp_lon,1),:)=exp_sw34;
+				EXP_sw50(identloop,1:size(exp_lon,1),:)=exp_sw50;
+				EXP_sw64(identloop,1:size(exp_lon,1),:)=exp_sw64;
+				EXP_nw34(identloop,1:size(exp_lon,1),:)=exp_nw34;
+				EXP_nw50(identloop,1:size(exp_lon,1),:)=exp_nw50;
+				EXP_nw64(identloop,1:size(exp_lon,1),:)=exp_nw64;
+				EXP_po(identloop,1:size(exp_lon,1),:)=exp_po;
+				EXP_ro(identloop,1:size(exp_lon,1),:)=exp_ro;
+				EXP_rmw(identloop,1:size(exp_lon,1),:)=exp_rmw;   
+				EXP_intch(identloop,1:size(exp_lon,1),:)=exp_intch;EXP_hfipintch(identloop,1:size(exp_lon,1),:)=exp_hfipintch;   
+				EXP_shr(identloop,1:size(exp_lon,1),:)=exp_shr;   
+				% Across- and Along-Track Errors
+				for exp=1:size(identexp,1)
+					for acal=2:size(bt_lon,2)
+						% Set points
+						bt_lonn1=bt_lon(acal-1);
+						bt_latn1=bt_lat(acal-1);
+						bt_lon0=bt_lon(acal);
+						bt_lat0=bt_lat(acal);       
+						exp_lon0=exp_lon(acal,exp);
+						exp_lat0=exp_lat(acal,exp);
+						% Fine perpendicular coordinates from point to line                
+						a = [bt_lonn1, bt_latn1]; %line - x1
+						b = [bt_lon0, bt_lat0]; % line - x2
+						c = [exp_lon0, exp_lat0]; %point - x0
+						ab = b - a; %// Find x2 - x1
+						%// -(x1 - x0).(x2 - x1) / (|x2 - x1|^2)
+						t = -(a - c)*(ab.') / (ab*ab.'); %// Calculate t
+						%// Find point of intersection
+						Xinter = a + (b - a)*t;
+						int_lon0=Xinter(1);
+						int_lat0=Xinter(2);            
+						% BT0 to GH0 (hypotenuse)
+						dist_BT0GH0=deg2km(distance('gc',[bt_lat0,bt_lon0],[exp_lat0,exp_lon0]));
+						dist_BTn1int0=deg2km(distance('gc',[bt_latn1,bt_lonn1],[int_lat0,int_lon0]));
+						dist_BTn1BT0=deg2km(distance('gc',[bt_latn1,bt_lonn1],[bt_lat0,bt_lon0]));
+						% Across-Track Error: GH0 to intersection point
+						XTE=deg2km(distance('gc',[int_lat0,int_lon0],[exp_lat0,exp_lon0]));                     
+						% Position Left Right:
+						% if value > 0, p2 is on the left side of the line.
+						% if value = 0, p2 is on the same line.
+						% if value < 0, p2 is on the right side of the line.
+						value = (bt_lon0 - bt_lonn1).*(exp_lat0 - bt_latn1) - (exp_lon0 - bt_lonn1).*(bt_lat0 - bt_latn1);
+						if value > 0
+						   XTE=XTE*-1;
+						end
+						% Along-Track Error
+						ATE=deg2km(distance('gc',[bt_lat0,bt_lon0],[int_lat0,int_lon0]));
+						% If distance from n1 to int is larger than bt0 to int AND distance from n1 to int is creater than n1 to bt0, then ahead! 
+						if dist_BTn1int0 >= ATE && dist_BTn1int0 >= dist_BTn1BT0 %dist_BTn1BT0 > dist_BTn1int0
+						else;ATE=-1.*ATE; 
+						end        
+						ateerr_exp(identloop,acal,exp)=ATE;
+						xteerr_exp(identloop,acal,exp)=XTE;
+					end
+				end                
+				%% Find errors - ALL init times                
+				for tmp=1:size(identexp,1)
+					trkerr_exp(identloop,1:initsize,tmp)=(deg2km(distance('gc',bt_lat,bt_lon,exp_lat(:,tmp)',exp_lon(:,tmp)')));
+					trkerr_sz=max(size(bt_lat,2),trkerr_sz);
+					interr_exp(identloop,1:initsize,tmp)=(exp_minpres(:,tmp)-bt_minpres');
+					spderr_exp(identloop,1:initsize,tmp)=(exp_maxspd(:,tmp)-bt_maxspd');
+					ne34err_exp(identloop,1:initsize,tmp)=(exp_ne34(:,tmp)-bt_ne34');
+					se34err_exp(identloop,1:initsize,tmp)=(exp_se34(:,tmp)-bt_se34');
+					sw34err_exp(identloop,1:initsize,tmp)=(exp_sw34(:,tmp)-bt_sw34');
+					nw34err_exp(identloop,1:initsize,tmp)=(exp_nw34(:,tmp)-bt_nw34');
+					ne50err_exp(identloop,1:initsize,tmp)=(exp_ne50(:,tmp)-bt_ne50');
+					se50err_exp(identloop,1:initsize,tmp)=(exp_se50(:,tmp)-bt_se50');
+					sw50err_exp(identloop,1:initsize,tmp)=(exp_sw50(:,tmp)-bt_sw50');
+					nw50err_exp(identloop,1:initsize,tmp)=(exp_nw50(:,tmp)-bt_nw50');
+					ne64err_exp(identloop,1:initsize,tmp)=(exp_ne64(:,tmp)-bt_ne64');
+					se64err_exp(identloop,1:initsize,tmp)=(exp_se64(:,tmp)-bt_se64');
+					sw64err_exp(identloop,1:initsize,tmp)=(exp_sw64(:,tmp)-bt_sw64');
+					nw64err_exp(identloop,1:initsize,tmp)=(exp_nw64(:,tmp)-bt_nw64');            
+					poerr_exp(identloop,1:initsize,tmp)=(exp_po(:,tmp)-bt_po');
+					roerr_exp(identloop,1:initsize,tmp)=(exp_ro(:,tmp)-bt_ro');
+					rmwerr_exp(identloop,1:initsize,tmp)=(exp_rmw(:,tmp)-bt_rmw');
+				end
+			end
+		end
+		
+		save([identout,'RESULTS/',identfold,identn,'/',identn,'_latlon.mat'],'BT*','EXP*');        
+		save([identout,'RESULTS/',identfold,identn,'/',identn,'_errors.mat'],'*err_exp','trkerr_sz')       
+		clearvars -except identboxhist identgraphicsconv identgraphicsbycycle identconvid identbasinscale stormsdone identremovename yearsdone BT* EXP* ident* skip* spPos clPos ateerr_exp xteerr_exp
+		clearvars -except identboxhist identgraphicsconv identgraphicsbycycle identconvid identbasinscale ident* skip* stormsdone yearsdone
+		clearvars -except identboxhist ident* skip*
+	end
 end
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
@@ -2884,7 +2894,7 @@ for hwrfvariables=1:size(identexp,1)
     if identsynoptic==1
         identexp0=identexp{hwrfvariables};
         disp(['EXPERIMENT: ',identexp0])
-        pltcen=150; % number of gridpoints in each direction - goes to just over 3000 km
+        pltcen=304; % number of gridpoints in each direction - goes to just over 3000 km
         % Load all Storm Centers for All Cycles and Forecasts
         load([identout,'RESULTS/',identfold,identn,'/',identn,'_latlon.mat']);
         % run loops
@@ -2899,56 +2909,12 @@ for hwrfvariables=1:size(identexp,1)
                     if isnan(BT_lat(identloop,identfhr))==1
                         disp('BT has a NaN...skipping date!')
                     else
-                        ncid=ncgeodataset([identscrub,identexp0,'/com/',identinittimesunique(identloop,:),'/',ident(3:4),upper(identhwrf(end)),'/',identhwrf,'.',identinittimesunique(identloop,:),'.hwrfprs.synoptic.0p125.f',num2str(3*(identfhr-1),'%03d'),'.grb2']);
-                        identvariables=sort(ncid.variables);
-                        for i=1:size(identvariables,1)
-                            if strcmp(identvariables{i},'height_above_ground')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground_layer')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground_layer_bounds')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground1')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground2')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'isobaric')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'isobaric1')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'lat')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'lon')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'time')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'time1')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'time1_bounds')==1
-                                identvariables{i}=[];
-                            end
-                        end      
-                        sv = ncid.geovariable('Latitude_-90_to_90_surface');
-                        nlat=squeeze(sv.data(:,:,:,:));
-                        nlat=permute(nlat,[2 1]);    
-                        sv = ncid.geovariable('East_Longitude_0_to_360_surface');
-                        elon=squeeze(sv.data(:,:,:,:));
-                        elon=permute(elon,[2 1]);
-                        elon(elon>180)=elon(elon>180)-360;      
-                        sv = ncid.geovariable('isobaric');
-                        plev=squeeze(sv.data(:,:,:,:))/100;     
-                        sv = ncid.geovariable{identvariables{identvar}};
+                        filenameparent=[identscrub,identexp0,'/com/',identinittimesunique(identloop,:),'/',ident(3:4),upper(identhwrf(end)),'/',lower(identhwrf),'.',identinittimesunique(identloop,:),'.hfsa.parent.atm.f',num2str(3*(identfhr-1),'%03d'),'.grb2'];
+						info=georasterinfo(filenameparent);
+                        metadata = info.Metadata;   
+                        sv = find(table2array(metadata(:,2))=="Latitude (-90 to 90) [deg]");nlat=readgeoraster(filenameparent,Bands=sv);%nlat=permute(nlat,[2 1]);    
+                        sv = find(table2array(metadata(:,2))=="East Longitude (0 to 360) [deg]");elon=readgeoraster(filenameparent,Bands=sv);elon(elon>180)=elon(elon>180)-360; %elon=permute(elon,[2 1]);                             
+                        plev=[2 5 7 10 20 30 50 70 100 125 150 175 200 225 250 275 300 325 350 375 400 425 450 475 500 525 550 575 600 625 650 675 700 725 750 775 800 825 850 875 900 925 950 975 1000];     
                         % Find the storm center
                         LATall=EXP_lat(identloop,(str2num(num2str(3*(identfhr-1),'%03d'))/3)+1,hwrfvariables);
                         LONall=EXP_lon(identloop,(str2num(num2str(3*(identfhr-1),'%03d'))/3)+1,hwrfvariables); 
@@ -2978,34 +2944,36 @@ for hwrfvariables=1:size(identexp,1)
                         gy=gy(ay);
                         nlat=nlat(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);
                         elon=elon(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);
-                        
-                        if size(size(sv.data),2)==3
-                            if strcmp(identvariables{identvar},'Pressure_reduced_to_MSL_msl')==1 || strcmp(identvariables{identvar},'Pressure_surface')==1 || strcmp(identvariables{identvar},'Pressure_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen))/100;  
-                            elseif strcmp(identvariables{identvar},'Absolute_vorticity_isobaric')==1
-                                tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen)).*10^5;  
-                            elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
+						run customcolorbars
+						run customvariables
+						tmpvar=readgeoraster(filenameparent,Bands=bands);tmpvar(tmpvar==9999)=NaN;
+                        if size(tmpvar,3)==1
+                            if find(identvar==[21, 28, 29, 30])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen)./100;  
+                            elseif identvar==1
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen).*10^5;  
+                            elseif find(identvar==[6,41,42,43,44,45])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen)+273.15;  
                             else
-                                tmpvar=squeeze(sv.data(:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);  
                             end
-                            tmpvar=permute(tmpvar,[2 1]);                           
-                        elseif size(size(sv.data),2)==4
-                            if strcmp(identvariables{identvar},'Pressure_reduced_to_MSL_msl')==1 || strcmp(identvariables{identvar},'Pressure_surface')==1 || strcmp(identvariables{identvar},'Pressure_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen))./100;  
-                            elseif strcmp(identvariables{identvar},'Geopotential_height_isobaric')==1
-                                tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen))./10; 
-                            elseif strcmp(identvariables{identvar},'Absolute_vorticity_isobaric')==1
-                                tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen)).*10^5;  
-                            elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
+                            %tmpvar=permute(tmpvar,[2 1]);                           
+                        elseif size(tmpvar,3)>1
+                            if find(identvar==[21, 28, 29, 30])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:)./100;  
+                            elseif identvar==1
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:).*10^5;  
+							elseif identvar==9
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:)./10; 	
+                            elseif find(identvar==[6,41,42,43,44,45])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:)+273.15;  
                             else
-                                tmpvar=squeeze(sv.data(:,:,gy-pltcen:gy+pltcen,gx-pltcen:gx+pltcen));  
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:);  
                             end
                             if size(tmpvar,3)==1
-                                tmpvar=permute(tmpvar,[2 1]);                                
+                                %tmpvar=permute(tmpvar,[2 1]);                                
                             else
-                                tmpvar=permute(tmpvar,[3 2 1]);
+                                %tmpvar=permute(tmpvar,[2 1 3]);
                             end
                         end                            
                         % Fix any missing values
@@ -3066,9 +3034,9 @@ for hwrfvariables=1:size(identexp,1)
                 if sum(sum(sum(~isnan(var_f(:,:,2,:)))))==0
                     var_f=squeeze(var_f(:,:,1,:));
                 end
-                save([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{identvar},'.mat'],'-v7.3','var_f','varlt_f','varln_f','plev');
-                clear var*
-                disp(['COMPLETED CYCLE #: ', num2str(identloop),' for ',identvariables{identvar},'!'])
+                save([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',savename,'.mat'],'-v7.3','var_f','varlt_f','varln_f','plev');
+                disp(['COMPLETED CYCLE #: ', num2str(identloop),' for ',varname,'!'])
+				clear var*
             end
         end
         clearvars -except identboxhist skip* ident* hwrfvariables
@@ -3082,8 +3050,7 @@ for hwrfvariables=1:size(identexp,1)
     if identstorm==1
         identexp0=identexp{hwrfvariables};
         disp(['EXPERIMENT: ',identexp0])
-        pltcen=400; % number of gridpoints in each direction
-        pltcen2=306; % new number of gridpoints in each direction
+        pltcen=300; % number of gridpoints in each direction
         % Load all Storm Centers for All Cycles and Forecasts
         load([identout,'RESULTS/',identfold,identn,'/',identn,'_latlon.mat']);
         % run loops
@@ -3091,94 +3058,80 @@ for hwrfvariables=1:size(identexp,1)
             for identloop=identbatch % value set in batch script to run parallel for all cycles
                 % initialize variables (should be same for each!)
                 disp(['CYCLE INIT DATE: ',identinittimesunique(identloop,:)])
-                var_f=nan(pltcen2*2+1,pltcen2*2+1,identlevels,identmodelfhr,'single'); %lonxlatxlevelsxFHR (1 for each init)
-                varlt_f=nan(pltcen2*2+1,pltcen2*2+1,identmodelfhr,'single');
-                varln_f=nan(pltcen2*2+1,pltcen2*2+1,identmodelfhr,'single');
+                var_f=nan(pltcen*2+1,pltcen*2+1,identlevels,identmodelfhr,'single'); %lonxlatxlevelsxFHR (1 for each init)
+                varlt_f=nan(pltcen*2+1,pltcen*2+1,identmodelfhr,'single');
+                varln_f=nan(pltcen*2+1,pltcen*2+1,identmodelfhr,'single');
                 for identfhr=1:identmaxfhr % loop over number of forecast hours for that cycle
                     if isnan(BT_lat(identloop,identfhr))==1
                         disp('BT has a NaN...skipping date!')
                     else
-                        ncid=ncgeodataset([identscrub,identexp0,'/com/',identinittimesunique(identloop,:),'/',ident(3:4),upper(identhwrf(end)),'/',identhwrf,'.',identinittimesunique(identloop,:),'.hwrfprs.storm.0p015.f',num2str(3*(identfhr-1),'%03d'),'.grb2']);
-                        identvariables=sort(ncid.variables);
-                        for i=1:size(identvariables,1)
-                            if strcmp(identvariables{i},'height_above_ground')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground_layer')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground_layer_bounds')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground1')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'height_above_ground2')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'isobaric')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'isobaric1')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'lat')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'lon')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'time')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'time1')==1
-                                identvariables{i}=[];
-                            end
-                            if strcmp(identvariables{i},'time1_bounds')==1
-                                identvariables{i}=[];
-                            end
-                        end      
-                        sv = ncid.geovariable('Latitude_-90_to_90_surface');
-                        nlat=squeeze(sv.data(:,:,:,:));
-                        nlat=permute(nlat,[2 1]); 
-                        nlat=nlat(701-pltcen:701+pltcen,701-pltcen:701+pltcen);
-                        sv = ncid.geovariable('East_Longitude_0_to_360_surface');
-                        elon=squeeze(sv.data(:,:,:,:));
-                        elon=permute(elon,[2 1]);
-                        elon(elon>180)=elon(elon>180)-360; 
-                        elon=elon(701-pltcen:701+pltcen,701-pltcen:701+pltcen);
-                        sv = ncid.geovariable('isobaric');
-                        plev=squeeze(sv.data(:,:,:,:))/100;  
-                        sv = ncid.geovariable{identvariables{identvar}};
-                        if size(size(sv.data),2)==3
-                            if strcmp(identvariables{identvar},'Pressure_reduced_to_MSL_msl')==1 || strcmp(identvariables{identvar},'Pressure_surface')==1 || strcmp(identvariables{identvar},'Pressure_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen))/100;  
-                            elseif strcmp(identvariables{identvar},'Absolute_vorticity_isobaric')==1
-                                tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen)).*10^5;  
-                            elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
+                        filenamestorm=[identscrub,identexp0,'/com/',identinittimesunique(identloop,:),'/',ident(3:4),upper(identhwrf(end)),'/',lower(identhwrf),'.',identinittimesunique(identloop,:),'.hfsa.storm.atm.f',num2str(3*(identfhr-1),'%03d'),'.grb2']
+                        info=georasterinfo(filenamestorm);
+                        metadata = info.Metadata;   
+                        sv = find(table2array(metadata(:,2))=="Latitude (-90 to 90) [deg]");nlat=readgeoraster(filenamestorm,Bands=sv);%nlat=permute(nlat,[2 1]);    
+                        sv = find(table2array(metadata(:,2))=="East Longitude (0 to 360) [deg]");elon=readgeoraster(filenamestorm,Bands=sv);elon(elon>180)=elon(elon>180)-360; %elon=permute(elon,[2 1]);                             
+                        plev=[2 5 7 10 20 30 50 70 100 125 150 175 200 225 250 275 300 325 350 375 400 425 450 475 500 525 550 575 600 625 650 675 700 725 750 775 800 825 850 875 900 925 950 975 1000];     
+                        % Find the storm center
+                        LATall=EXP_lat(identloop,(str2num(num2str(3*(identfhr-1),'%03d'))/3)+1,hwrfvariables);
+                        LONall=EXP_lon(identloop,(str2num(num2str(3*(identfhr-1),'%03d'))/3)+1,hwrfvariables); 
+                        tmp1 = abs(nlat-LATall);
+                        tmp2 = abs(elon-LONall);
+                        tmp1(tmp1>1)=NaN;
+                        tmp2(tmp2>1)=NaN;
+                        tmp3=tmp1.*tmp2;
+                        minimum=min(min(tmp3));
+                        [gx,gy]=find(tmp3==minimum);
+						for weirdgrid=1:100
+							if isnan(tmp3(gx-1,gy-1))==1 | isnan(tmp3(gx+1,gy+1))==1 | isnan(tmp3(gx-1,gy+1))==1 | isnan(tmp3(gx+1,gy-1))==1
+								tmp3(gx,gy)=NaN;
+								minimum=min(min(tmp3));							
+								[gx,gy]=find(tmp3==minimum);
+							end
+						end
+                        A=[LONall LATall];
+                        for i=1:size(gx,1)
+                            B(i,:)=[elon(gx(i),gy(i)) nlat(gx(i),gy(i))];
+                        end
+                        dist2 = sum((B - A) .^ 2, 2);
+                        %find the smallest distance and use that as an index into B:
+                        clear B A
+                        [ax,ay] = min(dist2);
+                        gx=gx(ay);
+                        gy=gy(ay);
+                        nlat=nlat(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);
+                        elon=elon(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);
+						run customcolorbars
+						run customvariables
+						tmpvar=readgeoraster(filenamestorm,Bands=bands);tmpvar(tmpvar==9999)=NaN;
+                        if size(tmpvar,3)==1
+                            if find(identvar==[21, 28, 29, 30])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen)./100;  
+                            elseif identvar==1
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen).*10^5;  
+                            elseif find(identvar==[6,41,42,43,44,45])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen)+273.15;  
                             else
-                                tmpvar=squeeze(sv.data(:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);  
                             end
-                            tmpvar=permute(tmpvar,[2 1]);                           
-                        elseif size(size(sv.data),2)==4
-                            if strcmp(identvariables{identvar},'Pressure_reduced_to_MSL_msl')==1 || strcmp(identvariables{identvar},'Pressure_surface')==1 || strcmp(identvariables{identvar},'Pressure_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen))/100;  
-                            elseif strcmp(identvariables{identvar},'Absolute_vorticity_isobaric')==1
-                                tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen)).*10^5;  
-                            elseif strcmp(identvariables{identvar},'Geopotential_height_isobaric')==1
-                                tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen))./10;  
-                            elseif strcmp(identvariables{identvar},'u-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'u-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'u-component_of_wind_tropopause')==1 || strcmp(identvariables{identvar},'v-component_of_wind_height_above_ground')==1 || strcmp(identvariables{identvar},'v-component_of_wind_isobaric')==1 || strcmp(identvariables{identvar},'v-component_of_wind_tropopause')==1
-                                tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
+                            %tmpvar=permute(tmpvar,[2 1]);                           
+                        elseif size(tmpvar,3)>1
+                            if find(identvar==[21, 28, 29, 30])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:)./100;  
+                            elseif identvar==1
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:).*10^5;  
+							elseif identvar==9
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:)./10; 	
+                            elseif find(identvar==[6,41,42,43,44,45])>0
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:)+273.15;  
                             else
-                                tmpvar=squeeze(sv.data(:,:,701-pltcen:701+pltcen,701-pltcen:701+pltcen));  
+                                tmpvar=tmpvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,:);  
                             end
                             if size(tmpvar,3)==1
-                                tmpvar=permute(tmpvar,[2 1]);
+                                %tmpvar=permute(tmpvar,[2 1]);                                
                             else
-                                tmpvar=permute(tmpvar,[3 2 1]);
+                                %tmpvar=permute(tmpvar,[2 1 3]);
                             end
-                        end         
+                        end                            
                         % Fix any missing values
                         for nans=1
                             plev(plev<-9.0000e+30)=NaN;	                
@@ -3186,7 +3139,6 @@ for hwrfvariables=1:size(identexp,1)
                             elon(elon<-9.0000e+30)=NaN;	
                             tmpvar(tmpvar<-9.0000e+30)=NaN;	
                         end
-
                         % Storm Center the Synoptic Grid
                         gridlat=nlat;
                         gridlon=elon;
@@ -3197,9 +3149,9 @@ for hwrfvariables=1:size(identexp,1)
                         grlon=cat(1,nan(300,size(grlon,2)), grlon, nan(300,size(grlon,2)));
                         grlat=cat(1,nan(300,size(grlon,2)), grlat, nan(300,size(grlon,2)));
                         gvar=cat(1,nan(300,size(grlon,2),size(tmpvar,3)), gvar, nan(300,size(grlon,2),size(tmpvar,3)));
-                        % Grab current date/fhr LAT/LON
+                        % Grab current date/fhr LAT/LON                        
                         LATall=EXP_lat(identloop,(str2num(num2str(3*(identfhr-1),'%03d'))/3)+1,hwrfvariables);
-                        LONall=EXP_lon(identloop,(str2num(num2str(3*(identfhr-1),'%03d'))/3)+1,hwrfvariables);
+                        LONall=EXP_lon(identloop,(str2num(num2str(3*(identfhr-1),'%03d'))/3)+1,hwrfvariables); 
                         % Find the storm center
                         tmp1 = abs(grlat-LATall);
                         tmp2 = abs(grlon-LONall);
@@ -3226,9 +3178,9 @@ for hwrfvariables=1:size(identexp,1)
                         gx=gx(ay);
                         gy=gy(ay);
                         % Create Storm-Centered Grid
-                        test=squeeze(gvar(gx-pltcen2:gx+pltcen2,gy-pltcen2:gy+pltcen2,1:size(tmpvar,3)));
-                        testlt=grlat(gx-pltcen2:gx+pltcen2,gy-pltcen2:gy+pltcen2);
-                        testln=grlon(gx-pltcen2:gx+pltcen2,gy-pltcen2:gy+pltcen2);               
+                        test=squeeze(gvar(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen,1:size(tmpvar,3)));
+                        testlt=grlat(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);
+                        testln=grlon(gx-pltcen:gx+pltcen,gy-pltcen:gy+pltcen);               
                         var_f(:,:,1:size(tmpvar,3),identfhr)=test;
                         varlt_f(:,:,identfhr)=testlt;
                         varln_f(:,:,identfhr)=testln;
@@ -3237,76 +3189,93 @@ for hwrfvariables=1:size(identexp,1)
                 end
                 if sum(sum(sum(~isnan(var_f(:,:,2,:)))))==0
                     var_f=squeeze(var_f(:,:,1,:));
-                end
-                if identvar==7
-                    identvariables{identvar}='Convective_precipitation_surface_Accumulation';
-                elseif identvar==11
-                    identvariables{identvar}='Downward_Long-Wave_Radp_Flux_surface_Average';
-                elseif identvar==13
-                    identvariables{identvar}='Downward_Short-Wave_Radiation_Flux_surface_Average';
-                elseif identvar==20
-                    identvariables{identvar}='Large-scale_precipitation_non-convective_surface_Accumulation';
-                elseif identvar==53
-                    identvariables{identvar}='Total_precipitation_surface_Accumulation';
-                elseif identvar==55
-                    identvariables{identvar}='Upward_Long-Wave_Radp_Flux_surface_Average';
-                elseif identvar==57
-                    identvariables{identvar}='Upward_Short-Wave_Radiation_Flux_surface_Average';
-                end    
-                save([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{identvar},'.mat'],'-v7.3','var_f','varlt_f','varln_f','plev');
+                end              
+                save([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',savename,'.mat'],'-v7.3','var_f','varlt_f','varln_f','plev');
+                disp(['COMPLETED CYCLE #: ', num2str(identloop),' for ',varname,'!'])
                 clear var*
-                disp(['COMPLETED CYCLE #: ', num2str(identloop),' for ',identvariables{identvar},'!'])
             end
         end
         clearvars -except identboxhist skip* ident*
     end
 end
 
-ncid=ncgeodataset([identscrub,identexp{1},'/com/',identinittimesunique(identbatch,:),'/',ident(3:4),upper(identhwrf(end)),'/',identhwrf,'.',identinittimesunique(identbatch,:),'.hwrfprs.storm.0p015.f',num2str(3*(1-1),'%03d'),'.grb2']);
-identvariables=sort(ncid.variables);
-sv = ncid.geovariable('isobaric');
-plev=squeeze(sv.data(:,:,:,:))/100;   
+plev=[2 5 7 10 20 30 50 70 100 125 150 175 200 225 250 275 300 325 350 375 400 425 450 475 500 525 550 575 600 625 650 675 700 725 750 775 800 825 850 875 900 925 950 975 1000];
 for i=1:size(identpresplan,2)
     identpresplan(i)=find(plev==identpresplan(i));
 end
-for i=1:size(identvariables,1)
-    if strcmp(identvariables{i},'height_above_ground')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'height_above_ground_layer')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'height_above_ground_layer_bounds')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'height_above_ground1')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'height_above_ground2')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'isobaric')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'isobaric1')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'lat')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'lon')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'time')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'time1')==1
-        identvariables{i}=[];
-    end
-    if strcmp(identvariables{i},'time1_bounds')==1
-        identvariables{i}=[];
-    end
-end
+set(groot,'defaultAxesXTickLabelRotationMode','manual');set(groot,'defaultAxesYTickLabelRotationMode','manual');set(groot,'defaultAxesZTickLabelRotationMode','manual');
+identvariables{1,:}='ABSV';
+identvariables{2,:}='CAPE';
+identvariables{3,:}='CIN';
+identvariables{4,:}='ACPCP';
+identvariables{5,:}='CPRATE';
+identvariables{6,:}='TDP2M';
+identvariables{7,:}='ECSURF';
+identvariables{8,:}='FVSURF';
+identvariables{9,:}='GPH';
+identvariables{10,:}='SGPH';
+identvariables{11,:}='TGPH';
+identvariables{12,:}='GRPMR';
+identvariables{13,:}='HMAXVV';
+identvariables{14,:}='HMAXVV400';
+identvariables{15,:}='HMAXUH25';
+identvariables{16,:}='HMAXUH03';
+identvariables{17,:}='IWMR';
+identvariables{18,:}='LAND';
+identvariables{19,:}='LSPCP';
+identvariables{20,:}='LHTFL';
+identvariables{21,:}='MSLPETA';
+identvariables{22,:}='REFC';
+identvariables{23,:}='UMFLX';
+identvariables{24,:}='VMFLX';
+identvariables{25,:}='PBL';
+identvariables{26,:}='PWAT';
+identvariables{27,:}='PRATE';
+identvariables{28,:}='PRESSURF';
+identvariables{29,:}='PRESTROP';
+identvariables{30,:}='MSLP';
+identvariables{31,:}='RWMR';
+identvariables{32,:}='REFD';
+identvariables{33,:}='RH2M';
+identvariables{34,:}='RH';
+identvariables{35,:}='SHTFL';
+identvariables{36,:}='SNMR';
+identvariables{37,:}='Q2M';
+identvariables{38,:}='Q';
+identvariables{39,:}='HLCY';
+identvariables{40,:}='SR';
+identvariables{41,:}='TEMP2M';
+identvariables{42,:}='TEMPTROPO';
+identvariables{43,:}='TEMPCT';
+identvariables{44,:}='TEMP';
+identvariables{45,:}='TEMPSURF';
+identvariables{46,:}='TCOLR';
+identvariables{47,:}='TCOLS';
+identvariables{48,:}='TCOLI';
+identvariables{49,:}='TCOLW';
+identvariables{50,:}='TCOLC';
+identvariables{51,:}='TP';
+identvariables{52,:}='VSSTROP';
+identvariables{53,:}='WGEO';
+identvariables{54,:}='W';
+identvariables{55,:}='SST';
+identvariables{56,:}='WSGUSTS';
+identvariables{58,:}='U10M';
+identvariables{59,:}='V10M';
+identvariables{60,:}='UTROPO';
+identvariables{61,:}='VTROPO';
+identvariables{62,:}='U';
+identvariables{63,:}='V';
+identvariables{65,:}='RVRT';
+identvariables{66,:}='RADWND10M';
+identvariables{67,:}='TANWND10M';
+identvariables{68,:}='WS10M';
+identvariables{69,:}='RADWNDTROPO';
+identvariables{70,:}='TANWNDTROPO';
+identvariables{71,:}='WSTROPO';
+identvariables{72,:}='RADWND';
+identvariables{73,:}='TANWND';
+identvariables{74,:}='WS';
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
 %% Convert U/V to RAD & TAN & WNDSPD for both STORM and SYNOPTIC %%
@@ -3316,31 +3285,31 @@ for hwrfvariables=1
     if identsynopticrt==1
         for radtan=1:3
             if radtan==1        
-                if sum(ismember(identv, [73,76]))==2
-                    identvarname1='radial-component_of_wind_height_above_ground';
-                    identvarname2='tangential-component_of_wind_height_above_ground'; 
-                    identvarname3='wind_speed_height_above_ground';
-                    tmpvar1=73;
-                    tmpvar2=76;
-                    identv=[identv 80 83 87];                    
+                if sum(ismember(identv, [58,59]))==2
+                    identvarname1='RADWND10M';
+                    identvarname2='TANWND10M'; 
+                    identvarname3='WS10M';
+                    tmpvar1=58;
+                    tmpvar2=59;
+                    identv=[identv 66 67 68];                    
                 end
             elseif radtan==2       
-                if sum(ismember(identv, [74,77]))==2
-                    identvarname1='radial-component_of_wind_isobaric';
-                    identvarname2='tangential-component_of_wind_isobaric'; 
-                    identvarname3='wind_speed_isobaric';                    
-                    tmpvar1=74;
-                    tmpvar2=77; 
-                    identv=[identv 81 84 88];
+                if sum(ismember(identv, [62,63]))==2
+                    identvarname1='RADWND';
+                    identvarname2='TANWND'; 
+                    identvarname3='WS';                    
+                    tmpvar1=62;
+                    tmpvar2=63; 
+                    identv=[identv 72 73 74];
                 end
             elseif radtan==3       
-                if sum(ismember(identv, [75,78]))==2
-                    identvarname1='radial-component_of_wind_tropopause';
-                    identvarname2='tangential-component_of_wind_tropopause';
-                    identvarname3='wind_speed_tropopause';
-                    tmpvar1=75;
-                    tmpvar2=78; 
-                    identv=[identv 82 85 89];                                        
+                if sum(ismember(identv, [60,61]))==2
+                    identvarname1='RADWNDTROPO';
+                    identvarname2='TANWNDTROPO';
+                    identvarname3='WSTROPO';
+                    tmpvar1=60;
+                    tmpvar2=61; 
+                    identv=[identv 69 70 71];                                        
                 end
             end           
             if exist('tmpvar1','var')==1
@@ -3354,8 +3323,8 @@ for hwrfvariables=1
                                 disp('BT has a NaN...skipping date!')
                             else                      
                                 if identgrid==1 % SYNOPTIC
-                                    pltcen=150;
-                                    rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
+                                    pltcen=304;
+                                    rds1=0:0.06*111.11:pltcen*0.06*111.11; %0.06 res for hwrf synoptic grid  
                                     rds2=sort(rds1*-1);
                                     rds=[rds2 rds1(2:end)]';
                                     identgridname='synoptic';
@@ -3368,7 +3337,7 @@ for hwrfvariables=1
                                     v=var_f;
                                     [x,y] = meshgrid(rds,rds);
                                     [theta,rho] = cart2pol(x,y);
-                                    theta=((flipud((theta+pi)')));
+                                    theta=(fliplr(theta+pi));
                                     U_r=(u.*cos(theta) + v.*sin(theta));
                                     U_t=(-u.*sin(theta) + v.*cos(theta));
                                     var_f=U_r;
@@ -3398,31 +3367,31 @@ for hwrfvariables=1
     if identstormrt==1
         for radtan=1:3
             if radtan==1        
-                if sum(ismember(identv, [73,76]))==2
-                    identvarname1='radial-component_of_wind_height_above_ground';
-                    identvarname2='tangential-component_of_wind_height_above_ground'; 
-                    identvarname3='wind_speed_height_above_ground';
-                    tmpvar1=73;
-                    tmpvar2=76;
-                    identv=[identv 80 83 87];                    
+                if sum(ismember(identv, [58,59]))==2
+                    identvarname1='RADWND10M';
+                    identvarname2='TANWND10M'; 
+                    identvarname3='WS10M';
+                    tmpvar1=58;
+                    tmpvar2=59;
+                    identv=[identv 66 67 68];                    
                 end
             elseif radtan==2       
-                if sum(ismember(identv, [74,77]))==2
-                    identvarname1='radial-component_of_wind_isobaric';
-                    identvarname2='tangential-component_of_wind_isobaric'; 
-                    identvarname3='wind_speed_isobaric';                    
-                    tmpvar1=74;
-                    tmpvar2=77; 
-                    identv=[identv 81 84 88];
+                if sum(ismember(identv, [62,63]))==2
+                    identvarname1='RADWND';
+                    identvarname2='TANWND'; 
+                    identvarname3='WS';                    
+                    tmpvar1=62;
+                    tmpvar2=63; 
+                    identv=[identv 72 73 74];
                 end
             elseif radtan==3       
-                if sum(ismember(identv, [75,78]))==2
-                    identvarname1='radial-component_of_wind_tropopause';
-                    identvarname2='tangential-component_of_wind_tropopause';
-                    identvarname3='wind_speed_tropopause';
-                    tmpvar1=75;
-                    tmpvar2=78; 
-                    identv=[identv 82 85 89];                                        
+                if sum(ismember(identv, [60,61]))==2
+                    identvarname1='RADWNDTROPO';
+                    identvarname2='TANWNDTROPO';
+                    identvarname3='WSTROPO';
+                    tmpvar1=60;
+                    tmpvar2=61; 
+                    identv=[identv 69 70 71];                                        
                 end
             end           
             if exist('tmpvar1','var')==1
@@ -3436,8 +3405,8 @@ for hwrfvariables=1
                                 disp('BT has a NaN...skipping date!')
                             else                      
                                 if identgrid==1 % STORM
-                                    pltcen=306;
-                                    rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.015 res for hwrf storm grid  
+                                    pltcen=300;
+                                    rds1=0:0.02*111.11:pltcen*0.02*111.11; %0.02 res for hwrf storm grid  
                                     rds2=sort(rds1*-1);
                                     rds=[rds2 rds1(2:end)]';
                                     identgridname='storm';
@@ -3450,7 +3419,7 @@ for hwrfvariables=1
                                     v=var_f;
                                     [x,y] = meshgrid(rds,rds);
                                     [theta,rho] = cart2pol(x,y);
-                                    theta=((flipud((theta+pi)')));
+                                    theta=(fliplr(theta+pi));
                                     U_r=(u.*cos(theta) + v.*sin(theta));
                                     U_t=(-u.*sin(theta) + v.*cos(theta));
                                     var_f=U_r;
@@ -3484,9 +3453,9 @@ for hwrfvariables=1
         for radtan=1
             if radtan==1        
                 if sum(ismember(identv,1))==1
-                    identvarname1='Relative_vorticity_isobaric';
+                    identvarname1='RVRT';
                     tmpvar1=1;
-                    identv=[identv 86];                    
+                    identv=[identv 65];                    
                 end
             end           
             if exist('tmpvar1','var')==1
@@ -3500,8 +3469,8 @@ for hwrfvariables=1
                                 disp('BT has a NaN...skipping date!')
                             else                      
                                 if identgrid==1 % SYNOPTIC
-                                    pltcen=150;
-                                    rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
+                                    pltcen=304;
+                                    rds1=0:0.06*111.11:pltcen*0.06*111.11; %0.06 res for hwrf synoptic grid  
                                     rds2=sort(rds1*-1);
                                     rds=[rds2 rds1(2:end)]';
                                     identgridname='synoptic'; 
@@ -3536,9 +3505,9 @@ for hwrfvariables=1
         for radtan=1
             if radtan==1        
                 if sum(ismember(identv,1))==1
-                    identvarname1='Relative_vorticity_isobaric';
+                    identvarname1='RVRT';
                     tmpvar1=1;
-                    identv=[identv 86];                    
+                    identv=[identv 65];                    
                 end
             end           
             if exist('tmpvar1','var')==1
@@ -3552,8 +3521,8 @@ for hwrfvariables=1
                                 disp('BT has a NaN...skipping date!')
                             else                      
                                 if identgrid==1 % STORM
-                                    pltcen=306;
-                                    rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.015 res for hwrf storm grid  
+                                    pltcen=300;
+                                    rds1=0:0.02*111.11:pltcen*0.02*111.11; %0.02 res for hwrf storm grid  
                                     rds2=sort(rds1*-1);
                                     rds=[rds2 rds1(2:end)]';
                                     identgridname='storm';
@@ -3582,24 +3551,6 @@ for hwrfvariables=1
     end
 end 
 
-identvariables{7,:}='Convective_precipitation_surface_Accumulation';
-identvariables{11,:}='Downward_Long-Wave_Radp_Flux_surface_Average';
-identvariables{13,:}='Downward_Short-Wave_Radiation_Flux_surface_Average';
-identvariables{20,:}='Large-scale_precipitation_non-convective_surface_Accumulation';
-identvariables{53,:}='Total_precipitation_surface_Accumulation';
-identvariables{55,:}='Upward_Long-Wave_Radp_Flux_surface_Average';
-identvariables{57,:}='Upward_Short-Wave_Radiation_Flux_surface_Average';
-identvariables{80,:}='radial-component_of_wind_height_above_ground';
-identvariables{81,:}='radial-component_of_wind_isobaric';
-identvariables{82,:}='radial-component_of_wind_tropopause';
-identvariables{83,:}='tangential-component_of_wind_height_above_ground';
-identvariables{84,:}='tangential-component_of_wind_isobaric';
-identvariables{85,:}='tangential-component_of_wind_tropopause';
-identvariables{86,:}='Relative_vorticity_isobaric';
-identvariables{87,:}='wind_speed_height_above_ground';
-identvariables{88,:}='wind_speed_isobaric';
-identvariables{89,:}='wind_speed_tropopause';
-
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 %% Synoptic Grid Graphics %%
 %% %%%%%%%%%%%%%%%%%%%%%% %%
@@ -3607,12 +3558,12 @@ for hwrfplots=1
     if identgraphicssynoptic==1
         % Users can change this 
         pltkm=2000; % how far out the storm-centered plot should go
-        innerradu=19; % radav: start at 250 km
-        outerradu=73; % radav: 3D end at 1000 km
-        outerradu2=73; % radav 2D: end at 1000 km
+        innerradu=39; % radav: start at 250 km
+        outerradu=151; % radav: 3D end at 1000 km
+        outerradu2=151; % radav 2D: end at 1000 km
         % End of user settings
-        pltcen=150;% how many gridpoints from center .mat files
-        radbin=0.125; % resolution of synoptic grid
+        pltcen=304;% how many gridpoints from center .mat files
+        radbin=0.06; % resolution of synoptic grid
         pltpt=ceil(pltkm/(radbin*111.11))+1; % to get to pltkm km
         nav=nan(size(identinittimesunique,1),identmodelfhr);
         spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
@@ -3631,26 +3582,26 @@ for hwrfplots=1
                         % This will loop over EXP experiments - same code for each!
                         identexp0=identexp{identexploop};
                         disp(['EXPERIMENT: ',identexp0])                    
-                        if identvar==88
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{74},'.mat']);
+                        if identvar==74
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{62},'.mat']);
                             u=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{77},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{63},'.mat']);
                             v=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{9},'.mat']);
                             gph=var_f;
-			elseif identvar==87
-  			    load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{73},'.mat']);
+						elseif identvar==68
+							load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{58},'.mat']);
                             u=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{76},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{59},'.mat']);
                             v=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{17},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{10},'.mat']);
                             gph=var_f;
-			elseif identvar==89
-			    load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{75},'.mat']);
+						elseif identvar==71
+							load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{60},'.mat']);
                             u=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{78},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{61},'.mat']);
                             v=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{11},'.mat']);
                             gph=var_f;
                         end
                         load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{identvar}])
@@ -3658,7 +3609,7 @@ for hwrfplots=1
                         run customvariables % gets the colorbars and the variable bounds
                         if levs==1
                             %% Creates Plan-View plots for each init/fhr at each level: var_f=(lon)x(lat)x(plev)x(fhr)
-                            if identplan==1 & identvar~=[16:17,80:85]
+                            if identplan==1 & identvar~=[9:11,66,67,69,70,72,73]
                                 if isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.eps'])==0
                                     for loop=1:size(var_f,4)
                                         if isnan(BT_lat(identloop,loop))==1 || (identvar>=80 && identvar <=85)
@@ -3673,11 +3624,11 @@ for hwrfplots=1
                                                 hold on                                                                
                                                 [c,h]=contourf(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                                 hold on
-                                                if identvar==88 || identvar==87 || identvar==89
+                                                if identvar==74 || identvar==68 || identvar==71
                                                     [c1,h1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                                     windbarbm(varlt_f(:,:,loop),varln_f(:,:,loop),u(:,:,loop1,loop),v(:,:,loop1,loop),20,1,[.5 .5 .5])
-                                                    [g1,p1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),gph(:,:,loop1,loop),[0:2:2000],'w','linewidth',2); 
-                                                    clabel(g1,p1,[0:4:2000],'color','k','labelspacing',1000)
+                                                    [g1,p1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),gph(:,:,loop1,loop),[0:5:2000],'w','linewidth',2); 
+                                                    clabel(g1,p1,[0:5:2000],'color','k','labelspacing',1000)
                                                 else
                                                     [c1,h1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr1,'k');
                                                 end
@@ -3701,11 +3652,11 @@ for hwrfplots=1
                                                 set(gca,'fontsize',20)
                                                 set(gca,'plotboxaspectratio',[1 1 1])
                                                 cl=colorbar;
-                                                if identvar==88 || identvar==87 || identvar==89
+                                                if identvar==74 || identvar==68 || identvar==71
                                                     colormap(gca,custommap(28,WC1))
                                                     set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                     set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-						    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+													%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                     %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3728,7 +3679,7 @@ for hwrfplots=1
                                                 set(gcf, 'InvertHardcopy', 'off')
                                                 text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                                 text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                                if identvar==88 || identvar==87 || identvar==89
+                                                if identvar==74 || identvar==68 || identvar==71
                                                     text(0,1.065,['\textbf{',varname,' (',units,') \& GPH (dam) $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
                                                 else
                                                     text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
@@ -3751,47 +3702,38 @@ for hwrfplots=1
                             end
                             
                             %% Creates Azav at init time for each forecast hr: (levs)x(radius)x(fhr)
-                            rds=0:radbin*111.11:pltcen*radbin*111.11;
-                            vectRAW=nan(size(var_f,3),size(2:pltpt+1,2),size(var_f,4)); % preallocate
                             for t=1:size(var_f,4)
-                                cnt=2;
-                                for i=2:pltpt
-                                    inner_rad = rds(i-1)/radbin/111.11;
-                                    outer_rad = rds(i)/radbin/111.11;
-                                    ringa=pi*rds(i)*rds(i)-pi*rds(i-1)*rds(i-1);
-                                    center = pltcen+1; 
-                                    mask1_size = pltcen*2+1;
-                                    [x,y] = meshgrid(1:mask1_size,1:mask1_size);
-                                    distance = (x-center).^2+(y-center).^2;
-                                    mask = distance<outer_rad^2 & distance>inner_rad^2;
-                                    mask=repmat(mask,1,1,size(var_f,3));
-                                    valtest=var_f(:,:,:,t);
-                                    valtest(mask==0)=NaN;
-                                    vectRAW(:,cnt,t)=squeeze(nanmean(nanmean(valtest,1),2));
-                                    rdsplt(cnt)=rds(i);
-                                    cnt=cnt+1;                                
-                                end                      
-                                vectRAW(:,2,t)=vectRAW(:,3,t)./2;
-                                vectRAW(:,1,t)=vectRAW(:,2,t)./2;
-                                rdsplt(1)=rds(1);
-                                t
-                            end                                                       
+                                tmppol=var_f(:,:,:,t);
+								for i=1:size(tmppol,3)
+									tmptmppol=tmppol(:,:,i);
+									x=(1:size(tmptmppol,2))-size(tmptmppol,2)/2;
+									y=(1:size(tmptmppol,1))-size(tmptmppol,1)/2;
+									[X,Y]=meshgrid(x,y);
+									Z_integer=round(abs(X+1i*Y)/1)+1;
+									Tics(i,:)=accumarray(Z_integer(:),abs(X(:)+1i*Y(:)),[],@nanmean).*0.06.*111.11;
+									Average(i,:)=accumarray(Z_integer(:),tmptmppol(:),[],@nanmean);
+								end
+								vectRAW(:,:,t)=Average;
+								vectTics(:,t)=mean(Tics,1);
+								clear Average Tics
+								t
+                            end                                                     
                             
                             %% For 3D only, make a (radius)x(plev) plot for each fhr. This does not exist for the 1-level 2D plots.
                             if isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_',savename,'_RPAZAV.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_',savename,'_RPAZAV.eps'])==0
                                 for loop=1:size(vectRAW,3) 
                                     if isnan(BT_lat(identloop,loop))==1
                                     else
-                                        tmpplt=vectRAW;
+                                        tmpplt=vectRAW(:,:,loop);
                                         tmpplt(tmpplt<cmin)=cmin;
                                         set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                         hfig=figure;
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                         ax1=subplot(3,4,[1:8]);
                                         hold on
-                                        [c,h]=contourf(rdsplt,plev,tmpplt(:,:,loop),cntr);
+                                        [c,h]=contourf(vectTics(:,loop),plev,tmpplt,cntr);
                                         hold on
-                                        [c1,h1]=contour(rdsplt,plev,tmpplt(:,:,loop),cntr1,'k');
+                                        [c1,h1]=contour(vectTics(:,loop),plev,tmpplt,cntr1,'k');
                                         axis ij
                                         caxis([cmin cmax])
                                         ylim([0 1000])
@@ -3804,11 +3746,11 @@ for hwrfplots=1
                                         set(gca,'fontsize',20)
                                         set(gca,'plotboxaspectratio',[1 1 1])
                                         cl=colorbar;
-                                        if identvar==88 || identvar==87 || identvar==89
+                                        if identvar==74 || identvar==68 || identvar==71
                                             colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                 set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-						%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+												%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3857,9 +3799,9 @@ for hwrfplots=1
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                     ax1=subplot(3,4,[1:8]);
                                     hold on
-                                    [c,h]=contourf(0:3:size(vectRAW,3)*3-1,rdsplt,squeeze(tmpplt(loop,:,:)),cntr);
+                                    [c,h]=contourf(0:3:size(vectRAW,3)*3-1,mean(vectTics,2),squeeze(tmpplt(loop,:,:)),cntr);
                                     hold on
-                                    [c1,h1]=contour(0:3:size(vectRAW,3)*3-1,rdsplt,squeeze(tmpplt(loop,:,:)),cntr1,'k');
+                                    [c1,h1]=contour(0:3:size(vectRAW,3)*3-1,mean(vectTics,2),squeeze(tmpplt(loop,:,:)),cntr1,'k');
                                     caxis([cmin cmax])
                                     ylim([0 pltkm])
                                     xlim([0 identmaxfhr*3-3])
@@ -3871,11 +3813,11 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88 || identvar==87 || identvar==89
+                                    if identvar==74 || identvar==68 || identvar==71
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+										%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3914,14 +3856,13 @@ for hwrfplots=1
                             end
                             
                             %% Create azav plot of plev vs. forecast hour for rad-averaged area      
-                            rds=rdsplt;
                             innerrad=innerradu;
                             outerrad=outerradu;
-                            filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];
+                            filerad=[num2str(round(mean(vectTics(innerrad,:)))),'_',num2str(round(mean(vectTics(outerrad,:))))];
                             % Radially Averaged from innerrad to outerrad km
-                            TotalA=pi*(rds(outerrad)^2)-pi*(rds(innerrad)^2);  
+                            TotalA=pi*(mean(vectTics(outerrad,:))^2)-pi*(mean(vectTics(innerrad,:))^2);  
                             for i=innerrad+1:outerrad
-                                RingA(i-innerrad)=pi*(rds(i))^2-pi*(rds(i-1))^2;
+                                RingA(i-innerrad)=pi*(mean(vectTics(i,:)))^2-pi*(mean(vectTics(i-1,:)))^2;
                                 vals_d(:,i-innerrad,:)=([vectRAW(:,i,:)+vectRAW(:,i-1,:)]/2);
                             end
                             for i=1:outerrad-innerrad
@@ -3953,11 +3894,11 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88 || identvar==87 || identvar==89
+                                    if identvar==74 || identvar==68 || identvar==71
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+										%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -3979,7 +3920,7 @@ for hwrfplots=1
                                     set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                     set(gcf, 'InvertHardcopy', 'off')
                                     text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
-                                    text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(1)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(1)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+                                    text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(round(mean(vectTics(innerrad,:)))),'$\mathbf{-}$',num2str(round(mean(vectTics(outerrad,:)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
                                     text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
                                     ax=gca;
                                     box on
@@ -3997,7 +3938,7 @@ for hwrfplots=1
                                                       
                         elseif levs==0
                             %% Creates Plan-View plots for each init/fhr: var_f=(lon)x(lat)x(fhr)
-                            if identplan==1 & identvar~=[16:17,80:85]
+                            if identplan==1 & identvar~=[9:11,66,67,69,70,72,73]
                                 if isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_',savename,'_PLAN.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_',savename,'_PLAN.eps'])==0                           
                                     for loop=1:size(var_f,3) % (lon)x(lat)x(fhr)
                                         if isnan(BT_lat(identloop,loop))==1
@@ -4062,28 +4003,21 @@ for hwrfplots=1
                                 end
                             end
                             
-                            %% Creates RT Azav for each init time: vectRAW=(radius)x(fhr)
-                            rds=0:radbin*111.11:pltcen*radbin*111.11;  
-                            vectRAW=nan(size(rds,2),size(var_f,3)); %preallocate (radius)x(fhr)
+                            %% Creates Azav at init time for each forecast hr: (radius)x(fhr)
                             for t=1:size(var_f,3)
-                                for i=2:size(rds,2)
-                                    %% MASK: +/- 100 km about radius
-                                    inner_rad = rds(i-1)/radbin/111.11;
-                                    outer_rad = rds(i)/radbin/111.11;
-                                    ringa=pi*rds(i)*rds(i)-pi*rds(i-1)*rds(i-1);
-                                    center = pltcen+1; 
-                                    mask1_size = pltcen*2+1;
-                                    [x,y] = meshgrid(1:mask1_size,1:mask1_size);
-                                    distance = (x-center).^2+(y-center).^2;
-                                    mask = distance<=outer_rad^2 & distance>=inner_rad^2;
-                                    valtest=var_f(:,:,t);
-                                    valtest(mask==0)=NaN;
-                                    vectRAW(i,t)=squeeze(nanmean(nanmean(valtest,1),2));
-                                end
-                                t
-                            end    
-                            vectRAW(1,t)=vectRAW(2,t)./2;
-                            %vectRAW(2,t)=vectRAW(3,t)./2;
+                                tmppol=var_f(:,:,t);
+								tmptmppol=tmppol(:,:);
+								x=(1:size(tmptmppol,2))-size(tmptmppol,2)/2;
+								y=(1:size(tmptmppol,1))-size(tmptmppol,1)/2;
+								[X,Y]=meshgrid(x,y);
+								Z_integer=round(abs(X+1i*Y)/1)+1;
+								Tics=accumarray(Z_integer(:),abs(X(:)+1i*Y(:)),[],@nanmean).*0.06.*111.11;
+								Average=accumarray(Z_integer(:),tmptmppol(:),[],@nanmean);
+								vectRAW(:,t)=Average;
+								vectTics(:,t)=Tics;
+								clear Average Tics
+								t
+                            end		
                             
                             if isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/SYNOPTIC/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV.eps'])==0
                                 for loop=1 % (radius)x(fhr) for the current (cycle)
@@ -4094,9 +4028,9 @@ for hwrfplots=1
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                     ax1=subplot(3,4,[1:8]);
                                     hold on
-                                    [c,h]=contourf(0:3:size(vectRAW,2)*3-1,rds,tmpplt,cntr);
+                                    [c,h]=contourf(0:3:size(vectRAW,2)*3-1,mean(vectTics,2),tmpplt,cntr);
                                     hold on
-                                    [c1,h1]=contour(0:3:size(vectRAW,2)*3-1,rds,tmpplt,cntr1,'k');
+                                    [c1,h1]=contour(0:3:size(vectRAW,2)*3-1,mean(vectTics,2),tmpplt,cntr1,'k');
                                     caxis([cmin cmax])
                                     ylim([0 pltkm])
                                     xlim([0 identmaxfhr*3-3])
@@ -4142,23 +4076,25 @@ for hwrfplots=1
                                                 
                         %% Assign to EXP
                         if identexploop>1
-				if levs==1
-					load([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat']);
-				elseif levs==0
-					load([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat']);
-				end
-			end
-			if levs==1
+							if levs==1
+								load([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+							elseif levs==0
+								load([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+							end
+						end
+						if levs==1
                             EXPplan(:,:,:,:,identexploop)=var_f;
                             EXPvectnav(:,:,:,identexploop)=vectRAW;
                             EXPvectnavi(:,:,:,identexploop)=navi;
-			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
+							EXPvecttics(:,identexploop)=mean(vectTics,2);
+							save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','EXPvecttics','-v7.3');
                         elseif levs==0
                             EXPplan(:,:,:,identexploop)=var_f;
-                            EXPvectnav(:,:,identexploop)=vectRAW;      
-			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
+                            EXPvectnav(:,:,identexploop)=vectRAW;   
+							EXPvecttics(:,identexploop)=mean(vectTics,2);							
+							save([identout,'RESULTS/',identfold,identn,'/',identn,'_SYNOPTIC_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvecttics','-v7.3');
                         end   
-			['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
+						['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
                     end
                     
                     if identvarexp0==size(identexp,1) % if it's the last experiment, that means all needed data has been saved and generated from above!
@@ -4174,14 +4110,14 @@ for hwrfplots=1
 							exp2=identdiff(df,2);
 							% Difference: PLAN
 							if levs==1   
-								if identplan==1 & identvar~=[16:17,80:85]
+								if identplan==1 & identvar~=[9:11,66,67,69,70,72,73]
 									for loop=1:size(var_f,4) 
 										if isnan(BT_lat(identloop,loop))==1
 										else
 											for loop1=identpresplan % 850,700,500,200 %1:size(var_f,3) 
 												set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 												hfig=figure;
-												rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
+												rds1=0:0.06*111.11:pltcen*0.06*111.11; %0.06 res for hwrf synoptic grid  
 												rds2=sort(rds1*-1);
 												rds=[rds2 rds1(2:end)]';
 												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -4244,13 +4180,13 @@ for hwrfplots=1
 									end
 								end
 							elseif levs==0
-								if identplan==1 & identvar~=[16:17,80:85]
+								if identplan==1 & identvar~=[9:11,66,67,69,70,72,73]
 									for loop=1:size(var_f,3) % by fhr
 										if isnan(BT_lat(identloop,loop))==1
 										else
 											set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 											hfig=figure;
-											rds1=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
+											rds1=0:0.06*111.11:pltcen*0.06*111.11; %0.06 res for hwrf synoptic grid  
 											rds2=sort(rds1*-1);
 											rds=[rds2 rds1(2:end)]';
 											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -4318,15 +4254,14 @@ for hwrfplots=1
 								for loop=identpresplan % 850,700,500,200 %1:size(var_f,3)
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 									hfig=figure;
-									rds=0:0.125*111.11:pltcen*0.125*111.11;   
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
 									hold on
 									diffplt=squeeze((EXPvectnav(loop,:,:,exp1)-EXPvectnav(loop,:,:,exp2)));
 									diffplt(diffplt<min(dcntr))=min(dcntr);                
-									[c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr);
+									[c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,EXPvecttics(:,exp1),diffplt,dcntr);
 									hold on
-									[c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr,'k');
+									[c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,EXPvecttics(:,exp1),diffplt,dcntr,'k');
 									caxis([dmin dmax])
 									ylim([0 pltkm])
 									xlim([0 identmaxfhr*3-3])
@@ -4373,15 +4308,14 @@ for hwrfplots=1
 									else
 										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 										hfig=figure;
-										rds=0:0.125*111.11:pltcen*0.125*111.11;   
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 										ax1=subplot(3,4,[1:8]);
 										hold on
 										diffplt=squeeze((EXPvectnav(:,:,loop,exp1)-EXPvectnav(:,:,loop,exp2)));
 										diffplt(diffplt<min(dcntr))=min(dcntr);                
-										[c,h]=contourf(rdsplt,plev,diffplt,dcntr);
+										[c,h]=contourf(EXPvecttics(:,exp1),plev,diffplt,dcntr);
 										hold on
-										[c1,h1]=contour(rdsplt,plev,diffplt,dcntr,'k');
+										[c1,h1]=contour(EXPvecttics(:,exp1),plev,diffplt,dcntr,'k');
 										caxis([dmin dmax])
 										axis ij
 										ylim([0 1000])
@@ -4428,14 +4362,13 @@ for hwrfplots=1
 								for loop=1:size(EXPvectnavi,3)
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 									hfig=figure;
-									rds=rdsplt;
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
 									hold on
 									diffplt=squeeze(EXPvectnavi(:,:,loop,exp1)-EXPvectnavi(:,:,loop,exp2));
 									innerrad=innerradu(loop);
 									outerrad=outerradu(loop);
-									filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];    
+									filerad=[num2str(round(EXPvecttics(innerrad,1))),'_',num2str(round(EXPvecttics(outerrad,1)))];   
 									diffplt(diffplt<min(dcntr))=min(dcntr);                
 									[c,h]=contourf(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr);
 									hold on
@@ -4467,7 +4400,7 @@ for hwrfplots=1
 									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
 									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
 									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(loop)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(loop)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(round(EXPvecttics(innerrad,1))),'$\mathbf{-}$',num2str(round(EXPvecttics(outerrad,1))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
 									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
 									ax=gca;
 									box on
@@ -4485,15 +4418,14 @@ for hwrfplots=1
 								for loop=1
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 									hfig=figure;
-									rds=0:0.125*111.11:pltcen*0.125*111.11; %0.125 res for hwrf synoptic grid  
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
 									hold on
 									diffplt=(EXPvectnav(:,:,exp1)-EXPvectnav(:,:,exp2));
 									diffplt(diffplt<min(dcntr))=min(dcntr);                
-									[c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr);
+									[c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,EXPvecttics(:,exp1),diffplt,dcntr);
 									hold on
-									[c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr,'k');
+									[c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,EXPvecttics(:,exp1),diffplt,dcntr,'k');
 									caxis([dmin dmax])
 									ylim([0 pltkm])
 									xlim([0 identmaxfhr*3-3])
@@ -4558,13 +4490,13 @@ for hwrfplots=1
     if identgraphicsstorm==1
        % Users can change this 
         pltkm=500; % how far out the storm-centered plot should go
-        innerradu=[1,1,31]; % radav: 0 km, 0 km, 250 km
-        outerradu=[10,31,61]; % radav: 80 km, 250 km, 500 km
+        innerradu=[1,1,114]; % radav: 0 km, 0 km, 250 km
+        outerradu=[35,114,226]; % radav: 75 km, 250 km, 500 km
         innerradu2=1; % radav 2D: start at 0 km
-        outerradu2=151; % radav 2D: end at 250 km
+        outerradu2=226; % radav 2D: end at 500 km
         % End of user settings
-        pltcen=306;% how many gridpoints from center .mat files
-        radbin=0.015; % resolution of storm grid
+        pltcen=300;% how many gridpoints from center .mat files
+        radbin=0.02; % resolution of storm grid
         pltpt=ceil(pltkm/(radbin*111.11))+1; % to get to 500 km
         nav=nan(size(identinittimesunique,1),identmodelfhr);
         spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
@@ -4582,26 +4514,26 @@ for hwrfplots=1
                         % This will loop over EXP experiments - same code for each!
                         identexp0=identexp{identexploop};
                         disp(['EXPERIMENT: ',identexp0])                        
-                        if identvar==88
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{74},'.mat']);
+                        if identvar==74
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{62},'.mat']);
                             u=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{77},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{63},'.mat']);
                             v=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{9},'.mat']);
                             gph=var_f;
-			elseif identvar==87
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{73},'.mat']);
+						elseif identvar==68
+							load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{58},'.mat']);
                             u=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{76},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{59},'.mat']);
                             v=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{17},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{10},'.mat']);
                             gph=var_f;
-                        elseif identvar==89
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{75},'.mat']);
+						elseif identvar==71
+							load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{60},'.mat']);
                             u=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{78},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{61},'.mat']);
                             v=var_f;
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{16},'.mat']);
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{11},'.mat']);
                             gph=var_f;
                         end
                         load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_storm_',identexp0,'_',identinittimesunique(identloop,:),'_',identvariables{identvar}])
@@ -4609,7 +4541,7 @@ for hwrfplots=1
                         run customvariables % gets the colorbars and the variable bounds
                         if levs==1
                             %% Creates Plan-View plots for each init/fhr at each level: var_f=(lon)x(lat)x(plev)x(fhr)
-                            if identplan==1 & identvar~=[16:17,80:85]
+                            if identplan==1 & identvar~=[9:11,66,67,69,70,72,73]
                                 if isfile([identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((1-1)*3),'_PLEV',num2str(plev(7)),'_',savename,'_PLAN.eps'])==0
                                 for loop=1:size(var_f,4)
                                     if isnan(BT_lat(identloop,loop))==1 || (identvar>=80 && identvar <=85)
@@ -4624,11 +4556,11 @@ for hwrfplots=1
                                             hold on                                                          
                                             [c,h]=contourf(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                             hold on
-                                            if identvar==88 || identvar==87 || identvar==89
+                                            if identvar==74 || identvar==68 || identvar==71
                                                 [c1,h1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr);
                                                 windbarbm(varlt_f(:,:,loop),varln_f(:,:,loop),u(:,:,loop1,loop),v(:,:,loop1,loop),20,1,[.5 .5 .5])
-                                                [g1,p1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),gph(:,:,loop1,loop),[0:2:2000],'w','linewidth',2); 
-                                                clabel(g1,p1,[0:4:2000],'color','k','labelspacing',1000)
+                                                [g1,p1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),gph(:,:,loop1,loop),[0:5:2000],'w','linewidth',2); 
+                                                clabel(g1,p1,[0:5:2000],'color','k','labelspacing',1000)
                                             else
                                                 [c1,h1]=contour(varln_f(:,:,loop),varlt_f(:,:,loop),tmpplt(:,:,loop1,loop),cntr1,'k');
                                             end                                            
@@ -4648,11 +4580,11 @@ for hwrfplots=1
                                             set(gca,'fontsize',20)
                                             set(gca,'plotboxaspectratio',[1 1 1])
                                             cl=colorbar;
-                                            if identvar==88 || identvar==87 || identvar==89
+                                            if identvar==74 || identvar==68 || identvar==71
                                                 colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                 set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-						%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+												%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4675,7 +4607,7 @@ for hwrfplots=1
                                             set(gcf, 'InvertHardcopy', 'off')
                                             text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
                                             text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ FHR: ',num2str((loop-1)*3),' $\mid$ PLEV: ',num2str(plev(loop1)),'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
-                                            if identvar==88 || identvar==87 || identvar==89
+                                            if identvar==74 || identvar==68 || identvar==71
                                                     text(0,1.065,['\textbf{',varname,' (',units,') \& GPH (dam) $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
                                                 else
                                                     text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
@@ -4698,40 +4630,21 @@ for hwrfplots=1
                             end
                             
                             %% Creates Azav at init time for each forecast hr: (levs)x(radius)x(fhr)
-                            rds=0:radbin*111.11:pltcen*radbin*111.11;
-                            vectRAW=nan(size(var_f,3),size(6:5:pltpt+5,2),size(var_f,4)); %preallocate
                             for t=1:size(var_f,4)
-                                cnt=2;
-                                for i=6:5:pltpt % 7:6:pltpt before
-                                    inner_rad = rds(i-2)/radbin/111.11;
-                                    outer_rad = rds(i+2)/radbin/111.11;
-                                    ringa=pi*rds(i+2)*rds(i+2)-pi*rds(i-3)*rds(i-2);
-                                    center = pltcen+1; 
-                                    mask1_size = pltcen*2+1;
-                                    [x,y] = meshgrid(1:mask1_size,1:mask1_size);
-                                    distance = (x-center).^2+(y-center).^2;
-                                    mask = distance<outer_rad^2 & distance>inner_rad^2;
-                                    mask=repmat(mask,1,1,size(var_f,3));
-                                    valtest=var_f(:,:,:,t);
-                                    valtest(mask==0)=NaN;
-                                    vectRAW(:,cnt,t)=squeeze(nanmean(nanmean(valtest,1),2));
-                                    rdsplt(cnt)=rds(i);
-                                    cnt=cnt+1;                                
-                                end                        
-                                inner_rad = rds(1); % accounts for the first bin
-                                outer_rad = rds(3)/radbin/111.11; % 4 before
-                                ringa=pi*rds(3)*rds(3)-pi*rds(1)*rds(1); % 4 before
-                                center = pltcen+1; 
-                                mask1_size = pltcen*2+1;
-                                [x,y] = meshgrid(1:mask1_size,1:mask1_size);
-                                distance = (x-center).^2+(y-center).^2;
-                                mask = distance<outer_rad^2 & distance>inner_rad^2;
-                                mask=repmat(mask,1,1,size(var_f,3));
-                                valtest=var_f(:,:,:,t);
-                                valtest(mask==0)=NaN;
-                                vectRAW(:,1,t)=squeeze(nanmean(nanmean(valtest,1),2));
-                                rdsplt(1)=rds(1);
-                                t
+                                tmppol=var_f(:,:,:,t);
+								for i=1:size(tmppol,3)
+									tmptmppol=tmppol(:,:,i);
+									x=(1:size(tmptmppol,2))-size(tmptmppol,2)/2;
+									y=(1:size(tmptmppol,1))-size(tmptmppol,1)/2;
+									[X,Y]=meshgrid(x,y);
+									Z_integer=round(abs(X+1i*Y)/1)+1;
+									Tics(i,:)=accumarray(Z_integer(:),abs(X(:)+1i*Y(:)),[],@nanmean).*0.02.*111.11;
+									Average(i,:)=accumarray(Z_integer(:),tmptmppol(:),[],@nanmean);
+								end
+								vectRAW(:,:,t)=Average;
+								vectTics(:,t)=mean(Tics,1);
+								clear Average Tics
+								t
                             end
                             
                             %% For 3D only, make a (radius)x(plev) plot for each fhr. This does not exist for the 1-level 2D plots.
@@ -4739,16 +4652,16 @@ for hwrfplots=1
                                 for loop=1:size(vectRAW,3)                                    
                                     if isnan(BT_lat(identloop,loop))==1
                                     else
-                                        tmpplt=vectRAW;
+                                        tmpplt=vectRAW(:,:,loop);
                                         tmpplt(tmpplt<cmin)=cmin;
                                         set(0,'defaultfigurecolor',[1 1 1]) % figure background color
                                         hfig=figure;
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                         ax1=subplot(3,4,[1:8]);
                                         hold on
-                                        [c,h]=contourf(rdsplt,plev,tmpplt(:,:,loop),cntr);
+                                        [c,h]=contourf(vectTics(:,loop),plev,tmpplt,cntr);
                                         hold on
-                                        [c1,h1]=contour(rdsplt,plev,tmpplt(:,:,loop),cntr1,'k');
+                                        [c1,h1]=contour(vectTics(:,loop),plev,tmpplt,cntr1,'k');
                                         axis ij
                                         caxis([cmin cmax])
                                         ylim([0 1000])
@@ -4761,11 +4674,11 @@ for hwrfplots=1
                                         set(gca,'fontsize',20)
                                         set(gca,'plotboxaspectratio',[1 1 1])
                                         cl=colorbar;
-                                        if identvar==88 || identvar==87 || identvar==89
+                                        if identvar==74 || identvar==68 || identvar==71
                                                 colormap(gca,custommap(28,WC1))
                                                 set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                                 set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-						%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+												%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                                 %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4814,9 +4727,9 @@ for hwrfplots=1
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                     ax1=subplot(3,4,[1:8]);
                                     hold on
-                                    [c,h]=contourf(0:3:size(vectRAW,3)*3-1,rdsplt,squeeze(tmpplt(loop,:,:)),cntr);
+                                    [c,h]=contourf(0:3:size(vectRAW,3)*3-1,mean(vectTics,2),squeeze(tmpplt(loop,:,:)),cntr);
                                     hold on
-                                    [c1,h1]=contour(0:3:size(vectRAW,3)*3-1,rdsplt,squeeze(tmpplt(loop,:,:)),cntr1,'k');
+                                    [c1,h1]=contour(0:3:size(vectRAW,3)*3-1,mean(vectTics,2),squeeze(tmpplt(loop,:,:)),cntr1,'k');
                                     caxis([cmin cmax])
                                     ylim([0 pltkm])
                                     xlim([0 identmaxfhr*3-3])
@@ -4828,7 +4741,7 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88 || identvar==87 || identvar==89
+                                    if identvar==74 || identvar==68 || identvar==71
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
@@ -4871,15 +4784,14 @@ for hwrfplots=1
                             end
                             
                             %% Create azav plot of plev vs. forecast hour for rad-averaged area (0-75, 0-250, 250-end)
-                            rds=rdsplt;                            
                             for tmploop=1:size(innerradu,2)
                                 innerrad=innerradu(tmploop);
                                 outerrad=outerradu(tmploop);
-                                filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];
+                                filerad=[num2str(round(mean(vectTics(innerrad,:)))),'_',num2str(round(mean(vectTics(outerrad,:))))];
                                 % Radially Averaged from innerrad to outerrad km
-                                TotalA=pi*(rds(outerrad)^2)-pi*(rds(innerrad)^2);  
+                                TotalA=pi*(mean(vectTics(outerrad,:))^2)-pi*(mean(vectTics(innerrad,:))^2);    
                                 for i=innerrad+1:outerrad
-                                    RingA(i-innerrad)=pi*(rds(i))^2-pi*(rds(i-1))^2;
+                                   RingA(i-innerrad)=pi*(mean(vectTics(i,:)))^2-pi*(mean(vectTics(i-1,:)))^2;
                                     vals_d(:,i-innerrad,:)=([vectRAW(:,i,:)+vectRAW(:,i-1,:)]/2);
                                 end
                                 for i=1:outerrad-innerrad
@@ -4911,11 +4823,11 @@ for hwrfplots=1
                                         set(gca,'fontsize',20)
                                         set(gca,'plotboxaspectratio',[1 1 1])
                                         cl=colorbar;
-                                        if identvar==88 || identvar==87 || identvar==89
+                                        if identvar==74 || identvar==68 || identvar==71
                                             colormap(gca,custommap(28,WC1))
                                             set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                             set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-					    %text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+											%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                             %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -4937,7 +4849,7 @@ for hwrfplots=1
                                         set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
                                         set(gcf, 'InvertHardcopy', 'off')    
                                         text(1,1.03,['\textbf{',identexpshort{identexploop},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(identexploop,:),'units','normalized');
-                                        text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(tmploop)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(tmploop)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+                                        text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(round(mean(vectTics(innerrad,:)))),'$\mathbf{-}$',num2str(round(mean(vectTics(outerrad,:)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
                                         text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
                                         ax=gca;
                                         box on
@@ -4986,11 +4898,11 @@ for hwrfplots=1
                                     set(gca,'fontsize',20)
                                     set(gca,'plotboxaspectratio',[1 1 1])
                                     cl=colorbar;
-                                    if identvar==88 || identvar==87 || identvar==89
+                                    if identvar==74 || identvar==68 || identvar==71
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+										%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -5029,27 +4941,22 @@ for hwrfplots=1
                                 end
                             end
                             
-                            %% Creates RT Azav for each init time: vectRAW=(radius)x(fhr)
-                            rds=0:radbin*111.11:pltcen*radbin*111.11;  
-                            vectRAW=nan(size(rds,2),size(var_f,3)); %preallocate (radius)x(fhr)
+                           	%% Creates Azav at init time for each forecast hr: (radius)x(fhr)
                             for t=1:size(var_f,3)
-                                for i=2:size(rds,2)
-                                    %% MASK: +/- 100 km about radius
-                                    inner_rad = rds(i-1)/radbin/111.11;
-                                    outer_rad = rds(i)/radbin/111.11;
-                                    ringa=pi*rds(i)*rds(i)-pi*rds(i-1)*rds(i-1);
-                                    center = pltcen+1; 
-                                    mask1_size = pltcen*2+1;
-                                    [x,y] = meshgrid(1:mask1_size,1:mask1_size);
-                                    distance = (x-center).^2+(y-center).^2;
-                                    mask = distance<=outer_rad^2 & distance>=inner_rad^2;
-                                    valtest=var_f(:,:,t);
-                                    valtest(mask==0)=NaN;
-                                    vectRAW(i,t)=squeeze(nanmean(nanmean(valtest,1),2));
-                                end
-                                t
-                            end    
-                            vectRAW(1,:)=squeeze(var_f(center,center,:)); % (radius)x(fhr)
+                                tmppol=var_f(:,:,t);
+								tmptmppol=tmppol(:,:);
+								x=(1:size(tmptmppol,2))-size(tmptmppol,2)/2;
+								y=(1:size(tmptmppol,1))-size(tmptmppol,1)/2;
+								[X,Y]=meshgrid(x,y);
+								Z_integer=round(abs(X+1i*Y)/1)+1;
+								Tics=accumarray(Z_integer(:),abs(X(:)+1i*Y(:)),[],@nanmean).*0.02.*111.11;
+								Average=accumarray(Z_integer(:),tmptmppol(:),[],@nanmean);
+								vectRAW(:,t)=Average;
+								vectTics(:,t)=Tics;
+								clear Average Tics
+								t
+                            end				
+														
                             if isfile([identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_',savename,'_2DRTAZAV.eps'])==0
                                 for loop=1 % (radius)x(fhr) for the current (cycle)
                                     tmpplt=vectRAW;
@@ -5059,19 +4966,19 @@ for hwrfplots=1
                                     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                     ax1=subplot(3,4,[1:8]);
                                     hold on
-                                    [c,h]=contourf(0:3:size(vectRAW,2)*3-1,rds,tmpplt,cntr);
+                                    [c,h]=contourf(0:3:size(vectRAW,2)*3-1,mean(vectTics,2),tmpplt,cntr);
                                     hold on
-                                    [c1,h1]=contour(0:3:size(vectRAW,2)*3-1,rds,tmpplt,cntr1,'k');
+                                    [c1,h1]=contour(0:3:size(vectRAW,2)*3-1,mean(vectTics,2),tmpplt,cntr1,'k');
                                     caxis([cmin cmax])
                                     ylim([0 pltkm])
                                     xlim([0 identmaxfhr*3-3])
                                     colormap(custommap(20,WC1))
                                     cl=colorbar;
-                                    if identvar==88 || identvar==87 || identvar==89
+                                    if identvar==74 || identvar==68 || identvar==71
                                         colormap(gca,custommap(28,WC1))
                                         set(cl,'ticks',[0,34,64,83,96,113,137]./1.94384,'fontsize',20)
                                         set(cl,'ticklabels',{'TD','TS','H1','H2','H3','H4','H5'})
-					%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
+										%text(1.21,-.015,['(TD)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.175,['(TS)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.34,['(C1)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
                                         %text(1.21,.45,['(C2)'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',12,'color','k','units','normalized');
@@ -5119,23 +5026,25 @@ for hwrfplots=1
                         
                         %% Assign to EXP
                         if identexploop>1
-				if levs==1
-					load([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat']);
-				elseif levs==0
-					load([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat']);
-				end
-			end
-			if levs==1
+							if levs==1
+								load([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+							elseif levs==0
+								load([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat']);
+							end
+						end
+						if levs==1
                             EXPplan(:,:,:,:,identexploop)=var_f;
                             EXPvectnav(:,:,:,identexploop)=vectRAW;
                             EXPvectnavi(:,:,:,identexploop)=navi;
-			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','-v7.3');
+							EXPvecttics(:,identexploop)=mean(vectTics,2);
+							save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvectnavi','EXPvecttics','-v7.3');
                         elseif levs==0
                             EXPplan(:,:,:,identexploop)=var_f;
-                            EXPvectnav(:,:,identexploop)=vectRAW;      
-			    save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','-v7.3');
+                            EXPvectnav(:,:,identexploop)=vectRAW;  
+							EXPvecttics(:,identexploop)=mean(vectTics,2);
+							save([identout,'RESULTS/',identfold,identn,'/',identn,'_STORM_',identinittimesunique(identloop,:),'_',savename,'.mat'],'EXPplan','EXPvectnav','EXPvecttics','-v7.3');
                         end    
-			['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
+						['COMPLETED - EXP: ', identexpshort{identexploop},' | CYCLE: ',num2str(identloop),' | VARIABLE: ',savename]
                     end                   
                     
                     if identvarexp0==size(identexp,1) % if it's the last experiment, that means all needed data has been saved and generated from above!					
@@ -5150,14 +5059,14 @@ for hwrfplots=1
 							exp2=identdiff(df,2);
 							% Difference: PLAN
 							if levs==1
-								if identplan==1 & identvar~=[16:17,80:85]
+								if identplan==1 & identvar~=[9:11,66,67,69,70,72,73]
 									for loop=1:size(var_f,4) 
 										if isnan(BT_lat(identloop,loop))==1
 										else
 											for loop1=identpresplan 
 												set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 												hfig=figure;
-												rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
+												rds1=0:0.02*111.11:pltcen*0.02*111.11; %0.06 res for hwrf synoptic grid  
 												rds2=sort(rds1*-1);
 												rds=[rds2 rds1(2:end)]';
 												set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -5217,13 +5126,13 @@ for hwrfplots=1
 									end
 								end    
 							elseif levs==0
-								if identplan==1 & identvar~=[16:17,80:85]
+								if identplan==1 & identvar~=[9:11,66,67,69,70,72,73]
 									for loop=1:size(var_f,3) % by fhr
 										if isnan(BT_lat(identloop,loop))==1
 										else
 											set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 											hfig=figure;
-											rds1=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
+											rds1=0:0.02*111.11:pltcen*0.02*111.11; %0.06 res for hwrf synoptic grid  
 											rds2=sort(rds1*-1);
 											rds=[rds2 rds1(2:end)]';
 											set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
@@ -5288,15 +5197,14 @@ for hwrfplots=1
 								for loop=identpresplan
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 									hfig=figure;
-									rds=0:0.015*111.11:pltcen*0.015*111.11;   
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
 									hold on
 									diffplt=squeeze((EXPvectnav(loop,:,:,exp1)-EXPvectnav(loop,:,:,exp2)));
 									diffplt(diffplt<min(dcntr))=min(dcntr);                
-									[c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr);
+									[c,h]=contourf(0:3:size(EXPvectnav,3)*3-1,EXPvecttics(:,exp1),diffplt,dcntr);
 									hold on
-									[c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,rdsplt,diffplt,dcntr,'k');
+									[c1,h1]=contour(0:3:size(EXPvectnav,3)*3-1,EXPvecttics(:,exp1),diffplt,dcntr,'k');
 									caxis([dmin dmax])
 									ylim([0 pltkm])
 									xlim([0 identmaxfhr*3-3])
@@ -5343,15 +5251,14 @@ for hwrfplots=1
 									else
 										set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 										hfig=figure;
-										rds=0:0.015*111.11:pltcen*0.015*111.11;   
 										set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 										ax1=subplot(3,4,[1:8]);
 										hold on
 										diffplt=squeeze((EXPvectnav(:,:,loop,exp1)-EXPvectnav(:,:,loop,exp2)));
 										diffplt(diffplt<min(dcntr))=min(dcntr);                
-										[c,h]=contourf(rdsplt,plev,diffplt,dcntr);
+										[c,h]=contourf(EXPvecttics(:,exp1),plev,diffplt,dcntr);
 										hold on
-										[c1,h1]=contour(rdsplt,plev,diffplt,dcntr,'k');
+										[c1,h1]=contour(EXPvecttics(:,exp1),plev,diffplt,dcntr,'k');
 										caxis([dmin dmax])
 										axis ij
 										ylim([0 1000])
@@ -5398,14 +5305,13 @@ for hwrfplots=1
 								for loop=1:size(EXPvectnavi,3)
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 									hfig=figure;
-									rds=rdsplt;
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
 									hold on
 									diffplt=squeeze(EXPvectnavi(:,:,loop,exp1)-EXPvectnavi(:,:,loop,exp2));
 									innerrad=innerradu(loop);
 									outerrad=outerradu(loop);
-									filerad=[num2str(round(rds(innerrad))),'_',num2str(round(rds(outerrad)))];    
+									filerad=[num2str(round(EXPvecttics(innerrad,1))),'_',num2str(round(EXPvecttics(outerrad,1)))];    
 									diffplt(diffplt<min(dcntr))=min(dcntr);                
 									[c,h]=contourf(0:3:size(EXPvectnavi,2)*3-1,plev,diffplt,dcntr);
 									hold on
@@ -5437,7 +5343,7 @@ for hwrfplots=1
 									text(1,1.03,['\textbf{',identexpshort{exp2},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp2,:),'units','normalized');
 									text(1,1.065,['\textbf{-}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color','k','units','normalized');
 									text(0.98,1.065,['\textbf{',identexpshort{exp1},'}'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','color',identexpcolors(exp1,:),'units','normalized');
-									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(ceil(rds(innerradu(loop)))),'$\mathbf{-}$',num2str(ceil(rds(outerradu(loop)))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
+									text(0,1.03,['\textbf{INIT: ',identinittimesunique(identloop,: ),' $\mid$ AZAV $\mid$ $\mathbf{\overline{r}}$=',num2str(round(EXPvecttics(innerrad,1))),'$\mathbf{-}$',num2str(round(EXPvecttics(outerrad,1))), ' km}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')
 									text(0,1.065,['\textbf{',varname,' (',units,') $\mid$ ',upper(identhwrf(end-2:end)),' (',identn(1:end-2),')}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',16,'fontweight','bold','interpreter','latex','units','normalized')                                            
 									ax=gca;
 									box on
@@ -5455,15 +5361,14 @@ for hwrfplots=1
 								for loop=1
 									set(0,'defaultfigurecolor',[1 1 1]) % figure background color
 									hfig=figure;
-									rds=0:0.015*111.11:pltcen*0.015*111.11; %0.125 res for hwrf synoptic grid  
 									set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
 									ax1=subplot(3,4,[1:8]);
 									hold on
 									diffplt=(EXPvectnav(:,:,exp1)-EXPvectnav(:,:,exp2));
 									diffplt(diffplt<min(dcntr))=min(dcntr);                
-									[c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr);
+									[c,h]=contourf(0:3:size(EXPvectnav,2)*3-1,EXPvecttics(:,exp1),diffplt,dcntr);
 									hold on
-									[c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,rds,diffplt,dcntr,'k');
+									[c1,h1]=contour(0:3:size(EXPvectnav,2)*3-1,EXPvecttics(:,exp1),diffplt,dcntr,'k');
 									caxis([dmin dmax])
 									ylim([0 pltkm])
 									xlim([0 identmaxfhr*3-3])
@@ -5539,24 +5444,24 @@ for shear=1
                     clear tmp
                     if isfile([identfields,'/',identexp0,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_VWS.png'])==0 || isfile([identfields,'/',identexp0,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_VWS.eps'])==0
                     % This will loop over EXP experiments - same code for each!
-                    tmp(1)=isfile([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_u-component_of_wind_isobaric.mat'])==1;
-                    tmp(2)=isfile([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_v-component_of_wind_isobaric.mat'])==1;
+                    tmp(1)=isfile([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_U.mat'])==1;
+                    tmp(2)=isfile([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_V.mat'])==1;
                         if sum(tmp)==2
                             spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_u-component_of_wind_isobaric.mat'])
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_U.mat'])
                             u850 = squeeze(var_f(:,:,7,:));
                             u200 = squeeze(var_f(:,:,33,:));                 
-                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_v-component_of_wind_isobaric.mat'])
+                            load([identfields,'/',identexp0,'/MATFILES/',identhwrf,'_synoptic_',identexp0,'_',identinittimesunique(identloop,:),'_V.mat'])
                             v850 = squeeze(var_f(:,:,7,:));
                             v200 = squeeze(var_f(:,:,33,:)); 
                             pltkm=2000; % how far out the storm-centered plot should go
-                            pltcen=150;% how many gridpoints from center .mat files
-                            radbin=0.125; % resolution of synoptic grid
+                            pltcen=304;% how many gridpoints from center .mat files
+                            radbin=0.06; % resolution of synoptic grid
                             pltpt=ceil(pltkm/(radbin*111.11))+1; % to get to 2000 km
                             rds=0:radbin*111.11:pltcen*radbin*111.11;
-                            inner_rad = rds(15)/radbin/111.11;
-                            outer_rad = rds(59)/radbin/111.11;
-                            ringa=pi*rds(59)*rds(59)-pi*rds(15)*rds(15);
+                            inner_rad = rds(31)/radbin/111.11;
+                            outer_rad = rds(121)/radbin/111.11;
+                            ringa=pi*rds(121)*rds(121)-pi*rds(31)*rds(31);
                             center = pltcen+1; 
                             mask1_size = pltcen*2+1;
                             [x,y] = meshgrid(1:mask1_size,1:mask1_size);
@@ -5615,7 +5520,8 @@ for shear=1
                                 x=[x0 xEnd];
                                 y=[y0 yEnd];  
                                 % plot the arrow
-                                arrow3([x0 y0], [xEnd yEnd],'k')                                                          
+                                pbaspect([1 1 1])
+								arrow3([x0 y0], [xEnd yEnd],'k')                                                          
                             end
                             arrow3('update',[1,.3,1])
                             axis([-1 xlimend*2+1 -5 80])
@@ -5646,7 +5552,7 @@ for shear=1
                             set(gca,'Color',[.9 .9 .9])
                             set(gca,'position',spPos)
                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window
-                            axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
+                            axes(ax);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 							filename=[identfields,'/',identexp0,'/FIGURES/',identn,'_',identinittimesunique(identloop,:),'_VWS'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;					
                             %print([identfields,'/',identexp,'/FIGURES/STORM/',identn,'_',identinittimesunique(identloop,:),'_FHR',num2str((loop-1)*3),'_',savename,'_3DRTAZAV'],'-dpdf','-r200');
                             close all 
@@ -5697,3 +5603,4 @@ for cleanup=1
         end 
     end
 end
+

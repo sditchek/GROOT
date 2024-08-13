@@ -57,7 +57,7 @@ then
 	if [ "${initsynoptic}" -eq 1 ]
 	then
 	#ALL VARIABLES
-	matlab -nosplash -nodesktop -r "identbatch=${numarr};identda=0;identgraphics=0;identstorm=0;identsynoptic=${initstorm};identstormrt=0;identstormav=0;identsynopticrt=0;identsynopticav=0;identgraphicsstorm=0;identgraphicssynoptic=0;identshear=0;identsynopticclean=0;identstormclean=0;" < ${scriptspath}/rungrb.m > ${outputpath}/OUTPUT_SYNOPTIC_${stm}_${numarr}.txt &
+	matlab -nosplash -nodesktop -r "identbatch=${numarr};identda=0;identgraphics=0;identstorm=0;identsynoptic=${initsynoptic};identstormrt=0;identstormav=0;identsynopticrt=0;identsynopticav=0;identgraphicsstorm=0;identgraphicssynoptic=0;identshear=0;identsynopticclean=0;identstormclean=0;" < ${scriptspath}/rungrb.m > ${outputpath}/OUTPUT_SYNOPTIC_${stm}_${numarr}.txt &
 	wait
 	#RADTAN AND RVRT
 	matlab -nosplash -nodesktop -r "identbatch=${numarr};identda=0;identgraphics=0;identstorm=0;identsynoptic=0;identstormrt=0;identstormav=0;identsynopticrt=1;identsynopticav=1;identgraphicsstorm=0;identgraphicssynoptic=0;identshear=0;identsynopticclean=0;identstormclean=0;" < ${scriptspath}/rungrb.m > ${outputpath}/OUTPUT_SYNOPTIC_${stm}_RADTANAV_${numarr}.txt &

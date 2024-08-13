@@ -21,7 +21,7 @@
                         %% Individual Basin-Scale Storm/Init Conv
                         for identloop=1:size(identinittimesunique,1)
 			% What storms are run in the basin at this init time?   
-			identdr=dir([identgroovpr,'tcvitals/','*',identinittimesunique(identloop,:),'.storm_vit']);
+			identdr=dir([identgroot,'tcvitals/','*',identinittimesunique(identloop,:),'.storm_vit']);
 			identdr=unique({identdr.name});
 			if isempty(identdr)==1
 				%identinittimesunique(identloop,:)=[];
@@ -98,7 +98,7 @@
 								% Get the conv for each storm/experiment
 								for j=1:size(identexp,1)
 									for i=1:size(identdr,2)
-										filename=[identgroovpr,identexpshort{j},'/anl/diag_conv_',lower(identconvid),'_anl.',identinittimesunique(identloop,:),'.nc4'];
+										filename=[identgroot,identexpshort{j},'/anl/diag_conv_',lower(identconvid),'_anl.',identinittimesunique(identloop,:),'.nc4'];
 										if isfile(filename)==1
 											ncid = netcdf.open(filename,'NC_NOWRITE');
 											droptype0 = single(netcdf.getVar(ncid,2)); 
@@ -111,7 +111,7 @@
 											dropinc = (netcdf.getVar(ncid,netcdf.inqVarID(ncid,'Prep_Use_Flag'))+netcdf.getVar(ncid,netcdf.inqVarID(ncid,'Analysis_Use_Flag'))); dropinc=dropinc(droptype0==identconvobs);
 											droplon(droplon>=180)=droplon(droplon>=180)-360; % puts it into -180-180 coord without the sign
 										else
-											filename=[identgroovpr,identexpshort{j},'/anl/diag_conv_anl.',identinittimesunique(identloop,:),'.',lower(identconvid),'.latlon.txt'];
+											filename=[identgroot,identexpshort{j},'/anl/diag_conv_anl.',identinittimesunique(identloop,:),'.',lower(identconvid),'.latlon.txt'];
 											Observation_Class=NaN;
 											droptype0 = NaN;
 											droptype = NaN;
@@ -168,11 +168,11 @@
                                         set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                         ax1=subplot(3,4,[1:8]);
                                         h=fill([360,-360,-360,360],[-90,-90,90,90],[.5 .8 1]);
-                                        hold on
-                                        geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
-                                        hold on
-                                        states = shaperead('usastatehi', 'UseGeoCoords', true);
-                                        geoshow(states,'FaceColor',[0.9 0.9 0.9]);                                      
+                                        hold on;borders('countries','facecolor',[.9 .9 .9]);borders('continental us','k');
+                                        %geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
+                                        %hold on
+                                        %states = shaperead('usastatehi', 'UseGeoCoords', true);
+                                        %geoshow(states,'FaceColor',[0.9 0.9 0.9]);                                      
                                         xlabel('Longitude','fontsize',20)
                                         ylabel('Latitude','fontsize',20)                                   
                                         set(gca,'fontsize',20)
@@ -251,11 +251,11 @@
                                                 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                                                 ax1=subplot(3,4,[1:8]);
                                                 h=fill([200,-200,-200,200],[-90,-90,90,90],[.5 .8 1]);
-                                                hold on  
-                                                geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
-                                                hold on
-                                                states = shaperead('usastatehi', 'UseGeoCoords', true);
-                                                geoshow(states,'FaceColor',[0.9 0.9 0.9]);
+                                                hold on;borders('countries','facecolor',[.9 .9 .9]);borders('continental us','k');
+                                                %geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
+                                                %hold on
+                                                %states = shaperead('usastatehi', 'UseGeoCoords', true);
+                                                %geoshow(states,'FaceColor',[0.9 0.9 0.9]);
                                                 xlabel('Longitude','fontsize',20)
                                                 ylabel('Latitude','fontsize',20)                                   
                                                 set(gca,'fontsize',20)
@@ -994,18 +994,18 @@ alldrops0=alldrops_stm{loop1};
                             set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 1, 0.96]); % maximize figure window
                             ax1=subplot(3,4,[1:8]);
                             hold on
-                            load coastlines
+                            %load coastlines
                             for i=1:size(CATall,1)
                                 if strcmp(CATall(i,:),'WV')==1 || strcmp(CATall(i,:),'EX')==1 || strcmp(CATall(i,:),'LO')==1 || strcmp(CATall(i,:),'DB')==1 || strcmp(CATall(i,:),'SD')==1 || strcmp(CATall(i,:),'SS')==1
                                     SPEEDall(i)=-1;
                                 end
                             end         
                             h=fill([200,-200,-200,200],[-90,-90,90,90],[.5 .8 1]);
-                            hold on
-                            geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
-                            hold on
-                            states = shaperead('usastatehi', 'UseGeoCoords', true);
-                            geoshow(states,'FaceColor',[0.9 0.9 0.9]);
+                            hold on;borders('countries','facecolor',[.9 .9 .9]);borders('continental us','k');
+                            %geoshow('borders.shp','FaceColor',[0.9 0.9 0.9]);
+                            %hold on
+                            %states = shaperead('usastatehi', 'UseGeoCoords', true);
+                            %geoshow(states,'FaceColor',[0.9 0.9 0.9]);
                             tmpminlat=min(LATall(:));
                             tmpmaxlat=max(LATall(:));
                             tmpminlon=min(LONall(:));

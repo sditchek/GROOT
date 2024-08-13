@@ -107,9 +107,9 @@ then
 					sbatch ${scriptspath}/matlabsynopticbatch_$numcyc.ksh $numcyc $scriptspath $outputpath $homepath
 				
 				else
-					matlab -nosplash -nodesktop -r "identbatch=${numarrc};identvar0=0;identvarexp0=0;identda=0;identgraphics=0;identstorm=0;identsynoptic=0;identstormrt=0;identstormav=0;identsynopticrt=0;identsynopticav=0;identgraphicsstorm=0;identgraphicssynoptic=0;identshear=0;identsynopticclean=1;identstormclean=0;" < ${scriptspath}/rungrb.m > ${outputpath}/OUTPUT_SYNOPTIC_GRAPHICS_${stm}_${i}_CLEAN.txt &
+					matlab -nosplash -nodesktop -r "identbatch=${numarrc};identvar0=0;identvarexp0=0;identda=0;identgraphics=0;identstorm=0;identsynoptic=0;identstormrt=0;identstormav=0;identsynopticrt=0;identsynopticav=0;identgraphicsstorm=0;identgraphicssynoptic=0;identshear=1;identsynopticclean=1;identstormclean=0;" < ${scriptspath}/rungrb.m > ${outputpath}/OUTPUT_SYNOPTIC_GRAPHICS_${stm}_${i}_CLEAN.txt &
                 		        wait	
-					sbatch ${scriptspath}/matlabsynopticclean.ksh $scriptspath
+					sbatch ${scriptspath}/matlabsynopticclean.ksh $scriptspath $homepath
 				fi
 			fi
 		fi
