@@ -410,7 +410,7 @@ for identremoveinvest=1
 					end                  
 					if identns==1;stratlist=[stratlist 888 889];end;
 					if identenkfexact==1 | identenkfoper==1;stratlist=[stratlist 890 891];if identconv==1 || identsatobs==1;stratlist=[stratlist 892 893];end;end;
-
+					if identconv==1 || identsatobs==1;stratlist=[stratlist 895:910];end;
 					for i=1:size(stratlist,2)
 						if i<=10;
 							identstratlist1(i)=stratlist(i);														

@@ -111,6 +111,7 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+8/20/24  | Added a number of new stratifications (e.g., H-OBS and H-NOOBS)
 8/13/24  | Removed the need for the mapping toolbox from the verification capability.
 6/24/24  | Added AL and EP final bdecks for 2023
          | Added the SHIPS data for 2022 storms for usage in the shear stratifications

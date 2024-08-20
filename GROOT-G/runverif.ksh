@@ -17,7 +17,7 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-homepath=/scratch1/AOML/aoml-osse/${USER} 			# directory path above the GROOT package running location (typically your home directory)
+homepath=/scratch1/AOML/aoml-osse/${USER}/ 			# directory path above the GROOT package running location (typically your home directory)
 atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GFSV16RECON/ # location of your atcf or adeck output
 diagoutput=${atcfoutput}			                # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
 
@@ -58,7 +58,7 @@ rm -rf ${homepath}/GROOT/GROOT-G/GROOT-PR
 # Paths
 mkdir -p ${homepath}/GROOT/GROOT-G/scripts
 mkdir -p ${homepath}/GROOT/GROOT-G/output
-mkdir -p ${homepath}GROOT/GROOT-G/GROOT-PR
+mkdir -p ${homepath}/GROOT/GROOT-G/GROOT-PR
 
 homepath=${homepath}
 scriptspath=${homepath}/GROOT/GROOT-G/scripts
@@ -266,6 +266,6 @@ cp commonverif.txt ${scriptspath}/
 source ./commonverif.txt
 
 # Run the package
-#sbatch ${scriptspath}/matlabverifgraphics.ksh $scriptspath $outputpath $homepath
+sbatch ${scriptspath}/matlabverifgraphics.ksh $scriptspath $outputpath $homepath
 
 exit 0
