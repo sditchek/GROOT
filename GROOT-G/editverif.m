@@ -14,7 +14,7 @@ identexpsigimp='GFS-EXP';                                                  % ful
 identexpcolors=[0 152 0;208 0 0]/255;  	        % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 									     % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroot,'/GFS-CTL']);                                    % short name of experiment that has completed the most cycles (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroot,'/GFS-CTL/atcf/']);                                    % short name of experiment that has completed the most cycles (must match name in "expnew" in runverif.ksh)
 
 % Case Study: also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0;								% run graphics for just 1 storm | yes (1) no (0)
