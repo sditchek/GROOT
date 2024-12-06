@@ -26,18 +26,20 @@ usingadecks=0                                           # are you using ADECKS? 
 numatcf=0						# if using ATCF files, do they start with a number (numatcf=1) or the TC name (numatcf=0)? if using ADECKS, this value won't matter
 
 # If your tracker files are ADECKS...
-startdate1="2018-05-01 00"				# first date in your sample in format "YYYY-MM-DD HH"
-enddate1="2022-11-30 18"				# last date in your sample in format "YYYY-MM-DD HH"
+startdate1="2023-08-26 12"				# first date in your sample in format "YYYY-MM-DD HH"
+enddate1="2023-08-31 12"				# last date in your sample in format "YYYY-MM-DD HH"
 cycling="6"               				# frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
-set -A expfold DELTA-ALL-A ELSA-ALL-A FIONA-ALL-A FRANKLIN-ALL-A HENRI-ALL-A IAN-ALL-A IDA-ALL-A IDALIA-ALL-A LAURA-ALL-A LEE-ALL-A SAM-ALL-A ZETA-ALL-A DELTA-NOG4-A ELSA-NOG4-A FIONA-NOG4-A FRANKLIN-NOG4-A HENRI-NOG4-A IAN-NOG4-A IDA-NOG4-A IDALIA-NOG4-A LAURA-NOG4-A LEE-NOG4-A SAM-NOG4-A ZETA-NOG4-A # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
-set -A expnew ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
-numfold=24                                              # number of entries in expnew
+set -A expfold DELTA-ALL-A ELSA-ALL-A FIONA-ALL-A FRANKLIN-ALL-A HENRI-ALL-A IAN-ALL-A IDA-ALL-A IDALIA-ALL-A LAURA-ALL-A LEE-ALL-A SAM-ALL-A ZETA-ALL-A NICOLE-ALL-A MARCO-ALL-A NICOLE-NOG4-A MARCO-NOG4-A DELTA-NOG4-A ELSA-NOG4-A FIONA-NOG4-A FRANKLIN-NOG4-A HENRI-NOG4-A IAN-NOG4-A IDA-NOG4-A IDALIA-NOG4-A LAURA-NOG4-A LEE-NOG4-A SAM-NOG4-A ZETA-NOG4-A DELTA-ALL-B ELSA-ALL-B FIONA-ALL-B FRANKLIN-ALL-B HENRI-ALL-B IAN-ALL-B IDA-ALL-B IDALIA-ALL-B LAURA-ALL-B LEE-ALL-B SAM-ALL-B ZETA-ALL-B NICOLE-ALL-B MARCO-ALL-B NICOLE-NOG4-B MARCO-NOG4-B DELTA-NOG4-B ELSA-NOG4-B FIONA-NOG4-B FRANKLIN-NOG4-B HENRI-NOG4-B IAN-NOG4-B IDA-NOG4-B IDALIA-NOG4-B LAURA-NOG4-B LEE-NOG4-B SAM-NOG4-B ZETA-NOG4-A # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
+set -A expnew ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
+numfold=56                                              # number of entries in expnew
 set -A expyears 2020 2021 2022 2023			# years the experiments cover
 numyears=4						# number of years
 hafsmodel=1						# did you run with HAFS (hafsmodel=1) or HWRF (hafsmodel=0)
+obstype=uv  					        # the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
 
+# Account Information
 acntold=aoml-hafs1  					# account currently listed in SBATCH above
 acntnew=aoml-hafs1                      		# account you want listed in SBATCH above
 emlold=sarah.d.ditchek@noaa.gov        			# email address currently listed in SBATCH above
@@ -65,17 +67,17 @@ cd ${homepath}/GROOT/GROOT-H/
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" rungrb.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" rungrb.ksh
 sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" rungrb.ksh # DO NOT CHANGE - this is a failsafe
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" rungrb.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-hafs1/#SBATCH -A ${acntnew}/g" rungrb.ksh # DO NOT CHANGE - this is a failsafe
 cd ${scriptspath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
 sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-hafs1/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${retrievalpath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
 sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
-sed -i "s/#SBATCH -A aoml-osse/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-hafs1/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${homepath}/GROOT/GROOT-H/
 
 for ((i=0;i<${numfold};++i))
@@ -118,6 +120,13 @@ do
 		rm ${verifpath}/${expnew[$i]}/tclookup.txt
 		cd ${homepath}/GROOT/GROOT-H/
 	fi
+
+	for file in ${verifpath}/${expnew[$i]}/*;do
+        echo $file
+        vim -E -s -c ":g/^\(.*\)$\n\1/d" -c ":wq" $file
+        vim -E -s -c ":g/^/move 0" -c ":global/./let chars = getline('.')[64:65] | call setline('.', chars . getline('.'))" -c ":let seen = {} | g/^\(.\{36\}\)/if has_key(seen, matchstr(getline('.'), '^\(.\{36\}\)')) | delete | else | let seen[matchstr(getline('.'), '^\(.\{36\}\)')] = 1 | endif" -c ":g/^/move 0" -c ":%s/^..\(.*\)/\1/" -c ":wq" $file
+        done
+
 done
 fi
 
@@ -135,6 +144,7 @@ do
 		# What Experiment and Year
 		echo Starting EXP: ${expnew[$i]} and YEAR: ${expyears[$j]} now...
 		indir2=${verifpath}/${expnew[$i]}/
+                indir1=${verifpath}/obsall/${expnew[$i]}/
 		cp ${noscrubpath}/a*${expyears[$j]}.dat ${indir2}
 		cat ${indir2}/a*${expyears[$j]}.dat > ${indir2}/${expyears[$j]}.dat  # Combine adeck files from the same year
 		grep ${expfold[$i]} ${indir2}/${expyears[$j]}.dat > ${indir2}/${expfold[$i]}_${expyears[$j]}.dat # Extract Experiment from given year
@@ -262,6 +272,12 @@ do
         source ./tclookup.txt
         rm ${verifpath}/${expnew[$i]}/tclookup.txt
         cd ${homepath}/GROOT/GROOT-H/
+
+	for file in ${verifpath}/${expnew[$i]}/*;do
+        echo $file
+        vim -E -s -c ":g/^\(.*\)$\n\1/d" -c ":wq" $file
+        vim -E -s -c ":g/^/move 0" -c ":global/./let chars = getline('.')[64:65] | call setline('.', chars . getline('.'))" -c ":let seen = {} | g/^\(.\{36\}\)/if has_key(seen, matchstr(getline('.'), '^\(.\{36\}\)')) | delete | else | let seen[matchstr(getline('.'), '^\(.\{36\}\)')] = 1 | endif" -c ":g/^/move 0" -c ":%s/^..\(.*\)/\1/" -c ":wq" $file
+        done
 
 done
 fi

@@ -403,9 +403,9 @@ for identremoveinvest=1
 					end
 					identbtyear=identbtyear';
 					if identconv==1 || identsatobs==1
-						stratlist=[1:14,200,894,100:108];
+						stratlist=[1:14,200,920:922,894,100:108];
 					else
-						stratlist=[1,4:14,894,100:102];
+						stratlist=[1,4:14,920:922,894,100:102];
 					end
 					stratlist=[stratlist,15:15+size(unique(identbtyear),1)-1];
 					if identconv==1 || identsatobs==1 % stratify stratifications by dropsonde cycles

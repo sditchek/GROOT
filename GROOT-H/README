@@ -146,6 +146,8 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+12/6/24  | Added three new stratifications (H, RIIN, and WKRW)
+	 | If running with the adeck capability, if the adeck had a bug where entries were duplicated, GROOT now can handle that.
 8/20/24  | Added a number of new stratifications (e.g., H-OBS and H-NOOBS)
 8/13/24  | The GRB component is now working for HAFS & MATLABv2023b! Lots of changes made to scripts to enable this fix.
          | Removed the need for the mapping toolbox from the verification capability.

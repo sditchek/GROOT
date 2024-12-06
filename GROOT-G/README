@@ -111,6 +111,8 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+12/6/24  | Added three new stratifications (H, RIIN, and WKRW)
+         | If running with the adeck capability, if the adeck had a bug where entries were duplicated, GROOT now can handle that.
 8/20/24  | Added a number of new stratifications (e.g., H-OBS and H-NOOBS)
 8/13/24  | Removed the need for the mapping toolbox from the verification capability.
 6/24/24  | Added AL and EP final bdecks for 2023

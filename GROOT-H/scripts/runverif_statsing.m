@@ -6281,7 +6281,7 @@ for graphics=1
 				spPos=[0.11 0.13+.05 0.75 0.75-.05]; % arrange plots the same
 				% Subsets
 				if identconv==1 || identsatobs==1
-					stratlist=[1:37,895:910,894];
+					stratlist=[1:37,920:922,895:910,894];
 					BT_drops=identdropcyc;
 					BT_target=identdropcyc;
 					btd=find(BT_drops==1);
@@ -6294,7 +6294,7 @@ for graphics=1
 						keepstm=1; % save storm index since it has conventional obs
 					end
 				else
-					stratlist=[1,4:14,894,29:31];
+					stratlist=[1,4:14,920:922,894,29:31];
 					keepstm=NaN;
 				end
 				
@@ -6663,10 +6663,7 @@ for graphics=1
 					elseif strat==37 %% High Shear NOOBS
 						clear breakstrat;stname='HIGH-NOOBS'; 
 						if sum(BT_shr1>HIGHbasin & BT_drops'==0)==0 && identcompositeonly==0
-							breakstrat='yes';fid = fopen([identtrackint,'/STRAT_HIGH-NOOBS.txt'],'wt');
-							fprintf(fid,'%s\n','STRATIFICATION: HIGH-NOOBS');
-							fprintf(fid,'%s\n','none');
-							fclose(fid);
+							breakstrat='yes';fid = fopen([identtrackint,'/STRAT_HIGH-NOOBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: HIGH-NOOBS');fprintf(fid,'%s\n','none');fclose(fid);
 						end 		
 					elseif strat==888;clear breakstrat;stname=identnsname;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if isempty(numlist)==1 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_',identnsname,'.txt'],'wt');fprintf(fid,'%s\n',['STRATIFICATION: ',identnsname]);fprintf(fid,'%s\n','none');fclose(fid);end;
 					elseif strat==889;clear breakstrat;stname=['NO-',identnsname];clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1; numlist=[numlist ins2];end;end;end;if isempty(numlist)==1 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_',identnsname,'.txt'],'wt');fprintf(fid,'%s\n',['STRATIFICATION: ',identnsname]);fprintf(fid,'%s\n','none');fclose(fid);end;
@@ -6691,6 +6688,9 @@ for graphics=1
 					elseif strat==908;clear breakstrat;stname='WKRW-NOOBS';if sum(BT_intch1<-5./1.94384 & BT_drops'==0)==0 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_WKRW-NOOBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: RIIN-NOOBS');fprintf(fid,'%s\n','none');fclose(fid);end;
 					elseif strat==909;clear breakstrat;stname='H-OBS';if sum(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1)==0 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_H-OBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: H-OBS');fprintf(fid,'%s\n','none');fclose(fid);end;
 					elseif strat==910;clear breakstrat;stname='H-NOOBS';if sum(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0)==0 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_H-NOOBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: H-NOOBS');fprintf(fid,'%s\n','none');fclose(fid);end;
+					elseif strat==920;clear breakstrat;stname='RIIN';if sum(BT_intch1>5./1.94384)==0 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_RIIN.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: RIIN');fprintf(fid,'%s\n','none');fclose(fid);end;
+					elseif strat==921;clear breakstrat;stname='WKRW';if sum(BT_intch1<-5./1.94384)==0 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_WKRW.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: RIIN');fprintf(fid,'%s\n','none');fclose(fid);end;
+					elseif strat==922;clear breakstrat;stname='H';if sum(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1)==0 && identcompositeonly==0;breakstrat='yes';fid = fopen([identtrackint,'/STRAT_H.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: H');fprintf(fid,'%s\n','none');fclose(fid);end;
 					end
 					if exist('breakstrat','var')==1 && identcompositeonly==0
 							% Create Graphics: trk, int, spd errors - bt-gh vs. bt-deny
@@ -11893,10 +11893,7 @@ for graphics=1
 									end
 									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);
 									if plt==1
-										fid = fopen([identtrackint,'/STRAT_HIGH-NOOBS.txt'],'wt');
-										fprintf(fid,'%s\n','STRATIFICATION: HIGH-NOOBS');
-										for prn=1:size(tmpnm,1)
-											fprintf(fid,'%s\n',tmpnm(prn,:));
+										fid = fopen([identtrackint,'/STRAT_HIGH-NOOBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: HIGH-NOOBS');for prn=1:size(tmpnm,1);fprintf(fid,'%s\n',tmpnm(prn,:));
 										end
 										fclose(fid); 
 									end		
@@ -11926,6 +11923,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);if plt==1;fid = fopen([identtrackint,'/STRAT_WKRW-NOOBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: WKRW-NOOBS');for prn=1:size(tmpnm,1);fprintf(fid,'%s\n',tmpnm(prn,:));end;fclose(fid);end;
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);if plt==1;	fid = fopen([identtrackint,'/STRAT_H-OBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: H-OBS');for prn=1:size(tmpnm,1);fprintf(fid,'%s\n',tmpnm(prn,:));end;fclose(fid);end;
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);if plt==1;	fid = fopen([identtrackint,'/STRAT_H-NOOBS.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: H-NOOBS');for prn=1:size(tmpnm,1);fprintf(fid,'%s\n',tmpnm(prn,:));end;fclose(fid);end;
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);if plt==1;fid = fopen([identtrackint,'/STRAT_RIIN.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: RIIN');for prn=1:size(tmpnm,1);fprintf(fid,'%s\n',tmpnm(prn,:));end;fclose(fid);end;
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);if plt==1;fid = fopen([identtrackint,'/STRAT_WKRW.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: WKRW');for prn=1:size(tmpnm,1);fprintf(fid,'%s\n',tmpnm(prn,:));end;fclose(fid);end;
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);if plt==1;	fid = fopen([identtrackint,'/STRAT_H.txt'],'wt');fprintf(fid,'%s\n','STRATIFICATION: H');for prn=1:size(tmpnm,1);fprintf(fid,'%s\n',tmpnm(prn,:));end;fclose(fid);end;
 								end
 								if plt==1;tmp_expbias=tmp_exp;end;
 								for tmp=1:size(identexp,1)
@@ -12573,11 +12573,8 @@ for graphics=1
 									if plt>=21 && plt<=23
 										tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 									else
-										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-									end
-									tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
@@ -12601,6 +12598,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end    
 								% Find which experiment to compare to
 								for tmp=1:size(identexp,1)
@@ -13266,11 +13266,8 @@ for graphics=1
 									if plt>=21 && plt<=23
 										tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 									else
-										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-									end
-									tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1 numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);  
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
@@ -13294,6 +13291,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 								% Find which experiment to compare to
 								for tmp=1:size(identexp,1)
@@ -13899,12 +13899,9 @@ for graphics=1
 									if plt>=21 && plt<=23
 										tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 									else
-										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-									end
+										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);end;
 									tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;									tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
 								elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpnm=identinittimesunique(BT_enkf'==0 & ~isnan(BT_cat1)==1,:);
@@ -13927,6 +13924,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 								for tmp=1:size(identexp,1)
 									l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
@@ -14587,11 +14587,8 @@ for graphics=1
 										tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 									else
 										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-									end
-									tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+									end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);  
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
 								elseif strat==891;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:);else;tmp_exp=tmp_exp(BT_enkf'==0,:,:);end;tmpnm=identinittimesunique(BT_enkf'==0 & ~isnan(BT_cat1)==1,:);
@@ -14614,6 +14611,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end                                                       
 								for tmp=1:size(identexp,1)
 									if med==1; l(tmp)=plot(1:size(tmp_exp,2),nanmean(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); elseif med==2; l(tmp)=plot(1:size(tmp_exp,2),nanmedian(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2); end;
@@ -15182,11 +15182,8 @@ for graphics=1
 										tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 									else
 										tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-									end
-									tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+									end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+								elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);  
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
@@ -15210,6 +15207,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end                                                       								
 								
 								% Find which experiment to compare to
@@ -15871,10 +15871,7 @@ for graphics=1
 								elseif strat==37 % High Shear No Drops
 									clear tmpyrb
 									if plt>=21 && plt<=23
-										tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-									else
-										tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;
-									end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+										tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;numlist=numlist-1;numlist(numlist<0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);     
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:); % HCOV
@@ -15898,6 +15895,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384 | BT_drops'==1,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1<=5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 
 								for tmp=1:size(identexp,1)
@@ -16537,10 +16537,7 @@ for graphics=1
 								elseif strat==37 % High Shear No Drops
 									clear tmpyrb;if plt>=21 && plt<=23
 										tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-									else
-										tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+									else;tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;numlist=numlist-1;numlist(numlist<0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);  
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:); % HCOV
@@ -16564,6 +16561,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384 | BT_drops'==1,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1<=5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 								% Find which experiment to compare to
 								for tmp=1:size(identexp,1)
@@ -17226,10 +17226,7 @@ for graphics=1
 								elseif strat==37 % High Shear No Drops
 									clear tmpyrb;if plt>=21 && plt<=23
 										tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-									else
-										tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+									else;tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;numlist=numlist-1;numlist(numlist<0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);      
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:); % HCOV
@@ -17253,6 +17250,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384 | BT_drops'==1,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1<=5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 								% Find which experiment to compare to
 								for tmp=1:size(identexp,1)
@@ -17855,10 +17855,7 @@ for graphics=1
 								elseif strat==37 % High Shear No Drops
 									clear tmpyrb;if plt>=21 && plt<=23
 										tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-									else
-										tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+									else;tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;numlist=numlist-1;numlist(numlist<0)=1;if plt>=21 && plt<=23;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);     
 								elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:); % HCOV
@@ -17882,6 +17879,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384 | BT_drops'==1,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1<=5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 								for tmp=1:size(identexp,1)
 									l(tmp)=plot(nanmean(tmp_exp(:,:,tmp),2),1:size(tmp_exp(:,:,tmp),1),'-s','Color',identexpcolors(tmp,:),'linewidth',2,'markersize',2);
@@ -18517,10 +18517,7 @@ for graphics=1
 								elseif strat==37 % High Shear No Drops
 									clear tmpyrb;if plt<0
 										tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-									else
-										tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+									else;tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;if plt<0;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);
 								elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;numlist=numlist-1;numlist(numlist<0)=1;if plt<0;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);      
 								elseif strat==890;clear tmpyrb;if plt<0;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:); % HCOV
@@ -18544,6 +18541,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384 | BT_drops'==1,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1<=5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 
 								% calculate the sum of all errors
@@ -19086,10 +19086,7 @@ for graphics=1
 								elseif strat==37 % High Shear No Drops
 									clear tmpyrb;if plt<0
 										tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;
-									else
-										tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;
-									end
-									tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+									else;tmp_exp(BT_shr1<=HIGHbasin | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 								elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;if plt<0;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:); elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];else;end;end;end;[a_ns,b_ns]=histcounts(numlist,.5:1:size(identinittimesunique,1)+.5);numlist=a_ns';numlist(numlist>0)=1;numlist=numlist-1;numlist(numlist<0)=1;if plt<0;tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3]==0,:,:)=NaN;else;tmp_exp(numlist==0,:,:)=NaN;end;tmpnm=identinittimesunique(numlist==1 & ~isnan(BT_cat1)==1,:);       
 								elseif strat==890;clear tmpyrb;if plt<0;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==0,:,:)=NaN;else;tmp_exp(BT_enkf'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:); % HCOV
 								elseif strat==891;clear tmpyrb;if plt<0;tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:)=NaN;else;tmp_exp(BT_enkf'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_enkf'==0 & ~isnan(BT_cat1)==1,:); % GCOV
@@ -19112,6 +19109,9 @@ for graphics=1
 								elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384 | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384 | BT_drops'==1,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 								elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 								elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0  | [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0 | BT_drops'==1,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+								elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<=5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1<=5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+								elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>=-5./1.94384,:,:)=NaN;else;tmp_exp(BT_intch1>=-5./1.94384,:,:)=NaN;end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+								elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]<64./1.94384  | strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==0,:,:)=NaN;else;tmp_exp(BT_cat1<64./1.94384 | strcmp(BT_cat0,'HU')==0,:,:)=NaN;end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 								end
 								clear imprv imprv2 sm
 								if plt>=21
@@ -19720,11 +19720,8 @@ for graphics=1
 												tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 											else
 												tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-											end
-											tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-										elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-											else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;
-											tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+											end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+										elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 										elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 										elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 										elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
@@ -19748,6 +19745,9 @@ for graphics=1
 										elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 										elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 										elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+										elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+										elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+										elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 										end    																			   
 										
 										
@@ -20482,11 +20482,8 @@ for graphics=1
 										if plt>=21 && plt<=23
 											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 										else
-											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-										end
-										tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-									elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+									elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 									elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 									elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 									elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
@@ -20510,6 +20507,9 @@ for graphics=1
 									elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 									elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 									elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+									elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+									elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+									elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 									end    
 									if plt==1;tmp_expbias=tmp_exp;end;
 									boxplot(tmp_exp(:,:,identexploop),'PlotStyle','compact','Colors',identexpcolors(identexploop,:),'symbol','.','jitter',0.2,'labelorientation','horizontal');								
@@ -21094,11 +21094,8 @@ for graphics=1
 										if plt>=21 && plt<=23
 											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 										else
-											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-										end
-										tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-									elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-										else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+									elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 									elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 									elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 									elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
@@ -21122,6 +21119,9 @@ for graphics=1
 									elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 									elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 									elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);						
+									elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+									elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+									elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 									end    
 									if plt==1;tmp_expbias=tmp_exp;end;										
 									fhrlist=(0:skiphr:(identmaxfhr*3));
@@ -21660,11 +21660,8 @@ for graphics=1
 										if plt>=21 && plt<=23
 											tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>=LOWbasin & [BT_shr1;BT_shr1;BT_shr1;BT_shr1]<=HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 										else
-											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);
-										end
-										tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
-									elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end
-										tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
+											tmp_exp=tmp_exp(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>=LOWbasin & BT_shr1<=HIGHbasin & BT_drops'==0,:);
+									elseif strat==37;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_shr1;BT_shr1;BT_shr1;BT_shr1]>HIGHbasin & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_shr1>HIGHbasin & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_shr1>HIGHbasin & BT_drops'==0,:);	
 									elseif strat==888;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:);
 									elseif strat==889;clear tmpyrb;numlist=[];for ins=1:size(identnewsub,1);tmpns=identnewsub(ins,:);tmp2=identnewsub_id(ins,:);for ins2=1:size(identinittimesunique,1);tmp3=identn(end-4:end-2);if strcmp(identinittimesunique(ins2,:),tmpns)==1 &&  strcmp(tmp2,tmp3)==1;numlist=[numlist ins2];end;end;end;numlista=1:size(trkerr_exp(:,1:skip:end,:),1);numlista(numlist)=[];numlist=numlista;if plt>=21 && plt<=23;tmp_exp=tmp_exp([numlist;numlist+size(identinittimesunique,1)*1;numlist+size(identinittimesunique,1)*2;numlist+size(identinittimesunique,1)*3],:,:);else;tmp_exp=tmp_exp(numlist,:,:);end;tmpnmbtcat=BT_cat1(numlist); tmpnm=identinittimesunique(numlist,:); tmpnm=tmpnm(~isnan(tmpnmbtcat)==1,:); 
 									elseif strat==890;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_enkf';BT_enkf';BT_enkf';BT_enkf']==1,:,:);else;tmp_exp=tmp_exp(BT_enkf'==1,:,:);end;tmpnm=identinittimesunique(BT_enkf'==1 & ~isnan(BT_cat1)==1,:);
@@ -21688,6 +21685,9 @@ for graphics=1
 									elseif strat==908;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_intch1<-5./1.94384 & BT_drops'==0,:);
 									elseif strat==909;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==1,:);
 									elseif strat==910;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1  & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1 & BT_drops'==0,:);
+									elseif strat==920;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]>5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1>5./1.94384,:,:);end;tmpnm=identinittimesunique(BT_intch1>5./1.94384,:);
+									elseif strat==921;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_intch1;BT_intch1;BT_intch1;BT_intch1]<-5./1.94384,:,:);else;tmp_exp=tmp_exp(BT_intch1<-5./1.94384,:,:);end;   tmpnm=identinittimesunique(BT_intch1<-5./1.94384,:);
+									elseif strat==922;clear tmpyrb;if plt>=21 && plt<=23;tmp_exp=tmp_exp([BT_cat1;BT_cat1;BT_cat1;BT_cat1]>=64./1.94384 & strcmp([BT_cat0;BT_cat0;BT_cat0;BT_cat0],'HU')==1 ,:,:);else;tmp_exp=tmp_exp(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:,:);end;tmpnm=identinittimesunique(BT_cat1>=64./1.94384 & strcmp(BT_cat0,'HU')==1,:);
 									end    
 									if plt==1;tmp_expbias=tmp_exp;end;										
 									fhrlist=(0:skiphr:(identmaxfhr*3));
