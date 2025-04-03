@@ -5,7 +5,7 @@
 % Set Directories and Model Properties
 identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];  	 % top-level directory path for results folder - must include end "/"
 identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/GROOT-PR/']; % path of GROOT-PR directory (i.e., ${homepath}/GROOT/GROOT-H/GROOT-PR/, where homepath is same as in runverif.ksh) - must include end "/"
-identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                            	 % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
+identmaxfhr=126;identmodelfhr=126;               		             	 % the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=0;                                                               % are there multiple storms being tracked at once (e.g., basin-scale HWRF or GFS)? | yes (1) no (0)
 identhwrfmodel=0;identhafsmodel=1;					         % did you run HWRF or HAFS? | yes (1) no (0)
 
@@ -90,7 +90,7 @@ stormsdone={stormsdone.name};
 stormsdone=stormsdone(3:end);%testtmp=stormsdone{1};if isnan(str2double(tmptest(1)))==0; for stmdn=1:size(stormsdone,2);identtmp1=stormsdone{stmdn};identtmp2=yearsdone(stmdn,:);identtmp3=identtmp1(3:4);if strcmp(identtmp3,'AL')==1;identtmp4='l';elseif strcmp(identtmp3,'EP')==1;identtmp4='e';elseif strcmp(identtmp3,'WP')==1;identtmp4='w';elseif strcmp(identtmp3,'CP')==1;identtmp4='c';end;addpath(['scripts']);identbdecks=['bdeck/'];filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];if isfile(filename)==1; [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);identn=unique(NAMEall,'rows','stable');identn=identn(end,:);identn=identn(isletter(identn));ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];identn=[identn,identtmp2(3:4)];identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end;stormsdone{stmdn}=identhwrf;end;end;end;clear testtmp;
 
 identserialcorr=.5;identlagcorr=5;                              % variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
-
+identmaxfhr=identmaxfhr/3+1;identmodelfhr=identmodelfhr/3+1;
 cnt=1;
 for i=1:size(stormsdone,2)
             tmp0=stormsdone{i};

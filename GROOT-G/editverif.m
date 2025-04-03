@@ -3,18 +3,18 @@
 %% %%%%%%%%%%%%%%%%%%%%%% %%
 
 % Set Directories and Model Properties
-identout=['/scratch2/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/'];  	 % top-level directory path for results folder - must include end "/"
+identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/'];  	 % top-level directory path for results folder - must include end "/"
 identgroot=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/']; % path of GROOT-PR directory (i.e., ${homepath}/GROOT/GROOT-G/GROOT-PR/, where homepath is same as in runverif.ksh) - must include end "/"
-identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                            	 % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
+identmaxfhr=126;identmodelfhr=126;               		             	 % the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identbasinmodel=0;                                                               % are there multiple storms being tracked at once (e.g., GFS)? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'GFS-CTL'};{'GFS-EXP'}]; 		   	        % folder name of all experiments: 1) must match "expnew" in runverif.ksh, 2) first experiment MUST be the one with al the obs assimilated, and 3) last experiment MUST be the BASELINE
-identexpsigimp='GFS-EXP';                                                  % full folder name of improvement wrt THIS experiment (i.e., your BASELINE)
+identexp=[{'ALL-R'};{'NO-R'}]; 		   	        % folder name of all experiments: 1) must match "expnew" in runverif.ksh, 2) first experiment MUST be the one with al the obs assimilated, and 3) last experiment MUST be the BASELINE
+identexpsigimp='NO-R';                                                  % full folder name of improvement wrt THIS experiment (i.e., your BASELINE)
 identexpcolors=[0 152 0;208 0 0]/255;  	        % colors associated with each experiment - do NOT use black since the best track is black by default
         	                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
 									     % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroot,'/GFS-CTL/atcf/']);                                    % short name of experiment that has completed the most cycles (must match name in "expnew" in runverif.ksh)
+stormsdone=dir([identgroot,'/ALL-R/atcf/']);                                    % short name of experiment that has completed the most cycles (must match name in "expnew" in runverif.ksh)
 
 % Case Study: also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0;								% run graphics for just 1 storm | yes (1) no (0)
@@ -87,7 +87,7 @@ stormsdone={stormsdone.name};
 stormsdone=stormsdone(3:end);%testtmp=stormsdone{1};if isnan(str2double(tmptest(1)))==0; for stmdn=1:size(stormsdone,2);identtmp1=stormsdone{stmdn};identtmp2=yearsdone(stmdn,:);identtmp3=identtmp1(3:4);if strcmp(identtmp3,'AL')==1;identtmp4='l';elseif strcmp(identtmp3,'EP')==1;identtmp4='e';elseif strcmp(identtmp3,'WP')==1;identtmp4='w';elseif strcmp(identtmp3,'CP')==1;identtmp4='c';end;addpath(['scripts']);identbdecks=['bdeck/'];filename = [identbdecks,'b',lower(identtmp1(3:4)),identtmp1(1:2),yearsdone(stmdn,:),'.dat'];if isfile(filename)==1; [identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall]=atcf(filename,1);identn=unique(NAMEall,'rows','stable');identn=identn(end,:);identn=identn(isletter(identn));ident=[identtmp1(3:4),identtmp1(1:2),identtmp2];identn=[identn,identtmp2(3:4)];identhwrf=[lower(identn(1:end-2)),lower(identtmp1(1:2)),lower(identtmp4)];if strcmp(identtmp1(1),'9')==1; identn=[identn(1:6) upper(identtmp1),identtmp2(3:4)];end;stormsdone{stmdn}=identhwrf;end;end;end;clear testtmp;
 
 identserialcorr=.5;identlagcorr=5;                              % variance cutoff for serial correlation factor (e.g., for 50% variance, identserialcorr=.5) | maximum number of cycles for the separation time (e.g., for 24-h serial correlation that means a separation time of 30-h, or 5 6-h cycles, so identlagcorr=5)
-
+identmaxfhr=identmaxfhr/3+1;identmodelfhr=identmodelfhr/3+1;
 cnt=1;
 for i=1:size(stormsdone,2)
             tmp0=stormsdone{i};
@@ -147,8 +147,8 @@ elseif identcase==1
 end
 
 %% Save the output
+identhwrfmodel=0;identhafsmodel=1;
 save('startverif.mat')                        % this file will be saved in the [identout] directory so it can be used when needed
-identhwrfmodel=0
 
 %% Create output file for shell script
 fid = fopen('commonverif.txt','wt');

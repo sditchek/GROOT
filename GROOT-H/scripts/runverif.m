@@ -249,19 +249,19 @@ for identremoveinvest=1
                     azavcm=jet(7);
                     for i=1:length(LONall)
 						if strcmp(DATEall(i,9:10),'00')==1 || strcmp(DATEall(i,9:10),'06')==1 || strcmp(DATEall(i,9:10),'12')==1 || strcmp(DATEall(i,9:10),'18')==1                        
-							if SPEEDall(i) > 0 && SPEEDall(i) < 34./1.94384 
+							if SPEEDall(i) > 0 && SPEEDall(i) < 34./1.94384 && strcmp(CATall(i,:),'TD')==1 
 								plot(LONall(i),LATall(i),'.','color',azavcm(2,:),'markersize',12);            
-							elseif SPEEDall(i) >= 34./1.94384 && SPEEDall(i) < 64./1.94384 
+							elseif SPEEDall(i) >= 34./1.94384 && SPEEDall(i) < 64./1.94384 && strcmp(CATall(i,:),'TS')==1 
 								plot(LONall(i),LATall(i),'.','color',azavcm(3,:),'markersize',12);            
-							elseif SPEEDall(i) >= 64./1.94384 && SPEEDall(i) < 83./1.94384
+							elseif SPEEDall(i) >= 64./1.94384 && SPEEDall(i) < 83./1.94384 && strcmp(CATall(i,:),'HU')==1 
 								plot(LONall(i),LATall(i),'.','color',azavcm(4,:),'markersize',12);            
-							elseif SPEEDall(i) >= 83./1.94384 && SPEEDall(i) < 96./1.94384 
+							elseif SPEEDall(i) >= 83./1.94384 && SPEEDall(i) < 96./1.94384  && strcmp(CATall(i,:),'HU')==1 
 								plot(LONall(i),LATall(i),'.','color',azavcm(5,:),'markersize',12);            
-							elseif SPEEDall(i) >= 96./1.94384 && SPEEDall(i) < 113./1.94384 
+							elseif SPEEDall(i) >= 96./1.94384 && SPEEDall(i) < 113./1.94384  && strcmp(CATall(i,:),'HU')==1 
 								plot(LONall(i),LATall(i),'.','color',azavcm(6,:),'markersize',12);            
-							elseif SPEEDall(i) >=113./1.94384 && SPEEDall(i) < 137./1.94384 
+							elseif SPEEDall(i) >=113./1.94384 && SPEEDall(i) < 137./1.94384  && strcmp(CATall(i,:),'HU')==1 
 								plot(LONall(i),LATall(i),'.','color',azavcm(7,:),'markersize',12);           
-							elseif SPEEDall(i) >= 137./1.94384
+							elseif SPEEDall(i) >= 137./1.94384 && strcmp(CATall(i,:),'HU')==1 
 								plot(LONall(i),LATall(i),'.','color','m','markersize',12); 
 							elseif strcmp(CATall(i,:),'LO')==1 || strcmp(CATall(i,:),'DB')==1 || strcmp(CATall(i,:),'WV')==1
 								plot(LONall(i),LATall(i),'.','color',[.5 .5 .5],'markersize',12);             
@@ -1685,7 +1685,7 @@ for identremoveinvest=1
 				run('scripts/runverif_convcomp')
 				run('scripts/runverif_satcomp')		
 			end
-for compositetcs=1
+			for compositetcs=1 %% included cycles
 				clear l cntexp;addpath('scripts');
 				spPos=[0.11 0.13 0.75 0.75]; % arrange plots the same
 				set(0,'defaultfigurecolor',[1 1 1]) % figure background color
@@ -1747,22 +1747,22 @@ for compositetcs=1
 							nmvar1=BT_lat(nmindex,1);
 							nmvar2=BT_lon(nmindex,1);
 							nmvar3=BT_cat(nmindex,1);										
-							nmvar4=BT_date(nmindex,:);										
+							nmvar4=BT_date(nmindex,:);	nmvar5=BT_cat0(nmindex,:);									
 							nm_stm1(1:size(nmvar1,1),:,i)=nmvar1;
 							nm_stm2(1:size(nmvar2,1),:,i)=nmvar2;
 							nm_stm3(1:size(nmvar3,1),:,i)=nmvar3;
-							nm_stm4(1:size(nmvar4,1),:,i)=nmvar4;
+							nm_stm4(1:size(nmvar4,1),:,i)=nmvar4;nm_stm5(1:size(nmvar5,1),i)=nmvar5;
 						end									
 						nm_stm1=squeeze(nm_stm1);
 						nm_stm2=squeeze(nm_stm2);
 						nm_stm3=squeeze(nm_stm3);
-						nm_stm4=squeeze(nm_stm4);
+						nm_stm4=squeeze(nm_stm4);nm_stm5=squeeze(nm_stm5);
 						% sort by year and then by name                               
 						[a_sorted, a_order] = sort(tmpyr);
 						nm_pctlat = nm_stm1(:,a_order);
 						nm_pctlon = nm_stm2(:,a_order);
 						nm_pctspd = nm_stm3(:,a_order);
-						nm_pctdate = nm_stm4(:,:,a_order);
+						nm_pctdate = nm_stm4(:,:,a_order);nm_pctcat=nm_stm5(:,a_order);
 						tmpnm = tmpnm(a_order);					
 						clear plotsim
 						cnt=1;
@@ -1783,20 +1783,20 @@ for compositetcs=1
 							azavcm=jet(7);
 							for i=1:size(nm_pctdate,1)
 								if strcmp(nm_pctdate(i,9:10,pltstm),'00')==1 || strcmp(nm_pctdate(i,9:10,pltstm),'06')==1 || strcmp(nm_pctdate(i,9:10,pltstm),'12')==1 || strcmp(nm_pctdate(i,9:10,pltstm),'18')==1                        
-									if nm_pctspd(i,pltstm) > 0 && nm_pctspd(i,pltstm) < 34./1.94384 
+									if nm_pctspd(i,pltstm) > 0 && nm_pctspd(i,pltstm) < 34./1.94384 && strcmp(nm_pctcat(i,pltstm),'TD')==1
 										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(2,:),'markersize',12);            
-									elseif nm_pctspd(i,pltstm) >= 34./1.94384 && nm_pctspd(i,pltstm) < 64./1.94384 
+									elseif nm_pctspd(i,pltstm) >= 34./1.94384 && nm_pctspd(i,pltstm) < 64./1.94384  && strcmp(nm_pctcat(i,pltstm),'TS')==1
 										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(3,:),'markersize',12);            
-									elseif nm_pctspd(i,pltstm) >= 64./1.94384 && nm_pctspd(i,pltstm) < 83./1.94384
+									elseif nm_pctspd(i,pltstm) >= 64./1.94384 && nm_pctspd(i,pltstm) < 83./1.94384 && strcmp(nm_pctcat(i,pltstm),'HU')==1
 										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(4,:),'markersize',12);            
-									elseif nm_pctspd(i,pltstm) >= 83./1.94384 && nm_pctspd(i,pltstm) < 96./1.94384 
+									elseif nm_pctspd(i,pltstm) >= 83./1.94384 && nm_pctspd(i,pltstm) < 96./1.94384 && strcmp(nm_pctcat(i,pltstm),'HU')==1
 										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(5,:),'markersize',12);            
-									elseif nm_pctspd(i,pltstm) >= 96./1.94384 && nm_pctspd(i,pltstm) < 113./1.94384 
+									elseif nm_pctspd(i,pltstm) >= 96./1.94384 && nm_pctspd(i,pltstm) < 113./1.94384 && strcmp(nm_pctcat(i,pltstm),'HU')==1
 										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(6,:),'markersize',12);            
-									elseif nm_pctspd(i,pltstm) >=113./1.94384 && nm_pctspd(i,pltstm) < 137./1.94384 
+									elseif nm_pctspd(i,pltstm) >=113./1.94384 && nm_pctspd(i,pltstm) < 137./1.94384 && strcmp(nm_pctcat(i,pltstm),'HU')==1
 										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',azavcm(7,:),'markersize',12);           
-									elseif nm_pctspd(i,pltstm) >= 137./1.94384
-										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color','m','markersize',12); 								            
+									elseif nm_pctspd(i,pltstm) >= 137./1.94384 && strcmp(nm_pctcat(i,pltstm),'HU')==1
+										plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color','m','markersize',12);elseif strcmp(nm_pctcat(i,pltstm),'LO')==1 || strcmp(nm_pctcat(i,pltstm),'DB')==1 || strcmp(nm_pctcat(i,pltstm),'WV')==1;plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'.','color',[.5 .5 .5],'markersize',12);elseif strcmp(nm_pctcat(i,pltstm),'SD')==1 || strcmp(nm_pctcat(i,pltstm),'SS')==1;plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'s','color',[.5 .5 .5],'markersize',4,'markerfacecolor',[.5 .5 .5]);elseif strcmp(nm_pctcat(i,pltstm),'EX')==1;plot(nm_pctlon(i,pltstm),nm_pctlat(i,pltstm),'d','color',[.5 .5 .5],'markersize',3,'markerfacecolor',[.5 .5 .5]);                 
 									end
 								end
 							end
@@ -1906,7 +1906,7 @@ for compositetcs=1
 				c_mid=x_mean;
 				xlim([c_mid-c_dist-5 c_mid+c_dist+5])
 				axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
-				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/InvestN/COMP_tracks'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all
+				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/COMP_tracks'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all
 			end		
 		end
     end

@@ -18,7 +18,7 @@
 
 # Set Folders
 homepath=/scratch1/AOML/aoml-osse/${USER}/                              # directory path above the GROOT package running location (typically your home directory)
-noscrubpath=/scratch2/AOML/aoml-hafs1/${USER}/noscrub/hafstrak/         # path to your atcf files
+noscrubpath=/scratch2/AOML/aoml-hafs1/${USER}/noscrub/hafstrak/         # path to your atcf or adeck files
 scrubpath=/scratch2/AOML/aoml-hafs1/${USER}/scrub/ 			# path to your scrub directory (if you are not running the assim obs capabilty, you can set this to $noscrubpath)
 
 # What type of tracker files are you using?
@@ -26,18 +26,18 @@ usingadecks=0                                           # are you using ADECKS? 
 numatcf=0						# if using ATCF files, do they start with a number (numatcf=1) or the TC name (numatcf=0)? if using ADECKS, this value won't matter
 
 # If your tracker files are ADECKS...
-startdate1="2023-08-26 12"				# first date in your sample in format "YYYY-MM-DD HH"
-enddate1="2023-08-31 12"				# last date in your sample in format "YYYY-MM-DD HH"
+startdate1="2023-08-26 12"                              # first date in your sample in format "YYYY-MM-DD HH"
+enddate1="2023-08-31 12"                                # last date in your sample in format "YYYY-MM-DD HH"
 cycling="6"               				# frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
 set -A expfold DELTA-ALL-A ELSA-ALL-A FIONA-ALL-A FRANKLIN-ALL-A HENRI-ALL-A IAN-ALL-A IDA-ALL-A IDALIA-ALL-A LAURA-ALL-A LEE-ALL-A SAM-ALL-A ZETA-ALL-A NICOLE-ALL-A MARCO-ALL-A NICOLE-NOG4-A MARCO-NOG4-A DELTA-NOG4-A ELSA-NOG4-A FIONA-NOG4-A FRANKLIN-NOG4-A HENRI-NOG4-A IAN-NOG4-A IDA-NOG4-A IDALIA-NOG4-A LAURA-NOG4-A LEE-NOG4-A SAM-NOG4-A ZETA-NOG4-A DELTA-ALL-B ELSA-ALL-B FIONA-ALL-B FRANKLIN-ALL-B HENRI-ALL-B IAN-ALL-B IDA-ALL-B IDALIA-ALL-B LAURA-ALL-B LEE-ALL-B SAM-ALL-B ZETA-ALL-B NICOLE-ALL-B MARCO-ALL-B NICOLE-NOG4-B MARCO-NOG4-B DELTA-NOG4-B ELSA-NOG4-B FIONA-NOG4-B FRANKLIN-NOG4-B HENRI-NOG4-B IAN-NOG4-B IDA-NOG4-B IDALIA-NOG4-B LAURA-NOG4-B LEE-NOG4-B SAM-NOG4-B ZETA-NOG4-A # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
 set -A expnew ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
-numfold=56                                              # number of entries in expnew
+numfold=56                                             # number of entries in expnew
 set -A expyears 2020 2021 2022 2023			# years the experiments cover
 numyears=4						# number of years
 hafsmodel=1						# did you run with HAFS (hafsmodel=1) or HWRF (hafsmodel=0)
-obstype=uv  					        # the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
+obstype=uv  					        # one of the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is). if you have more than one observation type you're testing, that's okay! Just include one of them here - GROOT will create blank files for cycles without data, if needed.
 
 # Account Information
 acntold=aoml-hafs1  					# account currently listed in SBATCH above

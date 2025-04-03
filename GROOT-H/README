@@ -146,6 +146,9 @@ GRB CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+4/3/2025 | Made some aesthetic changes to graphics that plot track and intensity
+	 | Bug fix for running individual observing type with HWRF
+12/12/24 | Added WP, IO, and SH final bdecks for 2022 and 2023
 12/6/24  | Added three new stratifications (H, RIIN, and WKRW)
 	 | If running with the adeck capability, if the adeck had a bug where entries were duplicated, GROOT now can handle that.
 8/20/24  | Added a number of new stratifications (e.g., H-OBS and H-NOOBS)

@@ -19,7 +19,7 @@
 # Set Folders
 homepath=/scratch1/AOML/aoml-osse/${USER}/ 			# directory path above the GROOT package running location (typically your home directory)
 atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GFSV16RECON/ # location of your atcf or adeck output
-diagoutput=${atcfoutput}			                # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
+diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GFSV16RECON/OBS/ 	                # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
 
 # What type of tracker files are you using?
 usingadecks=0							# are you using ADECKS? if so, GROOT has an additional preprocessing step | (1) yes (0) no
@@ -30,7 +30,7 @@ enddate1="2023-10-30 00"                                # last date in your samp
 cycling="6"                                             # frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
-set -A expfold GFSv16_CTRL GFSv16_DENY 	        # exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
+set -A expfold GFSv16_CTRL GFSv16_DENY      # exp folders (e.g., STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2)
 set -A expnew ALL-R NO-R       			# names of exps (these will be the names on the graphics e.g., EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2)
 numfold=2                               	# number of folders in expnew - the number must match!
 set -A expyears 2020 2021 2022 2023             # years the experiments cover 
@@ -63,7 +63,7 @@ mkdir -p ${homepath}/GROOT/GROOT-G/GROOT-PR
 homepath=${homepath}
 scriptspath=${homepath}/GROOT/GROOT-G/scripts
 outputpath=${homepath}/GROOT/GROOT-G/output
-progresspath=${homepath}/GROOT/GROOT-G//GROOT-PR
+progresspath=${homepath}/GROOT/GROOT-G/GROOT-PR
 
 # Clean up old files
 rm -f ${outputpath}/OUTPUT*VERIF*.txt
@@ -107,6 +107,7 @@ do
 
 		# Copy Over Files
 		cp ${atcfoutput}/${expfold[$i]}/*atcfunix.gfs*.${expyears[$j]}* ${indir2}
+                cp ${diagoutput}/${expfold[$i]}/*${obstype}*anl ${indir1}
 		cp ${diagoutput}/${expfold[$i]}/*${obstype}*anl*.gz ${indir1}
         	cp ${diagoutput}/${expfold[$i]}/*${obstype}*anl*.nc4 ${indir1}
 
@@ -179,6 +180,14 @@ do
 	
 			     echo "${line}" > ${indir3}/${name}.${date}${tm:0:2}.storm_vit
 			done < /scratch1/NCEPDEV/hwrf/noscrub/input/SYNDAT-PLUS/syndat_tcvitals.${expyears[$j]}
+
+ 			#matlab -nosplash -nodesktop -r  "identgrootpr='/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/tcvitals';identout='${homepath}/GROOT/GROOT-G/';" < ${scriptspath}/tclookup_vitals.m > ${outputpath}/OUTPUT_TCLOOKUP_VITALS.txt &
+                	#wait
+	                #mv ${homepath}/GROOT/GROOT-G/tclookup.txt ${verifpath}/tcvitals/tclookup.txt
+        	        #cd ${verifpath}/tcvitals/
+                	#source ./tclookup.txt
+	                #rm ${verifpath}/tcvitals/tclookup.txt
+        	        #cd ${homepath}/GROOT/GROOT-G/
 		fi
 
 		# Grab files (name)
@@ -249,6 +258,12 @@ do
         rm ${indir2}/7* # not a valid bdeck identifer
         rm ${indir2}/8* # not a valid bdeck identifer
         rm ${indir2}/9* # not a valid bdeck identifer
+
+	for file in ${progresspath}/${expnew[$i]}/*;do
+        echo $file
+        vim -E -s -c ":g/^\(.*\)$\n\1/d" -c ":wq" $file
+        vim -E -s -c ":g/^/move 0" -c ":global/./let chars = getline('.')[64:65] | call setline('.', chars . getline('.'))" -c ":let seen = {} | g/^\(.\{36\}\)/if has_key(seen, matchstr(getline('.'), '^\(.\{36\}\)')) | delete | else | let seen[matchstr(getline('.'), '^\(.\{36\}\)')] = 1 | endif" -c ":g/^/move 0" -c ":%s/^..\(.*\)/\1/" -c ":wq" $file
+        done
 
 done
 
