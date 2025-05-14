@@ -38,10 +38,13 @@ numyears=4                                      # number of years
 obstype=uv					# the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is)
 
 # Account Information
-acntold=aoml-osse                       # account currently listed in SBATCH above
-acntnew=aoml-hafs1                       # account you want listed in SBATCH above
-emlold=sarah.d.ditchek@noaa.gov         # email address currently listed in SBATCH above
-emlnew=sarah.d.ditchek@noaa.gov         # email address you want listed in SBATCH above
+acntold=aoml-hafs1  					# account currently listed in SBATCH above
+acntnew=aoml-hafs1                      		# account you want listed in SBATCH above
+hpcold=hera                                             # hpc currently listed in SBATCH above
+hpcnew=hera                                             # hpc you want listed in SBATCH above
+emlold=sarah.d.ditchek@noaa.gov        			# email address currently listed in SBATCH above
+emlnew=sarah.d.ditchek@noaa.gov         		# email address you want listed in SBATCH above
+vitalspath=/scratch1/NCEPDEV/hwrf/noscrub/input/SYNDAT-PLUS/ # path to the machine's TC vitals file
 
 ##########################################
 ########## END OF USER SETTINGS ##########
@@ -72,15 +75,26 @@ rm -f ${homepath}/GROOT/GROOT-G/SUBMISSION_FINISHED.txt
 
 # Change Accounts and Emails
 cd ${homepath}/GROOT/GROOT-G/
-sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
-sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
-sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
-sed -i "s/#SBATCH -A aoml-hafs1/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" rungrb.ksh
+sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" rungrb.ksh
+sed -i "s/#SBATCH -p ${hpcold}/#SBATCH -p ${hpcnew}/g" rungrb.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" rungrb.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-hafs1/#SBATCH -A ${acntnew}/g" rungrb.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -p hera/#SBATCH -p ${hpcnew}/g" rungrb.ksh # DO NOT CHANGE - this is a failsafe
 cd ${scriptspath}
 sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
 sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
-sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe 
+sed -i "s/#SBATCH -p ${hpcold}/#SBATCH -p ${hpcnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 sed -i "s/#SBATCH -A aoml-hafs1/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -p hera/#SBATCH -p ${hpcnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+cd ${retrievalpath}
+sed -i "s/#SBATCH --mail-user=${emlold}/#SBATCH --mail-user=${emlnew}/g" *.ksh
+sed -i "s/#SBATCH -A ${acntold}/#SBATCH -A ${acntnew}/g" *.ksh
+sed -i "s/#SBATCH -p ${hpcold}/#SBATCH -p ${hpcnew}/g" *.ksh
+sed -i "s/#SBATCH --mail-user=sarah.d.ditchek@noaa.gov/#SBATCH --mail-user=${emlnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -A aoml-hafs1/#SBATCH -A ${acntnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
+sed -i "s/#SBATCH -p hera/#SBATCH -p ${hpcnew}/g" *.ksh # DO NOT CHANGE - this is a failsafe
 cd ${homepath}/GROOT/GROOT-G/
 
 # For each experiment, create directories, grab atcf and conv/rad diag files, separate the atcf files into individual storms, and process conv/rad diag files
