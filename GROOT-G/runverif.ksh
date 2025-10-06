@@ -17,9 +17,9 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-homepath=/scratch1/AOML/aoml-osse/${USER}/ 			# directory path above the GROOT package running location (typically your home directory)
-atcfoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GFSV16RECON/ # location of your atcf or adeck output
-diagoutput=/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GFSV16RECON/OBS/ 	                # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
+homepath=/scratch4/AOML/aoml-hafs1/${USER}/ 			# directory path above the GROOT package running location (typically your home directory)
+atcfoutput=/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/GFSV16RECON/ # location of your atcf or adeck output
+diagoutput=/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/GFSV16RECON/OBS/ 	                # location of your diag output (if you're not testing an observation type, set it to $atcfoutput
 
 # What type of tracker files are you using?
 usingadecks=0							# are you using ADECKS? if so, GROOT has an additional preprocessing step | (1) yes (0) no
@@ -44,7 +44,7 @@ hpcold=hera                                             # hpc currently listed i
 hpcnew=hera                                             # hpc you want listed in SBATCH above
 emlold=sarah.d.ditchek@noaa.gov        			# email address currently listed in SBATCH above
 emlnew=sarah.d.ditchek@noaa.gov         		# email address you want listed in SBATCH above
-vitalspath=/scratch1/NCEPDEV/hwrf/noscrub/input/SYNDAT-PLUS/ # path to the machine's TC vitals file
+vitalspath=/scratch3/HFIP/hwrfv3/noscrub/input/SYNDAT-PLUS/ # path to the machine's TC vitals file
 
 ##########################################
 ########## END OF USER SETTINGS ##########
@@ -195,7 +195,7 @@ do
 			     echo "${line}" > ${indir3}/${name}.${date}${tm:0:2}.storm_vit
 			done < /scratch1/NCEPDEV/hwrf/noscrub/input/SYNDAT-PLUS/syndat_tcvitals.${expyears[$j]}
 
- 			#matlab -nosplash -nodesktop -r  "identgrootpr='/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/tcvitals';identout='${homepath}/GROOT/GROOT-G/';" < ${scriptspath}/tclookup_vitals.m > ${outputpath}/OUTPUT_TCLOOKUP_VITALS.txt &
+ 			#matlab -nosplash -nodesktop -r  "identgrootpr='/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-G/GROOT-PR/tcvitals';identout='${homepath}/GROOT/GROOT-G/';" < ${scriptspath}/tclookup_vitals.m > ${outputpath}/OUTPUT_TCLOOKUP_VITALS.txt &
                 	#wait
 	                #mv ${homepath}/GROOT/GROOT-G/tclookup.txt ${verifpath}/tcvitals/tclookup.txt
         	        #cd ${verifpath}/tcvitals/

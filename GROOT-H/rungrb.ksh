@@ -17,11 +17,11 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Account Information
-acntold=aoml-osse				# account currently listed in SBATCH above
+acntold=aoml-hafs1				# account currently listed in SBATCH above
 acntnew=aoml-hafs1				# account you want listed in SBATCH above
 emlold=sarah.d.ditchek@noaa.gov			# email address currently listed in SBATCH above
 emlnew=sarah.d.ditchek@noaa.gov			# email address you want listed in SBATCH above
-dirpth=/scratch1/AOML/aoml-osse/${USER}/GROOT/	# directory path above GROOT-H location
+dirpth=/scratch4/AOML/aoml-hafs1/${USER}/GROOT/	# directory path above GROOT-H location
 
 ########################
 # END OF USER SETTINGS #

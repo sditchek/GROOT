@@ -1,20 +1,20 @@
-%% %%%%%%%%%%%%%%%%%%%%%%%%%% %%
+%% %%%%%%%%%%%%%%%%%%%%%%%%%% %% 
 %% BEGINNING OF USER SETTINGS %%
 %% %%%%%%%%%%%%%%%%%%%%%%%%%% %%
 
 % Choose storm, experiment, cycle, and properties
-ident=['AL092022'];                                             % basin, ID, and year (e.g., AL092016)
-identn=['IAN22'];                                               % NAMEYY (e.g., HERMINE16)
-identhwrf=['IAN09l'];                                           % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
-identcycles='2022093006';                                       % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
-identmaxfhr=(126)/3+1;identmodelfhr=126/3+1;                    % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
+ident=['AL092021'];                                             % basin, ID, and year (e.g., AL092016)
+identn=['IDA21'];                                               % NAMEYY (e.g., HERMINE16)
+identhwrf=['IDA09l'];                                           % name, ID, and short basin ID - check grb2 file output names if confused (e.g., hermine09l)
+identcycles='2021082712';                                       % cycle times | for all, identcycles='all'; for multiple cycles, 'YYYYMMDDHH';'YYYYMMDDHH'; for single, YYYYMMDDHH
+identmaxfhr=(0)/3+1;identmodelfhr=126/3+1;                    % X/3+1, where X is the max 1) identmaxfhr-you want for graphics and 2) identmodelfhr-output by your model
 identlevels=45;                                                 % number of pressure levels
-identexp=[{'IAN-ALL'};{'IAN-ALL'}];                             % full folder name of all experiments to compare - name from your scrub directory
-identexpshort=[{'ALL'};{'NO'}];                                 % short name of experiments (no more than 8 letters per experiment)
-identexpsigimp='NO';                                            % full folder name of experiment you want improvement and significance compared to
-identexpsigimpshort='NO';                                       % short name of experiment you want improvement and significance compared to (no more than 8 letters)
+identexp=[{'IDA-ALL-B1'};{'IDA-NOG4-B1'}];                             % full folder name of all experiments to compare - name from your scrub directory
+identexpshort=[{'ALL-B1'};{'NOG4-B1'}];                                 % short name of experiments (no more than 8 letters per experiment)
+identexpsigimp='IDA-NOG4-B1';                                            % full folder name of experiment you want improvement and significance compared to
+identexpsigimpshort='NOG4-B1';                                       % short name of experiment you want improvement and significance compared to (no more than 8 letters)
 identpresplan=[850];                                    % pressure levels of plan-view graphics
-identexpcolors=[0 152 0;208 0 0]/255;                           % colors associated with each experiment
+identexpcolors=[0 152 0;208 0 0;]/255;                           % colors associated with each experiment
                                                                       % EX1: For 2 experiments, recommended colors: green(included data)=[0,.7,0] red(denied data)=[.9,0,0]
                                                                       % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
 identdiff=[1 2;];                                               % for which experiments should difference fields be taken
@@ -23,19 +23,19 @@ identdiff=[1 2;];                                               % for which expe
 
 
 % Set Directories
-identscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/ian/scrub/'];      % location of your scrub dirctory that has the grb files
-identnoscrub=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/ian/noscrub/'];  % location of your noscrub dirctory that has the atcf track files
-identout=['/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-H/'];    % location of your GROOT-H directory
-identnum=0                                                               % do your grib files start with a number (identnum=1) or the name of the storm (identnum=0)?
+identscrub=['/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/scrub/'];      % location of your scrub dirctory that has the grb files
+identnoscrub=['/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/noscrub/'];  % location of your noscrub dirctory that has the atcf track files
+identout=['/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-H/'];    % location of your GROOT-H directory
+identnum=1                                                               % do your grib files start with a number (identnum=1) or the name of the storm (identnum=0)?
 
 % Graphics
 initgraphics=1;                                                 % create TRACK/INT error data - for graphics edit editverif.m | yes - first time running (1) or no - ran this before (0)
 initda=0;                                                       % create pre-GSI and post-GSI graphics if user-retrieved using the included retrieval script | yes (1) no (0)
-initsynoptic=1;                                                 % create SYNOPTIC grid .mat files | yes (1) or no (0)
-initgraphicssynoptic=1;                                         % create SYNOPTIC grid graphics | yes (1) or no (0)
+initsynoptic=0;                                                 % create SYNOPTIC grid .mat files | yes (1) or no (0)
+initgraphicssynoptic=0;                                         % create SYNOPTIC grid graphics | yes (1) or no (0)
 initstorm=1;                                                    % create STORM grid .mat files | yes (1) or no (0)
 initgraphicsstorm=1;                                            % create STORM grid graphics | yes (1) or no (0)
-identplan=1;                                                    % create plan-view graphics (turn off to save time) | yes (1) no (0)
+identplan=0;                                                    % create plan-view graphics (turn off to save time) | yes (1) no (0)
 identsave=0;                                                    % do you want to save .mat files of the computed fields that make the graphics? This takes up more space! | yes (1) no (0)
 identeps=1;                                                     % save as eps or png? | eps (1) png (0)
 
@@ -52,7 +52,7 @@ identeps=1;                                                     % save as eps or
 %v06=6		%	K			%	    Dew point temperature 				%	2 M
 %v07=7		%	(kg/(m^3))(m/s)		%	    Exchange Coefficient 				%	Surface
 %v08=8		%	m/s			%	    Frictional Velocity 				%	Surface
-v09=9		%	dam			%	    Geopotential height 				%	Isobaric
+%v09=9		%	dam			%	    Geopotential height 				%	Isobaric
 %v10=10		%	gpm			%	    Geopotential height 				%	Surface
 %v11=11		%	gpm			%	    Geopotential height 				%	Tropopause
 %v12=12		%	kg/kg			%	    Graupel (snow pellets) 				%	Isobaric
@@ -69,7 +69,7 @@ v09=9		%	dam			%	    Geopotential height 				%	Isobaric
 %v23=23		%	N/(m^2)			%	    Momentum flux; u component 				%	Surface
 %v24=24		%	N/(m^2)			%	    Momentum flux; v component 				%	Surface
 %v25=25		%	m			%	    Planetary Boundary Layer Height 			%	2D
-v26=26		%	kg/(m^2)		%	    Precipitable water 					%	2D
+%v26=26		%	kg/(m^2)		%	    Precipitable water 					%	2D
 %v27=27		%	kg/(m^2 s)		%	    Precipitation rate 					%	Surface
 %v28=28		%	hPa			%	    Pressure 						%	Surface
 %v29=29		%	hPa			%	    Pressure 						%	Tropopause
@@ -100,7 +100,6 @@ v26=26		%	kg/(m^2)		%	    Precipitable water 					%	2D
 %v54=54		%	Pa/s			%	    Vertical velocity (pressure) 			%	Isobaric
 %v55=55		%	K			%	    Water temperature 					%	Surface
 %v56=56		%	m/s			%	    Wind speed (gust) 					%	Surface
-%v57=57		%	m/s			%	    Wind speed 						%	10 M
 %v58=[58,59]	%	m/s			%	    u/v component of wind 				%	10 M
 %v59=[60,61]	%	m/s			%	    u/v component of wind 				%	Tropopause
 v60=[62,63]	%	m/s			%	    u/v component of wind 				%	Isobaric

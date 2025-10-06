@@ -17,36 +17,36 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-homepath=/scratch1/AOML/aoml-osse/${USER}/                              # directory path above the GROOT package running location (typically your home directory)
-noscrubpath=/scratch2/AOML/aoml-hafs1/${USER}/noscrub/hafstrak/         # path to your atcf or adeck files
-scrubpath=/scratch2/AOML/aoml-hafs1/${USER}/scrub/ 			# path to your scrub directory (if you are not running the assim obs capabilty, you can set this to $noscrubpath)
+homepath=/scratch4/AOML/aoml-hafs1/${USER}/                              # directory path above the GROOT package running location (typically your home directory)
+noscrubpath=/scratch4/AOML/aoml-hafs1/${USER}/noscrub/hafstrak/          # path to your atcf or adeck files
+scrubpath=/scratch4/AOML/aoml-hafs1/${USER}/scrub/ 	 	  	 # path to your scrub directory (if you are not running the assim obs capabilty, you can set this to $noscrubpath)
 
 # What type of tracker files are you using?
 usingadecks=0                                           # are you using ADECKS? if so, GROOT has an additional preprocessing step | (1) yes (0) no
 numatcf=0						# if using ATCF files, do they start with a number (numatcf=1) or the TC name (numatcf=0)? if using ADECKS, this value won't matter
 
 # If your tracker files are ADECKS...
-startdate1="2023-08-26 12"                              # first date in your sample in format "YYYY-MM-DD HH"
-enddate1="2023-08-31 12"                                # last date in your sample in format "YYYY-MM-DD HH"
+startdate1="2020-07-20 00"                              # first date in your sample in format "YYYY-MM-DD HH"
+enddate1="2023-10-30 00"                                # last date in your sample in format "YYYY-MM-DD HH"
 cycling="6"               				# frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
-set -A expfold DELTA-ALL-A ELSA-ALL-A FIONA-ALL-A FRANKLIN-ALL-A HENRI-ALL-A IAN-ALL-A IDA-ALL-A IDALIA-ALL-A LAURA-ALL-A LEE-ALL-A SAM-ALL-A ZETA-ALL-A NICOLE-ALL-A MARCO-ALL-A NICOLE-NOG4-A MARCO-NOG4-A DELTA-NOG4-A ELSA-NOG4-A FIONA-NOG4-A FRANKLIN-NOG4-A HENRI-NOG4-A IAN-NOG4-A IDA-NOG4-A IDALIA-NOG4-A LAURA-NOG4-A LEE-NOG4-A SAM-NOG4-A ZETA-NOG4-A DELTA-ALL-B ELSA-ALL-B FIONA-ALL-B FRANKLIN-ALL-B HENRI-ALL-B IAN-ALL-B IDA-ALL-B IDALIA-ALL-B LAURA-ALL-B LEE-ALL-B SAM-ALL-B ZETA-ALL-B NICOLE-ALL-B MARCO-ALL-B NICOLE-NOG4-B MARCO-NOG4-B DELTA-NOG4-B ELSA-NOG4-B FIONA-NOG4-B FRANKLIN-NOG4-B HENRI-NOG4-B IAN-NOG4-B IDA-NOG4-B IDALIA-NOG4-B LAURA-NOG4-B LEE-NOG4-B SAM-NOG4-B ZETA-NOG4-A # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
-set -A expnew ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A ALL-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A NOG4-A ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B ALL-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B NOG4-B # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
-numfold=56                                             # number of entries in expnew
-set -A expyears 2020 2021 2022 2023			# years the experiments cover
-numyears=4						# number of years
+set -A expfold BERYL-NO BERYL-OPER-THIN BERYL-SOME-THIN-2xR-GROSS BERYL-STD-THIN BERYL-OPER BERYL-NO-THIN BERYL-SOME-THIN-2xR  # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
+set -A expnew NO OPER-THIN SOME-THIN-2xR-GROSS STD-THIN OPER NO-THIN SOME-THIN-2xR # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
+numfold=7                                              # number of entries in expnew
+set -A expyears 2024					# years the experiments cover
+numyears=1						# number of years
 hafsmodel=1						# did you run with HAFS (hafsmodel=1) or HWRF (hafsmodel=0)
 obstype=uv  					        # one of the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is). if you have more than one observation type you're testing, that's okay! Just include one of them here - GROOT will create blank files for cycles without data, if needed.
 
 # Account Information
 acntold=aoml-hafs1  					# account currently listed in SBATCH above
 acntnew=aoml-hafs1                      		# account you want listed in SBATCH above
-hpcold=hera                                             # hpc currently listed in SBATCH above
-hpcnew=hera                                             # hpc you want listed in SBATCH above
+hpcold=hera                                             # hpc partition currently listed in SBATCH above
+hpcnew=hera                                             # hpc partition you want listed in SBATCH above
 emlold=sarah.d.ditchek@noaa.gov        			# email address currently listed in SBATCH above
 emlnew=sarah.d.ditchek@noaa.gov         		# email address you want listed in SBATCH above
-vitalspath=/scratch1/NCEPDEV/hwrf/noscrub/input/SYNDAT-PLUS/ # path to the machine's TC vitals file
+vitalspath=/scratch3/HFIP/hwrfv3/noscrub/input/SYNDAT-PLUS/ # path to the machine's TC vitals file
 
 ##########################################
 ########## END OF USER SETTINGS ##########
@@ -309,6 +309,7 @@ fi
 # Ensure BDECKs have HU instead of TY and ST
 sed -i "s/, TY, /, HU, /g" ${homepath}/GROOT/GROOT-H/bdeck/b*.dat
 sed -i "s/, ST, /, HU, /g" ${homepath}/GROOT/GROOT-H/bdeck/b*.dat
+sed -i "s/, MH, /, HU, /g" ${homepath}/GROOT/GROOT-H/bdeck/b*.dat
 
 # Run the namelist
 cd ${homepath}/GROOT/GROOT-H/

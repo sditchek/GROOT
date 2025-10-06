@@ -565,20 +565,20 @@
 							ax.YAxis.Exponent = 0;
 							set(gca,'xtick',1:1:50)
 							xlim([0.5 size(lsz,2)+.5]);if j==1;fixyaxis=axis;fixyaxis0=fixyaxis(4);end;ylim([0 fixyaxis0]);
-							if strcmp(identconvid,'Recon') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
+							if strcmp(identconvid,'Recon') && strcmp(pwd,'/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
 								set(gca,'xticklabel',{'T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 18;
 								text(.165,-.062,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');        
 								text(.385,-.062,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
 								text(.55,-.062,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
 								text(.83,-.062,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
-							elseif strcmp(identconvid,'Recon+') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
+							elseif strcmp(identconvid,'Recon+') && strcmp(pwd,'/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
 								set(gca,'xticklabel',{'UV','RW','T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 18;
 								text(.095,-.062,['OTHER'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');        
 								text(.32,-.062,['HDOBS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');        
 								text(.5,-.062,['SFMR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
 								text(.64,-.062,['TDR'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
 								text(.87,-.062,['DROPS'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',18,'interpreter','tex','color','k','units','normalized');
-							elseif strcmp(identconvid,'Conv+Recon') && strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
+							elseif strcmp(identconvid,'Conv+Recon') && strcmp(pwd,'/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')
 								set(gca,'xticklabel',{'S','NS','S','NS','S','NS','88D','T','Q','UV','SPD','P3','G-IV','T','Q','UV'});ax.XAxis.FontSize = 15;annotation('line',[.479 .479],[.02 .875]);
 								text(.06,-.055,['UV'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        
 								text(.19,-.055,['TQ'],'HorizontalAlignment','center','VerticalAlignment','top','fontsize',15,'interpreter','tex','color','k','units','normalized');        

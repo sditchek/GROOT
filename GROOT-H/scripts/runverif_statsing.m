@@ -14898,7 +14898,7 @@ for graphics=1
 								if plt <19 || plt >20
 									tmp_exp=abs(tmp_exp); % added for MAE
 								end
-								tmp_exp0=squeeze(100.*(1-abs(nanmean(tmp_exp(:,:,:),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1))));if strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;               													
+								tmp_exp0=squeeze(100.*(1-abs(nanmean(tmp_exp(:,:,:),1))./abs(nanmean(tmp_exp(:,:,tmpimp),1))));if strcmp(pwd,'/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;               													
 								
 								% Strat
 								if strat==1
@@ -18795,9 +18795,9 @@ for graphics=1
 								tmpu(tmpu==tmpimp)=[];
 								if plt>=21
 									tmp_exp1=abs(tmp_exp1); % added for MAE
-									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp1(:,:,:),1)./nanmean(tmp_exp1(:,:,tmpimp),1)));if strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;                  
+									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp1(:,:,:),1)./nanmean(tmp_exp1(:,:,tmpimp),1)));if strcmp(pwd,'/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;                  
 								else
-									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp(:,:,:),1)./nanmean(tmp_exp(:,:,tmpimp),1)));if strcmp(pwd,'/scratch1/AOML/aoml-osse/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;                  
+									tmp_exp0=squeeze(100.*(1-nanmean(tmp_exp(:,:,:),1)./nanmean(tmp_exp(:,:,tmpimp),1)));if strcmp(pwd,'/scratch4/AOML/aoml-hafs1/Sarah.D.Ditchek/GROOT/GROOT-AOMLMV')==1;ignavno=1:size(identexp,1);ignavno(find(strcmp(identexp,'AVNO')))=[];tmp_exp0=tmp_exp0(:,ignavno);else;ignavno=1:size(identexp,1);end;                  
 								end
 								% Strat
 								if strat==1
