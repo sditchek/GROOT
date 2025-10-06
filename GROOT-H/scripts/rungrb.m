@@ -2610,28 +2610,28 @@ for errorstats=1
 				bt_shr=SHRall(initnum:end); 
 				%% EXP - grab stats file
 				% Initialize Individual
-				exp_fhr=nan(100,size(identexp,1));
-				exp_lon=nan(100,size(identexp,1));exp_land=nan(100,size(identexp,1));
-				exp_lat=nan(100,size(identexp,1));
-				exp_minpres=nan(100,size(identexp,1));
-				exp_maxspd=nan(100,size(identexp,1));                   
-				exp_ne34=nan(100,size(identexp,1));
-				exp_ne50=nan(100,size(identexp,1));
-				exp_ne64=nan(100,size(identexp,1));
-				exp_se34=nan(100,size(identexp,1));
-				exp_se50=nan(100,size(identexp,1));
-				exp_se64=nan(100,size(identexp,1));
-				exp_sw34=nan(100,size(identexp,1));
-				exp_sw50=nan(100,size(identexp,1));
-				exp_sw64=nan(100,size(identexp,1));
-				exp_nw34=nan(100,size(identexp,1));
-				exp_nw50=nan(100,size(identexp,1));
-				exp_nw64=nan(100,size(identexp,1));
-				exp_po=nan(100,size(identexp,1));
-				exp_ro=nan(100,size(identexp,1));
-				exp_rmw=nan(100,size(identexp,1)); 
-				exp_intch=nan(100,size(identexp,1));exp_hfipintch=nan(100,size(identexp,1));
-				exp_shr=nan(100,size(identexp,1)); 
+				exp_fhr=nan(200,size(identexp,1));
+				exp_lon=nan(200,size(identexp,1));exp_land=nan(200,size(identexp,1));
+				exp_lat=nan(200,size(identexp,1));
+				exp_minpres=nan(200,size(identexp,1));
+				exp_maxspd=nan(200,size(identexp,1));                   
+				exp_ne34=nan(200,size(identexp,1));
+				exp_ne50=nan(200,size(identexp,1));
+				exp_ne64=nan(200,size(identexp,1));
+				exp_se34=nan(200,size(identexp,1));
+				exp_se50=nan(200,size(identexp,1));
+				exp_se64=nan(200,size(identexp,1));
+				exp_sw34=nan(200,size(identexp,1));
+				exp_sw50=nan(200,size(identexp,1));
+				exp_sw64=nan(200,size(identexp,1));
+				exp_nw34=nan(200,size(identexp,1));
+				exp_nw50=nan(200,size(identexp,1));
+				exp_nw64=nan(200,size(identexp,1));
+				exp_po=nan(200,size(identexp,1));
+				exp_ro=nan(200,size(identexp,1));
+				exp_rmw=nan(200,size(identexp,1)); 
+				exp_intch=nan(200,size(identexp,1));exp_hfipintch=nan(200,size(identexp,1));
+				exp_shr=nan(200,size(identexp,1)); 
 				% Loop
 				for tmp=1:size(identexp,1)                
 					filename = dir([identnoscrub,'hafstrak/',identexp{tmp},'/',lower(identhwrf),'.',identinittimesunique(identloop,:),'*atcfunix']);filename=[identnoscrub,'hafstrak/',identexp{tmp},'/',filename.name];fid = fopen(filename,'rt'); C = textscan(fid,'%s%s%s%s%s%s%[^\n]', 'Delimiter',',= ', 'MultipleDelimsAsOne',true); fclose(fid); if sum(size(C{1}))==2; identoutputres=0; else; C=C{6};C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;C{end+1}=NaN;if strcmp(C{2},'003')==1 || strcmp(C{2},'03')==1 || strcmp(C{2},'3')==1 || strcmp(C{3},'003')==1 || strcmp(C{3},'03')==1 || strcmp(C{3},'3')==1 || strcmp(C{4},'003')==1 || strcmp(C{4},'03')==1 || strcmp(C{4},'3')==1; identoutputres=0;elseif strcmp(C{2},'006')==1 || strcmp(C{2},'06')==1 || strcmp(C{2},'6')==1 || strcmp(C{3},'006')==1 || strcmp(C{3},'06')==1 || strcmp(C{3},'6')==1 || strcmp(C{4},'006')==1 || strcmp(C{4},'06')==1 || strcmp(C{4},'6')==1;identoutputres=1;elseif strcmp(C{2},'12')==1 || strcmp(C{3},'12')==1 || strcmp(C{4},'12')==1;identoutputres=2;end;end;				
