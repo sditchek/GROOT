@@ -1843,7 +1843,7 @@ for identremoveinvest=1
 				screenposition = get(gcf,'Position');
 				set(gcf,'PaperPosition',[0 0 screenposition(4) screenposition(4)],'PaperSize',[screenposition(4) screenposition(4)]);
 				set(gcf, 'InvertHardcopy', 'off')
-				text(0,1.065,['\textbf{Track \& Classification}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
+				%text(0,1.065,['\textbf{Track \& Classification}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',14,'fontweight','bold','interpreter','latex','units','normalized')
 				tmpuv = unique(tmpyrall);
 				tmpn  = histc(tmpyrall,tmpuv); 
 				tmpphrase='';
@@ -1854,7 +1854,7 @@ for identremoveinvest=1
 						tmpphrase=[tmpphrase, num2str(tmpn(tmpdr)),'(',num2str(tmpuv(tmpdr)),') $\mid$ '];
 					end
 				end
-				text(0,1.03,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
+				%text(0,1.03,['\textbf{STORMS: ',tmpphrase,'}'],'HorizontalAlignment','left','VerticalAlignment','top','fontsize',10,'fontweight','bold','interpreter','latex','units','normalized')
 				ax=gca;
 				box on
 				set(ax, 'Layer', 'bottom')
@@ -1878,7 +1878,7 @@ for identremoveinvest=1
 				lh.FontSize=6;  
 				lh.ItemTokenSize(1) = 10;   
 				set(gca,'position',[spPos(1)+.02 spPos(2)+.05 spPos(3) spPos(4)])
-				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]); % maximize figure window                    					
+				set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, .72, 0.96]);tmpmaxlat=max(tmpmaxlat);tmpminlat=min(tmpminlat);tmpmaxlon=max(tmpmaxlon);tmpminlon=min(tmpminlon);margin = 5;adjusted_minlat = tmpminlat - margin;adjusted_maxlat = tmpmaxlat + margin;adjusted_minlon = tmpminlon - margin;adjusted_maxlon = tmpmaxlon + margin;axis([adjusted_minlon adjusted_maxlon adjusted_minlat adjusted_maxlat]);set(gca, 'DataAspectRatio', [1 cosd(mean([adjusted_minlat, adjusted_maxlat])) 1]);                    					
 				tmplat=tmpmaxlat+5-(tmpminlat-5);
 				tmplon=tmpmaxlon+5-(tmpminlon-5);
 				difftmp=tmplat-tmplon;
@@ -1904,7 +1904,7 @@ for identremoveinvest=1
 				c_adj=cosd(y_mean);
 				c_dist=abs(x_dist*c_adj/2);
 				c_mid=x_mean;
-				xlim([c_mid-c_dist-5 c_mid+c_dist+5])
+				xlim([c_mid-c_dist-5 c_mid+c_dist+5]);axis([adjusted_minlon adjusted_maxlon adjusted_minlat adjusted_maxlat]);set(gca, 'DataAspectRatio', [1 cosd(mean([adjusted_minlat, adjusted_maxlat])) 1]);title_margin = 0.15; title_y_pos = 1 + title_margin * lat_range / max(lat_range);text_y_pos = title_y_pos - 0.08;text(0, title_y_pos, '\textbf{Track \& Classification}', 'HorizontalAlignment','left','VerticalAlignment', 'top', 'fontsize', 14, 'fontweight', 'bold', 'interpreter', 'latex', 'units', 'normalized');text(0, text_y_pos, ['\textbf{STORMS: ', tmpphrase, '}'], 'HorizontalAlignment', 'left', 'VerticalAlignment', 'top', 'fontsize', 10, 'fontweight', 'bold', 'interpreter', 'latex', 'units', 'normalized');
 				axes(ax1);ht=text(1,0,['Plot generated using GROOT'],'HorizontalAlignment','right','VerticalAlignment','top','fontsize',8,'fontweight','bold','interpreter','latex','color','k','units','normalized');f = getframe(hfig);
 				filename=[identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/COMP_tracks'];if identeps==1;set(gcf,'PaperPositionMode','auto');print([filename,'.eps'],'-depsc','-r0');else;imwrite(f.cdata,[filename,'.png'],'png');end;close all
 			end		
