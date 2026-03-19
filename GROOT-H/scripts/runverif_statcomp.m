@@ -24,7 +24,7 @@
                     % Initialize arrays
                     BT_name_all     =   {};
                     BT_target_all   =   [];
-                    BT_drops_all    =   [];BT_enkf_all    =   [];BT_hfip_all=[];
+                    BT_drops_all    =   [];BT_enkf_all    =   [];BT_hfip_all=[];BT_drops_bycycle=[];
                     BT_year_all    =   [];
                     BT_date_all     =   [];
                     BT_storm_all    =   [];
@@ -115,7 +115,7 @@
                     cntst=1;
                     for i=1:size(identdr,2)    
                         if isfile([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])==1   
-                            load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat'])
+				load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_errors.mat']);if identconv==1;load([identout,'RESULTS/',identfold,'/','VERIFICATION/OBS/',identdr{i},'_conv.mat']);end;
                             load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_latlon.mat'])        
 							load([identout,'RESULTS/',identfold,'/','VERIFICATION/',identremovename,'/',identdr5{basinloop},'/',identdr{i},'/',identdr{i},'_data.mat'],'LOWbasin','HIGHbasin')        
                             BT_drops_all=cat(2,BT_drops_all,BT_drops); BT_hfip_all=cat(1,BT_hfip_all,BT_hfip);if identenkfexact==1 | identenkfoper==1;BT_enkf_all=cat(2,BT_enkf_all,BT_enkf);end; % only cycles that had conventional obs  | only cycles that had enkf  
@@ -136,7 +136,7 @@
                             for nmal=1:size(BT_lat,1)
                                 BT_name_all=cat(2,BT_name_all,tmpyr);
                             end
-                            BT_date_all=cat(1,BT_date_all,identinittimesunique);
+			    BT_date_all=cat(1,BT_date_all,identinittimesunique);if identconv==1;BT_drops_bycycle=cat(1,BT_drops_bycycle,identdropsbycycle);end;
                             BT_year_all=cat(1,BT_year_all,repmat(str2num(tmpyr(end-1:end)),size(BT_lat)));
                             BT_storm_all=cat(1,BT_storm_all,repmat(i,size(BT_lat)));
                             BT_target_all=cat(2,BT_target_all,BT_drops);        
