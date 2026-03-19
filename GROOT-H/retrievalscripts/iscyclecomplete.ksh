@@ -1,6 +1,6 @@
 #!/bin/ksh
 #SBATCH -t 00:10:00         # XXXX: Time Limit: generally sufficient; may need to increase it
-#SBATCH -A aoml-osse        # XXXX: Account:   Use your project accounti
+#SBATCH -A aoml-hafs1        # XXXX: Account:   Use your project accounti
 #SBATCH -q batch            # XXXX: quality of service
 #SBATCH --partition=service # XXXX: request specific partition for resource allocation
 #SBATCH --ntasks=1          # XXXX: maximum of 1 task / node

@@ -65,7 +65,7 @@ PROGRAM read_convdiag
  CALL GETARG(4,filetype)
  read(date,*) jdate
 
- outfile=trim(outdir)//'/gsidiag_'//trim(filetype)//'.'//trim(date)//'.ps_conv'
+ outfile=trim(outdir)//'/gsidiag_'//trim(filetype)//'.'//trim(date)//'.rw_conv'
  open(unit=10,file=outfile,form='formatted',status='replace',action='Write')
  PRINT "(a16,a150)",'New ASCII File: ',outfile
 
@@ -132,7 +132,7 @@ PROGRAM read_convdiag
     !print*,dtype,nchar,nreal,ii
 
       jtype=0
-      if(dtype == ' ps') jtype=1
+      if(dtype == ' rw') jtype=1
       if(dtype == '  q') jtype=2
       if(dtype == '  t') jtype=3
       if(dtype == ' uv') jtype=4
@@ -148,7 +148,7 @@ PROGRAM read_convdiag
        stype=rdiag(2,i)                     ! observation subtype
        nn=nn+1; if(nn.gt.maxn) cycle        ! don't overflow arrays
        cwork(nn)=cdiag(i)                   ! station id
-       dwork(nn,0)=jtype                    ! observation type (ps,q,t,uv,etc) 
+       dwork(nn,0)=jtype                    ! observation type (rw,q,t,uv,etc) 
        dwork(nn,1)=itype                    ! oi report type 
        dwork(nn,2)=rdiag(3,i)               ! observation latitude(degrees) 
        dwork(nn,3)=rdiag(4,i)               ! observation longitude(degrees)
@@ -192,7 +192,7 @@ PROGRAM read_convdiag
           write(unit=13,FMT="(a10,i9,i13,3f16.8,f16.2,2f9.1,4f25.6,3f16.8)") &
                              &trim(dtype),itype,stype,dwork(nn,2),dwork(nn,3),dwork(nn,5),dwork(nn,7),dwork(nn,10),dwork(nn,8),&
                              &dwork(nn,12),1.0/rdiag(14,i),1.0/rdiag(15,i),1.0/dwork(nn,12),dwork(nn,15),dwork(nn,16),rdiag(18,i)
-       else if( trim(dtype) == ' ps') then
+       else if( trim(dtype) == ' rw') then
           dwork(nn,15)=rdiag(17,i)             ! observation   
           dwork(nn,16)=rdiag(17,i)-rdiag(18,i) ! background or analysis   
           dq=dwork(nn,15)-dwork(nn,16)

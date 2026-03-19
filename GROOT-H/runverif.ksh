@@ -17,9 +17,9 @@
 # 2) AFTER DOING STEP 1, ONLY THEN CHANGE THE SBATCH -A and SBATCH --mail-user ABOVE TO MATCH WHAT YOU PUT DOWN IN actnew and emlnew BELOW
 
 # Set Folders
-homepath=/scratch4/AOML/aoml-hafs1/${USER}/                              # directory path above the GROOT package running location (typically your home directory)
+homepath=/scratch4/AOML/aoml-hafs1/${USER}/                              # directory path above the GROOT/ (typically your home directory)
 noscrubpath=/scratch4/AOML/aoml-hafs1/${USER}/noscrub/hafstrak/          # path to your atcf or adeck files
-scrubpath=/scratch4/AOML/aoml-hafs1/${USER}/scrub/ 	 	  	 # path to your scrub directory (if you are not running the assim obs capabilty, you can set this to $noscrubpath)
+scrubpath=/scratch4/AOML/aoml-hafs1/${USER}/scrub/ 	 	  	 # path to your scrub directory where you grabbed files down from the retrieval script (if you are not running the assim obs capabilty, you can set this to $noscrubpath)
 
 # What type of tracker files are you using?
 usingadecks=0                                           # are you using ADECKS? if so, GROOT has an additional preprocessing step | (1) yes (0) no
@@ -31,28 +31,36 @@ enddate1="2023-10-30 00"                                # last date in your samp
 cycling="6"               				# frequency of cycling in your model (often "6" for 6 h)
 
 # Set Experiments
-set -A expfold BERYL-NO BERYL-OPER-THIN BERYL-SOME-THIN-2xR-GROSS BERYL-STD-THIN BERYL-OPER BERYL-NO-THIN BERYL-SOME-THIN-2xR  # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
-set -A expnew NO OPER-THIN SOME-THIN-2xR-GROSS STD-THIN OPER NO-THIN SOME-THIN-2xR # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
-numfold=7                                              # number of entries in expnew
-set -A expyears 2024					# years the experiments cover
+set -A expfold BERYL-OPER LESLIE-OPER ERNESTO-OPER KIRK-OPER MILTON-OPER  BERYL-OPER-2E ERNESTO-OPER-2E LESLIE-OPER-2E KIRK-OPER-2E MILTON-OPER-2E #TAMMY-CONTROL ERNESTO-CONTROL FRANCINE-CONTROL HELENE-CONTROL MILTON-CONTROL MELISSA-CONTROL MELISSA-UASDF2 TAMMY-UASDF ERNESTO-UASDF FRANCINE-UASDF HELENE-UASDF MILTON-UASDF MELISSA-UASOPT TAMMY-UASOPT ERNESTO-UASOPT FRANCINE-UASOPT HELENE-UASOPT MILTON-UASOPT # names of the folders in scrub and noscrub that you want to include in the graphics # e.g.: STORM1EXPERIMENT1 STORM2EXPERIMENT1 STORM1EXPERIMENT2 STORM2EXPERIMENT2
+set -A expnew OPER OPER OPER OPER OPER E2 E2 E2 E2 E2 #CONTROL CONTROL CONTROL CONTROL CONTROL CONTROL UAS-DF UAS-DF UAS-DF UAS-DF UAS-DF UAS-DF UAS-OPT UAS-OPT UAS-OPT UAS-OPT UAS-OPT UAS-OPT # names of exps (these will be the names on the graphics) # e.g.: EXPERIMENT1 EXPERIMENT1 EXPERIMENT2 EXPERIMENT2
+numfold=10                                              # number of entries in expnew
+set -A expyears 2024 				        # years the experiments cover (e.g., 2022 2023)
 numyears=1						# number of years
 hafsmodel=1						# did you run with HAFS (hafsmodel=1) or HWRF (hafsmodel=0)
 obstype=uv  					        # one of the observation type you're testing, if any, and want graphics for (if you're not testing an observation type, leave it as is). if you have more than one observation type you're testing, that's okay! Just include one of them here - GROOT will create blank files for cycles without data, if needed.
 
 # Account Information
-acntold=aoml-hafs1  					# account currently listed in SBATCH above
-acntnew=aoml-hafs1                      		# account you want listed in SBATCH above
-hpcold=hera                                             # hpc partition currently listed in SBATCH above
-hpcnew=hera                                             # hpc partition you want listed in SBATCH above
-emlold=sarah.d.ditchek@noaa.gov        			# email address currently listed in SBATCH above
-emlnew=sarah.d.ditchek@noaa.gov         		# email address you want listed in SBATCH above
-vitalspath=/scratch3/HFIP/hwrfv3/noscrub/input/SYNDAT-PLUS/ # path to the machine's TC vitals file
+acntold=aoml-hafs1  						# account currently listed in SBATCH above
+acntnew=aoml-hafs1                      			# account you want listed in SBATCH above
+hpcold=hera                              	                # hpc partition currently listed in SBATCH above
+hpcnew=hera                                             	# hpc partition you want listed in SBATCH above
+emlold=sarah.d.ditchek@noaa.gov        				# email address currently listed in SBATCH above
+emlnew=sarah.d.ditchek@noaa.gov         			# email address you want listed in SBATCH above
+vitalspath=/scratch3/HFIP/hwrfv3/noscrub/input/SYNDAT-PLUS/     # path to the machine's TC vitals file
 
 ##########################################
 ########## END OF USER SETTINGS ##########
 # DO NOT CHANGE ANYTHING BELOW THIS LINE #
 ##########################################
 
+# Check if MATLAB module is loaded
+if ! module list 2>&1 | grep -q 'matlab'; then
+    echo "ERROR: MATLAB module is not loaded."
+    echo "Please load it with: module load matlab"
+    exit 1
+fi
+
+# Cleanup old GROOT-PR and set new paths
 rm -rf ${homepath}/GROOT/GROOT-H/GROOT-PR/
 mkdir -p ${homepath}/GROOT/GROOT-H/GROOT-PR
 mkdir -p ${homepath}/GROOT/GROOT-H/output 

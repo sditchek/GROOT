@@ -10,16 +10,16 @@ identbasinmodel=0;                                                              
 identhwrfmodel=0;identhafsmodel=1;					         % did you run HWRF or HAFS? | yes (1) no (0)
 
 % Choose experiments and colors
-identexp=[{'NO-THIN'};{'SOME-THIN-2xR-GROSS'};{'SOME-THIN-2xR'};{'STD-THIN'};{'OPER-THIN'};{'OPER'};{'NO'}]; 		   	        % folder name of all experiments: 1) must match "expnew" in runverif.ksh, 2) first experiment MUST be the one with al the obs assimilated, and 3) last experiment MUST be the BASELINE
-identexpsigimp='NO';                                                  % full folder name of improvement wrt THIS experiment (i.e., your BASELINE)
-identexpcolors=[0 100 0;179 132 1;0 0 100;0 210 0;190 0 6;0 128 128;204 85 0]/255;  	        % colors associated with each experiment - do NOT use black since the best track is black by default
-        	                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
-									     % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
-stormsdone=dir([identgroot,'/NO']);                                    % short name of experiment that has completed the most cycles (must match name in "expnew" in runverif.ksh)
+identexp=[{'E2'};{'OPER'}];                 % folder name of all experiments: 1) must match "expnew" in runverif.ksh, 2) first experiment MUST be the one with al the obs assimilated, and 3) last experiment MUST be the BASELINE
+identexpsigimp='OPER';                                                  % full folder name of improvement wrt THIS experiment (i.e., your BASELINE)
+identexpcolors=[0 0 255;0 152 0;]/255;;                % colors associated with each experiment - do NOT use black since the best track is black by default
+                                                                             % EX1: For 2 experiments, recommended colors:  green(included)=[0 152 0] red(denied)=[208 0 0]
+                                                                             % EX2: For more than 2 experiments, remember, "green" implies yes and "red" implies no
+stormsdone=dir([identgroot,'/E2']);                                    % short name of
 
 % Case Study: also make identgraphicsbycycle=1, identgraphicsconv=1 or identgaphicssat=1 if testing obs impact, and identcompositeonly=0
 identcase=0;								% run graphics for just 1 storm | yes (1) no (0)
-identcasename={'helene09l'};identbasinid='AL';				% identcasename: lowercase name of storm, ID, and basin identifier (e.g., dorian05l) | % identbasinid: upper case 2-letter basin identifier
+identcasename={'ernesto05l'};identbasinid='AL';				% identcasename: lowercase name of storm, ID, and basin identifier (e.g., dorian05l) | % identbasinid: upper case 2-letter basin identifier
 identcaseyear='2024';							% year of storm: YYYY
 
 % Error Graphics Options
@@ -31,22 +31,22 @@ identnewsubset_id=[{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'09L'};{'13L'};{'13L
 identnewsubset=[{'2020073118'};{'2020080100'};{'2020080106'};{'2020080112'};{'2020080118'};{'2020080200'};{'2020082118'};{'2020082200'};{'2020082218'};{'2020082300'};{'2020082406'};{'2020082412'};{'2020082418'};{'2020082500'};{'2020082506'};{'2020082512'};{'2020082518'};{'2020082600'};{'2020082212'};{'2020082306'};{'2020082312'};{'2020100618'};{'2020100700'};{'2020100706'};{'2020100712'};{'2020100718'};{'2020100800'};{'2020100806'};{'2020100812'};{'2020102518'};{'2020102600'};{'2020102606'};{'2020102612'};{'2020102618'};{'2020102700'};{'2020102706'};{'2020102712'};{'2021070218'};{'2021070300'};{'2021081918'};{'2021082000'};{'2021082006'};{'2021082012'};{'2021082018'};{'2021082100'};{'2021082106'};{'2021082112'};{'2021082706'};{'2021082712'};{'2021082718'};{'2021082800'};{'2021082806'};{'2021082812'};{'2021092618'};{'2021092700'};{'2021092718'};{'2021092800'};{'2022091718'};{'2022091800'};{'2022091818'};{'2022091900'};{'2022092018'};{'2022092100'};{'2022092418'};{'2022092500'};{'2022092506'};{'2022092512'};{'2022092518'};{'2022092600'};{'2022092606'};{'2022092612'};{'2022092618'};{'2022092700'};{'2022092706'};{'2022092712'};{'2022092718'};{'2022092800'};{'2022110806'};{'2022110812'};{'2022110818'};{'2022110900'};{'2022110906'};{'2022110912'};{'2023082206'};{'2023082800'};{'2023082812'};{'2023082818'};{'2023082900'};{'2023091018'};{'2023091100'};{'2023091106'};{'2023091112'};{'2023091118'};{'2023091200'};{'2023091206'};{'2023091212'};{'2023091218'};{'2023091300'};{'2023091306'};{'2023091312'};{'2023091318'};{'2023091400'};{'2023091406'};{'2023091412'};{'2023091418'};{'2023091500'};{'2023091506'};{'2023091512'}]; % new subset cycle times if identns=1 - you can use a range of cycles, disjointed cycles, or both
                 	            	                                % range of cycles: [{'2017081800-2017083100'}] %disjointed cycles: [{'2017081800'};{'2017090200'}]                                                                                           % range and disjointed cycles: [{'2017081800-2017083100'};{'2017090200'}]
 identenkfexact=0;							%  covariance-type stratification - exact method ONLY WORKS FOR HWRF | if you used the retrieval scripts included in GROOT (1) if you did not use the retrieval scripts or there is no difference in covariance type (0)
-identenkfoper=1;identenkfoperpath='/scratch3/HFIP/hwrfv3/noscrub/input/TDR/'; % covariance-type stratification - operational method - note that for HAFS if this is enabled, graphics will indicate pre- and post- TDR rather than enkf vs gdas covariance | all cycles from the first TDR available through the end of the TC used enkf (1) do not do stratifications by enkf (0) | note that identenkfoperpath is the path to the TDR files on disk - if your model doesn't have this, set to identenkfoper=0.
+identenkfoper=1;identenkfoperpath='/scratch4/HFIP/hwrfv3/noscrub/input/TDR/'; % covariance-type stratification - operational method - note that for HAFS if this is enabled, graphics will indicate pre- and post- TDR rather than enkf vs gdas covariance | all cycles from the first TDR available through the end of the TC used enkf (1) do not do stratifications by enkf (0) | note that identenkfoperpath is the path to the TDR files on disk - if your model doesn't have this, set to identenkfoper=0.
 identremoveland=0;							% do you want to remove cycles where either best track or forecast was over land | yes (1) no (0)
 identboxhist=0;								% do you want to create boxplots of absolute error for each experiment & stratification as well as histograms of bias and absolute error for each forecast hour and stratification? | yes (1) no (0 - this saves a lot of time)
 
 % Conventional Graphics Options
-identconv=1;                                                   		   % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
-identgraphicsconv=0;                                            	   % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
+identconv=0;                                                   		   % conventional observation graphics | yes (1) no (0 - if not retrieved using included retrieval script)
+identgraphicsconv=1;                                            	   % conventional observation graphics for EACH CYCLE | yes (1) no (0 - this saves time)
 identconvid='ASCAT';                                            	   % name of observation for graphic titles | uppercase first letter | will become "Assimilated ____ Observations"
 if identhafsmodel==1							   % if identhafsmodel=1, filenames of data desired ensuring it starts with "_" and equals # of identconvobstype
-   identconvid_filename=[{'_uv_anl'};{'_uv_anl'}];
+   identconvid_filename=[{'_uv_anl'}];
 end
-identconvobstype=[290 290];							   % obstype number(s) | number of obstypes must match number of obssubtypes
+identconvobstype=[290 290 290];							   % obstype number(s) | number of obstypes must match number of obssubtypes
 							 	      		% NOTE: if an obstype is associated with multiple obssubtypes and you want to keep that obssubtype, repeat obstype for each obssubtype and set identsubtypekeep=1. if you want ALL obssubtypes for a given obstype, only list the obstype once and enter "0" as the corresponding obssubtype and set the corresponding identsubtypekeep to 0. Also, the order of the obstypes will be plotting order, so put more sparse obs last
-identconvobssubtype=[1 2];identsubtypekeep=[1 1]; % corresponding obssubtype number(s) | number of obssubtypes must match number of obstypes | identsubtypekeep must match number of identconvobstype and identconvobssubtype | keep subtype (1) use all subtypes for this obtype (0)
-identconvobscolors=[204 51 204;233 169 233]/255; % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value) | NOTE: if you want to group together different obstypes as one category (e.g., COSMIC2 FM1 - FM6 > COSMIC2), repeat the same color for each obstype and then repeat the same name in identconvobslegend.
-identconvobslegend=[{'UHR-B'};{'UHR-C'}]; % names of each of your subtypes for the plot legends
+identconvobssubtype=[3 4 5];identsubtypekeep=[1 1 1]; % corresponding obssubtype number(s) | number of obssubtypes must match number of obstypes | identsubtypekeep must match number of identconvobstype and identconvobssubtype | keep subtype (1) use all subtypes for this obtype (0)
+identconvobscolors=[229 96 43;229 96 43;229 96 43;]/255; % colors for each of your subtypes (will only be used if identconvobssubtype has >1 value) | NOTE: if you want to group together different obstypes as one category (e.g., COSMIC2 FM1 - FM6 > COSMIC2), repeat the same color for each obstype and then repeat the same name in identconvobslegend.
+identconvobslegend=[{'ASCAT'};{'ASCAT'};{'ASCAT'}]; % names of each of your subtypes for the plot legends
 
 % Satellite Graphics Options - ONLY WORKS FOR IDENTHWRFMODEL=1!!!!!!!
 identsatobs=0;                          % create satellite graphics if user-retrieved using the included retrieval script | yes (1) no (0)
