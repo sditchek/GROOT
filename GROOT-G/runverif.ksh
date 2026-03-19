@@ -51,6 +51,13 @@ vitalspath=/scratch3/HFIP/hwrfv3/noscrub/input/SYNDAT-PLUS/ # path to the machin
 # DO NOT CHANGE ANYTHING BELOW THIS LINE #
 ##########################################
 
+# Check if MATLAB module is loaded
+if ! module list 2>&1 | grep -q 'matlab'; then
+    echo "ERROR: MATLAB module is not loaded."
+    echo "Please load it with: module load matlab"
+    exit 1
+fi
+
 # Save start and end dates
 startdate2=${startdate1}
 enddate2=${enddate1}

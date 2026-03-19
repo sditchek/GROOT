@@ -111,9 +111,13 @@ VERIFICATION CAPABILITY:
 %%  NEW ADDITIONS!  %%
 %%%%%%%%%%%%%%%%%%%%%%
 
+03/19/26 | Added AL and EP final bdecks for 2025
+         | Added WP, IO, and SH final bdecks for 2023 and 2024
+         | Minor code changes to allow for longer forecast lead time processing
+         | Minor user-friendly changes (e.g., warning if matlab isn't loaded)
 10/30/24 | Added AL and EP final bdecks for 2024
 10/6/25  | Made some changes to the runverif and editverif script to help with interpretation
-12/12/24 | Added WP, IO, and SH final bdecks for 2022 and 2023
+12/12/24 | Added WP, IO, and SH final bdecks for 2022
 12/6/24  | Added three new stratifications (H, RIIN, and WKRW)
          | If running with the adeck capability, if the adeck had a bug where entries were duplicated, GROOT now can handle that.
 8/20/24  | Added a number of new stratifications (e.g., H-OBS and H-NOOBS)
