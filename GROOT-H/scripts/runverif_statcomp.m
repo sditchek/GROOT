@@ -316,7 +316,7 @@
                     BT_cat=BT_cat(:,1);BT_cat0=BT_cat0(:,1);
                     BT_intch=BT_intch(:,1);
                     BT_shr1=BT_shr(:,1);
-                    BT_lat=BT_lat(:,1);
+                    BT_lat0=BT_lat(:,1); % just the 1d array so stratifications can occur
                     BT_year=BT_year(:,1);
                     BT_storm=BT_storm(:,1);
                     % if identconv==1 || identsatobs==1
@@ -408,7 +408,7 @@
                         elseif strat==8 
                             clear breakstrat
                             stname='N30'; % north of 30N
-                            if sum(BT_lat>=30)==0
+                            if sum(BT_lat0>=30)==0
                                 breakstrat='yes';
                                 fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_N30.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: N30');
@@ -418,7 +418,7 @@
                         elseif strat==9
                             clear breakstrat
                             stname='S30'; % south of 30N
-                            if sum(BT_lat<30)==0
+                            if sum(BT_lat0<30)==0
                                 breakstrat='yes';
                                 fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_S30.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: S30');
@@ -529,7 +529,7 @@
                         elseif strat==14+size(unique(BT_year),1)+5 %% N30 strat obs only
                             clear breakstrat
                             stname='N30-OBS'; % north of 30N
-                            if sum(BT_lat>=30 & BT_drops'==1)==0
+                            if sum(BT_lat0>=30 & BT_drops'==1)==0
                                 breakstrat='yes';
                                 fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_N30-OBS.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: N30-OBS');
@@ -539,7 +539,7 @@
                         elseif strat==14+size(unique(BT_year),1)+6 %% S30 strat obs only
                             clear breakstrat
                             stname='S30-OBS'; % south of 30N
-                            if sum(BT_lat<30 & BT_drops'==1)==0
+                            if sum(BT_lat0<30 & BT_drops'==1)==0
                                 breakstrat='yes';
                                 fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_S30-OBS.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: S30-OBS');
@@ -720,7 +720,7 @@
                         elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 %% N30 strat obs only
                             clear breakstrat
                             stname='N30-NOOBS'; % north of 30N
-                            if sum(BT_lat>=30 & BT_drops'==0)==0
+                            if sum(BT_lat0>=30 & BT_drops'==0)==0
                                 breakstrat='yes';
                                 fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_N30-NOOBS.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: N30-NOOBS');
@@ -730,7 +730,7 @@
                         elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 %% S30 strat NOOBS only
                             clear breakstrat
                             stname='S30-NOOBS'; % south of 30N
-                            if sum(BT_lat<30 & BT_drops'==0)==0
+                            if sum(BT_lat0<30 & BT_drops'==0)==0
                                 breakstrat='yes';
                                 fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_S30-NOOBS.txt'],'wt');
                                 fprintf(fid,'%s\n','STRATIFICATION: S30-NOOBS');
@@ -3884,25 +3884,25 @@
 									elseif strat==8 % N30
 										clear tmpyrb
 										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+											tmp_exp0=tmp_exp0([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
 										else
-											tmp_exp0=tmp_exp0(BT_lat>=30,:,:);
+											tmp_exp0=tmp_exp0(BT_lat0>=30,:,:);
 										end                    
-										tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+										tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat>=30));
+										tmpnm=unique(BT_name(BT_lat0>=30));
 									elseif strat==9 % S30
 										clear tmpyrb
 										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+											tmp_exp0=tmp_exp0([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
 										else
-											tmp_exp0=tmp_exp0(BT_lat<30,:,:);
+											tmp_exp0=tmp_exp0(BT_lat0<30,:,:);
 										end
-										tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+										tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat<30));
+										tmpnm=unique(BT_name(BT_lat0<30));
 									elseif strat==10 % RI
 										clear tmpyrb
 										if plt>=21 && plt<=23
@@ -4016,25 +4016,25 @@
 									elseif strat==14+size(unique(BT_year),1)+5 % N30
 										clear tmpyrb
 										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+											tmp_exp0=tmp_exp0([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 										else
-											tmp_exp0=tmp_exp0(BT_lat>=30 & BT_drops'==1,:,:);
+											tmp_exp0=tmp_exp0(BT_lat0>=30 & BT_drops'==1,:,:);
 										 end                     
-										tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+										tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
 									elseif strat==14+size(unique(BT_year),1)+6 % S30
 										clear tmpyrb
 										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+											tmp_exp0=tmp_exp0([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 										else
-											tmp_exp0=tmp_exp0(BT_lat<30 & BT_drops'==1,:,:);
+											tmp_exp0=tmp_exp0(BT_lat0<30 & BT_drops'==1,:,:);
 										end
-										tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+										tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+										tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
 									elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
 										clear tmpyrb
 										tmps=sort(unique(BT_year));
@@ -4249,25 +4249,25 @@
 									 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
 										clear tmpyrb
 										 if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+											tmp_exp0=tmp_exp0([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 										else
-											tmp_exp0=tmp_exp0(BT_lat>=30 & BT_drops'==0,:,:);
+											tmp_exp0=tmp_exp0(BT_lat0>=30 & BT_drops'==0,:,:);
 										 end                     
-										tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+										tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
 									elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
 										clear tmpyrb
 										if plt>=21 && plt<=23
-											tmp_exp0=tmp_exp0([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+											tmp_exp0=tmp_exp0([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 										else
-											tmp_exp0=tmp_exp0(BT_lat<30 & BT_drops'==0,:,:);
+											tmp_exp0=tmp_exp0(BT_lat0<30 & BT_drops'==0,:,:);
 										end
-										tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+										tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
 										tmpyr=tmpyr(:,1);
 										tmpyr=tmpyr+2000;
-										tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+										tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
 									elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
 										clear tmpyrb
 										tmps=sort(unique(BT_year));
@@ -5678,14 +5678,14 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                         if plt==1
                                             fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_N30.txt'],'wt');
                                             fprintf(fid,'%s\n','STRATIFICATION: N30');
@@ -5697,14 +5697,14 @@
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
                                         if plt==1
                                             fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_S30.txt'],'wt');
                                             fprintf(fid,'%s\n','STRATIFICATION: S30');
@@ -5906,14 +5906,14 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                         if plt==1
                                             fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_N30-OBS.txt'],'wt');
                                             fprintf(fid,'%s\n','STRATIFICATION: N30-OBS');
@@ -5925,14 +5925,14 @@
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                         if plt==1
                                             fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_S30-OBS.txt'],'wt');
                                             fprintf(fid,'%s\n','STRATIFICATION: S30-OBS');
@@ -6291,14 +6291,14 @@
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                         if plt==1
                                             fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_N30-NOOBS.txt'],'wt');
                                             fprintf(fid,'%s\n','STRATIFICATION: N30-NOOBS');
@@ -6310,14 +6310,14 @@
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0));
                                         if plt==1
                                             fid = fopen([identout,'RESULTS/',identfold,'/VERIFICATION/',identremovename,'/',identdr5{basinloop},'/STRAT_S30-NOOBS.txt'],'wt');
                                             fprintf(fid,'%s\n','STRATIFICATION: S30-NOOBS');
@@ -7066,25 +7066,25 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
                                     elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -7198,25 +7198,25 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -7431,25 +7431,25 @@
                                      elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                     elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -8070,25 +8070,25 @@
                                         elseif strat==8 % N30
                                             clear tmpyrb
                                             if plt>=21 && plt<=23
-                                                tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                                tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                             else
-                                                tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                                tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                             end                    
-                                            tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                            tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                             tmpyr=tmpyr(:,1);
                                             tmpyr=tmpyr+2000;
-                                            tmpnm=unique(BT_name(BT_lat>=30));
+                                            tmpnm=unique(BT_name(BT_lat0>=30));
                                         elseif strat==9 % S30
                                             clear tmpyrb
                                             if plt>=21 && plt<=23
-                                                tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                                tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                             else
-                                                tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                                tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                             end
-                                            tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                            tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                             tmpyr=tmpyr(:,1);
                                             tmpyr=tmpyr+2000;
-                                            tmpnm=unique(BT_name(BT_lat<30));
+                                            tmpnm=unique(BT_name(BT_lat0<30));
                                         elseif strat==10 % RI
                                             clear tmpyrb
                                             if plt>=21 && plt<=23
@@ -8202,25 +8202,25 @@
                                         elseif strat==14+size(unique(BT_year),1)+5 % N30
                                             clear tmpyrb
                                              if plt>=21 && plt<=23
-                                                tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                             else
-                                                tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                                tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                              end                     
-                                            tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                            tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                             tmpyr=tmpyr(:,1);
                                             tmpyr=tmpyr+2000;
-                                            tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                            tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                         elseif strat==14+size(unique(BT_year),1)+6 % S30
                                             clear tmpyrb
                                             if plt>=21 && plt<=23
-                                                tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                                tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                             else
-                                                tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                                tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                             end
-                                            tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                            tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                             tmpyr=tmpyr(:,1);
                                             tmpyr=tmpyr+2000;
-                                            tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                            tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                         elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                             clear tmpyrb
                                             tmps=sort(unique(BT_year));
@@ -8435,25 +8435,25 @@
                                      elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0));  
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0));  
                                     elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -9088,25 +9088,25 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
                                     elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -9220,25 +9220,25 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -9453,25 +9453,25 @@
                                      elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                     elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -10158,29 +10158,29 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
-                                            tmp_bt=tmp_bt([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
+                                            tmp_bt=tmp_bt([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
-                                            tmp_bt=tmp_bt(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
+                                            tmp_bt=tmp_bt(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
-                                            tmp_bt=tmp_bt([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
+                                            tmp_bt=tmp_bt([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
-                                            tmp_bt=tmp_bt(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
+                                            tmp_bt=tmp_bt(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
 									elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -10314,29 +10314,29 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            tmp_bt=tmp_bt([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_bt=tmp_bt([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
-                                            tmp_bt=tmp_bt(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
+                                            tmp_bt=tmp_bt(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            tmp_bt=tmp_bt([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_bt=tmp_bt([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
-                                            tmp_bt=tmp_bt(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
+                                            tmp_bt=tmp_bt(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -11134,31 +11134,31 @@
                                    elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
-                                            BTnm=BT_name(BT_lat>=30);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
+                                            BTnm=BT_name(BT_lat0>=30);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
-                                            BTnm=BT_name(BT_lat>=30);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
+                                            BTnm=BT_name(BT_lat0>=30);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
-                                             BTnm=BT_name(BT_lat<30);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
+                                             BTnm=BT_name(BT_lat0<30);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
-                                             BTnm=BT_name(BT_lat<30);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
+                                             BTnm=BT_name(BT_lat0<30);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
 								    elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -11302,31 +11302,31 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==1);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==1);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                    elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==1);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==1);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -11605,31 +11605,31 @@
                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==0);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==0);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==0);                                            
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==0);                                            
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==0);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==0);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==0);                                            
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==0);                                            
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                    elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -12262,31 +12262,31 @@
                                    elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
-                                            BTnm=BT_name(BT_lat>=30);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
+                                            BTnm=BT_name(BT_lat0>=30);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
-                                            BTnm=BT_name(BT_lat>=30);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
+                                            BTnm=BT_name(BT_lat0>=30);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
-                                             BTnm=BT_name(BT_lat<30);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
+                                             BTnm=BT_name(BT_lat0<30);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
-                                             BTnm=BT_name(BT_lat<30);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
+                                             BTnm=BT_name(BT_lat0<30);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
 								    elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -12430,31 +12430,31 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==1);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==1);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                    elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==1);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==1);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -12733,31 +12733,31 @@
                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==0);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==0);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==0);                                            
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==0);                                            
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==0);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==0);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==0);                                            
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==0);                                            
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                    elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -13382,31 +13382,31 @@
                                    elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
-                                            BTnm=BT_name(BT_lat>=30);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
+                                            BTnm=BT_name(BT_lat0>=30);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
-                                            BTnm=BT_name(BT_lat>=30);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
+                                            BTnm=BT_name(BT_lat0>=30);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
-                                             BTnm=BT_name(BT_lat<30);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
+                                             BTnm=BT_name(BT_lat0<30);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
-                                             BTnm=BT_name(BT_lat<30);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
+                                             BTnm=BT_name(BT_lat0<30);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
 								    elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -13550,31 +13550,31 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==1);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==1);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                    elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==1);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==1);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==1);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -13853,31 +13853,31 @@
                                    elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==0);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==0);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
-                                            BTnm=BT_name(BT_lat>=30 & BT_drops'==0);                                            
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
+                                            BTnm=BT_name(BT_lat0>=30 & BT_drops'==0);                                            
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==0);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==0);
                                             BTnm=[BTnm BTnm BTnm BTnm];
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
-                                            BTnm=BT_name(BT_lat<30 & BT_drops'==0);                                            
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
+                                            BTnm=BT_name(BT_lat0<30 & BT_drops'==0);                                            
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows','stable');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows','stable');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                    elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -14583,25 +14583,25 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));                             
+                                        tmpnm=unique(BT_name(BT_lat0<30));                             
 									elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -14715,25 +14715,25 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -14948,25 +14948,25 @@
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));  
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));  
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0));
                                     elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -15496,25 +15496,25 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
                                     elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -15628,25 +15628,25 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -15861,25 +15861,25 @@
                                      elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                     elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -16395,25 +16395,25 @@
 											elseif strat==8 % N30
 												clear tmpyrb
 												if plt>=4 && plt<=6
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat>=30,:,:);
+													tmp_exp=tmp_exp(BT_lat0>=30,:,:);
 												end                    
-												tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+												tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat>=30));
+												tmpnm=unique(BT_name(BT_lat0>=30));
 											elseif strat==9 % S30
 												clear tmpyrb
 												if plt>=4 && plt<=6
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat<30,:,:);
+													tmp_exp=tmp_exp(BT_lat0<30,:,:);
 												end
-												tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+												tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat<30));
+												tmpnm=unique(BT_name(BT_lat0<30));
 											elseif strat==10 % RI
 												clear tmpyrb
 												if plt>=4 && plt<=6
@@ -16527,25 +16527,25 @@
 											elseif strat==14+size(unique(BT_year),1)+5 % N30
 												clear tmpyrb
 												 if plt>=4 && plt<=6
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+													tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
 												 end                     
-												tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+												tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+												tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
 											elseif strat==14+size(unique(BT_year),1)+6 % S30
 												clear tmpyrb
 												if plt>=4 && plt<=6
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+													tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
 												end
-												tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+												tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+												tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
 											elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
 												clear tmpyrb
 												tmps=sort(unique(BT_year));
@@ -16760,25 +16760,25 @@
 											 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
 												clear tmpyrb
 												 if plt>=4 && plt<=6
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+													tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
 												 end                     
-												tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+												tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+												tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
 											elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
 												clear tmpyrb
 												if plt>=4 && plt<=6
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+													tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
 												end
-												tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+												tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+												tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
 											elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
 												clear tmpyrb
 												tmps=sort(unique(BT_year));
@@ -17415,25 +17415,25 @@
 											elseif strat==8 % N30
 												clear tmpyrb
 												if plt>=21 && plt<=23
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat>=30,:,:,:);
+													tmp_exp=tmp_exp(BT_lat0>=30,:,:,:);
 												end                    
-												tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+												tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat>=30));
+												tmpnm=unique(BT_name(BT_lat0>=30));
 											elseif strat==9 % S30
 												clear tmpyrb
 												if plt>=21 && plt<=23
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat<30,:,:,:);
+													tmp_exp=tmp_exp(BT_lat0<30,:,:,:);
 												end
-												tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+												tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat<30));
+												tmpnm=unique(BT_name(BT_lat0<30));
 											elseif strat==10 % RI
 												clear tmpyrb
 												if plt>=21 && plt<=23
@@ -17547,25 +17547,25 @@
 											elseif strat==14+size(unique(BT_year),1)+5 % N30
 												clear tmpyrb
 												 if plt>=21 && plt<=23
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:,:);
+													tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:,:);
 												 end                     
-												tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+												tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+												tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
 											elseif strat==14+size(unique(BT_year),1)+6 % S30
 												clear tmpyrb
 												if plt>=21 && plt<=23
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:,:);
+													tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:,:);
 												end
-												tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+												tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+												tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
 											elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
 												clear tmpyrb
 												tmps=sort(unique(BT_year));
@@ -17780,25 +17780,25 @@
 											 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
 												clear tmpyrb
 												 if plt>=21 && plt<=23
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:,:);
+													tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:,:);
 												 end                     
-												tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+												tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+												tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
 											elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
 												clear tmpyrb
 												if plt>=21 && plt<=23
-													tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:,:);
+													tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:,:);
 												else
-													tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:,:);
+													tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:,:);
 												end
-												tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+												tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
 												tmpyr=tmpyr(:,1);
 												tmpyr=tmpyr+2000;
-												tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+												tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
 											elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
 												clear tmpyrb
 												tmps=sort(unique(BT_year));
@@ -18280,25 +18280,25 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
                                     elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -18412,25 +18412,25 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -18645,25 +18645,25 @@
                                      elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                     elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -18966,25 +18966,25 @@
                                     elseif strat==8 % N30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30,:,:);
                                         end                    
-                                        tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30));
+                                        tmpnm=unique(BT_name(BT_lat0>=30));
                                     elseif strat==9 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30));
+                                        tmpnm=unique(BT_name(BT_lat0<30));
                                     elseif strat==10 % RI
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
@@ -19098,25 +19098,25 @@
                                     elseif strat==14+size(unique(BT_year),1)+5 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
                                     elseif strat==14+size(unique(BT_year),1)+6 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
                                     elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -19331,25 +19331,25 @@
                                      elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
                                         clear tmpyrb
                                          if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
                                          end                     
-                                        tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+                                        tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
                                     elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
                                         clear tmpyrb
                                         if plt>=21 && plt<=23
-                                            tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+                                            tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
                                         else
-                                            tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+                                            tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
                                         end
-                                        tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+                                        tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
                                         tmpyr=tmpyr(:,1);
                                         tmpyr=tmpyr+2000;
-                                        tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+                                        tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
                                     elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
                                         clear tmpyrb
                                         tmps=sort(unique(BT_year));
@@ -19961,25 +19961,25 @@
 										elseif strat==8 % N30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30,:,:);
 											end                    
-											tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30));
+											tmpnm=unique(BT_name(BT_lat0>=30));
 										elseif strat==9 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30));
+											tmpnm=unique(BT_name(BT_lat0<30));
 										elseif strat==10 % RI
 											clear tmpyrb
 											if plt>=21 && plt<=23
@@ -20093,25 +20093,25 @@
 										elseif strat==14+size(unique(BT_year),1)+5 % N30
 											clear tmpyrb
 											 if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
 											 end                     
-											tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+											tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
 										elseif strat==14+size(unique(BT_year),1)+6 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+											tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
 										elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
 											clear tmpyrb
 											tmps=sort(unique(BT_year));
@@ -20326,25 +20326,25 @@
 										 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
 											clear tmpyrb
 											 if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
 											 end                     
-											tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+											tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
 										elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+											tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
 										elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
 											clear tmpyrb
 											tmps=sort(unique(BT_year));
@@ -20949,25 +20949,25 @@
 										elseif strat==8 % N30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30,:,:);
 											end                    
-											tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30));
+											tmpnm=unique(BT_name(BT_lat0>=30));
 										elseif strat==9 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30));
+											tmpnm=unique(BT_name(BT_lat0<30));
 										elseif strat==10 % RI
 											clear tmpyrb
 											if plt>=21 && plt<=23
@@ -21081,25 +21081,25 @@
 										elseif strat==14+size(unique(BT_year),1)+5 % N30
 											clear tmpyrb
 											 if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
 											 end                     
-											tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+											tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
 										elseif strat==14+size(unique(BT_year),1)+6 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+											tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
 										elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
 											clear tmpyrb
 											tmps=sort(unique(BT_year));
@@ -21314,25 +21314,25 @@
 										 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
 											clear tmpyrb
 											 if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
 											 end                     
-											tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+											tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
 										elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+											tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
 										elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
 											clear tmpyrb
 											tmps=sort(unique(BT_year));
@@ -21892,25 +21892,25 @@
 										elseif strat==8 % N30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30,:,:);
 											end                    
-											tmpyr=unique([BT_year(BT_lat>=30) BT_storm(BT_lat>=30)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30) BT_storm(BT_lat0>=30)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30));
+											tmpnm=unique(BT_name(BT_lat0>=30));
 										elseif strat==9 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30) BT_storm(BT_lat<30)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30) BT_storm(BT_lat0<30)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30));
+											tmpnm=unique(BT_name(BT_lat0<30));
 										elseif strat==10 % RI
 											clear tmpyrb
 											if plt>=21 && plt<=23
@@ -22024,25 +22024,25 @@
 										elseif strat==14+size(unique(BT_year),1)+5 % N30
 											clear tmpyrb
 											 if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==1,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==1,:,:);
 											 end                     
-											tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==1) BT_storm(BT_lat>=30 & BT_drops'==1)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==1) BT_storm(BT_lat0>=30 & BT_drops'==1)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==1));
+											tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==1));
 										elseif strat==14+size(unique(BT_year),1)+6 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==1,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==1,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==1,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==1) BT_storm(BT_lat<30 & BT_drops'==1)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==1) BT_storm(BT_lat0<30 & BT_drops'==1)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==1));
+											tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==1));
 										elseif strat>14+size(unique(BT_year),1)+6 && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1) % by year% by year
 											clear tmpyrb
 											tmps=sort(unique(BT_year));
@@ -22257,25 +22257,25 @@
 										 elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+17 % N30
 											clear tmpyrb
 											 if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]>=30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat>=30 & BT_drops'==0,:,:);
+												tmp_exp=tmp_exp(BT_lat0>=30 & BT_drops'==0,:,:);
 											 end                     
-											tmpyr=unique([BT_year(BT_lat>=30 & BT_drops'==0) BT_storm(BT_lat>=30 & BT_drops'==0)],'rows');
+											tmpyr=unique([BT_year(BT_lat0>=30 & BT_drops'==0) BT_storm(BT_lat0>=30 & BT_drops'==0)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat>=30 & BT_drops'==0));
+											tmpnm=unique(BT_name(BT_lat0>=30 & BT_drops'==0));
 										elseif strat==(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18 % S30
 											clear tmpyrb
 											if plt>=21 && plt<=23
-												tmp_exp=tmp_exp([BT_lat;BT_lat;BT_lat;BT_lat]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
+												tmp_exp=tmp_exp([BT_lat0;BT_lat0;BT_lat0;BT_lat0]<30 & [BT_drops';BT_drops';BT_drops';BT_drops']==0,:,:);
 											else
-												tmp_exp=tmp_exp(BT_lat<30 & BT_drops'==0,:,:);
+												tmp_exp=tmp_exp(BT_lat0<30 & BT_drops'==0,:,:);
 											end
-											tmpyr=unique([BT_year(BT_lat<30 & BT_drops'==0) BT_storm(BT_lat<30 & BT_drops'==0)],'rows');
+											tmpyr=unique([BT_year(BT_lat0<30 & BT_drops'==0) BT_storm(BT_lat0<30 & BT_drops'==0)],'rows');
 											tmpyr=tmpyr(:,1);
 											tmpyr=tmpyr+2000;
-											tmpnm=unique(BT_name(BT_lat<30 & BT_drops'==0)); 
+											tmpnm=unique(BT_name(BT_lat0<30 & BT_drops'==0)); 
 										elseif strat>((14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18) && strat<=(14+size(unique(BT_year),1)+6)+size(unique(BT_year),1)+18+size(unique(BT_year),1) % by year noobs
 											clear tmpyrb
 											tmps=sort(unique(BT_year));
