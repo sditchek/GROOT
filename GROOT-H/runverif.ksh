@@ -54,10 +54,12 @@ vitalspath=/scratch3/HFIP/hwrfv3/noscrub/input/SYNDAT-PLUS/     # path to the ma
 ##########################################
 
 # Check if MATLAB module is loaded
-if ! module list 2>&1 | grep -q 'matlab'; then
+if [[ ":$LOADEDMODULES:" != *":matlab/"* && ":$LOADEDMODULES:" != *":matlab:"* ]]; then
     echo "ERROR: MATLAB module is not loaded."
     echo "Please load it with: module load matlab"
     exit 1
+else
+    echo "SUCCESS: MATLAB module is loaded."
 fi
 
 # Cleanup old GROOT-PR and set new paths
@@ -327,6 +329,20 @@ wait
 # Import the values in the output file
 cp commonverif.txt ${scriptspath}/
 source ./commonverif.txt
+
+# Check if any directory under verifpath is empty
+for dir in "${verifpath}"/*/; do
+    if [ -d "$dir" ]; then  # Ensure it's a directory
+        # Check if the directory is empty
+        if [ "$(find "$dir" -mindepth 1 -print -quit)" ]; then
+            echo "SUCCESS: $dir contains files."
+        else
+            echo "ERROR: $dir is empty - check your atcf or adeck source directory."
+            # Handle empty directory case, if needed
+            exit 1
+        fi
+    fi
+done
 
 # Run the package
 sbatch ${scriptspath}/matlabverifgraphics.ksh $scriptspath $outputpath $homepath
