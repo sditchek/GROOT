@@ -181,7 +181,7 @@ for identremoveinvest=1
                 %% Get BDECK %%
                 %% %%%%%%%%% %%
                 for bdecks=1
-                    filename = [identbdecks,'b',lower(ident),'.dat'];
+                    filename = [identbdecks,'b',lower(ident),'.dat'];if ~isfile(filename); fprintf(2, 'ERROR: File "%s" does not exist!\n', filename);end
 					[identhemi,DATEall,BASINall,NAMEall,CATall,LATall,POall,SE50all,LONall,PRESSall,SE64all,NE34all,RAD34all,SPEEDall,NE50all,RAD50all,SW34all,NE64all,RAD64all,SW50all,NW34all,RMWall,SW64all,NW50all,ROall,NW64all,SE34all,FHRall,INTCHall,UMOTall,VMOTall,SHRall,LOWbasin,HIGHbasin,LANDall,HFIPINTCHall]=atcf_shear(filename,1,identbdecks);
                     save([identout,'RESULTS/',identfold,'VERIFICATION/',identremovename,'/',ident(1:2),'/',identn,'/',identn,'_data.mat'])
                 end
